@@ -1,0 +1,14 @@
+#!/bin/sh +m
+# Runs a command in the background without waiting for any output.
+# Prints the pid of the command in stdout.
+
+# Do some logging, either in ~/.xsession-errors or on the console.
+echo "$(LANG=C date '+%c'), epoptes-client executing: $@" >&2
+
+# The command is run with stdin and stdout descriptors redirected to /dev/null,
+# so that it doesn't interfere with the output of other commands.
+# stderr isn't changed, i.e. ~/.xsession-errors will be used.
+"$@" 0</dev/null >/dev/null &
+
+# Print the pid.
+echo $!

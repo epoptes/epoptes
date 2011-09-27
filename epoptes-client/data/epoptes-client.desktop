@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Name=Epoptes client service
+Name[el]=Υπηρεσία πελάτη του Epoptes
+Comment=Epoptes computer lab administation tool client service
+Comment[el]=Υπηρεσία πελάτη του λογισμικού διαχείρισης εργαστηρίων Epoptes
+Exec=/usr/share/epoptes-client/epoptes-client
+Icon=epoptes
+Terminal=false
+Type=Application
+Categories=Settings;System;
+# X-GNOME-AutoRestart=true
+Name[el_GR]=epoptes-client.fddesktop

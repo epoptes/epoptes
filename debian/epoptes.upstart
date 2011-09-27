@@ -1,0 +1,12 @@
+# Server daemon for the epoptes classroom administration tool
+
+description	"epoptes server daemon"
+author		"Alkis Georgopoulos <alkisg@gmail.com>"
+
+start on (filesystem and started networking)
+stop on runlevel [!2345]
+
+console output
+respawn
+
+exec twistd --pidfile "/var/run/epoptes.pid" --logfile "/var/log/epoptes.log" -n epoptes

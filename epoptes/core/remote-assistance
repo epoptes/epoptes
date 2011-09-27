@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# PYTHONIZE THIS
+
+# Helper script for the remote-assistant menu.
+# Not to be called as a standalone script.
+
+if [ -n "$1" ]; then
+    exec x11vnc -q -nopw -connect_or_exit "$1" -afteraccept "$0 &"
+fi
+
+echo "message:Remote assistance connection established" \
+  | zenity --notification --window-icon=/usr/share/icons/gnome/scalable/apps/gnome-remote-desktop.svg --listen
+zenity --notification --window-icon=/usr/share/icons/gnome/scalable/apps/gnome-remote-desktop.svg --text="Remote assistance connection established"
+test -n "$RFB_X11VNC_PID" && kill "$RFB_X11VNC_PID"

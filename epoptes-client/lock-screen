@@ -1,0 +1,82 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+#
+#       Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+#
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#       
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#       
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+
+
+import gtk
+import gtk.gdk as gdk
+import pango
+import gobject
+
+class lockscreen:
+    def lock(self):
+        backlock = gtk.Window(gtk.WINDOW_POPUP)
+        backlock.resize(1, 1)
+        backlock.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
+        frontview = gtk.Window()
+        frontview.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
+        self.colorlist = ['#020202', '#080808','#151515', '#252525','#353535','#454545','#555555',
+        '#595959','#656565','#696969','#757575','#797979','#858585','#898989','#949494']
+
+
+        vbox = gtk.VBox(spacing=75)
+
+        imagepb = gtk.gdk.pixbuf_new_from_file_at_size('./lock.svg', 250, 250)
+        image = gtk.Image()
+        image.set_from_pixbuf(imagepb)
+        vbox.pack_start(image, True)
+
+        self.label = gtk.Label("The administrator locked your screen.")
+        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color("#000000"))
+        self.label.modify_font(pango.FontDescription('FreeSans italic 18'))
+        gobject.timeout_add(100, self.fade)
+        vbox.pack_start(self.label, True)
+
+        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        align.add(vbox)
+        frontview.add(align)
+
+        backlock.show_all()
+        frontview.show_all()
+
+        frontview.set_keep_above(True)
+        frontview.fullscreen()
+        gdk.beep()
+        gdk.keyboard_grab(backlock.window, False, 0L)
+        
+        # To automatically unlock the screen after 7 seconds, uncomment this:
+        #gobject.timeout_add(7000, self.unlock)
+    
+    def fade(self):
+        color = self.colorlist[0]
+        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color(color))
+        del self.colorlist[0]
+        
+        if not self.colorlist:
+            return False
+        else:
+            return True
+        
+    
+    def unlock(self):
+        gdk.keyboard_ungrab(0L)
+        exit()
+
+lockscreen().lock()
+gtk.main()

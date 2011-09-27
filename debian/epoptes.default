@@ -1,0 +1,13 @@
+[Daemon]
+host=localhost
+port=569
+owner_group=admin
+
+[General]
+geometry=1000x950+10+50
+maximized=true
+empty_groups=true
+system_groups=true
+hpane_pos=10
+vpane_pos=13
+users_by_username=true

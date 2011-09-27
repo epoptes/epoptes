@@ -1,0 +1,10 @@
+[Desktop Entry]
+_Name=Epoptes
+_Comment=Epoptes computer lab administration tool
+TryExec=/usr/bin/epoptes
+Exec=/usr/bin/epoptes
+Icon=epoptes
+Terminal=false
+Type=Application
+Categories=Network;RemoteAccess;
+X-Ubuntu-Gettext-Domain=epoptes

@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+import os
+import os.path
+import sys
+import gtk
+import ConfigParser
+import epoptes
+
+import gettext
+gettext.install('epoptes', unicode=True)
+
+# cd to the epoptes directory, so that all paths are relative
+os.chdir('/usr/share/epoptes')
+
+conf = ConfigParser.ConfigParser()
+conf.read('/etc/default/epoptes')
+
+host = conf.get('Daemon', 'host')
+port = int(conf.get('Daemon', 'port'))
+
+# Do these potentially expensive imports now we know the environment is sane
+from twisted.internet import gtk2reactor
+gtk2reactor.install()
+from twisted.internet import reactor
+from twisted.internet.protocol import ClientCreator
+from twisted.protocols import amp
+
+from epoptes.daemon import uiconnection
+from epoptes.ui import gui
+
+filter_pattern = None
+if len(sys.argv) > 1 and sys.argv[1].startswith("--filter-host="):
+    filter_pattern = sys.argv[1].split('=', 1)[1]
+epoptesGui = gui.EpoptesGui(conf, filter_pattern)
+
+def connectionFailed(failure):
+    print "Connection with epoptes failed:"
+    print failure.getErrorMessage()
+    reactor.stop()
+
+d = ClientCreator(reactor, epoptes.daemon.uiconnection.Daemon, epoptesGui).connectUNIX("/tmp/epoptes/epoptes.socket")
+d.addErrback(connectionFailed)
+
+reactor.run()

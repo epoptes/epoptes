@@ -1,0 +1,212 @@
+#!/bin/bash
+
+###########################################################################
+# Connects to a remote server and offers it a local shell.
+# Usage: epoptes [server] [port]
+#
+# Copyright (C) 2010, 2011 Alkis Georgopoulos <alkisg@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL'.
+###########################################################################
+
+die() {
+    echo "epoptes-client ERROR: $@" >&2
+    exit 1
+}
+
+# The "boolean_is_true" name is used as a sentinel that prevents ltsp_config
+# from sourcing ltsp_common_function. So we're using a different name.
+my_boolean_is_true() {
+    case $1 in
+       # match all cases of true|y|yes
+       [Tt][Rr][Uu][Ee]|[Yy]|[Yy][Ee][Ss]) return 0 ;;
+       *) return 1 ;;
+    esac
+}
+
+# Get $USER, $UID and $TYPE of the client, and the default $SERVER.
+basic_info() {
+    test -n "$USER" || USER=$(whoami)
+    test -n "$UID" || UID=$(id -u)
+
+    # TODO: fix upstream "$LTSP_FATCLIENT" to be present on user sessions
+    if my_boolean_is_true "$LTSP_FATCLIENT" && [ -f /etc/ltsp_fat_chroot ]; then
+        TYPE="fat"
+    elif [ -n "$LTSP_CLIENT" ] || [ -f /etc/ltsp_chroot ]; then
+        TYPE="thin"
+    elif [ -n "$(dpkg-query -W -f '${Version}' epoptes 2>/dev/null)" ]; then
+        TYPE="server"
+    else
+        TYPE="standalone"
+    fi
+
+    if [ "$UID" -eq 0 ] || [ "$TYPE" != "thin" ]; then
+        SERVER=server
+    else
+        SERVER=localhost
+    fi
+}
+
+# epoptes-client may be called either as root, to control the client, or as a
+# user, to control the user session.
+# As root:
+# The best place to start epoptes-client would be from /etc/network/if-up.d.
+# Unfortunately, thin and fat clients don't get if-up.d events.
+# So we're using "started networking or net-device-up IFACE!=lo" in upstart.
+# * On standalone workstations, we ignore "started networking" because we may
+#   not have an IP yet, and only start on "net-device-up".
+# * For thin and fat clients, we only get the "started networking" event.
+# * Manually with `sudo (re)start epoptes-client`.
+# * On the server, we need to cancel our execution in all cases.
+# As a user:
+# * From /etc/xdg/autostart or from /usr/share/epoptes-client/epoptes-client.
+#   Ideally, we would never need to cancel that, and epoptes would be clever
+#   enough to hide from the GUI the teacher epoptes-clients, or at least the
+#   epoptes-client where the teacher is sitting.
+#   For now, we only cancel epoptes-client for the teacher sitting at the server.
+#   Other teachers should disable epoptes-client from their System > Preferences
+#   > Services gnome menu.
+should_start() {
+    test $TYPE = "server" && return 1
+
+    if [ $UID -ne 0 ]; then
+        return 0
+    else
+        if [ $TYPE = "standalone" ]; then
+            if [ "$UPSTART_JOB" != "epoptes-client" ]; then
+                echo 'Please use `sudo start epoptes-client` to run epoptes-client as root, or just `epoptes-client` to run it as a user.' >&2
+                return 1
+            elif [ "$JOB" = "networking" ] && echo "$UPSTART_EVENTS" | grep -q "started"; then
+                return 1
+            else
+                return 0
+            fi
+        else
+            return 0
+        fi
+    fi
+}
+
+epoptes_info() {
+    local def_iface
+
+    # TODO: use `ip route get server-ip` instead
+    while true; do
+        def_iface=$(route -n | sed -n "/^0.0.0.0/s/.* //p")
+        def_iface=${def_iface:-$(route -n | awk '$2=="0.0.0.0" { print $8; exit }')}
+        # If we got it, continue.
+        test -n "$def_iface" && break
+        # On dual NIC standalone workstartions, if the "non-default-route"
+        # interface is brought up first, exit, we'll be called again later.
+        test $UID -eq 0 && die "Empty def_iface, probably 2-NIC workstation, we'll get called again for the second NIC.."
+        # At this point, it's probably a user epoptes-client that doesn't have
+        # a network connection up yet. Retry until it's ready.
+        sleep 10
+    done
+
+    HOSTNAME=$(hostname)
+    test -n "$HOSTNAME" || die "Empty hostname"
+    IP=$(ip -oneline -family inet addr show dev "$def_iface" | sed "s/.* \([0-9.]*\)\/.*/\\1/")
+    test -n "$IP" || die "Empty IP"
+    MAC=$(ip -oneline -family inet link show dev "$def_iface" | sed "s/.*ether \([^ ]*\).*/\\1/")
+    MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
+    test -n "$MAC" || die "Empty MAC"
+    CPU=$(cat /proc/cpuinfo | grep "^model name" | head -1 | sed "s/.*: //")
+    RAM=$(free -m | grep "^Mem" | awk '{print $2}')
+    VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
+
+    # If epoptes-client is ran on a thin client from a user account (meaning that
+    # it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME and
+    # $LTSP_CLIENT instead of $HOSTNAME and $IP.
+    # MAC, CPU, RAM and VGA are not available in the environment, so we're
+    # leaving the ones of the server.
+    if [ "$TYPE" = "thin" ] && [ "$UID" -ne 0 ]; then
+        test -n "$LTSP_CLIENT" && IP="$LTSP_CLIENT"
+        test -n "$LTSP_CLIENT_HOSTNAME" && HOSTNAME="$LTSP_CLIENT_HOSTNAME"
+    fi
+        
+    export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT
+}
+
+# Main.
+
+# When called from /etc/xdg/autostart, /sbin is not in the system path.
+PATH="$PATH:/sbin:/usr/sbin"
+
+# Ensure that the LTSP defaults are there (for $LTSP_FATCLIENT etc)
+if [ -f /usr/share/ltsp/ltsp_config ]; then
+    . /usr/share/ltsp/ltsp_config
+fi
+
+basic_info
+SERVER=${1:-$SERVER}
+PORT=${2:-1569}
+
+# Exit successfully if we shouldn't start
+should_start || exit 0
+
+# Kill all ghost instances of epoptes-client of the same user.
+# That may happen if network connectivity is lost for a while.
+# Standalone workstations don't hang if the network is down, and nbd might cope
+# with that for LTSP clients, and but the epoptes server kills disconnected epoptes-clients.
+# Root epoptes-clients are killed by upstart, so we only care about user
+# epoptes-clients. We don't care about thin user epoptes-clients though,
+# as those don't lose connectivity (localhost) and are killed by epoptes-daemon.
+if [ $UID != 0 ] && [ $TYPE != "thin" ]; then
+    # Exclude the current epoptes-client.
+    for p in $(pgrep -U $UID epoptes-client | grep -v $$); do
+        kill $p
+    done
+fi
+
+# Go to the scripts directory, so that we can run them with ./xxx
+cd $(dirname "$0")
+if [ -d ../epoptes-client ]; then
+    cd ../epoptes-client
+else
+    cd /usr/share/epoptes-client
+fi
+
+epoptes_info
+
+# Source the lsb init functions, for log_begin_msg / log_end_msg
+test -f /lib/lsb/init-functions || die "/lib/lsb/init-functions not found"
+. /lib/lsb/init-functions
+
+log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
+
+# Connect to the server, or keep retrying until the server gets online
+# (for standalone workstations booted before the server).
+# If your bash isn't compiled with tcp socket support,
+# install netcat-traditional and substitude the following with
+# nc $SERVER $PORT -e /bin/sh
+while ! exec 0<>"/dev/tcp/$SERVER/$PORT"; do
+    log_warning_msg "Server $SERVER:$PORT did not respond, retrying in 10 sec..."
+    sleep 10
+done
+
+log_end_msg 0
+
+# Also redirect stdout to the server, but keep stderr to the local console,
+# to avoid possible noise from applications started in the background.
+# If the callee needs to grab stderr, it can use `cmd 2>&1`.
+exec 1>&0
+
+# Finally, exec sh instead of keeping bash, to save memory.
+# But use "epoptes-client" as the zeroth argument, to make it easier for `ps`.
+# +m = disable job control.
+exec -a epoptes-client /bin/sh +m
