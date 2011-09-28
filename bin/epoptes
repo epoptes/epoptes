@@ -10,6 +10,8 @@ import epoptes
 
 import gettext
 gettext.install('epoptes', unicode=True)
+import locale
+locale.textdomain('epoptes')
 
 # cd to the epoptes directory, so that all paths are relative
 os.chdir('/usr/share/epoptes')
