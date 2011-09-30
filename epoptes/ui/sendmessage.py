@@ -31,11 +31,11 @@ def makeZenityCmd( msg_type_id, text=""):
     e.g.: zenity --warning --text="Do not press any key"
     """
 
-    c = Constants()
+    c = constants.Constants()
 
     if msg_type_id == 0: cmd = c.ZENITY_INFO
-    elif msg_type_id == 1: cmd = c.ZENITY_INFO
-    elif msg_type_id == 2: cmd = c.ZENITY_INFO
+    elif msg_type_id == 1: cmd = c.ZENITY_WARNING
+    elif msg_type_id == 2: cmd = c.ZENITY_ERROR
 
     if len(text) > 0: cmd += "--text=" + quote_message(text)
 
