@@ -38,7 +38,7 @@ my_boolean_is_true() {
     esac
 }
 
-# Get $USER, $UID and $TYPE of the client, and the default $SERVER.
+# Get $USER, $UID and $TYPE of the client, and the default $SERVER and $PORT.
 basic_info() {
     test -n "$USER" || USER=$(whoami)
     test -n "$UID" || UID=$(id -u)
@@ -59,6 +59,7 @@ basic_info() {
     else
         SERVER=localhost
     fi
+    PORT=569
 }
 
 # epoptes-client may be called either as root, to control the client, or as a
@@ -153,8 +154,13 @@ if [ -f /usr/share/ltsp/ltsp_config ]; then
 fi
 
 basic_info
+# The configuration file overrides the default values
+if [ -f /etc/default/epoptes ]; then
+    . /etc/default/epoptes
+fi
+# And the command line parameters override the configuration file
 SERVER=${1:-$SERVER}
-PORT=${2:-1569}
+PORT=${2:-$PORT}
 
 # Exit successfully if we shouldn't start
 should_start || exit 0

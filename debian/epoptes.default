@@ -1,13 +1,16 @@
-[Daemon]
-host=localhost
-port=569
-owner_group=admin
+# The server where epoptes-client will be connecting to.
+# If unset, thin client user sessions running on the server will try to connect
+# to "localhost", while thin client root sessions and fat or standalone clients
+# will try to connect to "server".
+# LTSP automatically puts "server" in /etc/hosts for thin and fat clients,
+# but you'd need to put "server" in DNS manually for standalone clients.
+#SERVER=server
 
-[General]
-geometry=1000x950+10+50
-maximized=true
-empty_groups=true
-system_groups=true
-hpane_pos=10
-vpane_pos=13
-users_by_username=true
+# The port where the server will be listening on, and where the client will try
+# to connect to. For security reasons it defaults to a system port, 569.
+#PORT=569
+
+# Epoptes server will use the following group for the communications socket.
+# That means that any user in that group will be able to launch the epoptes UI
+# and control the clients.
+#SOCKET_GROUP=admin
