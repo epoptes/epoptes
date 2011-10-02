@@ -7,8 +7,6 @@ from twisted.application.service import IServiceMaker
 from twisted.application import internet, service
 
 from epoptes.daemon import bashplex, guiplex
-#import ConfigParser
-#conf = ConfigParser.ConfigParser()
 from epoptes.common import config
 import grp
 
@@ -35,20 +33,8 @@ class ServiceMaker(object):
 
         clientService = internet.TCPServer(int(config.system['PORT']), factory)
         
-        #conf.read("/etc/default/epoptes")
-        #if conf.has_option("Daemon", "owner_group"):
-        #    import grp
-        #    gid = grp.getgrnam(conf.get("Daemon", "owner_group"))[2]
-        #else:
-        #    gid = -1
         gid = grp.getgrnam(config.system['SOCKET_GROUP'])[2]
         
-        #if conf.has_option("Daemon", "path"):
-        #    dir = conf.get("Daemon", "path")
-        #else:
-        #    dir = "/tmp/epoptes"
-
-        dir = "/tmp/epoptes"
         if not os.path.isdir(dir):
             #TODO: for some reason this does 0750 instead
             os.makedirs(dir, 02770)
@@ -56,7 +42,7 @@ class ServiceMaker(object):
         os.chown(dir, -1, gid)
 
         guiService = internet.UNIXServer(
-            "%s/epoptes.socket" % dir,
+            "%s/epoptes.socket" % config.system['DIR'],
             guiplex.GUIFactory())
 
         topService = service.MultiService()

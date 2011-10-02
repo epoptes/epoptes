@@ -91,23 +91,8 @@ class EpoptesGui(object):
         self.addStockImage('online', 'images/on.png')
         self.addStockImage('users', 'images/usersgrp.png')
         self.addStockImage('system', 'images/systemgrp.png')
-
-        # Get DBUS_SESSION_BUS_ADDRESS from the parent
-        #parentenvf = open("/proc/%d/environ" % os.getppid())
-        #parentenv = parentenvf.read().split('\0')
-        #parentenvf.close()
         
-        # If we are on the server the ltsp_client_hostname environment is unset
-        #self.ltsp_client_hostname = None
-        #for env in os.environ:
-        #    if env.startswith('DBUS_SESSION_BUS_ADDRESS='):
-        #        self.dbus_session_bus_address = env.split('=', 1)[1]
-        #    elif env.startswith('LTSP_CLIENT_HOSTNAME='):
-        #        self.ltsp_client_hostname = env.split('=', 1)[1]
-        
-        self.dbus_session_bus_address = os.environ.get('DBUS_SESSION_BUS_ADDRESS')
         self.ltsp_client_hostname = os.environ.get('LTSP_CLIENT_HOSTNAME')
-        
         
         self.wTree = gtk.Builder()
         self.wTree.add_from_file('epoptes.ui')
@@ -751,16 +736,7 @@ which is incompatible with the current epoptes version.\
                     rowstride)
                 self.cstore[i.path][C_PIXBUF] = pxb
                 break
-
-    # FIXME: Use conf
-    def applyConf(self):
-        if self.conf.getboolean('General', 'maximized'):
-            self.mainwin.maximize()
     
-    # FIXME: Use conf
-    def saveConf(self, item, value):
-        self.conf.set('General', item, str(value))
-
     # FIXME: Just shut up and fix me
     def addStockImage(self, name, filename):
         pixbuf = gtk.gdk.pixbuf_new_from_file(filename)#_at_size(filename,16,16)

@@ -55,6 +55,7 @@ def write_user_config(path):
 system = read_system_config('/etc/default/epoptes')
 system.setdefault('PORT', 569)
 system.setdefault('SOCKET_GROUP', 'admin')
+system['DIR'] = '/var/run/epoptes'
 
 #user = read_user_config('$HOME/.config/ktl')
 
