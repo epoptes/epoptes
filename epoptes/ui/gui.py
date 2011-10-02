@@ -93,17 +93,20 @@ class EpoptesGui(object):
         self.addStockImage('system', 'images/systemgrp.png')
 
         # Get DBUS_SESSION_BUS_ADDRESS from the parent
-        parentenvf = open("/proc/%d/environ" % os.getppid())
-        parentenv = parentenvf.read().split('\0')
-        parentenvf.close()
+        #parentenvf = open("/proc/%d/environ" % os.getppid())
+        #parentenv = parentenvf.read().split('\0')
+        #parentenvf.close()
         
         # If we are on the server the ltsp_client_hostname environment is unset
-        self.ltsp_client_hostname = None
-        for env in parentenv:
-            if env.startswith('DBUS_SESSION_BUS_ADDRESS='):
-                self.dbus_session_bus_address = env.split('=', 1)[1]
-            elif env.startswith('LTSP_CLIENT_HOSTNAME='):
-                self.ltsp_client_hostname = env.split('=', 1)[1]
+        #self.ltsp_client_hostname = None
+        #for env in os.environ:
+        #    if env.startswith('DBUS_SESSION_BUS_ADDRESS='):
+        #        self.dbus_session_bus_address = env.split('=', 1)[1]
+        #    elif env.startswith('LTSP_CLIENT_HOSTNAME='):
+        #        self.ltsp_client_hostname = env.split('=', 1)[1]
+        
+        self.dbus_session_bus_address = os.environ.get('DBUS_SESSION_BUS_ADDRESS')
+        self.ltsp_client_hostname = os.environ.get('LTSP_CLIENT_HOSTNAME')
         
         
         self.wTree = gtk.Builder()
@@ -377,7 +380,7 @@ eval $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
 export DISPLAY XAUTHORITY
 xset dpms force on
 sleep 0.$((`hexdump -e '"%d"' -n 2 /dev/urandom` % 50 + 50))
-EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 server:3)""", root=True)
+EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:3)""", root=True)
 
     def stopTransmissions(self, widget):
         # The clients are usually automatically killed when the server is killed
@@ -971,6 +974,7 @@ which is incompatible with the current epoptes version.\
     def execOnClients(self, command, clients=[], reply=None, root=False,
                         handles=[], warning=''):
         '''reply should be a method in which the result will be sent'''
+        
         if len(self.cstore) == 0:
             # print 'No clients'
             return False

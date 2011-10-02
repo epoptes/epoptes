@@ -5,7 +5,7 @@ import os
 import os.path
 import sys
 import gtk
-import ConfigParser
+#import ConfigParser #XXX: Why do we need configparser here??
 import epoptes
 
 import gettext
@@ -16,11 +16,11 @@ locale.textdomain('epoptes')
 # cd to the epoptes directory, so that all paths are relative
 os.chdir('/usr/share/epoptes')
 
-conf = ConfigParser.ConfigParser()
-conf.read('/etc/default/epoptes')
+#conf = ConfigParser.ConfigParser()
+#conf.read('/etc/default/epoptes')
 
-host = conf.get('Daemon', 'host')
-port = int(conf.get('Daemon', 'port'))
+#host = conf.get('Daemon', 'host')
+#port = int(conf.get('Daemon', 'port'))
 
 # Do these potentially expensive imports now we know the environment is sane
 from twisted.internet import gtk2reactor
@@ -35,7 +35,7 @@ from epoptes.ui import gui
 filter_pattern = None
 if len(sys.argv) > 1 and sys.argv[1].startswith("--filter-host="):
     filter_pattern = sys.argv[1].split('=', 1)[1]
-epoptesGui = gui.EpoptesGui(conf, filter_pattern)
+epoptesGui = gui.EpoptesGui(None, filter_pattern)
 
 def connectionFailed(failure):
     print "Connection with epoptes failed:"

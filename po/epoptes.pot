@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-27 23:55+0300\n"
+"POT-Creation-Date: 2011-10-02 20:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -392,15 +392,41 @@ msgstr ""
 msgid "epoptes"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:159 ../epoptes/ui/gui.py:161
+#: ../epoptes/ui/notifications.py:19
+msgid "Connected users:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:19 ../epoptes/ui/notifications.py:23
+#, python-format
+msgid "%(user)s on %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:23
+msgid "Connected:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:27
+msgid "Disconnected:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:27
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:31
+msgid "Shut down:"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:162 ../epoptes/ui/gui.py:164
 msgid "Users"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:176
+#: ../epoptes/ui/gui.py:179
 msgid "Groups"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:663
+#: ../epoptes/ui/gui.py:666
 #, python-format
 msgid ""
 "There was a try to connect a epoptes-client with version %s which is "
@@ -429,32 +455,6 @@ msgstr ""
 
 #: ../epoptes/common/commands.py:26
 msgid "Are you sure you want to terminate all processes of the selected users?"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:19
-msgid "Connected users:"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:19 ../epoptes/ui/notifications.py:23
-#, python-format
-msgid "%(user)s on %(host)s"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:23
-msgid "Connected:"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:27
-msgid "Disconnected:"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:27
-#, python-format
-msgid "%(user)s from %(host)s"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:31
-msgid "Shut down:"
 msgstr ""
 
 #: ../data/epoptes.desktop.in.h:1
