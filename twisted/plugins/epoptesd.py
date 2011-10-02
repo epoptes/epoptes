@@ -35,11 +35,11 @@ class ServiceMaker(object):
         
         gid = grp.getgrnam(config.system['SOCKET_GROUP'])[2]
         
-        if not os.path.isdir(dir):
+        if not os.path.isdir(config.system['DIR']):
             #TODO: for some reason this does 0750 instead
-            os.makedirs(dir, 02770)
-        os.chmod(dir, 02770)
-        os.chown(dir, -1, gid)
+            os.makedirs(config.system['DIR'], 02770)
+        os.chmod(config.system['DIR'], 02770)
+        os.chown(config.system['DIR'], -1, gid)
 
         guiService = internet.UNIXServer(
             "%s/epoptes.socket" % config.system['DIR'],
