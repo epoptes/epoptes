@@ -503,9 +503,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
                     pty,stderr tcp:%s:%d & exec xterm -e screen -l -S ra'"""
                     % (ip, port)])
             else:
-                subprocess.Popen([
-                    '/usr/share/epoptes/scripts/server/remote-assistance', #FIXME
-                    "%s:%d" % (ip, port)])
+                subprocess.Popen(['epoptes-remote-assistance', "%s:%d" % (ip, port)])
         dlg.hide()
     
     

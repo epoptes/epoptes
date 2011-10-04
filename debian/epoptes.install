@@ -1,4 +1,4 @@
-usr/bin/epoptes
+usr/bin/*
 usr/lib/python*/*/*.egg-info
 usr/lib/python*/*/epoptes/*/*.py
 usr/lib/python*/*/epoptes/*.py
