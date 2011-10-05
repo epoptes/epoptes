@@ -3,7 +3,8 @@ Section: admin
 Priority: extra
 Maintainer: Fotis Tsamis <ftsamis@gmail.com>
 Build-Depends: debhelper (>= 7.3.0)
-Build-Depends-Indep: python (>= 2.4), python-central
+Build-Depends-Indep: python (>= 2.4), python-central, 
+ python-distutils-extra (>= 2.4)
 XS-Python-Version: current
 Standards-Version: 3.8.4
 Vcs-Bzr: http://bazaar.launchpad.net/~epoptes-devs/epoptes/trunk
@@ -13,7 +14,7 @@ Package: epoptes
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
  notification-daemon | xfce4-notifyd, python-gtk2, python-notify,
- python-twisted-core, , python-vte, zenity
+ python-twisted-core, python-vte, zenity
 Recommends: epoptes-client
 Suggests: ltsp-server, squid, ident2, vlc
 XB-Python-Version: ${python:Versions}
