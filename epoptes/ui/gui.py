@@ -475,12 +475,12 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
                     lambda r: set('client_cpu', r))
                 execute(client[C_HANDLE], 'echo $VGA').addCallback(
                     lambda r: set('client_vga', r))
-            set('hostname_entry', client[C_HOSTNAME])
+            set('client_hostname', client[C_HOSTNAME])
             set('client_mac', client[C_MAC])
             set('client_ip', client[C_HANDLE].split(':')[0])
             set('client_type', client[C_TYPE])
             set('client_online_user', client[C_USER])
-            dlg.set_title('Ιδιότητες του ' + client[C_HOSTNAME])
+            dlg.set_title(_('Properties of %s') %client[C_HOSTNAME])
         dlg.run()
         dlg.hide()
 
@@ -641,12 +641,11 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
             return
             
         # Compatibility check
-        if [int(s) for s in version.split('.')] < COMPATIBILITY_VERSION:
-
+        if [int(x) for x in re.split('[^0-9]*', version)] < COMPATIBILITY_VERSION:
             if not self.shownCompatibilityWarning:
                 self.shownCompatibilityWarning = True
                 dlg = self.get('warningDialog')
-                msg = _("There was a try to connect a epoptes-client with version %s \
+                msg = _("There was a try to connect an epoptes-client with version %s \
 which is incompatible with the current epoptes version.\
 \n\nYou should update your chroot.") % version
                 dlg.set_property('text', msg)
