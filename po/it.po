@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-10-04 20:13+0300\n"
-"PO-Revision-Date: 2011-10-06 23:06+0000\n"
+"PO-Revision-Date: 2011-10-07 18:42+0000\n"
 "Last-Translator: Marco Menardi <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-07 05:28+0000\n"
-"X-Generator: Launchpad (build 14085)\n"
+"X-Launchpad-Export-Date: 2011-10-08 06:02+0000\n"
+"X-Generator: Launchpad (build 14110)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "A computer lab administration and monitoring tool."
@@ -287,7 +287,7 @@ msgstr "Imposta sfondo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Set default background"
-msgstr ""
+msgstr "Imposta lo sfondo di default"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Show empty groups"
