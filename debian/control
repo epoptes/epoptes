@@ -15,7 +15,7 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
  notification-daemon | xfce4-notifyd, python-gtk2, python-notify,
  python-twisted-core, python-vte, zenity
-Recommends: epoptes-client
+Recommends: epoptes-client, vinagre
 Suggests: ltsp-server, squid, ident2, vlc
 XB-Python-Version: ${python:Versions}
 Description: Classroom administration tool

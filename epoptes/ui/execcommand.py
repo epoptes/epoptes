@@ -3,7 +3,7 @@ import gtk
 import os
 
 # FIXME: Will epoptes use it?
-filename = '/tmp/epoptes/history' # FIXME: add that to settings
+filename = os.path.expanduser('~/.config/epoptes/history') # FIXME: add that to settings
 
 wTree = gtk.Builder()
 get = lambda obj: wTree.get_object(obj)

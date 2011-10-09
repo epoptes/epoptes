@@ -30,7 +30,7 @@ export DH_PYCENTRAL=include-links dh_pycentral -i
 #   dh_installudev, dh_installwm, dh_installxfonts, dh_bugfiles, dh_lintian,
 #   dh_gconf, dh_icons, dh_perl, dh_usrlocal, dh_link, dh_compress, dh_fixperms,
 
-# Σε αυτό το σημείο μου λείπει (?) ένα DH_PYCENTRAL=include-links dh_pycentral -i
+# Here there's a missing (?) DH_PYCENTRAL=include-links dh_pycentral -i
 
 #   dh_strip, dh_makeshlibs, dh_shlibdeps, dh_installdeb, dh_gencontrol,
 #   dh_md5sums, dh_builddeb

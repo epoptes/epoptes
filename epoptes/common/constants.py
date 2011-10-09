@@ -18,9 +18,6 @@ class Constants:
     MODE_W = 0733
     MODE_RW = 0766
 
-    EXISTS_STR = "Ναι"
-    NOT_EXISTS_STR = "Όχι"
-
     EXISTS = 1
     NOT_EXISTS = 0
 

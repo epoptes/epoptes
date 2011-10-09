@@ -24,18 +24,73 @@
 
 import os
 import shlex
+import ConfigParser
 
-def read_system_config(path):
-    """Return the variables of a shell-like file in a dict.
+def read_plain_file(filename):
+    """Return the whole contents of a plain text file into a string list.
+
+    If the file doesn't exist or isn't readable, return an empty list.
+    Also sort the contents and merge duplicate entries.
+    """
+
+    if not os.path.isfile(filename):
+        return []
+    try:
+        f = open(filename, 'r')
+        contents = [ x.strip() for x in f.readlines()]
+        f.close()
+        return contents
+    except:
+        return []
+
+
+def write_plain_file(filename, contents):
+    """Write the contents string list to filename. Return True if successful.
+    """
+
+    try:
+        if not os.path.isdir(path):
+            os.path.mkdir(path)
+        f = open(filename, 'w')
+        f.write(writelines([ x + '\n' for x in contents ]))
+        return True
+    except:
+        return False
+
+
+def read_ini_file(filename):
+    """Return a ConfigParser from the contents of a configuration file.
+    """
+    conf = ConfigParser.ConfigParser()
+    try:
+        conf.read(filename)
+    except:
+        pass
+    return conf
+
+
+def write_ini_file(filename, contents):
+    """Write contents to a ConfigParser file. Return True if successful.
+    """
+    conf = ConfigParser.ConfigParser()
+    try:
+        conf.write(filename)
+        return True
+    except:
+        return False
+
+
+def read_shell_file(filename):
+    """Return the variables of a shell-like configuration file in a dict.
 
     If the file doesn't exist or isn't readable, return an empty list.
     Also strip all comments, if any.
     """
     
-    if not os.path.isfile(path):
+    if not os.path.isfile(filename):
         return []
     try:
-        f = open(path, 'r')
+        f = open(filename, 'r')
         contents = f.read()
         f.close()
         contents = shlex.split(contents, True)
@@ -44,20 +99,18 @@ def read_system_config(path):
     except:
         return []
 
-def read_user_config(path):
-    """Return the variables of a configuration file in a dict.
-    """
 
-def write_user_config(path):
-    """Write the contents of the "user" dict to the configuration file.
-    """
-
-system = read_system_config('/etc/default/epoptes')
+# The system settings are shared with epoptes-clients, that's why the caps.
+system = read_shell_file('/etc/default/epoptes')
 system.setdefault('PORT', 569)
 system.setdefault('SOCKET_GROUP', 'admin')
-system['DIR'] = '/var/run/epoptes'
+system.setdefault('DIR', '/var/run/epoptes')
 
-#user = read_user_config('$HOME/.config/ktl')
+if os.getuid() != 0:
+    path=os.path.expanduser('~/.config/epoptes/')
+    user = read_ini_file(os.path.join(path, 'settings'))
+    history = sorted(list(set(os.path.join(path, 'history'))))
+
 
 # For debugging reasons, if ran from command line, dump the config
 if __name__ == '__main__':
