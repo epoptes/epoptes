@@ -18,34 +18,32 @@
 #       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #       MA 02110-1301, USA.
 
-
 import gtk
 import gtk.gdk as gdk
 import pango
 import gobject
+import sys
+import time
 
 class lockscreen:
-    def lock(self):
+    def lock(self, msg="The screen is locked by a system administrator"):
         backlock = gtk.Window(gtk.WINDOW_POPUP)
         backlock.resize(1, 1)
         backlock.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
         frontview = gtk.Window()
         frontview.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
-        self.colorlist = ['#020202', '#080808','#151515', '#252525','#353535','#454545','#555555',
-        '#595959','#656565','#696969','#757575','#797979','#858585','#898989','#949494']
-
 
         vbox = gtk.VBox(spacing=75)
 
-        imagepb = gtk.gdk.pixbuf_new_from_file_at_size('./lock.svg', 250, 250)
+        imagepb = gtk.gdk.pixbuf_new_from_file_at_size('lock.svg', 250, 250)
         image = gtk.Image()
         image.set_from_pixbuf(imagepb)
         vbox.pack_start(image, True)
 
-        self.label = gtk.Label("The administrator locked your screen.")
-        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color("#000000"))
+        # Italic fonts are trancuted in the sides, so add a space
+        self.label = gtk.Label(" " + msg + " ")
         self.label.modify_font(pango.FontDescription('FreeSans italic 18'))
-        gobject.timeout_add(100, self.fade)
+        self.fade(True)
         vbox.pack_start(self.label, True)
 
         align = gtk.Alignment(0.5, 0.5, 0, 0)
@@ -59,24 +57,39 @@ class lockscreen:
         frontview.fullscreen()
         gdk.beep()
         gdk.keyboard_grab(backlock.window, False, 0L)
-        
+
         # To automatically unlock the screen after 7 seconds, uncomment this:
-        #gobject.timeout_add(7000, self.unlock)
-    
-    def fade(self):
-        color = self.colorlist[0]
-        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color(color))
-        del self.colorlist[0]
-        
-        if not self.colorlist:
-            return False
-        else:
-            return True
-        
-    
+        # gobject.timeout_add(7000, self.unlock)
+
+
+    def fade(self, firsttime=False):
+        if firsttime:
+            self.fadesecs = 3.0
+            self.fadestart = time.time()
+            # For debugging:
+            # print self.fadestart, self.fadesecs
+
+        percentage = (time.time() - self.fadestart) / self.fadesecs
+        i = min(round(255 * percentage), 255)
+        c = "#%02x%02x%02x" % (i, i, i)
+        # For debugging:
+        # print time.time(), '-', 100 * percentage, "completed, rendering color ", c
+        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color(c))
+        # Put a sleep() here if you want to test for slow thin clients:
+        # time.sleep(0.4)
+        if i < 255:
+            gobject.timeout_add(100, self.fade)
+
+        return False
+
+
     def unlock(self):
         gdk.keyboard_ungrab(0L)
         exit()
 
-lockscreen().lock()
+
+if len(sys.argv) <= 1:
+    lockscreen().lock()
+else:
+    lockscreen().lock(sys.argv[1])
 gtk.main()
