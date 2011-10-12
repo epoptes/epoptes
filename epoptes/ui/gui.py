@@ -68,8 +68,7 @@ COMPATIBILITY_VERSION = [0, 1]
 
 ## FIXME: Change class name, move defs to other modules / classes
 class EpoptesGui(object):
-
-    ## FIXME FIXME: pfff... Nothing to say. Just FIXME...
+    
     def __init__(self, conf, host_filter):
         self.conf = conf
         self.host_filter = host_filter
@@ -104,74 +103,22 @@ class EpoptesGui(object):
         self.get('iconsSizeAdjustment').set_value(self.scrWidth)
 
         self.mainwin = self.get('mainwindow')
-
-        self.sysgroups = self.get('sysgroups').get_active()
-        self.emptygroups = self.get('emptygroups').get_active()
-
-        #[3] is status (replace with gdk.Pixbuf)
-        self.ustore = gtk.ListStore(str, str, str, str, str, gPyobject)
-        self.gstore = gtk.ListStore(str, str, gPyobject, str)
+        
         self.cstore = gtk.ListStore(str, str, str, str, str, str, 
             gtk.gdk.Pixbuf, str, str)
-        self.utree = self.get('userstree')
-        self.gtree = self.get('groupstree')
         self.cview = self.get('clientsview')
         self.cView_order=(1, 0)
         self.refresh()
-        self.utree.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
-        self.gtree.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
-
-        self.ufilter = self.ustore.filter_new()
-        self.gfilter = self.gstore.filter_new()
+        
         self.cfilter = self.cstore.filter_new()
-        self.ufilter.set_visible_func(self.setVisibleUsers)
-        self.gfilter.set_visible_func(self.setVisibleGroups)
         self.cfilter.set_visible_func(self.setVisibleClients)
-
         self.csort = gtk.TreeModelSort(self.cfilter)
-
-        self.utree.set_model(self.ufilter)
-        self.gtree.set_model(self.gfilter)
         self.cview.set_model(self.csort)
-
-        # Enable/Disable groups' menu items by checking
-        # whether there have been selected any groups
-        # in the groups tree
-        self.gmenu = self.get('groups')
-        self.gmenu.connect('activate', self.check_groups_cb)
-
-        # Add the columns for the users tree
-        self.utree.columns = [None]*3
-        self.utree.columns[0] = gtk.TreeViewColumn('', 
-            gtk.CellRendererPixbuf(), stock_id=3)
-        self.utree.columns[1] = gtk.TreeViewColumn(_('Users'),
-            gtk.CellRendererText(), text=0)
-        self.utree.columns[2] = gtk.TreeViewColumn(_('Users'),
-            gtk.CellRendererText(), text=2)
-        self.utree.columns[0].set_reorderable(True)
-        self.utree.columns[0].set_sort_column_id(0)
-        self.utree.append_column(self.utree.columns[0])
-
-        for i in range(1,3):
-            self.utree.columns[i].set_resizable(True)
-            self.utree.columns[i].set_reorderable(True)
-            self.utree.append_column(self.utree.columns[i])
-
-        # Add the columns for the groups tree
-        self.gtree.columns = [None]*2
-        self.gtree.columns[0] = gtk.TreeViewColumn('', 
-            gtk.CellRendererPixbuf(), stock_id=3)
-        self.gtree.columns[1] = gtk.TreeViewColumn(_('Groups'), 
-            gtk.CellRendererText(), text=0)
-        for i in range(len(self.gtree.columns)):
-            self.gtree.columns[i].set_resizable(True)
-            self.gtree.columns[i].set_reorderable(True)
-            self.gtree.append_column(self.gtree.columns[i])
-
+        
+        
         self.cview.set_text_column(8)
         self.cview.set_pixbuf_column(6)
         self.csort.set_sort_column_id(8, gtk.SORT_ASCENDING)
-        self.gfilter.refilter()
         self.setClientMenuSensitivity()
         self.toggleRealNameColumn()
 
@@ -189,8 +136,6 @@ class EpoptesGui(object):
         self.ltsConf.parse()
         self.loadClients()
         self.set_cView(self.cView_order[0], self.cView_order[1])
-        self.loadGroups()
-        self.loadUsers()
         self.setClientMenuSensitivity()
 
     		
@@ -216,21 +161,7 @@ class EpoptesGui(object):
         dialog.set_version(__version__)
         dialog.run()
         dialog.hide()
-
-    def killUserProcesses(self, widget):
-        """
-        For users selected in main dialog kill all processes
-        """
-        users = self.getSelectedUsers()
-        if self.warnDlgPopup(self.c.KILLALL_WARN) == False:
-            return
-        for u in users:
-            # Send a SIGKILL in case of previous kill ignored
-            cmd = "killall -u %s && sleep 2 && killall -9 -u %s" % (u[0], u[0])
-            subprocess.Popen(['/bin/sh', '-c', cmd])
-        gobject.timeout_add(3000, self.loadUsers)
-
-
+    
     def toggleRealNameColumn(self, widget=None):
         """
         Show/hide real name in users' lists by getting the
@@ -274,66 +205,6 @@ class EpoptesGui(object):
         """
         self.execOnSelectedClients(self.c.LOGOUT,
             warn=self.c.LOGOUT_WARN)
-
-    def selectUsersFromGroup(self, widget):
-        """
-        For groups selected in groups' list select all users belong
-        to these groups.
-        """
-        selected = self.getSelectedGroups()
-        users_selection = self.utree.get_selection()
-        users_selection.unselect_all()
-        users = []
-        for row in selected:
-            for member in row[2]:
-                if not member in users: # Don't append the same user many times
-                    users.append(member)
-
-        for i in self.ustore:
-            if i[0] in users:
-                path = self.ufilter.convert_child_path_to_path(i.path)
-                users_selection.select_path(path)
-
-    
-    ## FIXME / FIXUS: Won't work without sudo
-    def addUsersToGroup(self, widget):
-        """
-        For users selected from users' list add them to groups selected
-        in groups' list
-        """
-        users = self.getSelectedUsers()
-        groups = self.getSelectedGroups()
-        for i in range(len(groups)):
-            groups[i] = groups[i][0]
-        groupstr = ','.join(groups)
-        if groupstr == '':
-            return
-        for user in users:
-            #Run the command and wait to finish before calling refresh()
-            subprocess.call(['usermod', '-a', '-G', groupstr, user[0]])
-        self.refresh()
-
-    def removeUsersFromGroup(self, widget):
-        """
-        For users selected from users' list remove them from groups
-        selected in groups' list
-        """
-        users = self.getSelectedUsers()
-        groups = self.getSelectedGroups()
-        for i in range(len(groups)):
-            groups[i] = groups[i][0]
-        for user in users:
-            remaining = user[5][:]
-            for group in user[5]:
-                if group in groups:
-                    remaining.remove(group)
-            remaining = ','.join(remaining)
-            #Run the command and wait to finish before calling refresh()
-            subprocess.call(['usermod', '-G', remaining, user[0]])
-        self.refresh()
-    
-    ## END_FIXUS
-
     
     ## FIXME: Don't use vinagre, we want something more integrated
     def monitorStudent(self, widget, path=None, view_column=None):
@@ -367,6 +238,7 @@ xset dpms force on
 sleep 0.$((`hexdump -e '"%d"' -n 2 /dev/urandom` % 50 + 50))
 EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:3)""", root=True)
 
+    # FIXME: Make it transmission-specific, not for all transmissions
     def stopTransmissions(self, widget):
         # The clients are usually automatically killed when the server is killed
         # Unfortunately, not always, so try to kill them anyway
@@ -441,19 +313,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         """
         self.execOnSelectedClients(self.c.EXEC_AMIXER + 'unmute', root=True)
 
-    def showGroups(self, widget):
-        """Show system groups, empty and non-empty.
-
-        Gets all system groups and renders them in the groups list. If only
-        system groups is checked renders only system groups, otherwise if empty
-        groups is checked also renders empty groups.
-
-        """
-
-        self.sysgroups = self.get('sysgroups').get_active()
-        self.emptygroups = self.get('emptygroups').get_active()
-        self.gfilter.refilter()
-
+    #FIXME: Different module/.ui file
     def clientProperties(self, widget):
         selected = self.getSelectedClients()
         dlg = self.get('infodlg')
@@ -484,6 +344,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         dlg.run()
         dlg.hide()
 
+    #FIXME: Different module/.ui file
     def remoteSupport(self, widget):
         dlg = self.get('remote_assistance_dialog')
         if self.get('sb_assist_port').get_value() == 0:
@@ -539,34 +400,8 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
                     if user_pos == 1:
                         self.cstore[i][C_VIEW_STYLE] += " (%s)" %user(i)
     
-
-    #################################################################
-    #                End of callback functions                      #
-    #################################################################
-
-    def check_groups_cb(self, widget=None):
-        """
-        When activating the groups' menu item enable
-        or disable the some group actions with respect
-        to groups selected from the groups tree
-        """
-
-        # g_status is true if user has selected at least one group from
-        # groups' tree and u_status is true if user has selected at least
-        # one user from users' list
-        g_status = False if len(self.getSelectedGroups())==0 else True
-        c_status = False if len(self.getSelectedUsers())==0 else True
-
-        # Get menu entries to enable/disable 
-        groupSel = self.get('miSelectGroupMembers')
-        groupAdd = self.get('miAddToGroup')
-        groupRem = self.get('miRemoveFromGroup')
-
-        # If no groups selected then disable, else enable
-        groupSel.set_sensitive(True if g_status else False)
-        groupAdd.set_sensitive(True if g_status and c_status else False)
-        groupRem.set_sensitive(True if g_status else False)
-
+    
+    
     def connected(self, daemon):
         self.daemon = daemon
         daemon.enumerateClients().addCallback(lambda h: self.amp_gotClients(h))
@@ -623,8 +458,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
                 echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION"
                 """)
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
-
-    #TODO: Move this def 
+    
     def on_button_close_clicked(self, widget):
         self.get('warningDialog').hide()
 
@@ -742,26 +576,7 @@ which is incompatible with the current epoptes version.\
         factory = gtk.IconFactory()
         factory.add(name, iconset)
         factory.add_default()
-
-    def loadUsers(self):
-        """Puts the users in the gtkTreeView"""
-        users = read_users_from_passwd()
-        self.ustore.clear()
-        bus = dbus.SystemBus()
-        ck = bus.get_object('org.freedesktop.ConsoleKit', 
-            '/org/freedesktop/ConsoleKit/Manager')
-        GetSessionsForUnixUser = ck.get_dbus_method('GetSessionsForUnixUser', 
-            'org.freedesktop.ConsoleKit.Manager')
-
-        for name, u in users.iteritems():
-            sessions=GetSessionsForUnixUser(u.uid)
-            if len(sessions) == 0:
-                status='offline'
-            else:
-                status='online'
-            self.ustore.append([u.name, u.uid, u.rname, status, u.dir, 
-                u.groups])
-
+    
     def loadClients(self):
         macs = self.ltsConf.getSavedClients()#Sections()
         for mac in macs:
@@ -776,17 +591,8 @@ which is incompatible with the current epoptes version.\
                 if _startswith(hostname, self.host_filter):
                     self.cstore.append([hostname, mac, '', '', 'offline', '', 
                                          self.offline, '', hostname])
-                
     
-    def loadGroups(self):
-        self.gstore.clear()
-        grps = grp.getgrall()
-        for g in grps:
-            type = 'users'
-            if g.gr_gid < 1000 or g.gr_gid >= 60000:
-                type='system'
-            self.gstore.append([g.gr_name, g.gr_gid, g.gr_mem, type])
-
+    
     def getSelectedClients(self):
         selected = self.cview.get_selected_items()
         items = []
@@ -796,52 +602,13 @@ which is incompatible with the current epoptes version.\
             items.append(self.cstore[path])
         return items
 
-    def getSelectedUsers(self):
-        selected = self.utree.get_selection().get_selected_rows()[1]
-        items = []
-        for i in selected:
-            path = self.ufilter.convert_path_to_child_path(i[0])
-            items.append(self.ustore[path])
-        return items
-
-    def getSelectedGroups(self): 
-        selected = self.gtree.get_selection().get_selected_rows()[1]
-        items = []
-        for i in selected:
-            path = self.gfilter.convert_path_to_child_path(i[0])
-            items.append(self.gstore[path])
-        return items
-
-    def setVisibleUsers(self, model, iter):
-        return True #Show every user #FIXME: Then why the .... is this here?
-
+    
     def setVisibleClients(self, model, iter):
-        return True #FIXME: Same here..
-
-    # FIXME: Proofread/Revise
-    def setVisibleGroups(self, model, iter):
-        memb = model[iter][2]
-        gtype = model.get_value(iter, 3)
-        
-        if self.sysgroups == True and self.emptygroups == True:
-            return True
-            
-        elif self.sysgroups == True and self.emptygroups == False:
-            if memb:
-                return True
-        
-        elif self.sysgroups == False and self.emptygroups == True:
-            if gtype != 'system':
-                return True
-
-        elif self.sysgroups == False and self.emptygroups == False:
-            if gtype != 'system' and memb:
-                return True
-        return False
-
+        return True #FIXME: add a gtk.Entry to work as a filter and implement this function
+    
     def changeHostname(self, mac, new_name):
-        pass #FIXME: Implement this
-
+        pass #FIXME: Implement this (virtual hostname)
+    
     def openLink(self, link):
         subprocess.Popen(["xdg-open", link])
 
@@ -906,12 +673,7 @@ which is incompatible with the current epoptes version.\
 
             if widget is self.cview:
                 menu = self.get('clients').get_submenu()
-            elif widget is self.utree:
-                menu = self.get('users').get_submenu()
-            elif widget is self.gtree:
-                self.check_groups_cb()
-                menu = self.get('groups').get_submenu()
-
+            
             menu.popup(None,None,None,event.button,event.time)
             menu.show()
             return True

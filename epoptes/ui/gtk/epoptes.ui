@@ -152,25 +152,9 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
     <property name="step_increment">1</property>
     <signal name="value_changed" handler="iconsSizeScaleChanged"/>
   </object>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="icon_name">emblem-people</property>
-  </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="pixbuf">/usr/share/icons/hicolor/16x16/apps/lpi-bug.png</property>
-  </object>
-  <object class="GtkImage" id="image26">
-    <property name="visible">True</property>
-    <property name="icon_name">lock</property>
-  </object>
-  <object class="GtkImage" id="image27">
-    <property name="visible">True</property>
-    <property name="icon_name">preferences-desktop-wallpaper</property>
-  </object>
-  <object class="GtkImage" id="image28">
-    <property name="visible">True</property>
-    <property name="icon_name">wallpaper</property>
   </object>
   <object class="GtkImage" id="image29">
     <property name="visible">True</property>
@@ -187,10 +171,6 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
   <object class="GtkImage" id="image31">
     <property name="visible">True</property>
     <property name="icon_name">gnome-session-halt</property>
-  </object>
-  <object class="GtkImage" id="image32">
-    <property name="visible">True</property>
-    <property name="stock">gtk-add</property>
   </object>
   <object class="GtkImage" id="image33">
     <property name="visible">True</property>
@@ -211,10 +191,6 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
   <object class="GtkImage" id="image37">
     <property name="visible">True</property>
     <property name="icon_name">keyring-manager</property>
-  </object>
-  <object class="GtkImage" id="image38">
-    <property name="visible">True</property>
-    <property name="stock">gtk-remove</property>
   </object>
   <object class="GtkImage" id="image39">
     <property name="visible">True</property>
@@ -267,10 +243,6 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
   <object class="GtkImage" id="image52">
     <property name="visible">True</property>
     <property name="icon_name">emblem-cool</property>
-  </object>
-  <object class="GtkImage" id="image53">
-    <property name="visible">True</property>
-    <property name="stock">gtk-stop</property>
   </object>
   <object class="GtkImage" id="image56">
     <property name="visible">True</property>
@@ -615,6 +587,7 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
       </row>
     </data>
   </object>
+  <object class="GtkTreeStore" id="treestore1"/>
   <object class="GtkWindow" id="mainwindow">
     <property name="visible">True</property>
     <property name="title" translatable="yes">epoptes</property>
@@ -665,65 +638,13 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="users">
+              <object class="GtkMenuItem" id="view">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_Users</property>
+                <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu6">
                     <property name="visible">True</property>
-                    <child>
-                      <object class="GtkMenuItem" id="miUsersBackground">
-                        <property name="label" translatable="yes">Background image</property>
-                        <property name="use_underline">True</property>
-                        <child type="submenu">
-                          <object class="GtkMenu" id="menu13">
-                            <property name="visible">True</property>
-                            <child>
-                              <object class="GtkImageMenuItem" id="imagemenuitem23">
-                                <property name="label" translatable="yes">Lock background</property>
-                                <property name="visible">True</property>
-                                <property name="sensitive">False</property>
-                                <property name="use_underline">True</property>
-                                <property name="image">image26</property>
-                                <property name="use_stock">False</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkImageMenuItem" id="imagemenuitem25">
-                                <property name="label" translatable="yes">Set default background</property>
-                                <property name="visible">True</property>
-                                <property name="sensitive">False</property>
-                                <property name="use_underline">True</property>
-                                <property name="image">image27</property>
-                                <property name="use_stock">False</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkImageMenuItem" id="imagemenuitem26">
-                                <property name="label" translatable="yes">Set background</property>
-                                <property name="visible">True</property>
-                                <property name="sensitive">False</property>
-                                <property name="use_underline">True</property>
-                                <property name="image">image28</property>
-                                <property name="use_stock">False</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem2">
-                        <property name="label" translatable="yes">Terminate processes</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Terminates all processes of the selected users</property>
-                        <property name="use_underline">True</property>
-                        <property name="image">image53</property>
-                        <property name="use_stock">False</property>
-                        <signal name="activate" handler="killUserProcesses"/>
-                      </object>
-                    </child>
                     <child>
                       <object class="GtkSeparatorMenuItem" id="separatormenuitem6">
                         <property name="visible">True</property>
@@ -735,65 +656,6 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                         <property name="label" translatable="yes">Show real name</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="toggleRealNameColumn"/>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem" id="groups">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">_Groups</property>
-                <property name="use_underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu" id="menu3">
-                    <property name="visible">True</property>
-                    <child>
-                      <object class="GtkImageMenuItem" id="miSelectGroupMembers">
-                        <property name="label" translatable="yes">Select group members</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Select users that are members of the selected groups</property>
-                        <property name="image">image1</property>
-                        <property name="use_stock">False</property>
-                        <signal name="activate" handler="selectUsersFromGroup"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="miAddToGroup">
-                        <property name="label" translatable="yes">Add users to group</property>
-                        <property name="image">image32</property>
-                        <property name="use_stock">False</property>
-                        <signal name="activate" handler="addUsersToGroup"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="miRemoveFromGroup">
-                        <property name="label" translatable="yes">Remove users from group</property>
-                        <property name="image">image38</property>
-                        <property name="use_stock">False</property>
-                        <signal name="activate" handler="removeUsersFromGroup"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem2">
-                        <property name="visible">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkCheckMenuItem" id="sysgroups">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Show system groups</property>
-                        <property name="use_underline">True</property>
-                        <signal name="toggled" handler="showGroups"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkCheckMenuItem" id="emptygroups">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Show empty groups</property>
-                        <property name="use_underline">True</property>
-                        <signal name="toggled" handler="showGroups"/>
                       </object>
                     </child>
                   </object>
@@ -1062,6 +924,47 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                                 <property name="image">image49</property>
                                 <property name="use_stock">False</property>
                                 <signal name="activate" handler="soundOn"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkMenuItem" id="miUsersBackground">
+                                <property name="label" translatable="yes">Background image</property>
+                                <property name="use_underline">True</property>
+                                <child type="submenu">
+                                  <object class="GtkMenu" id="menu13">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <object class="GtkImageMenuItem" id="imagemenuitem23">
+                                        <property name="label" translatable="yes">Lock background</property>
+                                        <property name="visible">True</property>
+                                        <property name="sensitive">False</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="image">image26</property>
+                                        <property name="use_stock">False</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkImageMenuItem" id="imagemenuitem25">
+                                        <property name="label" translatable="yes">Set default background</property>
+                                        <property name="visible">True</property>
+                                        <property name="sensitive">False</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="image">image27</property>
+                                        <property name="use_stock">False</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkImageMenuItem" id="imagemenuitem26">
+                                        <property name="label" translatable="yes">Set background</property>
+                                        <property name="visible">True</property>
+                                        <property name="sensitive">False</property>
+                                        <property name="use_underline">True</property>
+                                        <property name="image">image28</property>
+                                        <property name="use_stock">False</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -1435,49 +1338,17 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
             <property name="can_focus">True</property>
             <property name="position">149</property>
             <child>
-              <object class="GtkVPaned" id="vpaned1">
+              <object class="GtkScrolledWindow" id="scrolledwindow1">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="position">183</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="scrolledwindow1">
+                  <object class="GtkTreeView" id="treeview1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
-                    <child>
-                      <object class="GtkTreeView" id="userstree">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="rubber_banding">True</property>
-                        <signal name="button_press_event" handler="contextMenuPopup"/>
-                      </object>
-                    </child>
+                    <property name="model">treestore1</property>
                   </object>
-                  <packing>
-                    <property name="resize">False</property>
-                    <property name="shrink">True</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow" id="scrolledwindow2">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
-                    <child>
-                      <object class="GtkTreeView" id="groupstree">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="rubber_banding">True</property>
-                        <signal name="button_press_event" handler="contextMenuPopup"/>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="resize">True</property>
-                    <property name="shrink">True</property>
-                  </packing>
                 </child>
               </object>
               <packing>
@@ -1801,5 +1672,17 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
     <action-widgets>
       <action-widget response="0">button_close</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkImage" id="image26">
+    <property name="visible">True</property>
+    <property name="icon_name">lock</property>
+  </object>
+  <object class="GtkImage" id="image27">
+    <property name="visible">True</property>
+    <property name="icon_name">preferences-desktop-wallpaper</property>
+  </object>
+  <object class="GtkImage" id="image28">
+    <property name="visible">True</property>
+    <property name="icon_name">wallpaper</property>
   </object>
 </interface>
