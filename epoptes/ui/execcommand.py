@@ -1,7 +1,9 @@
 #-*- coding: utf-8 -*-
 import gtk
 import os
+
 from epoptes.common import config
+
 
 wTree = gtk.Builder()
 get = lambda obj: wTree.get_object(obj)
@@ -16,8 +18,6 @@ def startExecuteCmdDlg():
     entry.set_completion(completion)
     completion.set_model(store)
     ex = get('execute')
-    ex.set_flags(gtk.CAN_DEFAULT)
-    dlg.set_default(ex)
     entry.set_activates_default(True)
     combo.set_model(store)
     combo.set_text_column(0)
@@ -31,11 +31,11 @@ def startExecuteCmdDlg():
 
     reply = dlg.run()
     if reply == 1:
-        combo = get('combobox')
         cmd = combo.child.get_text().strip()
         reply = cmd
         if cmd in config.history:
             config.history.remove(cmd)
         config.history.insert(0, cmd)
     dlg.hide()
+
     return reply
