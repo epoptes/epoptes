@@ -40,7 +40,7 @@ class lockscreen:
         image.set_from_pixbuf(imagepb)
         vbox.pack_start(image, True)
 
-        # Italic fonts are trancuted in the sides, so add a space
+        # Italic fonts are trancated in the sides, so add a space
         self.label = gtk.Label(" " + msg + " ")
         self.label.modify_font(pango.FontDescription('FreeSans italic 18'))
         self.fade(True)
@@ -59,7 +59,7 @@ class lockscreen:
         gdk.keyboard_grab(backlock.window, False, 0L)
 
         # To automatically unlock the screen after 7 seconds, uncomment this:
-        # gobject.timeout_add(7000, self.unlock)
+        #gobject.timeout_add(7000, self.unlock)
 
 
     def fade(self, firsttime=False):
@@ -67,18 +67,18 @@ class lockscreen:
             self.fadesecs = 3.0
             self.fadestart = time.time()
             # For debugging:
-            # print self.fadestart, self.fadesecs
+            #print self.fadestart, self.fadesecs
 
         percentage = (time.time() - self.fadestart) / self.fadesecs
         i = min(round(255 * percentage), 255)
         c = "#%02x%02x%02x" % (i, i, i)
         # For debugging:
-        # print time.time(), '-', 100 * percentage, "completed, rendering color ", c
+        #print time.time(), '-', 100 * percentage, "completed, rendering color ", c
         self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color(c))
         # Put a sleep() here if you want to test for slow thin clients:
-        # time.sleep(0.4)
+        #time.sleep(0.6)
         if i < 255:
-            gobject.timeout_add(100, self.fade)
+            gobject.timeout_add(60, self.fade)
 
         return False
 
