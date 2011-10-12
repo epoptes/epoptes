@@ -40,7 +40,7 @@ class GUI(amp.AMP):
 
         def sendResult(result):
             if len(result) > 65000:
-                tf = tempfile.NamedTemporaryFile('wb', dir="/tmp/epoptes", delete=False)
+                tf = tempfile.NamedTemporaryFile('wb', dir="/var/run/epoptes", delete=False)
                 tf.write(result)
                 return {'filename': tf.name, 'result': ''}
             else:

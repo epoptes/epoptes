@@ -2,10 +2,20 @@
 # Runs a command in the background without waiting for any output.
 # Prints the pid of the command in stdout.
 
+case $# in
+    0)
+        echo "Usage: $0 <command, file or URL>" >&2
+        exit 1
+        ;;
+    1) # If there's only one parameter, it might be a file or URL
+        which -- "$1" >/dev/null || set "xdg-open" "$1"
+        ;;
+esac
+
 # Do some logging, either in ~/.xsession-errors or on the console.
 echo "$(LANG=C date '+%c'), epoptes-client executing: $@" >&2
 
-# The command is run with stdin and stdout descriptors redirected to /dev/null,
+# The command is ran with stdin and stdout descriptors redirected to /dev/null,
 # so that it doesn't interfere with the output of other commands.
 # stderr isn't changed, i.e. ~/.xsession-errors will be used.
 "$@" 0</dev/null >/dev/null &

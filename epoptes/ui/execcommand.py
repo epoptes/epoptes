@@ -1,9 +1,7 @@
 #-*- coding: utf-8 -*-
 import gtk
 import os
-
-# FIXME: Will epoptes use it?
-filename = os.path.expanduser('~/.config/epoptes/history') # FIXME: add that to settings
+from epoptes.common import config
 
 wTree = gtk.Builder()
 get = lambda obj: wTree.get_object(obj)
@@ -23,44 +21,21 @@ def startExecuteCmdDlg():
     entry.set_activates_default(True)
     combo.set_model(store)
     combo.set_text_column(0)
-    
-    history = readCommandsHistory()
+
+    combo = get('combobox')
+    store.clear()
+    #TODO: remove
+    config.history = []
+    for i in config.history:
+        store.append([i.strip()])
+
     reply = dlg.run()
     if reply == 1:
         combo = get('combobox')
         cmd = combo.child.get_text().strip()
         reply = cmd
-        if cmd in history:
-            history.remove(cmd)
-        history.insert(0, cmd)
-        writeCommandsHistory(history)
+        if cmd in config.history:
+            config.history.remove(cmd)
+        config.history.insert(0, cmd)
     dlg.hide()
     return reply
-        
-def readCommandsHistory():
-    touchHistoryFile()
-    f = open(filename, 'r')
-    commands = f.readlines()
-    f.close()
-    
-    combo = get('combobox')
-    store.clear()
-    for i in commands:
-        store.append([i.strip()])
-    return commands
-    
-def writeCommandsHistory(commands):
-    f = open(filename, 'w')
-    length = len(commands)
-    for i in range(length): #FIXME: Use a setting for how many commands will be stored
-        if i == length-1 or i == 49:
-            f.write(commands[i].strip())
-            break
-        f.write(commands[i].strip()+'\n')
-    f.close()
-    readCommandsHistory()
-
-def touchHistoryFile():
-    if os.path.isfile(filename) == False:
-        f = open(filename, 'w')
-        f.close()

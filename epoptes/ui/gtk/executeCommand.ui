@@ -16,8 +16,7 @@
         <child>
           <object class="GtkLabel" id="label1">
             <property name="visible">True</property>
-            <property name="label" translatable="yes">Enter below the command you want to execute on 
-the selected clients:</property>
+            <property name="label" translatable="yes">URL, file or command to execute on the selected clients:</property>
           </object>
           <packing>
             <property name="position">1</property>

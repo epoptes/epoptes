@@ -109,7 +109,7 @@ system.setdefault('DIR', '/var/run/epoptes')
 if os.getuid() != 0:
     path=os.path.expanduser('~/.config/epoptes/')
     user = read_ini_file(os.path.join(path, 'settings'))
-    history = sorted(list(set(os.path.join(path, 'history'))))
+    history = sorted(list(set(read_shell_file(os.path.join(path, 'history')))))
 
 
 # For debugging reasons, if ran from command line, dump the config
