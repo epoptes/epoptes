@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-04 20:13+0300\n"
+"POT-Creation-Date: 2011-10-12 20:24+0300\n"
 "PO-Revision-Date: 2011-10-07 18:42+0000\n"
 "Last-Translator: Marco Menardi <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-08 06:02+0000\n"
-"X-Generator: Launchpad (build 14110)\n"
+"X-Launchpad-Export-Date: 2011-10-13 05:24+0000\n"
+"X-Generator: Launchpad (build 14124)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "A computer lab administration and monitoring tool."
@@ -141,7 +141,7 @@ msgstr "Esegui"
 msgid "Execute a command on the selected clients"
 msgstr "Esegui un comando nei client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32 ../epoptes/ui/gtk/executeCommand.ui.h:3
+#: ../epoptes/ui/gtk/epoptes.ui.h:32 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Esegui comando"
 
@@ -397,6 +397,52 @@ msgstr "_Utenti"
 msgid "epoptes"
 msgstr ""
 
+#: ../epoptes/ui/gui.py:147 ../epoptes/ui/gui.py:149
+msgid "Users"
+msgstr "Utenti"
+
+#: ../epoptes/ui/gui.py:164
+msgid "Groups"
+msgstr "Gruppi"
+
+#: ../epoptes/ui/gui.py:483
+#, python-format
+msgid "Properties of %s"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:648
+#, python-format
+msgid ""
+"There was a try to connect an epoptes-client with version %s which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You should update your chroot."
+msgstr ""
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid ""
+"URL, file or command to execute on \n"
+"the selected clients:"
+msgstr ""
+
+#: ../epoptes/common/commands.py:23
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Sei sicuro di voler spegnere tutti i computer?"
+
+#: ../epoptes/common/commands.py:24
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Sei sicuro di voler riavviare tutti i computer?"
+
+#: ../epoptes/common/commands.py:25
+msgid "Are you sure you want to log off all the users?"
+msgstr "Sei sicuro di voler terminare la sessione di tutti gli utenti?"
+
+#: ../epoptes/common/commands.py:26
+msgid ""
+"Are you sure you want to terminate all processes of the selected users?"
+msgstr ""
+"Sei sicuro di voler terminare tutti i processi degli utenti selezionati?"
+
 #: ../epoptes/ui/notifications.py:19
 msgid "Connected users:"
 msgstr "Utenti connessi:"
@@ -422,52 +468,6 @@ msgstr "%(user)s da %(host)s"
 #: ../epoptes/ui/notifications.py:31
 msgid "Shut down:"
 msgstr "Spegni:"
-
-#: ../epoptes/ui/gui.py:147 ../epoptes/ui/gui.py:149
-msgid "Users"
-msgstr "Utenti"
-
-#: ../epoptes/ui/gui.py:164
-msgid "Groups"
-msgstr "Gruppi"
-
-#: ../epoptes/ui/gui.py:649
-#, python-format
-msgid ""
-"There was a try to connect a epoptes-client with version %s which is "
-"incompatible with the current epoptes version.\n"
-"\n"
-"You should update your chroot."
-msgstr ""
-"C'è stato un tentativo di connessione a epoptes-client con versione %s che è "
-"incompatibile con la versione attuale di Epoptes.\n"
-"Dovresti aggiornare chroot"
-
-#: ../epoptes/ui/gtk/executeCommand.ui.h:1
-msgid ""
-"Enter below the command you want to execute on \n"
-"the selected clients:"
-msgstr ""
-"Immetti qui sotto il comando che vuoi eseguire nei\n"
-"client selezionati:"
-
-#: ../epoptes/common/commands.py:23
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Sei sicuro di voler spegnere tutti i computer?"
-
-#: ../epoptes/common/commands.py:24
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Sei sicuro di voler riavviare tutti i computer?"
-
-#: ../epoptes/common/commands.py:25
-msgid "Are you sure you want to log off all the users?"
-msgstr "Sei sicuro di voler terminare la sessione di tutti gli utenti?"
-
-#: ../epoptes/common/commands.py:26
-msgid ""
-"Are you sure you want to terminate all processes of the selected users?"
-msgstr ""
-"Sei sicuro di voler terminare tutti i processi degli utenti selezionati?"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"

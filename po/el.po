@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-04 20:13+0300\n"
+"POT-Creation-Date: 2011-10-12 20:24+0300\n"
 "PO-Revision-Date: 2011-09-28 05:13+0000\n"
 "Last-Translator: Alkis Georgopoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-05 06:03+0000\n"
-"X-Generator: Launchpad (build 14085)\n"
+"X-Launchpad-Export-Date: 2011-10-13 05:24+0000\n"
+"X-Generator: Launchpad (build 14124)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "A computer lab administration and monitoring tool."
@@ -152,7 +152,7 @@ msgstr "Εκτέλεση"
 msgid "Execute a command on the selected clients"
 msgstr "Εκτέλεση εντολής στους επιλεγμένους υπολογιστές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32 ../epoptes/ui/gtk/executeCommand.ui.h:3
+#: ../epoptes/ui/gtk/epoptes.ui.h:32 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Εκτέλεση εντολής"
 
@@ -410,6 +410,52 @@ msgstr "_Χρήστες"
 msgid "epoptes"
 msgstr "epoptes"
 
+#: ../epoptes/ui/gui.py:147 ../epoptes/ui/gui.py:149
+msgid "Users"
+msgstr "Χρήστες"
+
+#: ../epoptes/ui/gui.py:164
+msgid "Groups"
+msgstr "Ομάδες"
+
+#: ../epoptes/ui/gui.py:483
+#, python-format
+msgid "Properties of %s"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:648
+#, python-format
+msgid ""
+"There was a try to connect an epoptes-client with version %s which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You should update your chroot."
+msgstr ""
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid ""
+"URL, file or command to execute on \n"
+"the selected clients:"
+msgstr ""
+
+#: ../epoptes/common/commands.py:23
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Θέλετε σίγουρα να τερματίσετε όλους τους υπολογιστές;"
+
+#: ../epoptes/common/commands.py:24
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Θέλετε σίγουρα να επανεκκινήσετε όλους τους υπολογιστές;"
+
+#: ../epoptes/common/commands.py:25
+msgid "Are you sure you want to log off all the users?"
+msgstr "Θέλετε σίγουρα να αποσυνδέσετε όλους τους χρήστες;"
+
+#: ../epoptes/common/commands.py:26
+msgid ""
+"Are you sure you want to terminate all processes of the selected users?"
+msgstr ""
+"Θέλετε σίγουρα να τερματίσετε τις διεργασίες των επιλεγμένων χρηστών;"
+
 #: ../epoptes/ui/notifications.py:19
 msgid "Connected users:"
 msgstr "Συνδεδεμένοι χρήστες:"
@@ -435,52 +481,6 @@ msgstr "%(user)s από %(host)s"
 #: ../epoptes/ui/notifications.py:31
 msgid "Shut down:"
 msgstr "Τερματισμός"
-
-#: ../epoptes/ui/gui.py:147 ../epoptes/ui/gui.py:149
-msgid "Users"
-msgstr "Χρήστες"
-
-#: ../epoptes/ui/gui.py:164
-msgid "Groups"
-msgstr "Ομάδες"
-
-#: ../epoptes/ui/gui.py:649
-#, python-format
-msgid ""
-"There was a try to connect a epoptes-client with version %s which is "
-"incompatible with the current epoptes version.\n"
-"\n"
-"You should update your chroot."
-msgstr ""
-"Έγινε προσπάθεια σύνδεσης ενός epoptes-client με έκδοση %s η οποία είναι "
-"ασύμβατη με την τρέχουσα έκδοση του epoptes.\n"
-"Θα πρέπει να ενημερώσετε τον απομακρυσμένο υπολογιστή, ή τον εικονικό σας "
-"δίσκο, εάν χρησιμοποιείτε LTSP."
-
-#: ../epoptes/ui/gtk/executeCommand.ui.h:1
-msgid ""
-"Enter below the command you want to execute on \n"
-"the selected clients:"
-msgstr ""
-"Εισαγωγή της εντολής που θα εκτελεστεί στους επιλεγμένους υπολογιστές:"
-
-#: ../epoptes/common/commands.py:23
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Θέλετε σίγουρα να τερματίσετε όλους τους υπολογιστές;"
-
-#: ../epoptes/common/commands.py:24
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Θέλετε σίγουρα να επανεκκινήσετε όλους τους υπολογιστές;"
-
-#: ../epoptes/common/commands.py:25
-msgid "Are you sure you want to log off all the users?"
-msgstr "Θέλετε σίγουρα να αποσυνδέσετε όλους τους χρήστες;"
-
-#: ../epoptes/common/commands.py:26
-msgid ""
-"Are you sure you want to terminate all processes of the selected users?"
-msgstr ""
-"Θέλετε σίγουρα να τερματίσετε τις διεργασίες των επιλεγμένων χρηστών;"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
