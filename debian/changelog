@@ -1,3 +1,15 @@
+epoptes (0.2.0) lucid; urgency=low
+
+  * Fix console-based remote assistance
+  * Remove Users and Group panes
+  * Basic implementation of configuration files
+  * Add a menu for client monitoring
+  * Allow the execute command dialog to xdg-open URLs
+  * Smoother text fade-in in lock screen
+  * Fix client compatibility check
+
+ -- Fotis Tsamis <ftsamis@gmail.com>  Fri, 14 Oct 2011 09:47:54 +0300
+
 epoptes (0.1.0) lucid; urgency=low
 
   * Initial release
