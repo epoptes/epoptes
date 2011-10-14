@@ -265,13 +265,10 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         self.openTerminal(True)
 
     def remoteRootTerminal(self, widget):
-        self.execOnSelectedClients("""p=$(pidof -s ldm gdm-simple-greeter """+\
-            """gnome-session | cut -d' ' -f1) eval $(tr '\\0' '\\n' < """+\
-            """/proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=') """+\
-            """DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" """+\
-            """LANG="${LANG:-el_GR.utf8}" HOME="${HOME:-/root}" """+\
-            """TERM="${TERM:-xterm}" ./execute xterm """, root=True)
-            
+        self.execOnSelectedClients("""export $(tr '\\0' '\\n' < """ +
+            """/proc/$(pidof -s ldm gdm-simple-greeter gnome-session | """ +
+            """cut -d' ' -f1)/environ | egrep '^DISPLAY=|^XAUTHORITY=')\n""" +
+            """./execute xterm -e sudo -i""", root=True)
     ## END_FIXUS
 
     # FIXME : Change the way lock screen works, don't kill and relock...
@@ -708,12 +705,16 @@ which is incompatible with the current epoptes version.\
         return
 
     def openTerminal(self, as_root):
-
         clients = self.getSelectedClients()
         
-        # If there is no selected client, send the command to all
+        # If there is no client selected, send the command to all
         if len(clients) == 0:
             clients = self.cstore
+
+        if as_root:
+            screen_params="sudo -i"
+        else:
+            screen_params="-l"
 
         for client in clients:
             if client[C_TYPE] == 'offline':
@@ -726,8 +727,12 @@ which is incompatible with the current epoptes version.\
             # TODO: find unused ports instead of choosing random ones
             port = random.randint(20000, 60000)
 
-            subprocess.Popen(['xterm', '-e', 'socat', 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
-            self.execOnClients("""./execute sh -c 'export LANG="${LANG:-el_GR.utf8}" HOME="${HOME:-/root}" TERM="${TERM:-xterm}"; cd; sleep 1; exec socat SYSTEM:"exec screen -l",pty,stderr tcp:%s:%d'""" % (server, port), [client], root=as_root)
+            subprocess.Popen(['xterm', '-e', 'socat', 
+                'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
+            self.execOnClients(("""./execute sh -c 'cd; sleep 1; """ +
+                """TERM=xterm exec socat SYSTEM:"exec screen %s",pty,""" +
+                """stderr tcp:%s:%d'""") % (screen_params, server, port),
+                [client], root=as_root)
 
     def execInTerminal(self, widget, command):
         name = widget.get_child().get_text()

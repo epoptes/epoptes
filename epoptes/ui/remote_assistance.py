@@ -24,10 +24,10 @@ class RemoteAssistance:
                 # see http://www.sudo.ws/sudo/bugs/show_bug.cgi?id=413
                 # Fortunately, sh -c 'ls' works even if the quotes there are 
                 # wrong. :)
-                subprocess.Popen(['sh', '-c',
-                    """'TERM=xterm socat SYSTEM:"sleep 1 && exec screen -xRR ra", \\
-                    pty,stderr tcp:%s:%d & exec xterm -e screen -l -S ra'"""
-                    % (ip, port)])
+                subprocess.Popen(['sh', '-c', ("""TERM=xterm socat """ +
+                    """SYSTEM:"sleep 1; exec screen -xRR ra",pty,stderr """ +
+                    """tcp:%s:%d & exec xterm -e screen -l -S ra""") %
+                    (ip, port)])
             else:
                 subprocess.Popen(['epoptes-remote-assistance', "%s:%d" % (ip, port)])
         dlg.destroy()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-14 06:14+0300\n"
+"POT-Creation-Date: 2011-10-14 09:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:427
+#: ../epoptes/ui/gui.py:424
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
