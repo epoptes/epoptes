@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 import gtk
 import pygtk
+import subprocess
 
 class RemoteAssistance:
     def __init__(self):
