@@ -7,454 +7,269 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-12 20:24+0300\n"
-"PO-Revision-Date: 2011-09-28 05:13+0000\n"
+"POT-Creation-Date: 2011-10-14 06:14+0300\n"
+"PO-Revision-Date: 2011-10-14 05:02+0000\n"
 "Last-Translator: Alkis Georgopoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-13 05:24+0000\n"
+"X-Launchpad-Export-Date: 2011-10-14 06:09+0000\n"
 "X-Generator: Launchpad (build 14124)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "A computer lab administration and monitoring tool."
-msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Add users to group"
-msgstr "Προσθήκη χρηστών στην ομάδα"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Ask a question"
 msgstr "Υποβολή ερώτησης"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Assist student"
 msgstr "Υποβοήθηση μαθητή"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "Auto-detected computers"
+msgstr "Υπολογιστές που ανιχνεύθηκαν"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Background image"
 msgstr "Εικόνα παρασκηνίου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Block Internet"
 msgstr "Φραγή Διαδικτύου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Boot"
 msgstr "Εκκίνηση"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Εκκίνηση επιλεγμένων σταθμών εργασίας (Wake On LAN)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast student"
 msgstr "Εκπομπή μαθητή"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast teacher"
 msgstr "Εκπομπή καθηγητή"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast teacher's screen to the selected clients"
 msgstr "Εκπομπή της οθόνης σας στους επιλεγμένους υπολογιστές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcast video"
 msgstr "Εκπομπή βίντεο"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcasts"
 msgstr "Εκπομπές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Client hostname:"
-msgstr "Όνομα υπολογιστή:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Client type:"
-msgstr "Τύπος υπολογιστή:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Computer"
 msgstr "Υπολογιστής"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Computer (user)"
 msgstr "Υπολογιστής (χρήστης)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Confirm action"
 msgstr "Επιβεβαίωση ενέργειας"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Connection type:"
-msgstr "Τύπος σύνδεσης:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Console (screen)"
-msgstr "Κονσόλα (screen)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
-msgid "Copyright &#xA9; 2011 the Epoptes authors"
-msgstr "Πνευματικά δικαιώματα &#xA9; 2011 Συγγραφείς του Epoptes"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
-msgid "Delete"
-msgstr "Διαγραφή"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
-msgid "Delete this client from lts.conf"
-msgstr "Αφαίρεση του υπολογιστή από το lts.conf"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-"Εισαγωγή των πληροφοριών της επαφής με την οποία θα διαμοιραστείτε την "
-"επιφάνεια εργασίας σας"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
-msgid ""
-"Epoptes is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, either version 3 of the License, or any later version. \n"
-"\n"
-"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. \n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"epoptes. If not, see <http://www.gnu.org/licenses/>."
-msgstr ""
-"Το Epoptes είναι ελεύθερο λογισμικό·: επιτρέπεται η αναδιανομή ή/και "
-"τροποποίησή του υπό τους όρους της Γενικής Άδειας Δημόσιας Χρήσης GNU (GPL), "
-"όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου \n"
-"Λογισμικού (FSS) — είτε της έκδοσης 3 της Άδειας, είτε (κατ' επιλογήν σας) "
-"οποιασδήποτε μεταγενέστερης έκδοσης. \n"
-"\n"
-"Το Epoptes διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμο, παρόλα αυτά "
-"ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ — χωρίς ούτε και την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή "
-"ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΕΙΔΙΚΟ ΣΚΟΠΟ. Για περισσότερες λεπτομέρειες ανατρέξτε στη "
-"Γενική Άδεια Δημόσιας Χρήσης GNU.\n"
-"\n"
-"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας Χρήσης "
-"GNU μαζί με το Epoptes. Αν όχι, δείτε στο <http://www.gnu.org/licenses/>."
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Execute"
 msgstr "Εκτέλεση"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Execute a command on the selected clients"
 msgstr "Εκτέλεση εντολής στους επιλεγμένους υπολογιστές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Εκτέλεση εντολής"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Forum"
 msgstr "Φόρουμ"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Graphics (VNC)"
-msgstr "Γραφικά (VNC)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "Graphics card:"
-msgstr "Κάρτα γραφικών:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "IP address:"
-msgstr "Διεύθυνση IP:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "IP:"
-msgstr "IP:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:38 ../epoptes/ui/gtk/sendMessage.ui.h:2
+#: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
 msgstr "Πληροφορία"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Labels"
 msgstr "Ετικέτες"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Live chat (IRC)"
 msgstr "Ζωντανή συνομιλία (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Lock background"
 msgstr "Κλείδωμα παρασκηνίου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Lock screen"
 msgstr "Κλείδωμα οθόνης"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Lock screen of the selected clients"
 msgstr "Κλείδωμα οθόνης των επιλεγμένων σταθμών εργασίας"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Log out"
 msgstr "Αποσύνδεση"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Log out users connected on selected clients"
 msgstr ""
 "Αποσύνδεση των χρηστών που είναι συνδεδεμένοι στους επιλεγμένους σταθμούς "
 "εργασίας"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "MAC address:"
-msgstr "Διεύθυνση MAC:"
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Monitor student"
+msgstr "Παρακολούθηση μαθητή"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Mute sound"
 msgstr "Σίγαση ήχου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Open terminal"
 msgstr "Άνοιγμα κονσόλας"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Port:"
-msgstr "Θύρα:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Processor:"
-msgstr "Επεξεργαστής:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "RAM:"
-msgstr "RAM:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Reboot"
 msgstr "Επανεκκίνηση"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Reboot the selected clients"
 msgstr "Επανεκκίνηση των επιλεγμένων σταθμών εργασίας"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Remote support"
 msgstr "Απομακρυσμένη βοήθεια"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Remove users from group"
-msgstr "Αφαίρεση χρηστών από την ομάδα"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Report a bug"
 msgstr "Αναφορά σφάλματος"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Restrictions"
 msgstr "Περιορισμοί"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
 msgstr "Διαχειριστή, τοπικά"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
 msgstr "Διαχειριστή, απομακρυσμένα"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "Save"
-msgstr "Αποθήκευση"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "Save this client to lts.conf"
-msgstr "Αποθήκευση του υπολογιστή στο lts.conf"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "Select group members"
-msgstr "Επιλογή μελών ομάδας"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "Select users that are members of the selected groups"
-msgstr "Επιλογή των χρηστών που είναι μέλη των επιλεγμένων ομάδων"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Send a message to the selected clients"
 msgstr "Αποστολή μηνύματος στους επιλεγμένους υπολογιστές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:39 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Send message"
 msgstr "Αποστολή μηνύματος"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Session"
 msgstr "Συνεδρία"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Set background"
 msgstr "Ορισμός παρασκηνίου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Set default background"
 msgstr "Ορισμός προεπιλεγμένου παρασκηνίου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
-msgid "Show empty groups"
-msgstr "Προβολή κενών ομάδων"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Show information for the selected client"
 msgstr "Προβολή πληροφοριών του επιλεγμένου υπολογιστή"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:71
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Show real name"
 msgstr "Προβολή πραγματικού ονόματος"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:72
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Show real names"
 msgstr "Προβολή πραγματικών ονομάτων"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:73
-msgid "Show system groups"
-msgstr "Εμφάνιση ομάδων συστήματος"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:74
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Shutdown"
 msgstr "Τερματισμός"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:75
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Shutdown the selected clients"
 msgstr "Τερματισμός των επιλεγμένων υπολογιστών"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:76
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Stop all broadcasts on every client"
 msgstr "Τερματισμός εκπομπών σε όλους τους υπολογιστές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:77
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Stop broadcasts"
 msgstr "Τερματισμός εκπομπών"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:78
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Stops all active broadcasts"
 msgstr "Τερματισμών όλων των ενεργών εκπομπών"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:79
-msgid "Terminate processes"
-msgstr "Τερματισμός διεργασιών"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:80
-msgid "Terminates all processes of the selected users"
-msgstr "Τερματίζει τις διεργασίες των επιλεγμένων χρηστών"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:81
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Unblock Internet"
 msgstr "Ξεκλείδωμα Διαδικτύου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:82
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Unlock screen"
 msgstr "Ξεκλείδωμα οθόνης"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:83
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Unlock the screen of the selected clients"
 msgstr "Ξεκλείδωμα της οθόνης των επιλεγμένων υπολογιστών"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:84
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Unmute sound"
 msgstr "Επαναφορά ήχου"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:85
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "User"
 msgstr "Χρήστης"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:86
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "User (computer)"
 msgstr "Χρήστης (υπολογιστής)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:87
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "User, locally"
 msgstr "Χρήστη, τοπικά"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:88
-msgid "User:"
-msgstr "Χρήστης:"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:89
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "_Clients"
 msgstr "_Υπολογιστές"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:90
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "_File"
 msgstr "_Αρχείο"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:91
-msgid "_Groups"
-msgstr "_Ομάδες"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:92
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:93
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "_Send message"
 msgstr "_Αποστολή μηνύματος"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:94
-msgid "_Users"
-msgstr "_Χρήστες"
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
+msgid "_View"
+msgstr "_Παρακολούθηση"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:95
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "epoptes"
 msgstr "epoptes"
-
-#: ../epoptes/ui/gui.py:147 ../epoptes/ui/gui.py:149
-msgid "Users"
-msgstr "Χρήστες"
-
-#: ../epoptes/ui/gui.py:164
-msgid "Groups"
-msgstr "Ομάδες"
-
-#: ../epoptes/ui/gui.py:483
-#, python-format
-msgid "Properties of %s"
-msgstr ""
-
-#: ../epoptes/ui/gui.py:648
-#, python-format
-msgid ""
-"There was a try to connect an epoptes-client with version %s which is "
-"incompatible with the current epoptes version.\n"
-"\n"
-"You should update your chroot."
-msgstr ""
-
-#: ../epoptes/ui/gtk/executeCommand.ui.h:2
-msgid ""
-"URL, file or command to execute on \n"
-"the selected clients:"
-msgstr ""
-
-#: ../epoptes/common/commands.py:23
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Θέλετε σίγουρα να τερματίσετε όλους τους υπολογιστές;"
-
-#: ../epoptes/common/commands.py:24
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Θέλετε σίγουρα να επανεκκινήσετε όλους τους υπολογιστές;"
-
-#: ../epoptes/common/commands.py:25
-msgid "Are you sure you want to log off all the users?"
-msgstr "Θέλετε σίγουρα να αποσυνδέσετε όλους τους χρήστες;"
-
-#: ../epoptes/common/commands.py:26
-msgid ""
-"Are you sure you want to terminate all processes of the selected users?"
-msgstr ""
-"Θέλετε σίγουρα να τερματίσετε τις διεργασίες των επιλεγμένων χρηστών;"
 
 #: ../epoptes/ui/notifications.py:19
 msgid "Connected users:"
@@ -482,6 +297,47 @@ msgstr "%(user)s από %(host)s"
 msgid "Shut down:"
 msgstr "Τερματισμός"
 
+#: ../epoptes/ui/client_information.py:34
+#, python-format
+msgid "Properties of %s"
+msgstr "Ιδιότητες του %s"
+
+#: ../epoptes/ui/gui.py:427
+#, python-format
+msgid ""
+"There was a try to connect an epoptes-client with version %s which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You should update your chroot."
+msgstr ""
+"Έγινε προσπάθεια σύνδεσης ενός epoptes-client έκδοσης %s που είναι ασύμβατος "
+"με την τρέχουσα έκδοση του epoptes.\n"
+"Χρειάζεται να ενημερώσετε τον εικονικό σας δίσκο."
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+"Διεύθυνση Διαδικτύου, αρχείο ή εντολή προς εκτέλεση στους επιλεγμένους "
+"υπολογιστές:"
+
+#: ../epoptes/common/commands.py:23
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Θέλετε σίγουρα να τερματίσετε όλους τους υπολογιστές;"
+
+#: ../epoptes/common/commands.py:24
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Θέλετε σίγουρα να επανεκκινήσετε όλους τους υπολογιστές;"
+
+#: ../epoptes/common/commands.py:25
+msgid "Are you sure you want to log off all the users?"
+msgstr "Θέλετε σίγουρα να αποσυνδέσετε όλους τους χρήστες;"
+
+#: ../epoptes/common/commands.py:26
+msgid ""
+"Are you sure you want to terminate all processes of the selected users?"
+msgstr ""
+"Θέλετε σίγουρα να τερματίσετε τις διεργασίες των επιλεγμένων χρηστών;"
+
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
 msgstr "Epoptes"
@@ -489,6 +345,38 @@ msgstr "Epoptes"
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
 msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client hostname:"
+msgstr "Όνομα υπολογιστή:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client type:"
+msgstr "Τύπος υπολογιστή:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Graphics card:"
+msgstr "Κάρτα γραφικών:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "IP address:"
+msgstr "Διεύθυνση IP:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "MAC address:"
+msgstr "Διεύθυνση MAC:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "Processor:"
+msgstr "Επεξεργαστής:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "User:"
+msgstr "Χρήστης:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
@@ -513,3 +401,120 @@ msgstr "Προειδοποίηση"
 #: ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "_Send"
 msgstr "_Αποστολή"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:1
+msgid "A computer lab management and monitoring tool."
+msgstr "Εργαλείο διαχείρισης και εποπτείας εργαστηρίου υπολογιστών."
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:2
+msgid "Copyright &#xA9; 2011 Epoptes Team"
+msgstr "Πνευματικά δικαιώματα &#xA9; 2011 η ομάδα του Epoptes"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+msgid ""
+"Epoptes is free software: you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation, either version 3 of the License, or any later version. \n"
+"\n"
+"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"epoptes. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"Το Epoptes είναι ελεύθερο λογισμικό·: επιτρέπεται η αναδιανομή ή/και "
+"τροποποίησή του υπό τους όρους της Γενικής Άδειας Δημόσιας Χρήσης GNU (GPL), "
+"όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου \n"
+"Λογισμικού (FSS) — είτε της έκδοσης 3 της Άδειας, είτε (κατ' επιλογήν σας) "
+"οποιασδήποτε μεταγενέστερης έκδοσης. \n"
+"\n"
+"Το Epoptes διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμο, παρόλα αυτά "
+"ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ — χωρίς ούτε και την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή "
+"ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΕΙΔΙΚΟ ΣΚΟΠΟ. Για περισσότερες λεπτομέρειες ανατρέξτε στη "
+"Γενική Άδεια Δημόσιας Χρήσης GNU.\n"
+"\n"
+"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας Χρήσης "
+"GNU μαζί με το Epoptes. Αν όχι, δείτε στο <http://www.gnu.org/licenses/>."
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:1
+msgid "Connection type:"
+msgstr "Τύπος σύνδεσης:"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Κονσόλα (screen)"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:3
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr ""
+"Εισαγωγή των πληροφοριών της επαφής με την οποία θα διαμοιραστείτε την "
+"επιφάνεια εργασίας σας"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:4
+msgid "Graphics (VNC)"
+msgstr "Γραφικά (VNC)"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:5
+msgid "IP:"
+msgstr "IP:"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:6
+msgid "Port:"
+msgstr "Θύρα:"
+
+#~ msgid "Add users to group"
+#~ msgstr "Προσθήκη χρηστών στην ομάδα"
+
+#~ msgid "Copyright &#xA9; 2011 the Epoptes authors"
+#~ msgstr "Πνευματικά δικαιώματα &#xA9; 2011 Συγγραφείς του Epoptes"
+
+#~ msgid "Select users that are members of the selected groups"
+#~ msgstr "Επιλογή των χρηστών που είναι μέλη των επιλεγμένων ομάδων"
+
+#~ msgid "Select group members"
+#~ msgstr "Επιλογή μελών ομάδας"
+
+#~ msgid "Save"
+#~ msgstr "Αποθήκευση"
+
+#~ msgid "Remove users from group"
+#~ msgstr "Αφαίρεση χρηστών από την ομάδα"
+
+#~ msgid "Show empty groups"
+#~ msgstr "Προβολή κενών ομάδων"
+
+#~ msgid "Show system groups"
+#~ msgstr "Εμφάνιση ομάδων συστήματος"
+
+#~ msgid "Terminate processes"
+#~ msgstr "Τερματισμός διεργασιών"
+
+#~ msgid "Terminates all processes of the selected users"
+#~ msgstr "Τερματίζει τις διεργασίες των επιλεγμένων χρηστών"
+
+#~ msgid "_Users"
+#~ msgstr "_Χρήστες"
+
+#~ msgid "_Groups"
+#~ msgstr "_Ομάδες"
+
+#~ msgid "Users"
+#~ msgstr "Χρήστες"
+
+#~ msgid "Groups"
+#~ msgstr "Ομάδες"
+
+#~ msgid "A computer lab administration and monitoring tool."
+#~ msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
+
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Delete this client from lts.conf"
+#~ msgstr "Αφαίρεση του υπολογιστή από το lts.conf"
+
+#~ msgid "Save this client to lts.conf"
+#~ msgstr "Αποθήκευση του υπολογιστή στο lts.conf"
