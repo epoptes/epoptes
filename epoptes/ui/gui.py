@@ -34,27 +34,21 @@ from twisted.python import log
 
 from epoptes import __version__
 from epoptes import ui
-from epoptes.ui.notifications import *
-from epoptes.ui.execcommand import *
-from epoptes.ui.sendmessage import *
+from notifications import *
+from execcommand import *
+from sendmessage import *
+from about_dialog import About
+from client_information import ClientInformation
+from remote_assistance import RemoteAssistance
 from epoptes.daemon import uiconnection
 from epoptes.core.lib_users import *
 from epoptes.common import commands
 from epoptes.common import ltsconf
+from epoptes.common import config
+from epoptes.common.constants import *
 from epoptes.core import wol
 
 
-# ['ltsp123', '00-1b-24-89-65-d6', '127.0.0.1:46827', '10.160.31.126:44920', 
-#  'thin', 'user3', <gtk.gdk.Pixbuf>, '10.160.31.123', 'user (ltsp123)']
-C_HOSTNAME = 0
-C_MAC = 1
-C_SESSION_HANDLE = 2
-C_SYSTEM_HANDLE = 3
-C_TYPE = 4
-C_USER = 5
-C_PIXBUF = 6
-C_IP = 7
-C_VIEW_STYLE = 8
 
 ## FIXME: This is dummy
 def _startswith(string, pattern):
@@ -66,7 +60,7 @@ def _startswith(string, pattern):
 # than this
 COMPATIBILITY_VERSION = [0, 1]
 
-## FIXME: Change class name, move defs to other modules / classes
+
 class EpoptesGui(object):
     
     def __init__(self, conf, host_filter):
@@ -74,12 +68,16 @@ class EpoptesGui(object):
         self.host_filter = host_filter
         self.ltsConf = ltsconf.ltsConf()
         self.c = commands.commands()
-
         self.shownCompatibilityWarning = False 
         self.added = False
         self.vncserver_running = False
         self.scrWidth = 100
         self.scrHeight = 75
+        if os.getuid() != 0:
+            if 'thumbnails_width' in config.user:
+                self.scrWidth = config.user['thumbnails_width']
+            if 'thumbnails_height' in config.user:
+                self.scrHeight = config.user['thumbnails_height']
         self.offline = gtk.gdk.pixbuf_new_from_file('images/offline.svg')
         self.thin = gtk.gdk.pixbuf_new_from_file('images/thin.svg')
         self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
@@ -100,7 +98,8 @@ class EpoptesGui(object):
         self.wTree.connect_signals(self)
         self.get = lambda obj: self.wTree.get_object(obj)
 
-        self.get('iconsSizeAdjustment').set_value(self.scrWidth)
+        # Enable this when the scrollbar for the screenshot size is available
+        #self.get('iconsSizeAdjustment').set_value(self.scrWidth)
 
         self.mainwin = self.get('mainwindow')
         
@@ -148,30 +147,9 @@ class EpoptesGui(object):
         reactor.stop()
     
     
-    def aboutDialog(self, widget):
-        """
-        Retrieve dialog to show information about the epoptes.
-        Info shown is version and a short description about the
-        software which is set within glade configuration
-        """
-        dialog = self.get('aboutdialog')
-        logo = gtk.gdk.pixbuf_new_from_file_at_size(
-            '../icons/hicolor/scalable/apps/epoptes.svg', 48, 48)
-        dialog.set_logo(logo)
-        dialog.set_version(__version__)
-        dialog.run()
-        dialog.hide()
-    
     def toggleRealNameColumn(self, widget=None):
-        """
-        Show/hide real name in users' lists by getting the
-        corresponding data from utree. Column one stands for
-        real name and column two stands for username
-        """
-        c = self.get('mcShowRealName').get_active()
-        self.utree.remove_column(self.utree.columns[1 if c else 2])
-        if not self.utree.columns[2 if c else 1] in self.utree.get_columns():
-            self.utree.append_column(self.utree.columns[2 if c else 1])
+        """Show/hide the real names of the users instead of the username"""
+        pass # Implement me
 
     def wake_on_lan(self, widget):
         """
@@ -207,7 +185,7 @@ class EpoptesGui(object):
             warn=self.c.LOGOUT_WARN)
     
     ## FIXME: Don't use vinagre, we want something more integrated
-    def monitorStudent(self, widget, path=None, view_column=None):
+    def assistStudent(self, widget, path=None, view_column=None):
         # Tell vinagre to listen for incoming connections
         subprocess.Popen(['gconftool-2', '--set',
             '/apps/vinagre/always_enable_listening', '--type', 'boolean', '1'])
@@ -218,7 +196,19 @@ class EpoptesGui(object):
         # And, tell the clients to connect to the server
         self.execOnSelectedClients(self.c.EXEC +
             'x11vnc -noshm -connect_or_exit $SERVER')
+    
+    def monitorStudent(self, widget, path=None, view_column=None):
+        # Tell vinagre to listen for incoming connections
+        subprocess.Popen(['gconftool-2', '--set',
+            '/apps/vinagre/always_enable_listening', '--type', 'boolean', '1'])
 
+        # Open vinagre
+        subprocess.Popen(['vinagre'])
+
+        # And, tell the clients to connect to the server
+        self.execOnSelectedClients(self.c.EXEC +
+            'x11vnc -noshm -viewonly -connect_or_exit $SERVER')
+    
     
     def broadcastTeacher(self, widget):
         if not self.vncserver_running:
@@ -300,7 +290,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         self.execOnSelectedClients('''test -n "$EPOPTES_LOCK_SCREEN_PID" && '''+\
             '''kill "$EPOPTES_LOCK_SCREEN_PID" unset EPOPTES_LOCK_SCREEN_PID''')
 
-    # FIXME: Find something more secure
+    # FIXME: Find something better
     def soundOff(self, widget):
         """
         Disable sound usage for clients selected
@@ -312,62 +302,17 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         Enable sound usage for clients selected
         """
         self.execOnSelectedClients(self.c.EXEC_AMIXER + 'unmute', root=True)
-
-    #FIXME: Different module/.ui file
-    def clientProperties(self, widget):
-        selected = self.getSelectedClients()
-        dlg = self.get('infodlg')
-        execute = self.daemon.command
-        set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
-
-        for client in selected:
-            set('client_ram', '')
-            set('client_cpu', '')
-            set('client_vga', '')
-            if client[C_SYSTEM_HANDLE]:
-                C_HANDLE = C_SYSTEM_HANDLE
-            else:
-                C_HANDLE = C_SESSION_HANDLE
-            if client[C_HANDLE]:
-                execute(client[C_HANDLE], 'echo $RAM').addCallback(
-                    lambda r: set('client_ram', r.strip()+' MB'))
-                execute(client[C_HANDLE], 'echo $CPU').addCallback(
-                    lambda r: set('client_cpu', r))
-                execute(client[C_HANDLE], 'echo $VGA').addCallback(
-                    lambda r: set('client_vga', r))
-            set('client_hostname', client[C_HOSTNAME])
-            set('client_mac', client[C_MAC])
-            set('client_ip', client[C_HANDLE].split(':')[0])
-            set('client_type', client[C_TYPE])
-            set('client_online_user', client[C_USER])
-            dlg.set_title(_('Properties of %s') %client[C_HOSTNAME])
-        dlg.run()
-        dlg.hide()
-
-    #FIXME: Different module/.ui file
-    def remoteSupport(self, widget):
-        dlg = self.get('remote_assistance_dialog')
-        if self.get('sb_assist_port').get_value() == 0:
-            self.get('sb_assist_port').set_value(5500)
-        reply = dlg.run()
-        if reply == 1:
-            ip = self.get('rem_assist_ip').get_text().strip()
-            port = self.get('sb_assist_port').get_value()
-            if self.get('cb_assist_type').get_active() == 1:
-                # Unfortunately double quoting is needed when a parameter 
-                # contains spaces. That might change in the future, 
-                # see http://www.sudo.ws/sudo/bugs/show_bug.cgi?id=413
-                # Fortunately, sh -c 'ls' works even if the quotes there are 
-                # wrong. :)
-                subprocess.Popen(['sh', '-c',
-                    """'TERM=xterm socat SYSTEM:"sleep 1 && exec screen -xRR ra", \\
-                    pty,stderr tcp:%s:%d & exec xterm -e screen -l -S ra'"""
-                    % (ip, port)])
-            else:
-                subprocess.Popen(['epoptes-remote-assistance', "%s:%d" % (ip, port)])
-        dlg.hide()
     
+    #FIXME: Remove the second parameter, find a better way
+    def on_tb_client_properties_clicked(self, widget=None):
+        ClientInformation(self.getSelectedClients(), self.daemon.command).run()
     
+    def on_mi_remote_assistance_activate(self, widget=None):
+        RemoteAssistance().run()
+    
+    def on_mi_about_activate(self, widget=None):
+        About().run()
+        
     def on_cViewHU_toggled(self, mitem):
         self.set_cView(1, 0)
     
@@ -555,7 +500,7 @@ which is incompatible with the current epoptes version.\
         if reply == None:
             return
         try:
-            rowstride, size, pixels = reply.split('\n', 2)
+            rowstride, size, pixels = reply.strip().split('\n', 2)
         except:
             return
         rowstride = int(rowstride)
@@ -684,7 +629,7 @@ which is incompatible with the current epoptes version.\
         if len(selected) == 1:
             sensitive = True
         self.get('miClientProperties').set_sensitive(sensitive)
-        self.get('barclientproperties').set_sensitive(sensitive)
+        self.get('tb_client_properties').set_sensitive(sensitive)
 
     
     ## FIXME: This is not yet finished, implement it

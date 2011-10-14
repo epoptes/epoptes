@@ -30,7 +30,7 @@ class screenshot:
         rowstride = str(pixbuf.get_rowstride())
         self.send(pixels, rowstride, size)
         return
-
+    
     def getScreen(self):
         root = gdk.get_default_root_window()
         width, height = root.get_size()

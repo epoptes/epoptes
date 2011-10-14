@@ -2,51 +2,6 @@
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkAboutDialog" id="aboutdialog">
-    <property name="border_width">5</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="type_hint">normal</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="transient_for">mainwindow</property>
-    <property name="program_name">Epoptes</property>
-    <property name="copyright" translatable="yes">Copyright &#xA9; 2011 the Epoptes authors</property>
-    <property name="comments" translatable="yes">A computer lab administration and monitoring tool.</property>
-    <property name="license" translatable="yes">Epoptes is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version. 
-
-Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
-
-You should have received a copy of the GNU General Public License along with epoptes. If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
-    <property name="authors">Alkis Georgopoulos &lt;alkisg@gmail.com&gt;
-Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
-    <property name="wrap_license">True</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkAdjustment" id="adj_assist_port">
-    <property name="value">5500</property>
-    <property name="lower">1</property>
-    <property name="upper">65535</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">100</property>
-  </object>
   <object class="GtkDialog" id="entrydialog">
     <property name="border_width">5</property>
     <property name="title">Change name</property>
@@ -208,14 +163,6 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
     <property name="visible">True</property>
     <property name="icon_name">gnome-session-reboot</property>
   </object>
-  <object class="GtkImage" id="image42">
-    <property name="visible">True</property>
-    <property name="stock">gtk-delete</property>
-  </object>
-  <object class="GtkImage" id="image45">
-    <property name="visible">True</property>
-    <property name="stock">gtk-save</property>
-  </object>
   <object class="GtkImage" id="image47">
     <property name="visible">True</property>
     <property name="icon_name">network-offline</property>
@@ -272,322 +219,17 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
     <property name="visible">True</property>
     <property name="icon_name">emblem-people</property>
   </object>
-  <object class="GtkDialog" id="infodlg">
-    <property name="border_width">5</property>
-    <property name="icon_name">document-properties</property>
-    <property name="type_hint">normal</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox2">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <object class="GtkTable" id="propertiestable">
-            <property name="visible">True</property>
-            <property name="border_width">10</property>
-            <property name="n_rows">8</property>
-            <property name="n_columns">2</property>
-            <property name="column_spacing">10</property>
-            <property name="row_spacing">10</property>
-            <child>
-              <object class="GtkLabel" id="label10">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">IP address:</property>
-              </object>
-              <packing>
-                <property name="top_attach">3</property>
-                <property name="bottom_attach">4</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_mac">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">2</property>
-                <property name="bottom_attach">3</property>
-                <property name="x_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_type">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label6">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">MAC address:</property>
-              </object>
-              <packing>
-                <property name="top_attach">2</property>
-                <property name="bottom_attach">3</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label5">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Client type:</property>
-              </object>
-              <packing>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label4">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Client hostname:</property>
-              </object>
-              <packing>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label1">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Processor:</property>
-              </object>
-              <packing>
-                <property name="top_attach">5</property>
-                <property name="bottom_attach">6</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label2">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">RAM:</property>
-              </object>
-              <packing>
-                <property name="top_attach">6</property>
-                <property name="bottom_attach">7</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label3">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Graphics card:</property>
-              </object>
-              <packing>
-                <property name="top_attach">7</property>
-                <property name="bottom_attach">8</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_cpu">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-                <property name="single_line_mode">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">5</property>
-                <property name="bottom_attach">6</property>
-                <property name="x_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_ram">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-                <property name="single_line_mode">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">6</property>
-                <property name="bottom_attach">7</property>
-                <property name="x_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_vga">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-                <property name="single_line_mode">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">7</property>
-                <property name="bottom_attach">8</property>
-                <property name="x_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label7">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">User:</property>
-              </object>
-              <packing>
-                <property name="top_attach">4</property>
-                <property name="bottom_attach">5</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_ip">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">3</property>
-                <property name="bottom_attach">4</property>
-                <property name="x_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_online_user">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">4</property>
-                <property name="bottom_attach">5</property>
-                <property name="x_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="client_hostname">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="selectable">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area2">
-            <property name="visible">True</property>
-            <property name="layout_style">start</property>
-            <child>
-              <object class="GtkButton" id="save_client">
-                <property name="label" translatable="yes">Save</property>
-                <property name="sensitive">False</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Save this client to lts.conf</property>
-                <property name="image">image45</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="delete_client">
-                <property name="label" translatable="yes">Delete</property>
-                <property name="sensitive">False</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Delete this client from lts.conf</property>
-                <property name="image">image42</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="button5">
-                <property name="label">gtk-close</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-                <property name="secondary">True</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="1">save_client</action-widget>
-      <action-widget response="2">delete_client</action-widget>
-      <action-widget response="0">button5</action-widget>
-    </action-widgets>
-  </object>
-  <object class="GtkListStore" id="lst_assist_type">
+  <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name col_assist_type -->
+      <!-- column-name group_name -->
       <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Graphics (VNC)</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Console (screen)</col>
+        <col id="0" translatable="yes">Auto-detected computers</col>
       </row>
     </data>
   </object>
-  <object class="GtkTreeStore" id="treestore1"/>
   <object class="GtkWindow" id="mainwindow">
     <property name="visible">True</property>
     <property name="title" translatable="yes">epoptes</property>
@@ -639,7 +281,6 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
             </child>
             <child>
               <object class="GtkMenuItem" id="view">
-                <property name="visible">True</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -732,12 +373,21 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                             <property name="visible">True</property>
                             <child>
                               <object class="GtkImageMenuItem" id="miMonitorStudent">
+                                <property name="label" translatable="yes">Monitor student</property>
+                                <property name="visible">True</property>
+                                <property name="image">image12</property>
+                                <property name="use_stock">False</property>
+                                <signal name="activate" handler="monitorStudent"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkImageMenuItem" id="miAssistStudent">
                                 <property name="label" translatable="yes">Assist student</property>
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image36</property>
                                 <property name="use_stock">False</property>
-                                <signal name="activate" handler="monitorStudent"/>
+                                <signal name="activate" handler="assistStudent"/>
                               </object>
                             </child>
                             <child>
@@ -1038,7 +688,7 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="clientProperties"/>
+                        <signal name="activate" handler="on_tb_client_properties_clicked"/>
                       </object>
                     </child>
                   </object>
@@ -1104,12 +754,12 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="miRemoteSupport">
+                      <object class="GtkImageMenuItem" id="mi_remote_assistance">
                         <property name="label" translatable="yes">Remote support</property>
                         <property name="visible">True</property>
                         <property name="image">image39</property>
                         <property name="use_stock">False</property>
-                        <signal name="activate" handler="remoteSupport"/>
+                        <signal name="activate" handler="on_mi_remote_assistance_activate"/>
                       </object>
                     </child>
                     <child>
@@ -1118,12 +768,12 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="h_about">
+                      <object class="GtkImageMenuItem" id="mi_about">
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="aboutDialog"/>
+                        <signal name="activate" handler="on_mi_about_activate"/>
                       </object>
                     </child>
                   </object>
@@ -1313,13 +963,13 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="barclientproperties">
+              <object class="GtkToolButton" id="tb_client_properties">
                 <property name="visible">True</property>
                 <property name="tooltip_text" translatable="yes">Show information for the selected client</property>
                 <property name="label" translatable="yes">Information</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">document-properties</property>
-                <signal name="clicked" handler="clientProperties"/>
+                <signal name="clicked" handler="on_tb_client_properties_clicked"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1333,62 +983,54 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
           </packing>
         </child>
         <child>
+          <object class="GtkHSeparator" id="hseparator1">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkHPaned" id="hpaned1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="position">149</property>
+            <property name="position">150</property>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow1">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
+              <object class="GtkVBox" id="vbox2">
                 <child>
-                  <object class="GtkTreeView" id="treeview1">
+                  <object class="GtkHBox" id="hbox2">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="model">treestore1</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="resize">False</property>
-                <property name="shrink">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="vbox4">
-                <property name="visible">True</property>
-                <child>
-                  <object class="GtkHBox" id="hbox1">
                     <child>
-                      <object class="GtkButton" id="button10">
+                      <object class="GtkButton" id="button3">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="scrDecreaseSize"/>
                         <child>
-                          <object class="GtkImage" id="image59">
+                          <object class="GtkImage" id="image1">
                             <property name="visible">True</property>
-                            <property name="stock">gtk-zoom-out</property>
+                            <property name="stock">gtk-add</property>
                           </object>
                         </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="fill">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkHScale" id="hscale1">
-                        <property name="width_request">150</property>
+                      <object class="GtkButton" id="button4">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="adjustment">iconsSizeAdjustment</property>
-                        <property name="digits">0</property>
-                        <property name="draw_value">False</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                        <child>
+                          <object class="GtkImage" id="image9">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-remove</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1396,47 +1038,58 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button11">
+                      <object class="GtkButton" id="button5">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="scrIncreaseSize"/>
                         <child>
-                          <object class="GtkImage" id="image58">
+                          <object class="GtkImage" id="image10">
                             <property name="visible">True</property>
-                            <property name="stock">gtk-zoom-in</property>
+                            <property name="stock">gtk-go-up</property>
                           </object>
                         </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="fill">False</property>
                         <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="button6">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="relief">none</property>
+                        <child>
+                          <object class="GtkImage" id="image11">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-go-down</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="fill">False</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow" id="scrolledwindow3">
+                  <object class="GtkScrolledWindow" id="scrolledwindow1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hscrollbar_policy">automatic</property>
                     <property name="vscrollbar_policy">automatic</property>
-                    <property name="shadow_type">etched-out</property>
                     <child>
-                      <object class="GtkIconView" id="clientsview">
+                      <object class="GtkTreeView" id="treeview1">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="selection_mode">multiple</property>
-                        <signal name="button_press_event" handler="contextMenuPopup"/>
-                        <signal name="selection_changed" handler="setClientMenuSensitivity"/>
-                        <signal name="item_activated" handler="monitorStudent"/>
+                        <property name="model">liststore1</property>
                       </object>
                     </child>
                   </object>
@@ -1446,194 +1099,128 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
                 </child>
               </object>
               <packing>
+                <property name="resize">False</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow3">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <property name="shadow_type">etched-out</property>
+                <child>
+                  <object class="GtkIconView" id="clientsview">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="selection_mode">multiple</property>
+                    <signal name="button_press_event" handler="contextMenuPopup"/>
+                    <signal name="selection_changed" handler="setClientMenuSensitivity"/>
+                    <signal name="item_activated" handler="monitorStudent"/>
+                  </object>
+                </child>
+              </object>
+              <packing>
                 <property name="resize">True</property>
                 <property name="shrink">True</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
           <object class="GtkStatusbar" id="statusbar">
             <property name="visible">True</property>
             <property name="spacing">2</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkDialog" id="remote_assistance_dialog">
-    <property name="border_width">5</property>
-    <property name="resizable">False</property>
-    <property name="window_position">center</property>
-    <property name="icon_name">help-faq</property>
-    <property name="type_hint">normal</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox5">
-        <property name="visible">True</property>
-        <child>
-          <object class="GtkLabel" id="label8">
-            <property name="visible">True</property>
-            <property name="label" translatable="yes">Enter the information of the contact you want to share your Desktop with</property>
-            <property name="wrap">True</property>
-          </object>
-          <packing>
-            <property name="padding">8</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkHBox" id="hbox3">
-            <property name="visible">True</property>
             <child>
-              <object class="GtkLabel" id="label13">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Connection type:</property>
+              <object class="GtkLabel" id="statusbar_label">
+                <property name="label">Status message</property>
               </object>
               <packing>
                 <property name="expand">False</property>
-                <property name="padding">4</property>
+                <property name="padding">6</property>
                 <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox" id="cb_assist_type">
-                <property name="visible">True</property>
-                <property name="model">lst_assist_type</property>
-                <property name="active">0</property>
+              <object class="GtkHBox" id="hbox4">
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
-                  <attributes>
-                    <attribute name="text">0</attribute>
-                  </attributes>
+                  <object class="GtkButton" id="button10">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="scrDecreaseSize"/>
+                    <child>
+                      <object class="GtkImage" id="image59">
+                        <property name="visible">True</property>
+                        <property name="stock">gtk-zoom-out</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkHScale" id="hscale1">
+                    <property name="width_request">150</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="adjustment">iconsSizeAdjustment</property>
+                    <property name="digits">0</property>
+                    <property name="draw_value">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="button11">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="scrIncreaseSize"/>
+                    <child>
+                      <object class="GtkImage" id="image58">
+                        <property name="visible">True</property>
+                        <property name="stock">gtk-zoom-in</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkHBox" id="hbox2">
-            <property name="visible">True</property>
-            <child>
-              <object class="GtkLabel" id="label11">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">IP:</property>
-              </object>
-              <packing>
                 <property name="expand">False</property>
-                <property name="padding">4</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="rem_assist_ip">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="has_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
-                <property name="activates_default">True</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-              </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label12">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Port:</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="padding">4</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="sb_assist_port">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <property name="adjustment">adj_assist_port</property>
-                <property name="snap_to_ticks">True</property>
-                <property name="numeric">True</property>
-              </object>
-              <packing>
-                <property name="position">3</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="padding">8</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area5">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="button3">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="button4">
-                <property name="label">gtk-connect</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
+                <property name="padding">3</property>
+                <property name="pack_type">end</property>
                 <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="padding">8</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>
     </child>
-    <action-widgets>
-      <action-widget response="0">button3</action-widget>
-      <action-widget response="1">button4</action-widget>
-    </action-widgets>
   </object>
   <object class="GtkMessageDialog" id="warningDialog">
     <property name="border_width">5</property>
+    <property name="modal">True</property>
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="message_type">warning</property>
@@ -1684,5 +1271,9 @@ Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
   <object class="GtkImage" id="image28">
     <property name="visible">True</property>
     <property name="icon_name">wallpaper</property>
+  </object>
+  <object class="GtkImage" id="image12">
+    <property name="visible">True</property>
+    <property name="icon_name">gnome-remote-desktop</property>
   </object>
 </interface>

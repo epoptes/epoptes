@@ -4,6 +4,7 @@
 # Configuration file parser and other default configuration variables.
 #
 # Copyright (C) 2011 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2011 Fotis Tsamis <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -50,7 +51,7 @@ def write_plain_file(filename, contents):
 
     try:
         if not os.path.isdir(path):
-            os.path.mkdir(path)
+            os.mkdir(path)
         f = open(filename, 'w')
         f.write(writelines([ x + '\n' for x in contents ]))
         return True
@@ -107,8 +108,22 @@ system.setdefault('SOCKET_GROUP', 'admin')
 system.setdefault('DIR', '/var/run/epoptes')
 
 if os.getuid() != 0:
-    path=os.path.expanduser('~/.config/epoptes/')
-    user = read_ini_file(os.path.join(path, 'settings'))
+    path = os.path.expanduser('~/.config/epoptes/')
+    if not os.path.isdir(path):
+        os.mkdir(path)
+    
+    settings_file = os.path.join(path, 'settings')
+    if not os.path.isfile(settings_file):
+        _settings = open(settings_file, 'w')
+        _settings.write('[GUI]\n#thumbnails_width=200\n#thumbnails_height=150')
+        _settings.close()
+    
+    settings = read_ini_file(settings_file)
+    user = {}
+    if settings.has_option('GUI', 'thumbnails_width'):
+        user['thumbnails_width'] = settings.getint('GUI', 'thumbnails_width')
+    if settings.has_option('GUI', 'thumbnails_height'):
+        user['thumbnails_height'] = settings.getint('GUI', 'thumbnails_height')
     history = sorted(list(set(read_shell_file(os.path.join(path, 'history')))))
 
 
