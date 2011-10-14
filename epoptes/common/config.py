@@ -4,7 +4,7 @@
 # Configuration file parser and other default configuration variables.
 #
 # Copyright (C) 2011 Alkis Georgopoulos <alkisg@gmail.com>
-# Copyright (C) 2011 Fotis Tsamis <alkisg@gmail.com>
+# Copyright (C) 2011 Fotis Tsamis <ftsamis@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

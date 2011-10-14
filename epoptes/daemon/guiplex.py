@@ -38,10 +38,8 @@ class GUI(amp.AMP):
             raise ValueError("Unknown client")
 
         d = exchange.knownClients[handle].command(command.encode("utf-8"))
-        print 'Im just before sendResult'
-
+        
         def sendResult(result):
-            print "I'm in sendRes"
             if len(result) > 65000:
                 tf = tempfile.NamedTemporaryFile('wb', dir="/var/run/epoptes", delete=False)
                 tf.write(result)
@@ -49,10 +47,8 @@ class GUI(amp.AMP):
                 return {'filename': tf.name, 'result': ''}
             else:
                 return {'result': result, 'filename': ''}
-                print "len <65000"
 
         d.addCallback(sendResult)
-        print "Added sendResult as callback"
         return d
 
 
