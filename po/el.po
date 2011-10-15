@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-14 06:14+0300\n"
-"PO-Revision-Date: 2011-10-14 05:02+0000\n"
-"Last-Translator: Alkis Georgopoulos <Unknown>\n"
+"POT-Creation-Date: 2011-10-14 09:37+0300\n"
+"PO-Revision-Date: 2011-10-14 17:01+0000\n"
+"Last-Translator: Fotis Tsamis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-14 06:09+0000\n"
+"X-Launchpad-Export-Date: 2011-10-15 05:42+0000\n"
 "X-Generator: Launchpad (build 14124)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -265,7 +265,7 @@ msgstr "_Αποστολή μηνύματος"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "_View"
-msgstr "_Παρακολούθηση"
+msgstr "_Προβολή"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "epoptes"
@@ -302,7 +302,7 @@ msgstr "Τερματισμός"
 msgid "Properties of %s"
 msgstr "Ιδιότητες του %s"
 
-#: ../epoptes/ui/gui.py:427
+#: ../epoptes/ui/gui.py:424
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -464,57 +464,3 @@ msgstr "IP:"
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:6
 msgid "Port:"
 msgstr "Θύρα:"
-
-#~ msgid "Add users to group"
-#~ msgstr "Προσθήκη χρηστών στην ομάδα"
-
-#~ msgid "Copyright &#xA9; 2011 the Epoptes authors"
-#~ msgstr "Πνευματικά δικαιώματα &#xA9; 2011 Συγγραφείς του Epoptes"
-
-#~ msgid "Select users that are members of the selected groups"
-#~ msgstr "Επιλογή των χρηστών που είναι μέλη των επιλεγμένων ομάδων"
-
-#~ msgid "Select group members"
-#~ msgstr "Επιλογή μελών ομάδας"
-
-#~ msgid "Save"
-#~ msgstr "Αποθήκευση"
-
-#~ msgid "Remove users from group"
-#~ msgstr "Αφαίρεση χρηστών από την ομάδα"
-
-#~ msgid "Show empty groups"
-#~ msgstr "Προβολή κενών ομάδων"
-
-#~ msgid "Show system groups"
-#~ msgstr "Εμφάνιση ομάδων συστήματος"
-
-#~ msgid "Terminate processes"
-#~ msgstr "Τερματισμός διεργασιών"
-
-#~ msgid "Terminates all processes of the selected users"
-#~ msgstr "Τερματίζει τις διεργασίες των επιλεγμένων χρηστών"
-
-#~ msgid "_Users"
-#~ msgstr "_Χρήστες"
-
-#~ msgid "_Groups"
-#~ msgstr "_Ομάδες"
-
-#~ msgid "Users"
-#~ msgstr "Χρήστες"
-
-#~ msgid "Groups"
-#~ msgstr "Ομάδες"
-
-#~ msgid "A computer lab administration and monitoring tool."
-#~ msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
-
-#~ msgid "Delete"
-#~ msgstr "Διαγραφή"
-
-#~ msgid "Delete this client from lts.conf"
-#~ msgstr "Αφαίρεση του υπολογιστή από το lts.conf"
-
-#~ msgid "Save this client to lts.conf"
-#~ msgstr "Αποθήκευση του υπολογιστή στο lts.conf"
