@@ -23,6 +23,14 @@
 # Public License can be found in `/usr/share/common-licenses/GPL'.
 ###########################################################################
 
+# epoptes-client may be called either as root, to control the client, or as a
+# user, to control the user session.
+# As root, epoptes-client starts from if-up.d on standalone clients.
+# Unfortunately, thin and fat clients don't get if-up.d events, so just for
+# this case we're using a helper sysvinit script.
+# As a user, epoptes-client runs from /etc/xdg/autostart.
+# Users can cancel that from their System > Preferences > Services gnome menu.
+
 die() {
     echo "epoptes-client ERROR: $@" >&2
     exit 1
@@ -62,46 +70,6 @@ basic_info() {
     PORT=569
 }
 
-# epoptes-client may be called either as root, to control the client, or as a
-# user, to control the user session.
-# As root:
-# The best place to start epoptes-client would be from /etc/network/if-up.d.
-# Unfortunately, thin and fat clients don't get if-up.d events.
-# So we're using "started networking or net-device-up IFACE!=lo" in upstart.
-# * On standalone workstations, we ignore "started networking" because we may
-#   not have an IP yet, and only start on "net-device-up".
-# * For thin and fat clients, we only get the "started networking" event.
-# * Manually with `sudo (re)start epoptes-client`.
-# * On the server, we need to cancel our execution in all cases.
-# As a user:
-# * From /etc/xdg/autostart or from /usr/share/epoptes-client/epoptes-client.
-#   Ideally, we would never need to cancel that, and epoptes would be clever
-#   enough to hide from the GUI the teacher epoptes-clients, or at least the
-#   epoptes-client where the teacher is sitting.
-#   For now, we only cancel epoptes-client for the teacher sitting at the server.
-#   Other teachers should disable epoptes-client from their System > Preferences
-#   > Services gnome menu.
-should_start() {
-    test $TYPE = "server" && return 1
-
-    if [ $UID -ne 0 ]; then
-        return 0
-    else
-        if [ $TYPE = "standalone" ]; then
-            if [ "$UPSTART_JOB" != "epoptes-client" ]; then
-                echo 'Please use `sudo start epoptes-client` to run epoptes-client as root, or just `epoptes-client` to run it as a user.' >&2
-                return 1
-            elif [ "$JOB" = "networking" ] && echo "$UPSTART_EVENTS" | grep -q "started"; then
-                return 1
-            else
-                return 0
-            fi
-        else
-            return 0
-        fi
-    fi
-}
-
 epoptes_info() {
     local def_iface
 
@@ -130,8 +98,8 @@ epoptes_info() {
     RAM=$(free -m | grep "^Mem" | awk '{print $2}')
     VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
 
-    # If epoptes-client is ran on a thin client from a user account (meaning that
-    # it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME and
+    # If epoptes-client is ran on a thin client from a user account (meaning
+    # that it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME and
     # $LTSP_CLIENT instead of $HOSTNAME and $IP.
     # MAC, CPU, RAM and VGA are not available in the environment, so we're
     # leaving the ones of the server.
@@ -139,7 +107,7 @@ epoptes_info() {
         test -n "$LTSP_CLIENT" && IP="$LTSP_CLIENT"
         test -n "$LTSP_CLIENT_HOSTNAME" && HOSTNAME="$LTSP_CLIENT_HOSTNAME"
     fi
-        
+
     export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT
 }
 
@@ -155,29 +123,26 @@ fi
 
 basic_info
 # The configuration file overrides the default values
-if [ -f /etc/default/epoptes ]; then
-    . /etc/default/epoptes
+if [ -f /etc/default/epoptes-client ]; then
+    . /etc/default/epoptes-client
 fi
 # And the command line parameters override the configuration file
 SERVER=${1:-$SERVER}
 PORT=${2:-$PORT}
 
-# Exit successfully if we shouldn't start
-should_start || exit 0
+# We don't want epoptes-client root service running on the LTSP server
+if [ $UID -eq 0 ] && [ $TYPE = "server" ]; then
+    exit 0
+fi
 
 # Kill all ghost instances of epoptes-client of the same user.
 # That may happen if network connectivity is lost for a while.
 # Standalone workstations don't hang if the network is down, and nbd might cope
-# with that for LTSP clients, and but the epoptes server kills disconnected epoptes-clients.
-# Root epoptes-clients are killed by upstart, so we only care about user
-# epoptes-clients. We don't care about thin user epoptes-clients though,
-# as those don't lose connectivity (localhost) and are killed by epoptes-daemon.
-if [ $UID != 0 ] && [ $TYPE != "thin" ]; then
-    # Exclude the current epoptes-client.
-    for p in $(pgrep -U $UID epoptes-client | grep -v $$); do
-        kill $p
-    done
-fi
+# with that for LTSP clients, but epoptes kills disconnected epoptes-clients.
+# Exclude the current epoptes-client.
+for p in $(pgrep -U $UID epoptes-client | grep -v $$); do
+    kill $p
+done
 
 # Go to the scripts directory, so that we can run them with ./xxx
 cd $(dirname "$0")

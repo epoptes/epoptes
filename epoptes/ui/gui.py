@@ -83,13 +83,11 @@ class EpoptesGui(object):
         self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
         self.standalone = gtk.gdk.pixbuf_new_from_file('images/standalone.svg')
         self.imagetypes = {'thin' : self.thin, 'fat' : self.fat,
-            'standalone' : self.standalone}
+            'standalone' : self.standalone, 'server' : self.standalone}
         self.addStockImage('offline', 'images/off.png')
         self.addStockImage('online', 'images/on.png')
         self.addStockImage('users', 'images/usersgrp.png')
         self.addStockImage('system', 'images/systemgrp.png')
-        
-        self.ltsp_client_hostname = os.environ.get('LTSP_CLIENT_HOSTNAME')
         
         self.wTree = gtk.Builder()
         self.wTree.add_from_file('epoptes.ui')
@@ -354,7 +352,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         self.daemon.command(handle, u"""
             VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
             VERSION=${VERSION:-0.1}
-            echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION"
+            echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
             """).addCallback(lambda r: self.addClient(handle, r))
 
     def amp_clientDisconnected(self, handle):
@@ -397,7 +395,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
             d = self.daemon.command(handle,  u"""
                 VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
                 VERSION=${VERSION:-0.1}
-                echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION"
+                echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
                 """)
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
     
@@ -408,12 +406,21 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
     # FIXME: Proofread this
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
-        user, host, ip, mac, type, uid, version = r.strip().split()
-        
-        # If the client we want to add is the current computer don't
-        # add it to the iconview. 
+        user, host, ip, mac, type, uid, version, pid = r.strip().split()
+
+        # If the user logged in the client is the same as
+        # the UI user, don't add the client to the iconview.
+        if user == os.getenv('USER'):
+            # But verify that the sysadmin isn't using the same username in all
+            # standalone clients.
+            try:
+                for line in open('/proc/' + pid + '/environ'):
+                    if 'epoptes-client' in line:
+                        return
+            except:
+                pass
         # Do the same if there is a hostname filter specified as a parameter
-        if self.ltsp_client_hostname == host or not _startswith(host, self.host_filter):
+        if not _startswith(host, self.host_filter):
             return
             
         # Compatibility check
