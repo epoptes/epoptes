@@ -736,9 +736,9 @@ which is incompatible with the current epoptes version.\
 
             subprocess.Popen(['xterm', '-e', 'socat', 
                 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
-            self.execOnClients(("""./execute sh -c 'cd; sleep 1; """ +
-                """TERM=xterm exec socat SYSTEM:"exec screen %s",pty,""" +
-                """stderr tcp:%s:%d'""") % (screen_params, server, port),
+            self.execOnClients(("""./execute sh -c "cd; sleep 1; """ +
+                """TERM=xterm exec socat SYSTEM:'exec screen %s',pty,""" +
+                """stderr tcp:$SERVER:%d" """) % (screen_params, port),
                 [client], root=as_root)
 
     def execInTerminal(self, widget, command):

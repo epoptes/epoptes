@@ -1,0 +1,41 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          epoptes
+# Required-Start:    $network $remote_fs $syslog
+# Required-Stop:     $network $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Epoptes service
+# Description:       A twisted-based daemon that manages epoptes-client
+#                    and GUI connections.
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/bin/twistd
+PIDFILE=/var/run/epoptes.pid
+LOGFILE=/var/log/epoptes.log
+DESC="Epoptes service"
+
+# If this is an LTSP chroot, then only run the service if EPOPTES=True
+if [ -f /etc/ltsp_chroot ] && [ -f /usr/share/ltsp/ltsp-common-functions ]; then
+    . /usr/share/ltsp/ltsp-common-functions
+    eval $(getltscfg -a) || true
+    boolean_is_true "$EPOPTES" || exit 0
+fi
+
+case "$1" in
+    start)
+        start-stop-daemon --start --exec "$DAEMON" -- --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
+        ;;
+    stop)
+        start-stop-daemon --stop --pidfile "$PIDFILE"
+        ;;
+    restart|force-reload)
+        "$0" stop
+        "$0" start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+        exit 1
+    ;;
+esac
