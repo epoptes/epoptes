@@ -109,7 +109,7 @@
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
-    <property name="pixbuf">/usr/share/icons/hicolor/16x16/apps/lpi-bug.png</property>
+    <property name="icon_name">dialog-warning</property>
   </object>
   <object class="GtkImage" id="image29">
     <property name="visible">True</property>
@@ -117,7 +117,7 @@
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
-    <property name="pixbuf">/usr/share/icons/hicolor/16x16/apps/lpi-help.png</property>
+    <property name="icon_name">help-faq</property>
   </object>
   <object class="GtkImage" id="image30">
     <property name="visible">True</property>

@@ -104,7 +104,7 @@ def read_shell_file(filename):
 # The system settings are shared with epoptes-clients, that's why the caps.
 system = read_shell_file('/etc/default/epoptes')
 system.setdefault('PORT', 569)
-system.setdefault('SOCKET_GROUP', 'admin')
+system.setdefault('SOCKET_GROUP', 'epoptes')
 system.setdefault('DIR', '/var/run/epoptes')
 
 if os.getuid() != 0:

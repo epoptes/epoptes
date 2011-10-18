@@ -28,7 +28,7 @@ case "$1" in
         start-stop-daemon --start --exec "$DAEMON" -- --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
         ;;
     stop)
-        start-stop-daemon --stop --pidfile "$PIDFILE"
+        start-stop-daemon --stop --pidfile "$PIDFILE" || true
         ;;
     restart|force-reload)
         "$0" stop

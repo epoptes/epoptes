@@ -5,4 +5,4 @@
 # Epoptes server will use the following group for the communications socket.
 # That means that any user in that group will be able to launch the epoptes UI
 # and control the clients.
-#SOCKET_GROUP=admin
+#SOCKET_GROUP=epoptes

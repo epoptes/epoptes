@@ -3,7 +3,7 @@ Section: admin
 Priority: extra
 Maintainer: Fotis Tsamis <ftsamis@gmail.com>
 Build-Depends: debhelper (>= 7.3.0)
-Build-Depends-Indep: python (>= 2.4), python-central, 
+Build-Depends-Indep: python (>= 2.4), python-central,
  python-distutils-extra (>= 2.4)
 XS-Python-Version: current
 Standards-Version: 3.8.4
@@ -18,8 +18,8 @@ Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
 Recommends: epoptes-client, vinagre
 Suggests: ltsp-server, squid, ident2, vlc
 XB-Python-Version: ${python:Versions}
-Description: Classroom administration tool
- This package contains a GUI for controlling student PCs.
+Description: Computer lab management tool
+ Contains the server daemon and a GUI for controlling client PCs.
  .
  It supports LTSP installations, but it also works without LTSP.
 
@@ -29,6 +29,6 @@ Depends: ${python:Depends}, ${misc:Depends}, xvnc4viewer, screen, socat
 Recommends: python-gtk2, x11vnc, zenity
 Suggests: ident2
 XB-Python-Version: ${python:Versions}
-Description: Classroom administration tool (client)
+Description: Computer lab management tool (client)
  .
  Contains the client daemon and some utilities for getting screenshots etc.
