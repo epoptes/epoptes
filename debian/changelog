@@ -1,4 +1,4 @@
-epoptes (0.3b2) lucid; urgency=low
+epoptes (0.3b3) lucid; urgency=low
 
   * Switch from upstart to sysvinit
   * Use group epoptes instead of admin for the socket
