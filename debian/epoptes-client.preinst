@@ -4,6 +4,6 @@
 # sysvinit migration.
 
 if [ "$1" = install ] || [ "$1" = upgrade ]; then
-    rm -f /etc/init.d/epoptes-client
+    test -h /etc/init.d/epoptes-client && rm -f /etc/init.d/epoptes-client
     rm -f /etc/init/epoptes-client.conf
 fi
