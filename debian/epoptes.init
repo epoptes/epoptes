@@ -23,19 +23,29 @@ if [ -f /etc/ltsp_chroot ] && [ -f /usr/share/ltsp/ltsp-common-functions ]; then
     boolean_is_true "$EPOPTES" || exit 0
 fi
 
+. /lib/lsb/init-functions
+
 case "$1" in
     start)
-        start-stop-daemon --start --exec "$DAEMON" -- --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
+        log_daemon_msg "Starting the epoptes daemon" "epoptes"
+        start-stop-daemon --start --quiet --oknodo --exec "$DAEMON" -- --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
+        log_end_msg $?
         ;;
     stop)
-        start-stop-daemon --stop --pidfile "$PIDFILE" || true
+        log_daemon_msg "Stoppping the epoptes daemon" "epoptes"
+        start-stop-daemon --stop --quiet --oknodo --pidfile "$PIDFILE" || true
+        log_end_msg $?
         ;;
     restart|force-reload)
         "$0" stop
+        sleep 2
         "$0" start
         ;;
+    status)
+        status_of_proc -p $PIDFILE $DAEMON epoptes && exit 0 || exit $?
+        ;;
     *)
-        echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+        echo "Usage: $0 {start|stop|restart|force-reload|status}" >&2
         exit 1
     ;;
 esac

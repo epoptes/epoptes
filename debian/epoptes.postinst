@@ -19,7 +19,7 @@ install() {
         . /etc/default/epoptes || true
     fi
     SOCKET_GROUP=${SOCKET_GROUP:-epoptes}
-    if ! getent group "$SOCKET_GROUP"; then
+    if ! getent group "$SOCKET_GROUP" >/dev/null; then
         addgroup --system "$SOCKET_GROUP"
     fi
 }
