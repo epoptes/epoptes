@@ -29,9 +29,10 @@ from epoptes.common import config
 # Check that the user is a member of the epoptes SOCKET_GROUP
 import grp
 if not os.environ['USER'] in grp.getgrnam(config.system['SOCKET_GROUP']).gr_mem:
-    # TODO: show a dialog instead
-    sys.exit("User %s must be a member of group %s to run epoptes." % \
-        (os.environ['USER'], config.system['SOCKET_GROUP']))
+    dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format="User %s must be a member of group %s to run epoptes." %(os.environ['USER'], config.system['SOCKET_GROUP']))
+    dlg.run()
+    dlg.destroy()
+    
 
 filter_pattern = None
 if len(sys.argv) > 1 and sys.argv[1].startswith("--filter-host="):
