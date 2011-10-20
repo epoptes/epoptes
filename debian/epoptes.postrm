@@ -23,7 +23,7 @@ remove() {
 }
 
 purge() {
-    if getent group epoptes; then
+    if getent group epoptes >/dev/null; then
         delgroup epoptes
     fi
 }

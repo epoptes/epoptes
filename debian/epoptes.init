@@ -27,12 +27,12 @@ fi
 
 case "$1" in
     start)
-        log_daemon_msg "Starting the epoptes daemon" "epoptes"
+        log_daemon_msg "Starting the epoptes daemon"
         start-stop-daemon --start --quiet --oknodo --exec "$DAEMON" -- --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
         log_end_msg $?
         ;;
     stop)
-        log_daemon_msg "Stoppping the epoptes daemon" "epoptes"
+        log_daemon_msg "Stopping the epoptes daemon"
         start-stop-daemon --stop --quiet --oknodo --pidfile "$PIDFILE" || true
         log_end_msg $?
         ;;
