@@ -89,7 +89,7 @@ def read_shell_file(filename):
     """
     
     if not os.path.isfile(filename):
-        return []
+        return {}
     try:
         f = open(filename, 'r')
         contents = f.read()
@@ -98,7 +98,7 @@ def read_shell_file(filename):
         # TODO: maybe return at least all the valid pairs?
         return dict(v.split('=') for v in contents)
     except:
-        return []
+        return {}
 
 
 # The system settings are shared with epoptes-clients, that's why the caps.
