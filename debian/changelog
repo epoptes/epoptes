@@ -1,3 +1,10 @@
+epoptes (0.3.1~0) UNRELEASED; urgency=low
+
+  * Switch to using dh --with python2
+  * Drop dependency on python-central
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 30 Oct 2011 16:34:16 -0400
+
 epoptes (0.3.0) lucid; urgency=low
 
   * Switch from upstart to sysvinit, for Debian compatibility

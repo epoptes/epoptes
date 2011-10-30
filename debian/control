@@ -3,9 +3,8 @@ Section: admin
 Priority: extra
 Maintainer: Fotis Tsamis <ftsamis@gmail.com>
 Build-Depends: debhelper (>= 7.3.0)
-Build-Depends-Indep: python (>= 2.4), python-central,
+Build-Depends-Indep: python (>= 2.6.6-3~), 
  python-distutils-extra (>= 2.4)
-XS-Python-Version: current
 Standards-Version: 3.8.4
 Vcs-Bzr: http://bazaar.launchpad.net/~epoptes-devs/epoptes/trunk
 Vcs-Browser: http://bazaar.launchpad.net/~epoptes-devs/epoptes/trunk/files
@@ -17,7 +16,6 @@ Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
  python-twisted-core, python-vte, zenity
 Recommends: epoptes-client, vinagre
 Suggests: ltsp-server, squid, ident2, vlc
-XB-Python-Version: ${python:Versions}
 Description: Computer lab management tool
  Contains the server daemon and a GUI for controlling client PCs.
  .
@@ -28,7 +26,6 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, xvnc4viewer, screen, socat
 Recommends: python-gtk2, x11vnc, zenity
 Suggests: ident2
-XB-Python-Version: ${python:Versions}
 Description: Computer lab management tool (client)
  .
  Contains the client daemon and some utilities for getting screenshots etc.

@@ -8,10 +8,9 @@
 
 # Uncomment this to turn on verbose mode.
 # export DH_VERBOSE=1
-export DH_PYCENTRAL=include-links dh_pycentral -i
 
 %:
-	dh  $@
+	dh  $@ --with python2
 
 # This runs the following:
 # dh clean
@@ -39,6 +38,3 @@ export DH_PYCENTRAL=include-links dh_pycentral -i
 
 # override_dh_compress:
 #   TODO: maybe specify that files in examples/* shouldn't be compressed?
-
-override_dh_pysupport:
-	dh_pycentral
