@@ -6,7 +6,7 @@ Uploaders: Vagrant Cascadian <vagrant@debian.org>
 Build-Depends: debhelper (>= 7.3.0)
 Build-Depends-Indep: python (>= 2.6.6-3~), 
  python-distutils-extra (>= 2.4)
-Standards-Version: 3.8.4
+Standards-Version: 3.9.2
 Vcs-Bzr: http://bazaar.launchpad.net/~epoptes-devs/epoptes/trunk
 Vcs-Browser: http://bazaar.launchpad.net/~epoptes-devs/epoptes/trunk/files
 

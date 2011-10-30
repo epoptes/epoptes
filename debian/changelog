@@ -1,12 +1,13 @@
 epoptes (0.3.1~0) UNRELEASED; urgency=low
 
-  * Initial upload to Debian (Closes: #646971)
-  * Switch to using dh --with python2
-  * Drop dependency on python-central
+  * Initial upload to Debian (Closes: #646971).
+  * Switch to using dh --with python2.
+  * Drop dependency on python-central.
   * Minor lintian fixes in preinst scripts.
   * Add myself to Uploaders.
+  * Update to Standards-Version 3.9.2.
 
- -- Vagrant Cascadian <vagrant@debian.org>  Sun, 30 Oct 2011 17:06:11 -0400
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 30 Oct 2011 17:13:01 -0400
 
 epoptes (0.3.0) lucid; urgency=low
 
