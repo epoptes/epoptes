@@ -14,7 +14,7 @@ Package: epoptes
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
  notification-daemon | xfce4-notifyd, python-gtk2, python-notify,
- python-twisted-core, python-vte, zenity
+ python-twisted-core, python-vte, zenity, python-dbus
 Recommends: epoptes-client, vinagre
 Suggests: ltsp-server, squid, ident2, vlc
 Description: Computer lab management tool
