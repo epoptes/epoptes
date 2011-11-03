@@ -111,6 +111,22 @@ epoptes_info() {
     export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT
 }
 
+fetch_certificate()
+{
+    test "$UID" -eq 0 || die "Need to be root to fetch the certificate"
+    mkdir -p /etc/epoptes
+    openssl s_client -connect $SERVER:$PORT < /dev/null \
+        | sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d' \
+        > /etc/epoptes/server.crt
+    if [ -s /etc/epoptes/server.crt ]; then
+        echo "Successfully fetched certificate from $SERVER:$PORT"
+        exit 0
+    else
+        die "Failed to fetch certificate from $SERVER:$PORT"
+    fi
+}
+
+
 # Main.
 
 # When called from /etc/xdg/autostart, /sbin is not in the system path.
@@ -127,22 +143,20 @@ if [ -f /etc/default/epoptes-client ]; then
     . /etc/default/epoptes-client
 fi
 # And the command line parameters override the configuration file
+if [ "$1" = "-c" ]; then
+    need_certificate=true
+    shift
+fi
 SERVER=${1:-$SERVER}
 PORT=${2:-$PORT}
+
+# Provide an easy way to fetch the server certificate
+test -n "$need_certificate" && fetch_certificate
 
 # We don't want epoptes-client root service running on the LTSP server
 if [ $UID -eq 0 ] && [ $TYPE = "server" ]; then
     exit 0
 fi
-
-# Kill all ghost instances of epoptes-client of the same user.
-# That may happen if network connectivity is lost for a while.
-# Standalone workstations don't hang if the network is down, and nbd might cope
-# with that for LTSP clients, but epoptes kills disconnected epoptes-clients.
-# Exclude the current epoptes-client.
-for p in $(pgrep -U $UID epoptes-client | grep -v $$); do
-    kill $p
-done
 
 # Go to the scripts directory, so that we can run them with ./xxx
 cd $(dirname "$0")
@@ -154,30 +168,62 @@ fi
 
 epoptes_info
 
-# Source the lsb init functions, for log_begin_msg / log_end_msg
-test -f /lib/lsb/init-functions || die "/lib/lsb/init-functions not found"
-. /lib/lsb/init-functions
+# Source the lsb init functions, for log_begin_msg / log_end_msg.
+# Unfortunately it seems that Centos and Fedora don't have that file.
+if [ -f /lib/lsb/init-functions ]; then
+    . /lib/lsb/init-functions
+else
+    alias log_begin_msg=echo
+    alias log_warning_msg=echo
+    alias log_end_msg=echo
+fi
 
-log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
+# Epoptes-client is called two times and runs in three phases:
+# In the first phase, some initialization is done, and socat is exec'ed.
+# In the second phase, socat has successfully connected, and calls
+# epoptes-client again to resume execution. Epoptes-client has to go through
+# some initialization again, and it finally exec's a plain /bin/sh with
+# the stdio descriptors that were inherited from socat.
+# That's the third phase, a plain shell. But bash'es `exec -a` is used, so
+# that "epoptes-client" is displayed in `ps`, instead of "/bin/sh".
+if [ -z "$EPOPTES_CLIENT_PHASE" ]; then
+    export EPOPTES_CLIENT_PHASE=1
 
-# Connect to the server, or keep retrying until the server gets online
-# (for standalone workstations booted before the server).
-# If your bash isn't compiled with tcp socket support,
-# install netcat-traditional and substitude the following with
-# nc $SERVER $PORT -e /bin/sh
-while ! exec 0<>"/dev/tcp/$SERVER/$PORT"; do
-    log_warning_msg "Server $SERVER:$PORT did not respond, retrying in 10 sec..."
-    sleep 10
-done
+    # Kill all ghost instances of epoptes-client of the same user.
+    # That may happen if network connectivity is lost for a while.
+    # Standalone workstations don't hang if the network is down, and nbd might cope
+    # with that for LTSP clients, but epoptes kills disconnected epoptes-clients.
+    # Exclude the current epoptes-client.
+    pkill -U $UID -f '^epoptes-client \+m'
 
-log_end_msg 0
+    log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
 
-# Also redirect stdout to the server, but keep stderr to the local console,
-# to avoid possible noise from applications started in the background.
-# If the callee needs to grab stderr, it can use `cmd 2>&1`.
-exec 1>&0
+    # Remember the stdout descriptor to use it in the second phase.
+    # stdio will be redirected to the server, but stderr will be kept in the
+    # local console, to avoid possible noise from applications started in the
+    # background.
+    # If the callee needs to grab stderr, it can use `cmd 2>&1`.
+    exec 5>&1
 
-# Finally, exec sh instead of keeping bash, to save memory.
-# But use "epoptes-client" as the zeroth argument, to make it easier for `ps`.
-# +m = disable job control.
-exec -a epoptes-client /bin/sh +m
+    # Connect to the server, or keep retrying until the server gets online
+    # (for standalone workstations booted before the server).
+    export EPOPTES_CLIENT_PHASE=2
+    if [ -s /etc/epoptes/server.crt ]; then
+        exec socat EXEC:"$0 $*" \
+            openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,forever
+    elif [ -f /etc/epoptes/server.crt ]; then
+       exec socat tcp:$SERVER:$PORT,forever EXEC:"$0 $*",nofork
+    else
+        die "
+The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
+You can fetch the server certificate by running:
+$0 -c"
+    fi
+elif [ "$EPOPTES_CLIENT_PHASE" = "2" ]; then
+    log_end_msg 0 >&5
+    # Finally, exec sh instead of keeping bash, to save memory.
+    # But use "epoptes-client" as the zeroth argument, to make it easier for `ps`.
+    # +m = disable job control.
+    export EPOPTES_CLIENT_PHASE=3
+    exec -a epoptes-client /bin/sh +m
+fi

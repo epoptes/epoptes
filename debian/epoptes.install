@@ -1,4 +1,4 @@
-usr/bin/*
+usr/bin/
 usr/lib/python*/*/*.egg-info
 usr/lib/python*/*/epoptes/*/*.py
 usr/lib/python*/*/epoptes/*.py
@@ -6,4 +6,5 @@ usr/lib/python*/*/twisted/plugins/*.py
 usr/share/applications/
 usr/share/icons/
 usr/share/locale/
+usr/share/ltsp/plugins/ltsp-build-client/common/
 usr/share/epoptes/

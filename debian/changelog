@@ -6,7 +6,7 @@ epoptes (0.3.1~0) UNRELEASED; urgency=low
   * Minor lintian fixes in preinst scripts.
   * Add myself to Uploaders.
   * Update to Standards-Version 3.9.2.
-  * Add dependency on python-dbus. 
+  * Add dependency on python-dbus.
 
  -- Vagrant Cascadian <vagrant@debian.org>  Mon, 31 Oct 2011 03:18:02 -0400
 

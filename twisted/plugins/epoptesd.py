@@ -34,6 +34,7 @@ from twisted.application import internet, service
 from epoptes.daemon import bashplex, guiplex
 from epoptes.common import config
 import grp
+from OpenSSL import SSL
 
 
 class Options(usage.Options):
@@ -42,6 +43,14 @@ class Options(usage.Options):
         ('pingInterval', 'i', 10),
         ('pingTimeout', 't', 10),
       ]
+
+
+class ServerContextFactory:
+    def getContext(self):
+        ctx = SSL.Context(SSL.SSLv23_METHOD)
+        ctx.use_certificate_file("/etc/epoptes/server.crt")
+        ctx.use_privatekey_file("/etc/epoptes/server.key")
+        return ctx
 
 
 class ServiceMaker(object):
@@ -56,8 +65,13 @@ class ServiceMaker(object):
         factory.pingInterval=int(options['pingInterval'])
         factory.pingTimeout=int(options['pingTimeout'])
 
-        clientService = internet.TCPServer(int(config.system['PORT']), factory)
-        
+        if config.system['ENCRYPTION']:
+            clientService = internet.SSLServer(int(config.system['PORT']),
+                factory, ServerContextFactory())
+        else:
+            clientService = internet.TCPServer(int(config.system['PORT']),
+                factory)
+
         gid = grp.getgrnam(config.system['SOCKET_GROUP'])[2]
         
         if not os.path.isdir(config.system['DIR']):

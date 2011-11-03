@@ -1,16 +1,23 @@
-.IX Title "EPOPTES 8"
-.TH EPOPTES 8 "2011-09-22" epoptes epoptes
+.IX Title "EPOPTES-CLIENT 8"
+.TH EPOPTES-CLIENT 8 "2011-11-03" epoptes-client epoptes-client
 
 .SH "NAME"
-epoptes \- A computer lab administration tool
+epoptes\-client \- Client side daemon for epoptes
 
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
-epoptes
+epoptes\-client [-c] [SERVER] [PORT]
 
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
-\fBepoptes\fP supports screen broadcasting, monitoring, sharing and locking, executing command on the clients, sending messages, and lots more.
+\fBepoptes\-client\fP is the client side daemon for \fBepoptes\fP, a computer lab administration tool.
+
+.SH "OPTIONS"
+.IP "\fB\-c\fP" 10
+Fetch the /etc/epoptes/server.crt certificate from the server.
+
+.SH "SEE ALSO"
+\fBepoptes\fP\fB(1).\fP
 
 .SH "AUTHOR"
 .IX Header "AUTHOR"

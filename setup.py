@@ -58,4 +58,6 @@ DistUtilsExtra.auto.setup(
     author = 'Fotis Tsamis',
     author_email = 'ftsamis@gmail.com',
     py_modules = ['twisted.plugins.epoptesd'],
+    data_files = [('/usr/share/ltsp/plugins/ltsp-build-client/common/',
+        ['data/040-epoptes-certificate'])],
 )

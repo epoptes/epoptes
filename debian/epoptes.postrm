@@ -26,6 +26,8 @@ purge() {
     if getent group epoptes >/dev/null; then
         delgroup epoptes
     fi
+    rm -f /etc/epoptes/server.key
+    rm -f /etc/epoptes/server.crt
 }
 
 case "$1" in
