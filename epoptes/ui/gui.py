@@ -34,7 +34,6 @@ import dbus
 import logging
 import sys
 import shlex
-import random
 from gobject import TYPE_PYOBJECT as gPyobject
 from twisted.internet import reactor
 from twisted.python import log
@@ -213,14 +212,38 @@ class EpoptesGui(object):
         # And, tell the clients to connect to the server
         self.execOnSelectedClients(self.c.EXEC +
             'x11vnc -noshm -viewonly -connect_or_exit $SERVER')
-    
-    
+
+
+    def findUnusedPort(base=None):
+        """Find an unused port, optionally starting from "base".
+        """
+        import socket
+
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        if base = None:
+            s.bind(('', 0))
+            s.listen(1)
+            port = s.getsockname()[1]
+            s.close()
+            return port
+        else:
+            port = int(base)
+            while port < 65535:
+                try:
+                    s.connect(('', port))
+                    s.shutdown(2)
+                    port += 1
+                except:
+                    return port
+            return None
+
+
     def broadcastTeacher(self, widget):
         if not self.vncserver_running:
             self.vncserver_running = True
-            # TODO: switch to using -autoport
+            port = str(self.findUnusedPort())
             subprocess.Popen(['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', 
-                '-shared', '-forever', '-nolookup', '-24to32', '-rfbport', '5903',
+                '-shared', '-forever', '-nolookup', '-24to32', '-rfbport', port,
                 '-allow', '127.,192.168.,10.,169.254.' ])
         self.execOnSelectedClients("""killall gnome-screensaver 2>/dev/null""")
         # TODO: don't use sleep on the direct client shell, use execute script instead
@@ -231,7 +254,7 @@ eval $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
 export DISPLAY XAUTHORITY
 xset dpms force on
 sleep 0.$((`hexdump -e '"%d"' -n 2 /dev/urandom` % 50 + 50))
-EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:3)""", root=True)
+EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:%s)""" % port, root=True)
 
     # FIXME: Make it transmission-specific, not for all transmissions
     def stopTransmissions(self, widget):
@@ -738,8 +761,7 @@ which is incompatible with the current epoptes version.\
             else:
                 server="server"
 
-            # TODO: find unused ports instead of choosing random ones
-            port = random.randint(20000, 60000)
+            port = self.findUnusedPort()
 
             subprocess.Popen(['xterm', '-e', 'socat', 
                 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
