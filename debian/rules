@@ -4,13 +4,12 @@
 # Uncomment this to turn on verbose mode.
 # export DH_VERBOSE=1
 
-# Fall back to python-support on systems that lack dh_python2
-WITH_PYTHON2 = $(shell test -f /usr/bin/dh_python2 && echo "--with python2")
-
-export DH_PYCENTRAL=include-links dh_pycentral -i
+# Fall back to python-central on systems that lack dh_python2
+PYTHON_VARIANT = $(shell test -f /usr/bin/dh_python2 && echo "python2")
+ifeq ($(PYTHON_VARIANT),)
+	PYTHON_VARIANT=python_central
+	export DH_PYCENTRAL=include-links dh_pycentral -i
+endif
 
 %:
-	dh  $@ ${WITH_PYTHON2}
-
-override_dh_pysupport:
-	dh_pycentral
+	dh  $@ --with $(PYTHON_VARIANT)
