@@ -9,6 +9,7 @@ Build-Depends: debhelper (>= 7.3.0),
 Standards-Version: 3.9.2
 Vcs-Bzr: http://bazaar.launchpad.net/~epoptes/epoptes/trunk
 Vcs-Browser: http://bazaar.launchpad.net/~epoptes/epoptes/trunk/files
+Homepage: http://www.epoptes.org
 
 Package: epoptes
 Architecture: all
