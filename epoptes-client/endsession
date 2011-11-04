@@ -54,6 +54,9 @@ do_logout() {
     # XFCE
     xfce4-session-logout -l >$stdout 2>&1 && return
 
+    # LXDE
+    test -n "$_LXSESSION_PID" && kill "$_LXSESSION_PID" && return
+
     die "I don't know how to logout in this environment"
 }
 
