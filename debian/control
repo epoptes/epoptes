@@ -13,9 +13,9 @@ Vcs-Browser: http://bazaar.launchpad.net/~epoptes-devs/epoptes/trunk/files
 Package: epoptes
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
- notification-daemon | xfce4-notifyd, openssl, python-gtk2, python-notify,
- python-twisted-core, python-vte, zenity, python-dbus
-Recommends: epoptes-client, vinagre, xterm
+ notification-daemon | xfce4-notifyd, openssl, python-dbus, python-gtk2,
+ python-notify, python-twisted-core, python-vte, xvnc4viewer, zenity
+Recommends: epoptes-client, xterm
 Suggests: ltsp-server, squid, ident2, vlc
 Description: Computer lab management tool
  Contains the server daemon and a GUI for controlling client PCs.
@@ -25,7 +25,7 @@ Description: Computer lab management tool
 Package: epoptes-client
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, xvnc4viewer, screen, socat
-Recommends: python-gtk2, x11vnc, zenity, xterm
+Recommends: python-gtk2, xterm, x11vnc, zenity
 Suggests: ident2
 Description: Computer lab management tool (client)
  .

@@ -77,6 +77,7 @@ class EpoptesGui(object):
         self.shownCompatibilityWarning = False 
         self.added = False
         self.vncserver_running = False
+        self.xvnc4viewer = None
         self.scrWidth = 100
         self.scrHeight = 75
         if os.getuid() != 0:
@@ -141,16 +142,18 @@ class EpoptesGui(object):
         self.set_cView(self.cView_order[0], self.cView_order[1])
         self.setClientMenuSensitivity()
 
-    		
+
     def on_mainwin_destroy(self, widget):
         """
         Quit clicked
 
         Close main window
         """
+        if not self.xvnc4viewer is None:
+            self.xvnc4viewer.kill()
         reactor.stop()
-    
-    
+
+
     def toggleRealNameColumn(self, widget=None):
         """Show/hide the real names of the users instead of the username"""
         pass # Implement me
@@ -187,30 +190,24 @@ class EpoptesGui(object):
         """
         self.execOnSelectedClients(self.c.LOGOUT,
             warn=self.c.LOGOUT_WARN)
-    
-    ## FIXME: Don't use vinagre, we want something more integrated
+
+
+    def reverseConnection(self, widget, path, view_column, cmd):
+        # Open xvnc4viewer in listen mode
+        if self.xvnc4viewer is None:
+            self.xvnc4viewer = subprocess.Popen(['xvnc4viewer', '-listen'])
+
+        # And, tell the clients to connect to the server
+        self.execOnSelectedClients(self.c.EXEC + cmd)
+
+
     def assistStudent(self, widget, path=None, view_column=None):
-        # Tell vinagre to listen for incoming connections
-        subprocess.Popen(['gconftool-2', '--set',
-            '/apps/vinagre/always_enable_listening', '--type', 'boolean', '1'])
-
-        # Open vinagre
-        subprocess.Popen(['vinagre'])
-
-        # And, tell the clients to connect to the server
-        self.execOnSelectedClients(self.c.EXEC +
+        self.reverseConnection(widget, path, view_column, 
             'x11vnc -noshm -connect_or_exit $SERVER')
-    
+
+
     def monitorStudent(self, widget, path=None, view_column=None):
-        # Tell vinagre to listen for incoming connections
-        subprocess.Popen(['gconftool-2', '--set',
-            '/apps/vinagre/always_enable_listening', '--type', 'boolean', '1'])
-
-        # Open vinagre
-        subprocess.Popen(['vinagre'])
-
-        # And, tell the clients to connect to the server
-        self.execOnSelectedClients(self.c.EXEC +
+        self.reverseConnection(widget, path, view_column,
             'x11vnc -noshm -viewonly -connect_or_exit $SERVER')
 
 
