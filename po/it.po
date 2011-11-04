@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-19 00:16+0300\n"
+"POT-Creation-Date: 2011-11-03 18:23+0200\n"
 "PO-Revision-Date: 2011-10-15 19:35+0000\n"
 "Last-Translator: Marco Menardi <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-27 05:46+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
+"X-Launchpad-Export-Date: 2011-11-04 05:47+0000\n"
+"X-Generator: Launchpad (build 14231)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -269,38 +269,38 @@ msgstr "_Vista"
 msgid "epoptes"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:19
+#: ../epoptes/ui/notifications.py:43
 msgid "Connected users:"
 msgstr "Utenti connessi:"
 
-#: ../epoptes/ui/notifications.py:19 ../epoptes/ui/notifications.py:23
+#: ../epoptes/ui/notifications.py:43 ../epoptes/ui/notifications.py:47
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s in %(host)s"
 
-#: ../epoptes/ui/notifications.py:23
+#: ../epoptes/ui/notifications.py:47
 msgid "Connected:"
 msgstr "Connessi:"
 
-#: ../epoptes/ui/notifications.py:27
+#: ../epoptes/ui/notifications.py:51
 msgid "Disconnected:"
 msgstr "Disconnessi:"
 
-#: ../epoptes/ui/notifications.py:27
+#: ../epoptes/ui/notifications.py:51
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s da %(host)s"
 
-#: ../epoptes/ui/notifications.py:31
+#: ../epoptes/ui/notifications.py:55
 msgid "Shut down:"
 msgstr "Spegni:"
 
-#: ../epoptes/ui/client_information.py:34
+#: ../epoptes/ui/client_information.py:58
 #, python-format
 msgid "Properties of %s"
 msgstr "Proprietà di %s"
 
-#: ../epoptes/ui/gui.py:431
+#: ../epoptes/ui/gui.py:438
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -316,19 +316,19 @@ msgstr ""
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "URL, file o comando da eseguire nei client selezionati:"
 
-#: ../epoptes/common/commands.py:23
+#: ../epoptes/common/commands.py:46
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Sei sicuro di voler spegnere tutti i computer?"
 
-#: ../epoptes/common/commands.py:24
+#: ../epoptes/common/commands.py:47
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Sei sicuro di voler riavviare tutti i computer?"
 
-#: ../epoptes/common/commands.py:25
+#: ../epoptes/common/commands.py:48
 msgid "Are you sure you want to log off all the users?"
 msgstr "Sei sicuro di voler terminare la sessione di tutti gli utenti?"
 
-#: ../epoptes/common/commands.py:26
+#: ../epoptes/common/commands.py:49
 msgid ""
 "Are you sure you want to terminate all processes of the selected users?"
 msgstr ""
@@ -341,6 +341,15 @@ msgstr ""
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
 msgstr "Epoptes strumento di amministrazione di un laboratorio di computer"
+
+#: ../bin/epoptes.py:59
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr ""
+
+#: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+msgid "Error"
+msgstr "Errore"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client hostname:"
@@ -373,10 +382,6 @@ msgstr "RAM:"
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "User:"
 msgstr "Utente:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:1
-msgid "Error"
-msgstr "Errore"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
