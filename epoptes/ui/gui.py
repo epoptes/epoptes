@@ -214,13 +214,13 @@ class EpoptesGui(object):
             'x11vnc -noshm -viewonly -connect_or_exit $SERVER')
 
 
-    def findUnusedPort(base=None):
+    def findUnusedPort(self, base=None):
         """Find an unused port, optionally starting from "base".
         """
         import socket
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        if base = None:
+        if base is None:
             s.bind(('', 0))
             s.listen(1)
             port = s.getsockname()[1]
@@ -241,10 +241,10 @@ class EpoptesGui(object):
     def broadcastTeacher(self, widget):
         if not self.vncserver_running:
             self.vncserver_running = True
-            port = str(self.findUnusedPort())
+            port = self.findUnusedPort()
             subprocess.Popen(['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', 
-                '-shared', '-forever', '-nolookup', '-24to32', '-rfbport', port,
-                '-allow', '127.,192.168.,10.,169.254.' ])
+                '-shared', '-forever', '-nolookup', '-24to32', '-rfbport',
+                str(port), '-allow', '127.,192.168.,10.,169.254.' ])
         self.execOnSelectedClients("""killall gnome-screensaver 2>/dev/null""")
         # TODO: don't use sleep on the direct client shell, use execute script instead
         # TODO: Move these commands maybe to commands.py #FIXME
@@ -253,8 +253,8 @@ p=$(pidof -s ldm gdm-simple-greeter gnome-session | cut -d' ' -f1)
 eval $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
 export DISPLAY XAUTHORITY
 xset dpms force on
-sleep 0.$((`hexdump -e '"%d"' -n 2 /dev/urandom` % 50 + 50))
-EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:%s)""" % port, root=True)
+sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
+EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % port, root=True)
 
     # FIXME: Make it transmission-specific, not for all transmissions
     def stopTransmissions(self, widget):
@@ -531,7 +531,7 @@ which is incompatible with the current epoptes version.\
         return False
 
     def updateScreenshots(self, handle, reply):
-        if reply == None:
+        if reply is None:
             return
         try:
             rowstride, size, pixels = reply.strip().split('\n', 2)
@@ -606,7 +606,7 @@ which is incompatible with the current epoptes version.\
 
     def openIRCLink(self, widget):
         user = os.getenv("USER")
-        if user == None:
+        if user is None:
             user = "teacher."
         self.openLink("http://webchat.freenode.net/?nick=" + user +
             "&channels=linux.sch.gr&prompt=1")
