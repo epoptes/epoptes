@@ -203,12 +203,12 @@ class EpoptesGui(object):
 
     def assistStudent(self, widget, path=None, view_column=None):
         self.reverseConnection(widget, path, view_column, 
-            'x11vnc -noshm -connect_or_exit $SERVER')
+            'x11vnc -noshm -24to32 -connect_or_exit $SERVER')
 
 
     def monitorStudent(self, widget, path=None, view_column=None):
         self.reverseConnection(widget, path, view_column,
-            'x11vnc -noshm -viewonly -connect_or_exit $SERVER')
+            'x11vnc -noshm -24to32 -viewonly -connect_or_exit $SERVER')
 
 
     def findUnusedPort(self, base=None):
