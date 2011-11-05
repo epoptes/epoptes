@@ -105,7 +105,7 @@ def read_shell_file(filename):
 # The system settings are shared with epoptes-clients, that's why the caps.
 system = read_shell_file('/etc/default/epoptes')
 # TODO: check if the types, e.g. PORT=int, may cause problems.
-system.setdefault('PORT', 569)
+system.setdefault('PORT', 789)
 system.setdefault('SOCKET_GROUP', 'epoptes')
 system.setdefault('DIR', '/var/run/epoptes')
 # Allow running unencrypted, for clients with very low RAM.

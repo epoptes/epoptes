@@ -67,7 +67,7 @@ basic_info() {
     else
         SERVER=localhost
     fi
-    PORT=569
+    PORT=789
 }
 
 epoptes_info() {

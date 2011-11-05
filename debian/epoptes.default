@@ -1,6 +1,6 @@
 # The port where the server will be listening on, and where the client will try
-# to connect to. For security reasons it defaults to a system port, 569.
-#PORT=569
+# to connect to. For security reasons it defaults to a system port, 789.
+#PORT=789
 
 # Epoptes server will use the following group for the communications socket.
 # That means that any user in that group will be able to launch the epoptes UI

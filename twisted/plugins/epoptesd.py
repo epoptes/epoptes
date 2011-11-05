@@ -39,7 +39,7 @@ from OpenSSL import SSL
 
 class Options(usage.Options):
     optParameters = [
-        ("clientport", "p", 569, "Client Port"),
+        ("clientport", "p", 789, "Client Port"),
         ('pingInterval', 'i', 10),
         ('pingTimeout', 't', 10),
       ]

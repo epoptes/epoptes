@@ -7,5 +7,5 @@
 #SERVER=server
 
 # The port where the server will be listening on, and where the client will try
-# to connect to. For security reasons it defaults to a system port, 569.
-#PORT=569
+# to connect to. For security reasons it defaults to a system port, 789.
+#PORT=789
