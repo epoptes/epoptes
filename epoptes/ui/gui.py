@@ -290,9 +290,9 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
 
     def remoteRootTerminal(self, widget):
         self.execOnSelectedClients("""export $(tr '\\0' '\\n' < """ +
-            """/proc/$(pidof -s ldm gdm-simple-greeter gnome-session | """ +
+            """/proc/$(pidof -s ldm gdm-simple-greeter gnome-session lxsession | """ +
             """cut -d' ' -f1)/environ | egrep '^DISPLAY=|^XAUTHORITY=')\n""" +
-            """./execute xterm -e sudo -i""", root=True)
+            """./execute xterm -e bash -l""", root=True)
     ## END_FIXUS
 
     # FIXME : Change the way lock screen works, don't kill and relock...
@@ -745,7 +745,7 @@ which is incompatible with the current epoptes version.\
             clients = self.cstore
 
         if as_root:
-            screen_params="sudo -i"
+            screen_params="bash -l"
         else:
             screen_params="-l"
 
