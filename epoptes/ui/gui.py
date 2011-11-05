@@ -238,20 +238,19 @@ class EpoptesGui(object):
     def broadcastTeacher(self, widget):
         if not self.vncserver_running:
             self.vncserver_running = True
-            port = self.findUnusedPort()
+            self.vncport = self.findUnusedPort()
             subprocess.Popen(['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', 
                 '-shared', '-forever', '-nolookup', '-24to32', '-rfbport',
-                str(port), '-allow', '127.,192.168.,10.,169.254.' ])
+                str(self.vncport), '-allow', '127.,192.168.,10.,169.254.' ])
         self.execOnSelectedClients("""killall gnome-screensaver 2>/dev/null""")
         # TODO: don't use sleep on the direct client shell, use execute script instead
         # TODO: Move these commands maybe to commands.py #FIXME
         self.execOnSelectedClients("""test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
-p=$(pidof -s ldm gdm-simple-greeter gnome-session | cut -d' ' -f1)
-eval $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
-export DISPLAY XAUTHORITY
+p=$(pidof -s ldm gdm-simple-greeter gnome-session lxsession | cut -d' ' -f1)
+export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
 xset dpms force on
 sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
-EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % port, root=True)
+EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % self.vncport, root=True)
 
     # FIXME: Make it transmission-specific, not for all transmissions
     def stopTransmissions(self, widget):
