@@ -24,4 +24,4 @@ else
 fi
 
 $logger -t epoptes -p syslog.info "Running epoptes-client, IFACE=$IFACE, EPOPTES_LTSP_CLIENT_HELPER=$EPOPTES_LTSP_CLIENT_HELPER, pid=$$"
-exec /usr/share/epoptes-client/epoptes-client
+exec /usr/sbin/epoptes-client
