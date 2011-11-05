@@ -19,6 +19,11 @@ Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
 Recommends: epoptes-client, xterm
 Suggests: ltsp-server, squid, ident2, vlc
 Description: Computer lab management tool
+ Epoptes is an open source computer lab management and monitoring tool. It
+ allows for screen broadcasting and monitoring, remote command execution, 
+ message sending, imposing restrictions like screen locking or sound muting 
+ the clients and much more!
+ .
  Contains the server daemon and a GUI for controlling client PCs.
  .
  It supports LTSP installations, but it also works without LTSP.
@@ -29,5 +34,9 @@ Depends: ${python:Depends}, ${misc:Depends}, xvnc4viewer, screen, socat
 Recommends: python-gtk2, xterm, x11vnc, zenity
 Suggests: ident2
 Description: Computer lab management tool (client)
+ Epoptes is an open source computer lab management and monitoring tool. It
+ allows for screen broadcasting and monitoring, remote command execution, 
+ message sending, imposing restrictions like screen locking or sound muting 
+ the clients and much more!
  .
  Contains the client daemon and some utilities for getting screenshots etc.
