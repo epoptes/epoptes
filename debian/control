@@ -30,7 +30,7 @@ Description: Computer lab management tool
 
 Package: epoptes-client
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, xvnc4viewer, screen, socat
+Depends: ${python:Depends}, ${misc:Depends}, xvnc4viewer, screen, socat, bsdmainutils
 Recommends: python-gtk2, xterm, x11vnc, zenity
 Suggests: ident2
 Description: Computer lab management tool (client)
