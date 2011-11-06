@@ -309,7 +309,7 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         Unlock screen for all clients selected
         """
         self.execOnSelectedClients('''test -n "$EPOPTES_LOCK_SCREEN_PID" && '''+\
-            '''kill "$EPOPTES_LOCK_SCREEN_PID" unset EPOPTES_LOCK_SCREEN_PID''')
+            '''kill "$EPOPTES_LOCK_SCREEN_PID"; unset EPOPTES_LOCK_SCREEN_PID''')
 
     # FIXME: Find something better
     def soundOff(self, widget):

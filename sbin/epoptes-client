@@ -48,10 +48,11 @@ my_boolean_is_true() {
 
 # Get $USER, $UID and $TYPE of the client, and the default $SERVER and $PORT.
 basic_info() {
-    test -n "$USER" || USER=$(whoami)
-    test -n "$UID" || UID=$(id -u)
+    test -n "$USER" || export USER=$(whoami)
+    test -n "$UID" || export UID=$(id -u)
+    test -n "$HOME" || export HOME=$(getent passwd "$UID" | cut -d: -f6)
 
-    # TODO: fix upstream "$LTSP_FATCLIENT" to be present on user sessions
+    # TODO: fix upstream "$LTSP_FATCLIENT" to be present in user sessions
     if my_boolean_is_true "$LTSP_FATCLIENT" && [ -f /etc/ltsp_fat_chroot ]; then
         TYPE="fat"
     elif [ -n "$LTSP_CLIENT" ] || [ -f /etc/ltsp_chroot ]; then
