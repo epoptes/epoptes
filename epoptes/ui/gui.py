@@ -76,8 +76,8 @@ class EpoptesGui(object):
         self.c = commands.commands()
         self.shownCompatibilityWarning = False 
         self.added = False
-        self.vncserver_running = False
-        self.xvnc4viewer = None
+        self.vncserver = None
+        self.vncviewer = None
         self.scrWidth = 100
         self.scrHeight = 75
         if os.getuid() != 0:
@@ -149,8 +149,10 @@ class EpoptesGui(object):
 
         Close main window
         """
-        if not self.xvnc4viewer is None:
-            self.xvnc4viewer.kill()
+        if not self.vncserver is None:
+            self.vncserver.kill()
+        if not self.vncviewer is None:
+            self.vncviewer.kill()
         reactor.stop()
 
 
@@ -193,9 +195,9 @@ class EpoptesGui(object):
 
 
     def reverseConnection(self, widget, path, view_column, cmd):
-        # Open xvnc4viewer in listen mode
-        if self.xvnc4viewer is None:
-            self.xvnc4viewer = subprocess.Popen(['xvnc4viewer', '-listen'])
+        # Open vncviewer in listen mode
+        if self.vncviewer is None:
+            self.vncviewer = subprocess.Popen(['xvnc4viewer', '-listen'])
 
         # And, tell the clients to connect to the server
         self.execOnSelectedClients(self.c.EXEC + cmd)
@@ -236,15 +238,15 @@ class EpoptesGui(object):
 
 
     def broadcastTeacher(self, widget):
-        if not self.vncserver_running:
-            self.vncserver_running = True
+        if self.vncserver is None:
             self.vncport = self.findUnusedPort()
-            subprocess.Popen(['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', 
-                '-shared', '-forever', '-nolookup', '-24to32', '-rfbport',
-                str(self.vncport), '-allow', '127.,192.168.,10.,169.254.' ])
+            # TODO: use a password instead of -allow
+            self.vncserver = subprocess.Popen(['x11vnc', '-noshm', '-nopw',
+                '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
+                '-24to32', '-rfbport', str(self.vncport), '-allow',
+                '127.,192.168.,10.,169.254.' ])
         self.execOnSelectedClients("""killall gnome-screensaver 2>/dev/null""")
         # TODO: don't use sleep on the direct client shell, use execute script instead
-        # TODO: Move these commands maybe to commands.py #FIXME
         # pgrep -x only checks the first 15 characters found in /proc/pid/stat.
         # Check the length with e.g.: x="lxdm-greeter-gtk"; echo ${x:0:15}
         # The following greeters spawn dbus-daemon, so there's no need for them
@@ -260,15 +262,16 @@ sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
 EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly -FullScreen \
 -UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % self.vncport, root=True)
 
-    # FIXME: Make it transmission-specific, not for all transmissions
+
     def stopTransmissions(self, widget):
-        # The clients are usually automatically killed when the server is killed
-        # Unfortunately, not always, so try to kill them anyway
-        self.execOnClients('test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID', self.cstore, None, True)
-        # TODO: remember x11vnc pid and kill it
-        subprocess.Popen(['killall', 'x11vnc'])
-        subprocess.Popen(['killall', '-9', 'x11vnc'])
-        self.vncserver_running = False
+        # The vnc clients should automatically exit when the server is killed.
+        # Unfortunately, that isn't always true, so try to kill them anyway.
+        self.execOnClients("""
+test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
+unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
+        self.vncserver.kill()
+        self.vncserver = None
+
 
     ## FIXME FIXME: Should we allow teacher to run whatever command in clients?
     def execDialog(self, widget):
