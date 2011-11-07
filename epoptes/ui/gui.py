@@ -245,12 +245,20 @@ class EpoptesGui(object):
         self.execOnSelectedClients("""killall gnome-screensaver 2>/dev/null""")
         # TODO: don't use sleep on the direct client shell, use execute script instead
         # TODO: Move these commands maybe to commands.py #FIXME
-        self.execOnSelectedClients("""test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
-p=$(pidof -s ldm gdm-simple-greeter gnome-session lxsession | cut -d' ' -f1)
+        # pgrep -x only checks the first 15 characters found in /proc/pid/stat.
+        # Check the length with e.g.: x="lxdm-greeter-gtk"; echo ${x:0:15}
+        # The following greeters spawn dbus-daemon, so there's no need for them
+        # to be in the greeters list:
+        # gdm-simple-greeter, unity-greeter
+        # Unfortunately, dbus-daemon doesn't contain DBUS_SESSION_BUS_ADDRESS.
+        self.execOnSelectedClients("""
+test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
+p=$(pgrep -nx 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon')
 export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
 xset dpms force on
 sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
-EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % self.vncport, root=True)
+EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly -FullScreen \
+-UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % self.vncport, root=True)
 
     # FIXME: Make it transmission-specific, not for all transmissions
     def stopTransmissions(self, widget):
@@ -289,10 +297,10 @@ EPOPTES_VNCVIEWER_PID=$( ./execute xvnc4viewer -Shared -ViewOnly -FullScreen -Us
         self.openTerminal(True)
 
     def remoteRootTerminal(self, widget):
-        self.execOnSelectedClients("""export $(tr '\\0' '\\n' < """ +
-            """/proc/$(pidof -s ldm gdm-simple-greeter gnome-session lxsession | """ +
-            """cut -d' ' -f1)/environ | egrep '^DISPLAY=|^XAUTHORITY=')\n""" +
-            """./execute xterm -e bash -l""", root=True)
+        self.execOnSelectedClients("""
+p=$(pgrep -nx 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon')
+export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
+./execute xterm -e bash -l""", root=True)
     ## END_FIXUS
 
     # FIXME : Change the way lock screen works, don't kill and relock...
