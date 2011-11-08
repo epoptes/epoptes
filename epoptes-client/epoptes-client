@@ -100,13 +100,14 @@ epoptes_info() {
     VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
 
     # If epoptes-client is ran on a thin client from a user account (meaning
-    # that it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME and
-    # $LTSP_CLIENT instead of $HOSTNAME and $IP.
-    # MAC, CPU, RAM and VGA are not available in the environment, so we're
-    # leaving the ones of the server.
+    # that it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME,
+    # $LTSP_CLIENT and $LTSP_CLIENT_MAC instead of $HOSTNAME, $IP and $MAC.
+    # CPU, RAM and VGA are not available in the environment, so we're leaving
+    # the ones of the server.
     if [ "$TYPE" = "thin" ] && [ "$UID" -ne 0 ]; then
         test -n "$LTSP_CLIENT" && IP="$LTSP_CLIENT"
         test -n "$LTSP_CLIENT_HOSTNAME" && HOSTNAME="$LTSP_CLIENT_HOSTNAME"
+        test -n "$LTSP_CLIENT_MAC" && MAC="$LTSP_CLIENT_MAC"
     fi
 
     export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT

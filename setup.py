@@ -49,6 +49,28 @@ def changelog_version(changelog="debian/changelog"):
 
     return version
 
+def subtract_files(a, b):
+    res = set(a)
+    for dir, files in b:
+        res -= set(files)
+    return list(res)
+
+client_special_files=[
+    ('/etc/xdg/autostart/',
+        ['epoptes-client/epoptes-client.desktop']),
+    ('/usr/sbin/',
+        ['epoptes-client/epoptes-client']),
+    ('/usr/share/ldm/rc.d/',
+        ['epoptes-client/X50-client-env']),
+    ]
+client_usr_share_files=[
+    ('/usr/share/epoptes-client/',
+        subtract_files(glob('epoptes-client/*'), client_special_files))
+    ]
+server_special_files=[
+    ('/usr/share/ltsp/plugins/ltsp-build-client/common/',
+        ['data/040-epoptes-certificate'])];
+
 DistUtilsExtra.auto.setup(
     name='epoptes',
     version = changelog_version(),
@@ -58,6 +80,6 @@ DistUtilsExtra.auto.setup(
     author = 'Fotis Tsamis',
     author_email = 'ftsamis@gmail.com',
     py_modules = ['twisted.plugins.epoptesd'],
-    data_files = [('/usr/share/ltsp/plugins/ltsp-build-client/common/',
-        ['data/040-epoptes-certificate'])],
+    data_files = client_special_files + client_usr_share_files +
+        server_special_files
 )
