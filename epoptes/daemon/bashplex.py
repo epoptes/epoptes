@@ -81,7 +81,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         delimitedCommand = "%s\necho %s" % (
             cmd, delimiter)
 
-        print "Sending:", delimitedCommand,
+#        print "Sending:", delimitedCommand,
         self.transport.write(delimitedCommand)
 
         return d
