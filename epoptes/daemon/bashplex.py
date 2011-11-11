@@ -81,7 +81,8 @@ class DelimitedBashReceiver(protocol.Protocol):
         delimitedCommand = "%s\necho %s" % (
             cmd, delimiter)
 
-#        print "Sending:", delimitedCommand,
+        # TODO: check the python's debug logging implementation
+        # print "Sending:", delimitedCommand,
         self.transport.write(delimitedCommand)
 
         return d
@@ -112,6 +113,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             return
 
         (delimiter, d) = self.currentDelimiters[0]
+        # TODO: print "Searching for delimiter:", delimiter
 
         # Optimize for large buffers by not searching the whole thing every time
         searchLength = len(data) + len(delimiter)
@@ -121,6 +123,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         searchStr = self.buffer.read()
         searchPos = searchStr.find(delimiter)
         if searchPos != -1:
+            # TODO: print "Found delimiter:", delimiter
 
             # Two steps here is correct! If the delimiter was received in the
             # first packet, then the searchLength is greater than the buffer
@@ -165,8 +168,8 @@ class DelimitedBashReceiver(protocol.Protocol):
         newBuffer = StringIO()
         newBuffer.write(rest)
         self.buffer = newBuffer
-    
-                
+
+
     def ping(self):
         if self.pingTimeout is not None:
             return

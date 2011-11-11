@@ -500,8 +500,6 @@ which is incompatible with the current epoptes version.\
             # For standalone clients, use mac etc if not provided already
             entry = [host, entry[C_MAC], handle, entry[C_SYSTEM_HANDLE], type, 
                 user, self.imagetypes[type], ip, '']
-            gobject.timeout_add(5000, self.getScreenshots, 
-                entry[C_SESSION_HANDLE])
             # Pop up a proper graphical notification (python-notify)
             if already:
                 loggedinNotify(user, host)
@@ -514,6 +512,9 @@ which is incompatible with the current epoptes version.\
             self.cstore[index] = entry
         else:
             self.cstore.append(entry)
+
+        if int(uid) != 0:
+            self.getScreenshots(entry[C_SESSION_HANDLE])
         
         self.refresh()
 
@@ -521,21 +522,15 @@ which is incompatible with the current epoptes version.\
         # TODO: Ask for screenshots for every client (Look diff at Rev:326)
         pass
 
+
     def getScreenshots(self, handle):
-        # If the client can't get a screenshot, it's probably logged off,
-        # so exit epoptes-client.
-        exists = False
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
-                exists = True
-                break
-        if exists:
-            self.execOnClients(self.c.SCREENSHOT
-                % (self.scrWidth, self.scrHeight), handles=[handle], 
-                    reply=self.updateScreenshots)
-            return True
+                self.execOnClients(self.c.SCREENSHOT
+                    % (self.scrWidth, self.scrHeight), handles=[handle], 
+                        reply=self.updateScreenshots)
+                return
 
-        return False
 
     def updateScreenshots(self, handle, reply):
         if reply is None:
@@ -552,6 +547,12 @@ which is incompatible with the current epoptes version.\
                     gtk.gdk.COLORSPACE_RGB, True, 8, int(width), int(height), 
                     rowstride)
                 self.cstore[i.path][C_PIXBUF] = pxb
+                # We want to ask for thumbnails every 5 sec after the last one.
+                # So if the client is too stressed and needs 7 secs to
+                # send a thumbnail, we'll ask for one every 12 secs.
+                # TODO: check if there are cases where we want to continue
+                # asking for screenshots even if we got an empty/broken one.
+                gobject.timeout_add(5000, self.getScreenshots, handle)
                 break
     
     # FIXME: Just shut up and fix me
