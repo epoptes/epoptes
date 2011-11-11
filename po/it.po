@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-03 18:23+0200\n"
-"PO-Revision-Date: 2011-10-15 19:35+0000\n"
+"PO-Revision-Date: 2011-11-10 22:08+0000\n"
 "Last-Translator: Marco Menardi <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-04 05:47+0000\n"
-"X-Generator: Launchpad (build 14231)\n"
+"X-Launchpad-Export-Date: 2011-11-11 05:31+0000\n"
+"X-Generator: Launchpad (build 14277)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -267,7 +267,7 @@ msgstr "_Vista"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "epoptes"
-msgstr ""
+msgstr "epoptes"
 
 #: ../epoptes/ui/notifications.py:43
 msgid "Connected users:"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
-msgstr ""
+msgstr "Epoptes"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -345,7 +345,7 @@ msgstr "Epoptes strumento di amministrazione di un laboratorio di computer"
 #: ../bin/epoptes.py:59
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
+msgstr "L'utente %s deve essere membro del gruppo %s per eseguire epoptes."
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
@@ -410,7 +410,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "Copyright &#xA9; 2011 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -426,6 +426,18 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Epoptes è software Libero: potete ridistribuirlo e/o modificarlo in base ai "
+"termini della licenza  \"GNU General Public License\" come pubblicata dalla "
+"Free Software Foundation, sia nella versione 3 della licenza, o qualunque "
+"versione successiva.\n"
+"\n"
+"Epoptes è distribuito nella speranza che sia utile, ma SENZA ALCUNA "
+"GARANZIA; nemmeno la garanzia implicita di COMMERCIABILITÀ o ADEGUATEZZA AD "
+"UN PARTICOLARE SCOPO. Vedere la GNU General Public License per maggiori "
+"dettagli.\n"
+"\n"
+"Dovreste aver ricevuto una copia della GNU General Public License assieme ad "
+"epoptes. In caso contrario, vedere <http://www.gnu.org/licenses/>."
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:1
 msgid "Connection type:"
