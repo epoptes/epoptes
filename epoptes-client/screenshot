@@ -1,53 +1,52 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
-#       
-#       Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
-#       
-#       This program is free software; you can redistribute it and/or modify
-#       it under the terms of the GNU General Public License as published by
-#       the Free Software Foundation; either version 3 of the License, or
-#       (at your option) any later version.
-#       
-#       This program is distributed in the hope that it will be useful,
-#       but WITHOUT ANY WARRANTY; without even the implied warranty of
-#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#       GNU General Public License for more details.
-#       
-#       You should have received a copy of the GNU General Public License
-#       along with this program; if not, write to the Free Software
-#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-#       MA 02110-1301, USA.
+# -*- coding: utf-8 -*-
+
+###########################################################################
+# Screenshot.
+#
+# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# Many thanks to Uli Schlachter <psychon@znc.in> for helping with the cairo stuff
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL".
+############################################################################
 
 import gtk.gdk as gdk
-from sys import *
+from sys import stdout, argv
 
-class screenshot:
-    def __init__(self, size):
-        pixbuf = self.getScreen()
-        if size:
-            pixbuf = self.resize(pixbuf, size)
-        pixels = pixbuf.get_pixels()
-        rowstride = str(pixbuf.get_rowstride())
-        self.send(pixels, rowstride, size)
-        return
-    
-    def getScreen(self):
-        root = gdk.get_default_root_window()
-        width, height = root.get_size()
-        pixbuf = gdk.Pixbuf(gdk.COLORSPACE_RGB, True, 8, width, height)
-        pixbuf.get_from_drawable(root, root.get_colormap(), 0, 0, 0, 0, width, height)
-        return pixbuf
-    
-    def resize(self, pixbuf, size):
-        return pixbuf.scale_simple(size[0], size[1], gdk.INTERP_BILINEAR)
-    
-    def send(self, data, rowst, size):
-        stdout.flush()
-        stdout.write('%s\n%ix%i\n%s' %(rowst, size[0], size[1], data))
-        stdout.flush()
-        return True
+if len(argv) == 3:
+    width, height = int(argv[1]), int(argv[2])
+else:
+    exit(1)
 
-size = False
-if len(argv) is 3:
-    size = [int(argv[1]), int(argv[2])]
-screenshot(size)
+root = gdk.get_default_root_window()
+r_width, r_height = root.get_size()
+
+pmap = gdk.Pixmap(root, width, height)
+cr = pmap.cairo_create()
+cr.scale(float(width)/r_width, float(height)/r_height)
+cr.set_source_pixmap(root, 0, 0)
+cr.paint()
+
+pixbuf = gdk.Pixbuf(gdk.COLORSPACE_RGB, False, 8, width, height)
+pixbuf.get_from_drawable(pmap, root.get_colormap(), 0, 0, 0, 0, width, height)
+
+rowst = str(pixbuf.get_rowstride())
+pixels = pixbuf.get_pixels()
+
+stdout.flush()
+stdout.write('%s\n%ix%i\n%s' %(rowst, width, height, pixels))
+stdout.flush()
