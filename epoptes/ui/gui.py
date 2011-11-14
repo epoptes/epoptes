@@ -269,8 +269,9 @@ EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly -FullScreen \
         self.execOnClients("""
 test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
 unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
-        self.vncserver.kill()
-        self.vncserver = None
+        if not self.vncserver is None:
+            self.vncserver.kill()
+            self.vncserver = None
 
 
     ## FIXME FIXME: Should we allow teacher to run whatever command in clients?
@@ -544,7 +545,7 @@ which is incompatible with the current epoptes version.\
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
                 pxb = gtk.gdk.pixbuf_new_from_data(pixels, 
-                    gtk.gdk.COLORSPACE_RGB, True, 8, int(width), int(height), 
+                    gtk.gdk.COLORSPACE_RGB, False, 8, int(width), int(height), 
                     rowstride)
                 self.cstore[i.path][C_PIXBUF] = pxb
                 # We want to ask for thumbnails every 5 sec after the last one.
