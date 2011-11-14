@@ -1,3 +1,14 @@
+epoptes (0.3.2-1) unstable; urgency=low
+
+  * Use cairo for screenshot resizing on the X server, to save bandwidth.
+  * Allow screenshot interval to be larger in cases of extreme load.
+  * Install a logrotate configuration file.
+  * Export LTSP_CLIENT_MAC in thin client sessions.
+  * Exit epoptes-client when X is unavailable.
+  * Stop broadcasts: only kill our child x11vnc process.
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Mon, 14 Nov 2011 10:37:32 +0200
+
 epoptes (0.3.1-1) experimental; urgency=low
 
   * Initial upload to Debian (Closes: #646971).
