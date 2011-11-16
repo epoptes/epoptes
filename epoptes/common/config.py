@@ -112,6 +112,8 @@ system.setdefault('DIR', '/var/run/epoptes')
 try:
     if os.path.getsize('/etc/epoptes/server.crt') == 0:
         system.setdefault('ENCRYPTION', False)
+except:
+    pass
 finally:
     system.setdefault('ENCRYPTION', True)
 
