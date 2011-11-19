@@ -1,0 +1,448 @@
+# Slovak translation for epoptes
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the epoptes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: epoptes\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-11-03 18:23+0200\n"
+"PO-Revision-Date: 2011-11-18 17:51+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-11-19 05:58+0000\n"
+"X-Generator: Launchpad (build 14299)\n"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "Ask a question"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
+msgid "Assist student"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "Auto-detected computers"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Background image"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "Block Internet"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "Boot"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "Boot selected clients (Wake On LAN)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "Broadcast student"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Broadcast teacher"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Broadcast teacher's screen to the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Broadcast video"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Broadcasts"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Computer"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Computer (user)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Confirm action"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Execute"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Execute a command on the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
+msgid "Execute command"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Forum"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
+msgid "Information"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Labels"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Live chat (IRC)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Lock background"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Lock screen"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Lock screen of the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Log out"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Log out users connected on selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Monitor student"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Mute sound"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "Open terminal"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Reboot"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "Reboot the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "Remote support"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Report a bug"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "Restrictions"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Root, locally"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Root, remotely"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Send a message to the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39 ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Send message"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Session"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Set background"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Set default background"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Show information for the selected client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Show real name"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Show real names"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "Shutdown"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Shutdown the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Stop all broadcasts on every client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Stop broadcasts"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "Stops all active broadcasts"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Unblock Internet"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Unlock screen"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Unlock the screen of the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Unmute sound"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "User"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "User (computer)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "User, locally"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "_Clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "_File"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
+msgid "_Help"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
+msgid "_Send message"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
+msgid "_View"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
+msgid "epoptes"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:43
+msgid "Connected users:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:43 ../epoptes/ui/notifications.py:47
+#, python-format
+msgid "%(user)s on %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:47
+msgid "Connected:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:51
+msgid "Disconnected:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:51
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:55
+msgid "Shut down:"
+msgstr ""
+
+#: ../epoptes/ui/client_information.py:58
+#, python-format
+msgid "Properties of %s"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:438
+#, python-format
+msgid ""
+"There was a try to connect an epoptes-client with version %s which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You should update your chroot."
+msgstr ""
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+
+#: ../epoptes/common/commands.py:46
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr ""
+
+#: ../epoptes/common/commands.py:47
+msgid "Are you sure you want to reboot all the computers?"
+msgstr ""
+
+#: ../epoptes/common/commands.py:48
+msgid "Are you sure you want to log off all the users?"
+msgstr ""
+
+#: ../epoptes/common/commands.py:49
+msgid ""
+"Are you sure you want to terminate all processes of the selected users?"
+msgstr ""
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes"
+msgstr ""
+
+#: ../data/epoptes.desktop.in.h:2
+msgid "Epoptes computer lab administration tool"
+msgstr ""
+
+#: ../bin/epoptes.py:59
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr ""
+
+#: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+msgid "Error"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client hostname:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client type:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Graphics card:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "IP address:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "MAC address:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "Processor:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "RAM:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "User:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:3
+msgid "Message text:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+msgid "Message type:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:5
+msgid "Select the type of the message"
+msgstr ""
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr ""
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:8
+msgid "_Send"
+msgstr ""
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:1
+msgid "A computer lab management and monitoring tool."
+msgstr ""
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:2
+msgid "Copyright &#xA9; 2011 Epoptes Team"
+msgstr ""
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+msgid ""
+"Epoptes is free software: you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation, either version 3 of the License, or any later version. \n"
+"\n"
+"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"epoptes. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:1
+msgid "Connection type:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:3
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr ""
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:4
+msgid "Graphics (VNC)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:5
+msgid "IP:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:6
+msgid "Port:"
+msgstr ""
