@@ -55,7 +55,7 @@ do_logout() {
       int32:0 int32:0 int32:0 2>&1 && return
 
     # XFCE
-    xfce4-session-logout -l 2>&1 && return
+    xfce4-session-logout --logout 2>&1 && return
 
     # LXDE
     test -n "$_LXSESSION_PID" && kill "$_LXSESSION_PID" && return
