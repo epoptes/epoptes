@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-03 18:23+0200\n"
-"PO-Revision-Date: 2011-12-12 16:25+0000\n"
+"PO-Revision-Date: 2011-12-13 07:40+0000\n"
 "Last-Translator: EmmanuelLeNormand <manu@ubuntu-fr.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-12-13 05:49+0000\n"
-"X-Generator: Launchpad (build 14458)\n"
+"X-Launchpad-Export-Date: 2011-12-14 05:43+0000\n"
+"X-Generator: Launchpad (build 14487)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -59,7 +59,7 @@ msgstr "Diffusion de l'écran enseignant aux clients sélectionnés"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcast video"
-msgstr ""
+msgstr "Diffusion video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcasts"
@@ -207,15 +207,15 @@ msgstr "Arrêter les clients sélectionnés"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Stop all broadcasts on every client"
-msgstr ""
+msgstr "Arrêter toutes les diffusions pour tous les clients"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Stop broadcasts"
-msgstr ""
+msgstr "Arrêter les diffusions"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Stops all active broadcasts"
-msgstr ""
+msgstr "Arrêter toutes les diffusions actives"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Unblock Internet"
@@ -348,6 +348,7 @@ msgstr "Outil d'administration Epoptes computer lab"
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
+"L'utilisateur %s doit être membre du groupe %s pour utiliser epoptes."
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
