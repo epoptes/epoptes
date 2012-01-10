@@ -53,26 +53,12 @@ from epoptes.common import ltsconf
 from epoptes.common import config
 from epoptes.common.constants import *
 from epoptes.core import wol
-
-
-
-## FIXME: This is dummy
-def _startswith(string, pattern):
-    if pattern is None:
-        return True
-    return string.startswith(pattern)
-
-# Warn users to update their chroots if they have a lower epoptes-client version 
-# than this
-COMPATIBILITY_VERSION = [0, 1]
+from epoptes.core.structs import *
 
 
 class EpoptesGui(object):
     
-    def __init__(self, conf, host_filter):
-        self.conf = conf
-        self.host_filter = host_filter
-        self.ltsConf = ltsconf.ltsConf()
+    def __init__(self):
         self.c = commands.commands()
         self.shownCompatibilityWarning = False 
         self.added = False
@@ -80,6 +66,8 @@ class EpoptesGui(object):
         self.vncviewer = None
         self.scrWidth = 100
         self.scrHeight = 75
+        subprocess.Popen(['xprop', '-root', '-f', 'EPOPTES', '32c', '-set', 'EPOPTES', str(os.getpid())])
+        self.current_macs = subprocess.Popen(['sh', '-c', """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'"""], stdout=subprocess.PIPE).stdout.read().split()
         if os.getuid() != 0:
             if 'thumbnails_width' in config.user:
                 self.scrWidth = config.user['thumbnails_width']
@@ -90,46 +78,66 @@ class EpoptesGui(object):
         self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
         self.standalone = gtk.gdk.pixbuf_new_from_file('images/standalone.svg')
         self.imagetypes = {'thin' : self.thin, 'fat' : self.fat,
-            'standalone' : self.standalone, 'server' : self.standalone}
-        self.addStockImage('offline', 'images/off.png')
-        self.addStockImage('online', 'images/on.png')
-        self.addStockImage('users', 'images/usersgrp.png')
-        self.addStockImage('system', 'images/systemgrp.png')
+            'standalone' : self.standalone, 'server' : self.standalone, 'offline' : self.offline}
         
         self.wTree = gtk.Builder()
         self.wTree.add_from_file('epoptes.ui')
-
+        
         # Connect glade handlers with the callback functions
         self.wTree.connect_signals(self)
         self.get = lambda obj: self.wTree.get_object(obj)
-
+        
+        self.gstore = gtk.ListStore(str, object)
+        
+        self.gtree = self.get("groups_tree")
+        self.gtree.set_model(self.gstore)
+        self.gtree.get_selection().connect("changed", self.on_group_selection_changed)
+        
         # Enable this when the scrollbar for the screenshot size is available
         #self.get('iconsSizeAdjustment').set_value(self.scrWidth)
 
         self.mainwin = self.get('mainwindow')
         
-        self.cstore = gtk.ListStore(str, str, str, str, str, str, 
-            gtk.gdk.Pixbuf, str, str)
+        self.cstore = gtk.ListStore(str, gtk.gdk.Pixbuf, object, str)
         self.cview = self.get('clientsview')
-        self.cView_order=(1, 0)
+        self.cView_order = (1, 0)
         self.refresh()
         
-        self.cfilter = self.cstore.filter_new()
-        self.cfilter.set_visible_func(self.setVisibleClients)
-        self.csort = gtk.TreeModelSort(self.cfilter)
-        self.cview.set_model(self.csort)
-        
-        
-        self.cview.set_text_column(8)
-        self.cview.set_pixbuf_column(6)
-        self.csort.set_sort_column_id(8, gtk.SORT_ASCENDING)
+        self.cview.set_model(self.cstore)
+        self.cview.set_text_column(C_LABEL)
+        self.cview.set_pixbuf_column(C_PIXBUF)
+        self.cstore.set_sort_column_id(C_LABEL, gtk.SORT_ASCENDING)
         self.setClientMenuSensitivity()
-        self.toggleRealNameColumn()
+        
+        self.cview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, [("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
+        self.gtree.enable_model_drag_dest([("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
+        
+        self.auto_group = Group(_('All clients'))
+        auto_iter = self.gstore.append([self.auto_group.name, self.auto_group])
+        self.auto_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(auto_iter))
+        self.gtree.get_selection().select_path(self.auto_group.ref.get_path())
+        
+        saved_clients, groups = config.read_groups(os.path.expanduser('~/.config/epoptes/groups.json'))
+        for grp in groups:
+            self.gstore.append([grp.name, grp])
+        for cln in saved_clients:
+            if self.gstore[self.getSelectedGroup()][G_INSTANCE] is self.auto_group:
+                self.cstore.append([cln.mac, self.imagetypes['offline'], cln, ''])
 
     #################################################################
     #                       Callback functions                      #
     #################################################################
-
+    def on_gtree_drag_drop(self, wid, context, x, y, time):
+        context.finish(True, False, time)
+        
+        path = self.gtree.get_path_at_pos(x, y)
+        if path:
+            path = path[0]
+            for cln in self.getSelectedClients():
+                cln = cln[C_INSTANCE]
+                self.gstore[path][G_INSTANCE].add_client(cln)
+        return True
+    
     def refresh(self, widget=None):
         """
         Refresh clicked
@@ -137,7 +145,7 @@ class EpoptesGui(object):
         Refresh main dialog by re-loading panels containing
         lists of clients, groups and users connected.
         """
-        self.ltsConf.parse()
+        # Read saved clients #self.ltsConf.parse()
         self.loadClients()
         self.set_cView(self.cView_order[0], self.cView_order[1])
         self.setClientMenuSensitivity()
@@ -149,6 +157,8 @@ class EpoptesGui(object):
 
         Close main window
         """
+        self.gstore.remove(self.gstore.get_iter(self.auto_group.ref.get_path()))
+        config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'), self.gstore)
         if not self.vncserver is None:
             self.vncserver.kill()
         if not self.vncviewer is None:
@@ -156,42 +166,33 @@ class EpoptesGui(object):
         reactor.stop()
 
 
-    def toggleRealNameColumn(self, widget=None):
-        """Show/hide the real names of the users instead of the username"""
+    def toggleRealNames(self, widget=None):
+        """Show/hide the real names of the users instead of the usernames"""
         pass # Implement me
 
     def wake_on_lan(self, widget):
-        """
-        For clients selected in clients' tree power them on using their
-        MAC addresses
-        """
+        """Boot the selected computers with WOL"""
         for client in self.getSelectedClients():
             # Make sure that only offline computers will be sent to wol
-            if client[C_SESSION_HANDLE] == '' and client[C_SYSTEM_HANDLE] == '':
-                wol.wake_on_lan(client[C_MAC])
+            client = client[C_INSTANCE]
+            if client.is_offline():
+                wol.wake_on_lan(client.mac)
 
     def poweroff(self, widget):
-        """
-        For clients selected in clients' tree, power them off
-        """
+        """Shut down the selected clients."""
         self.execOnSelectedClients(self.c.POWEROFF, root="auto",
             warn=self.c.POWEROFF_WARN)
 
     def reboot(self, widget):
-        """
-        For clients selected in clients' tree, reboot them
-        """
+        """Reboot the selected clients."""
         # FIXME: (Not) waiting on purpose to cause some delay to avoid 
         # any power strain.
         self.execOnSelectedClients(self.c.REBOOT, root="auto",
             warn=self.c.REBOOT_WARN)
 
     def logout(self, widget):
-        """
-        For clients selected in clients' tree, log them off
-        """
-        self.execOnSelectedClients(self.c.LOGOUT,
-            warn=self.c.LOGOUT_WARN)
+        """Log off the users of the selected clients."""
+        self.execOnSelectedClients(self.c.LOGOUT, warn=self.c.LOGOUT_WARN)
 
 
     def reverseConnection(self, widget, path, view_column, cmd):
@@ -204,7 +205,7 @@ class EpoptesGui(object):
 
 
     def assistStudent(self, widget, path=None, view_column=None):
-        self.reverseConnection(widget, path, view_column, 
+        self.reverseConnection(widget, path, view_column,
             'x11vnc -noshm -24to32 -connect_or_exit $SERVER')
 
 
@@ -214,8 +215,7 @@ class EpoptesGui(object):
 
 
     def findUnusedPort(self, base=None):
-        """Find an unused port, optionally starting from "base".
-        """
+        """Find an unused port, optionally starting from "base"."""
         import socket
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -289,7 +289,7 @@ unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
     ## FIXME FIXME: Don't use zenity...
     def sendMessageDialog(self, widget):
         cmd = startSendMessageDlg()
-        if cmd != "":# Command is 'valid', execute on selected clients 
+        if cmd != "": # Command is 'valid', execute on selected clients 
             as_root = False
             self.execOnSelectedClients(self.c.EXEC + cmd, root=as_root)
     
@@ -312,15 +312,15 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         """
         Lock screen for all clients selected
         """
-        self.execOnSelectedClients('test -n "$EPOPTES_LOCK_SCREEN_PID" && kill ' +\
-            '"$EPOPTES_LOCK_SCREEN_PID"; EPOPTES_LOCK_SCREEN_PID=$(./execute '+\
+        self.execOnSelectedClients('test -n "$EPOPTES_LOCK_SCREEN_PID" && kill ' + \
+            '"$EPOPTES_LOCK_SCREEN_PID"; EPOPTES_LOCK_SCREEN_PID=$(./execute ' + \
             './lock-screen)')
 
     def unlockScreen(self, widget):
         """
         Unlock screen for all clients selected
         """
-        self.execOnSelectedClients('''test -n "$EPOPTES_LOCK_SCREEN_PID" && '''+\
+        self.execOnSelectedClients('''test -n "$EPOPTES_LOCK_SCREEN_PID" && ''' + \
             '''kill "$EPOPTES_LOCK_SCREEN_PID"; unset EPOPTES_LOCK_SCREEN_PID''')
 
     # FIXME: Find something better
@@ -336,6 +336,33 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         """
         self.execOnSelectedClients(self.c.EXEC_AMIXER + 'unmute', root=True)
     
+    def on_move_group_down_clicked(self, widget):
+        pass
+    
+    def on_move_group_up_clicked(self, widget):
+        #selected_group_iter = self.getSelectedGroup()
+        #self.gstore.swap(selected_group_iter, )
+        pass
+        
+    def on_remove_group_clicked(self, widget):
+        group_iter = self.getSelectedGroup()
+        group = self.gstore[group_iter][G_INSTANCE]
+        
+        if self.warnDlgPopup(_('Are you sure you want to remove the group "%s"?') % group.name):
+            self.gstore.remove(group_iter)
+            
+    def on_add_group_clicked(self, widget):
+        cell = self.get('cellrenderertext1')
+        cell.set_property('editable', True)
+        new_group = Group()
+        iter = self.gstore.append([new_group.name, new_group])
+        # Edit the name of the newly created group
+        self.gtree.set_cursor(self.gstore.get_path(iter), self.get('group_name_column'), True)
+    
+    def on_group_renamed(self, widget, path, new_name):
+        self.gstore[path][G_LABEL] = new_name
+        self.gstore[path][G_INSTANCE].name = new_name
+        
     #FIXME: Remove the second parameter, find a better way
     def on_tb_client_properties_clicked(self, widget=None):
         ClientInformation(self.getSelectedClients(), self.daemon.command).run()
@@ -358,25 +385,16 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
     def on_cViewU_toggled(self, mitem):
         self.set_cView(0, -1)
     
-    def set_cView(self, user_pos=-1, host_pos=0):
+    def set_cView(self, user_pos= -1, name_pos=0):
         # Save the order so all new clients get the selected format
-        self.cView_order = (user_pos, host_pos)
+        self.cView_order = (user_pos, name_pos)
         
-        host = lambda x: self.cstore[x][C_HOSTNAME]
-        user = lambda x: self.cstore[x][C_USER]
-        for i in range(len(self.cstore)):
-            self.cstore[i][C_VIEW_STYLE] = ''
-            if user(i) == '' or user_pos == -1:
-                self.cstore[i][C_VIEW_STYLE] = host(i)
-            else:
-                if user_pos == 0:
-                    self.cstore[i][C_VIEW_STYLE] = user(i)
-                    if host_pos == 1:
-                        self.cstore[i][C_VIEW_STYLE] += " (%s)" %host(i)
-                elif host_pos == 0:
-                    self.cstore[i][C_VIEW_STYLE] = host(i)
-                    if user_pos == 1:
-                        self.cstore[i][C_VIEW_STYLE] += " (%s)" %user(i)
+        for row in self.cstore:            
+            name = row[C_INSTANCE].get_name()
+            user = ''
+            if row[C_SESSION_HANDLE]:
+                user = row[C_INSTANCE].users[row[C_SESSION_HANDLE]]
+            row[C_LABEL] = self.calculateLabel(name, user)
     
     
     
@@ -387,85 +405,127 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
     # AMP callbacks
 
     def amp_clientConnected(self, handle):
+        print "New connection from", handle
         self.daemon.command(handle, u"""
             VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
             VERSION=${VERSION:-0.1}
+            EPOPTES_PID=$(xprop -root -notype EPOPTES 2>/dev/null)
+            EPOPTES_PID=${EPOPTES_PID##*= }
             echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
             """).addCallback(lambda r: self.addClient(handle, r))
 
     def amp_clientDisconnected(self, handle):
+        print "Disconnect from", handle
         for client in self.cstore:
-            if client[C_SYSTEM_HANDLE] == handle:
-                shutdownNotify(client[C_HOSTNAME])
-                if client[C_SESSION_HANDLE] == '':
-                    if self.ltsConf.sectionExists(client[C_MAC]):
+            inst = client[C_INSTANCE]
+            if inst.hsystem == handle:
+                shutdownNotify(inst.get_name())
+                if not inst.users:
+                    if not self.isAutoGroupSelected():
                         self.savedClientReset(client)
                     else:
                         self.cstore.remove(client.iter)
                 else:
-                    client[C_SYSTEM_HANDLE] = ''
+                    inst.hsystem = ''
                 break
-            elif client[C_SESSION_HANDLE] == handle:
-                logoutNotify(client[C_USER], client[C_HOSTNAME])
-                if client[C_SYSTEM_HANDLE] == '':
-                    if self.ltsConf.sectionExists(client[C_MAC]):
+            elif handle in inst.users:
+                logoutNotify(inst.users[handle], inst.get_name())
+                del inst.users[handle]
+                
+                if inst.hsystem == '':
+                    if self.isAutoGroupSelected():
                         self.savedClientReset(client)
                     else:
                         self.cstore.remove(client.iter)
                 else:
-                    client[C_USER] = ''
                     client[C_SESSION_HANDLE] = ''
-                    type = client[C_TYPE]
+                    type = inst.type
                     client[C_PIXBUF] = self.imagetypes[type]
                 break
         self.refresh()
     
 
     def savedClientReset(self, client):
-        client[C_SESSION_HANDLE] = ''
-        client[C_SYSTEM_HANDLE] = ''
-        client[C_USER] = ''
-        client[C_TYPE] = 'offline'
+        inst = client[C_INSTANCE]
+        inst.hsession = inst.hsystem = inst.user = ''
+        inst.type = 'offline'
         client[C_PIXBUF] = self.offline
 
     def amp_gotClients(self, handles):
+        print "Got clients:", ', '.join(handles) or 'None'
         for handle in handles:
-            d = self.daemon.command(handle,  u"""
+            d = self.daemon.command(handle, u"""
                 VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
                 VERSION=${VERSION:-0.1}
+                EPOPTES_PID=$(xprop -root -notype EPOPTES 2>/dev/null)
+                EPOPTES_PID=${EPOPTES_PID##*= }
                 echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
                 """)
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
     
     def on_button_close_clicked(self, widget):
         self.get('warningDialog').hide()
-
     
-    # FIXME: Proofread this
+    def on_group_selection_changed(self, treeselection):
+        self.cstore.clear()
+        selected = self.getSelectedGroup()
+        
+        if selected is not None:
+            self.fillIconView(self.gstore[selected][G_INSTANCE])
+        else:
+            if not self.auto_group.ref.valid():
+                return
+            self.gtree.get_selection().select_path(self.auto_group.ref.get_path())
+        self.get('remove_group').set_sensitive(not self.gstore[self.getSelectedGroup()][G_INSTANCE] is self.auto_group)
+    
+    def addToIconView(self, client):
+        """Properly add a Client class instance to the clients iconview."""
+        # If there are one or more users on client, add a new iconview entry
+        # for each one of them.
+        if client.users:
+            for hsession, user in client.users.iteritems():
+                self.cstore.append([self.calculateLabel(client.get_name(), user), self.imagetypes[client.type], client, hsession])
+                self.getScreenshots(hsession)
+        else:
+            self.cstore.append([self.calculateLabel(client.get_name()), self.imagetypes[client.type], client, ''])
+    
+    def fillIconView(self, group):
+        """Fill the clients iconview from a Group class instance."""
+        self.cstore.clear()
+        if self.gstore[self.getSelectedGroup()][G_INSTANCE] is self.auto_group:
+            clients_list = clients
+        else:
+            clients_list = group.get_members()
+        # Add the new clients to the iconview
+        for client in clients_list:
+            self.addToIconView(client)
+    
+    def getSelectedGroup(self):
+        """Return the iter for the currently selected group."""
+        return self.gtree.get_selection().get_selected()[1]
+        
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
         user, host, ip, mac, type, uid, version, pid = r.strip().split()
-
-        # If the user logged in the client is the same as
-        # the UI user, don't add the client to the iconview.
-        if user == os.getenv('USER'):
-            # But verify that the sysadmin isn't using the same username in all
-            # standalone clients.
-            try:
-                for line in open('/proc/' + pid + '/environ'):
-                    if 'epoptes-client' in line:
-                        return
-            except:
-                pass
-        # Do the same if there is a hostname filter specified as a parameter
-        if not _startswith(host, self.host_filter):
-            return
-            
+        print "---\n**addClient's been called for", handle
+        
+        # Check if the incoming client is the same with the computer in which
+        # epoptes is running, so we don't add it to the list.
+        # FIXME FiXME: Both ifs don't work for root clients that run in the same
+        # computer as epoptes
+        if mac in self.current_macs and int(uid) == os.getuid():
+        #if int(epoptes_pid) == os.getpid():
+            print "* Won't add this client to my lists"
+            return False
+        
+        print '  Continuing inside addClient...'
+        
         # Compatibility check
         if [int(x) for x in re.split('[^0-9]*', version)] < COMPATIBILITY_VERSION:
             if not self.shownCompatibilityWarning:
                 self.shownCompatibilityWarning = True
                 dlg = self.get('warningDialog')
+                # Show different messages for LTSP clients and standalones.
                 msg = _("There was a try to connect an epoptes-client with version %s \
 which is incompatible with the current epoptes version.\
 \n\nYou should update your chroot.") % version
@@ -473,68 +533,73 @@ which is incompatible with the current epoptes version.\
                 dlg.set_transient_for(self.mainwin)
                 dlg.show()
             self.daemon.command(handle, u"exit")
-            return
+            return False
         
-        
-        mac = mac.upper()
-        # Check if the client already exists
-        index = None
-        for i in range(len(self.cstore)):
-            if self.cstore[i][C_IP] == ip or \
-                (self.cstore[i][C_MAC] == mac and self.cstore[i][C_IP] == '') or \
-                (self.cstore[i][C_HOSTNAME] == host and \
-                self.cstore[i][C_IP] == '' and type == 'thin' and uid != 0):
-                index = i
-                entry = self.cstore[i]
+        client = None
+        for inst in clients:
+            # Find if the new handle is a known client
+            if mac == inst.mac:
+                client = inst
+                print '* This is an existing client'
                 break
-
-        # If it doesn't exist, create a new empty entry
-        if index is None:
-            entry = ['']*9
-
-        
-        # Check if the new client is a root epoptes-client instance or not
+        if client is None:
+            print '* This client is a new one, creating an instance'
+            client = Client(mac=mac)
+            
+        # Update/fill the client information
+        client.type, client.hostname = type, host
         if int(uid) == 0:
-            entry = [host, mac, entry[C_SESSION_HANDLE], handle, type, 
-                entry[C_USER], self.imagetypes[type], ip, '']
+            # This is a root epoptes-client
+            print '* I am a root client'
+            client.hsystem = handle
         else:
-            # For standalone clients, use mac etc if not provided already
-            entry = [host, entry[C_MAC], handle, entry[C_SYSTEM_HANDLE], type, 
-                user, self.imagetypes[type], ip, '']
-            # Pop up a proper graphical notification (python-notify)
-            if already:
-                loggedinNotify(user, host)
-            else:
+            # This is a user epoptes-client
+            print '* I am a user client, will add', user, 'in my list'
+            client.add_user(user, handle)
+            if not already:
                 loginNotify(user, host)
         
-        # If there is already an entry for this client, just update it
-        # else treat this client as a new entry
-        if index is not None:
-            self.cstore[index] = entry
+        self.fillIconView(self.gstore[self.getSelectedGroup()][G_INSTANCE])
+    
+    def setLabel(self, row):
+        return self.calculateLabel(row[C_INSTANCE].get_name(), row[C_SESSION_HANDLE])
+    
+    def calculateLabel(self, alias, username=''):
+        """
+        Return the iconview label from a hostname/alias
+        and a username, according to the user options.
+        """
+        user_pos, name_pos = self.cView_order
+        if username == '' or user_pos == -1:
+            return alias
         else:
-            self.cstore.append(entry)
-
-        if int(uid) != 0:
-            self.getScreenshots(entry[C_SESSION_HANDLE])
-        
-        self.refresh()
-
+            if user_pos == 0:
+                label = username
+                if name_pos == 1:
+                    label += " (%s)" % alias
+            elif name_pos == 0:
+                label = alias
+                if user_pos == 1:
+                    label += " (%s)" % username
+            return label
+    
     def getAllScreenshots(self):
         # TODO: Ask for screenshots for every client (Look diff at Rev:326)
         pass
 
-
     def getScreenshots(self, handle):
+        # TODO: Implement this using gtk.TreeRowReferences instead
+        # of searching the whole model (Need to modify execOnClients)
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
                 self.execOnClients(self.c.SCREENSHOT
-                    % (self.scrWidth, self.scrHeight), handles=[handle], 
+                    % (self.scrWidth, self.scrHeight), handles=[handle],
                         reply=self.updateScreenshots)
                 return
 
 
     def updateScreenshots(self, handle, reply):
-        if reply is None:
+        if not reply:
             return
         try:
             rowstride, size, pixels = reply.strip().split('\n', 2)
@@ -544,8 +609,8 @@ which is incompatible with the current epoptes version.\
         width, height = size.split('x')
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
-                pxb = gtk.gdk.pixbuf_new_from_data(pixels, 
-                    gtk.gdk.COLORSPACE_RGB, False, 8, int(width), int(height), 
+                pxb = gtk.gdk.pixbuf_new_from_data(pixels,
+                    gtk.gdk.COLORSPACE_RGB, False, 8, int(width), int(height),
                     rowstride)
                 self.cstore[i.path][C_PIXBUF] = pxb
                 # We want to ask for thumbnails every 5 sec after the last one.
@@ -556,17 +621,8 @@ which is incompatible with the current epoptes version.\
                 gobject.timeout_add(5000, self.getScreenshots, handle)
                 break
     
-    # FIXME: Just shut up and fix me
-    def addStockImage(self, name, filename):
-        pixbuf = gtk.gdk.pixbuf_new_from_file(filename)#_at_size(filename,16,16)
-        iconset = gtk.IconSet(pixbuf)
-
-        factory = gtk.IconFactory()
-        factory.add(name, iconset)
-        factory.add_default()
-    
     def loadClients(self):
-        macs = self.ltsConf.getSavedClients()#Sections()
+        macs = []#self.ltsConf.getSavedClients()#Sections()
         for mac in macs:
             mac = mac.upper()
             exists = False
@@ -575,9 +631,9 @@ which is incompatible with the current epoptes version.\
                     exists = True
                     break
             if not exists:
-                hostname = self.ltsConf.getItem(mac, 'HOSTNAME')
+                hostname = ''#self.ltsConf.getItem(mac, 'HOSTNAME')
                 if _startswith(hostname, self.host_filter):
-                    self.cstore.append([hostname, mac, '', '', 'offline', '', 
+                    self.cstore.append([hostname, mac, '', '', 'offline', '',
                                          self.offline, '', hostname])
     
     
@@ -585,15 +641,9 @@ which is incompatible with the current epoptes version.\
         selected = self.cview.get_selected_items()
         items = []
         for i in selected:
-            path = self.cfilter.convert_path_to_child_path(
-                self.csort.convert_path_to_child_path(i[0]))
-            items.append(self.cstore[path])
+            items.append(self.cstore[i])
         return items
-
-    
-    def setVisibleClients(self, model, iter):
-        return True #FIXME: add a gtk.Entry to work as a filter and implement this function
-    
+        
     def changeHostname(self, mac, new_name):
         pass #FIXME: Implement this (virtual hostname)
     
@@ -617,14 +667,14 @@ which is incompatible with the current epoptes version.\
         user = os.getenv("USER")
         if user is None:
             user = "teacher."
-        self.openLink("http://webchat.freenode.net/?nick=" + user +
+        self.openLink("http://webchat.freenode.net/?nick=" + user + 
             "&channels=linux.sch.gr&prompt=1")
     
     ## FIXME: We don't use this (we want to). there was a problem with twisted :-\
     def iconsSizeScaleChanged(self, widget):
         adj = self.get('iconsSizeAdjustment')
         self.scrWidth = int(adj.get_value())
-        self.scrHeight = int(3*self.scrWidth/4) # Κeep the 4:3 aspect ratio
+        self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
         self.getAllScreenshots()
 
     def scrIncreaseSize(self, widget):
@@ -640,7 +690,7 @@ which is incompatible with the current epoptes version.\
     ## END_FIXME
 
     def contextMenuPopup(self, widget, event):
-        clicked = widget.get_path_at_pos(int(event.x),int(event.y))
+        clicked = widget.get_path_at_pos(int(event.x), int(event.y))
 
         if event.button == 3:
             if widget is self.cview:
@@ -662,7 +712,7 @@ which is incompatible with the current epoptes version.\
             if widget is self.cview:
                 menu = self.get('clients').get_submenu()
             
-            menu.popup(None,None,None,event.button,event.time)
+            menu.popup(None, None, None, event.button, event.time)
             menu.show()
             return True
 
@@ -701,7 +751,7 @@ which is incompatible with the current epoptes version.\
         if len(self.cstore) == 0:
             # print 'No clients'
             return False
-        if (clients !=[] or handles !=[]) and warning !='':
+        if (clients != [] or handles != []) and warning != '':
             if self.warnDlgPopup(warning) == False:
                 return
         if clients == [] and handles != []:
@@ -727,7 +777,7 @@ which is incompatible with the current epoptes version.\
         if len(clients) == 0: # No client selected, send the command to all
             clients = self.cstore
         else: # Show the warning only when no clients are selected
-            warn=''
+            warn = ''
         self.execOnClients(command, clients, reply, root, warning=warn)
     
     # END_FIXUS
@@ -758,31 +808,31 @@ which is incompatible with the current epoptes version.\
             clients = self.cstore
 
         if as_root:
-            screen_params="bash -l"
+            screen_params = "bash -l"
         else:
-            screen_params="-l"
+            screen_params = "-l"
 
         for client in clients:
             if client[C_TYPE] == 'offline':
                 continue
             elif client[C_TYPE] == 'thin' and not as_root:
-                server="127.0.0.1"
+                server = "127.0.0.1"
             else:
-                server="server"
+                server = "server"
 
             port = self.findUnusedPort()
 
-            subprocess.Popen(['xterm', '-e', 'socat', 
+            subprocess.Popen(['xterm', '-e', 'socat',
                 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
-            self.execOnClients(("""./execute sh -c "cd; sleep 1; """ +
-                """TERM=xterm exec socat SYSTEM:'exec screen %s',pty,""" +
+            self.execOnClients(("""./execute sh -c "cd; sleep 1; """ + 
+                """TERM=xterm exec socat SYSTEM:'exec screen %s',pty,""" + 
                 """stderr tcp:$SERVER:%d" """) % (screen_params, port),
                 [client], root=as_root)
 
     def execInTerminal(self, widget, command):
         name = widget.get_child().get_text()
         subprocess.Popen([ 'x-terminal-emulator', '-e', 'sh', '-c', command
-            + ' && read -p "Script \'%s\' finished succesfully. Press [Enter] to close this window." dummy' %name
-            + ' || read -p "Script \'%s\' finished with errors. Press [Enter] to close this window." dummy' %name]
+            + ' && read -p "Script \'%s\' finished succesfully. Press [Enter] to close this window." dummy' % name
+            + ' || read -p "Script \'%s\' finished with errors. Press [Enter] to close this window." dummy' % name]
             )
 

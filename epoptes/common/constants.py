@@ -23,18 +23,19 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
+# Warn users to update their chroots if they have a lower epoptes-client version 
+# than this
+COMPATIBILITY_VERSION = [0, 1]
 
 # ['ltsp123', '00-1b-24-89-65-d6', '127.0.0.1:46827', '10.160.31.126:44920', 
 #  'thin', 'user3', <gtk.gdk.Pixbuf>, '10.160.31.123', 'user (ltsp123)']
-C_HOSTNAME = 0
-C_MAC = 1
-C_SESSION_HANDLE = 2
-C_SYSTEM_HANDLE = 3
-C_TYPE = 4
-C_USER = 5
-C_PIXBUF = 6
-C_IP = 7
-C_VIEW_STYLE = 8
+C_LABEL = 0
+C_PIXBUF = 1
+C_INSTANCE = 2
+C_SESSION_HANDLE = 3
+# [label, <gtk.gdk.Pixbuf>, <Client instance>, username]
+G_LABEL = 0
+G_INSTANCE = 1
 
 class Constants:
     """

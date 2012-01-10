@@ -65,10 +65,7 @@ if not is_member:
     dlg.destroy()
     sys.exit(msg)
 
-filter_pattern = None
-if len(sys.argv) > 1 and sys.argv[1].startswith("--filter-host="):
-    filter_pattern = sys.argv[1].split('=', 1)[1]
-epoptesGui = gui.EpoptesGui(None, filter_pattern)
+epoptesGui = gui.EpoptesGui()
 
 def connectionFailed(failure):
     print "Connection with epoptes failed:"

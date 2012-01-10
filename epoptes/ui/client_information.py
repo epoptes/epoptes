@@ -39,23 +39,24 @@ class ClientInformation:
         set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
 
         for client in selected:
-            if client[C_SYSTEM_HANDLE]:
-                C_HANDLE = C_SYSTEM_HANDLE
-            else:
-                C_HANDLE = C_SESSION_HANDLE
-            if client[C_HANDLE]:
-                execute(client[C_HANDLE], 'echo $RAM').addCallback(
+            inst = client[C_INSTANCE]
+            handle = inst.hsystem or client[C_SESSION_HANDLE]
+            if handle:
+                execute(handle, 'echo $RAM').addCallback(
                     lambda r: set('client_ram', r.strip()+' MB'))
-                execute(client[C_HANDLE], 'echo $CPU').addCallback(
+                execute(handle, 'echo $CPU').addCallback(
                     lambda r: set('client_cpu', r))
-                execute(client[C_HANDLE], 'echo $VGA').addCallback(
+                execute(handle, 'echo $VGA').addCallback(
                     lambda r: set('client_vga', r))
-            set('client_hostname', client[C_HOSTNAME])
-            set('client_mac', client[C_MAC])
-            set('client_ip', client[C_HANDLE].split(':')[0])
-            set('client_type', client[C_TYPE])
-            set('client_online_user', client[C_USER])
-            self.dlg.set_title(_('Properties of %s') %client[C_HOSTNAME])
+            set('client_hostname', inst.hostname)
+            set('client_mac', inst.mac)
+            set('client_ip', handle.split(':')[0])
+            set('client_type', inst.type)
+            user = '--'
+            if client[C_SESSION_HANDLE]:
+                user = inst.users[client[C_SESSION_HANDLE]]
+            set('client_online_user', user)
+            self.dlg.set_title(_('Properties of %s') %inst.get_name())
         
     def run(self):
         self.dlg.run()

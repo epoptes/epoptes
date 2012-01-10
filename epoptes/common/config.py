@@ -27,6 +27,10 @@
 import os
 import shlex
 import ConfigParser
+import json
+
+from epoptes.core.structs import *
+from epoptes.common.constants import *
 
 def read_plain_file(filename):
     """Return the whole contents of a plain text file into a string list.
@@ -101,6 +105,76 @@ def read_shell_file(filename):
     except:
         return {}
 
+def read_groups(filename):
+    """Parse a JSON file and create the appropriate group and
+    client objects.
+    
+    Return a 2-tuple with a client instances list and a group
+    instances list.
+    """
+    try:
+        f=open(filename)
+        data = json.loads(f.read())
+        f.close()
+    except:
+        return ([],[])
+    
+    saved_clients = {}
+
+    for key, cln in data['clients'].iteritems():
+        new = Client('offline', cln['mac'], '', cln['alias'])
+        saved_clients[key] = new
+
+    groups = []
+    for grp in data['groups']:
+        members = {}
+        for key, dct in grp['members'].iteritems():
+            members[saved_clients[key]] = dct
+    
+        groups.append(Group(grp['name'], members))
+    
+    return (saved_clients.values(), groups)
+    
+def save_groups(filename, model):
+    """Save the groups and their members from model (gtk.ListStore)
+    in JSON format.
+    """
+    
+    data = {'clients' : {}, 'groups' : []}
+    uid=0
+    uid_pairs = {}
+    saved_clients = []
+    
+    # Create a list with all the clients we want to save
+    for grp in model:
+        grp = grp[G_INSTANCE]
+        for cln in grp.get_members():
+            if cln not in saved_clients:
+                saved_clients.append(cln)
+    
+    for cln in saved_clients:
+        # Use an integer ID as a key instead of the memory address
+        data['clients'][uid] = {'mac' : cln.mac, 'alias' : cln.alias}
+        # Pair memory addresses with integer IDs
+        uid_pairs[cln] = uid
+        uid += 1
+
+    for grp in model:
+        grp = grp[G_INSTANCE]
+        members = {}
+        
+        # Get the IDs created above
+        for cln, props in grp.members.iteritems():
+            members[uid_pairs[cln]] = props
+        
+        
+        data['groups'].append({'name' : grp.name, 
+                               'members' : members})
+        
+    # Save the dict in JSON format
+    f=open(filename, 'w')
+    f.write(json.dumps(data, indent=2))
+    f.close()
 
 # The system settings are shared with epoptes-clients, that's why the caps.
 system = read_shell_file('/etc/default/epoptes')

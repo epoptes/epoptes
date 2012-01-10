@@ -219,17 +219,6 @@
     <property name="visible">True</property>
     <property name="icon_name">emblem-people</property>
   </object>
-  <object class="GtkListStore" id="liststore1">
-    <columns>
-      <!-- column-name group_name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Auto-detected computers</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkWindow" id="mainwindow">
     <property name="visible">True</property>
     <property name="title" translatable="yes">epoptes</property>
@@ -292,11 +281,11 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkCheckMenuItem" id="mcShowRealName">
+                      <object class="GtkCheckMenuItem" id="mcShowRealNames">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Show real name</property>
+                        <property name="label" translatable="yes">Show real names</property>
                         <property name="use_underline">True</property>
-                        <signal name="toggled" handler="toggleRealNameColumn"/>
+                        <signal name="toggled" handler="toggleRealNames"/>
                       </object>
                     </child>
                   </object>
@@ -998,15 +987,17 @@
             <property name="position">150</property>
             <child>
               <object class="GtkVBox" id="vbox2">
+                <property name="visible">True</property>
                 <child>
                   <object class="GtkHBox" id="hbox2">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkButton" id="button3">
+                      <object class="GtkButton" id="add_group">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
+                        <signal name="clicked" handler="on_add_group_clicked"/>
                         <child>
                           <object class="GtkImage" id="image1">
                             <property name="visible">True</property>
@@ -1020,11 +1011,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button4">
+                      <object class="GtkButton" id="remove_group">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
+                        <signal name="clicked" handler="on_remove_group_clicked"/>
                         <child>
                           <object class="GtkImage" id="image9">
                             <property name="visible">True</property>
@@ -1038,11 +1030,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button5">
+                      <object class="GtkButton" id="move_group_up">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
+                        <signal name="clicked" handler="on_move_group_up_clicked"/>
                         <child>
                           <object class="GtkImage" id="image10">
                             <property name="visible">True</property>
@@ -1056,11 +1049,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="button6">
+                      <object class="GtkButton" id="move_group_down">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
+                        <signal name="clicked" handler="on_move_group_down_clicked"/>
                         <child>
                           <object class="GtkImage" id="image11">
                             <property name="visible">True</property>
@@ -1086,10 +1080,27 @@
                     <property name="hscrollbar_policy">automatic</property>
                     <property name="vscrollbar_policy">automatic</property>
                     <child>
-                      <object class="GtkTreeView" id="treeview1">
+                      <object class="GtkTreeView" id="groups_tree">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="model">liststore1</property>
+                        <property name="headers_clickable">False</property>
+                        <property name="reorderable">True</property>
+                        <property name="search_column">0</property>
+                        <signal name="drag_drop" handler="on_gtree_drag_drop"/>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="group_name_column">
+                            <property name="title">Groups</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext1">
+                                <property name="editable">True</property>
+                                <signal name="edited" handler="on_group_renamed"/>
+                              </object>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
