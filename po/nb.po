@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-03 18:23+0200\n"
+"POT-Creation-Date: 2012-01-10 06:05+0200\n"
 "PO-Revision-Date: 2011-10-16 17:09+0000\n"
 "Last-Translator: Kai Stian Olstad <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-12-01 06:17+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2012-01-10 05:59+0000\n"
+"X-Generator: Launchpad (build 14640)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -26,281 +26,279 @@ msgid "Assist student"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "Auto-detected computers"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Background image"
 msgstr "Bakgrunnsbilde"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Block Internet"
 msgstr "Blokker internett"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Boot"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Boot selected clients (Wake On LAN)"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast student"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast teacher"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast teacher's screen to the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast video"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcasts"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Computer"
 msgstr "Datamaskin"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Computer (user)"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Confirm action"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Execute"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Execute a command on the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:17 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Kjør kommando"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Forum"
 msgstr "Forum"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
+#: ../epoptes/ui/gtk/epoptes.ui.h:19 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
 msgstr "Informasjon"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Labels"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Live chat (IRC)"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Lock background"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Lock screen"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Lock screen of the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Log out"
 msgstr "Logg ut"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Log out users connected on selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Monitor student"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Mute sound"
 msgstr "Demp lyd"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open terminal"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Reboot"
 msgstr "Omstart"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Reboot the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Remote support"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Report a bug"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Restrictions"
 msgstr "Begrensninger"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Root, locally"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, remotely"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Send a message to the selected clients"
 msgstr "Send melding til valgte klienter"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:39 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:38 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Send message"
 msgstr "Send melding"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Session"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Set background"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Set default background"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Show information for the selected client"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Show real name"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Show real names"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Shutdown"
 msgstr "Skru av"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Shutdown the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Stop all broadcasts on every client"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Stop broadcasts"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Stops all active broadcasts"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Unblock Internet"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Unlock screen"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Unlock the screen of the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Unmute sound"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "User"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "User (computer)"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "User, locally"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "_Clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "_File"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "_Help"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "_Send message"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "_View"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "epoptes"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:43
-msgid "Connected users:"
+#: ../epoptes/ui/notifications.py:42
+msgid "Shut down:"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:43 ../epoptes/ui/notifications.py:47
+#: ../epoptes/ui/notifications.py:45
+msgid "Connected:"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:47
-msgid "Connected:"
-msgstr ""
-
-#: ../epoptes/ui/notifications.py:51
+#: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:51
+#: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:55
-msgid "Shut down:"
-msgstr ""
-
-#: ../epoptes/ui/client_information.py:58
+#: ../epoptes/ui/client_information.py:59
 #, python-format
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:438
+#: ../epoptes/ui/gui.py:115
+msgid "All clients"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:351
+#, python-format
+msgid "Are you sure you want to remove the group \"%s\"?"
+msgstr ""
+
+#. Show different messages for LTSP clients and standalones.
+#: ../epoptes/ui/gui.py:529
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
