@@ -66,8 +66,9 @@ class EpoptesGui(object):
         self.vncviewer = None
         self.scrWidth = 100
         self.scrHeight = 75
-        subprocess.Popen(['xprop', '-root', '-f', 'EPOPTES', '32c', '-set', 'EPOPTES', str(os.getpid())])
-        self.current_macs = subprocess.Popen(['sh', '-c', """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'"""], stdout=subprocess.PIPE).stdout.read().split()
+        self.current_macs = subprocess.Popen(['sh', '-c', 
+        """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'"""], 
+                                             stdout=subprocess.PIPE).stdout.read().split()
         if os.getuid() != 0:
             if 'thumbnails_width' in config.user:
                 self.scrWidth = config.user['thumbnails_width']
@@ -112,16 +113,16 @@ class EpoptesGui(object):
         self.cview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, [("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         self.gtree.enable_model_drag_dest([("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         
-        self.auto_group = Group(_('All clients'))
-        auto_iter = self.gstore.append([self.auto_group.name, self.auto_group])
-        self.auto_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(auto_iter))
-        self.gtree.get_selection().select_path(self.auto_group.ref.get_path())
+        self.default_group = Group(_('All clients'))
+        auto_iter = self.gstore.append([self.default_group.name, self.default_group])
+        self.default_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(auto_iter))
+        self.gtree.get_selection().select_path(self.default_group.ref.get_path())
         
         saved_clients, groups = config.read_groups(os.path.expanduser('~/.config/epoptes/groups.json'))
         for grp in groups:
             self.gstore.append([grp.name, grp])
         for cln in saved_clients:
-            if self.gstore[self.getSelectedGroup()][G_INSTANCE] is self.auto_group:
+            if self.isDefaultGroupSelected():
                 self.cstore.append([cln.mac, self.imagetypes['offline'], cln, ''])
 
     #################################################################
@@ -157,7 +158,7 @@ class EpoptesGui(object):
 
         Close main window
         """
-        self.gstore.remove(self.gstore.get_iter(self.auto_group.ref.get_path()))
+        self.gstore.remove(self.gstore.get_iter(self.default_group.ref.get_path()))
         config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'), self.gstore)
         if not self.vncserver is None:
             self.vncserver.kill()
@@ -345,7 +346,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         pass
         
     def on_remove_group_clicked(self, widget):
-        group_iter = self.getSelectedGroup()
+        group_iter = self.getSelectedGroup()[0]
         group = self.gstore[group_iter][G_INSTANCE]
         
         if self.warnDlgPopup(_('Are you sure you want to remove the group "%s"?') % group.name):
@@ -409,8 +410,6 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         self.daemon.command(handle, u"""
             VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
             VERSION=${VERSION:-0.1}
-            EPOPTES_PID=$(xprop -root -notype EPOPTES 2>/dev/null)
-            EPOPTES_PID=${EPOPTES_PID##*= }
             echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
             """).addCallback(lambda r: self.addClient(handle, r))
 
@@ -421,7 +420,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
             if inst.hsystem == handle:
                 shutdownNotify(inst.get_name())
                 if not inst.users:
-                    if not self.isAutoGroupSelected():
+                    if not self.isDefaultGroupSelected():
                         self.savedClientReset(client)
                     else:
                         self.cstore.remove(client.iter)
@@ -433,7 +432,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
                 del inst.users[handle]
                 
                 if inst.hsystem == '':
-                    if self.isAutoGroupSelected():
+                    if self.isDefaultGroupSelected():
                         self.savedClientReset(client)
                     else:
                         self.cstore.remove(client.iter)
@@ -457,8 +456,6 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
             d = self.daemon.command(handle, u"""
                 VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
                 VERSION=${VERSION:-0.1}
-                EPOPTES_PID=$(xprop -root -notype EPOPTES 2>/dev/null)
-                EPOPTES_PID=${EPOPTES_PID##*= }
                 echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
                 """)
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
@@ -471,12 +468,12 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         selected = self.getSelectedGroup()
         
         if selected is not None:
-            self.fillIconView(self.gstore[selected][G_INSTANCE])
+            self.fillIconView(selected[1])
         else:
-            if not self.auto_group.ref.valid():
+            if not self.default_group.ref.valid():
                 return
-            self.gtree.get_selection().select_path(self.auto_group.ref.get_path())
-        self.get('remove_group').set_sensitive(not self.gstore[self.getSelectedGroup()][G_INSTANCE] is self.auto_group)
+            self.gtree.get_selection().select_path(self.default_group.ref.get_path())
+        self.get('remove_group').set_sensitive(not self.isDefaultGroupSelected())
     
     def addToIconView(self, client):
         """Properly add a Client class instance to the clients iconview."""
@@ -492,7 +489,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
     def fillIconView(self, group):
         """Fill the clients iconview from a Group class instance."""
         self.cstore.clear()
-        if self.gstore[self.getSelectedGroup()][G_INSTANCE] is self.auto_group:
+        if self.isDefaultGroupSelected():
             clients_list = clients
         else:
             clients_list = group.get_members()
@@ -500,9 +497,18 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         for client in clients_list:
             self.addToIconView(client)
     
+    def isDefaultGroupSelected(self):
+        """Return True if the default group is selected"""
+        return self.getSelectedGroup()[1] is self.default_group
+    
     def getSelectedGroup(self):
-        """Return the iter for the currently selected group."""
-        return self.gtree.get_selection().get_selected()[1]
+        """Return a 2-tuple containing the iter and the instance
+        for the currently selected group."""
+        iter = self.gtree.get_selection().get_selected()[1]
+        if iter:
+            return (iter, self.gstore[iter][G_INSTANCE])
+        else:
+            return None
         
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
@@ -513,8 +519,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         # epoptes is running, so we don't add it to the list.
         # FIXME FiXME: Both ifs don't work for root clients that run in the same
         # computer as epoptes
-        if mac in self.current_macs and int(uid) == os.getuid():
-        #if int(epoptes_pid) == os.getpid():
+        if mac in self.current_macs:
             print "* Won't add this client to my lists"
             return False
         
@@ -559,7 +564,7 @@ which is incompatible with the current epoptes version.\
             if not already:
                 loginNotify(user, host)
         
-        self.fillIconView(self.gstore[self.getSelectedGroup()][G_INSTANCE])
+        self.fillIconView(self.getSelectedGroup()[1])
     
     def setLabel(self, row):
         return self.calculateLabel(row[C_INSTANCE].get_name(), row[C_SESSION_HANDLE])
@@ -763,8 +768,8 @@ which is incompatible with the current epoptes version.\
         for client in clients:
             if (root == "auto" or not root) and client[C_SESSION_HANDLE] != '':
                 handle = client[C_SESSION_HANDLE]
-            elif root and client[C_SYSTEM_HANDLE] != '':
-                handle = client[C_SYSTEM_HANDLE]
+            elif root and client[C_INSTANCE].hsystem != '':
+                handle = client[C_INSTANCE].hsystem
             else:
                 continue
             cmd = self.daemon.command(handle, unicode(command))
