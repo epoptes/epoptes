@@ -102,7 +102,7 @@ class EpoptesGui(object):
         self.cstore = gtk.ListStore(str, gtk.gdk.Pixbuf, object, str)
         self.cview = self.get('clientsview')
         self.cView_order = (1, 0)
-        self.refresh()
+        self.set_cView(*self.cView_order)
         
         self.cview.set_model(self.cstore)
         self.cview.set_text_column(C_LABEL)
@@ -121,9 +121,8 @@ class EpoptesGui(object):
         saved_clients, groups = config.read_groups(os.path.expanduser('~/.config/epoptes/groups.json'))
         for grp in groups:
             self.gstore.append([grp.name, grp])
-        for cln in saved_clients:
-            if self.isDefaultGroupSelected():
-                self.cstore.append([cln.mac, self.imagetypes['offline'], cln, ''])
+        
+        self.fillIconView(self.getSelectedGroup()[1])
 
     #################################################################
     #                       Callback functions                      #
@@ -139,19 +138,6 @@ class EpoptesGui(object):
                 self.gstore[path][G_INSTANCE].add_client(cln)
         return True
     
-    def refresh(self, widget=None):
-        """
-        Refresh clicked
-
-        Refresh main dialog by re-loading panels containing
-        lists of clients, groups and users connected.
-        """
-        # Read saved clients #self.ltsConf.parse()
-        self.loadClients()
-        self.set_cView(self.cView_order[0], self.cView_order[1])
-        self.setClientMenuSensitivity()
-
-
     def on_mainwin_destroy(self, widget):
         """
         Quit clicked
@@ -389,22 +375,14 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
     def set_cView(self, user_pos= -1, name_pos=0):
         # Save the order so all new clients get the selected format
         self.cView_order = (user_pos, name_pos)
-        
         for row in self.cstore:            
-            name = row[C_INSTANCE].get_name()
-            user = ''
-            if row[C_SESSION_HANDLE]:
-                user = row[C_INSTANCE].users[row[C_SESSION_HANDLE]]
-            row[C_LABEL] = self.calculateLabel(name, user)
-    
-    
+            self.setLabel(row)
     
     def connected(self, daemon):
         self.daemon = daemon
         daemon.enumerateClients().addCallback(lambda h: self.amp_gotClients(h))
 
     # AMP callbacks
-
     def amp_clientConnected(self, handle):
         print "New connection from", handle
         self.daemon.command(handle, u"""
@@ -415,35 +393,27 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
 
     def amp_clientDisconnected(self, handle):
         print "Disconnect from", handle
-        for client in self.cstore:
-            inst = client[C_INSTANCE]
-            if inst.hsystem == handle:
-                shutdownNotify(inst.get_name())
-                if not inst.users:
-                    if not self.isDefaultGroupSelected():
-                        self.savedClientReset(client)
-                    else:
-                        self.cstore.remove(client.iter)
-                else:
-                    inst.hsystem = ''
+        
+        def determine_offline(client):
+            if client.hsystem == '' and client.users == {}:
+                client.set_offline()
+        
+        for client in clients:
+            if client.hsystem == handle:
+                if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
+                    shutdownNotify(client.get_name())
+                client.hsystem = ''
+                determine_offline(client)
                 break
-            elif handle in inst.users:
-                logoutNotify(inst.users[handle], inst.get_name())
-                del inst.users[handle]
-                
-                if inst.hsystem == '':
-                    if self.isDefaultGroupSelected():
-                        self.savedClientReset(client)
-                    else:
-                        self.cstore.remove(client.iter)
-                else:
-                    client[C_SESSION_HANDLE] = ''
-                    type = inst.type
-                    client[C_PIXBUF] = self.imagetypes[type]
+            
+            elif handle in client.users:
+                if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
+                    logoutNotify(client.users[handle], client.get_name())
+                del client.users[handle]
+                determine_offline(client)
                 break
-        self.refresh()
+        self.fillIconView(self.getSelectedGroup()[1])
     
-
     def savedClientReset(self, client):
         inst = client[C_INSTANCE]
         inst.hsession = inst.hsystem = inst.user = ''
@@ -481,16 +451,16 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         # for each one of them.
         if client.users:
             for hsession, user in client.users.iteritems():
-                self.cstore.append([self.calculateLabel(client.get_name(), user), self.imagetypes[client.type], client, hsession])
+                self.cstore.append([self.calculateLabel(client, user), self.imagetypes[client.type], client, hsession])
                 self.getScreenshots(hsession)
         else:
-            self.cstore.append([self.calculateLabel(client.get_name()), self.imagetypes[client.type], client, ''])
+            self.cstore.append([self.calculateLabel(client), self.imagetypes[client.type], client, ''])
     
     def fillIconView(self, group):
         """Fill the clients iconview from a Group class instance."""
         self.cstore.clear()
         if self.isDefaultGroupSelected():
-            clients_list = clients
+            clients_list = [client for client in clients if client.type != 'offline']
         else:
             clients_list = group.get_members()
         # Add the new clients to the iconview
@@ -561,20 +531,32 @@ which is incompatible with the current epoptes version.\
             # This is a user epoptes-client
             print '* I am a user client, will add', user, 'in my list'
             client.add_user(user, handle)
-            if not already:
+            if not already and (self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected()):
                 loginNotify(user, host)
         
         self.fillIconView(self.getSelectedGroup()[1])
     
     def setLabel(self, row):
-        return self.calculateLabel(row[C_INSTANCE].get_name(), row[C_SESSION_HANDLE])
+        inst = row[C_INSTANCE]
+        if row[C_SESSION_HANDLE]:            
+            user = row[C_INSTANCE].users[row[C_SESSION_HANDLE]]
+        else:
+            user = ''
+        row[C_LABEL] = self.calculateLabel(inst, user)
+
     
-    def calculateLabel(self, alias, username=''):
-        """
-        Return the iconview label from a hostname/alias
+    
+    
+    def calculateLabel(self, client, username=''):
+        """Return the iconview label from a hostname/alias
         and a username, according to the user options.
         """
         user_pos, name_pos = self.cView_order
+        
+        if client.get_name() == '':
+            return client.mac
+        
+        alias = client.get_name()
         if username == '' or user_pos == -1:
             return alias
         else:
@@ -625,22 +607,6 @@ which is incompatible with the current epoptes version.\
                 # asking for screenshots even if we got an empty/broken one.
                 gobject.timeout_add(5000, self.getScreenshots, handle)
                 break
-    
-    def loadClients(self):
-        macs = []#self.ltsConf.getSavedClients()#Sections()
-        for mac in macs:
-            mac = mac.upper()
-            exists = False
-            for client in self.cstore:
-                if client[C_MAC] == mac:
-                    exists = True
-                    break
-            if not exists:
-                hostname = ''#self.ltsConf.getItem(mac, 'HOSTNAME')
-                if _startswith(hostname, self.host_filter):
-                    self.cstore.append([hostname, mac, '', '', 'offline', '',
-                                         self.offline, '', hostname])
-    
     
     def getSelectedClients(self):
         selected = self.cview.get_selected_items()
@@ -818,9 +784,10 @@ which is incompatible with the current epoptes version.\
             screen_params = "-l"
 
         for client in clients:
-            if client[C_TYPE] == 'offline':
+            inst = client[C_INSTANCE]
+            if inst.type == 'offline':
                 continue
-            elif client[C_TYPE] == 'thin' and not as_root:
+            elif inst.type == 'thin' and not as_root:
                 server = "127.0.0.1"
             else:
                 server = "server"

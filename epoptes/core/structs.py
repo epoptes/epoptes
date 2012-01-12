@@ -35,6 +35,12 @@ class Client:
         self.hsystem = hsystem
         clients.append(self)
     
+    def set_offline(self):
+        self.hsystem = ''
+        self.users = {}
+        self.type = 'offline'
+        self.hostname = ''
+    
     def is_offline(self):
         """Return True only if there is no system or session handle
         for this client but there is a MAC address.
@@ -42,7 +48,9 @@ class Client:
         return not(self.users and self.hsystem) and self.mac
         
     def get_name(self):
-        """Return the alias of the client or the hostname if the first is empty."""
+        """Return the alias of the client or the hostname if the 
+        alias is not set.
+        """
         return self.alias or self.hostname
         
     def set_name(self, name):
@@ -64,7 +72,7 @@ class Group:
     
     def has_client(self, client):
         """Check if a client is member of the group"""
-        return client in members
+        return client in self.members
     
     def add_client(self, client, **props):
         """Add a client to the group"""
