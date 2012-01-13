@@ -57,7 +57,7 @@ basic_info() {
         TYPE="fat"
     elif [ -n "$LTSP_CLIENT" ] || [ -f /etc/ltsp_chroot ]; then
         TYPE="thin"
-    elif [ -n "$(dpkg-query -W -f '${Version}' epoptes 2>/dev/null)" ]; then
+    elif [ -x /usr/bin/epoptes ]; then
         TYPE="server"
     else
         TYPE="standalone"
