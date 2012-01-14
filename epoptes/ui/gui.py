@@ -547,18 +547,12 @@ which is incompatible with the current epoptes version.\
         else:
             user = ''
         row[C_LABEL] = self.calculateLabel(inst, user)
-
-    
-    
     
     def calculateLabel(self, client, username=''):
         """Return the iconview label from a hostname/alias
         and a username, according to the user options.
         """
         user_pos, name_pos = self.cView_order
-        
-        if client.get_name() == '':
-            return client.mac
         
         alias = client.get_name()
         if username == '' or user_pos == -1:

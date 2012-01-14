@@ -49,9 +49,10 @@ class Client:
         
     def get_name(self):
         """Return the alias of the client or the hostname if the 
-        alias is not set.
+        alias is not set, or if both are unset (offline clients)
+        return the MAC address.
         """
-        return self.alias or self.hostname
+        return self.alias or self.hostname or self.mac
         
     def set_name(self, name):
         self.alias = name
