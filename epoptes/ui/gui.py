@@ -127,16 +127,20 @@ class EpoptesGui(object):
     #                       Callback functions                      #
     #################################################################
     def on_gtree_drag_drop(self, wid, context, x, y, time):
-        context.finish(True, False, time)
-        
-        path = self.gtree.get_path_at_pos(x, y)
-        if path:
-            path = path[0]
-            for cln in self.getSelectedClients():
-                cln = cln[C_INSTANCE]
-                self.gstore[path][G_INSTANCE].add_client(cln)
-        return True
+        dest = self.gtree.get_dest_row_at_pos(x, y)
+        if dest is not None:
+            path, pos = dest
+            if pos in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
+                group = self.gstore[path][G_INSTANCE]
+                if not group is self.default_group:
+                    for cln in self.getSelectedClients():
+                        cln = cln[C_INSTANCE]
+                        if not group.has_client(cln):
+                            group.add_client(cln)
     
+        context.finish(True, False, time)
+        return True
+
     def on_mainwin_destroy(self, widget):
         """
         Quit clicked
