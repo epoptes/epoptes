@@ -107,7 +107,7 @@ class EpoptesGui(object):
         self.cview.set_text_column(C_LABEL)
         self.cview.set_pixbuf_column(C_PIXBUF)
         self.cstore.set_sort_column_id(C_LABEL, gtk.SORT_ASCENDING)
-        self.setClientMenuSensitivity()
+        self.on_clients_selection_changed()
         
         self.cview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, [("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         self.gtree.enable_model_drag_dest([("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
@@ -322,6 +322,15 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         """
         self.execOnSelectedClients(self.c.EXEC_AMIXER + 'unmute', root=True)
     
+    def on_remove_from_group_clicked(self, widget):
+        clients = self.getSelectedClients()
+        group = self.getSelectedGroup()[1]
+        
+        if self.warnDlgPopup(_('Are you sure you want to remove the selected client(s) from group "%s"?') %group.name):
+            for client in clients:
+                group.remove_client(client[C_INSTANCE])
+            self.fillIconView(self.getSelectedGroup()[1])
+    
     def on_move_group_down_clicked(self, widget):
         pass
     
@@ -334,7 +343,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         group_iter = self.getSelectedGroup()[0]
         group = self.gstore[group_iter][G_INSTANCE]
         
-        if self.warnDlgPopup(_('Are you sure you want to remove the group "%s"?') % group.name):
+        if self.warnDlgPopup(_('Are you sure you want to remove group "%s"?') % group.name):
             self.gstore.remove(group_iter)
             
     def on_add_group_clicked(self, widget):
@@ -678,13 +687,18 @@ which is incompatible with the current epoptes version.\
             menu.show()
             return True
 
-    def setClientMenuSensitivity(self, widget=None):
+    def on_clients_selection_changed(self, widget=None):
         selected = self.getSelectedClients()
         sensitive = False
         if len(selected) == 1:
             sensitive = True
         self.get('miClientProperties').set_sensitive(sensitive)
         self.get('tb_client_properties').set_sensitive(sensitive)
+        
+        if len(selected) >= 1:
+            self.get('miRemoveFromGroup').set_sensitive(True)
+        else:
+            self.get('miRemoveFromGroup').set_sensitive(False)
 
     
     ## FIXME: This is not yet finished, implement it

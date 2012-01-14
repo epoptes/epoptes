@@ -657,10 +657,23 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="miClientProperties">
-                        <property name="label">gtk-properties</property>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
                         <property name="visible">True</property>
-                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="miRemoveFromGroup">
+                        <property name="label" translatable="yes">Remove from group</property>
+                        <property name="visible">True</property>
+                        <property name="image">image13</property>
+                        <property name="use_stock">False</property>
+                        <signal name="activate" handler="on_remove_from_group_clicked"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="miClientProperties">
+                        <property name="label">gtk-info</property>
+                        <property name="visible">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_tb_client_properties_clicked"/>
                       </object>
@@ -942,7 +955,7 @@
                 <property name="tooltip_text" translatable="yes">Show information for the selected client</property>
                 <property name="label" translatable="yes">Information</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">document-properties</property>
+                <property name="stock_id">gtk-info</property>
                 <signal name="clicked" handler="on_tb_client_properties_clicked"/>
               </object>
               <packing>
@@ -986,6 +999,7 @@
                         <child>
                           <object class="GtkImage" id="image1">
                             <property name="visible">True</property>
+                            <property name="tooltip_text" translatable="yes">Create a new group</property>
                             <property name="stock">gtk-add</property>
                           </object>
                         </child>
@@ -1005,6 +1019,7 @@
                         <child>
                           <object class="GtkImage" id="image9">
                             <property name="visible">True</property>
+                            <property name="tooltip_text" translatable="yes">Remove the selected group</property>
                             <property name="stock">gtk-remove</property>
                           </object>
                         </child>
@@ -1112,7 +1127,7 @@
                     <property name="can_focus">True</property>
                     <property name="selection_mode">multiple</property>
                     <signal name="button_press_event" handler="contextMenuPopup"/>
-                    <signal name="selection_changed" handler="setClientMenuSensitivity"/>
+                    <signal name="selection_changed" handler="on_clients_selection_changed"/>
                     <signal name="item_activated" handler="monitorStudent"/>
                   </object>
                 </child>
@@ -1271,5 +1286,9 @@
   <object class="GtkImage" id="image12">
     <property name="visible">True</property>
     <property name="icon_name">gnome-remote-desktop</property>
+  </object>
+  <object class="GtkImage" id="image13">
+    <property name="visible">True</property>
+    <property name="stock">gtk-remove</property>
   </object>
 </interface>
