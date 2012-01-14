@@ -29,7 +29,7 @@ import shlex
 import ConfigParser
 import json
 
-from epoptes.core.structs import *
+from epoptes.core import structs
 from epoptes.common.constants import *
 
 def read_plain_file(filename):
@@ -122,7 +122,7 @@ def read_groups(filename):
     saved_clients = {}
 
     for key, cln in data['clients'].iteritems():
-        new = Client('offline', cln['mac'], '', cln['alias'])
+        new = structs.Client('offline', cln['mac'], '', cln['alias'])
         saved_clients[key] = new
 
     groups = []
@@ -131,7 +131,7 @@ def read_groups(filename):
         for key, dct in grp['members'].iteritems():
             members[saved_clients[key]] = dct
     
-        groups.append(Group(grp['name'], members))
+        groups.append(structs.Group(grp['name'], members))
     
     return (saved_clients.values(), groups)
     

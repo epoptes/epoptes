@@ -53,7 +53,7 @@ from epoptes.common import ltsconf
 from epoptes.common import config
 from epoptes.common.constants import *
 from epoptes.core import wol
-from epoptes.core.structs import *
+from epoptes.core import structs
 
 
 class EpoptesGui(object):
@@ -61,7 +61,6 @@ class EpoptesGui(object):
     def __init__(self):
         self.c = commands.commands()
         self.shownCompatibilityWarning = False 
-        self.added = False
         self.vncserver = None
         self.vncviewer = None
         self.scrWidth = 100
@@ -88,7 +87,7 @@ class EpoptesGui(object):
         self.wTree.connect_signals(self)
         self.get = lambda obj: self.wTree.get_object(obj)
         
-        self.gstore = gtk.ListStore(str, object)
+        self.gstore = gtk.ListStore(str, object, bool)
         
         self.gtree = self.get("groups_tree")
         self.gtree.set_model(self.gstore)
@@ -113,14 +112,14 @@ class EpoptesGui(object):
         self.cview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, [("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         self.gtree.enable_model_drag_dest([("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         
-        self.default_group = Group(_('All clients'))
-        auto_iter = self.gstore.append([self.default_group.name, self.default_group])
-        self.default_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(auto_iter))
+        self.default_group = structs.Group(_('<b>Detected clients</b>'))
+        default_iter = self.gstore.append([self.default_group.name, self.default_group, False])
+        self.default_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(default_iter))
         self.gtree.get_selection().select_path(self.default_group.ref.get_path())
         
         saved_clients, groups = config.read_groups(os.path.expanduser('~/.config/epoptes/groups.json'))
         for grp in groups:
-            self.gstore.append([grp.name, grp])
+            self.gstore.append([grp.name, grp, True])
         
         self.fillIconView(self.getSelectedGroup()[1])
 
@@ -339,10 +338,8 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
             self.gstore.remove(group_iter)
             
     def on_add_group_clicked(self, widget):
-        cell = self.get('cellrenderertext1')
-        cell.set_property('editable', True)
-        new_group = Group()
-        iter = self.gstore.append([new_group.name, new_group])
+        new_group = structs.Group()
+        iter = self.gstore.append([new_group.name, new_group, True])
         # Edit the name of the newly created group
         self.gtree.set_cursor(self.gstore.get_path(iter), self.get('group_name_column'), True)
     
@@ -398,7 +395,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
             if client.hsystem == '' and client.users == {}:
                 client.set_offline()
         
-        for client in clients:
+        for client in structs.clients:
             if client.hsystem == handle:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
                     shutdownNotify(client.get_name())
@@ -414,12 +411,6 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
                 break
         self.fillIconView(self.getSelectedGroup()[1])
     
-    def savedClientReset(self, client):
-        inst = client[C_INSTANCE]
-        inst.hsession = inst.hsystem = inst.user = ''
-        inst.type = 'offline'
-        client[C_PIXBUF] = self.offline
-
     def amp_gotClients(self, handles):
         print "Got clients:", ', '.join(handles) or 'None'
         for handle in handles:
@@ -460,7 +451,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
         """Fill the clients iconview from a Group class instance."""
         self.cstore.clear()
         if self.isDefaultGroupSelected():
-            clients_list = [client for client in clients if client.type != 'offline']
+            clients_list = [client for client in structs.clients if client.type != 'offline']
         else:
             clients_list = group.get_members()
         # Add the new clients to the iconview
@@ -511,7 +502,7 @@ which is incompatible with the current epoptes version.\
             return False
         
         client = None
-        for inst in clients:
+        for inst in structs.clients:
             # Find if the new handle is a known client
             if mac == inst.mac:
                 client = inst
@@ -519,7 +510,7 @@ which is incompatible with the current epoptes version.\
                 break
         if client is None:
             print '* This client is a new one, creating an instance'
-            client = Client(mac=mac)
+            client = structs.Client(mac=mac)
             
         # Update/fill the client information
         client.type, client.hostname = type, host
