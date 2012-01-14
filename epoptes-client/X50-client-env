@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ###########################################################################
 # Export some useful vars in the LTSP session environment.
 # Sourced by LDM.
