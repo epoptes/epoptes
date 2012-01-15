@@ -596,15 +596,17 @@ which is incompatible with the current epoptes version.\
         # TODO: Ask for screenshots for every client (Look diff at Rev:326)
         pass
 
-    def getScreenshots(self, handle):
+    def getScreenshots(self, handle, group):
         # TODO: Implement this using gtk.TreeRowReferences instead
         # of searching the whole model (Need to modify execOnClients)
+        if not group is self.getSelectedGroup()[1]:
+            return False
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
                 self.execOnClients(self.c.SCREENSHOT
                     % (self.scrWidth, self.scrHeight), handles=[handle],
                         reply=self.updateScreenshots)
-                return
+                return False
 
 
     def updateScreenshots(self, handle, reply):
@@ -627,7 +629,7 @@ which is incompatible with the current epoptes version.\
                 # send a thumbnail, we'll ask for one every 12 secs.
                 # TODO: check if there are cases where we want to continue
                 # asking for screenshots even if we got an empty/broken one.
-                gobject.timeout_add(5000, self.getScreenshots, handle)
+                gobject.timeout_add(5000, self.getScreenshots, handle, self.getSelectedGroup()[1])
                 break
     
     def getSelectedClients(self):
