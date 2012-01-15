@@ -480,7 +480,7 @@ export $(./get-display)
         if client.users:
             for hsession, user in client.users.iteritems():
                 self.cstore.append([self.calculateLabel(client, user), self.imagetypes[client.type], client, hsession])
-                self.getScreenshots(hsession)
+                self.getScreenshots(hsession, self.getSelectedGroup()[1])
         else:
             self.cstore.append([self.calculateLabel(client), self.imagetypes[client.type], client, ''])
     
