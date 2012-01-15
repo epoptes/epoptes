@@ -104,8 +104,16 @@ class EpoptesGui(object):
         self.set_cView(*self.cView_order)
         
         self.cview.set_model(self.cstore)
-        self.cview.set_text_column(C_LABEL)
         self.cview.set_pixbuf_column(C_PIXBUF)
+        
+        # We pack our own cellrenderertext to have editable iconview entries
+        self.cview_textrenderer = gtk.CellRendererText()
+        self.cview.pack_start(self.cview_textrenderer)
+        self.cview_textrenderer.set_property('editable', True)
+        self.cview_textrenderer.connect("editing-started", self.on_client_alias_editing_started)
+        self.cview_textrenderer.connect("edited", self.on_client_alias_edited)
+        self.cview.set_attributes(self.cview_textrenderer, text=C_LABEL)
+        
         self.cstore.set_sort_column_id(C_LABEL, gtk.SORT_ASCENDING)
         self.on_clients_selection_changed()
         
@@ -155,7 +163,13 @@ class EpoptesGui(object):
             self.vncviewer.kill()
         reactor.stop()
 
-
+    def on_client_alias_editing_started(self, cellrenderer, editable, path):
+        editable.set_text(self.cstore[path][C_INSTANCE].alias)
+    
+    def on_client_alias_edited(self, cellrenderer, path, new_text):
+        self.cstore[path][C_INSTANCE].set_name(new_text)
+        self.setLabel(self.cstore[path])
+            
     def toggleRealNames(self, widget=None):
         """Show/hide the real names of the users instead of the usernames"""
         pass # Implement me
@@ -456,6 +470,7 @@ export $(./get-display)
                 return
             self.gtree.get_selection().select_path(self.default_group.ref.get_path())
         self.get('remove_group').set_sensitive(not self.isDefaultGroupSelected())
+        self.cview_textrenderer.set_property('editable', not self.isDefaultGroupSelected())
         self.set_move_group_sensitivity()
     
     def addToIconView(self, client):

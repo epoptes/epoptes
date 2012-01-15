@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-15 09:37+0200\n"
+"POT-Creation-Date: 2012-01-15 18:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,23 +299,23 @@ msgstr ""
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:115
+#: ../epoptes/ui/gui.py:123
 msgid "<b>Detected clients</b>"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:333
+#: ../epoptes/ui/gui.py:345
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:360
+#: ../epoptes/ui/gui.py:372
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:519
+#: ../epoptes/ui/gui.py:532
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
