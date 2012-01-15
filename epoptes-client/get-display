@@ -1,0 +1,69 @@
+#!/bin/sh
+###########################################################################
+# Output DISPLAY and XAUTHORITY for the current user's X screen.
+# A root user can then use those to access the user's display.
+# Usage: export $(get-display)
+#
+# Copyright (C) 2012 Alkis Georgopoulos <alkisg@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL'.
+###########################################################################
+
+exit_if_found() {
+    if [ -n "$DISPLAY" ] && [ -n "$XAUTHORITY" ]; then
+        echo "DISPLAY=$DISPLAY
+XAUTHORITY=$XAUTHORITY"
+        exit 0
+    fi
+}
+
+# Plan A: check if we can get the info from some running process
+for p in $(pgrep -x 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon'); do
+    # The first DISPLAY= is only there to prevent a possible syntax error
+    export DISPLAY="$DISPLAY" \
+        $(tr '\0' '\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
+    exit_if_found
+done
+
+# Plan B: try ck-list-sessions
+while read var equals value; do
+    case "$var" in
+        Session*)
+            unset USER DISPLAY XAUTHORITY
+            ;;
+        unix-user)
+            value=${value%\'}
+            USER=${value#\'}
+            ;;
+        x11-display)
+            value=${value%\'}
+            DISPLAY=${value#\'}
+            if [ -n "$DISPLAY" ]; then
+                XAUTHORITY="$(getent passwd "$USER" | cut -d: -f6)/.Xauthority"
+                test -f "$XAUTHORITY" && exit_if_found
+            fi
+            ;;
+    esac
+done <<EOF
+$(ck-list-sessions)
+EOF
+
+# Plan C: give up!
+echo "Could not get access to the active display" >&2
+echo "DISPLAY=
+XAUTHORITY="
+exit 1

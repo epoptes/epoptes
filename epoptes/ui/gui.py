@@ -245,8 +245,7 @@ class EpoptesGui(object):
         # Unfortunately, dbus-daemon doesn't contain DBUS_SESSION_BUS_ADDRESS.
         self.execOnSelectedClients("""
 test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
-p=$(pgrep -nx 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon')
-export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
+export $(./get-display)
 xset dpms force on
 sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
 EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly -FullScreen \
@@ -292,8 +291,7 @@ unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
 
     def remoteRootTerminal(self, widget):
         self.execOnSelectedClients("""
-p=$(pgrep -nx 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon')
-export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
+export $(./get-display)
 ./execute xterm -e bash -l""", root=True)
     ## END_FIXUS
 
