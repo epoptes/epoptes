@@ -37,7 +37,7 @@ class About:
         
         self.dialog = self.get('aboutdialog')
         logo = gtk.gdk.pixbuf_new_from_file_at_size(
-            '../icons/hicolor/scalable/apps/epoptes.svg', 48, 48)
+            '../icons/hicolor/scalable/apps/epoptes.svg', 64, 64)
         self.dialog.set_logo(logo)
         self.dialog.set_version(__version__)
     
