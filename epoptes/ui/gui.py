@@ -335,13 +335,23 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
                 group.remove_client(client[C_INSTANCE])
             self.fillIconView(self.getSelectedGroup()[1])
     
+    def set_move_group_sensitivity(self):
+        selected = self.getSelectedGroup()
+        selected_path = self.gstore.get_path(selected[0])[0]
+        blocker = not selected[1] is self.default_group
+        self.get('move_group_up').set_sensitive(blocker and selected_path > 1)
+        self.get('move_group_down').set_sensitive(blocker and selected_path < len(self.gstore)-1)
+    
     def on_move_group_down_clicked(self, widget):
-        pass
+        selected_group_iter = self.getSelectedGroup()[0]
+        self.gstore.swap(selected_group_iter, self.gstore.iter_next(selected_group_iter))
+        self.set_move_group_sensitivity()
     
     def on_move_group_up_clicked(self, widget):
-        #selected_group_iter = self.getSelectedGroup()
-        #self.gstore.swap(selected_group_iter, )
-        pass
+        selected_group_iter = self.getSelectedGroup()[0]
+        previous_iter = self.gstore.get_iter(self.gstore.get_path(selected_group_iter)[0]-1)
+        self.gstore.swap(selected_group_iter, previous_iter)
+        self.set_move_group_sensitivity()
         
     def on_remove_group_clicked(self, widget):
         group_iter = self.getSelectedGroup()[0]
@@ -440,7 +450,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
     def on_group_selection_changed(self, treeselection):
         self.cstore.clear()
         selected = self.getSelectedGroup()
-        
+                
         if selected is not None:
             self.fillIconView(selected[1])
         else:
@@ -448,6 +458,7 @@ export $(tr '\\0' '\\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
                 return
             self.gtree.get_selection().select_path(self.default_group.ref.get_path())
         self.get('remove_group').set_sensitive(not self.isDefaultGroupSelected())
+        self.set_move_group_sensitivity()
     
     def addToIconView(self, client):
         """Properly add a Client class instance to the clients iconview."""
