@@ -76,8 +76,10 @@ epoptes_info() {
 
     # TODO: use `ip route get server-ip` instead
     while true; do
-        def_iface=$(route -n | sed -n "/^0.0.0.0/s/.* //p")
-        def_iface=${def_iface:-$(route -n | awk '$2=="0.0.0.0" { print $8; exit }')}
+        def_iface=$(ip -oneline -family inet route show \
+            | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
+#        test -n "$def_iface" || def_iface=$(ip -oneline -family inet link show \
+#            | sed -n '/[0-9]*: \([^:]*\).*link\/ether.*/{s//\1/p;q}')
         # If we got it, continue.
         test -n "$def_iface" && break
         # On dual NIC standalone workstartions, if the "non-default-route"
