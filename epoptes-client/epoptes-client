@@ -224,10 +224,9 @@ if [ -z "$EPOPTES_CLIENT_PHASE" ]; then
     # (for standalone workstations booted before the server).
     export EPOPTES_CLIENT_PHASE=2
     if [ -s /etc/epoptes/server.crt ]; then
-        exec socat EXEC:"$0 $*" \
-            openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,forever
+        exec socat openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,interval=10,forever, EXEC:"$0 $*"
     elif [ -f /etc/epoptes/server.crt ]; then
-       exec socat tcp:$SERVER:$PORT,forever EXEC:"$0 $*",nofork
+       exec socat tcp:$SERVER:$PORT,interval=10,forever EXEC:"$0 $*",nofork
     else
         die "
 The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
@@ -239,6 +238,6 @@ elif [ "$EPOPTES_CLIENT_PHASE" = "2" ]; then
     # Finally, exec sh instead of keeping bash, to save memory.
     # But use "epoptes-client" as the zeroth argument, to make it easier for `ps`.
     # +m = disable job control.
-    export EPOPTES_CLIENT_PHASE=3
+    unset EPOPTES_CLIENT_PHASE
     exec -a epoptes-client /bin/sh +m
 fi
