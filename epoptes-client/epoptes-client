@@ -46,6 +46,16 @@ my_boolean_is_true() {
     esac
 }
 
+# Returns true if we're in a chroot. Needs root access to work.
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ]; then
+      # the devicenumber/inode pair of / is the same as that of /sbin/init's
+      # root, so we're *not* in a chroot and hence return false.
+      return 1
+  fi
+  return 0
+}
+
 # Get $USER, $UID and $TYPE of the client, and the default $SERVER and $PORT.
 basic_info() {
     test -n "$USER" || export USER=$(whoami)
@@ -63,10 +73,10 @@ basic_info() {
         TYPE="standalone"
     fi
 
-    if [ "$UID" -eq 0 ] || [ "$TYPE" != "thin" ]; then
-        SERVER=server
-    else
+    if [ "$TYPE" = "thin" ] && ( [ "$UID" -gt 0 ] || chrooted ); then
         SERVER=localhost
+    else
+        SERVER=server
     fi
     PORT=789
 }
@@ -158,7 +168,8 @@ PORT=${2:-$PORT}
 test -n "$need_certificate" && fetch_certificate
 
 # We don't want epoptes-client root service running on the LTSP server
-if [ $UID -eq 0 ] && [ $TYPE = "server" ]; then
+if [ $UID -eq 0 ] && \
+    ( [ $TYPE = "server" ] || ( [ $TYPE = "thin" ] && chrooted ) ); then
     exit 0
 fi
 
