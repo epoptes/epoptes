@@ -208,12 +208,12 @@ class EpoptesGui(object):
         self.execOnSelectedClients(self.c.EXEC + cmd)
 
 
-    def assistStudent(self, widget, path=None, view_column=None):
+    def assistUser(self, widget, path=None, view_column=None):
         self.reverseConnection(widget, path, view_column,
             'x11vnc -noshm -24to32 -connect_or_exit $SERVER')
 
 
-    def monitorStudent(self, widget, path=None, view_column=None):
+    def monitorUser(self, widget, path=None, view_column=None):
         self.reverseConnection(widget, path, view_column,
             'x11vnc -noshm -24to32 -viewonly -connect_or_exit $SERVER')
 
@@ -241,7 +241,7 @@ class EpoptesGui(object):
             return None
 
 
-    def broadcastTeacher(self, widget):
+    def broadcastScreen(self, widget):
         if self.vncserver is None:
             self.vncport = self.findUnusedPort()
             # TODO: use a password instead of -allow
@@ -277,7 +277,7 @@ unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
             self.vncserver = None
 
 
-    ## FIXME FIXME: Should we allow teacher to run whatever command in clients?
+    ## FIXME FIXME: Should we allow for running arbitrary commands in clients?
     def execDialog(self, widget):
         cmd = startExecuteCmdDlg()
         # If Cancel or Close were clicked
@@ -646,7 +646,7 @@ which is incompatible with the current epoptes version.\
         subprocess.Popen(["xdg-open", link])
 
     def openHelpLink(self, widget):
-        self.openLink("http://epoptes.sourceforge.net")
+        self.openLink("http://www.epoptes.org")
 
     def openBugsLink(self, widget):
         self.openLink("https://bugs.launchpad.net/epoptes")
@@ -654,16 +654,15 @@ which is incompatible with the current epoptes version.\
     def openQuestionsLink(self, widget):
         self.openLink("https://answers.launchpad.net/epoptes")
 
-    ## TODO: fix the links, and replace the forum link with a translations link
-    def openForumLink(self, widget):
-        self.openLink("http://alkisg.mysch.gr/steki/index.php?board=67.0")
+    def openTranslationsLink(self, widget):
+        self.openLink("http://www.epoptes.org/translations")
 
     def openIRCLink(self, widget):
         user = os.getenv("USER")
         if user is None:
-            user = "teacher."
+            user = "epoptes_user." # The dot is converted to a random digit
         self.openLink("http://webchat.freenode.net/?nick=" + user + 
-            "&channels=linux.sch.gr&prompt=1")
+            "&channels=ltsp&prompt=1")
     
     ## FIXME: We don't use this (we want to). there was a problem with twisted :-\
     def iconsSizeScaleChanged(self, widget):

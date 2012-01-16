@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-15 18:09+0200\n"
+"POT-Creation-Date: 2012-01-16 09:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgid "Ask a question"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Assist student"
+msgid "Assist user"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
@@ -41,55 +41,55 @@ msgid "Boot selected clients (Wake On LAN)"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Broadcast student"
+msgid "Broadcast screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Broadcast teacher"
+msgid "Broadcast user"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
-msgid "Broadcast teacher's screen to the selected clients"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast video"
 msgstr ""
 
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Broadcast your screen"
+msgstr ""
+
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "Broadcasts"
+msgid "Broadcast your screen to the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
-msgid "Computer"
+msgid "Broadcasts"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
-msgid "Computer (user)"
+msgid "Computer"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Confirm action"
+msgid "Computer (user)"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Create a new group"
+msgid "Confirm action"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Execute"
+msgid "Create a new group"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Execute"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Execute a command on the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:19 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Forum"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
@@ -125,7 +125,7 @@ msgid "Log out users connected on selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Monitor student"
+msgid "Monitor user"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
@@ -221,54 +221,58 @@ msgid "Stops all active broadcasts"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "Unblock Internet"
+msgid "Translate this application"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Unlock screen"
+msgid "Unblock Internet"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Unlock the screen of the selected clients"
+msgid "Unlock screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Unmute sound"
+msgid "Unlock the screen of the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "User"
+msgid "Unmute sound"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
-msgid "User (computer)"
+msgid "User"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "User, locally"
+msgid "User (computer)"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "_Clients"
+msgid "User, locally"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "_File"
+msgid "_Clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "_Help"
+msgid "_File"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "_Send message"
+msgid "_Help"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "_View"
+msgid "_Send message"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
+msgid "_View"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "epoptes"
 msgstr ""
 

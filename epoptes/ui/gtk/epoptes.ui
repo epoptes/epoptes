@@ -185,7 +185,7 @@
   </object>
   <object class="GtkImage" id="image51">
     <property name="visible">True</property>
-    <property name="icon_name">empathy-available</property>
+    <property name="icon_name">preferences-desktop-locale</property>
   </object>
   <object class="GtkImage" id="image52">
     <property name="visible">True</property>
@@ -346,22 +346,22 @@
                           <object class="GtkMenu" id="mnTransmissions">
                             <property name="visible">True</property>
                             <child>
-                              <object class="GtkImageMenuItem" id="miMonitorStudent">
-                                <property name="label" translatable="yes">Monitor student</property>
+                              <object class="GtkImageMenuItem" id="miMonitorUser">
+                                <property name="label" translatable="yes">Monitor user</property>
                                 <property name="visible">True</property>
                                 <property name="image">image12</property>
                                 <property name="use_stock">False</property>
-                                <signal name="activate" handler="monitorStudent"/>
+                                <signal name="activate" handler="monitorUser"/>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkImageMenuItem" id="miAssistStudent">
-                                <property name="label" translatable="yes">Assist student</property>
+                              <object class="GtkImageMenuItem" id="miAssistUser">
+                                <property name="label" translatable="yes">Assist user</property>
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image36</property>
                                 <property name="use_stock">False</property>
-                                <signal name="activate" handler="assistStudent"/>
+                                <signal name="activate" handler="assistUser"/>
                               </object>
                             </child>
                             <child>
@@ -374,18 +374,18 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkImageMenuItem" id="miBroadcastTeacher">
-                                <property name="label" translatable="yes">Broadcast teacher</property>
+                              <object class="GtkImageMenuItem" id="miBroadcastScreen">
+                                <property name="label" translatable="yes">Broadcast your screen</property>
                                 <property name="visible">True</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image34</property>
                                 <property name="use_stock">False</property>
-                                <signal name="activate" handler="broadcastTeacher"/>
+                                <signal name="activate" handler="broadcastScreen"/>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkImageMenuItem" id="miBroadcastStudent">
-                                <property name="label" translatable="yes">Broadcast student</property>
+                              <object class="GtkImageMenuItem" id="miBroadcastUser">
+                                <property name="label" translatable="yes">Broadcast user</property>
                                 <property name="sensitive">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image33</property>
@@ -674,6 +674,7 @@
                       <object class="GtkImageMenuItem" id="miClientProperties">
                         <property name="label">gtk-info</property>
                         <property name="visible">True</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_tb_client_properties_clicked"/>
                       </object>
@@ -718,12 +719,12 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="miForum">
-                        <property name="label" translatable="yes">Forum</property>
+                      <object class="GtkImageMenuItem" id="miTranslations">
+                        <property name="label" translatable="yes">Translate this application</property>
                         <property name="visible">True</property>
                         <property name="image">image51</property>
                         <property name="use_stock">False</property>
-                        <signal name="activate" handler="openForumLink"/>
+                        <signal name="activate" handler="openTranslationsLink"/>
                       </object>
                     </child>
                     <child>
@@ -842,13 +843,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="tbBroadcastTeacher">
+              <object class="GtkToolButton" id="tbBroadcastScreen">
                 <property name="visible">True</property>
-                <property name="tooltip_text" translatable="yes">Broadcast teacher's screen to the selected clients</property>
-                <property name="label" translatable="yes">Broadcast teacher</property>
+                <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients</property>
+                <property name="label" translatable="yes">Broadcast screen</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">preferences-system-network</property>
-                <signal name="clicked" handler="broadcastTeacher"/>
+                <signal name="clicked" handler="broadcastScreen"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -987,6 +988,41 @@
               <object class="GtkVBox" id="vbox2">
                 <property name="visible">True</property>
                 <child>
+                  <object class="GtkScrolledWindow" id="scrolledwindow1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <child>
+                      <object class="GtkTreeView" id="groups_tree">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="headers_clickable">False</property>
+                        <property name="reorderable">True</property>
+                        <property name="search_column">0</property>
+                        <signal name="drag_drop" handler="on_gtree_drag_drop"/>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="group_name_column">
+                            <property name="title">Groups</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext1">
+                                <signal name="edited" handler="on_group_renamed"/>
+                              </object>
+                              <attributes>
+                                <attribute name="editable">2</attribute>
+                                <attribute name="markup">0</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkHBox" id="hbox2">
                     <property name="visible">True</property>
                     <child>
@@ -1070,41 +1106,6 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow" id="scrolledwindow1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
-                    <child>
-                      <object class="GtkTreeView" id="groups_tree">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="headers_clickable">False</property>
-                        <property name="reorderable">True</property>
-                        <property name="search_column">0</property>
-                        <signal name="drag_drop" handler="on_gtree_drag_drop"/>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="group_name_column">
-                            <property name="title">Groups</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext1">
-                                <signal name="edited" handler="on_group_renamed"/>
-                              </object>
-                              <attributes>
-                                <attribute name="editable">2</attribute>
-                                <attribute name="markup">0</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -1128,7 +1129,7 @@
                     <property name="selection_mode">multiple</property>
                     <signal name="button_press_event" handler="contextMenuPopup"/>
                     <signal name="selection_changed" handler="on_clients_selection_changed"/>
-                    <signal name="item_activated" handler="monitorStudent"/>
+                    <signal name="item_activated" handler="monitorUser"/>
                   </object>
                 </child>
               </object>
