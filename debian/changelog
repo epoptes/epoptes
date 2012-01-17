@@ -1,3 +1,14 @@
+epoptes (0.4.0-1) unstable; urgency=low
+
+  * Generate an OpenSSL certificate valid for 5 years instead of 1 month.
+  * Implement client groups.
+  * Fix active display detection in recent KDE versions.
+  * Fix logout in XFCE.
+  * Add French, German, Russian and Slovak translations.
+    Many thanks to the translators!
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Sat, 14 Jan 2012 22:14:20 +0200
+
 epoptes (0.3.2-1) unstable; urgency=low
 
   * Use cairo for screenshot resizing on the X server, to save bandwidth.
