@@ -375,8 +375,9 @@
                             </child>
                             <child>
                               <object class="GtkImageMenuItem" id="miBroadcastScreen">
-                                <property name="label" translatable="yes">Broadcast your screen</property>
+                                <property name="label" translatable="yes">Broadcast screen</property>
                                 <property name="visible">True</property>
+                                <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image34</property>
                                 <property name="use_stock">False</property>
