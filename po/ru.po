@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-15 18:09+0200\n"
+"POT-Creation-Date: 2012-01-17 04:06+0200\n"
 "PO-Revision-Date: 2012-01-10 10:57+0000\n"
 "Last-Translator: Aleksey Kabanov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-16 05:34+0000\n"
-"X-Generator: Launchpad (build 14664)\n"
+"X-Launchpad-Export-Date: 2012-01-17 05:18+0000\n"
+"X-Generator: Launchpad (build 14676)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
 
@@ -24,7 +24,7 @@ msgid "Ask a question"
 msgstr "Задать вопрос"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Assist student"
+msgid "Assist user"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
@@ -44,56 +44,56 @@ msgid "Boot selected clients (Wake On LAN)"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Broadcast student"
+msgid "Broadcast screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Broadcast teacher"
+msgid "Broadcast user"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
-msgid "Broadcast teacher's screen to the selected clients"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast video"
 msgstr ""
 
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Broadcast your screen"
+msgstr ""
+
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "Broadcasts"
+msgid "Broadcast your screen to the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Broadcasts"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Computer"
 msgstr "Компьютер"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Computer (user)"
 msgstr "Компьютер (пользователь)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Confirm action"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Create a new group"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Execute"
 msgstr "Выполнить"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Execute a command on the selected clients"
 msgstr "Выполнить команду на выбранных клиентах"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:19 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Выполнить команду"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Forum"
-msgstr "Форум"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
@@ -128,7 +128,7 @@ msgid "Log out users connected on selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Monitor student"
+msgid "Monitor user"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
@@ -224,54 +224,58 @@ msgid "Stops all active broadcasts"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Translate this application"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Unblock Internet"
 msgstr "Разблокировать Интернет"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Unlock screen"
 msgstr "Разблокировать экран"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Unlock the screen of the selected clients"
 msgstr "Разблокировать экраны выбранных клиентов"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Unmute sound"
 msgstr "Включить звук"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "User"
 msgstr "Пользователь"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "User (computer)"
 msgstr "Пользователь (компьютер)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "User, locally"
 msgstr "Локальный пользователь"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "_Clients"
 msgstr "_Клиенты"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "_File"
 msgstr "_Файл"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "_Help"
 msgstr "_Справка"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "_Send message"
 msgstr "_Отправить сообщение"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "_View"
 msgstr "_Вид"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "epoptes"
 msgstr "epoptes"
 
@@ -297,28 +301,28 @@ msgstr "Отключено:"
 msgid "%(user)s from %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/client_information.py:59
+#: ../epoptes/ui/client_information.py:61
 #, python-format
 msgid "Properties of %s"
 msgstr "Свойства %s"
 
-#: ../epoptes/ui/gui.py:123
-msgid "<b>Detected clients</b>"
+#: ../epoptes/ui/gui.py:116
+msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:345
+#: ../epoptes/ui/gui.py:331
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:372
+#: ../epoptes/ui/gui.py:358
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:532
+#: ../epoptes/ui/gui.py:518
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -367,34 +371,46 @@ msgid "Error"
 msgstr "Ошибка"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Client hostname:"
+msgid "Client alias:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client hostname:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
 msgstr "Тип клиента:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:3
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "Edit alias"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
 msgstr "Видеоадаптер:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:4
+#: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "IP address:"
 msgstr "IP-адрес:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:5
+#: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "MAC address:"
 msgstr "MAC-адрес:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:6
+#: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Processor:"
 msgstr "Процессор:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:7
+#: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "RAM:"
 msgstr "ОЗУ:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:8
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Set a new alias for the selected client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
 msgstr "Пользователь:"
 

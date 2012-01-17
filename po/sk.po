@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes 0.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-15 18:09+0200\n"
+"POT-Creation-Date: 2012-01-17 04:06+0200\n"
 "PO-Revision-Date: 2011-11-19 08:01+0000\n"
 "Last-Translator: Slavko <Unknown>\n"
 "Language-Team: slovenčina <debian-l10n-slovak@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-16 05:34+0000\n"
-"X-Generator: Launchpad (build 14664)\n"
+"X-Launchpad-Export-Date: 2012-01-17 05:18+0000\n"
+"X-Generator: Launchpad (build 14676)\n"
 "Language: sk\n"
 "X-POFile-SpellExtra: screen epoptes IRC LAN General distribouvať\n"
 
@@ -25,8 +25,8 @@ msgid "Ask a question"
 msgstr "Položiť otázku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Assist student"
-msgstr "Pomôcť študentovi"
+msgid "Assist user"
+msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Background image"
@@ -45,56 +45,56 @@ msgid "Boot selected clients (Wake On LAN)"
 msgstr "Naštartovať zvolených klientov (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Broadcast student"
-msgstr "Vysielať študenta"
+msgid "Broadcast screen"
+msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Broadcast teacher"
-msgstr "Vysielať učiteľa"
+msgid "Broadcast user"
+msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
-msgid "Broadcast teacher's screen to the selected clients"
-msgstr "Vysiela obrazovku učiteľa na zvolené klienty"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast video"
 msgstr "Vysielať video"
 
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Broadcast your screen"
+msgstr ""
+
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Broadcast your screen to the selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcasts"
 msgstr "Vysielania"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Computer"
 msgstr "Počítač"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Computer (user)"
 msgstr "Počítač (používateľ)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Confirm action"
 msgstr "Potvrdiť akciu"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Create a new group"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Execute"
 msgstr "Spustiť"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Execute a command on the selected clients"
 msgstr "Spustiť príkaz na zvolených klientoch"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:19 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Spustiť príkaz"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Forum"
-msgstr "Fórum"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
@@ -129,8 +129,8 @@ msgid "Log out users connected on selected clients"
 msgstr "Odhlásiť používateľov zvolených klientov"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Monitor student"
-msgstr "Sledovať študenta"
+msgid "Monitor user"
+msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Mute sound"
@@ -225,54 +225,58 @@ msgid "Stops all active broadcasts"
 msgstr "zastaví všetky aktívne vysielania"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Translate this application"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Unblock Internet"
 msgstr "Odblokovať internet"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Unlock screen"
 msgstr "Odomknúť obrazovku"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Unlock the screen of the selected clients"
 msgstr "Odomknúť obrazovku zvolených klientov"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Unmute sound"
 msgstr "Zapnúť zvuk"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "User"
 msgstr "Používateľ"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "User (computer)"
 msgstr "Používateľ (počítač)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "User, locally"
 msgstr "Používateľ, lokálne"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "_Clients"
 msgstr "_Klienty"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "_File"
 msgstr "_Súbor"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "_Send message"
 msgstr "_Poslať správu"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "epoptes"
 msgstr "epoptes"
 
@@ -298,28 +302,28 @@ msgstr "Odpojený:"
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s z %(host)s"
 
-#: ../epoptes/ui/client_information.py:59
+#: ../epoptes/ui/client_information.py:61
 #, python-format
 msgid "Properties of %s"
 msgstr "Vlastnosti %s"
 
-#: ../epoptes/ui/gui.py:123
-msgid "<b>Detected clients</b>"
+#: ../epoptes/ui/gui.py:116
+msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:345
+#: ../epoptes/ui/gui.py:331
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:372
+#: ../epoptes/ui/gui.py:358
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:532
+#: ../epoptes/ui/gui.py:518
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -371,34 +375,46 @@ msgid "Error"
 msgstr "Chyba"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client alias:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
 msgstr "Meno stroja:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:2
+#: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
 msgstr "Typ klienta:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:3
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "Edit alias"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
 msgstr "Grafická karta:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:4
+#: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "IP address:"
 msgstr "IP adresa:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:5
+#: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "MAC address:"
 msgstr "MAC adresa:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:6
+#: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Processor:"
 msgstr "Procesor:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:7
+#: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "RAM:"
 msgstr "RAM:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:8
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Set a new alias for the selected client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
 msgstr "Používateľ:"
 
