@@ -34,6 +34,7 @@ class ClientInformation:
         self.wTree.add_from_file('client_information.ui')
         self.wTree.connect_signals(self)
         self.get = self.wTree.get_object
+        self.selected = selected
         
         self.dlg = self.get('infodlg')
         set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
@@ -48,6 +49,7 @@ class ClientInformation:
                     lambda r: set('client_cpu', r))
                 execute(handle, 'echo $VGA').addCallback(
                     lambda r: set('client_vga', r))
+            set('client_alias', inst.alias)
             set('client_hostname', inst.hostname)
             set('client_mac', inst.mac)
             set('client_ip', handle.split(':')[0])
@@ -61,3 +63,14 @@ class ClientInformation:
     def run(self):
         self.dlg.run()
         self.dlg.destroy()
+        
+    def on_edit_alias_clicked(self, widget):
+        inst = self.selected[0][C_INSTANCE]
+        edit_dlg = self.get('edit_alias_dialog')
+        entry = self.get('alias_entry')
+        entry.set_text(inst.alias)
+        resp = edit_dlg.run()
+        if resp == 1:
+            inst.set_name(entry.get_text().strip())
+            self.get('client_alias').set_text(inst.alias.strip())
+        edit_dlg.hide()

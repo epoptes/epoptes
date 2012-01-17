@@ -105,14 +105,7 @@ class EpoptesGui(object):
         
         self.cview.set_model(self.cstore)
         self.cview.set_pixbuf_column(C_PIXBUF)
-        
-        # We pack our own cellrenderertext to have editable iconview entries
-        self.cview_textrenderer = gtk.CellRendererText()
-        self.cview.pack_start(self.cview_textrenderer)
-        self.cview_textrenderer.set_property('editable', True)
-        self.cview_textrenderer.connect("editing-started", self.on_client_alias_editing_started)
-        self.cview_textrenderer.connect("edited", self.on_client_alias_edited)
-        self.cview.set_attributes(self.cview_textrenderer, text=C_LABEL)
+        self.cview.set_text_column(C_LABEL)
         
         self.cstore.set_sort_column_id(C_LABEL, gtk.SORT_ASCENDING)
         self.on_clients_selection_changed()
@@ -120,7 +113,7 @@ class EpoptesGui(object):
         self.cview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, [("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         self.gtree.enable_model_drag_dest([("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
         
-        self.default_group = structs.Group(_('<b>Detected clients</b>'))
+        self.default_group = structs.Group('<b>'+_('Detected clients')+'</b>')
         default_iter = self.gstore.append([self.default_group.name, self.default_group, False])
         self.default_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(default_iter))
         self.gtree.get_selection().select_path(self.default_group.ref.get_path())
@@ -162,13 +155,6 @@ class EpoptesGui(object):
         if not self.vncviewer is None:
             self.vncviewer.kill()
         reactor.stop()
-
-    def on_client_alias_editing_started(self, cellrenderer, editable, path):
-        editable.set_text(self.cstore[path][C_INSTANCE].alias)
-    
-    def on_client_alias_edited(self, cellrenderer, path, new_text):
-        self.cstore[path][C_INSTANCE].set_name(new_text)
-        self.setLabel(self.cstore[path])
             
     def toggleRealNames(self, widget=None):
         """Show/hide the real names of the users instead of the usernames"""
@@ -385,6 +371,7 @@ export $(./get-display)
     #FIXME: Remove the second parameter, find a better way
     def on_tb_client_properties_clicked(self, widget=None):
         ClientInformation(self.getSelectedClients(), self.daemon.command).run()
+        self.setLabel(self.getSelectedClients()[0])
     
     def on_mi_remote_assistance_activate(self, widget=None):
         RemoteAssistance().run()
@@ -470,7 +457,6 @@ export $(./get-display)
                 return
             self.gtree.get_selection().select_path(self.default_group.ref.get_path())
         self.get('remove_group').set_sensitive(not self.isDefaultGroupSelected())
-        self.cview_textrenderer.set_property('editable', not self.isDefaultGroupSelected())
         self.set_move_group_sensitivity()
     
     def addToIconView(self, client):
@@ -722,24 +708,6 @@ which is incompatible with the current epoptes version.\
             self.get('miRemoveFromGroup').set_sensitive(True)
         else:
             self.get('miRemoveFromGroup').set_sensitive(False)
-
-    
-    ## FIXME: This is not yet finished, implement it
-    def editClientName(self, widget):
-
-        dlg = self.get('entrydialog')
-        entry = self.get('newhostname')
-        if widget is self.get('change_name'):
-            hostname = self.get('client_name').get_text()
-            mac = self.get('client_mac').get_text()
-            entry.set_text(hostname)
-        resp = dlg.run()
-        dlg.hide()
-        if resp == 1:
-            self.refresh()
-            print "No changes made, not yet implemented"
-            
-    ## END_FIXME
 
     
     ## FIXME / FIXUS: Proofread this (root etc...)

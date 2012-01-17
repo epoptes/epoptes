@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-16 09:54+0200\n"
+"POT-Creation-Date: 2012-01-17 04:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,28 +298,28 @@ msgstr ""
 msgid "%(user)s from %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/client_information.py:59
+#: ../epoptes/ui/client_information.py:61
 #, python-format
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:123
-msgid "<b>Detected clients</b>"
+#: ../epoptes/ui/gui.py:116
+msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:345
+#: ../epoptes/ui/gui.py:331
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:372
+#: ../epoptes/ui/gui.py:358
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:532
+#: ../epoptes/ui/gui.py:518
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -366,34 +366,46 @@ msgid "Error"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Client hostname:"
+msgid "Client alias:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Client type:"
+msgid "Client hostname:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Graphics card:"
+msgid "Client type:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "IP address:"
+msgid "Edit alias"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "MAC address:"
+msgid "Graphics card:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "Processor:"
+msgid "IP address:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "RAM:"
+msgid "MAC address:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "Processor:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "RAM:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Set a new alias for the selected client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
 msgstr ""
 
