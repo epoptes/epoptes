@@ -1,3 +1,9 @@
+epoptes (0.4.0-2) UNRELEASED; urgency=low
+
+  * epoptes: Add dependency on adduser (Closes: #656117).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 17 Jan 2012 13:41:52 -0800
+
 epoptes (0.4.0-1) unstable; urgency=low
 
   * Generate an OpenSSL certificate valid for 5 years instead of 1 month.

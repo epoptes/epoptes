@@ -13,7 +13,7 @@ Homepage: http://www.epoptes.org
 
 Package: epoptes
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, librsvg2-common,
+Depends: ${python:Depends}, ${misc:Depends}, adduser, librsvg2-common,
  notification-daemon | xfce4-notifyd, openssl, python-dbus, python-gtk2,
  python-notify, python-twisted-core, python-vte, xvnc4viewer, zenity
 Recommends: epoptes-client, xterm
