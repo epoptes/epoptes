@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-17 04:06+0200\n"
-"PO-Revision-Date: 2012-01-11 22:04+0000\n"
+"POT-Creation-Date: 2012-01-17 08:40+0200\n"
+"PO-Revision-Date: 2012-01-17 21:36+0000\n"
 "Last-Translator: Marco Menardi <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-17 05:18+0000\n"
-"X-Generator: Launchpad (build 14676)\n"
+"X-Launchpad-Export-Date: 2012-01-18 05:31+0000\n"
+"X-Generator: Launchpad (build 14681)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -23,7 +23,7 @@ msgstr "Formula una domanda"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Assist user"
-msgstr ""
+msgstr "Assisti l'utente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Background image"
@@ -43,237 +43,233 @@ msgstr "Avvia i client selezionati (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast screen"
-msgstr ""
+msgstr "Diffondi lo schermo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast user"
-msgstr ""
+msgstr "Diffondi lo schermo di un utente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast video"
 msgstr "Diffondi  video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
-msgid "Broadcast your screen"
-msgstr ""
+msgid "Broadcast your screen to the selected clients"
+msgstr "Diffondi il tuo schermo agli utenti selezionati"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "Broadcast your screen to the selected clients"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcasts"
 msgstr "Diffusioni"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Computer"
 msgstr "Computer"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Computer (user)"
 msgstr "Computer (utente)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Confirm action"
 msgstr "Conferma azione"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Create a new group"
-msgstr ""
+msgstr "Crea un nuovo gruppo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Execute"
 msgstr "Esegui"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Execute a command on the selected clients"
 msgstr "Esegui un comando nei client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:19 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:18 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Esegui comando"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:20 ../epoptes/ui/gtk/sendMessage.ui.h:2
+#: ../epoptes/ui/gtk/epoptes.ui.h:19 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
 msgstr "Informazioni"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Labels"
 msgstr "Etichette"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Live chat (IRC)"
 msgstr "Chat in tempo reale (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Lock background"
 msgstr "Blocca sfondo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Lock screen"
 msgstr "Blocca schermo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Lock screen of the selected clients"
 msgstr "Blocca lo schermo dei client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Log out"
 msgstr "Termina la sessione"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Log out users connected on selected clients"
 msgstr "Termina la sessione degli utenti dei client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Monitor user"
-msgstr ""
+msgstr "Monitorizza l'utente"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Mute sound"
 msgstr "Silenzia audio"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open terminal"
 msgstr "Apri terminale"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Reboot"
 msgstr "Riavvia"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Reboot the selected clients"
 msgstr "Riavvia i client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Remote support"
 msgstr "Supporto da remoto"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Remove from group"
-msgstr ""
+msgstr "Rimuovi dal gruppo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Remove the selected group"
+msgstr "Rimuovi il gruppo selezionato"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "Remove the selected group"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Report a bug"
 msgstr "Segnala un errore"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Restrictions"
 msgstr "Restrizioni"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, locally"
 msgstr "Root, locale"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Root, remotely"
 msgstr "Root, remoto"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Send a message to the selected clients"
 msgstr "Invia un messaggio ai client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:41 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:40 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Send message"
 msgstr "Invia messaggio"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Session"
 msgstr "Sessione"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Set background"
 msgstr "Imposta sfondo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Set default background"
 msgstr "Imposta lo sfondo di default"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Show information for the selected client"
 msgstr "Mostra informazioni riguardo ai client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Show real names"
 msgstr "Mostra i nomi reali"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Shutdown"
 msgstr "Spegni"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Shutdown the selected clients"
 msgstr "Spegni i client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Stop all broadcasts on every client"
 msgstr "Ferma la diffusione su tutti i client"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Stop broadcasts"
 msgstr "Ferma le diffusioni"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Stops all active broadcasts"
 msgstr "Ferma tutte le diffusioni attive"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Translate this application"
-msgstr ""
+msgstr "Traduci questa applicazione"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Unblock Internet"
 msgstr "Sblocca l'accesso a internet"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Unlock screen"
 msgstr "Sblocca schermo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Unlock the screen of the selected clients"
 msgstr "Sblocca lo schermo dei client selezionati"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Unmute sound"
 msgstr "Desilenzia suono"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "User"
 msgstr "Utente"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "User (computer)"
 msgstr "Utente (computer)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "User, locally"
 msgstr "Utente, localmente"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "_Clients"
 msgstr "_Utenti"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "_File"
 msgstr "_File"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "_Help"
 msgstr "_Aiuto"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "_Send message"
 msgstr "_Invia messaggio"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "_View"
 msgstr "_Vista"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "epoptes"
 msgstr "epoptes"
 
@@ -306,18 +302,18 @@ msgstr "Proprietà di %s"
 
 #: ../epoptes/ui/gui.py:116
 msgid "Detected clients"
-msgstr ""
+msgstr "Client individuati"
 
 #: ../epoptes/ui/gui.py:331
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr ""
+msgstr "Sei sicuro di rimuovere il/i client selezionato/i dal gruppo \"%s\"?"
 
 #: ../epoptes/ui/gui.py:358
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr ""
+msgstr "Sei sicuro di voler rimuovere il gruppo \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:518
@@ -373,7 +369,7 @@ msgstr "Errore"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client alias:"
-msgstr ""
+msgstr "Alias del client:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
@@ -385,7 +381,7 @@ msgstr "Tipo client:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
-msgstr ""
+msgstr "Modifica alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
@@ -409,7 +405,7 @@ msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Set a new alias for the selected client"
-msgstr ""
+msgstr "Imposta un nuovo alias per il client selezionato"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
