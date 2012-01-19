@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-17 08:40+0200\n"
-"PO-Revision-Date: 2011-12-13 07:40+0000\n"
+"PO-Revision-Date: 2012-01-18 06:53+0000\n"
 "Last-Translator: EmmanuelLeNormand <manu@ubuntu-fr.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-18 05:31+0000\n"
-"X-Generator: Launchpad (build 14681)\n"
+"X-Launchpad-Export-Date: 2012-01-19 05:11+0000\n"
+"X-Generator: Launchpad (build 14692)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -23,7 +23,7 @@ msgstr "Poser une question"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Assist user"
-msgstr ""
+msgstr "Assistance utilisateur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Background image"
@@ -43,11 +43,11 @@ msgstr "Sélection des clients à démarrer (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast screen"
-msgstr ""
+msgstr "Diffusion écran"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast user"
-msgstr ""
+msgstr "Diffusion utilisateur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast video"
@@ -55,7 +55,7 @@ msgstr "Diffusion video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast your screen to the selected clients"
-msgstr ""
+msgstr "Difuser votre écran aux clients sélectionnés"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcasts"
@@ -75,7 +75,7 @@ msgstr "Confirmer l'action"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Create a new group"
-msgstr ""
+msgstr "Créer un nouveau groupe"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Execute"
@@ -123,7 +123,7 @@ msgstr "Déconnecter les utilisateurs des clients sélectionnés"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Monitor user"
-msgstr ""
+msgstr "Moniteur utilisateur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Mute sound"
@@ -147,11 +147,11 @@ msgstr "Aide à distance"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Remove from group"
-msgstr ""
+msgstr "Retirer du groupe"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Remove the selected group"
-msgstr ""
+msgstr "Retirer le groupe sélectionné"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Report a bug"
@@ -219,7 +219,7 @@ msgstr "Arrêter toutes les diffusions actives"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Translate this application"
-msgstr ""
+msgstr "Traduire cette application"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Unblock Internet"
@@ -302,18 +302,19 @@ msgstr "Propriétés de %s"
 
 #: ../epoptes/ui/gui.py:116
 msgid "Detected clients"
-msgstr ""
+msgstr "Clients détectés"
 
 #: ../epoptes/ui/gui.py:331
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
+"Êtes vous sûr de vouloir retirer les clients sélectionnés du groupes \"%s\" ?"
 
 #: ../epoptes/ui/gui.py:358
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr ""
+msgstr "Êtes vous sûr de vouloir supprimer le groupe \"%s\" ?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:518
@@ -372,7 +373,7 @@ msgstr "Erreur"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client alias:"
-msgstr ""
+msgstr "Alias du client :"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
@@ -384,7 +385,7 @@ msgstr "Type de client :"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
-msgstr ""
+msgstr "Éditer l'alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
@@ -408,7 +409,7 @@ msgstr "RAM :"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Set a new alias for the selected client"
-msgstr ""
+msgstr "Mettre un nouvel alias sur le client sélectionné"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
