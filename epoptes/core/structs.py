@@ -25,13 +25,12 @@
 
 clients = []
 class Client:
-    def __init__(self, type='', mac='', hostname='', alias='', users=None, hsystem=''):
+    def __init__(self, type='', mac='', hostname='', alias='', users={}, hsystem=''):
         self.type = type
         self.mac = mac.upper()
         self.hostname = hostname
         self.alias = alias
-        if users is None:
-            self.users = {}
+        self.users = users.copy()
         self.hsystem = hsystem
         clients.append(self)
     
@@ -65,7 +64,7 @@ class Group:
     def __init__(self, name="New group", members={}):
         self.name = name
         #{<instance> : {'x_pos':342, 'y_pos':112, 'size':600}}
-        self.members = members
+        self.members = members.copy()
     
     def get_members(self):
         """Return a list with all the clients that are members of the group"""
