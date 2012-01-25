@@ -386,7 +386,7 @@
                             </child>
                             <child>
                               <object class="GtkImageMenuItem" id="miBroadcastScreenWindowed">
-                                <property name="label" translatable="yes">Broadcast screen (window)</property>
+                                <property name="label" translatable="yes">Broadcast screen (windowed)</property>
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
                                 <property name="use_underline">True</property>
