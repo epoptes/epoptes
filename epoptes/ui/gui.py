@@ -227,7 +227,7 @@ class EpoptesGui(object):
             return None
 
 
-    def broadcastScreen(self, widget):
+    def _broadcastScreen(self, fullscreen=True):
         if self.vncserver is None:
             self.vncport = self.findUnusedPort()
             # TODO: use a password instead of -allow
@@ -243,14 +243,22 @@ class EpoptesGui(object):
         # to be in the greeters list:
         # gdm-simple-greeter, unity-greeter
         # Unfortunately, dbus-daemon doesn't contain DBUS_SESSION_BUS_ADDRESS.
+        
+        fullscreen_args = ''
+        if fullscreen:
+            fullscreen_args = '-FullScreen -UseLocalCursor=0 -MenuKey F13'
         self.execOnSelectedClients("""
 test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
 export $(./get-display)
 xset dpms force on
 sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
-EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly -FullScreen \
--UseLocalCursor=0 -MenuKey F13 $SERVER:%d)""" % self.vncport, root=True)
-
+EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly %s $SERVER:%d)""" %(fullscreen_args, self.vncport), root=True)
+    
+    def broadcastScreen(self, widget):
+        self._broadcastScreen(True)
+        
+    def broadcastScreenWindowed(self, widget):
+        self._broadcastScreen(False)
 
     def stopTransmissions(self, widget):
         # The vnc clients should automatically exit when the server is killed.

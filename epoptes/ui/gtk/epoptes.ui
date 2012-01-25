@@ -377,11 +377,22 @@
                               <object class="GtkImageMenuItem" id="miBroadcastScreen">
                                 <property name="label" translatable="yes">Broadcast screen</property>
                                 <property name="visible">True</property>
-                                <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients</property>
+                                <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image34</property>
                                 <property name="use_stock">False</property>
                                 <signal name="activate" handler="broadcastScreen"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkImageMenuItem" id="miBroadcastScreenWindowed">
+                                <property name="label" translatable="yes">Broadcast screen (window)</property>
+                                <property name="visible">True</property>
+                                <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
+                                <property name="use_underline">True</property>
+                                <property name="image">image14</property>
+                                <property name="use_stock">False</property>
+                                <signal name="activate" handler="broadcastScreenWindowed"/>
                               </object>
                             </child>
                             <child>
@@ -1292,5 +1303,9 @@
   <object class="GtkImage" id="image13">
     <property name="visible">True</property>
     <property name="stock">gtk-remove</property>
+  </object>
+  <object class="GtkImage" id="image14">
+    <property name="visible">True</property>
+    <property name="icon_name">gnome-remote-desktop</property>
   </object>
 </interface>
