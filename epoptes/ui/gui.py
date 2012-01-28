@@ -412,11 +412,13 @@ export $(./get-display)
     # AMP callbacks
     def amp_clientConnected(self, handle):
         print "New connection from", handle
-        self.daemon.command(handle, u"""
+        d = self.daemon.command(handle, u"""
             VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
             VERSION=${VERSION:-0.1}
             echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
-            """).addCallback(lambda r: self.addClient(handle, r))
+            """)
+        d.addCallback(lambda r: self.addClient(handle, r))
+        d.addErrback(lambda err: self.printErrors("when connecting client %s: %s" %(handle, err)))
 
     def amp_clientDisconnected(self, handle):
         print "Disconnect from", handle
@@ -424,7 +426,7 @@ export $(./get-display)
         def determine_offline(client):
             if client.hsystem == '' and client.users == {}:
                 client.set_offline()
-        
+
         for client in structs.clients:
             if client.hsystem == handle:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
@@ -439,7 +441,14 @@ export $(./get-display)
                 del client.users[handle]
                 determine_offline(client)
                 break
-        self.fillIconView(self.getSelectedGroup()[1])
+            else:
+                client = None
+
+        if not client is None:
+            for row in self.cstore:
+                if row[C_INSTANCE] is client: 
+                    self.fillIconView(self.getSelectedGroup()[1])
+                    break
     
     def amp_gotClients(self, handles):
         print "Got clients:", ', '.join(handles) or 'None'
@@ -450,6 +459,7 @@ export $(./get-display)
                 echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
                 """)
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
+            d.addErrback(lambda err: self.printErrors("when enumerating client %s: %s" %(handle, err)))
     
     def on_button_close_clicked(self, widget):
         self.get('warningDialog').hide()
@@ -531,7 +541,7 @@ which is incompatible with the current epoptes version.\
                 dlg.show()
             self.daemon.command(handle, u"exit")
             return False
-        
+        sel_group = self.getSelectedGroup()[1]
         client = None
         for inst in structs.clients:
             # Find if the new handle is a known client
@@ -553,10 +563,11 @@ which is incompatible with the current epoptes version.\
             # This is a user epoptes-client
             print '* I am a user client, will add', user, 'in my list'
             client.add_user(user, handle)
-            if not already and (self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected()):
+            if not already and (sel_group.has_client(client) or self.isDefaultGroupSelected()):
                 loginNotify(user, host)
         
-        self.fillIconView(self.getSelectedGroup()[1])
+        if sel_group.has_client(client) or self.isDefaultGroupSelected():
+            self.fillIconView(sel_group)
     
     def setLabel(self, row):
         inst = row[C_INSTANCE]
@@ -732,9 +743,10 @@ which is incompatible with the current epoptes version.\
         if clients == [] and handles != []:
             for handle in handles:
                 cmd = self.daemon.command(handle, unicode(command))
-                cmd.addErrback(self.printErrors)
                 if reply:
                     cmd.addCallback(lambda re, h=handle: reply(h, re))
+                    cmd.addErrback(lambda err: self.printErrors("when executing command %s on client %s: %s" %(command,handle, err)))
+
         for client in clients:
             if (root == "auto" or not root) and client[C_SESSION_HANDLE] != '':
                 handle = client[C_SESSION_HANDLE]
@@ -743,9 +755,9 @@ which is incompatible with the current epoptes version.\
             else:
                 continue
             cmd = self.daemon.command(handle, unicode(command))
-            cmd.addErrback(self.printErrors)
             if reply:
                 cmd.addCallback(lambda re, h=handle: reply(h, re))
+                cmd.addErrback(lambda err: self.printErrors("when executing command %s on client %s: %s" %(command,handle, err)))
 
     def execOnSelectedClients(self, command, reply=None, root=False, warn=''):
         clients = self.getSelectedClients()
@@ -769,10 +781,8 @@ which is incompatible with the current epoptes version.\
         else:
             return False
 
-    
-    ## FIXME/ DELETEME??
     def printErrors(self, error):
-        print 'ErrorCallback:', error
+        print '  **Twisted error:', error
         return
 
     def openTerminal(self, as_root):
