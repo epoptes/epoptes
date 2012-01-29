@@ -601,6 +601,11 @@ which is incompatible with the current epoptes version.\
         # TODO: Ask for screenshots for every client (Look diff at Rev:326)
         pass
 
+    def screenshotTimeout(self, handle, group):
+        print "Screenshot for client %s timed out. Requesting a new one..." %handle
+        self.getScreenshots(handle, group)
+        return False
+        
     def getScreenshots(self, handle, group):
         # TODO: Implement this using gtk.TreeRowReferences instead
         # of searching the whole model (Need to modify execOnClients)
@@ -608,13 +613,15 @@ which is incompatible with the current epoptes version.\
             return False
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
+                timeoutID = gobject.timeout_add(10000, lambda h=handle, g=group: self.screenshotTimeout(h, g))
                 self.execOnClients(self.c.SCREENSHOT
                     % (self.scrWidth, self.scrHeight), handles=[handle],
-                        reply=self.updateScreenshots)
+                        reply=self.updateScreenshots, params=[timeoutID])
                 return False
 
 
-    def updateScreenshots(self, handle, reply):
+    def updateScreenshots(self, handle, reply, timeoutID):
+        gobject.source_remove(timeoutID)
         if not reply:
             return
         try:
@@ -731,9 +738,10 @@ which is incompatible with the current epoptes version.\
     
     ## FIXME / FIXUS: Proofread this (root etc...)
     def execOnClients(self, command, clients=[], reply=None, root=False,
-                        handles=[], warning=''):
+                        handles=[], warning='', params=None):
         '''reply should be a method in which the result will be sent'''
-        
+        if params is None:
+            params = []
         if len(self.cstore) == 0:
             # print 'No clients'
             return False
@@ -744,7 +752,7 @@ which is incompatible with the current epoptes version.\
             for handle in handles:
                 cmd = self.daemon.command(handle, unicode(command))
                 if reply:
-                    cmd.addCallback(lambda re, h=handle: reply(h, re))
+                    cmd.addCallback(lambda re, h=handle, p=params: reply(h, re, *p))
                     cmd.addErrback(lambda err: self.printErrors("when executing command %s on client %s: %s" %(command,handle, err)))
 
         for client in clients:
@@ -756,7 +764,7 @@ which is incompatible with the current epoptes version.\
                 continue
             cmd = self.daemon.command(handle, unicode(command))
             if reply:
-                cmd.addCallback(lambda re, h=handle: reply(h, re))
+                cmd.addCallback(lambda re, h=handle, p=params: reply(h, re, *p))
                 cmd.addErrback(lambda err: self.printErrors("when executing command %s on client %s: %s" %(command,handle, err)))
 
     def execOnSelectedClients(self, command, reply=None, root=False, warn=''):
