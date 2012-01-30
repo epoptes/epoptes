@@ -65,6 +65,7 @@ class EpoptesGui(object):
         self.vncviewer = None
         self.scrWidth = 100
         self.scrHeight = 75
+        self.currentScreenshots = dict()
         self.current_macs = subprocess.Popen(['sh', '-c', 
         """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'"""], 
                                              stdout=subprocess.PIPE).stdout.read().split()
@@ -484,7 +485,7 @@ export $(./get-display)
         if client.users:
             for hsession, user in client.users.iteritems():
                 self.cstore.append([self.calculateLabel(client, user), self.imagetypes[client.type], client, hsession])
-                self.getScreenshots(hsession, self.getSelectedGroup()[1])
+                self.askScreenshot(hsession, True)
         else:
             self.cstore.append([self.calculateLabel(client), self.imagetypes[client.type], client, ''])
     
@@ -601,48 +602,68 @@ which is incompatible with the current epoptes version.\
         # TODO: Ask for screenshots for every client (Look diff at Rev:326)
         pass
 
-    def screenshotTimeout(self, handle, group):
-        print "Screenshot for client %s timed out. Requesting a new one..." %handle
-        self.getScreenshots(handle, group)
+    def screenshotTimeout(self, handle):
+        print "Screenshot for client %s timed out. Requesting a new one..." % handle
+        self.askScreenshot(handle)
         return False
         
-    def getScreenshots(self, handle, group):
+    def askScreenshot(self, handle, firstTime=False):
+        # Should always return False to prevent glib from calling us again
+        if firstTime:
+            if not handle in self.currentScreenshots:
+                # Mark that we started asking for screenshots, but didn't yet get one
+                self.currentScreenshots[handle] = None
+            else:
+                # We're already asking the client for screenshots, reuse the existing one
+                if not self.currentScreenshots[handle] is None:
+                    for i in self.cstore:
+                        if handle == i[C_SESSION_HANDLE]:
+                            self.cstore[i.path][C_PIXBUF] = self.currentScreenshots[handle]
+                            break
+                return False
         # TODO: Implement this using gtk.TreeRowReferences instead
         # of searching the whole model (Need to modify execOnClients)
-        if not group is self.getSelectedGroup()[1]:
-            return False
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
-                timeoutID = gobject.timeout_add(10000, lambda h=handle, g=group: self.screenshotTimeout(h, g))
+                timeoutID = gobject.timeout_add(10000, lambda h=handle: self.screenshotTimeout(h))
                 self.execOnClients(self.c.SCREENSHOT
                     % (self.scrWidth, self.scrHeight), handles=[handle],
-                        reply=self.updateScreenshots, params=[timeoutID])
+                        reply=self.gotScreenshot, params=[timeoutID])
                 return False
+        # That handle is no longer in the cstore, remove it
+        try: del self.currentScreenshots[handle]
+        except: pass
+        return False
 
 
-    def updateScreenshots(self, handle, reply, timeoutID):
-        gobject.source_remove(timeoutID)
-        if not reply:
+    def gotScreenshot(self, handle, reply, timeoutID):
+        # Cancel the timeout event. If it already happened, exit.
+        if not gobject.source_remove(timeoutID):
             return
-        try:
-            rowstride, size, pixels = reply.strip().split('\n', 2)
-        except:
-            return
-        rowstride = int(rowstride)
-        width, height = size.split('x')
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
-                pxb = gtk.gdk.pixbuf_new_from_data(pixels,
-                    gtk.gdk.COLORSPACE_RGB, False, 8, int(width), int(height),
-                    rowstride)
-                self.cstore[i.path][C_PIXBUF] = pxb
                 # We want to ask for thumbnails every 5 sec after the last one.
                 # So if the client is too stressed and needs 7 secs to
                 # send a thumbnail, we'll ask for one every 12 secs.
-                # TODO: check if there are cases where we want to continue
-                # asking for screenshots even if we got an empty/broken one.
-                gobject.timeout_add(5000, self.getScreenshots, handle, self.getSelectedGroup()[1])
-                break
+                gobject.timeout_add(5000, self.askScreenshot, handle)
+#                print "I got a screenshot from %s." % handle
+                if not reply:
+                    return
+                try:
+                    rowstride, size, pixels = reply.strip().split('\n', 2)
+                except:
+                    return
+                rowstride = int(rowstride)
+                width, height = size.split('x')
+                pxb = gtk.gdk.pixbuf_new_from_data(pixels,
+                    gtk.gdk.COLORSPACE_RGB, False, 8, int(width), int(height),
+                    rowstride)
+                self.currentScreenshots[handle] = pxb
+                self.cstore[i.path][C_PIXBUF] = pxb
+                return
+        # That handle is no longer in the cstore, remove it
+        try: del self.currentScreenshots[handle]
+        except: pass
     
     def getSelectedClients(self):
         selected = self.cview.get_selected_items()
