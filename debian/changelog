@@ -1,8 +1,14 @@
-epoptes (0.4.0-2) UNRELEASED; urgency=low
+epoptes (0.4.1-1) unstable; urgency=low
 
+  * Optimize the thumbnails logic.
+  * Add the ability to broadcast the screen in a window.
   * epoptes: Add dependency on adduser (Closes: #656117).
+  * Recommend openssl for epoptes-client.
+  * Fix a mutable default value gotcha in Group class.
+  * Add Dutch and Finnish translations.
+    Many thanks to the translators!
 
- -- Vagrant Cascadian <vagrant@debian.org>  Tue, 17 Jan 2012 13:41:52 -0800
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Wed, 01 Feb 2012 10:05:12 +0200
 
 epoptes (0.4.0-1) unstable; urgency=low
 
