@@ -650,7 +650,7 @@ which is incompatible with the current epoptes version.\
                 if not reply:
                     return
                 try:
-                    rowstride, size, pixels = reply.strip().split('\n', 2)
+                    rowstride, size, pixels = reply.split('\n', 2)
                 except:
                     return
                 rowstride = int(rowstride)
