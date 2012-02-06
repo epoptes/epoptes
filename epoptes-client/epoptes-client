@@ -224,9 +224,9 @@ if [ -z "$EPOPTES_CLIENT_PHASE" ]; then
     # (for standalone workstations booted before the server).
     export EPOPTES_CLIENT_PHASE=2
     if [ -s /etc/epoptes/server.crt ]; then
-        exec socat openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,interval=10,forever, EXEC:"$0 $*"
+        exec socat openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,interval=60,forever, EXEC:"$0 $*"
     elif [ -f /etc/epoptes/server.crt ]; then
-       exec socat tcp:$SERVER:$PORT,interval=10,forever EXEC:"$0 $*",nofork
+       exec socat tcp:$SERVER:$PORT,interval=60,forever EXEC:"$0 $*",nofork
     else
         die "
 The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
