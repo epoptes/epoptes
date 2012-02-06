@@ -1,21 +1,18 @@
 #!/bin/sh
 
-# Skip the checks if EPOPTES_LTSP_CLIENT_HELPER is defined
-if [ -z "$EPOPTES_LTSP_CLIENT_HELPER" ]; then
-    # Don't do anything for the lo interface
-    test "$IFACE" != lo || exit 0
+# Don't do anything for the lo interface
+test "$IFACE" != lo || exit 0
 
-    # Only run from ifup
-    test "$MODE" = start || exit 0
+# Only run from ifup
+test "$MODE" = start || exit 0
 
-    # Only care about inet, inet6 and NetworkManager
-    case "$ADDRFAM" in
-        inet|inet6|NetworkManager)
-            ;;
-        *)
-            exit 0
-    esac
-fi
+# Only care about inet, inet6 and NetworkManager
+case "$ADDRFAM" in
+    inet|inet6|NetworkManager)
+        ;;
+    *)
+        exit 0
+esac
 
 if [ -x /usr/bin/logger ]; then
     logger=logger
@@ -23,5 +20,5 @@ else
     logger=true
 fi
 
-$logger -t epoptes -p syslog.info "Running epoptes-client, IFACE=$IFACE, EPOPTES_LTSP_CLIENT_HELPER=$EPOPTES_LTSP_CLIENT_HELPER, pid=$$"
-exec /usr/sbin/epoptes-client
+$logger -t epoptes -p syslog.info "Running epoptes-client, IFACE=$IFACE, pid=$$"
+/usr/sbin/epoptes-client &

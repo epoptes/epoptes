@@ -22,7 +22,7 @@ test -f /etc/ltsp_chroot || exit 0
 
 case "$1" in
     start|restart|force-reload)
-        EPOPTES_LTSP_CLIENT_HELPER=True "$DAEMON" &
+        "$DAEMON" &
         ;;
     stop)
         ;;
