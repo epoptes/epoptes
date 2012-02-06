@@ -67,8 +67,9 @@ class EpoptesGui(object):
         self.scrHeight = 75
         self.currentScreenshots = dict()
         self.current_macs = subprocess.Popen(['sh', '-c', 
-        """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'"""], 
-                                             stdout=subprocess.PIPE).stdout.read().split()
+            """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'
+            echo $LTSP_CLIENT_MAC"""],
+            stdout=subprocess.PIPE).stdout.read().split()
         if os.getuid() != 0:
             if 'thumbnails_width' in config.user:
                 self.scrWidth = config.user['thumbnails_width']
