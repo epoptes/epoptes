@@ -1,3 +1,13 @@
+epoptes (0.4.2-1) unstable; urgency=low
+
+  * If epoptes is ran from a thin client, don't display that client.
+  * Background epoptes-client when running from if-up.
+  * Log less, and let twistd handle the rotation.
+  * Translation updates.
+  * Don't fail when the last thumbnail byte is a space.
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Mon, 06 Feb 2012 23:23:38 +0200
+
 epoptes (0.4.1-1) unstable; urgency=low
 
   * Optimize the thumbnails logic.
