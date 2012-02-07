@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-28 11:46+0200\n"
+"POT-Creation-Date: 2012-02-06 16:08+0200\n"
 "PO-Revision-Date: 2012-02-05 21:13+0000\n"
 "Last-Translator: Alkis Georgopoulos <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-06 05:09+0000\n"
+"X-Launchpad-Export-Date: 2012-02-07 05:12+0000\n"
 "X-Generator: Launchpad (build 14747)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -312,23 +312,23 @@ msgstr "%(user)s von %(host)s"
 msgid "Properties of %s"
 msgstr "Eigenschaften von %s"
 
-#: ../epoptes/ui/gui.py:116
+#: ../epoptes/ui/gui.py:117
 msgid "Detected clients"
 msgstr "Gefunde Clients"
 
-#: ../epoptes/ui/gui.py:339
+#: ../epoptes/ui/gui.py:340
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr "Den/die ausgewählten Client(s) wirklich aus Gruppe ,,%s'' entfernen?"
 
-#: ../epoptes/ui/gui.py:366
+#: ../epoptes/ui/gui.py:367
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Die Gruppe ,,%s'' wirklich löschen?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:536
+#: ../epoptes/ui/gui.py:537
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
