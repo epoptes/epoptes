@@ -8,30 +8,30 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-06 16:08+0200\n"
-"PO-Revision-Date: 2012-01-26 08:06+0000\n"
-"Last-Translator: mrl586 <Unknown>\n"
+"PO-Revision-Date: 2012-02-11 20:41+0000\n"
+"Last-Translator: Asmo Koskinen <asmo.koskinen@arkki.info>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-07 05:12+0000\n"
-"X-Generator: Launchpad (build 14747)\n"
+"X-Launchpad-Export-Date: 2012-02-12 05:08+0000\n"
+"X-Generator: Launchpad (build 14771)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
-msgstr ""
+msgstr "Tee kysymys"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Assist user"
-msgstr ""
+msgstr "Avusta käyttäjää"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Background image"
-msgstr ""
+msgstr "Taustakuva"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Block Internet"
-msgstr ""
+msgstr "Estä Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Boot"
@@ -39,43 +39,43 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Boot selected clients (Wake On LAN)"
-msgstr ""
+msgstr "Käynnistä valitut päätteet (Wake On Lan)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast screen"
-msgstr ""
+msgstr "Lähetä näytö"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast screen (windowed)"
-msgstr ""
+msgstr "Lähetä näyttö (ikkunoitu)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast user"
-msgstr ""
+msgstr "Lähetä käyttäjä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast video"
-msgstr ""
+msgstr "Lähetä video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcast your screen to the selected clients"
-msgstr ""
+msgstr "Lähetä näyttösi valituille päätteille"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr ""
+msgstr "Lähetä näytösi valituille päätteille (kokoruutu)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr ""
+msgstr "Lähetä näyttösi valituille päätteille (ikkunoitu)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Broadcasts"
-msgstr ""
+msgstr "Lähetykset"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Computer"
-msgstr ""
+msgstr "Tietokone"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Computer (user)"
@@ -83,249 +83,249 @@ msgstr "Tietokone (käyttäjä)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Confirm action"
-msgstr ""
+msgstr "Vahvista toiminto"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Create a new group"
-msgstr ""
+msgstr "Luo uusi ryhmä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Execute"
-msgstr ""
+msgstr "Suorita"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Execute a command on the selected clients"
-msgstr ""
+msgstr "Suorita käsky valituille päätteille"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr ""
+msgstr "Suorita komento"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
-msgstr ""
+msgstr "Tiedot"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Labels"
-msgstr ""
+msgstr "Tunnisteet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Live chat (IRC)"
-msgstr ""
+msgstr "Keskustelu (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Lock background"
-msgstr ""
+msgstr "Lukitse tausta"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Lock screen"
-msgstr ""
+msgstr "Lukitse näyttö"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Lock screen of the selected clients"
-msgstr ""
+msgstr "Lukitse valittujen päätteiden näyttö"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Log out"
-msgstr ""
+msgstr "Kirjaudu ulos"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Log out users connected on selected clients"
-msgstr ""
+msgstr "Kirjaa valittujen päätteiden käyttäjät ulos"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Monitor user"
-msgstr ""
+msgstr "Seuraa käyttäjää"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Mute sound"
-msgstr ""
+msgstr "Vaimenna ääni"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Open terminal"
-msgstr ""
+msgstr "Avaa pääteikkuna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Reboot"
-msgstr ""
+msgstr "Käynnistä uudelleen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Reboot the selected clients"
-msgstr ""
+msgstr "Käynnistä uudelleen valitut päätteet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Remote support"
-msgstr ""
+msgstr "Etätuki"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Remove from group"
-msgstr ""
+msgstr "Poista ryhmästä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Remove the selected group"
-msgstr ""
+msgstr "Poista valittu ryhmä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Report a bug"
-msgstr ""
+msgstr "Vikailmoitus"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Restrictions"
-msgstr ""
+msgstr "Rajoitukset"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Root, locally"
-msgstr ""
+msgstr "Root (paikallinen)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Root, remotely"
-msgstr ""
+msgstr "Root (etä)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Send a message to the selected clients"
-msgstr ""
+msgstr "Lähetä viesti valituille päätteille"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Send message"
-msgstr ""
+msgstr "Lähetä viesti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Session"
-msgstr ""
+msgstr "Istunto"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Set background"
-msgstr ""
+msgstr "Aseta tausta"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Set default background"
-msgstr ""
+msgstr "Aseta oletustausta"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Show information for the selected client"
-msgstr ""
+msgstr "Näytä valitun päätteen tiedot"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Show real names"
-msgstr ""
+msgstr "Näytä todelliset nimet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Shutdown"
-msgstr ""
+msgstr "Sammuta"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Shutdown the selected clients"
-msgstr ""
+msgstr "Sammuta valitut päätteet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Stop all broadcasts on every client"
-msgstr ""
+msgstr "Lopeta kaikki lähetykset kaikissa päätteissä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Stop broadcasts"
-msgstr ""
+msgstr "Lopeta lähetykset"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Stops all active broadcasts"
-msgstr ""
+msgstr "Lopeta kaikki aktiiviset lähetykset"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
-msgstr ""
+msgstr "Kännä tämä ohjelma"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Unblock Internet"
-msgstr ""
+msgstr "Avaa Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Unlock screen"
-msgstr ""
+msgstr "Avaa näyttö"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Unlock the screen of the selected clients"
-msgstr ""
+msgstr "Avaa valittujen päätteiden näyttö"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Unmute sound"
-msgstr ""
+msgstr "Avaa ääni"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "User"
-msgstr ""
+msgstr "Käyttäjä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "User (computer)"
-msgstr ""
+msgstr "Käyttäjä (tietokone)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "User, locally"
-msgstr ""
+msgstr "Käyttäjä (paikallinen)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "_Clients"
-msgstr ""
+msgstr "_Päätteet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "_File"
-msgstr ""
+msgstr "_Tiedosto"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "_Help"
-msgstr ""
+msgstr "_Ohje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "_Send message"
-msgstr ""
+msgstr "_Lähetä viesti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "_View"
-msgstr ""
+msgstr "_Näkymä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "epoptes"
-msgstr ""
+msgstr "epoptes"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr ""
+msgstr "Sammuta"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr ""
+msgstr "Yhdistetty:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr ""
+msgstr "%(user)s on  %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr ""
+msgstr "Irtikytketyt:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr ""
+msgstr "%(user)s from %(host)s"
 
 #: ../epoptes/ui/client_information.py:61
 #, python-format
 msgid "Properties of %s"
-msgstr ""
+msgstr "%s ominaisuudet"
 
 #: ../epoptes/ui/gui.py:117
 msgid "Detected clients"
-msgstr ""
+msgstr "Havaitut päätteet"
 
 #: ../epoptes/ui/gui.py:340
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr ""
+msgstr "Oletko varma, että haluat poistaa valitut päätteet ryhmästä \"%s\"?"
 
 #: ../epoptes/ui/gui.py:367
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa ryhmän \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:537
@@ -340,48 +340,51 @@ msgstr ""
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr ""
+"URL-osoite, tiedosto tai käsky suoritettavaksi valituissa päätteissä:"
 
 #: ../epoptes/common/commands.py:46
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr ""
+msgstr "Oletko varma, että haluat sammuttaa kaikki tietokoneet?"
 
 #: ../epoptes/common/commands.py:47
 msgid "Are you sure you want to reboot all the computers?"
-msgstr ""
+msgstr "Oletko varma, että haluat käynnistää uudelleen kaikki tietokoneet?"
 
 #: ../epoptes/common/commands.py:48
 msgid "Are you sure you want to log off all the users?"
-msgstr ""
+msgstr "Oletko varma, että haluat kirjata ulos kaikki käyttäjät?"
 
 #: ../epoptes/common/commands.py:49
 msgid ""
 "Are you sure you want to terminate all processes of the selected users?"
 msgstr ""
+"Oletko varma, että haluat lopettaa valittujen käyttäjien kaikki toiminnot?"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
-msgstr ""
+msgstr "Epoptes"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr ""
+msgstr "Epoptes – tietokonehuoneen ylläpitotyökalu"
 
 #: ../bin/epoptes.py:59
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
+"Käyttäjän %s täytyy olla ryhmän %s jäsen voidakseen käyttää poptes-ohjelmaa."
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client alias:"
-msgstr ""
+msgstr "Päätteen peitenimi:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
-msgstr ""
+msgstr "Päätteen isäntänimi:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
@@ -389,63 +392,63 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
-msgstr ""
+msgstr "Muokkaa peitenimeä:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
-msgstr ""
+msgstr "Näytönohjain:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "IP address:"
-msgstr ""
+msgstr "IP-osoite:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "MAC address:"
-msgstr ""
+msgstr "MAC-osoite:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Processor:"
-msgstr ""
+msgstr "Suoritin:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "RAM:"
-msgstr ""
+msgstr "Muisti:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Set a new alias for the selected client"
-msgstr ""
+msgstr "Aseta uusi peitenimi valituille päätteille"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
-msgstr ""
+msgstr "Käyttäjä:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr ""
+msgstr "Viestin sisältö:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Message type:"
-msgstr ""
+msgstr "Viestin tyyppi:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Select the type of the message"
-msgstr ""
+msgstr "Valitse viestin tyyppi"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr ""
+msgstr "Varoitus"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "_Send"
-msgstr ""
+msgstr "_Lähetä"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "A computer lab management and monitoring tool."
-msgstr ""
+msgstr "Tietokonehuoneen hallinta- ja seurantaohjelma."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "Copyright &#xA9; 2011 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -464,7 +467,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:1
 msgid "Connection type:"
-msgstr ""
+msgstr "Yhteyden tyyppi:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:2
 msgid "Console (screen)"
@@ -477,12 +480,12 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:4
 msgid "Graphics (VNC)"
-msgstr ""
+msgstr "Näytöt (VNC)"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:5
 msgid "IP:"
-msgstr ""
+msgstr "IP:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:6
 msgid "Port:"
-msgstr ""
+msgstr "Portti:"
