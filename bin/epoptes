@@ -51,8 +51,8 @@ from epoptes.common import config
 # Check that the user is a member of the epoptes SOCKET_GROUP
 import grp
 try:
-    is_member = os.environ['USER'] in grp.getgrnam(
-        config.system['SOCKET_GROUP']).gr_mem
+    is_member = os.environ['USER'] in [config.system['SOCKET_GROUP']] + \
+        grp.getgrnam(config.system['SOCKET_GROUP']).gr_mem
 except:
     is_member = False
 if not is_member:
