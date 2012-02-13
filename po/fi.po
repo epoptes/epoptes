@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-06 16:08+0200\n"
-"PO-Revision-Date: 2012-02-11 20:41+0000\n"
+"PO-Revision-Date: 2012-02-12 16:12+0000\n"
 "Last-Translator: Asmo Koskinen <asmo.koskinen@arkki.info>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-12 05:08+0000\n"
-"X-Generator: Launchpad (build 14771)\n"
+"X-Launchpad-Export-Date: 2012-02-13 05:15+0000\n"
+"X-Generator: Launchpad (build 14781)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -35,7 +35,7 @@ msgstr "Estä Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Boot"
-msgstr ""
+msgstr "Käynnistä"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Boot selected clients (Wake On LAN)"
@@ -296,7 +296,7 @@ msgstr "Yhdistetty:"
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s on  %(host)s"
+msgstr "%(user)s on %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
@@ -336,6 +336,9 @@ msgid ""
 "\n"
 "You should update your chroot."
 msgstr ""
+"Yritettiin yhdistää päätettä, Epoptes-versio %s ei ole yhteensopiva.\n"
+"\n"
+"Sinun pitää päivittää pääteympäristö chroot)."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
@@ -388,7 +391,7 @@ msgstr "Päätteen isäntänimi:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
-msgstr ""
+msgstr "Päätteen tyyppi:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
@@ -464,6 +467,17 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Epoptes is free software: you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation, either version 3 of the License, or any later version. \n"
+"\n"
+"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"epoptes. If not, see <http://www.gnu.org/licenses/>."
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:1
 msgid "Connection type:"
@@ -471,12 +485,12 @@ msgstr "Yhteyden tyyppi:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:2
 msgid "Console (screen)"
-msgstr ""
+msgstr "Konsoli (näyttö)"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:3
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+msgstr "Lisää yhteyden tiedot, jonka haluat jakaa työpöydälläsi"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:4
 msgid "Graphics (VNC)"
