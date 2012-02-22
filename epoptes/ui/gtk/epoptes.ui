@@ -256,6 +256,7 @@
             </child>
             <child>
               <object class="GtkMenuItem" id="view">
+                <property name="visible">True</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -323,13 +324,10 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem6">
-                        <property name="visible">True</property>
-                      </object>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem6"/>
                     </child>
                     <child>
                       <object class="GtkCheckMenuItem" id="mcShowRealNames">
-                        <property name="visible">True</property>
                         <property name="label" translatable="yes">Show real names</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="toggleRealNames"/>
@@ -715,7 +713,7 @@
                     <property name="visible">True</property>
                     <child>
                       <object class="GtkImageMenuItem" id="miHelp">
-                        <property name="label">gtk-help</property>
+                        <property name="label">gtk-home</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -868,7 +866,7 @@
               <object class="GtkToolButton" id="tbAssistUser">
                 <property name="visible">True</property>
                 <property name="tooltip_text" translatable="yes">Take control of the selected user's computer</property>
-                <property name="label" translatable="yes">Assist</property>
+                <property name="label" translatable="yes">Assist user</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image32</property>
                 <signal name="clicked" handler="assistUser"/>
@@ -1330,7 +1328,7 @@
   </object>
   <object class="GtkImage" id="image14">
     <property name="visible">True</property>
-    <property name="pixbuf">images/16/broadcast.png</property>
+    <property name="pixbuf">images/16/broadcast-windowed.png</property>
   </object>
   <object class="GtkImage" id="image15">
     <property name="visible">True</property>
@@ -1375,20 +1373,22 @@
   <object class="GtkMenu" id="broadcastmenu">
     <property name="visible">True</property>
     <child>
-      <object class="GtkMenuItem" id="broadcast_full">
+      <object class="GtkImageMenuItem" id="broadcast_full">
+        <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
         <property name="visible">True</property>
         <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
-        <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
-        <property name="use_underline">True</property>
+        <property name="image">image43</property>
+        <property name="use_stock">False</property>
         <signal name="activate" handler="broadcastScreen"/>
       </object>
     </child>
     <child>
-      <object class="GtkMenuItem" id="broadcast_window">
+      <object class="GtkImageMenuItem" id="broadcast_window">
+        <property name="label" translatable="yes">Broadcast screen (windowed)</property>
         <property name="visible">True</property>
         <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
-        <property name="label" translatable="yes">Broadcast screen (windowed)</property>
-        <property name="use_underline">True</property>
+        <property name="image">image42</property>
+        <property name="use_stock">False</property>
         <signal name="activate" handler="broadcastScreenWindowed"/>
       </object>
     </child>
@@ -1405,5 +1405,13 @@
   <object class="GtkImage" id="image38">
     <property name="visible">True</property>
     <property name="stock">gtk-missing-image</property>
+  </object>
+  <object class="GtkImage" id="image42">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/16/broadcast-windowed.png</property>
+  </object>
+  <object class="GtkImage" id="image43">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/16/broadcast.png</property>
   </object>
 </interface>
