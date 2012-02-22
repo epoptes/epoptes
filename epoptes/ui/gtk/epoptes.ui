@@ -2,6 +2,7 @@
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
+  <!-- interface-local-resource-path /home/phantomas/code/epoptes/trunk/data/images -->
   <object class="GtkDialog" id="entrydialog">
     <property name="border_width">5</property>
     <property name="title">Change name</property>
@@ -113,7 +114,7 @@
   </object>
   <object class="GtkImage" id="image29">
     <property name="visible">True</property>
-    <property name="icon_name">lock</property>
+    <property name="pixbuf">images/16/lock-screen.png</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
@@ -121,19 +122,19 @@
   </object>
   <object class="GtkImage" id="image30">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-session-logout</property>
+    <property name="pixbuf">images/16/logout.png</property>
   </object>
   <object class="GtkImage" id="image31">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-session-halt</property>
+    <property name="pixbuf">images/16/shutdown.png</property>
   </object>
   <object class="GtkImage" id="image33">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-remote-desktop</property>
+    <property name="pixbuf">images/16/broadcast.png</property>
   </object>
   <object class="GtkImage" id="image34">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-remote-desktop</property>
+    <property name="pixbuf">images/16/broadcast.png</property>
   </object>
   <object class="GtkImage" id="image35">
     <property name="visible">True</property>
@@ -141,11 +142,11 @@
   </object>
   <object class="GtkImage" id="image36">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-remote-desktop</property>
+    <property name="pixbuf">images/16/assist.png</property>
   </object>
   <object class="GtkImage" id="image37">
     <property name="visible">True</property>
-    <property name="icon_name">keyring-manager</property>
+    <property name="pixbuf">images/16/unlock-screen.png</property>
   </object>
   <object class="GtkImage" id="image39">
     <property name="visible">True</property>
@@ -157,11 +158,11 @@
   </object>
   <object class="GtkImage" id="image40">
     <property name="visible">True</property>
-    <property name="icon_name">media-playback-start</property>
+    <property name="pixbuf">images/16/poweron.png</property>
   </object>
   <object class="GtkImage" id="image41">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-session-reboot</property>
+    <property name="pixbuf">images/16/restart.png</property>
   </object>
   <object class="GtkImage" id="image47">
     <property name="visible">True</property>
@@ -173,7 +174,7 @@
   </object>
   <object class="GtkImage" id="image49">
     <property name="visible">True</property>
-    <property name="icon_name">audio-volume-medium</property>
+    <property name="pixbuf">images/16/unmute.png</property>
   </object>
   <object class="GtkImage" id="image5">
     <property name="visible">True</property>
@@ -181,7 +182,7 @@
   </object>
   <object class="GtkImage" id="image50">
     <property name="visible">True</property>
-    <property name="icon_name">audio-volume-muted</property>
+    <property name="pixbuf">images/16/mute.png</property>
   </object>
   <object class="GtkImage" id="image51">
     <property name="visible">True</property>
@@ -193,7 +194,7 @@
   </object>
   <object class="GtkImage" id="image56">
     <property name="visible">True</property>
-    <property name="icon_name">accessories-text-editor</property>
+    <property name="pixbuf">images/16/message.png</property>
   </object>
   <object class="GtkImage" id="image6">
     <property name="visible">True</property>
@@ -205,15 +206,15 @@
   </object>
   <object class="GtkImage" id="image61">
     <property name="visible">True</property>
-    <property name="icon_name">terminal</property>
+    <property name="pixbuf">images/16/root-terminal.png</property>
   </object>
   <object class="GtkImage" id="image62">
     <property name="visible">True</property>
-    <property name="icon_name">terminal</property>
+    <property name="pixbuf">images/16/root-terminal.png</property>
   </object>
   <object class="GtkImage" id="image7">
     <property name="visible">True</property>
-    <property name="icon_name">gpm-inhibit</property>
+    <property name="pixbuf">images/16/broadcast-stop.png</property>
   </object>
   <object class="GtkImage" id="image8">
     <property name="visible">True</property>
@@ -796,7 +797,7 @@
                 <property name="tooltip_text" translatable="yes">Boot selected clients (Wake On LAN)</property>
                 <property name="label" translatable="yes">Boot</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">media-playback-start</property>
+                <property name="icon_widget">image15</property>
                 <signal name="clicked" handler="wake_on_lan"/>
               </object>
               <packing>
@@ -810,7 +811,7 @@
                 <property name="tooltip_text" translatable="yes">Log out users connected on selected clients</property>
                 <property name="label" translatable="yes">Log out</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">system-log-out</property>
+                <property name="icon_widget">image16</property>
                 <signal name="clicked" handler="logout"/>
               </object>
               <packing>
@@ -824,7 +825,7 @@
                 <property name="tooltip_text" translatable="yes">Reboot the selected clients</property>
                 <property name="label" translatable="yes">Reboot</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">view-refresh</property>
+                <property name="icon_widget">image17</property>
                 <signal name="clicked" handler="reboot"/>
               </object>
               <packing>
@@ -838,7 +839,7 @@
                 <property name="tooltip_text" translatable="yes">Shutdown the selected clients</property>
                 <property name="label" translatable="yes">Shutdown</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">application-exit</property>
+                <property name="icon_widget">image18</property>
                 <signal name="clicked" handler="poweroff"/>
               </object>
               <packing>
@@ -860,7 +861,7 @@
                 <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients</property>
                 <property name="label" translatable="yes">Broadcast screen</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">preferences-system-network</property>
+                <property name="icon_widget">image19</property>
                 <signal name="clicked" handler="broadcastScreen"/>
               </object>
               <packing>
@@ -874,7 +875,7 @@
                 <property name="tooltip_text" translatable="yes">Stop all broadcasts on every client</property>
                 <property name="label" translatable="yes">Stop broadcasts</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">preferences-desktop-screensaver</property>
+                <property name="icon_widget">image20</property>
                 <signal name="clicked" handler="stopTransmissions"/>
               </object>
               <packing>
@@ -896,7 +897,7 @@
                 <property name="tooltip_text" translatable="yes">Execute a command on the selected clients</property>
                 <property name="label" translatable="yes">Execute command</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">system-run</property>
+                <property name="icon_widget">image21</property>
                 <signal name="clicked" handler="execDialog"/>
               </object>
               <packing>
@@ -910,7 +911,7 @@
                 <property name="tooltip_text" translatable="yes">Send a message to the selected clients</property>
                 <property name="label" translatable="yes">Send message</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">accessories-text-editor</property>
+                <property name="icon_widget">image22</property>
                 <signal name="clicked" handler="sendMessageDialog"/>
               </object>
               <packing>
@@ -932,7 +933,7 @@
                 <property name="tooltip_text" translatable="yes">Lock screen of the selected clients</property>
                 <property name="label" translatable="yes">Lock screen</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">system-lock-screen</property>
+                <property name="icon_widget">image23</property>
                 <signal name="clicked" handler="lockScreen"/>
               </object>
               <packing>
@@ -946,7 +947,7 @@
                 <property name="tooltip_text" translatable="yes">Unlock the screen of the selected clients</property>
                 <property name="label" translatable="yes">Unlock screen</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">dialog-password</property>
+                <property name="icon_widget">image24</property>
                 <signal name="clicked" handler="unlockScreen"/>
               </object>
               <packing>
@@ -968,7 +969,7 @@
                 <property name="tooltip_text" translatable="yes">Show information for the selected client</property>
                 <property name="label" translatable="yes">Information</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-info</property>
+                <property name="icon_widget">image25</property>
                 <signal name="clicked" handler="on_tb_client_properties_clicked"/>
               </object>
               <packing>
@@ -1298,7 +1299,7 @@
   </object>
   <object class="GtkImage" id="image12">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-remote-desktop</property>
+    <property name="pixbuf">images/16/observe.png</property>
   </object>
   <object class="GtkImage" id="image13">
     <property name="visible">True</property>
@@ -1306,6 +1307,50 @@
   </object>
   <object class="GtkImage" id="image14">
     <property name="visible">True</property>
-    <property name="icon_name">gnome-remote-desktop</property>
+    <property name="pixbuf">images/16/broadcast.png</property>
+  </object>
+  <object class="GtkImage" id="image15">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/poweron.svg</property>
+  </object>
+  <object class="GtkImage" id="image16">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/logout.svg</property>
+  </object>
+  <object class="GtkImage" id="image17">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/restart.svg</property>
+  </object>
+  <object class="GtkImage" id="image18">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/shutdown.svg</property>
+  </object>
+  <object class="GtkImage" id="image19">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/broadcast.svg</property>
+  </object>
+  <object class="GtkImage" id="image20">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/broadcast-stop.svg</property>
+  </object>
+  <object class="GtkImage" id="image21">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/execute.svg</property>
+  </object>
+  <object class="GtkImage" id="image22">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/message.svg</property>
+  </object>
+  <object class="GtkImage" id="image23">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/lock-screen.svg</property>
+  </object>
+  <object class="GtkImage" id="image24">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/unlock-screen.svg</property>
+  </object>
+  <object class="GtkImage" id="image25">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/info.svg</property>
   </object>
 </interface>
