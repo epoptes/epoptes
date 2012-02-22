@@ -34,6 +34,7 @@ import dbus
 import logging
 import sys
 import shlex
+import pipes
 from gobject import TYPE_PYOBJECT as gPyobject
 from twisted.internet import reactor
 from twisted.python import log
@@ -308,11 +309,12 @@ export $(./get-display)
     # FIXME : Change the way lock screen works, don't kill and relock...
     def lockScreen(self, widget):
         """
-        Lock screen for all clients selected
+        Lock screen for all the selected clients, displaying a message
         """
+        msg = _("The screen is locked by a system administrator.")
         self.execOnSelectedClients('test -n "$EPOPTES_LOCK_SCREEN_PID" && kill ' + \
             '"$EPOPTES_LOCK_SCREEN_PID"; EPOPTES_LOCK_SCREEN_PID=$(./execute ' + \
-            './lock-screen)')
+            './lock-screen %s)' %pipes.quote(msg))
 
     def unlockScreen(self, widget):
         """

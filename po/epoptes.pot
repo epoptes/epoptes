@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-22 10:32+0200\n"
+"POT-Creation-Date: 2012-02-22 12:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,150 +149,158 @@ msgid "Mute sound"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Open terminal"
+msgid "Open a windowed session to prevent broadcasting your whole screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "Reboot"
+msgid "Open broadcasts window"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Reboot the selected clients"
+msgid "Open terminal"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Remote support"
+msgid "Reboot"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Remove from group"
+msgid "Reboot the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
-msgid "Remove the selected group"
+msgid "Remote support"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Report a bug"
+msgid "Remove from group"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Restrictions"
+msgid "Remove the selected group"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Root, locally"
+msgid "Report a bug"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
-msgid "Root, remotely"
+msgid "Restrictions"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Send a message to the selected clients"
+msgid "Root, locally"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:45 ../epoptes/ui/gtk/sendMessage.ui.h:6
-msgid "Send message"
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Root, remotely"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "Session"
+msgid "Send a message to the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Set background"
+#: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Send message"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Set default background"
+msgid "Session"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Show information for the selected client"
+msgid "Set background"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Show real names"
+msgid "Set default background"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "Shutdown"
+msgid "Show information for the selected client"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "Shutdown the selected clients"
+msgid "Show real names"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Stop all broadcasts on every client"
+msgid "Shutdown"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Stop broadcasts"
+msgid "Shutdown the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Stops all active broadcasts"
+msgid "Stop all broadcasts on every client"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Take control of the selected user's computer"
+msgid "Stop broadcasts"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
-msgid "Translate this application"
+msgid "Stops all active broadcasts"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "Unblock Internet"
+msgid "Take control of the selected user's computer"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Unlock screen"
+msgid "Translate this application"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "Unlock the screen of the selected clients"
+msgid "Unblock Internet"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "Unmute sound"
+msgid "Unlock screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "User"
+msgid "Unlock the screen of the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "User (computer)"
+msgid "Unmute sound"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
-msgid "User, locally"
+msgid "User"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
-msgid "_Clients"
+msgid "User (computer)"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
-msgid "_File"
+msgid "User, locally"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
-msgid "_Help"
+msgid "_Clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
-msgid "_Send message"
+msgid "_File"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
-msgid "_View"
+msgid "_Help"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
+msgid "_Send message"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:71
+msgid "_View"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:72
 msgid "epoptes"
 msgstr ""
 
@@ -323,23 +331,27 @@ msgstr ""
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:118
+#: ../epoptes/ui/gui.py:119
 msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:341
+#: ../epoptes/ui/gui.py:314
+msgid "The screen is locked by a system administrator."
+msgstr ""
+
+#: ../epoptes/ui/gui.py:343
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:368
+#: ../epoptes/ui/gui.py:370
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:538
+#: ../epoptes/ui/gui.py:540
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "

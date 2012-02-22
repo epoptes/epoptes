@@ -31,7 +31,7 @@ import sys
 import time
 
 class lockscreen:
-    def lock(self, msg="The screen is locked by a system administrator"):
+    def lock(self, msg="The screen is locked by a system administrator."):
         backlock = gtk.Window(gtk.WINDOW_POPUP)
         backlock.resize(1, 1)
         backlock.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
