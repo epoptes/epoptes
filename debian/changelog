@@ -1,3 +1,15 @@
+epoptes (0.4.3-0ubuntu1) precise; urgency=low
+
+  * New icons!
+  * Add some handy actions in the toolbar.
+  * Move the Labels sub-menu under the 'View' menu.
+  * Make the lock screen message translatable.
+  * Users couldn't launch epoptes when SOCKET_GROUP=their primary groups.
+  * Add Polish and Hungarian translations.
+    Many thanks to the translators!
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Wed, 22 Feb 2012 22:39:47 +0200
+
 epoptes (0.4.2-1) unstable; urgency=low
 
   * If epoptes is ran from a thin client, don't display that client.
