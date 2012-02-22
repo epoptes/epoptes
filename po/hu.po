@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-06 16:08+0200\n"
-"PO-Revision-Date: 2012-02-21 06:20+0000\n"
+"PO-Revision-Date: 2012-02-21 06:23+0000\n"
 "Last-Translator: Geza Gemes <geza.gemes@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-21 06:20+0000\n"
+"X-Launchpad-Export-Date: 2012-02-22 06:51+0000\n"
 "X-Generator: Launchpad (build 14838)\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -356,45 +356,49 @@ msgstr "Biztos benne, hogy újra akarja indítani az összes számítógépet?"
 
 #: ../epoptes/common/commands.py:48
 msgid "Are you sure you want to log off all the users?"
-msgstr ""
+msgstr "Biztos benne, hogy ki akarja jelentkeztetni az összes felhasználót?"
 
 #: ../epoptes/common/commands.py:49
 msgid ""
 "Are you sure you want to terminate all processes of the selected users?"
 msgstr ""
+"Biztos benne, hogy be akarja zárni a kiválasztott felhasználók összes futó "
+"folyamatát?"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
-msgstr ""
+msgstr "Epoptes"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr ""
+msgstr "Epoptes számítógéplabor adminisztráló eszköz"
 
 #: ../bin/epoptes.py:59
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
+"A %s felhasználónak a %s csoport tagjának kell lennie az epoptes "
+"használatához"
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
-msgstr ""
+msgstr "Hiba"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client alias:"
-msgstr ""
+msgstr "Kliens álnév"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
-msgstr ""
+msgstr "Kliens gépnév"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
-msgstr ""
+msgstr "Kliens típus"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
-msgstr ""
+msgstr "Álnév szerkesztése"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
