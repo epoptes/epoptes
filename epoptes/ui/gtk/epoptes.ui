@@ -359,6 +359,7 @@
                               <object class="GtkImageMenuItem" id="miAssistUser">
                                 <property name="label" translatable="yes">Assist user</property>
                                 <property name="visible">True</property>
+                                <property name="tooltip_text" translatable="yes">Take control of the selected user's computer</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image36</property>
                                 <property name="use_stock">False</property>
@@ -856,17 +857,31 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="tbBroadcastScreen">
+              <object class="GtkToolButton" id="tbAssistUser">
+                <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Take control of the selected user's computer</property>
+                <property name="label" translatable="yes">Assist</property>
+                <property name="use_underline">True</property>
+                <property name="icon_widget">image32</property>
+                <signal name="clicked" handler="assistUser"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuToolButton" id="tbBroadcastScreen">
                 <property name="visible">True</property>
                 <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients</property>
                 <property name="label" translatable="yes">Broadcast screen</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image19</property>
+                <property name="menu">broadcastmenu</property>
                 <signal name="clicked" handler="broadcastScreen"/>
               </object>
               <packing>
                 <property name="expand">False</property>
-                <property name="homogeneous">True</property>
               </packing>
             </child>
             <child>
@@ -1325,10 +1340,6 @@
     <property name="visible">True</property>
     <property name="pixbuf">images/shutdown.svg</property>
   </object>
-  <object class="GtkImage" id="image19">
-    <property name="visible">True</property>
-    <property name="pixbuf">images/broadcast.svg</property>
-  </object>
   <object class="GtkImage" id="image20">
     <property name="visible">True</property>
     <property name="pixbuf">images/broadcast-stop.svg</property>
@@ -1352,5 +1363,35 @@
   <object class="GtkImage" id="image25">
     <property name="visible">True</property>
     <property name="pixbuf">images/info.svg</property>
+  </object>
+  <object class="GtkMenu" id="broadcastmenu">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkMenuItem" id="broadcast_full">
+        <property name="visible">True</property>
+        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
+        <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="broadcastScreen"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="broadcast_window">
+        <property name="visible">True</property>
+        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
+        <property name="label" translatable="yes">Broadcast screen (windowed)</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="broadcastScreenWindowed"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="image19">
+    <property name="visible">True</property>
+    <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
+    <property name="pixbuf">images/broadcast.svg</property>
+  </object>
+  <object class="GtkImage" id="image32">
+    <property name="visible">True</property>
+    <property name="pixbuf">images/assist.svg</property>
   </object>
 </interface>
