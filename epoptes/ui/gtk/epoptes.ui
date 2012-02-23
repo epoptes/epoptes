@@ -222,7 +222,7 @@
   </object>
   <object class="GtkWindow" id="mainwindow">
     <property name="visible">True</property>
-    <property name="title" translatable="yes">epoptes</property>
+    <property name="title" translatable="yes">Epoptes</property>
     <property name="default_width">750</property>
     <property name="default_height">440</property>
     <property name="icon">../icons/hicolor/scalable/apps/epoptes.svg</property>
