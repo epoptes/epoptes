@@ -7,285 +7,301 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-02-06 16:08+0200\n"
+"POT-Creation-Date: 2012-02-22 23:13+0200\n"
 "PO-Revision-Date: 2012-02-06 08:54+0000\n"
 "Last-Translator: Aleksey Kabanov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-07 05:12+0000\n"
-"X-Generator: Launchpad (build 14747)\n"
+"X-Launchpad-Export-Date: 2012-02-23 05:15+0000\n"
+"X-Generator: Launchpad (build 14855)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "Ask a question"
-msgstr "Задать вопрос"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Assist user"
-msgstr "Помочь пользователю"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "Background image"
-msgstr "Фоновое изображение"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
-msgid "Block Internet"
-msgstr "Блокировать Интернет"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
-msgid "Boot"
-msgstr "Загрузить"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
-msgid "Boot selected clients (Wake On LAN)"
-msgstr "Загрузить выбранные клиенты (Wake On LAN)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Broadcast screen"
-msgstr "Вещание с экрана"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Broadcast screen (windowed)"
-msgstr "Вещание с экрана (в окне)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
-msgid "Broadcast user"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
-msgid "Broadcast video"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "Broadcast your screen to the selected clients"
-msgstr "Вещание с вашего экрана выбранным клиентам"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
-msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Вещание с вашего экрана выбранным клиентам (во весь экран)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
-msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Вещание с вашего экрана выбранным клиентам (в окне)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Broadcasts"
-msgstr "Вещание"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Computer"
-msgstr "Компьютер"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Computer (user)"
-msgstr "Компьютер (пользователь)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Confirm action"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
-msgid "Create a new group"
-msgstr "Создать новую группу"
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
+msgid "epoptes"
+msgstr "epoptes"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Execute"
-msgstr "Выполнить"
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "_File"
+msgstr "_Файл"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Execute a command on the selected clients"
-msgstr "Выполнить команду на выбранных клиентах"
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "_View"
+msgstr "_Вид"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:21 ../epoptes/ui/gtk/executeCommand.ui.h:1
-msgid "Execute command"
-msgstr "Выполнить команду"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:22 ../epoptes/ui/gtk/sendMessage.ui.h:2
-msgid "Information"
-msgstr "Информация"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Labels"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
-msgid "Live chat (IRC)"
-msgstr "Чат (IRC)"
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "Computer (user)"
+msgstr "Компьютер (пользователь)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
-msgid "Lock background"
-msgstr "Блокировать фон"
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "Computer"
+msgstr "Компьютер"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
-msgid "Lock screen"
-msgstr "Блокировать экран"
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "User (computer)"
+msgstr "Пользователь (компьютер)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
-msgid "Lock screen of the selected clients"
-msgstr "Блокировать экраны выбранных клиентов"
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "User"
+msgstr "Пользователь"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Show real names"
+msgstr "Показать действительные имена"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "_Clients"
+msgstr "_Клиенты"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Session"
+msgstr "Сеанс"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Boot"
+msgstr "Загрузить"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Log out"
 msgstr "Завершить сеанс"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
-msgid "Log out users connected on selected clients"
-msgstr "Завершить сеансы пользователей, подключенных к выбранным клиентам"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
-msgid "Monitor user"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
-msgid "Mute sound"
-msgstr "Выключить звук"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
-msgid "Open terminal"
-msgstr "Открыть терминал"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Reboot"
 msgstr "Перезагрузить"
 
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Shutdown"
+msgstr "Выключить"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Broadcasts"
+msgstr "Вещание"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Monitor user"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Assist user"
+msgstr "Помочь пользователю"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Take control of the selected user's computer"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast video"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast screen"
+msgstr "Вещание с экрана"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "Вещание с вашего экрана выбранным клиентам (во весь экран)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Broadcast screen (windowed)"
+msgstr "Вещание с экрана (в окне)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "Вещание с вашего экрана выбранным клиентам (в окне)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Broadcast user"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Stop broadcasts"
+msgstr "Остановить вещания"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Stops all active broadcasts"
+msgstr "Остановить все активные вещания"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Open broadcasts window"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Execute"
+msgstr "Выполнить"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "Execute a command on the selected clients"
+msgstr "Выполнить команду на выбранных клиентах"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "_Send message"
+msgstr "_Отправить сообщение"
+
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Reboot the selected clients"
-msgstr "Перезагрузить выбранные клиенты"
+msgid "Send a message to the selected clients"
+msgstr "Отправить сообщение на выбранные клиенты"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "Remote support"
-msgstr "Удалённая помощь"
+msgid "Open terminal"
+msgstr "Открыть терминал"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Remove from group"
-msgstr "Удалить из группы"
+msgid "User, locally"
+msgstr "Локальный пользователь"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Remove the selected group"
-msgstr "Удалить выбранную группу"
+msgid "Root, locally"
+msgstr "Локальный Root"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Report a bug"
-msgstr "Сообщить об ошибке"
+msgid "Root, remotely"
+msgstr "Удалённый Root"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Restrictions"
 msgstr "Ограничения"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Root, locally"
-msgstr "Локальный Root"
+msgid "Lock screen"
+msgstr "Блокировать экран"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Root, remotely"
-msgstr "Удалённый Root"
+msgid "Unlock screen"
+msgstr "Разблокировать экран"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Send a message to the selected clients"
-msgstr "Отправить сообщение на выбранные клиенты"
+msgid "Block Internet"
+msgstr "Блокировать Интернет"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:43 ../epoptes/ui/gtk/sendMessage.ui.h:6
-msgid "Send message"
-msgstr "Отправить сообщение"
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Unblock Internet"
+msgstr "Разблокировать Интернет"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Session"
-msgstr "Сеанс"
+msgid "Mute sound"
+msgstr "Выключить звук"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
-msgid "Set background"
-msgstr "Выбрать фон"
+msgid "Unmute sound"
+msgstr "Включить звук"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "Background image"
+msgstr "Фоновое изображение"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Lock background"
+msgstr "Блокировать фон"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set default background"
 msgstr "Выбрать фон по умолчанию"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Show information for the selected client"
-msgstr "Показать информацию для выделенного клиента"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Show real names"
-msgstr "Показать действительные имена"
-
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Shutdown"
-msgstr "Выключить"
+msgid "Set background"
+msgstr "Выбрать фон"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Shutdown the selected clients"
-msgstr "Выключить выбранные клиенты"
+msgid "Remove from group"
+msgstr "Удалить из группы"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "Stop all broadcasts on every client"
-msgstr "Остановить все вещания всем клиентам"
+msgid "_Help"
+msgstr "_Справка"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "Stop broadcasts"
-msgstr "Остановить вещания"
+msgid "Report a bug"
+msgstr "Сообщить об ошибке"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Stops all active broadcasts"
-msgstr "Остановить все активные вещания"
+msgid "Ask a question"
+msgstr "Задать вопрос"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
 msgstr "Перевести это приложение"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Unblock Internet"
-msgstr "Разблокировать Интернет"
+msgid "Live chat (IRC)"
+msgstr "Чат (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Unlock screen"
-msgstr "Разблокировать экран"
+msgid "Remote support"
+msgstr "Удалённая помощь"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Загрузить выбранные клиенты (Wake On LAN)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Log out users connected on selected clients"
+msgstr "Завершить сеансы пользователей, подключенных к выбранным клиентам"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "Reboot the selected clients"
+msgstr "Перезагрузить выбранные клиенты"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
+msgid "Shutdown the selected clients"
+msgstr "Выключить выбранные клиенты"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
+msgid "Broadcast your screen to the selected clients"
+msgstr "Вещание с вашего экрана выбранным клиентам"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
+msgid "Stop all broadcasts on every client"
+msgstr "Остановить все вещания всем клиентам"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
+msgid "Execute command"
+msgstr "Выполнить команду"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
+msgid "Lock screen of the selected clients"
+msgstr "Блокировать экраны выбранных клиентов"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
 msgstr "Разблокировать экраны выбранных клиентов"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "Unmute sound"
-msgstr "Включить звук"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "User"
-msgstr "Пользователь"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "User (computer)"
-msgstr "Пользователь (компьютер)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "User, locally"
-msgstr "Локальный пользователь"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "_Clients"
-msgstr "_Клиенты"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "_File"
-msgstr "_Файл"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
-msgid "_Help"
-msgstr "_Справка"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
-msgid "_Send message"
-msgstr "_Отправить сообщение"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
-msgid "_View"
-msgstr "_Вид"
-
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
-msgid "epoptes"
-msgstr "epoptes"
+msgid "Show information for the selected client"
+msgstr "Показать информацию для выделенного клиента"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Information"
+msgstr "Информация"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Create a new group"
+msgstr "Создать новую группу"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
+msgid "Remove the selected group"
+msgstr "Удалить выбранную группу"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:71
+msgid "Broadcast screen (fullscreen)"
+msgstr ""
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
@@ -314,23 +330,27 @@ msgstr "%(user)s с %(host)s"
 msgid "Properties of %s"
 msgstr "Свойства %s"
 
-#: ../epoptes/ui/gui.py:117
+#: ../epoptes/ui/gui.py:119
 msgid "Detected clients"
 msgstr "Обнаруженные клиенты"
 
-#: ../epoptes/ui/gui.py:340
+#: ../epoptes/ui/gui.py:314
+msgid "The screen is locked by a system administrator."
+msgstr ""
+
+#: ../epoptes/ui/gui.py:343
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr "Вы действительно хотите удалить выделенные клиенты из группы «%s»?"
 
-#: ../epoptes/ui/gui.py:367
+#: ../epoptes/ui/gui.py:370
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Вы действительно хотите удалить группу «%s»?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:537
+#: ../epoptes/ui/gui.py:540
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -374,81 +394,81 @@ msgstr "Инструмент администрирования компьюте
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr "Для запуска Epoptes пользователь %s должен быть членом группы %s."
 
-#: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
 msgstr "Ошибка"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Client alias:"
-msgstr "Псевдоним клиента:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Client hostname:"
-msgstr "Имя хоста клиента:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Client type:"
-msgstr "Тип клиента:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "Edit alias"
-msgstr "Изменить псевдоним"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
 msgstr "Видеоадаптер:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "IP address:"
-msgstr "IP-адрес:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "MAC address:"
-msgstr "MAC-адрес:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "Processor:"
-msgstr "Процессор:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
+#: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
 msgstr "ОЗУ:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Set a new alias for the selected client"
-msgstr "Задать новый псевдоним для выбранного клиента"
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Processor:"
+msgstr "Процессор:"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:11
+#: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "User:"
 msgstr "Пользователь:"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:3
-msgid "Message text:"
-msgstr "Текст сообщения:"
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP-адрес:"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "MAC address:"
+msgstr "MAC-адрес:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Client hostname:"
+msgstr "Имя хоста клиента:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "Client type:"
+msgstr "Тип клиента:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Client alias:"
+msgstr "Псевдоним клиента:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Изменить псевдоним"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Задать новый псевдоним для выбранного клиента"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message type:"
 msgstr "Тип сообщения:"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
+#: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Select the type of the message"
 msgstr "Выберите тип сообщения"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+msgid "Message text:"
+msgstr "Текст сообщения:"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:5
+msgid "_Send"
+msgstr "_Отправить"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "_Send"
-msgstr "_Отправить"
-
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "A computer lab management and monitoring tool."
-msgstr "Инструмент для контроля и управления компьютерным классом."
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "Copyright &#xA9; 2011 Epoptes Team"
 msgstr "Copyright &#xA9; 2011 Epoptes Team"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Инструмент для контроля и управления компьютерным классом."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -478,26 +498,26 @@ msgstr ""
 "<http://www.gnu.org/licenses/>."
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:1
-msgid "Connection type:"
-msgstr "Тип соединения:"
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:2
-msgid "Console (screen)"
-msgstr "Консоль (screen)"
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:3
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
 msgstr ""
 
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:4
-msgid "Graphics (VNC)"
-msgstr "Графика (VNC)"
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:2
+msgid "Connection type:"
+msgstr "Тип соединения:"
 
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:5
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:3
 msgid "IP:"
 msgstr "IP:"
 
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:6
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:4
 msgid "Port:"
 msgstr "Порт:"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:5
+msgid "Graphics (VNC)"
+msgstr "Графика (VNC)"
+
+#: ../epoptes/ui/gtk/remote_assistance.ui.h:6
+msgid "Console (screen)"
+msgstr "Консоль (screen)"
