@@ -1,4 +1,4 @@
-# Hungarian translation for epoptes
+# Spanish translation for epoptes
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the epoptes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-23 18:28+0200\n"
-"PO-Revision-Date: 2012-02-23 16:42+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2012-02-23 22:10+0000\n"
+"Last-Translator: carlos <carpingue@gmail.com>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,83 +21,83 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Geza Gemes https://launchpad.net/~geza-gemes"
+"  carlos https://launchpad.net/~carpingue"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
-msgstr "Kérdésfeltevés"
+msgstr "Preguntar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Assist user"
-msgstr "Távirányítás"
+msgstr "Asistencia"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Background image"
-msgstr "Háttérkép"
+msgstr "Imagen de fondo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Block Internet"
-msgstr ""
+msgstr "Bloquear Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Boot"
-msgstr "Rendszerindítás"
+msgstr "Inicio"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Kiválasztott kliensek bekapcsolása (Wake On LAN)"
+msgstr "Iniciar clientes seleccionados (WOL)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast screen"
-msgstr "Képernyőbemutató"
+msgstr "Demostración"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast screen (fullscreen)"
-msgstr ""
+msgstr "Demostración (pantalla completa("
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast screen (windowed)"
-msgstr "Képernyőbemutató (ablakban)"
+msgstr "Demostración (ventana)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast user"
-msgstr "Felhasználói bemutató"
+msgstr "Demostración de cliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcast video"
-msgstr "Videobemutató"
+msgstr "Demostración vídeo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcast your screen to the selected clients"
-msgstr "Bemutató a kiválasztott klienseken"
+msgstr "Mostrar tu pantalla a los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Teljesképernyős bemutató a kiválasztott klienseken"
+msgstr "Mostrar tu pantalla a los clientes seleccionados, pantalla completa"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Ablakos bemutató a kiválasztott klienseken"
+msgstr "Mostrar tu pantalla a los clientes seleccionados, ventana"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Broadcasts"
-msgstr "Bemutatók"
+msgstr "Demostraciones"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Computer"
-msgstr "Számítógép"
+msgstr "Ordenador"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Computer (user)"
-msgstr "Számítógép (felhasználó)"
+msgstr "Ordenador (usuario)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Confirm action"
-msgstr "Művelet megrősítése"
+msgstr "Confirmar acción"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Create a new group"
-msgstr "Új csoport létrehozása"
+msgstr "Crear un grupo nuevo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
@@ -105,255 +105,255 @@ msgstr "Epoptes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Execute"
-msgstr "Parancs végrehajtása"
+msgstr "Ejecutar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Execute a command on the selected clients"
-msgstr "Parancs végrehajtása a kiválasztott klienseken"
+msgstr "Ejecutar un comando en los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr "Parancs végrehajtása"
+msgstr "Ejecutar comando"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
-msgstr "Információ"
+msgstr "Información"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Labels"
-msgstr "Címkék"
+msgstr "Etiquetas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Live chat (IRC)"
-msgstr "Csavegés (IRC)"
+msgstr "Chat en directo (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Lock background"
-msgstr "Háttér zárolása"
+msgstr "Bloquear fondo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Lock screen"
-msgstr "Képernyő zárolása"
+msgstr "Bloquear la pantalla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Lock screen of the selected clients"
-msgstr "Képernyő zárolása a kiválasztott klienseken"
+msgstr "Bloquear la pantalla de los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Log out"
-msgstr "Kijelentkezés"
+msgstr "Desconectar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Log out users connected on selected clients"
-msgstr "A kiválasztott kliensek kijelentkeztetése"
+msgstr "Desconectar los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Monitor user"
-msgstr "Felhasználó megfigyelése"
+msgstr "Ver cliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Mute sound"
-msgstr "Hang némítása"
+msgstr "Silenciar sonido"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr ""
+msgstr "Abrir una  ventana para impedir mostrar la pantalla completa"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Open broadcasts window"
-msgstr ""
+msgstr "Abrir la ventana de demostración"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Open terminal"
-msgstr "Terminál megnyitása"
+msgstr "Abrir un terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Reboot"
-msgstr "Újraindítás"
+msgstr "Reiniciar equipo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Reboot the selected clients"
-msgstr "Kiválasztott kliensek újraindítása"
+msgstr "Reiniciar los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Remote support"
-msgstr "Távsegítség"
+msgstr "Asistencia remota"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Remove from group"
-msgstr "Eltávolítás a csoportból"
+msgstr "Eliminar del grupo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Remove the selected group"
-msgstr "Kiválasztott csoport törlése"
+msgstr "Eliminar el grupo seleccionado"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Report a bug"
-msgstr "Hiba jelentése"
+msgstr "Informar de un error"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Restrictions"
-msgstr "Korlátozások"
+msgstr "Restricciones"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Root, locally"
-msgstr "Root, helyi"
+msgstr "Root, local"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Root, remotely"
-msgstr "Root, távoli"
+msgstr "Root, remoto"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Send a message to the selected clients"
-msgstr "Üzenet küldése a kiválasztott klienseknek"
+msgstr "Enviar un mensaje a los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Send message"
-msgstr "Üzenet küldése"
+msgstr "Enviar mensaje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Session"
-msgstr "Munkamenet"
+msgstr "Sesión"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Set background"
-msgstr "Háttér beállítása"
+msgstr "Establecer fondo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Set default background"
-msgstr "Alapértelmezett háttér beállítása"
+msgstr "Elegir fondo por defecto"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Show information for the selected client"
-msgstr "Információk a kiválasztott kliensről"
+msgstr "Mostrar información al cliente seleccionado"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Show real names"
-msgstr "Teljes nevek megjelenítése"
+msgstr "Mostrar nombres verdaderos"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Shutdown"
-msgstr "Kikapcsolás"
+msgstr "Apagar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Shutdown the selected clients"
-msgstr "Kiválasztott kliensek kikapcsolása"
+msgstr "Apagar los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Stop all broadcasts on every client"
-msgstr "Bemutató vége minden kliensen"
+msgstr "Parar todos las demos en cada cliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Stop broadcasts"
-msgstr "Bemutató vége"
+msgstr "Parar las demostraciones"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Stops all active broadcasts"
-msgstr "Minden aktív bemutató vége"
+msgstr "Parar todas las demostraciones activas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Take control of the selected user's computer"
-msgstr ""
+msgstr "Controlar los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Translate this application"
-msgstr "Alkalmazás lefordítása"
+msgstr "Traducir esta aplicación..."
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Unblock Internet"
-msgstr "Internet zárolásának feloldása"
+msgstr "Desbloquear Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Unlock screen"
-msgstr "Képernyőzárolás feloldása"
+msgstr "Desbloquear la pantalla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Unlock the screen of the selected clients"
-msgstr "Kiválasztott kliensek képernyőzárolásának feloldása"
+msgstr "Desbloquear la pantalla de los clientes seleccionados"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Unmute sound"
-msgstr "Hangnémítás vége"
+msgstr "Silenciar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Usuario"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "User (computer)"
-msgstr "Felhasználó (számítógép)"
+msgstr "Usuario (ordenador)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "User, locally"
-msgstr "Felhasználó, helyileg"
+msgstr "Usuario, local"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "_Clients"
-msgstr "Kliensek(_C)"
+msgstr "_Clientes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "_File"
-msgstr "_Fájl"
+msgstr "_Archivo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "_Help"
-msgstr "Súgó (_H)"
+msgstr "_Ayuda"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "_Send message"
-msgstr "Üzenet küldése(_S)"
+msgstr "_Enviar mensaje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "_View"
-msgstr "Nézet(_V)"
+msgstr "_Vista"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr "Kikapcsol"
+msgstr "Apagar:"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr "Csatlakoztatott:"
+msgstr "Conectado:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr ""
+msgstr "%(user)s en %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr "Leválasztott:"
+msgstr "Desconectado:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr ""
+msgstr "%(user)s  de %(host)s"
 
 #: ../epoptes/ui/client_information.py:61
 #, python-format
 msgid "Properties of %s"
-msgstr "%s tulajdonságai"
+msgstr "Propiedades de %s"
 
 #: ../epoptes/ui/gui.py:119
 msgid "Detected clients"
-msgstr "Érzékelt kliensek"
+msgstr "Clientes detectados"
 
 #: ../epoptes/ui/gui.py:314
 msgid "The screen is locked by a system administrator."
-msgstr ""
+msgstr "La pantalla está bloqueda por un administrador del sistema."
 
 #: ../epoptes/ui/gui.py:343
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
-"Biztos benne, hogy ki akarja törölni a kiválasztott kliens(eket) a a \"%s\" "
-"csoportpól?"
+"¿Está seguro de que quiere eliminar los clientes seleccionados del grupo "
+"\"%s\"?"
 
 #: ../epoptes/ui/gui.py:370
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Biztos benne, hogy le akarja törölni a \"%s\" csoportot?"
+msgstr "¿Está seguro de que quiere eliminar el grupo  \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:540
@@ -364,79 +364,79 @@ msgid ""
 "\n"
 "You should update your chroot."
 msgstr ""
-"Egy a jelenlegi epoptes verzióval inkompatibilis %s verziójú kliens próbált "
-"csatlakozni.\n"
-"Frissítenie kell az (LTSP) chroot-ját"
+"Hubo un intento de conexión de un cliente con una versión %s que es "
+"incompatible con la versión actual.\n"
+"\n"
+"Debería actualizar su chroot."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "A kiválasztott klienseken végrehajtandó URL, fájl vagy parancs"
+msgstr "URL, fichero o comando para ejecutar en los clientes seleccionados"
 
 #: ../epoptes/common/commands.py:46
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Biztos benne, hogy ki akarja kapcsolni az összes számítógépet?"
+msgstr "¿Está segurdo de que quiere apagar todos los ordenadores?"
 
 #: ../epoptes/common/commands.py:47
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Biztos benne, hogy újra akarja indítani az összes számítógépet?"
+msgstr "¿Está seguro de que quiere reiniciar todos los ordenadores?"
 
 #: ../epoptes/common/commands.py:48
 msgid "Are you sure you want to log off all the users?"
-msgstr "Biztos benne, hogy ki akarja jelentkeztetni az összes felhasználót?"
+msgstr "¿Está seguro de que quiere desconectar todos los usuarios?"
 
 #: ../epoptes/common/commands.py:49
 msgid ""
 "Are you sure you want to terminate all processes of the selected users?"
 msgstr ""
-"Biztos benne, hogy be akarja zárni a kiválasztott felhasználók összes futó "
-"folyamatát?"
+"¿Está seguro de que quiere finalizar todos los procesos de los clientes "
+"seleccionados?"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr "Epoptes számítógéplabor adminisztráló eszköz"
+msgstr "Laboratorio de administración de herramientas de Epoptes"
 
 #: ../bin/epoptes.py:59
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
-"A %s felhasználónak a %s csoport tagjának kell lennie az epoptes "
-"használatához"
+"Los usuarios %s deben ser miembros del grupo %s para ejecutar epoptes."
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
-msgstr "Hiba"
+msgstr "Error"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client alias:"
-msgstr "Kliens álnév"
+msgstr "Alias de cliente"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
-msgstr "Kliens gépnév"
+msgstr "Nombre de cliente"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
-msgstr "Kliens típus"
+msgstr "Tipo de cliente"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
-msgstr "Álnév szerkesztése"
+msgstr "Editar alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
-msgstr ""
+msgstr "Tarjeta gráfica:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "IP address:"
-msgstr ""
+msgstr "Dirección IP:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "MAC address:"
-msgstr ""
+msgstr "Dirección MAC:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Processor:"
-msgstr ""
+msgstr "Procesador:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "RAM:"
@@ -444,39 +444,39 @@ msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Set a new alias for the selected client"
-msgstr ""
+msgstr "Elige un nuevo alias para el cliente seleccionado"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
-msgstr "Felhasználó:"
+msgstr "Usuario:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr ""
+msgstr "Mensaje de texto:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Message type:"
-msgstr "Üzenet típusa:"
+msgstr "Tipo de mensaje:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Select the type of the message"
-msgstr ""
+msgstr "Elige el tipo de mensaje"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr "Figyelem!"
+msgstr "Atención"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "_Send"
-msgstr "Küldé(_s)"
+msgstr "_Enviar"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "A computer lab management and monitoring tool."
-msgstr ""
+msgstr "Una herramienta de control de aula y monitorización"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011-2012 Equipo de Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -492,23 +492,36 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Epoptes es software libre: puedes redistribuirlo y/o modificarlo bajo los "
+"terminos de \"GNU General Public License\" como una publicación de la \"Free "
+"Software Foundation\", ya sea la versión 3 de la Licencia, o cualquier otra "
+"posterior.\n"
+"\n"
+"Epoptes se distribuye con el deseo de que será útil, pero SIN NINGUAN "
+"GARANTÍA; PROPÓSITO PARTICUALR. Mira las GNU General Public License para más "
+"detalles.\n"
+"\n"
+"Deberías haber recibido una copia de la GNU  General Public License junto "
+"con epoptes. Si no,  visita <http://www.gnu.org/licenses/>."
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:1
 msgid "Connection type:"
-msgstr "Kapcsolat típusa:"
+msgstr "Tipo de conección:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:2
 msgid "Console (screen)"
-msgstr "Konzol (screen)"
+msgstr "Consola (pantalla)"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:3
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr "A kapcsolat adatai, akivel meg szeretné osztani a képernyőjét"
+msgstr ""
+"Introduce la información de contacto con la que quieres  compartir tu "
+"escritorio"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:4
 msgid "Graphics (VNC)"
-msgstr "Grafika (VNC)"
+msgstr "Gráficos (VNC)"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:5
 msgid "IP:"
@@ -516,4 +529,4 @@ msgstr "IP:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:6
 msgid "Port:"
-msgstr "Port:"
+msgstr "Puerto:"
