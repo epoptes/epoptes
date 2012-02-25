@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-23 18:28+0200\n"
-"PO-Revision-Date: 2012-02-23 16:42+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2012-02-24 21:30+0000\n"
+"Last-Translator: Eerik Uusi-Illikainen <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-24 05:13+0000\n"
+"X-Launchpad-Export-Date: 2012-02-25 05:49+0000\n"
 "X-Generator: Launchpad (build 14860)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -22,6 +22,8 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Asmo Koskinen https://launchpad.net/~asmok\n"
+"  Eerik Uusi-Illikainen https://launchpad.net/~linux-eki\n"
+"  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  mrl586 https://launchpad.net/~mrl586"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -398,7 +400,7 @@ msgstr "Epoptes – tietokonehuoneen ylläpitotyökalu"
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
-"Käyttäjän %s täytyy olla ryhmän %s jäsen voidakseen käyttää poptes-ohjelmaa."
+"Käyttäjän %s täytyy olla ryhmän %s jäsen voidakseen käyttää epoptes-ohjelmaa."
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
@@ -474,7 +476,7 @@ msgstr "Tietokonehuoneen hallinta- ja seurantaohjelma."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011-2012 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
