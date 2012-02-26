@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-02-23 18:28+0200\n"
-"PO-Revision-Date: 2012-02-24 07:40+0000\n"
-"Last-Translator: Fotis Tsamis <Unknown>\n"
+"POT-Creation-Date: 2012-02-26 06:11+0200\n"
+"PO-Revision-Date: 2012-02-25 17:59+0000\n"
+"Last-Translator: kadkarol <karol.sienkowski@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-25 05:49+0000\n"
+"X-Launchpad-Export-Date: 2012-02-26 05:17+0000\n"
 "X-Generator: Launchpad (build 14860)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -50,15 +50,15 @@ msgstr "Uruchom wybranych klientów (Wake On Lan)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast screen"
-msgstr "Transmisja ekranu"
+msgstr "Prześlij swój ekran (pełny ekran)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast screen (fullscreen)"
-msgstr ""
+msgstr "Prześlij swój ekran (pełny ekran)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast screen (windowed)"
-msgstr "Prześlij ekran (w oknie)"
+msgstr "Prześlij swój ekran (w oknie)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast user"
@@ -150,7 +150,7 @@ msgstr "Wyloguj wybranych klientów"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Monitor user"
-msgstr "Kontrola użytkownika"
+msgstr "Podgląd ekranu użytkownika"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Mute sound"
@@ -158,11 +158,11 @@ msgstr "Wycisz dźwięk"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr ""
+msgstr "Otwórz sesję w oknie, aby uniknąć przesyłania całego swojego ekranu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Open broadcasts window"
-msgstr ""
+msgstr "Otwórz okno do przesłania"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Open terminal"
@@ -242,19 +242,19 @@ msgstr "Wyłącz wybrane komputery"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Stop all broadcasts on every client"
-msgstr "Zakończ wszystkie transmisje obrazu"
+msgstr "Zakończ wszystkie transmisje ekranu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Stop broadcasts"
-msgstr "Zakończ transmisje obrazu"
+msgstr "Zakończ transmisje ekranu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Stops all active broadcasts"
-msgstr "Zakończ wszystkie aktywne transmisje obrazu"
+msgstr "Zakończ wszystkie aktywne transmisje ekranu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Take control of the selected user's computer"
-msgstr ""
+msgstr "Przejmij kontrolę nad wybranym użytkownikiem"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Translate this application"
@@ -341,7 +341,7 @@ msgstr "Wykryci klienci"
 
 #: ../epoptes/ui/gui.py:314
 msgid "The screen is locked by a system administrator."
-msgstr ""
+msgstr "Ekran jest zablokowany przez administratora systemu"
 
 #: ../epoptes/ui/gui.py:343
 #, python-format
@@ -355,7 +355,7 @@ msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Czy na pewno  chcesz usunąć grupę \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:540
+#: ../epoptes/ui/gui.py:545
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -382,7 +382,7 @@ msgstr "Czy na pewno chcesz zrestartować wszystkie komputery?"
 
 #: ../epoptes/common/commands.py:48
 msgid "Are you sure you want to log off all the users?"
-msgstr "Czy na pewno chcesz wykogować wszystkich uzytkowników?"
+msgstr "Czy na pewno chcesz wylogować wszystkich użytkowników?"
 
 #: ../epoptes/common/commands.py:49
 msgid ""
@@ -495,8 +495,8 @@ msgstr ""
 "późniejszych wersji.\n"
 "\n"
 "Epoptes jest rozpowszechniany w nadziei, że będzie użyteczny, ale BEZ "
-"JAKIEJKOLWIEK GWARANCJI. Zobacz licencję GNU General Public uzyskać więcej "
-"szczegółów.\n"
+"JAKIEJKOLWIEK GWARANCJI. Zobacz licencję GNU General Public by uzyskać "
+"więcej szczegółów.\n"
 "\n"
 "Powinieneś otrzymać kopię licencji GNU General Public wraz z epoptes. Jeśli "
 "nie, zobacz <http://www.gnu.org/licenses/>."
