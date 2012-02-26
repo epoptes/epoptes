@@ -430,7 +430,7 @@ export $(./get-display)
         def determine_offline(client):
             if client.hsystem == '' and client.users == {}:
                 client.set_offline()
-
+        client = None
         for client in structs.clients:
             if client.hsystem == handle:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
@@ -518,8 +518,13 @@ export $(./get-display)
         
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
-        user, host, ip, mac, type, uid, version, pid = r.strip().split()
         print "---\n**addClient's been called for", handle
+        try:
+            user, host, ip, mac, type, uid, version, pid = r.strip().split()
+        except:
+            print "Can't extract client information, won't add this client"
+            return
+        
         
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.

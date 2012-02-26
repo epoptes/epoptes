@@ -60,7 +60,9 @@ class GUI(amp.AMP):
     @commands.ClientCommand.responder
     def clientCommand(self, handle, command):
         if handle not in exchange.knownClients:
-            raise ValueError("Unknown client")
+            print " Unknown client %s, can't execute %s" %(handle,command)
+            #raise ValueError("Unknown client")
+            return {'filename': '', 'result': ''}
 
         d = exchange.knownClients[handle].command(command.encode("utf-8"))
         
