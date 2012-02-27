@@ -41,7 +41,7 @@ class About:
         self.dialog.set_logo(logo)
         self.dialog.set_version(__version__)
         self.dialog.set_translator_credits(_("translator-credits"))
-        self.dialog.set_artists("Andrew Wedderburn (application icon)")
+        self.dialog.set_artists(["Andrew Wedderburn (application icon)"])
     
     def run(self):
         self.dialog.run()
