@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 ###########################################################################
 # Connects to a remote server and offers it a local shell.
 # Usage: epoptes [server] [port]
 #
-# Copyright (C) 2010, 2011 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010, 2012 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -56,11 +56,9 @@ chrooted() {
   return 0
 }
 
-# Get $USER, $UID and $TYPE of the client, and the default $SERVER and $PORT.
+# Get $UID and $TYPE of the client, and the default $SERVER and $PORT.
 basic_info() {
-    test -n "$USER" || export USER=$(whoami)
-    test -n "$UID" || export UID=$(id -u)
-    test -n "$HOME" || export HOME=$(getent passwd "$UID" | cut -d: -f6)
+    test -n "$UID" || UID=$(id -u)
 
     # TODO: fix upstream "$LTSP_FATCLIENT" to be present in user sessions
     if my_boolean_is_true "$LTSP_FATCLIENT" && [ -f /etc/ltsp_fat_chroot ]; then
@@ -79,50 +77,8 @@ basic_info() {
         SERVER=server
     fi
     PORT=789
-}
 
-epoptes_info() {
-    local def_iface
-
-    # TODO: use `ip route get server-ip` instead
-    while true; do
-        def_iface=$(ip -oneline -family inet route show \
-            | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
-#        test -n "$def_iface" || def_iface=$(ip -oneline -family inet link show \
-#            | sed -n '/[0-9]*: \([^:]*\).*link\/ether.*/{s//\1/p;q}')
-        # If we got it, continue.
-        test -n "$def_iface" && break
-        # On dual NIC standalone workstartions, if the "non-default-route"
-        # interface is brought up first, exit, we'll be called again later.
-        test $UID -eq 0 && die "Empty def_iface, probably 2-NIC workstation, we'll get called again for the second NIC.."
-        # At this point, it's probably a user epoptes-client that doesn't have
-        # a network connection up yet. Retry until it's ready.
-        sleep 10
-    done
-
-    HOSTNAME=$(hostname)
-    test -n "$HOSTNAME" || die "Empty hostname"
-    IP=$(ip -oneline -family inet addr show dev "$def_iface" | sed "s/.* \([0-9.]*\)\/.*/\\1/")
-    test -n "$IP" || die "Empty IP"
-    MAC=$(ip -oneline -family inet link show dev "$def_iface" | sed "s/.*ether \([^ ]*\).*/\\1/")
-    MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
-    test -n "$MAC" || die "Empty MAC"
-    CPU=$(cat /proc/cpuinfo | grep "^model name" | head -1 | sed "s/.*: //")
-    RAM=$(free -m | grep "^Mem" | awk '{print $2}')
-    VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
-
-    # If epoptes-client is ran on a thin client from a user account (meaning
-    # that it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME,
-    # $LTSP_CLIENT and $LTSP_CLIENT_MAC instead of $HOSTNAME, $IP and $MAC.
-    # CPU, RAM and VGA are not available in the environment, so we're leaving
-    # the ones of the server.
-    if [ "$TYPE" = "thin" ] && [ "$UID" -ne 0 ]; then
-        test -n "$LTSP_CLIENT" && IP="$LTSP_CLIENT"
-        test -n "$LTSP_CLIENT_HOSTNAME" && HOSTNAME="$LTSP_CLIENT_HOSTNAME"
-        test -n "$LTSP_CLIENT_MAC" && MAC="$LTSP_CLIENT_MAC"
-    fi
-
-    export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT
+    export UID TYPE SERVER PORT
 }
 
 fetch_certificate()
@@ -142,6 +98,27 @@ fetch_certificate()
 
 
 # Main.
+export VERSION="0.4.3" # Automatically updated by mkdst
+
+# Check the first parameter as it may turn out we don't need to run at all
+case "$1" in
+    -v|--version)
+        echo "$VERSION"
+        exit
+        ;;
+    -h|--help)
+        if [ -x /usr/bin/man ]; then
+            exec man epoptes-client
+        else
+            echo "Usage: $0 [-c|-h|-v] [SERVER] [PORT]"
+            exit 0
+        fi
+        ;;
+    -c|--certificate)
+        need_certificate=true
+        shift
+        ;;
+esac
 
 # When called from /etc/xdg/autostart, /sbin is not in the system path.
 PATH="$PATH:/sbin:/usr/sbin"
@@ -157,12 +134,8 @@ if [ -f /etc/default/epoptes-client ]; then
     . /etc/default/epoptes-client
 fi
 # And the command line parameters override the configuration file
-if [ "$1" = "-c" ]; then
-    need_certificate=true
-    shift
-fi
-SERVER=${1:-$SERVER}
-PORT=${2:-$PORT}
+export SERVER=${1:-$SERVER}
+export PORT=${2:-$PORT}
 
 # Provide an easy way to fetch the server certificate
 test -n "$need_certificate" && fetch_certificate
@@ -181,8 +154,6 @@ else
     cd /usr/share/epoptes-client
 fi
 
-epoptes_info
-
 # Source the lsb init functions, for log_begin_msg / log_end_msg.
 # Unfortunately it seems that Centos and Fedora don't have that file.
 if [ -f /lib/lsb/init-functions ]; then
@@ -193,51 +164,41 @@ else
     alias log_end_msg=echo
 fi
 
-# Epoptes-client is called two times and runs in three phases:
-# In the first phase, some initialization is done, and socat is exec'ed.
-# In the second phase, socat has successfully connected, and calls
-# epoptes-client again to resume execution. Epoptes-client has to go through
-# some initialization again, and it finally exec's a plain /bin/sh with
-# the stdio descriptors that were inherited from socat.
-# That's the third phase, a plain shell. But bash'es `exec -a` is used, so
-# that "epoptes-client" is displayed in `ps`, instead of "/bin/sh".
-if [ -z "$EPOPTES_CLIENT_PHASE" ]; then
-    export EPOPTES_CLIENT_PHASE=1
+# Call chain:
+#  * if-up.d executes /usr/sbin/epoptes-client
+#  * then socat is called
+#  * after a successful connection, socat exec's /bin/sh
+#  * and the daemon sends /usr/share/epoptes/client-functions to that shell
 
-    # Kill all ghost instances of epoptes-client of the same user.
-    # That may happen if network connectivity is lost for a while.
-    # Standalone workstations don't hang if the network is down, and nbd might cope
-    # with that for LTSP clients, but epoptes kills disconnected epoptes-clients.
-    # Exclude the current epoptes-client.
-    pkill -U $UID -f '^epoptes-client \+m'
+# Kill all ghost instances of epoptes-client of the same user.
+# That may happen if network connectivity is lost for a while.
+# Standalone workstations don't hang if the network is down, and nbd might cope
+# with that for LTSP clients, but epoptes kills disconnected epoptes-clients.
+# The current epoptes-client is excluded because it starts with /bin/sh.
+pkill -U $UID -f '^epoptes-client$'
 
-    log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
+log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
 
-    # Remember the stdout descriptor to use it in the second phase.
-    # stdio will be redirected to the server, but stderr will be kept in the
-    # local console, to avoid possible noise from applications started in the
-    # background.
-    # If the callee needs to grab stderr, it can use `cmd 2>&1`.
-    exec 5>&1
+# Remember the stdout descriptor to use it in the second phase.
+# stdio will be redirected to the server, but stderr will be kept in the
+# local console, to avoid possible noise from applications started in the
+# background.
+# If the callee needs to grab stderr, it can use `cmd 2>&1`.
+exec 5>&1
 
-    # Connect to the server, or keep retrying until the server gets online
-    # (for standalone workstations booted before the server).
-    export EPOPTES_CLIENT_PHASE=2
-    if [ -s /etc/epoptes/server.crt ]; then
-        exec socat openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,interval=60,forever, EXEC:"$0 $*"
-    elif [ -f /etc/epoptes/server.crt ]; then
-       exec socat tcp:$SERVER:$PORT,interval=60,forever EXEC:"$0 $*",nofork
-    else
-        die "
+# Bash supports launching a program with a different zeroth argument,
+# this makes pgrep'ping for epoptes-client easier.
+cmdline='bash -c "exec -a epoptes-client sh"'
+
+# Connect to the server, or keep retrying until the server gets online
+# (for standalone workstations booted before the server).
+if [ -s /etc/epoptes/server.crt ]; then
+    exec socat openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,interval=60,forever, EXEC:"$cmdline"
+elif [ -f /etc/epoptes/server.crt ]; then
+   exec socat tcp:$SERVER:$PORT,interval=60,forever EXEC:"$cmdline",nofork
+else
+    die "
 The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
 You can fetch the server certificate by running:
 $0 -c"
-    fi
-elif [ "$EPOPTES_CLIENT_PHASE" = "2" ]; then
-    log_end_msg 0 >&5
-    # Finally, exec sh instead of keeping bash, to save memory.
-    # But use "epoptes-client" as the zeroth argument, to make it easier for `ps`.
-    # +m = disable job control.
-    unset EPOPTES_CLIENT_PHASE
-    exec -a epoptes-client /bin/sh +m
 fi

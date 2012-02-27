@@ -49,7 +49,6 @@ from client_information import ClientInformation
 from remote_assistance import RemoteAssistance
 from epoptes.daemon import uiconnection
 from epoptes.core.lib_users import *
-from epoptes.common import commands
 from epoptes.common import ltsconf
 from epoptes.common import config
 from epoptes.common.constants import *
@@ -60,7 +59,6 @@ from epoptes.core import structs
 class EpoptesGui(object):
     
     def __init__(self):
-        self.c = commands.commands()
         self.shownCompatibilityWarning = False 
         self.vncserver = None
         self.vncviewer = None
@@ -173,19 +171,20 @@ class EpoptesGui(object):
 
     def poweroff(self, widget):
         """Shut down the selected clients."""
-        self.execOnSelectedClients(self.c.POWEROFF, root="auto",
-            warn=self.c.POWEROFF_WARN)
+        self.execOnSelectedClients("shutdown", root="auto",
+            warn=_('Are you sure you want to shutdown all the computers?'))
 
     def reboot(self, widget):
         """Reboot the selected clients."""
         # FIXME: (Not) waiting on purpose to cause some delay to avoid 
         # any power strain.
-        self.execOnSelectedClients(self.c.REBOOT, root="auto",
-            warn=self.c.REBOOT_WARN)
+        self.execOnSelectedClients("logout", root="auto",
+            warn=_('Are you sure you want to reboot all the computers?'))
 
     def logout(self, widget):
         """Log off the users of the selected clients."""
-        self.execOnSelectedClients(self.c.LOGOUT, warn=self.c.LOGOUT_WARN)
+        self.execOnSelectedClients("logoff",
+            warn=_('Are you sure you want to log off all the users?')
 
 
     def reverseConnection(self, widget, path, view_column, cmd):
@@ -194,17 +193,15 @@ class EpoptesGui(object):
             self.vncviewer = subprocess.Popen(['xvnc4viewer', '-listen'])
 
         # And, tell the clients to connect to the server
-        self.execOnSelectedClients(self.c.EXEC + cmd)
+        self.execOnSelectedClients(cmd)
 
 
     def assistUser(self, widget, path=None, view_column=None):
-        self.reverseConnection(widget, path, view_column,
-            'x11vnc -noshm -24to32 -connect_or_exit $SERVER')
+        self.reverseConnection(widget, path, view_column, 'get_assisted')
 
 
     def monitorUser(self, widget, path=None, view_column=None):
-        self.reverseConnection(widget, path, view_column,
-            'x11vnc -noshm -24to32 -viewonly -connect_or_exit $SERVER')
+        self.reverseConnection(widget, path, view_column, 'get_monitored')
 
 
     def findUnusedPort(self, base=None):
@@ -230,7 +227,7 @@ class EpoptesGui(object):
             return None
 
 
-    def _broadcastScreen(self, fullscreen=True):
+    def _broadcastScreen(self, fullscreen=''):
         if self.vncserver is None:
             self.vncport = self.findUnusedPort()
             # TODO: use a password instead of -allow
@@ -238,37 +235,18 @@ class EpoptesGui(object):
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
                 '-24to32', '-rfbport', str(self.vncport), '-allow',
                 '127.,192.168.,10.,169.254.' ])
-        self.execOnSelectedClients("""killall gnome-screensaver 2>/dev/null""")
-        # TODO: don't use sleep on the direct client shell, use execute script instead
-        # pgrep -x only checks the first 15 characters found in /proc/pid/stat.
-        # Check the length with e.g.: x="lxdm-greeter-gtk"; echo ${x:0:15}
-        # The following greeters spawn dbus-daemon, so there's no need for them
-        # to be in the greeters list:
-        # gdm-simple-greeter, unity-greeter
-        # Unfortunately, dbus-daemon doesn't contain DBUS_SESSION_BUS_ADDRESS.
-        
-        fullscreen_args = ''
-        if fullscreen:
-            fullscreen_args = '-FullScreen -UseLocalCursor=0 -MenuKey F13'
-        self.execOnSelectedClients("""
-test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
-export $(./get-display)
-xset dpms force on
-sleep 0.$((`hexdump -e '"%%d"' -n 2 /dev/urandom` %% 50 + 50))
-EPOPTES_VNCVIEWER_PID=$(./execute xvnc4viewer -Shared -ViewOnly %s $SERVER:%d)""" %(fullscreen_args, self.vncport), root=True)
+        self.execOnSelectedClients('stop_screensaver)
+        self.execOnSelectedClients('receive_broadcast %d %s' % (self.vncport,
+            fullscreen), root=True)
     
     def broadcastScreen(self, widget):
-        self._broadcastScreen(True)
+        self._broadcastScreen('true')
         
     def broadcastScreenWindowed(self, widget):
-        self._broadcastScreen(False)
+        self._broadcastScreen('')
 
     def stopTransmissions(self, widget):
-        # The vnc clients should automatically exit when the server is killed.
-        # Unfortunately, that isn't always true, so try to kill them anyway.
-        self.execOnClients("""
-test -n "$EPOPTES_VNCVIEWER_PID" && kill $EPOPTES_VNCVIEWER_PID
-unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
+        self.execOnClients('stop_transmissions', self.cstore, None, True)
         if not self.vncserver is None:
             self.vncserver.kill()
             self.vncserver = None
@@ -284,16 +262,39 @@ unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
         if cmd[:5] == 'sudo ':
             as_root = True
             cmd = cmd[4:]
-        self.execOnSelectedClients(self.c.EXEC + cmd, root=as_root)
+        self.execOnSelectedClients('execute ' + cmd, root=as_root)
 
-    ## FIXME FIXME: Don't use zenity...
+    ## FIXME FIXME: Don't use zenity, use the message command instead...
     def sendMessageDialog(self, widget):
         cmd = startSendMessageDlg()
         if cmd != "": # Command is 'valid', execute on selected clients 
-            as_root = False
-            self.execOnSelectedClients(self.c.EXEC + cmd, root=as_root)
+            self.execOnSelectedClients('execute ' + cmd)
     
     ## FIXME / FIXUS: Should we allow it?
+    def openTerminal(self, as_root):
+        clients = self.getSelectedClients()
+        
+        # If there is no client selected, send the command to all
+        if len(clients) == 0:
+            clients = self.cstore
+
+        if as_root:
+            screen_params = "bash -l"
+        else:
+            screen_params = "-l"
+
+        for client in clients:
+            inst = client[C_INSTANCE]
+            if inst.type == 'offline':
+                continue
+
+            port = self.findUnusedPort()
+
+            subprocess.Popen(['xterm', '-e', 'socat',
+                'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
+            self.execOnClients('remote_term %d' % port, [client],
+                root=as_root)
+
     def openUserTerminal(self, widget):
         self.openTerminal(False)
 
@@ -301,40 +302,33 @@ unset EPOPTES_VNCVIEWER_PID""", self.cstore, None, True)
         self.openTerminal(True)
 
     def remoteRootTerminal(self, widget):
-        self.execOnSelectedClients("""
-export $(./get-display)
-./execute xterm -e bash -l""", root=True)
+        self.execOnSelectedClients('root_term', root=True)
     ## END_FIXUS
 
-    # FIXME : Change the way lock screen works, don't kill and relock...
     def lockScreen(self, widget):
         """
         Lock screen for all the selected clients, displaying a message
         """
         msg = _("The screen is locked by a system administrator.")
-        self.execOnSelectedClients('test -n "$EPOPTES_LOCK_SCREEN_PID" && kill ' + \
-            '"$EPOPTES_LOCK_SCREEN_PID"; EPOPTES_LOCK_SCREEN_PID=$(./execute ' + \
-            './lock-screen %s)' %pipes.quote(msg))
+        self.execOnSelectedClients('lock_screen 0 %s' % pipes.quote(msg))
 
     def unlockScreen(self, widget):
         """
         Unlock screen for all clients selected
         """
-        self.execOnSelectedClients('''test -n "$EPOPTES_LOCK_SCREEN_PID" && ''' + \
-            '''kill "$EPOPTES_LOCK_SCREEN_PID"; unset EPOPTES_LOCK_SCREEN_PID''')
+        self.execOnSelectedClients('unlock_screen')
 
-    # FIXME: Find something better
     def soundOff(self, widget):
         """
         Disable sound usage for clients selected
         """
-        self.execOnSelectedClients(self.c.EXEC_AMIXER + 'mute', root=True)
+        self.execOnSelectedClients('mute 0', root=True)
 
     def soundOn(self, widget):
         """
         Enable sound usage for clients selected
         """
-        self.execOnSelectedClients(self.c.EXEC_AMIXER + 'unmute', root=True)
+        self.execOnSelectedClients('unmute', root=True)
     
     def on_remove_from_group_clicked(self, widget):
         clients = self.getSelectedClients()
@@ -416,11 +410,7 @@ export $(./get-display)
     # AMP callbacks
     def amp_clientConnected(self, handle):
         print "New connection from", handle
-        d = self.daemon.command(handle, u"""
-            VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
-            VERSION=${VERSION:-0.1}
-            echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
-            """)
+        d = self.daemon.command(handle, u'info')
         d.addCallback(lambda r: self.addClient(handle, r))
         d.addErrback(lambda err: self.printErrors("when connecting client %s: %s" %(handle, err)))
 
@@ -457,11 +447,7 @@ export $(./get-display)
     def amp_gotClients(self, handles):
         print "Got clients:", ', '.join(handles) or 'None'
         for handle in handles:
-            d = self.daemon.command(handle, u"""
-                VERSION=$(dpkg-query -W -f '${Version}' epoptes-client 2>/dev/null)
-                VERSION=${VERSION:-0.1}
-                echo "$USER\n$HOSTNAME\n$IP\n$MAC\n$TYPE\n$UID\n$VERSION\n$$"
-                """)
+            d = self.daemon.command(handle, u'info')
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
             d.addErrback(lambda err: self.printErrors("when enumerating client %s: %s" %(handle, err)))
     
@@ -519,7 +505,7 @@ export $(./get-display)
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
         print "---\n**addClient's been called for", handle
-        try:
+        try: # TODO: properly parse the returned values
             user, host, ip, mac, type, uid, version, pid = r.strip().split()
         except:
             print "Can't extract client information, won't add this client"
@@ -634,9 +620,9 @@ which is incompatible with the current epoptes version.\
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
                 timeoutID = gobject.timeout_add(10000, lambda h=handle: self.screenshotTimeout(h))
-                self.execOnClients(self.c.SCREENSHOT
+                self.execOnClients('screenshot %d %d'
                     % (self.scrWidth, self.scrHeight), handles=[handle],
-                        reply=self.gotScreenshot, params=[timeoutID])
+                    reply=self.gotScreenshot, params=[timeoutID])
                 return False
         # That handle is no longer in the cstore, remove it
         try: del self.currentScreenshots[handle]
@@ -821,41 +807,4 @@ which is incompatible with the current epoptes version.\
     def printErrors(self, error):
         print '  **Twisted error:', error
         return
-
-    def openTerminal(self, as_root):
-        clients = self.getSelectedClients()
-        
-        # If there is no client selected, send the command to all
-        if len(clients) == 0:
-            clients = self.cstore
-
-        if as_root:
-            screen_params = "bash -l"
-        else:
-            screen_params = "-l"
-
-        for client in clients:
-            inst = client[C_INSTANCE]
-            if inst.type == 'offline':
-                continue
-            elif inst.type == 'thin' and not as_root:
-                server = "127.0.0.1"
-            else:
-                server = "server"
-
-            port = self.findUnusedPort()
-
-            subprocess.Popen(['xterm', '-e', 'socat',
-                'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
-            self.execOnClients(("""./execute sh -c "cd; sleep 1; """ + 
-                """TERM=xterm exec socat SYSTEM:'exec screen %s',pty,""" + 
-                """stderr tcp:$SERVER:%d" """) % (screen_params, port),
-                [client], root=as_root)
-
-    def execInTerminal(self, widget, command):
-        name = widget.get_child().get_text()
-        subprocess.Popen([ 'x-terminal-emulator', '-e', 'sh', '-c', command
-            + ' && read -p "Script \'%s\' finished succesfully. Press [Enter] to close this window." dummy' % name
-            + ' || read -p "Script \'%s\' finished with errors. Press [Enter] to close this window." dummy' % name]
-            )
 

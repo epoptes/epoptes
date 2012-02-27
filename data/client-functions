@@ -1,0 +1,251 @@
+###########################################################################
+# Implements the client side of the epoptes communications protocol.
+# The daemon reads this file when it starts, and sends it to clients when they
+# connect. The clients actually source it and then wait for further commands.
+#
+# Copyright (C) 2010, 2012 Alkis Georgopoulos <alkisg@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL'.
+###########################################################################
+
+# Output a message and exit with an error.
+# Parameters:
+# $1..$N = The message.
+die() {
+    echo "epoptes-client ERROR: $@" >&2
+    exit 1
+}
+
+# Calculate, export and return a collection of useful variables.
+info() {
+    local def_iface
+
+    if [ -z cached_info ]; then
+        # TODO: use `ip route get server-ip` instead
+        def_iface=$(ip -oneline -family inet route show \
+            | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
+        test -z "$def_iface" && die "Empty def_iface"
+
+        test -n "$USER" || USER=$(whoami)
+        test -n "$HOME" || HOME=$(getent passwd "$UID" | cut -d: -f6)
+        HOSTNAME=$(hostname)
+        test -n "$HOSTNAME" || die "Empty hostname"
+        IP=$(ip -oneline -family inet addr show dev "$def_iface" | sed "s/.* \([0-9.]*\)\/.*/\\1/")
+        test -n "$IP" || die "Empty IP"
+        MAC=$(ip -oneline -family inet link show dev "$def_iface" | sed "s/.*ether \([^ ]*\).*/\\1/")
+        MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
+        test -n "$MAC" || die "Empty MAC"
+        CPU=$(cat /proc/cpuinfo | grep "^model name" | head -1 | sed "s/.*: //")
+        RAM=$(free -m | grep "^Mem" | awk '{print $2}')
+        VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
+        OS=$(uname -o)
+
+        # If epoptes-client is ran on a thin client from a user account (meaning
+        # that it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME,
+        # $LTSP_CLIENT and $LTSP_CLIENT_MAC instead of $HOSTNAME, $IP and $MAC.
+        # CPU, RAM and VGA are not available in the environment, so we're leaving
+        # the ones of the server.
+        if [ "$TYPE" = "thin" ] && [ "$UID" -ne 0 ]; then
+            test -n "$LTSP_CLIENT" && IP="$LTSP_CLIENT"
+            test -n "$LTSP_CLIENT_HOSTNAME" && HOSTNAME="$LTSP_CLIENT_HOSTNAME"
+            test -n "$LTSP_CLIENT_MAC" && MAC="$LTSP_CLIENT_MAC"
+        fi
+
+        export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT
+        cached_info=true
+    fi
+    cat <<EOF
+home=$HOME
+hostname=$HOSTNAME
+ip=$IP
+mac=$MAC
+os=$OS
+type=$TYPE
+uid=$UID
+user=$USER
+version=$VERSION
+EOF
+}
+
+# Execute a command in the background and print its pid.
+# Parameters:
+# $1..$N = The command and its parameters.
+execute() {
+    if [ $# -eq 1 ]; then
+        # If there's only one parameter, it might be a file or URL.
+        which -- "$1" >/dev/null || set "xdg-open" "$1"
+    fi
+
+    # Do some logging, either in ~/.xsession-errors or on the console.
+    echo "$(LANG=C date '+%c'), epoptes-client executing: $@" >&2
+
+    # The command is ran with stdin and stdout redirected to /dev/null,
+    # so that it doesn't interfere with the output of other commands.
+    # stderr isn't changed, i.e. ~/.xsession-errors will be used.
+    "$@" 0</dev/null >/dev/null &
+
+    # Print the pid.
+    echo $!
+}
+
+# Log out the connected user.
+logout() {
+    ./endsession --logout
+}
+
+# Reboot the client.
+reboot() {
+    ./endsession --reboot
+}
+
+# Shut down the client.
+shutdown() {
+    ./endsession --shutdown
+}
+
+# Create a thumbnail of the user screen.
+# Parameters:
+# $1 = thumbnail width.
+# $2 = thumbnail height.
+screenshot() {
+    if ./screenshot %i %i; then
+        BAD_SCREENSHOTS=0
+    elif [ "$BAD_SCREENSHOTS" -eq 3 ]; then
+        die "3 failed screenshots, exiting..."
+    else
+        BAD_SCREENSHOTS=$(($BAD_SCREENSHOTS+1))
+    fi
+}
+
+# Lock the screen.
+# Parameters:
+# $1 = seconds to keep screen locked, 0 means forever - currently ignored.
+# $2 = message to display to the user.
+lock_screen() {
+    test -n "$EPOPTES_LOCK_SCREEN_PID" && kill "$EPOPTES_LOCK_SCREEN_PID"
+    EPOPTES_LOCK_SCREEN_PID=$(execute ./lock-screen "$2")
+}
+
+# Unlock a locked screen.
+unlock_screen() {
+    if [ -n "$EPOPTES_LOCK_SCREEN_PID" ]; then
+        kill "$EPOPTES_LOCK_SCREEN_PID"
+        unset EPOPTES_LOCK_SCREEN_PID
+    fi
+}
+
+# Mute the system sound.
+# Parameters:
+# $1 = seconds to keep sound muted, 0 means forever - currently ignored.
+mute_sound() {
+    execute amixer -c 0 -q sset Master mute
+}
+
+# Unute the system sound.
+unmute_sound() {
+    execute amixer -c 0 -q sset Master unmute
+}
+
+# Display some text to the user.
+# Parameters:
+# $1 = text.
+# $2 = dialog type, one of "info", "warning" or "error".
+message() {
+    local type
+
+    type=${2:-info}
+    if [ -x /usr/bin/zenity ]; then
+        execute zenity "--$type" --text "$1"
+    elif [ -x /usr/bin/xmessage ]; then
+        execute xmessage -center "$1"
+    else
+        echo "$type: $1" >&2
+    fi
+}
+
+# Connect to the server to be monitored.
+get_monitored() {
+    execute x11vnc -noshm -24to32 -viewonly -connect_or_exit "$SERVER"
+}
+
+# Connect to the server to get assistance.
+get_assisted() {
+    execute x11vnc -noshm -24to32 -connect_or_exit "$SERVER"
+}
+
+# Deactivate the screensaver, in order for the users to watch a broadcast.
+stop_screensaver() {
+    if [ -x /usr/bin/gnome-screensaver-command ]; then
+        gnome-screensaver-command -d
+    fi
+}
+
+# Receive a broadcasted screen from the server.
+# Parameters:
+# $1 = port.
+# $2 = fullscreen.
+receive_broadcast() {
+    stop_transmissions
+    export $(./get-display)
+    xset dpms force on
+    EPOPTES_VNCVIEWER_PID=$(execute sh -c "
+sleep 0.$(($(hexdump -e \"%d\" -n 2 /dev/urandom) % 50 + 50)) 
+exec xvnc4viewer -Shared -ViewOnly ${2+-FullScreen -UseLocalCursor=0 -MenuKey F13} $SERVER:$1")
+}
+
+# The vnc clients should automatically exit when the server is killed.
+# Unfortunately, that isn't always true, so try to kill them anyway.
+stop_transmissions() {
+    test -n "$EPOPTES_VNCVIEWER_PID" && kill "$EPOPTES_VNCVIEWER_PID"
+    unset EPOPTES_VNCVIEWER_PID
+}
+
+# Open a root terminal inside the X session.
+root_term() {
+    export $(./get-display)
+    execute xterm -e bash -l
+}
+
+# Sends a screen session to the server using socat.
+# Parameters:
+# $1 = port.
+remote_term() {
+    local screen_params
+
+    if [ "$UID" -eq 0 ]; then
+        screen_params="bash -l"
+    else
+        screen_params="-l"
+    fi
+    execute sh -c "
+cd
+sleep 1
+TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
+}
+
+# Main
+
+# Source the lsb init functions, for log_begin_msg / log_end_msg.
+# Unfortunately it seems that Centos and Fedora don't have that file.
+if [ -f /lib/lsb/init-functions ]; then
+    . /lib/lsb/init-functions
+else
+    alias log_begin_msg=echo
+    alias log_warning_msg=echo
+    alias log_end_msg=echo
+fi
+log_end_msg 0 >&5

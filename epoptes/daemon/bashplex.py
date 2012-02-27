@@ -95,7 +95,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
 
 
-    def connectionLost(self, reaspn):
+    def connectionLost(self, reason):
         try: self.pingTimeout.cancel()
         except Exception: pass
 

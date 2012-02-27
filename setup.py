@@ -75,7 +75,7 @@ DistUtilsExtra.auto.setup(
     name='epoptes',
     version = changelog_version(),
     description = 'Computer lab administration and monitoring tool',
-    url = 'https://launchpad.net/epoptes',
+    url = 'http://www.epoptes.org',
     license = 'GNU GPL v3',
     author = 'Fotis Tsamis',
     author_email = 'ftsamis@gmail.com',
