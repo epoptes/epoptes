@@ -1,11 +1,16 @@
+# Swedish translation for epoptes
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the epoptes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: epoptes\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-02-26 06:11+0200\n"
-"PO-Revision-Date: 2012-02-25 08:39+0000\n"
-"Last-Translator: Fotis Tsamis <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2012-02-26 13:20+0000\n"
+"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
+"Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,85 +21,83 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas\n"
-"  himlims https://launchpad.net/~himlims\n"
-"  kadkarol https://launchpad.net/~karol-sienkowski"
+"  Daniel Nylander https://launchpad.net/~yeager"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
-msgstr "Zadaj pytanie"
+msgstr "Ställ en fråga"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Assist user"
-msgstr "Tryb pomocy"
+msgstr "Hjälp användare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Background image"
-msgstr "Obraz tła"
+msgstr "Bakgrundsbild"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Block Internet"
-msgstr "Blokada internetu"
+msgstr "Blockera Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Boot"
-msgstr "Opstarten"
+msgstr "Starta upp"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Opstarten geselecteerde cliënts (Wake On LAN)"
+msgstr "Starta upp markerade klienter (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Broadcast screen"
-msgstr "Prześlij swój ekran"
+msgstr "Sänd ut skärm"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Broadcast screen (fullscreen)"
-msgstr ""
+msgstr "Sänd ut skärm (helskärm)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Broadcast screen (windowed)"
-msgstr "Prześlij swój ekran (w oknie)"
+msgstr "Sänd ut skärm (fönster)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Broadcast user"
-msgstr "Uitzenden gebruiker"
+msgstr "Sänd ut användare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Broadcast video"
-msgstr "Prześlij wideo"
+msgstr "Sänd ut video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Broadcast your screen to the selected clients"
-msgstr "Prześlij swój ekran wybranym klientom"
+msgstr "Sänd ut din skärm till markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Prześlij swój ekran wybranym klientom (pełny ekran)"
+msgstr "Sänd ut din skärm till markerade klienter, helskärm"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Prześlij swój ekran wybranym klientom (w oknie)"
+msgstr "Sänd ut din skärm till markerade klienter, i ett fönster"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Broadcasts"
-msgstr "Przesyłanie"
+msgstr "Utsändningar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Computer"
-msgstr "Komputer"
+msgstr "Dator"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Computer (user)"
-msgstr "Komputer (użytkownik)"
+msgstr "Dator (användare)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Confirm action"
-msgstr "Zatwierdź akcję"
+msgstr "Bekräfta åtgärd"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Create a new group"
-msgstr "Utwórz nową grupę"
+msgstr "Skapa en ny grupp"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
@@ -102,254 +105,256 @@ msgstr "Epoptes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Execute"
-msgstr "Wykonaj polecenie"
+msgstr "Kör"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Execute a command on the selected clients"
-msgstr "Wykonaj polecenie dla wybranych klientów"
+msgstr "Kör ett kommando på markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr "Wykonaj polecenie"
+msgstr "Kör kommando"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24 ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Information"
-msgstr "Dane klienta"
+msgstr "Information"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Labels"
-msgstr "Etykieta"
+msgstr "Etiketter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Live chat (IRC)"
-msgstr "Czat (IRC)"
+msgstr "Live-chatt (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Lock background"
-msgstr "Zablokuj tło"
+msgstr "Lås bakgrund"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Lock screen"
-msgstr "Zablokuj ekran"
+msgstr "Lås skärmen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Lock screen of the selected clients"
-msgstr "Zablokuj ekran wybranym klientom"
+msgstr "Lås skärmen på markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Log out"
-msgstr "Wyloguj"
+msgstr "Logga ut"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Log out users connected on selected clients"
-msgstr "Wyloguj zaznaczonych użytkowników"
+msgstr "Logga ut användare anslutna på markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Monitor user"
-msgstr "Podgląd użytkownika"
+msgstr "Övervaka användare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Mute sound"
-msgstr "Wyłącz dźwięk"
+msgstr "Inget ljud"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open a windowed session to prevent broadcasting your whole screen"
 msgstr ""
+"Öppna en fönstersession för att förhindra att hela din skärm sänds ut"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Open broadcasts window"
-msgstr ""
+msgstr "Öppna utsändningsfönster"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Open terminal"
-msgstr "Otwórz terminal"
+msgstr "Öppna terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Reboot"
-msgstr "Restart"
+msgstr "Starta om"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Reboot the selected clients"
-msgstr "Restart wybranych klientów"
+msgstr "Starta om markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Remote support"
-msgstr "Zdalne wsparcie"
+msgstr "Fjärrsupport"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Remove from group"
-msgstr "Usuń z grupy"
+msgstr "Ta bort från grupp"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Remove the selected group"
-msgstr "Usuń wybraną grupę"
+msgstr "Ta bort markerad grupp"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Report a bug"
-msgstr "Zgłoś błąd"
+msgstr "Rapportera ett fel"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Restrictions"
-msgstr "Ograniczenia"
+msgstr "Begränsningar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Root, locally"
-msgstr "Root, lokalnie"
+msgstr "Root, lokalt"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Root, remotely"
-msgstr "Beheerder, op afstand"
+msgstr "Root, fjärr"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Send a message to the selected clients"
-msgstr "Verstuur een bericht naar de geselecteerde cliënts"
+msgstr "Skicka ett meddelande till markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Send message"
-msgstr "Verstuur bericht"
+msgstr "Skicka meddelande"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Session"
-msgstr "Sessie"
+msgstr "Session"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Set background"
-msgstr "Stel achtergrond in"
+msgstr "Ange bakgrund"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Set default background"
-msgstr "Stel standaard achtergrond in"
+msgstr "Ange standardbakgrund"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Show information for the selected client"
-msgstr "Toon informatie over de geselecteerde cliënt"
+msgstr "Visa information för markerad klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Show real names"
-msgstr "Toon werkelijke namen"
+msgstr "Visa riktiga namn"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Shutdown"
-msgstr "Uitschakelen"
+msgstr "Stäng av"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Shutdown the selected clients"
-msgstr "Uitschakelen geselecteerde cliënts"
+msgstr "Stäng av markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Stop all broadcasts on every client"
-msgstr "Stop alle uitzendingen op iedere cliënt"
+msgstr "Stoppa alla utsändningar på varje klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Stop broadcasts"
-msgstr "Stop uitzendingen"
+msgstr "Stoppa utsändningar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Stops all active broadcasts"
-msgstr "Stop alle actieve uitzendingen"
+msgstr "Stoppar alla aktiva utsändningar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Take control of the selected user's computer"
-msgstr ""
+msgstr "Ta kontroll över markerad användares dator"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Translate this application"
-msgstr "Vertaal deze applicatie"
+msgstr "Översätt detta program"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Unblock Internet"
-msgstr "Deblokkeer Internet"
+msgstr "Avblockera Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Unlock screen"
-msgstr "Vrijgeven scherm"
+msgstr "Lås upp skärmen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Unlock the screen of the selected clients"
-msgstr "Vrijgeven scherm van de geselecteerde cliënts"
+msgstr "Lås upp skärmen på markerade klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Unmute sound"
-msgstr "Dempen geluid opheffen"
+msgstr "Aktivera ljud"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "User"
-msgstr "Gebruiker"
+msgstr "Användare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "User (computer)"
-msgstr "Gebruiker (computer)"
+msgstr "Användare (dator)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "User, locally"
-msgstr "Gebruiker, lokaal"
+msgstr "Användare, lokalt"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "_Clients"
-msgstr "_Cliënts"
+msgstr "_Klienter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "_File"
-msgstr "_Bestand"
+msgstr "_Arkiv"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "_Help"
-msgstr "_Help"
+msgstr "_Hjälp"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "_Send message"
-msgstr "_Verstuur bericht"
+msgstr "_Skicka meddelande"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "_View"
-msgstr "_Beeld"
+msgstr "_Visa"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr "Uitschakelen:"
+msgstr "Stäng av:"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr "Verbonden:"
+msgstr "Ansluten:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s op %(host)s"
+msgstr "%(user)s på %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr "Verbinding verbroken:"
+msgstr "Frånkopplad:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s van %(host)s"
+msgstr "%(user)s från %(host)s"
 
 #: ../epoptes/ui/client_information.py:61
 #, python-format
 msgid "Properties of %s"
-msgstr "Eigenschappen van %s"
+msgstr "Egenskaper för %s"
 
 #: ../epoptes/ui/gui.py:119
 msgid "Detected clients"
-msgstr "Gevonden cliënts"
+msgstr "Identifierade klienter"
 
 #: ../epoptes/ui/gui.py:314
 msgid "The screen is locked by a system administrator."
-msgstr ""
+msgstr "Skärmen är låst av en systemadministratör."
 
 #: ../epoptes/ui/gui.py:343
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
-"De geselecteerde cliënts  verwijderen uit groep \"%s\" , weet u dat zeker?"
+"Är du säker på att du vill ta bort de markerade klienterna från gruppen "
+"\"%s\"?"
 
 #: ../epoptes/ui/gui.py:370
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Groep \"%s\" permanent verwijderen?"
+msgstr "Är du säker på att du vill ta bort gruppen \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:545
@@ -360,74 +365,73 @@ msgid ""
 "\n"
 "You should update your chroot."
 msgstr ""
-"De verbinding naar een epoptes-client met versie %s is mislukt. Die versie "
-"is niet geschikt met de huidige epoptes versie.\n"
+"Ett försök att ansluta en epoptes-client med version %s misslyckades. Den är "
+"inkompatibel med den aktuella versionen av epoptes.\n"
 "\n"
-"U wordt geadviseerd om chroot te updaten."
+"Du bör uppdatera din chroot."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, bestand of opdracht uitvoeren op geselecteerde cliënts"
+msgstr "URL, fil eller kommando att köra på markerade klienter:"
 
 #: ../epoptes/common/commands.py:46
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Alle computers uitschakelen, weet u het zeker?"
+msgstr "Är du säker på att du vill stänga av alla datorer?"
 
 #: ../epoptes/common/commands.py:47
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Alle computers herstarten, weet u het zeker?"
+msgstr "Är du säker på att du vill starta om alla datorer?"
 
 #: ../epoptes/common/commands.py:48
 msgid "Are you sure you want to log off all the users?"
-msgstr "Alle gebruikers afmelden, weet u dat zeker?"
+msgstr "Är du säker på att du vill logga ut alla användare?"
 
 #: ../epoptes/common/commands.py:49
 msgid ""
 "Are you sure you want to terminate all processes of the selected users?"
 msgstr ""
-"Alle processen bij de geselecteerde gebruikers beëindigen, weet u dat zeker?"
+"Är du säker på att du vill avsluta alla processer för markerade användare?"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr "Epoptes computerlab-beheerprogramma"
+msgstr "Epoptes, administrationsverktyg för datorlabb"
 
 #: ../bin/epoptes.py:59
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
-"Gebruiker %s moet lid zijn van groep %s om epoptes te kunnen gebruiken."
+msgstr "Användaren %s måste vara medlem av gruppen %s för att köra epoptes."
 
 #: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
-msgstr "Probleem"
+msgstr "Fel"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client alias:"
-msgstr "Cliënt schuilnaam:"
+msgstr "Klientalias:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client hostname:"
-msgstr "Cliënt hostname:"
+msgstr "Klientvärdnamn:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client type:"
-msgstr "Cliënt soort:"
+msgstr "Klienttyp:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "Edit alias"
-msgstr "Bewerk schuilnaam"
+msgstr "Redigera alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Graphics card:"
-msgstr "Grafische kaart:"
+msgstr "Grafikkort:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "IP address:"
-msgstr "IP-adres:"
+msgstr "IP-adress:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "MAC address:"
-msgstr "MAC-adres:"
+msgstr "MAC-adress:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Processor:"
@@ -435,43 +439,43 @@ msgstr "Processor:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "RAM:"
-msgstr "RAM-geheugen:"
+msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Set a new alias for the selected client"
-msgstr "Stel nieuwe schuilnaam in voor geselecteerde cliënt"
+msgstr "Ange ett nytt alias för markerad klient"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "User:"
-msgstr "Gebruiker:"
+msgstr "Användare:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr "Tekst bericht:"
+msgstr "Meddelandetext:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Message type:"
-msgstr "Bericht soort:"
+msgstr "Meddelandetyp:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Select the type of the message"
-msgstr "Selecteer soort bericht"
+msgstr "Välj typ av meddelande"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr "Waarschuwing"
+msgstr "Varning"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "_Send"
-msgstr "Ver_stuur"
+msgstr "_Skicka"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "A computer lab management and monitoring tool."
-msgstr "Een computerlokaal beheer en toezicht toepassing."
+msgstr "Ett verktyg för hantering och övervakning av ett datorlabb."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011-2012 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -487,41 +491,39 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
-"Epoptes is vrije software: je kunt het herdistribueren en / of wijzigen "
-"onder de voorwaarden van de GNU General Public License zoals gepubliceerd "
-"door de Free Software Foundation, versie 3 van de licentie, of een latere "
-"versie.\n"
+"Epoptes är fri programvara. Du kan distribuera det och/eller modifiera det "
+"under villkoren i GNU General Public License, publicerad av Free Software "
+"Foundation, antingen version 3 eller (om du så vill) någon senare version. \n"
 "\n"
-"Epoptes wordt gedistribueerd in de hoop dat het nuttig zal zijn, maar ZONDER "
-"ENIGE GARANTIE, zonder zelfs de impliciete garantie van verkoopbaarheid of "
-"GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor "
-"meer details.\n"
+"Epoptes distribueras i hopp om att det ska vara användbart, men UTAN NÅGON "
+"SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller "
+"LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för "
+"ytterligare information. \n"
 "\n"
-"Moet u een kopie van de GNU General Public License, samen met epoptes. Zo "
-"niet, zie <http://www.gnu.org/licenses/>."
+"Du bör ha fått en kopia av GNU General Public License tillsammans med "
+"Epoptes. Om inte, se <http://www.gnu.org/licenses/>."
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:1
 msgid "Connection type:"
-msgstr "Verbinding soort:"
+msgstr "Anslutningstyp:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:2
 msgid "Console (screen)"
-msgstr "Opdrachtvenster (scherm)"
+msgstr "Konsoll (skärm)"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:3
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-"Noteer de informatie van de persoon waar jij jouw Desktop mee wilt delen"
+msgstr "Ange information för kontakten som du vill dela ditt skrivbord med"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:4
 msgid "Graphics (VNC)"
-msgstr "Grafisch (VNC)"
+msgstr "Grafik (VNC)"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:5
 msgid "IP:"
-msgstr "IP-Adres:"
+msgstr "IP:"
 
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:6
 msgid "Port:"
-msgstr "Poort:"
+msgstr "Port:"
