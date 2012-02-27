@@ -35,49 +35,55 @@ info() {
     local def_iface
 
     if [ -z cached_info ]; then
-        # TODO: use `ip route get server-ip` instead
-        def_iface=$(ip -oneline -family inet route show \
-            | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
-        test -z "$def_iface" && die "Empty def_iface"
-
+        VERSION=${VERSION:-0.4.3} # Just in case the client wasn't updated
         test -n "$USER" || USER=$(whoami)
         test -n "$HOME" || HOME=$(getent passwd "$UID" | cut -d: -f6)
-        HOSTNAME=$(hostname)
-        test -n "$HOSTNAME" || die "Empty hostname"
-        IP=$(ip -oneline -family inet addr show dev "$def_iface" | sed "s/.* \([0-9.]*\)\/.*/\\1/")
-        test -n "$IP" || die "Empty IP"
-        MAC=$(ip -oneline -family inet link show dev "$def_iface" | sed "s/.*ether \([^ ]*\).*/\\1/")
-        MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
-        test -n "$MAC" || die "Empty MAC"
+        if [ -n "$LTSP_CLIENT_HOSTNAME" ]; then
+            HOSTNAME="$LTSP_CLIENT_HOSTNAME"
+        else
+            HOSTNAME=$(hostname)
+            test -n "$HOSTNAME" || die "Empty hostname"
+        fi
+        if [ -n "$LTSP_CLIENT" ] && [ -n "$LTSP_CLIENT_MAC" ]; then
+            # LTSP exports those vars, use them if available.
+            MAC="$LTSP_CLIENT_MAC"
+            IP="$LTSP_CLIENT"
+        else
+            server_ip=$(getent hosts "$SERVER" | cut -d' ' -f1)
+            def_iface=$(ip -oneline -family inet route get "$server_ip" \
+                | sed -n '/.* dev \([^ ]*\).*/s//\1/p')
+            test -z "$def_iface" && def_iface=$(ip -oneline -family inet \
+                route show | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
+            def_iface=$(def_iface:-eth0)
+            MAC=$(ip -oneline -family inet link show dev "$def_iface" \
+                | sed "s/.*ether \([^ ]*\).*/\\1/")
+            MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
+            test -n "$MAC" || die "Empty MAC"
+            IP=$(ip -oneline -family inet addr show dev "$def_iface" \
+                | sed "s/.* \([0-9.]*\)\/.*/\\1/")
+            test -n "$IP" || die "Empty IP"
+        fi
         CPU=$(cat /proc/cpuinfo | grep "^model name" | head -1 | sed "s/.*: //")
         RAM=$(free -m | grep "^Mem" | awk '{print $2}')
         VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
         OS=$(uname -o)
 
-        # If epoptes-client is ran on a thin client from a user account (meaning
-        # that it actually runs on the server), then use $LTSP_CLIENT_HOSTNAME,
-        # $LTSP_CLIENT and $LTSP_CLIENT_MAC instead of $HOSTNAME, $IP and $MAC.
-        # CPU, RAM and VGA are not available in the environment, so we're leaving
-        # the ones of the server.
-        if [ "$TYPE" = "thin" ] && [ "$UID" -ne 0 ]; then
-            test -n "$LTSP_CLIENT" && IP="$LTSP_CLIENT"
-            test -n "$LTSP_CLIENT_HOSTNAME" && HOSTNAME="$LTSP_CLIENT_HOSTNAME"
-            test -n "$LTSP_CLIENT_MAC" && MAC="$LTSP_CLIENT_MAC"
-        fi
-
-        export HOSTNAME IP MAC TYPE USER UID CPU RAM VGA SERVER PORT
+        export VERSION USER HOME HOSTNAME MAC IP CPU RAM VGA OS
         cached_info=true
     fi
     cat <<EOF
+uid=$UID
+type=$TYPE
+version=$VERSION
+user=$USER
 home=$HOME
 hostname=$HOSTNAME
-ip=$IP
 mac=$MAC
+ip=$IP
+cpu=$CPU
+ram=$RAM
+vga=$VGA
 os=$OS
-type=$TYPE
-uid=$UID
-user=$USER
-version=$VERSION
 EOF
 }
 
@@ -122,7 +128,7 @@ shutdown() {
 # $1 = thumbnail width.
 # $2 = thumbnail height.
 screenshot() {
-    if ./screenshot %i %i; then
+    if ./screenshot "$1" "$2"; then
         BAD_SCREENSHOTS=0
     elif [ "$BAD_SCREENSHOTS" -eq 3 ]; then
         die "3 failed screenshots, exiting..."
@@ -208,7 +214,7 @@ exec xvnc4viewer -Shared -ViewOnly ${2+-FullScreen -UseLocalCursor=0 -MenuKey F1
 }
 
 # The vnc clients should automatically exit when the server is killed.
-# Unfortunately, that isn't always true, so try to kill them anyway.
+# Unfortunately, that isn't always true, so try to kill it anyway.
 stop_transmissions() {
     test -n "$EPOPTES_VNCVIEWER_PID" && kill "$EPOPTES_VNCVIEWER_PID"
     unset EPOPTES_VNCVIEWER_PID
@@ -238,6 +244,10 @@ TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
 }
 
 # Main
+
+if [ -z "$UID" ] || [ -z "$TYPE" ] || [ -z "$SERVER" ]; then
+    die "Required environment variables are missing."
+fi
 
 # Source the lsb init functions, for log_begin_msg / log_end_msg.
 # Unfortunately it seems that Centos and Fedora don't have that file.
