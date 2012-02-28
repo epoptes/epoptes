@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-02-26 06:11+0200\n"
-"PO-Revision-Date: 2012-02-26 13:20+0000\n"
+"POT-Creation-Date: 2012-02-28 03:45+0200\n"
+"PO-Revision-Date: 2012-02-27 08:16+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-27 05:53+0000\n"
-"X-Generator: Launchpad (build 14868)\n"
+"X-Launchpad-Export-Date: 2012-02-28 06:25+0000\n"
+"X-Generator: Launchpad (build 14874)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -335,15 +335,27 @@ msgstr "%(user)s från %(host)s"
 msgid "Properties of %s"
 msgstr "Egenskaper för %s"
 
-#: ../epoptes/ui/gui.py:119
+#: ../epoptes/ui/gui.py:117
 msgid "Detected clients"
 msgstr "Identifierade klienter"
 
-#: ../epoptes/ui/gui.py:314
+#: ../epoptes/ui/gui.py:175
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Är du säker på att du vill stänga av alla datorer?"
+
+#: ../epoptes/ui/gui.py:182
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Är du säker på att du vill starta om alla datorer?"
+
+#: ../epoptes/ui/gui.py:187
+msgid "Are you sure you want to log off all the users?"
+msgstr "Är du säker på att du vill logga ut alla användare?"
+
+#: ../epoptes/ui/gui.py:312
 msgid "The screen is locked by a system administrator."
 msgstr "Skärmen är låst av en systemadministratör."
 
-#: ../epoptes/ui/gui.py:343
+#: ../epoptes/ui/gui.py:337
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -351,13 +363,13 @@ msgstr ""
 "Är du säker på att du vill ta bort de markerade klienterna från gruppen "
 "\"%s\"?"
 
-#: ../epoptes/ui/gui.py:370
+#: ../epoptes/ui/gui.py:364
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Är du säker på att du vill ta bort gruppen \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:545
+#: ../epoptes/ui/gui.py:536
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -373,24 +385,6 @@ msgstr ""
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "URL, fil eller kommando att köra på markerade klienter:"
-
-#: ../epoptes/common/commands.py:46
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Är du säker på att du vill stänga av alla datorer?"
-
-#: ../epoptes/common/commands.py:47
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Är du säker på att du vill starta om alla datorer?"
-
-#: ../epoptes/common/commands.py:48
-msgid "Are you sure you want to log off all the users?"
-msgstr "Är du säker på att du vill logga ut alla användare?"
-
-#: ../epoptes/common/commands.py:49
-msgid ""
-"Are you sure you want to terminate all processes of the selected users?"
-msgstr ""
-"Är du säker på att du vill avsluta alla processer för markerade användare?"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -527,3 +521,8 @@ msgstr "IP:"
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:6
 msgid "Port:"
 msgstr "Port:"
+
+#~ msgid ""
+#~ "Are you sure you want to terminate all processes of the selected users?"
+#~ msgstr ""
+#~ "Är du säker på att du vill avsluta alla processer för markerade användare?"
