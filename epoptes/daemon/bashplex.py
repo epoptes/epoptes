@@ -186,12 +186,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
         # Epoptes-client isn't registered as an X session client, and it doesn't
         # exit automatically, so tell it to exit as soon as X is unavailable.
-        self.command("""
-test -n "$UID" || UID=$(id -u)
-if [ "$UID" -gt 0 ]; then
-    xprop -root -f EPOPTES_CLIENT 32c -set EPOPTES_CLIENT $$ || exit
-fi"""
-            ).addCallback(self.pingResponse)
+        self.command('ping').addCallback(self.pingResponse)
         self.pingTimeout = reactor.callLater(self.factory.pingTimeout, 
                                              self.pingTimedOut)
 

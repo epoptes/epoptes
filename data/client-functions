@@ -34,7 +34,7 @@ die() {
 info() {
     local def_iface
 
-    if [ -z cached_info ]; then
+    if [ -z "$cached_info" ]; then
         VERSION=${VERSION:-0.4.3} # Just in case the client wasn't updated
         test -n "$USER" || USER=$(whoami)
         test -n "$HOME" || HOME=$(getent passwd "$UID" | cut -d: -f6)
@@ -54,7 +54,7 @@ info() {
                 | sed -n '/.* dev \([^ ]*\).*/s//\1/p')
             test -z "$def_iface" && def_iface=$(ip -oneline -family inet \
                 route show | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
-            def_iface=$(def_iface:-eth0)
+            def_iface=${def_iface:-eth0}
             MAC=$(ip -oneline -family inet link show dev "$def_iface" \
                 | sed "s/.*ether \([^ ]*\).*/\\1/")
             MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
@@ -242,6 +242,22 @@ cd
 sleep 1
 TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
 }
+
+# Ping is called every few seconds just to make sure the connection is alive.
+# But currently we use it as a workaround to kill stale clients too:
+# Epoptes-client isn't registered as an X session client, and it doesn't
+# exit automatically, so tell it to exit as soon as X is unavailable.
+ping() {
+    if [ "$UID" -gt 0 ]; then
+        xprop -root -f EPOPTES_CLIENT 32c -set EPOPTES_CLIENT $$ || exit
+    fi
+}
+
+# Echoes a message.
+# Parameters:
+# $1..$N = The message.
+# echo()
+# No need to implement it in the shell, it's embedded.
 
 # Main
 

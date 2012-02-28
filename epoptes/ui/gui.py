@@ -510,9 +510,9 @@ class EpoptesGui(object):
             for line in r.strip().split('\n'):
                 key, value = line.split('=', 1)
                 info[key.strip()] = value.strip()
-            user, host, ip, mac, type, uid, version, pid = \
+            user, host, ip, mac, type, uid, version = \
              info['user'], info['hostname'], info['ip'], \
-             info['mac'], info['type'], info['uid'], info['version'], info['pid']
+             info['mac'], info['type'], info['uid'], info['version']
         except:
             print "Can't extract client information, won't add this client"
             return
