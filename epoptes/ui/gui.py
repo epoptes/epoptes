@@ -184,7 +184,7 @@ class EpoptesGui(object):
     def logout(self, widget):
         """Log off the users of the selected clients."""
         self.execOnSelectedClients("logoff",
-            warn=_('Are you sure you want to log off all the users?')
+            warn=_('Are you sure you want to log off all the users?'))
 
 
     def reverseConnection(self, widget, path, view_column, cmd):
@@ -235,7 +235,7 @@ class EpoptesGui(object):
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
                 '-24to32', '-rfbport', str(self.vncport), '-allow',
                 '127.,192.168.,10.,169.254.' ])
-        self.execOnSelectedClients('stop_screensaver)
+        self.execOnSelectedClients('stop_screensaver')
         self.execOnSelectedClients('receive_broadcast %d %s' % (self.vncport,
             fullscreen), root=True)
     
@@ -505,12 +505,17 @@ class EpoptesGui(object):
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
         print "---\n**addClient's been called for", handle
-        try: # TODO: properly parse the returned values
-            user, host, ip, mac, type, uid, version, pid = r.strip().split()
+        try:
+            info = {}
+            for line in r.strip().split('\n'):
+                key, value = line.split('=', 1)
+                info[key.strip()] = value.strip()
+            user, host, ip, mac, type, uid, version, pid = \
+             info['user'], info['hostname'], info['ip'], \
+             info['mac'], info['type'], info['uid'], info['version'], info['pid']
         except:
             print "Can't extract client information, won't add this client"
             return
-        
         
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.

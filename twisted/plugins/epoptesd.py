@@ -64,6 +64,7 @@ class ServiceMaker(object):
         factory = bashplex.DelimitedBashReceiverFactory()
         factory.pingInterval=int(options['pingInterval'])
         factory.pingTimeout=int(options['pingTimeout'])
+        factory.startupCommands = self.filterBash('/usr/share/epoptes/client-functions')
 
         if config.system['ENCRYPTION']:
             clientService = internet.SSLServer(int(config.system['PORT']),
@@ -89,6 +90,18 @@ class ServiceMaker(object):
         topService.addService(guiService)
 
         return topService
-
+    
+    def filterBash(self, script):
+        f = open(script)
+        functions = f.readlines()
+        f.close()
+        
+        result = ''
+        
+        for line in functions:
+            if line.strip() != '' and line.strip()[0] == '#':
+                continue
+            result += line
+        return result
 
 serviceMaker = ServiceMaker()

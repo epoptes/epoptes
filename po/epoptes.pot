@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-26 06:11+0200\n"
+"POT-Creation-Date: 2012-02-28 03:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -331,27 +331,39 @@ msgstr ""
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:119
+#: ../epoptes/ui/gui.py:117
 msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:314
+#: ../epoptes/ui/gui.py:175
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:182
+msgid "Are you sure you want to reboot all the computers?"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:187
+msgid "Are you sure you want to log off all the users?"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:312
 msgid "The screen is locked by a system administrator."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:343
+#: ../epoptes/ui/gui.py:337
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:370
+#: ../epoptes/ui/gui.py:364
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:545
+#: ../epoptes/ui/gui.py:536
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -362,22 +374,6 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
-
-#: ../epoptes/common/commands.py:46
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr ""
-
-#: ../epoptes/common/commands.py:47
-msgid "Are you sure you want to reboot all the computers?"
-msgstr ""
-
-#: ../epoptes/common/commands.py:48
-msgid "Are you sure you want to log off all the users?"
-msgstr ""
-
-#: ../epoptes/common/commands.py:49
-msgid "Are you sure you want to terminate all processes of the selected users?"
 msgstr ""
 
 #: ../data/epoptes.desktop.in.h:2

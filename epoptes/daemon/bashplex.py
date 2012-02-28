@@ -90,11 +90,21 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def connectionMade(self):
         peer = self.transport.getPeer()
-        self.handle = u"%s:%s" % (peer.host, peer.port)
-        exchange.clientConnected(self.handle, self)
-        self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
-
-
+        
+        d = self.command(self.factory.startupCommands.encode("utf-8"))
+        
+        def forwardConnection(result):
+            self.handle = u"%s:%s" % (peer.host, peer.port)
+            exchange.clientConnected(self.handle, self)
+            self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
+        
+        def killConnection(error):
+            print "Error sending the client functions:", error
+            self.transport.loseConnection()
+        
+        d.addCallback(forwardConnection)
+        d.addErrback(killConnection)
+        
     def connectionLost(self, reason):
         try: self.pingTimeout.cancel()
         except Exception: pass
@@ -201,3 +211,5 @@ class DelimitedBashReceiverFactory(protocol.ServerFactory):
     
     pingInterval = 10
     pingTimeout = 10
+    
+    startupCommands = ''
