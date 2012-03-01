@@ -128,8 +128,10 @@ class EpoptesGui(object):
             path = config.settings.getint('GUI', 'selected_group')
             self.gtree.get_selection().select_path(path)
         if config.settings.has_option('GUI', 'label'):
-            label = config.settings.getint('GUI', 'label')
-            self.get(config.labels[label]).set_active(True)
+            try:
+                self.get(config.settings.get('GUI', 'label')).set_active(True)
+            except:
+                pass
 
     #################################################################
     #                       Callback functions                      #
@@ -171,7 +173,6 @@ class EpoptesGui(object):
             label = 3
         
         settings.set('GUI', 'selected_group', sel_group)
-        settings.set('GUI', 'label', label)
         f = open(os.path.expanduser('~/.config/epoptes/settings'), 'wb')
         settings.write(f)
         f.close()
@@ -305,11 +306,6 @@ class EpoptesGui(object):
         if len(clients) == 0:
             clients = self.cstore
 
-        if as_root:
-            screen_params = "bash -l"
-        else:
-            screen_params = "-l"
-
         for client in clients:
             inst = client[C_INSTANCE]
             if inst.type == 'offline':
@@ -414,15 +410,19 @@ class EpoptesGui(object):
         
     def on_cViewHU_toggled(self, mitem):
         self.set_cView(1, 0)
+        config.settings.set('GUI', 'label', 'miClientsViewHostUser')
     
     def on_cViewUH_toggled(self, mitem):
         self.set_cView(0, 1)
+        config.settings.set('GUI', 'label', 'miClientsViewUserHost')
     
     def on_cViewH_toggled(self, mitem):
         self.set_cView(-1, 0)
+        config.settings.set('GUI', 'label', 'miClientsViewHost')
     
     def on_cViewU_toggled(self, mitem):
         self.set_cView(0, -1)
+        config.settings.set('GUI', 'label', 'miClientsViewUser')
     
     def set_cView(self, user_pos= -1, name_pos=0):
         # Save the order so all new clients get the selected format
