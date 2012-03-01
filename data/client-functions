@@ -226,7 +226,7 @@ root_term() {
     execute xterm -e bash -l
 }
 
-# Sends a screen session to the server using socat.
+# Send a screen session to the server using socat.
 # Parameters:
 # $1 = port.
 remote_term() {
@@ -253,7 +253,7 @@ ping() {
     fi
 }
 
-# Echoes a message.
+# Display a message.
 # Parameters:
 # $1..$N = The message.
 # echo()
@@ -265,13 +265,13 @@ if [ -z "$UID" ] || [ -z "$TYPE" ] || [ -z "$SERVER" ]; then
     die "Required environment variables are missing."
 fi
 
-# Source the lsb init functions, for log_begin_msg / log_end_msg.
+# Source the lsb init functions, for log_end_msg.
 # Unfortunately it seems that Centos and Fedora don't have that file.
 if [ -f /lib/lsb/init-functions ]; then
+    ( # Use a subshell, we only need init-functions once
     . /lib/lsb/init-functions
+    log_end_msg 0 >&5
+    )
 else
-    alias log_begin_msg=echo
-    alias log_warning_msg=echo
-    alias log_end_msg=echo
+    echo "[ OK ]" >&5
 fi
-log_end_msg 0 >&5

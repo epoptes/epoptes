@@ -91,6 +91,7 @@ class DelimitedBashReceiver(protocol.Protocol):
     def connectionMade(self):
         peer = self.transport.getPeer()
         
+        self.handle = None
         d = self.command(self.factory.startupCommands.encode("utf-8"))
         
         def forwardConnection(result):
@@ -112,7 +113,8 @@ class DelimitedBashReceiver(protocol.Protocol):
         try: self.pingTimer.cancel()
         except Exception: pass
 
-        exchange.clientDisconnected(self.handle)
+        if not self.handle is None:
+            exchange.clientDisconnected(self.handle)
 
 
     def dataReceived(self, data):

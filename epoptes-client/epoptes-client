@@ -60,7 +60,6 @@ chrooted() {
 basic_info() {
     test -n "$UID" || UID=$(id -u)
 
-    # TODO: fix upstream "$LTSP_FATCLIENT" to be present in user sessions
     if my_boolean_is_true "$LTSP_FATCLIENT" && [ -f /etc/ltsp_fat_chroot ]; then
         TYPE="fat"
     elif [ -n "$LTSP_CLIENT" ] || [ -f /etc/ltsp_chroot ]; then
@@ -154,15 +153,14 @@ else
     cd /usr/share/epoptes-client
 fi
 
-# Source the lsb init functions, for log_begin_msg / log_end_msg.
+# Source the lsb init functions, for log_begin_msg.
 # Unfortunately it seems that Centos and Fedora don't have that file.
 if [ -f /lib/lsb/init-functions ]; then
     . /lib/lsb/init-functions
 else
-    alias log_begin_msg=echo
-    alias log_warning_msg=echo
-    alias log_end_msg=echo
+    alias log_begin_msg="echo -n"
 fi
+log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
 
 # Call chain:
 #  * if-up.d executes /usr/sbin/epoptes-client
@@ -177,8 +175,6 @@ fi
 # The current epoptes-client is excluded because it starts with /bin/sh.
 pkill -U $UID -f '^epoptes-client$'
 
-log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
-
 # Remember the stdout descriptor to use it in the second phase.
 # stdio will be redirected to the server, but stderr will be kept in the
 # local console, to avoid possible noise from applications started in the
@@ -187,8 +183,8 @@ log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
 exec 5>&1
 
 # Bash supports launching a program with a different zeroth argument,
-# this makes pgrep'ping for epoptes-client easier.
-cmdline='bash -c "exec -a epoptes-client sh"'
+# this makes pgrep'ing for epoptes-client easier.
+cmdline='bash -c \"exec -a epoptes-client sh\"'
 
 # Connect to the server, or keep retrying until the server gets online
 # (for standalone workstations booted before the server).
