@@ -17,8 +17,12 @@ DESC="Epoptes client LTSP helper"
 
 test -x "$DAEMON" || exit 0
 
-# If this isn't an LTSP chroot, exit
+# ltsp-build-client in LTSP versions prior to 5.3 used an RC_WHITELIST which
+# resulted in the network service being deleted, and the clients not getting
+# an if-up event.
+# So we only need to run on LTSP chroots earlier than 5.3.
 test -f /etc/ltsp_chroot || exit 0
+grep -Eqsw "init=/sbin/init-ltsp|ltsp" /proc/cmdline && exit 0
 
 case "$1" in
     start|restart|force-reload)
