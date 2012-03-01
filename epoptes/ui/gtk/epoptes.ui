@@ -270,7 +270,7 @@
                           <object class="GtkMenu" id="menu15">
                             <property name="visible">True</property>
                             <child>
-                              <object class="GtkRadioMenuItem" id="miClientViewHostUser">
+                              <object class="GtkRadioMenuItem" id="miClientsViewHostUser">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Computer (user)</property>
                                 <property name="use_underline">True</property>

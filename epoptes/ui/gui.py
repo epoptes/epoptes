@@ -124,6 +124,12 @@ class EpoptesGui(object):
             self.gstore.append([grp.name, grp, True])
         
         self.fillIconView(self.getSelectedGroup()[1])
+        if config.settings.has_option('GUI', 'selected_group'):
+            path = config.settings.getint('GUI', 'selected_group')
+            self.gtree.get_selection().select_path(path)
+        if config.settings.has_option('GUI', 'label'):
+            label = config.settings.getint('GUI', 'label')
+            self.get(config.labels[label]).set_active(True)
 
     #################################################################
     #                       Callback functions                      #
@@ -149,8 +155,27 @@ class EpoptesGui(object):
 
         Close main window
         """
+        sel_group = self.gstore.get_path(self.getSelectedGroup()[0])[0]
         self.gstore.remove(self.gstore.get_iter(self.default_group.ref.get_path()))
         config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'), self.gstore)
+        settings = config.settings
+        if not settings.has_section('GUI'):
+            settings.add_section('GUI')        
+        if self.get('miClientsViewHostUser').get_active():
+            label = 0
+        elif self.get('miClientsViewHost').get_active():
+            label = 1
+        elif self.get('miClientsViewUserHost').get_active():
+            label = 2
+        elif self.get('miClientsViewUser').get_active():
+            label = 3
+        
+        settings.set('GUI', 'selected_group', sel_group)
+        settings.set('GUI', 'label', label)
+        f = open(os.path.expanduser('~/.config/epoptes/settings'), 'wb')
+        settings.write(f)
+        f.close()
+        
         if not self.vncserver is None:
             self.vncserver.kill()
         if not self.vncviewer is None:

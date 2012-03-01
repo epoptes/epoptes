@@ -78,7 +78,7 @@ def read_ini_file(filename):
 def write_ini_file(filename, contents):
     """Write contents to a ConfigParser file. Return True if successful.
     """
-    conf = ConfigParser.ConfigParser()
+    conf = contents
     try:
         conf.write(filename)
         return True
@@ -209,6 +209,15 @@ if os.getuid() != 0:
     if settings.has_option('GUI', 'thumbnails_height'):
         user['thumbnails_height'] = settings.getint('GUI', 'thumbnails_height')
     history = sorted(list(set(read_shell_file(os.path.join(path, 'history')))))
+    
+    labels = {'miClientsViewHostUser' : 0,
+              'miClientsViewHost' : 1,
+              'miClientsViewUserHost' : 2,
+              'miClientsViewUser' : 3,
+              0 : 'miClientsViewHostUser',
+              1 : 'miClientsViewHost',
+              2 : 'miClientsViewUserHost',
+              3 : 'miClientsViewUser'}
 
 
 # For debugging reasons, if ran from command line, dump the config
