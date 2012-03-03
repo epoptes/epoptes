@@ -91,17 +91,16 @@ class DelimitedBashReceiver(protocol.Protocol):
     def connectionMade(self):
         peer = self.transport.getPeer()
         
-        self.handle = None
+        self.handle = u"%s:%s" % (peer.host, peer.port)
         d = self.command(self.factory.startupCommands.encode("utf-8"))
         
         def forwardConnection(result):
-            self.handle = u"%s:%s" % (peer.host, peer.port)
             exchange.clientConnected(self.handle, self)
             self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
         
         def killConnection(error):
-            print "Error sending the client functions:", error
-            self.transport.loseConnection()
+            print "Error: Could not send the startup functions to the client:", error
+            self._loseConnection()
         
         d.addCallback(forwardConnection)
         d.addErrback(killConnection)
@@ -113,9 +112,15 @@ class DelimitedBashReceiver(protocol.Protocol):
         try: self.pingTimer.cancel()
         except Exception: pass
 
-        if not self.handle is None:
+        if self.handle in exchange.knownClients:
             exchange.clientDisconnected(self.handle)
-
+    
+    def _loseConnection(self):
+        '''Inform the GUIs immediately about a disconnect
+        in case transport.loseConnection won't do it.'''
+        if self.handle in exchange.knownClients:
+            exchange.clientDisconnected(self.handle)
+        self.transport.loseConnection()
 
     def dataReceived(self, data):
         self.buffer.seek(0, os.SEEK_END)
@@ -200,7 +205,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def pingTimedOut(self):
         print "Ping timeout!"
-        self.transport.loseConnection()
+        self._loseConnection()
 
 
 class DelimitedBashReceiverFactory(protocol.ServerFactory):
