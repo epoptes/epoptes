@@ -1,3 +1,25 @@
+epoptes (0.4.4-1) unstable; urgency=low
+
+  [ Alkis Georgopoulos ]
+  * screenshot: exit cleanly when X isn't available.
+  * Handle late connectionLost events better.
+  * Replace the View menu with the Labels menu.
+  * Ability to show real names instead of usernames.
+  * Don't use epoptes-client.init on LTSP 5.3.
+  * Get the active display when executing root commands.
+  * Remember more user settings (labels, history).
+  * Don't hang on close, on Ubuntu 12.04.
+  * Mark epoptes as the owner of /etc/epoptes (Closes: #661083).
+  * Extract shell code from python scripts for maintainability.
+  * Don't crash when clients with a bad certificate connect (LP: #940114).
+  * Add Spanish and Swedish translations.
+    Many thanks to the translators!
+
+  [ Vagrant Cascadian ]
+  * Update Standards-Version to 3.9.3, no changes necessary. 
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 04 Mar 2012 13:58:00 -0800
+
 epoptes (0.4.3-0ubuntu1) precise; urgency=low
 
   * New icons!
