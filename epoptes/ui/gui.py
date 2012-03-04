@@ -217,7 +217,7 @@ class EpoptesGui(object):
 
     def logout(self, widget):
         """Log off the users of the selected clients."""
-        self.execOnSelectedClients("logoff",
+        self.execOnSelectedClients("logout",
             warn=_('Are you sure you want to log off all the users?'))
 
 
@@ -464,7 +464,7 @@ class EpoptesGui(object):
             
             elif handle in client.users:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
-                    logoutNotify(client.users[handle], client.get_name())
+                    logoutNotify(client.users[handle]['uname'], client.get_name())
                 del client.users[handle]
                 determine_offline(client)
                 break
