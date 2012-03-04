@@ -33,6 +33,8 @@ else:
     exit(1)
 
 root = gdk.get_default_root_window()
+if root is None:
+    exit(1)
 r_width, r_height = root.get_size()
 
 pmap = gdk.Pixmap(root, width, height)
