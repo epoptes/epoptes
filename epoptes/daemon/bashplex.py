@@ -26,7 +26,7 @@
 import os
 import uuid
 
-from twisted.internet import reactor, protocol, defer
+from twisted.internet import reactor, protocol, defer, error
 
 try:
     from cStringIO import StringIO
@@ -51,6 +51,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         self.buffer = StringIO()
         self.pingTimer = None
         self.pingTimeout = None
+        self.connectionLostCalled = False
 
 
     def getDelimiter(self):
@@ -104,8 +105,15 @@ class DelimitedBashReceiver(protocol.Protocol):
         
         d.addCallback(forwardConnection)
         d.addErrback(killConnection)
-        
+
+
     def connectionLost(self, reason):
+        # May be called twice, from pingTimedOut() and from loseConnection()
+        if self.connectionLostCalled:
+            return
+        else:
+            self.connectionLostCalled = True
+
         try: self.pingTimeout.cancel()
         except Exception: pass
 
@@ -114,13 +122,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
         if self.handle in exchange.knownClients:
             exchange.clientDisconnected(self.handle)
-    
-    def _loseConnection(self):
-        '''Inform the GUIs immediately about a disconnect
-        in case transport.loseConnection won't do it.'''
-        if self.handle in exchange.knownClients:
-            exchange.clientDisconnected(self.handle)
-        self.transport.loseConnection()
+
 
     def dataReceived(self, data):
         self.buffer.seek(0, os.SEEK_END)
@@ -164,6 +166,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
             self.checkForFurtherResponses()
 
+
     def checkForFurtherResponses(self):
         # See if there are more responses in the buffer. 
         # The theory here is that if we got one already, we have less than one
@@ -188,24 +191,23 @@ class DelimitedBashReceiver(protocol.Protocol):
 
 
     def ping(self):
-        if self.pingTimeout is not None:
-            return
-
-        # Epoptes-client isn't registered as an X session client, and it doesn't
-        # exit automatically, so tell it to exit as soon as X is unavailable.
         self.command('ping').addCallback(self.pingResponse)
         self.pingTimeout = reactor.callLater(self.factory.pingTimeout, 
                                              self.pingTimedOut)
 
     def pingResponse(self, _):
+        # In 10 secs timeouts occur, so ignore responses that arrive later
+        if self.connectionLostCalled:
+            return
         self.pingTimeout.cancel()
-        self.pingTimeout = None
         self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
 
 
     def pingTimedOut(self):
         print "Ping timeout!"
-        self._loseConnection()
+        self.transport.loseConnection()
+        # loseConnection() may take time, inform the GUI now!
+        self.connectionLost(error.TimeoutError())
 
 
 class DelimitedBashReceiverFactory(protocol.ServerFactory):
