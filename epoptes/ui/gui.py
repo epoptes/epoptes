@@ -212,7 +212,7 @@ class EpoptesGui(object):
         """Reboot the selected clients."""
         # FIXME: (Not) waiting on purpose to cause some delay to avoid 
         # any power strain.
-        self.execOnSelectedClients("logout", root="auto",
+        self.execOnSelectedClients("reboot", root="auto",
             warn=_('Are you sure you want to reboot all the computers?'))
 
     def logout(self, widget):
