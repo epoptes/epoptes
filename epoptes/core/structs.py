@@ -56,8 +56,8 @@ class Client:
     def set_name(self, name):
         self.alias = name
         
-    def add_user(self, name, handle):
-        self.users[handle] = name
+    def add_user(self, username, realname, handle):
+        self.users[handle] = {'uname' : username, 'rname' : realname}
 
 
 class Group:

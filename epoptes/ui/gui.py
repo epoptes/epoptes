@@ -132,6 +132,9 @@ class EpoptesGui(object):
                 self.get(config.settings.get('GUI', 'label')).set_active(True)
             except:
                 pass
+        self.showRealNames = False
+        if config.settings.has_option('GUI', 'showRealNames'):
+            self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
 
     #################################################################
     #                       Callback functions                      #
@@ -173,6 +176,7 @@ class EpoptesGui(object):
             label = 3
         
         settings.set('GUI', 'selected_group', sel_group)
+        settings.set('GUI', 'showRealNames', self.showRealNames)
         f = open(os.path.expanduser('~/.config/epoptes/settings'), 'wb')
         settings.write(f)
         f.close()
@@ -187,7 +191,9 @@ class EpoptesGui(object):
             
     def toggleRealNames(self, widget=None):
         """Show/hide the real names of the users instead of the usernames"""
-        pass # Implement me
+        self.showRealNames = widget.get_active()
+        for row in self.cstore:            
+            self.setLabel(row)
 
     def wake_on_lan(self, widget):
         """Boot the selected computers with WOL"""
@@ -498,9 +504,13 @@ class EpoptesGui(object):
         """Properly add a Client class instance to the clients iconview."""
         # If there are one or more users on client, add a new iconview entry
         # for each one of them.
+        
+        label = 'uname'
+        if self.showRealNames:
+                label = 'rname'
         if client.users:
             for hsession, user in client.users.iteritems():
-                self.cstore.append([self.calculateLabel(client, user), self.imagetypes[client.type], client, hsession])
+                self.cstore.append([self.calculateLabel(client, user[label]), self.imagetypes[client.type], client, hsession])
                 self.askScreenshot(hsession, True)
         else:
             self.cstore.append([self.calculateLabel(client), self.imagetypes[client.type], client, ''])
@@ -537,9 +547,9 @@ class EpoptesGui(object):
             for line in r.strip().split('\n'):
                 key, value = line.split('=', 1)
                 info[key.strip()] = value.strip()
-            user, host, ip, mac, type, uid, version = \
+            user, host, ip, mac, type, uid, version, name = \
              info['user'], info['hostname'], info['ip'], \
-             info['mac'], info['type'], info['uid'], info['version']
+             info['mac'], info['type'], info['uid'], info['version'], info['name']
         except:
             print "Can't extract client information, won't add this client"
             return
@@ -589,7 +599,7 @@ which is incompatible with the current epoptes version.\
         else:
             # This is a user epoptes-client
             print '* I am a user client, will add', user, 'in my list'
-            client.add_user(user, handle)
+            client.add_user(user, name, handle)
             if not already and (sel_group.has_client(client) or self.isDefaultGroupSelected()):
                 loginNotify(user, host)
         
@@ -599,7 +609,10 @@ which is incompatible with the current epoptes version.\
     def setLabel(self, row):
         inst = row[C_INSTANCE]
         if row[C_SESSION_HANDLE]:            
-            user = row[C_INSTANCE].users[row[C_SESSION_HANDLE]]
+            label = 'uname'
+            if self.showRealNames:
+                label = 'rname'
+            user = row[C_INSTANCE].users[row[C_SESSION_HANDLE]][label]
         else:
             user = ''
         row[C_LABEL] = self.calculateLabel(inst, user)
@@ -623,6 +636,9 @@ which is incompatible with the current epoptes version.\
                 if user_pos == 1:
                     label += " (%s)" % username
             return label
+    
+    def getShowRealNames(self):
+        return self.get('')
     
     def getAllScreenshots(self):
         # TODO: Ask for screenshots for every client (Look diff at Rev:326)

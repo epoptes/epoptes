@@ -328,6 +328,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckMenuItem" id="mcShowRealNames">
+                        <property name="visible">True</property>
                         <property name="label" translatable="yes">Show real names</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="toggleRealNames"/>
