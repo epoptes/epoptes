@@ -34,6 +34,10 @@ get = lambda obj: wTree.get_object(obj)
 store = gtk.ListStore(str)
 
 def startExecuteCmdDlg():
+    """Show the execute commands dialog and return the inserted command.
+
+    If the dialog was closed, return an empty string.
+    """
     wTree.add_from_file('executeCommand.ui')
     dlg = get('execDialog')
     combo = get('combobox')
@@ -53,15 +57,15 @@ def startExecuteCmdDlg():
     for cmd in config.history:
         store.append([cmd])
     
+    cmd = ''
     reply = dlg.run()
     if reply == 1:
         cmd = combo.child.get_text().strip()
-        reply = cmd
         if cmd in config.history:
             config.history.remove(cmd)
         config.history.insert(0, cmd)
+        config.write_history()
     dlg.destroy()
-    config.write_history()
     
     return cmd
 

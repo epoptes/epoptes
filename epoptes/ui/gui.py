@@ -284,7 +284,7 @@ class EpoptesGui(object):
     def execDialog(self, widget):
         cmd = startExecuteCmdDlg()
         # If Cancel or Close were clicked
-        if cmd == 0 or cmd == -4:
+        if cmd == '':
             return
         as_root = False
         if cmd[:5] == 'sudo ':
