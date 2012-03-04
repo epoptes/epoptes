@@ -36,14 +36,11 @@ def read_plain_file(filename):
     """Return the whole contents of a plain text file into a string list.
 
     If the file doesn't exist or isn't readable, return an empty list.
-    Also sort the contents and merge duplicate entries.
     """
-
-    if not os.path.isfile(filename):
-        return []
+    
     try:
         f = open(filename, 'r')
-        contents = [ x.strip() for x in f.readlines()]
+        contents = [x.strip() for x in f.readlines()]
         f.close()
         return contents
     except:
@@ -58,7 +55,7 @@ def write_plain_file(filename, contents):
         if not os.path.isdir(path):
             os.mkdir(path)
         f = open(filename, 'w')
-        f.write(writelines([ x + '\n' for x in contents ]))
+        f.write('\n'.join(contents))
         return True
     except:
         return False
@@ -177,12 +174,7 @@ def save_groups(filename, model):
     f.close()
 
 def write_history():
-    try:
-        f = open(os.path.join(path, 'history'), 'w')
-        f.write('\n'.join(history))
-        f.close()
-    except:
-        pass
+    write_plain_file(os.path.join(path, 'history'), history)
 
 
 # The system settings are shared with epoptes-clients, that's why the caps.
@@ -217,10 +209,8 @@ if os.getuid() != 0:
         user['thumbnails_width'] = settings.getint('GUI', 'thumbnails_width')
     if settings.has_option('GUI', 'thumbnails_height'):
         user['thumbnails_height'] = settings.getint('GUI', 'thumbnails_height')
-    f = open(os.path.join(path, 'history'))
-    history = f.readlines()
-    history = [cmd.strip() for cmd in history if cmd.strip() != '']
-    f.close()
+    
+    history = read_plain_file(os.path.join(path, 'history'))
 
 # For debugging reasons, if ran from command line, dump the config
 if __name__ == '__main__':

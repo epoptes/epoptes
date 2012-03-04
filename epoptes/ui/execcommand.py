@@ -56,6 +56,7 @@ def startExecuteCmdDlg():
     reply = dlg.run()
     if reply == 1:
         cmd = combo.child.get_text().strip()
+        reply = cmd
         if cmd in config.history:
             config.history.remove(cmd)
         config.history.insert(0, cmd)
