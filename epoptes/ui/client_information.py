@@ -56,7 +56,10 @@ class ClientInformation:
             set('client_type', inst.type)
             user = '--'
             if client[C_SESSION_HANDLE]:
-                user = inst.users[client[C_SESSION_HANDLE]]
+                uname, realname = inst.users[client[C_SESSION_HANDLE]].values()
+                user = uname
+                if realname:
+                    user += ' (%s)' %realname
             set('client_online_user', user)
             self.dlg.set_title(_('Properties of %s') %inst.get_name())
         

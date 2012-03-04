@@ -255,76 +255,54 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="view">
+              <object class="GtkMenuItem" id="miClientView">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_View</property>
-                <property name="use_underline">True</property>
+                <property name="label" translatable="yes">Labels</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu6">
+                  <object class="GtkMenu" id="menu15">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkMenuItem" id="miClientView">
+                      <object class="GtkRadioMenuItem" id="miClientsViewHostUser">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Labels</property>
-                        <child type="submenu">
-                          <object class="GtkMenu" id="menu15">
-                            <property name="visible">True</property>
-                            <child>
-                              <object class="GtkRadioMenuItem" id="miClientsViewHostUser">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Computer (user)</property>
-                                <property name="use_underline">True</property>
-                                <property name="active">True</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">miClientsViewUser</property>
-                                <signal name="toggled" handler="on_cViewHU_toggled"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkRadioMenuItem" id="miClientsViewHost">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Computer</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">miClientsViewUser</property>
-                                <signal name="toggled" handler="on_cViewH_toggled"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkRadioMenuItem" id="miClientsViewUserHost">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">User (computer)</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">miClientsViewUser</property>
-                                <signal name="toggled" handler="on_cViewUH_toggled"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkRadioMenuItem" id="miClientsViewUser">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">User</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_as_radio">True</property>
-                                <signal name="toggled" handler="on_cViewU_toggled"/>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkSeparatorMenuItem" id="separatormenuitem5"/>
-                            </child>
-                            <child>
-                              <object class="GtkCheckMenuItem" id="miClientViewRealNames">
-                                <property name="sensitive">False</property>
-                                <property name="label" translatable="yes">Show real names</property>
-                                <property name="use_underline">True</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
+                        <property name="label" translatable="yes">Computer (user)</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_as_radio">True</property>
+                        <property name="group">miClientsViewUser</property>
+                        <signal name="toggled" handler="on_cViewHU_toggled"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem6"/>
+                      <object class="GtkRadioMenuItem" id="miClientsViewHost">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Computer</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_as_radio">True</property>
+                        <property name="group">miClientsViewUser</property>
+                        <signal name="toggled" handler="on_cViewH_toggled"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkRadioMenuItem" id="miClientsViewUserHost">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">User (computer)</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_as_radio">True</property>
+                        <property name="group">miClientsViewUser</property>
+                        <signal name="toggled" handler="on_cViewUH_toggled"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkRadioMenuItem" id="miClientsViewUser">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">User</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_as_radio">True</property>
+                        <signal name="toggled" handler="on_cViewU_toggled"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem5"/>
                     </child>
                     <child>
                       <object class="GtkCheckMenuItem" id="mcShowRealNames">
