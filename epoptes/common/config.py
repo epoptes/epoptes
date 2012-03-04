@@ -176,6 +176,15 @@ def save_groups(filename, model):
     f.write(json.dumps(data, indent=2))
     f.close()
 
+def write_history():
+    try:
+        f = open(os.path.join(path, 'history'), 'w')
+        f.write('\n'.join(history))
+        f.close()
+    except:
+        pass
+
+
 # The system settings are shared with epoptes-clients, that's why the caps.
 system = read_shell_file('/etc/default/epoptes')
 # TODO: check if the types, e.g. PORT=int, may cause problems.
@@ -208,8 +217,10 @@ if os.getuid() != 0:
         user['thumbnails_width'] = settings.getint('GUI', 'thumbnails_width')
     if settings.has_option('GUI', 'thumbnails_height'):
         user['thumbnails_height'] = settings.getint('GUI', 'thumbnails_height')
-    history = sorted(list(set(read_shell_file(os.path.join(path, 'history')))))
-
+    f = open(os.path.join(path, 'history'))
+    history = f.readlines()
+    history = [cmd.strip() for cmd in history if cmd.strip() != '']
+    f.close()
 
 # For debugging reasons, if ran from command line, dump the config
 if __name__ == '__main__':

@@ -41,25 +41,31 @@ def startExecuteCmdDlg():
     completion = get('entrycompletion')
     entry.set_completion(completion)
     completion.set_model(store)
-    ex = get('execute')
     entry.set_activates_default(True)
     combo.set_model(store)
     combo.set_text_column(0)
-
+    
+    entry.connect('changed', text_changed)
+    
     combo = get('combobox')
     store.clear()
-    #TODO: remove
-    config.history = []
-    for i in config.history:
-        store.append([i.strip()])
-
+    
+    for cmd in config.history:
+        store.append([cmd])
+    
     reply = dlg.run()
     if reply == 1:
         cmd = combo.child.get_text().strip()
-        reply = cmd
         if cmd in config.history:
             config.history.remove(cmd)
         config.history.insert(0, cmd)
-    dlg.hide()
+    dlg.destroy()
+    config.write_history()
+    
+    return cmd
 
-    return reply
+def text_changed(editable):
+    if editable.get_text().strip():
+        get('execute').set_sensitive(True)
+    else:
+        get('execute').set_sensitive(False)
