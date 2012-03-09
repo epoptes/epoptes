@@ -210,7 +210,7 @@ stop_screensaver() {
 # $1 = port.
 # $2 = fullscreen.
 receive_broadcast() {
-    stop_transmissions
+    stop_receptions
     export $(./get-display)
     xset dpms force on
     EPOPTES_VNCVIEWER_PID=$(execute sh -c "
@@ -219,8 +219,8 @@ exec xvnc4viewer -Shared -ViewOnly ${2+-FullScreen -UseLocalCursor=0 -MenuKey F1
 }
 
 # The vnc clients should automatically exit when the server is killed.
-# Unfortunately, that isn't always true, so try to kill it anyway.
-stop_transmissions() {
+# Unfortunately, that isn't always true, so try to kill them anyway.
+stop_receptions() {
     test -n "$EPOPTES_VNCVIEWER_PID" && kill "$EPOPTES_VNCVIEWER_PID"
     unset EPOPTES_VNCVIEWER_PID
 }
