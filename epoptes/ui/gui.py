@@ -80,7 +80,7 @@ class EpoptesGui(object):
         self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
         self.standalone = gtk.gdk.pixbuf_new_from_file('images/standalone.svg')
         self.imagetypes = {'thin' : self.thin, 'fat' : self.fat,
-            'standalone' : self.standalone, 'server' : self.standalone, 'offline' : self.offline}
+            'standalone' : self.standalone, 'offline' : self.offline}
         
         self.wTree = gtk.Builder()
         self.wTree.add_from_file('epoptes.ui')

@@ -4,7 +4,7 @@
 # Connects to a remote server and offers it a local shell.
 # Usage: epoptes [server] [port]
 #
-# Copyright (C) 2010, 2012 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010-2012 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,40 +37,68 @@ die() {
 }
 
 # The "boolean_is_true" name is used as a sentinel that prevents ltsp_config
-# from sourcing ltsp_common_function. So we're using a different name.
+# from sourcing ltsp_common_functions. So we're using a different name.
 my_boolean_is_true() {
-    case $1 in
+    case "$1" in
        # match all cases of true|y|yes
        [Tt][Rr][Uu][Ee]|[Yy]|[Yy][Ee][Ss]) return 0 ;;
        *) return 1 ;;
     esac
 }
 
-# Returns true if we're in a chroot. Needs root access to work.
+# Return true if we're in a chroot.
 chrooted() {
-  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ]; then
-      # the devicenumber/inode pair of / is the same as that of /sbin/init's
-      # root, so we're *not* in a chroot and hence return false.
-      return 1
-  fi
-  return 0
+    # The result is cached in a variable with the same name as the function :P
+    test -n "$chrooted" && return "$chrooted"
+    test -n "$UID" || UID=$(id -u)
+    if [ "$UID" -gt 0 ]; then
+        chrooted=1
+    elif [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ]
+    then
+        # the devicenumber/inode pair of / is the same as that of /sbin/init's
+        # root, so we're *not* in a chroot and hence return false.
+        chrooted=1
+    else
+        chrooted=0
+    fi
+    return "$chrooted"
 }
 
 # Get $UID and $TYPE of the client, and the default $SERVER and $PORT.
 basic_info() {
     test -n "$UID" || UID=$(id -u)
 
-    if my_boolean_is_true "$LTSP_FATCLIENT" && [ -f /etc/ltsp_fat_chroot ]; then
+    # We temporarily need LTSP_CLIENT and LTSP_FATCLIENT to decide TYPE.
+    # Unfortunately, when epoptes-client is ran as a system service, they're
+    # not in our environment, and we need to source ltsp_config.
+    # But we don't want to pollute the environment with any of its other vars.
+    if [ "$UID" -eq 0 ] && [ -f /usr/share/ltsp/ltsp_config ] && ! chrooted &&
+        egrep -q 'ltsp|nfs|nbd' /proc/cmdline 2>/dev/null 
+    then
+        export $(
+            . /usr/share/ltsp/ltsp_config >/dev/null
+            echo "LTSP_CLIENT=$LTSP_CLIENT"
+            echo "LTSP_FATCLIENT=$LTSP_FATCLIENT")
+        # LTSP_CLIENT may not be available in system sesssions, if so fake it
+        LTSP_CLIENT=${LTSP_CLIENT:-127.0.0.1}
+    fi
+
+    # LTSP_FATCLIENT may not be available in user sessions, autodetect it
+    if [ -n "$LTSP_CLIENT" ] && [ -z "$LTSP_FATCLIENT" ] &&
+        [ "$UID" -gt 0 ] && [ -x /usr/bin/getltscfg ]
+    then
+        LTSP_FATCLIENT=True
+    fi
+
+    if my_boolean_is_true "$LTSP_FATCLIENT"; then
         TYPE="fat"
-    elif [ -n "$LTSP_CLIENT" ] || [ -f /etc/ltsp_chroot ]; then
+    elif [ -n "$LTSP_CLIENT" ]; then
         TYPE="thin"
-    elif [ -x /usr/bin/epoptes ]; then
-        TYPE="server"
     else
         TYPE="standalone"
     fi
 
-    if [ "$TYPE" = "thin" ] && ( [ "$UID" -gt 0 ] || chrooted ); then
+    if ( [ "$TYPE" = "thin" ] && [ "$UID" -gt 0 ] ) || chrooted; then
         SERVER=localhost
     else
         SERVER=server
@@ -122,11 +150,6 @@ esac
 # When called from /etc/xdg/autostart, /sbin is not in the system path.
 PATH="$PATH:/sbin:/usr/sbin"
 
-# Ensure that the LTSP defaults are there (for $LTSP_FATCLIENT etc)
-if [ -f /usr/share/ltsp/ltsp_config ]; then
-    . /usr/share/ltsp/ltsp_config
-fi
-
 basic_info
 # The configuration file overrides the default values
 if [ -f /etc/default/epoptes-client ]; then
@@ -139,9 +162,10 @@ export PORT=${2:-$PORT}
 # Provide an easy way to fetch the server certificate
 test -n "$need_certificate" && fetch_certificate
 
-# We don't want epoptes-client root service running on the LTSP server
-if [ $UID -eq 0 ] && \
-    ( [ $TYPE = "server" ] || ( [ $TYPE = "thin" ] && chrooted ) ); then
+# We don't want the epoptes-client system service running on the epoptes server
+if ( [ $UID -eq 0 ] && [ $TYPE = "standalone" ] && [ -x /usr/bin/epoptes ] ) ||
+    chrooted
+then
     exit 0
 fi
 
