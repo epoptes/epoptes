@@ -176,16 +176,9 @@ unmute_sound() {
 # $1 = text.
 # $2 = dialog type, one of "info", "warning" or "error".
 message() {
-    local type
-
-    type=${2:-info}
-    if [ -x /usr/bin/zenity ]; then
-        execute zenity "--$type" --text "$1"
-    elif [ -x /usr/bin/xmessage ]; then
-        execute xmessage -center "$1"
-    else
-        echo "$type: $1" >&2
-    fi
+    python -c "import gtk; dlg = gtk.MessageDialog(type=$2, 
+                  buttons=gtk.BUTTONS_CLOSE, message_format='''$1'''); \
+               dlg.set_property('use-markup', True); dlg.run(); dlg.destroy()"
 }
 
 # Connect to the server to be monitored.

@@ -301,15 +301,13 @@ class EpoptesGui(object):
         if cmd[:5] == 'sudo ':
             em = EM_SYSTEM
             cmd = cmd[4:]
+
         self.execOnSelectedClients('execute ' + cmd, mode=em)
-
-
-    ## FIXME FIXME: Don't use zenity, use the message command instead...
+    
     def sendMessageDialog(self, widget):
-        cmd = startSendMessageDlg()
-        if cmd != "": # Command is 'valid', execute on selected clients 
-            self.execOnSelectedClients('execute ' + cmd)
-
+        msg = startSendMessageDlg()
+        if msg:
+            self.execOnSelectedClients('message %s %s' %msg)
     
     ## FIXME / FIXUS: Should we allow it?
     def openTerminal(self, em):

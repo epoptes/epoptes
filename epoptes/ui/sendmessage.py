@@ -35,10 +35,8 @@ pygtk.require('2.0')
 wTree = gtk.Builder()
 get = lambda obj: wTree.get_object(obj)
 
-def quote_message( text):
-
+def quote_message(text):
     """
-
     Puts single quotes around text, double quotes around any single
     quotes within it, and escapes any pango special characters so that
     text can be passed as a shell parameter to zenity
@@ -46,29 +44,8 @@ def quote_message( text):
 
     return "'%s'" % markup_escape_text(text.replace("'", "'\"'\"'"))
 
-def makeZenityCmd( msg_type_id, text=""):
-
-    """
-
-    Given the message's type id and the text of the
-    message construct the appropriate command
-    e.g.: zenity --warning --text="Do not press any key"
-    """
-
-    c = constants.Constants()
-
-    if msg_type_id == 0: cmd = c.ZENITY_INFO
-    elif msg_type_id == 1: cmd = c.ZENITY_WARNING
-    elif msg_type_id == 2: cmd = c.ZENITY_ERROR
-
-    if len(text) > 0: cmd += "--text=" + quote_message(text)
-
-    return cmd
-
 def changed_cb(combobox):
-
     """
-
     Callback function that serves for changing
     the icon according to the message type selected
     from the combobox
@@ -87,12 +64,11 @@ def changed_cb(combobox):
                                                 gtk.ICON_SIZE_DIALOG)
 
 def startSendMessageDlg():
-
     """
-
     Retrieve dialog window from glade format and
     according to type of message requested to send
-    return the appropriate command
+    Returns: a 2-tuple containing the message text
+    and the message type.
     """
 
     wTree.add_from_file('sendMessage.ui')
@@ -104,24 +80,21 @@ def startSendMessageDlg():
     textView = get('Message')
 
     reply = dlg.run()
-
-    # Get active type of message requested
-    msg_type_id = msgTypeCombo.get_active()
-    cmd = ""
+    msg = ()
+    msg_types = {0 : 0, 1 : 1, 2 : 3}
 
     if reply == 1:
-
-        # User pressed okey, according to msg
-        # type construct the appropriate command
         buf = textView.get_buffer()
         s = buf.get_start_iter()
         e = buf.get_end_iter()
-        text = textView.get_buffer().get_text(s,e)
-
-        cmd = makeZenityCmd(msg_type_id, text)
+        text = quote_message(textView.get_buffer().get_text(s,e))
+        
+        # Get active type of message requested
+        msg_type = msg_types[msgTypeCombo.get_active()]
+        msg = (text, msg_type)
 
     # Hide dialog after any kind of function
     dlg.hide()
 
     # Return the command to be executed on clients
-    return cmd
+    return msg
