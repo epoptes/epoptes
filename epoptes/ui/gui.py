@@ -263,16 +263,23 @@ class EpoptesGui(object):
 
     def _broadcastScreen(self, fullscreen=''):
         if self.vncserver is None:
+            import random
+            import string
+            pwdfile=os.path.expanduser('~/.config/epoptes/vncpasswd')
+            pwd=''.join(random.sample(string.letters + string.digits, 8))
+            subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
+            f=open(pwdfile)
+            pwd=f.read()
+            f.close()
+            self.pwd=''.join('\\%o' % ord(c) for c in pwd)
             self.vncport = self.findUnusedPort()
-            # TODO: use a password instead of -allow
             self.vncserver = subprocess.Popen(['x11vnc', '-noshm', '-nopw',
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
-                '-24to32', '-rfbport', str(self.vncport), '-allow',
-                '127.,192.168.,10.,169.254.' ])
+                '-24to32', '-rfbport', str(self.vncport), '-rfbauth', pwdfile])
         self.execOnSelectedClients('stop_screensaver',
             mode=EM_SYSTEM_AND_SESSION)
-        self.execOnSelectedClients('receive_broadcast %d %s' % (self.vncport,
-            fullscreen), mode=EM_SYSTEM_OR_SESSION)
+        self.execOnSelectedClients("receive_broadcast %d '%s' %s" %
+            (self.vncport, self.pwd, fullscreen), mode=EM_SYSTEM_OR_SESSION)
 
 
     def broadcastScreen(self, widget):
@@ -301,14 +308,15 @@ class EpoptesGui(object):
         if cmd[:5] == 'sudo ':
             em = EM_SYSTEM
             cmd = cmd[4:]
-
         self.execOnSelectedClients('execute ' + cmd, mode=em)
-    
+
+
     def sendMessageDialog(self, widget):
         msg = startSendMessageDlg()
         if msg:
             self.execOnSelectedClients('message %s %s' %msg)
-    
+
+
     ## FIXME / FIXUS: Should we allow it?
     def openTerminal(self, em):
         clients = self.getSelectedClients()

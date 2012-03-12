@@ -174,7 +174,7 @@ unmute_sound() {
 # Display some text to the user.
 # Parameters:
 # $1 = text.
-# $2 = dialog type, one of "info", "warning" or "error".
+# $2 = True/False, whether the text contains pango markup.
 message() {
     python -c "import gtk; dlg = gtk.MessageDialog(type=$2, 
                   buttons=gtk.BUTTONS_CLOSE, message_format='''$1'''); \
@@ -201,21 +201,27 @@ stop_screensaver() {
 # Receive a broadcasted screen from the server.
 # Parameters:
 # $1 = port.
-# $2 = fullscreen.
+# $2 = password (encrypted as in ~/.vnc/passwd and octal-escaped).
+# $3 = fullscreen.
 receive_broadcast() {
     stop_receptions
     export $(./get-display)
     xset dpms force on
-    EPOPTES_VNCVIEWER_PID=$(execute sh -c "
-sleep 0.$(($(hexdump -e \"%d\" -n 2 /dev/urandom) % 50 + 50)) 
-exec xvnc4viewer -Shared -ViewOnly ${2+-FullScreen -UseLocalCursor=0 -MenuKey F13} $SERVER:$1")
+    printf "$2" | {
+        sleep 0.$(($(hexdump -e \"%d\" -n 2 /dev/urandom) % 50 + 50))
+        exec xvnc4viewer -Shared -ViewOnly -passwd /dev/stdin \
+            ${3+-FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
+    } >/dev/null 2>&1 &
+    EPOPTES_VNCVIEWER_PID="$!"
 }
 
 # The vnc clients should automatically exit when the server is killed.
 # Unfortunately, that isn't always true, so try to kill them anyway.
 stop_receptions() {
-    test -n "$EPOPTES_VNCVIEWER_PID" && kill "$EPOPTES_VNCVIEWER_PID"
-    unset EPOPTES_VNCVIEWER_PID
+    if [ -n "$EPOPTES_VNCVIEWER_PID" ]; then
+        kill "$EPOPTES_VNCVIEWER_PID"
+        unset EPOPTES_VNCVIEWER_PID
+    fi
 }
 
 # Open a root terminal inside the X session.
