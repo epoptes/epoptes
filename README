@@ -1,6 +1,6 @@
 Epoptes
 =============
 
-See the manpage: epoptes(8).
+See the manpage: epoptes(1).
 
- $ man 8 epoptes
+ $ man 1 epoptes
