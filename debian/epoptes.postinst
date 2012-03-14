@@ -14,6 +14,7 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+# $1 = version of the package being upgraded.
 install() {
     if [ -f /etc/default/epoptes ]; then
         . /etc/default/epoptes || true
@@ -23,21 +24,16 @@ install() {
         addgroup --system "$SOCKET_GROUP"
     fi
 
-    # "$1" is the version of the package being upgraded.
-    # The certificates from versions prior to 0.4 expired after a month. :(
-    if [ "$1" '<' '0.4' ] && [ -s /etc/epoptes/server.crt ] \
-        || ! [ -f /etc/epoptes/server.key ] || ! [ -f /etc/epoptes/server.crt ]
+    if ! [ -f /etc/epoptes/server.key ] || ! [ -f /etc/epoptes/server.crt ]
     then
-        mkdir -p /etc/epoptes
-        openssl req -batch -x509 -nodes -newkey rsa:1024 -days 1826 \
+        openssl req -batch -x509 -nodes -newkey rsa:1024 -days 3652 \
             -keyout /etc/epoptes/server.key -out /etc/epoptes/server.crt
         chmod 600 /etc/epoptes/server.key
         echo '
 A new OpenSSL certificate has been generated for epoptes.
 Please ensure that you transfer /etc/epoptes/server.crt
-to your clients by issuing `epoptes-client -c localhost`
-from your LTSP chroots or `epoptes-client -c server`
-from your standalone workstations.' >&2
+to your clients by issuing `epoptes-client -c` from your
+regular workstations or from your LTSP chroots.' >&2
     fi
 }
 
