@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-03-11 06:15+0200\n"
+"POT-Creation-Date: 2012-03-15 02:56+0200\n"
 "PO-Revision-Date: 2012-02-27 08:16+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-13 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-03-15 05:12+0000\n"
 "X-Generator: Launchpad (build 14933)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -208,7 +208,7 @@ msgstr "Root, fjärr"
 msgid "Send a message to the selected clients"
 msgstr "Skicka ett meddelande till markerade klienter"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Send message"
 msgstr "Skicka meddelande"
 
@@ -347,11 +347,11 @@ msgstr "Är du säker på att du vill starta om alla datorer?"
 msgid "Are you sure you want to log off all the users?"
 msgstr "Är du säker på att du vill logga ut alla användare?"
 
-#: ../epoptes/ui/gui.py:350
+#: ../epoptes/ui/gui.py:359
 msgid "The screen is locked by a system administrator."
 msgstr "Skärmen är låst av en systemadministratör."
 
-#: ../epoptes/ui/gui.py:379
+#: ../epoptes/ui/gui.py:388
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -359,13 +359,13 @@ msgstr ""
 "Är du säker på att du vill ta bort de markerade klienterna från gruppen "
 "\"%s\"?"
 
-#: ../epoptes/ui/gui.py:410
+#: ../epoptes/ui/gui.py:419
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Är du säker på att du vill ta bort gruppen \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:611
+#: ../epoptes/ui/gui.py:620
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -381,6 +381,10 @@ msgstr ""
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "URL, fil eller kommando att köra på markerade klienter:"
+
+#: ../epoptes/common/config.py:213
+msgid "Message from administrator"
+msgstr ""
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -444,12 +448,12 @@ msgid "Message text:"
 msgstr "Meddelandetext:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
-msgid "Message type:"
-msgstr "Meddelandetyp:"
+msgid "Message title:"
+msgstr ""
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "Select the type of the message"
-msgstr "Välj typ av meddelande"
+#: ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Use Pango markup"
+msgstr ""
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
@@ -517,3 +521,9 @@ msgstr "IP:"
 #: ../epoptes/ui/gtk/remote_assistance.ui.h:6
 msgid "Port:"
 msgstr "Port:"
+
+#~ msgid "Select the type of the message"
+#~ msgstr "Välj typ av meddelande"
+
+#~ msgid "Message type:"
+#~ msgstr "Meddelandetyp:"
