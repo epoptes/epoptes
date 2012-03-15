@@ -89,29 +89,58 @@ os=$OS
 EOF
 }
 
-# Execute a command in the background and print its pid.
-# Parameters:
-# $1..$N = The command and its parameters.
-execute() {
-    if [ $# -eq 1 ]; then
-        # If there's only one parameter, it might be a file or URL.
-        which -- "$1" >/dev/null || set "xdg-open" "$1"
+# Execute a command in the background and optionally print its pid.
+# For internal use. Parameters:
+# [-p]   = print the pid.
+# $1..$N = the command and its parameters.
+background() {
+    local print_pid
+
+    if [ "$1" = "-p" ]; then
+        print_pid=true
+        shift
     fi
 
     # On root clients, try to get the active DISPLAY, the command may need it.
     test "$UID" -eq 0 && export $(./get-display)
-
-    # Do some logging, either in ~/.xsession-errors or on the console.
-    echo "$(LANG=C date '+%c'), epoptes-client executing: $@" >&2
 
     # The command is ran on a subshell with stdin and stdout redirected to
     # /dev/null, so that it doesn't interfere with the output of other commands.
     # stderr isn't changed, i.e. ~/.xsession-errors will be used.
     ( "$@" 0</dev/null >/dev/null ) &
 
-    # Print the pid.
-    echo $!
+    test -n "$print_pid" && echo $!
 }
+
+# Execute a command in the background.
+# Parameters:
+# $1 = the command.
+execute() {
+    local launcher
+
+    # Do some logging, either in ~/.xsession-errors or on the console.
+    echo "$(LANG=C date '+%c'), epoptes-client executing: $1" >&2
+
+    case "$1" in
+        '')
+            echo "Can't execute an empty command."
+            ;;
+        www.|http:|https:|ftp:|file:|mailto:)
+            launcher="xdg-open"
+            ;;
+        *)
+            if [ -f "$1" ] && [ ! -x "$1" ]; then
+                launcher="xdg-open"
+            elif which -- "$1" >/dev/null; then
+                # Don't waste RAM for sh if it's just an executable.
+                launcher=""
+            fi
+    esac
+    # In all unhandled cases, run the command with sh -c.
+    launcher=${launcher-sh -c}
+    background $launcher "$1"
+}
+
 
 # Log out the connected user.
 logout() {
@@ -148,7 +177,7 @@ screenshot() {
 # $2 = message to display to the user.
 lock_screen() {
     test -n "$EPOPTES_LOCK_SCREEN_PID" && kill "$EPOPTES_LOCK_SCREEN_PID"
-    EPOPTES_LOCK_SCREEN_PID=$(execute ./lock-screen "$2")
+    EPOPTES_LOCK_SCREEN_PID=$(background ./lock-screen -p "$2")
 }
 
 # Unlock a locked screen.
@@ -163,12 +192,12 @@ unlock_screen() {
 # Parameters:
 # $1 = seconds to keep sound muted, 0 means forever - currently ignored.
 mute_sound() {
-    execute amixer -c 0 -q sset Master mute
+    background amixer -c 0 -q sset Master mute
 }
 
 # Unute the system sound.
 unmute_sound() {
-    execute amixer -c 0 -q sset Master unmute
+    background amixer -c 0 -q sset Master unmute
 }
 
 # Display some text to the user.
@@ -177,17 +206,17 @@ unmute_sound() {
 # $2 = title.
 # $3 = True/False, whether the text contains pango markup.
 message() {
-    execute ./message "$1" "$2" "$3"
+    background ./message "$1" "$2" "$3"
 }
 
 # Connect to the server to be monitored.
 get_monitored() {
-    execute x11vnc -noshm -24to32 -viewonly -connect_or_exit "$SERVER"
+    background x11vnc -noshm -24to32 -viewonly -connect_or_exit "$SERVER"
 }
 
 # Connect to the server to get assistance.
 get_assisted() {
-    execute x11vnc -noshm -24to32 -connect_or_exit "$SERVER"
+    background x11vnc -noshm -24to32 -connect_or_exit "$SERVER"
 }
 
 # Deactivate the screensaver, in order for the users to watch a broadcast.
@@ -243,7 +272,7 @@ stop_receptions() {
 
 # Open a root terminal inside the X session.
 root_term() {
-    execute xterm -e bash -l
+    background xterm -e bash -l
 }
 
 # Send a screen session to the server using socat.
@@ -257,7 +286,7 @@ remote_term() {
     else
         screen_params="-l"
     fi
-    execute sh -c "
+    background sh -c "
 cd
 sleep 1
 TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
