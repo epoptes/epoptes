@@ -3,56 +3,55 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkDialog" id="sendMessageDialog">
-    <property name="width_request">400</property>
-    <property name="height_request">247</property>
-    <property name="border_width">5</property>
+    <property name="border_width">6</property>
     <property name="title" translatable="yes">Send message</property>
+    <property name="modal">True</property>
     <property name="window_position">center</property>
+    <property name="default_width">450</property>
+    <property name="default_height">400</property>
     <property name="icon">images/usersgrp.png</property>
     <property name="type_hint">normal</property>
     <property name="has_separator">False</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox">
         <property name="visible">True</property>
-        <property name="spacing">2</property>
+        <property name="spacing">12</property>
         <child>
-          <object class="GtkTable" id="table">
+          <object class="GtkVBox" id="vbox1">
             <property name="visible">True</property>
-            <property name="n_rows">4</property>
-            <property name="n_columns">2</property>
-            <property name="column_spacing">2</property>
-            <property name="row_spacing">2</property>
+            <property name="spacing">6</property>
             <child>
-              <object class="GtkLabel" id="label">
+              <object class="GtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="xalign">0</property>
-                <property name="label" translatable="yes">Message type:</property>
+                <property name="label" translatable="yes">Message title:</property>
               </object>
               <packing>
-                <property name="y_options">GTK_FILL</property>
+                <property name="expand">False</property>
+                <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox" id="typeOfMessage">
+              <object class="GtkEntry" id="title_entry">
                 <property name="visible">True</property>
-                <property name="tooltip_text" translatable="yes">Select the type of the message</property>
-                <property name="model">sendMsg</property>
-                <property name="active">0</property>
-                <child>
-                  <object class="GtkCellRendererText" id="MsgType">
-                    <property name="width">300</property>
-                  </object>
-                  <attributes>
-                    <attribute name="text">0</attribute>
-                  </attributes>
-                </child>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
               </object>
               <packing>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
-                <property name="y_options">GTK_FILL</property>
+                <property name="expand">False</property>
+                <property name="position">1</property>
               </packing>
             </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vbox2">
+            <property name="visible">True</property>
+            <property name="spacing">6</property>
             <child>
               <object class="GtkLabel" id="sendMessageLabel">
                 <property name="visible">True</property>
@@ -60,25 +59,8 @@
                 <property name="label" translatable="yes">Message text:</property>
               </object>
               <packing>
-                <property name="right_attach">2</property>
-                <property name="top_attach">2</property>
-                <property name="bottom_attach">3</property>
-                <property name="y_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage" id="msgIcon">
-                <property name="visible">True</property>
-                <property name="yalign">1</property>
-                <property name="stock">gtk-dialog-info</property>
-                <property name="icon-size">6</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="bottom_attach">2</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options">GTK_SHRINK | GTK_FILL</property>
+                <property name="expand">False</property>
+                <property name="position">0</property>
               </packing>
             </child>
             <child>
@@ -89,8 +71,6 @@
                 <property name="vscrollbar_policy">automatic</property>
                 <child>
                   <object class="GtkTextView" id="Message">
-                    <property name="width_request">150</property>
-                    <property name="height_request">100</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">True</property>
@@ -101,14 +81,25 @@
                 </child>
               </object>
               <packing>
-                <property name="right_attach">2</property>
-                <property name="top_attach">3</property>
-                <property name="bottom_attach">4</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="use_markup_toggle">
+            <property name="label" translatable="yes">Use Pango markup</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child internal-child="action_area">

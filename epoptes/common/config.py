@@ -209,6 +209,10 @@ if os.getuid() != 0:
         user['thumbnails_width'] = settings.getint('GUI', 'thumbnails_width')
     if settings.has_option('GUI', 'thumbnails_height'):
         user['thumbnails_height'] = settings.getint('GUI', 'thumbnails_height')
+    if not settings.has_option('GUI', 'messages_default_title'):
+        settings.set('GUI', 'messages_default_title', _('Message from administrator'))
+    if not settings.has_option('GUI', 'messages_use_markup'):
+        settings.set('GUI', 'messages_use_markup', 'False')
     
     history = read_plain_file(os.path.join(path, 'history'))
 

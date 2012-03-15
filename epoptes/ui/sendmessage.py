@@ -26,42 +26,13 @@
 import gtk
 import os
 import pygtk
-from glib import markup_escape_text
 
-from epoptes.common import constants
+from epoptes.common import config
 
 pygtk.require('2.0')
 
 wTree = gtk.Builder()
 get = lambda obj: wTree.get_object(obj)
-
-def quote_message(text):
-    """
-    Puts single quotes around text, double quotes around any single
-    quotes within it, and escapes any pango special characters so that
-    text can be passed as a shell parameter to zenity
-    """
-
-    return "'%s'" % markup_escape_text(text.replace("'", "'\"'\"'"))
-
-def changed_cb(combobox):
-    """
-    Callback function that serves for changing
-    the icon according to the message type selected
-    from the combobox
-    """
-
-    icon = get('msgIcon')
-    msg_type_id = combobox.get_active()
-
-    # According to message type set the appropriate
-    # icon
-    if msg_type_id == 0: icon.set_from_stock(gtk.STOCK_DIALOG_INFO,
-                                                gtk.ICON_SIZE_DIALOG)
-    elif msg_type_id == 1: icon.set_from_stock(gtk.STOCK_DIALOG_WARNING,
-                                                gtk.ICON_SIZE_DIALOG)
-    elif msg_type_id == 2: icon.set_from_stock(gtk.STOCK_DIALOG_ERROR,
-                                                gtk.ICON_SIZE_DIALOG)
 
 def startSendMessageDlg():
     """
@@ -73,26 +44,34 @@ def startSendMessageDlg():
 
     wTree.add_from_file('sendMessage.ui')
     dlg = get('sendMessageDialog')
-
-    msgTypeCombo = get('typeOfMessage')
-    msgTypeCombo.connect('changed', changed_cb)
-
+    
     textView = get('Message')
-
+    title_entry = get('title_entry')
+    title_entry.set_text(config.settings.get('GUI', 'messages_default_title'))
+    use_markup_toggle = get('use_markup_toggle')
+    use_markup_toggle.set_active(config.settings.getboolean('GUI', 'messages_use_markup'))
+    
     reply = dlg.run()
     msg = ()
-    msg_types = {0 : 0, 1 : 1, 2 : 3}
-
+    
     if reply == 1:
         buf = textView.get_buffer()
         s = buf.get_start_iter()
         e = buf.get_end_iter()
-        text = quote_message(textView.get_buffer().get_text(s,e))
-        
-        # Get active type of message requested
-        msg_type = msg_types[msgTypeCombo.get_active()]
-        msg = (text, msg_type)
+        text = textView.get_buffer().get_text(s,e)
 
+        title = title_entry.get_text().strip()
+        
+        use_markup = use_markup_toggle.get_active()
+        
+        msg = (text, title, use_markup)
+
+        config.settings.set('GUI', 'messages_default_title', title)
+        config.settings.set('GUI', 'messages_use_markup', str(use_markup))
+    
+        f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
+        config.settings.write(f)
+        f.close()
     # Hide dialog after any kind of function
     dlg.hide()
 

@@ -178,7 +178,7 @@ class EpoptesGui(object):
         
         settings.set('GUI', 'selected_group', sel_group)
         settings.set('GUI', 'showRealNames', self.showRealNames)
-        f = open(os.path.expanduser('~/.config/epoptes/settings'), 'wb')
+        f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
         settings.write(f)
         f.close()
         
@@ -206,18 +206,18 @@ class EpoptesGui(object):
 
     def poweroff(self, widget):
         """Shut down the selected clients."""
-        self.execOnSelectedClients("shutdown",
+        self.execOnSelectedClients(["shutdown"],
             warn=_('Are you sure you want to shutdown all the computers?'))
 
     def reboot(self, widget):
         """Reboot the selected clients."""
-        self.execOnSelectedClients("reboot",
+        self.execOnSelectedClients(["reboot"],
             warn=_('Are you sure you want to reboot all the computers?'))
 
 
     def logout(self, widget):
         """Log off the users of the selected clients."""
-        self.execOnSelectedClients("logout", mode=EM_SESSION,
+        self.execOnSelectedClients(['logout'], mode=EM_SESSION,
             warn=_('Are you sure you want to log off all the users?'))
 
 
@@ -276,10 +276,10 @@ class EpoptesGui(object):
             self.vncserver = subprocess.Popen(['x11vnc', '-noshm', '-nopw',
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
                 '-24to32', '-rfbport', str(self.vncport), '-rfbauth', pwdfile])
-        self.execOnSelectedClients('stop_screensaver',
+        self.execOnSelectedClients(['stop_screensaver'],
             mode=EM_SYSTEM_AND_SESSION)
-        self.execOnSelectedClients("receive_broadcast %d '%s' %s" %
-            (self.vncport, self.pwd, fullscreen), mode=EM_SYSTEM_OR_SESSION)
+        self.execOnSelectedClients(["receive_broadcast", self.vncport, 
+                                    self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
 
 
     def broadcastScreen(self, widget):
@@ -291,7 +291,7 @@ class EpoptesGui(object):
 
 
     def stopTransmissions(self, widget):
-        self.execOnClients('stop_receptions', self.cstore,
+        self.execOnClients(['stop_receptions'], self.cstore,
             mode=EM_SYSTEM_AND_SESSION)
         if not self.vncserver is None:
             self.vncserver.kill()
@@ -308,13 +308,15 @@ class EpoptesGui(object):
         if cmd[:5] == 'sudo ':
             em = EM_SYSTEM
             cmd = cmd[4:]
-        self.execOnSelectedClients('execute ' + cmd, mode=em)
+        self.execOnSelectedClients(['execute', cmd], mode=em)
 
 
     def sendMessageDialog(self, widget):
         msg = startSendMessageDlg()
         if msg:
-            self.execOnSelectedClients('message %s %s' %msg)
+            cmd = list(msg)
+            cmd.insert(0, 'message')
+            self.execOnSelectedClients(cmd)
 
 
     ## FIXME / FIXUS: Should we allow it?
@@ -334,8 +336,7 @@ class EpoptesGui(object):
 
             subprocess.Popen(['xterm', '-e', 'socat',
                 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
-            self.execOnClients('remote_term %d' % port, [client],
-                mode=em)
+            self.execOnClients(['remote_term', port], [client], mode=em)
 
 
     def openUserTerminal(self, widget):
@@ -347,7 +348,7 @@ class EpoptesGui(object):
 
 
     def remoteRootTerminal(self, widget):
-        self.execOnSelectedClients('root_term', EM_SYSTEM)
+        self.execOnSelectedClients(['root_term'], EM_SYSTEM)
     ## END_FIXUS
 
 
@@ -356,28 +357,28 @@ class EpoptesGui(object):
         Lock screen for all the selected clients, displaying a message
         """
         msg = _("The screen is locked by a system administrator.")
-        self.execOnSelectedClients('lock_screen 0 %s' % pipes.quote(msg))
+        self.execOnSelectedClients(['lock_screen', 0, msg])
 
 
     def unlockScreen(self, widget):
         """
         Unlock screen for all clients selected
         """
-        self.execOnSelectedClients('unlock_screen', mode=EM_SESSION_AND_SYSTEM)
+        self.execOnSelectedClients(['unlock_screen'], mode=EM_SESSION_AND_SYSTEM)
 
 
     def soundOff(self, widget):
         """
         Disable sound usage for clients selected
         """
-        self.execOnSelectedClients('mute_sound 0', mode=EM_SYSTEM_OR_SESSION)
+        self.execOnSelectedClients(['mute_sound', 0], mode=EM_SYSTEM_OR_SESSION)
 
 
     def soundOn(self, widget):
         """
         Enable sound usage for clients selected
         """
-        self.execOnSelectedClients('unmute_sound', mode=EM_SYSTEM_AND_SESSION)
+        self.execOnSelectedClients(['unmute_sound'], mode=EM_SYSTEM_AND_SESSION)
 
 
     def on_remove_from_group_clicked(self, widget):
@@ -720,9 +721,8 @@ which is incompatible with the current epoptes version.\
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
                 timeoutID = gobject.timeout_add(10000, lambda h=handle: self.screenshotTimeout(h))
-                self.execOnClients('screenshot %d %d'
-                    % (self.scrWidth, self.scrHeight), handles=[handle],
-                    reply=self.gotScreenshot, params=[timeoutID])
+                self.execOnClients(['screenshot', self.scrWidth, self.scrHeight], handles=[handle], 
+                                   reply=self.gotScreenshot, params=[timeoutID])
                 return False
         # That handle is no longer in the cstore, remove it
         try: del self.currentScreenshots[handle]
@@ -872,6 +872,11 @@ which is incompatible with the current epoptes version.\
         if len(self.cstore) == 0:
             # print 'No clients'
             return False
+        
+        if isinstance(command, list) and len(command) > 0:
+            command = '%s %s' %(command[0], ' '.join([pipes.quote(str(x)) for x in command[1:]]))
+            print command
+            
         if (clients != [] or handles != []) and warning != '':
             if self.warnDlgPopup(warning) == False:
                 return

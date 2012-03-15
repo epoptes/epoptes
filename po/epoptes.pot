@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-11 06:15+0200\n"
+"POT-Creation-Date: 2012-03-15 02:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,7 +204,7 @@ msgstr ""
 msgid "Send a message to the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:47 ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Send message"
 msgstr ""
 
@@ -343,23 +343,23 @@ msgstr ""
 msgid "Are you sure you want to log off all the users?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:350
+#: ../epoptes/ui/gui.py:359
 msgid "The screen is locked by a system administrator."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:379
+#: ../epoptes/ui/gui.py:388
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:410
+#: ../epoptes/ui/gui.py:419
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:611
+#: ../epoptes/ui/gui.py:620
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -370,6 +370,10 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+
+#: ../epoptes/common/config.py:213
+msgid "Message from administrator"
 msgstr ""
 
 #: ../data/epoptes.desktop.in.h:2
@@ -434,11 +438,11 @@ msgid "Message text:"
 msgstr ""
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
-msgid "Message type:"
+msgid "Message title:"
 msgstr ""
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "Select the type of the message"
+#: ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Use Pango markup"
 msgstr ""
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7

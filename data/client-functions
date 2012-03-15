@@ -174,11 +174,10 @@ unmute_sound() {
 # Display some text to the user.
 # Parameters:
 # $1 = text.
-# $2 = True/False, whether the text contains pango markup.
+# $2 = title.
+# $3 = True/False, whether the text contains pango markup.
 message() {
-    python -c "import gtk; dlg = gtk.MessageDialog(type=$2, 
-                  buttons=gtk.BUTTONS_CLOSE, message_format='''$1'''); \
-               dlg.set_property('use-markup', True); dlg.run(); dlg.destroy()"
+    execute ./message "$1" "$2" "$3"
 }
 
 # Connect to the server to be monitored.
