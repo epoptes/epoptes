@@ -28,6 +28,10 @@ import os
 import shlex
 import ConfigParser
 import json
+import gettext
+gettext.install('epoptes', unicode=True)
+import locale
+locale.textdomain('epoptes')
 
 from epoptes.core import structs
 from epoptes.common.constants import *
