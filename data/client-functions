@@ -177,7 +177,7 @@ screenshot() {
 # $2 = message to display to the user.
 lock_screen() {
     test -n "$EPOPTES_LOCK_SCREEN_PID" && kill "$EPOPTES_LOCK_SCREEN_PID"
-    EPOPTES_LOCK_SCREEN_PID=$(background ./lock-screen "$2")
+    EPOPTES_LOCK_SCREEN_PID=$(background -p ./lock-screen "$2")
 }
 
 # Unlock a locked screen.
