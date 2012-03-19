@@ -324,3 +324,5 @@ if [ -f /lib/lsb/init-functions ]; then
 else
     echo "[ OK ]" >&5
 fi
+
+info

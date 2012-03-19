@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-15 02:56+0200\n"
+"POT-Creation-Date: 2012-03-19 20:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -372,7 +372,7 @@ msgstr ""
 msgid "URL, file or command to execute on the selected clients:"
 msgstr ""
 
-#: ../epoptes/common/config.py:213
+#: ../epoptes/common/config.py:217
 msgid "Message from administrator"
 msgstr ""
 
@@ -380,12 +380,12 @@ msgstr ""
 msgid "Epoptes computer lab administration tool"
 msgstr ""
 
-#: ../bin/epoptes.py:59
+#: ../bin/epoptes.py:54
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
 
-#: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
 msgstr ""
 

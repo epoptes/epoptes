@@ -875,8 +875,7 @@ which is incompatible with the current epoptes version.\
         
         if isinstance(command, list) and len(command) > 0:
             command = '%s %s' %(command[0], ' '.join([pipes.quote(str(x)) for x in command[1:]]))
-            print command
-            
+                    
         if (clients != [] or handles != []) and warning != '':
             if self.warnDlgPopup(warning) == False:
                 return
