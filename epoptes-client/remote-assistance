@@ -41,7 +41,7 @@ pid = os.getpid()
 class Support:
     def __init__(self):
         self.wTree = gtk.Builder()
-        self.wTree.add_from_file('/usr/share/epoptes/remote_assistance.ui')
+        self.wTree.add_from_file('remote_assistance.ui')
         signal.signal(signal.SIGUSR1, self.connected)
         signal.signal(signal.SIGUSR2, self.disconnected)
         self.wTree.connect_signals(self)
