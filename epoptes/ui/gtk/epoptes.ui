@@ -1245,6 +1245,7 @@
   </object>
   <object class="GtkMessageDialog" id="warningDialog">
     <property name="border_width">5</property>
+    <property name="title">Epoptes</property>
     <property name="modal">True</property>
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>

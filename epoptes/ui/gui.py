@@ -622,9 +622,9 @@ class EpoptesGui(object):
                 self.shownCompatibilityWarning = True
                 dlg = self.get('warningDialog')
                 # Show different messages for LTSP clients and standalones.
-                msg = _("There was a try to connect an epoptes-client with version %s \
+                msg = _("A connection attempt was made by a client with version %s, \
 which is incompatible with the current epoptes version.\
-\n\nYou should update your chroot.") % version
+\n\nYou need to update your clients to the latest epoptes-client version.") % version
                 dlg.set_property('text', msg)
                 dlg.set_transient_for(self.mainwin)
                 dlg.show()
