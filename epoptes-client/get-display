@@ -24,13 +24,14 @@
 ###########################################################################
 
 exit_if_found() {
+    # Check if DISPLAY/XAUTHORITY are valid.
+    # XAUTHORITY may even be empty, in which case it must not be exported.
     test -n "$DISPLAY" || return
-    # Check if DISPLAY/XAUTHORITY are valid. XAUTHORITY may even be empty.
-    if DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" xwininfo -root -size \
-        >/dev/null 2>&1
-    then
-        echo "DISPLAY=$DISPLAY
-XAUTHORITY=$XAUTHORITY"
+    export DISPLAY XAUTHORITY
+    test -n "$XAUTHORITY" || unset XAUTHORITY
+    if xwininfo -root -size >/dev/null 2>&1; then
+        echo "DISPLAY=$DISPLAY"
+        test -n "$XAUTHORITY" && echo "XAUTHORITY=$XAUTHORITY"
         exit 0
     else
         unset DISPLAY XAUTHORITY
