@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-19 20:29+0200\n"
+"POT-Creation-Date: 2012-03-20 02:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,6 +300,31 @@ msgstr ""
 msgid "_Send message"
 msgstr ""
 
+#: ../bin/remote-assistance.py:114 ../bin/remote-assistance.py:153
+#: ../data/remote_assistance.ui.h:9
+msgid "Not connected."
+msgstr ""
+
+#: ../bin/remote-assistance.py:142
+#, python-format
+msgid "Connecting to %s..."
+msgstr ""
+
+#: ../bin/remote-assistance.py:150
+#, python-format
+msgid "Connection to %s estabilished. (Mode: %s)"
+msgstr ""
+
+#: ../bin/remote-assistance.py:158
+#, python-format
+msgid "Failed to connect to %s."
+msgstr ""
+
+#: ../bin/remote-assistance.py:172
+#, python-format
+msgid "Retrying in %d..."
+msgstr ""
+
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
 msgstr ""
@@ -327,39 +352,39 @@ msgstr ""
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:118
+#: ../epoptes/ui/gui.py:117
 msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:210
+#: ../epoptes/ui/gui.py:209
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:215
+#: ../epoptes/ui/gui.py:214
 msgid "Are you sure you want to reboot all the computers?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:221
+#: ../epoptes/ui/gui.py:220
 msgid "Are you sure you want to log off all the users?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:359
+#: ../epoptes/ui/gui.py:358
 msgid "The screen is locked by a system administrator."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:388
+#: ../epoptes/ui/gui.py:387
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:419
+#: ../epoptes/ui/gui.py:418
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:620
+#: ../epoptes/ui/gui.py:619
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -370,6 +395,39 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:1
+msgid "<b>Connection information</b>"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:2
+msgid "<b>Status</b>"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:3
+msgid "Console (screen)"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:4
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:5
+msgid "Graphics (VNC)"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:7
+msgid "Keep reconnecting"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:8
+msgid "Method:"
 msgstr ""
 
 #: ../epoptes/common/config.py:217
@@ -474,29 +532,4 @@ msgid ""
 "\n"
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
-msgstr ""
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:1
-msgid "Connection type:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:2
-msgid "Console (screen)"
-msgstr ""
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:3
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:4
-msgid "Graphics (VNC)"
-msgstr ""
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:5
-msgid "IP:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:6
-msgid "Port:"
 msgstr ""

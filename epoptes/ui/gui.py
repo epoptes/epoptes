@@ -46,7 +46,6 @@ from execcommand import *
 from sendmessage import *
 from about_dialog import About
 from client_information import ClientInformation
-from remote_assistance import RemoteAssistance
 from epoptes.daemon import uiconnection
 from epoptes.core.lib_users import *
 from epoptes.common import ltsconf
@@ -439,7 +438,7 @@ class EpoptesGui(object):
 
 
     def on_mi_remote_assistance_activate(self, widget=None):
-        RemoteAssistance().run()
+        subprocess.Popen(['remote-assistance'])
 
 
     def on_mi_about_activate(self, widget=None):
