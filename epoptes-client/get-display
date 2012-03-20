@@ -24,22 +24,31 @@
 ###########################################################################
 
 exit_if_found() {
-    if [ -n "$DISPLAY" ] && [ -n "$XAUTHORITY" ]; then
+    test -n "$DISPLAY" || return
+    # Check if DISPLAY/XAUTHORITY are valid. XAUTHORITY may even be empty.
+    if DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" xwininfo -root -size \
+        >/dev/null 2>&1
+    then
         echo "DISPLAY=$DISPLAY
 XAUTHORITY=$XAUTHORITY"
         exit 0
+    else
+        unset DISPLAY XAUTHORITY
     fi
 }
 
-# Plan A: check if we can get the info from some running process
+# Plan A: check if the variables are already set
+exit_if_found
+
+# Plan B: check if we can get the info from some running process
 for p in $(pgrep -x 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon'); do
     # The first DISPLAY= is only there to prevent a possible syntax error
-    export DISPLAY="$DISPLAY" \
-        $(tr '\0' '\n' < /proc/$p/environ | egrep '^DISPLAY=|^XAUTHORITY=')
+    export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
+        egrep '^DISPLAY=|^XAUTHORITY=')
     exit_if_found
 done
 
-# Plan B: try ck-list-sessions
+# Plan C: try ck-list-sessions
 while read var equals value; do
     case "$var" in
         Session*)
@@ -52,18 +61,15 @@ while read var equals value; do
         x11-display)
             value=${value%\'}
             DISPLAY=${value#\'}
-            if [ -n "$DISPLAY" ]; then
-                XAUTHORITY="$(getent passwd "$USER" | cut -d: -f6)/.Xauthority"
-                test -f "$XAUTHORITY" && exit_if_found
-            fi
+            exit_if_found
             ;;
     esac
 done <<EOF
 $(ck-list-sessions)
 EOF
 
-# Plan C: give up!
-echo "Could not get access to the active display" >&2
+# Plan D: give up!
+echo "Could not detect or access the active display" >&2
 echo "DISPLAY=
 XAUTHORITY="
 exit 1
