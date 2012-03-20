@@ -347,7 +347,7 @@ class EpoptesGui(object):
 
 
     def remoteRootTerminal(self, widget):
-        self.execOnSelectedClients(['root_term'], EM_SYSTEM)
+        self.execOnSelectedClients(['root_term'], mode=EM_SYSTEM)
     ## END_FIXUS
 
 
