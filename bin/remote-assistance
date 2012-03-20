@@ -111,7 +111,7 @@ class Support:
         if self.has_connected:
             self.set_state('disconnected')
             if self.retry and not self.manually_stoped:
-                self.update_and_retry(_('Not connected.'), self.retry_interval)
+                self.update_and_retry(_('Not connected'), self.retry_interval)
                 self.set_action_button('disconnect')
             else:
                 self.set_action_button('connect')
@@ -120,9 +120,6 @@ class Support:
         
         self.has_connected = False
         
-        
-        
-    
     def cancel(self, widget=None, event=None):
         '''Gets called when the user presses Cancel button'''
         if self.proc:
@@ -147,15 +144,15 @@ class Support:
             if self.method_combo.get_active() == 1:
                 mode = 'console'
             self.status_icon.set_from_stock(gtk.STOCK_YES, gtk.ICON_SIZE_BUTTON)
-            self.status_label.set_text(_('Connection to %s estabilished. (Mode: %s)') %(self.host, mode))
+            self.status_label.set_text(_('Connection to %s estabilished (mode: %s)') %(self.host, mode))
             self.set_action_button('disconnect')
         elif state == 'disconnected':
-            msg = _('Not connected.')
+            msg = _('Not connected')
             self.status_icon.set_from_stock(gtk.STOCK_NO, gtk.ICON_SIZE_BUTTON)
             self.status_label.set_text(msg)
         
         elif state == 'failed':
-            msg = _('Failed to connect to %s.') %self.host
+            msg = _('Failed to connect to %s') %self.host
             self.status_label.set_text(msg)
             self.status_icon.set_from_stock(gtk.STOCK_DIALOG_ERROR, gtk.ICON_SIZE_BUTTON)
             
