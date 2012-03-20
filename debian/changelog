@@ -1,3 +1,22 @@
+epoptes (0.5.0-1) unstable; urgency=low
+
+  * get-display: don't fail if DISPLAY has an invalid (cached) value.
+  * Avoid disconnecting clients on broken DNS configurations (LP: #949055).
+  * Fix "unlock" trunk regression (LP: 959522).
+  * Remove the unused Constants class.
+  * Allow pango markup in message sending.
+  * Support ssvncviewer to cope with 24bpp displays (LP: #953512).
+  * Increase certificate validity to 10 years (LP: #954076).
+  * Point to epoptes(1), not (8), in README (LP: #953493).
+  * Use a VNC password instead of allowing only localnet (LP: #937820).
+  * Don't depend on zenity (LP: #955452).
+  * Make `epoptes-client -c` contact localhost in fat chroots.
+  * Allow epoptes-clients using XDMCP (LP: #950720).
+  * Permit VNC'ing to the login screen (LP: #889669).
+  * Fix "mute/unmute not found" error (LP: #953521).
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Tue, 20 Mar 2012 16:43:32 +0200
+
 epoptes (0.4.4-1) unstable; urgency=low
 
   [ Alkis Georgopoulos ]
