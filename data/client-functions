@@ -123,13 +123,13 @@ execute() {
 
     case "$1" in
         '')
-            echo "Can't execute an empty command."
+            echo "Can't execute an empty command." >&2
             ;;
         www.|http:|https:|ftp:|file:|mailto:)
             launcher="xdg-open"
             ;;
         *)
-            if [ -f "$1" ] && [ ! -x "$1" ]; then
+            if [ -e "$1" ] && ( [ ! -x "$1" ] || [ -d "$1" ] ); then
                 launcher="xdg-open"
             elif which -- "$1" >/dev/null; then
                 # Don't waste RAM for sh if it's just an executable.
