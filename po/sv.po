@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-03-15 02:56+0200\n"
+"POT-Creation-Date: 2012-03-20 02:58+0200\n"
 "PO-Revision-Date: 2012-02-27 08:16+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-16 05:24+0000\n"
-"X-Generator: Launchpad (build 14951)\n"
+"X-Launchpad-Export-Date: 2012-03-20 05:50+0000\n"
+"X-Generator: Launchpad (build 14969)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -304,6 +304,31 @@ msgstr "_Hjälp"
 msgid "_Send message"
 msgstr "_Skicka meddelande"
 
+#: ../bin/remote-assistance.py:114 ../bin/remote-assistance.py:153
+#: ../data/remote_assistance.ui.h:9
+msgid "Not connected."
+msgstr ""
+
+#: ../bin/remote-assistance.py:142
+#, python-format
+msgid "Connecting to %s..."
+msgstr ""
+
+#: ../bin/remote-assistance.py:150
+#, python-format
+msgid "Connection to %s estabilished. (Mode: %s)"
+msgstr ""
+
+#: ../bin/remote-assistance.py:158
+#, python-format
+msgid "Failed to connect to %s."
+msgstr ""
+
+#: ../bin/remote-assistance.py:172
+#, python-format
+msgid "Retrying in %d..."
+msgstr ""
+
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
 msgstr "Stäng av:"
@@ -331,27 +356,27 @@ msgstr "%(user)s från %(host)s"
 msgid "Properties of %s"
 msgstr "Egenskaper för %s"
 
-#: ../epoptes/ui/gui.py:118
+#: ../epoptes/ui/gui.py:117
 msgid "Detected clients"
 msgstr "Identifierade klienter"
 
-#: ../epoptes/ui/gui.py:210
+#: ../epoptes/ui/gui.py:209
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Är du säker på att du vill stänga av alla datorer?"
 
-#: ../epoptes/ui/gui.py:215
+#: ../epoptes/ui/gui.py:214
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Är du säker på att du vill starta om alla datorer?"
 
-#: ../epoptes/ui/gui.py:221
+#: ../epoptes/ui/gui.py:220
 msgid "Are you sure you want to log off all the users?"
 msgstr "Är du säker på att du vill logga ut alla användare?"
 
-#: ../epoptes/ui/gui.py:359
+#: ../epoptes/ui/gui.py:358
 msgid "The screen is locked by a system administrator."
 msgstr "Skärmen är låst av en systemadministratör."
 
-#: ../epoptes/ui/gui.py:388
+#: ../epoptes/ui/gui.py:387
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -359,13 +384,13 @@ msgstr ""
 "Är du säker på att du vill ta bort de markerade klienterna från gruppen "
 "\"%s\"?"
 
-#: ../epoptes/ui/gui.py:419
+#: ../epoptes/ui/gui.py:418
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Är du säker på att du vill ta bort gruppen \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:620
+#: ../epoptes/ui/gui.py:619
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -382,7 +407,40 @@ msgstr ""
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "URL, fil eller kommando att köra på markerade klienter:"
 
-#: ../epoptes/common/config.py:213
+#: ../data/remote_assistance.ui.h:1
+msgid "<b>Connection information</b>"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:2
+msgid "<b>Status</b>"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:3
+msgid "Console (screen)"
+msgstr "Konsoll (skärm)"
+
+#: ../data/remote_assistance.ui.h:4
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "Ange information för kontakten som du vill dela ditt skrivbord med"
+
+#: ../data/remote_assistance.ui.h:5
+msgid "Graphics (VNC)"
+msgstr "Grafik (VNC)"
+
+#: ../data/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:7
+msgid "Keep reconnecting"
+msgstr ""
+
+#: ../data/remote_assistance.ui.h:8
+msgid "Method:"
+msgstr ""
+
+#: ../epoptes/common/config.py:217
 msgid "Message from administrator"
 msgstr ""
 
@@ -390,12 +448,12 @@ msgstr ""
 msgid "Epoptes computer lab administration tool"
 msgstr "Epoptes, administrationsverktyg för datorlabb"
 
-#: ../bin/epoptes.py:59
+#: ../bin/epoptes.py:54
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr "Användaren %s måste vara medlem av gruppen %s för att köra epoptes."
 
-#: ../bin/epoptes.py:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Error"
 msgstr "Fel"
 
@@ -497,27 +555,11 @@ msgstr ""
 "Du bör ha fått en kopia av GNU General Public License tillsammans med "
 "Epoptes. Om inte, se <http://www.gnu.org/licenses/>."
 
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:1
-msgid "Connection type:"
-msgstr "Anslutningstyp:"
+#~ msgid "IP:"
+#~ msgstr "IP:"
 
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:2
-msgid "Console (screen)"
-msgstr "Konsoll (skärm)"
+#~ msgid "Connection type:"
+#~ msgstr "Anslutningstyp:"
 
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:3
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr "Ange information för kontakten som du vill dela ditt skrivbord med"
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:4
-msgid "Graphics (VNC)"
-msgstr "Grafik (VNC)"
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:5
-msgid "IP:"
-msgstr "IP:"
-
-#: ../epoptes/ui/gtk/remote_assistance.ui.h:6
-msgid "Port:"
-msgstr "Port:"
+#~ msgid "Port:"
+#~ msgstr "Port:"
