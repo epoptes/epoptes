@@ -210,13 +210,17 @@ message() {
 }
 
 # Connect to the server to be monitored.
+# Parameters:
+# $1 = port.
 get_monitored() {
-    background x11vnc -noshm -24to32 -viewonly -connect_or_exit "$SERVER"
+    background x11vnc -noshm -24to32 -viewonly -connect_or_exit "$SERVER:$1"
 }
 
 # Connect to the server to get assistance.
+# Parameters:
+# $1 = port.
 get_assisted() {
-    background x11vnc -noshm -24to32 -connect_or_exit "$SERVER"
+    background x11vnc -noshm -24to32 -connect_or_exit "$SERVER:$1"
 }
 
 # Deactivate the screensaver, in order for the users to watch a broadcast.

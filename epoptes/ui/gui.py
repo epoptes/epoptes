@@ -231,10 +231,12 @@ class EpoptesGui(object):
     def reverseConnection(self, widget, path, view_column, cmd):
         # Open vncviewer in listen mode
         if self.vncviewer is None:
-            self.vncviewer = subprocess.Popen(['xvnc4viewer', '-listen'])
+            self.vncport = self.findUnusedPort(5500)
+            self.vncviewer = subprocess.Popen(
+                ['xvnc4viewer', '-listen', str(self.vncport)])
 
         # And, tell the clients to connect to the server
-        self.execOnSelectedClients(cmd)
+        self.execOnSelectedClients([cmd, self.vncport])
 
 
     def assistUser(self, widget, path=None, view_column=None):
