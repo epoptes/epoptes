@@ -38,7 +38,7 @@ import locale
 locale.textdomain('epoptes')
 
 pid = os.getpid()
-
+os.chdir('/usr/share/epoptes-client')
 
 class Support:
     def __init__(self):
@@ -131,7 +131,8 @@ class Support:
         
     def host_changed(self, widget):
         txt = widget.get_text().strip()
-        self.action_button.set_property('sensitive', len(txt) > 0)
+        if self.action_button.get_label() == gtk.STOCK_CONNECT:
+        	self.action_button.set_property('sensitive', len(txt) > 0)
     
     def set_state(self, state):
         self.stop_spinner()

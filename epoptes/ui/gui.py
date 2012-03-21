@@ -84,9 +84,14 @@ class EpoptesGui(object):
         self.wTree = gtk.Builder()
         self.wTree.add_from_file('epoptes.ui')
         
+        self.get = lambda obj: self.wTree.get_object(obj)
+        self.showRealNames = False
+        if config.settings.has_option('GUI', 'showRealNames'):
+            self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
+        
         # Connect glade handlers with the callback functions
         self.wTree.connect_signals(self)
-        self.get = lambda obj: self.wTree.get_object(obj)
+        
         
         # Hide the remote assistance menuitem if epoptes-client is not installed
         if not os.path.isfile('/usr/share/epoptes-client/remote-assistance'):
@@ -137,9 +142,7 @@ class EpoptesGui(object):
                 self.get(config.settings.get('GUI', 'label')).set_active(True)
             except:
                 pass
-        self.showRealNames = False
-        if config.settings.has_option('GUI', 'showRealNames'):
-            self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
+        
 
     #################################################################
     #                       Callback functions                      #

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-21 15:08+0200\n"
+"POT-Creation-Date: 2012-03-21 15:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -327,39 +327,39 @@ msgstr ""
 msgid "Properties of %s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:122
+#: ../epoptes/ui/gui.py:127
 msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:214
+#: ../epoptes/ui/gui.py:217
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:219
+#: ../epoptes/ui/gui.py:222
 msgid "Are you sure you want to reboot all the computers?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:225
+#: ../epoptes/ui/gui.py:228
 msgid "Are you sure you want to log off all the users?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:363
+#: ../epoptes/ui/gui.py:366
 msgid "The screen is locked by a system administrator."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:392
+#: ../epoptes/ui/gui.py:395
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:423
+#: ../epoptes/ui/gui.py:426
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:625
+#: ../epoptes/ui/gui.py:628
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -477,27 +477,27 @@ msgid ""
 msgstr ""
 
 #: ../potfiles-workaround/remote-assistance.py:116
-#: ../potfiles-workaround/remote-assistance.py:152
+#: ../potfiles-workaround/remote-assistance.py:153
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Not connected"
 msgstr ""
 
-#: ../potfiles-workaround/remote-assistance.py:141
+#: ../potfiles-workaround/remote-assistance.py:142
 #, python-format
 msgid "Connecting to %s..."
 msgstr ""
 
-#: ../potfiles-workaround/remote-assistance.py:149
+#: ../potfiles-workaround/remote-assistance.py:150
 #, python-format
 msgid "Connection to %s estabilished (mode: %s)"
 msgstr ""
 
-#: ../potfiles-workaround/remote-assistance.py:157
+#: ../potfiles-workaround/remote-assistance.py:158
 #, python-format
 msgid "Failed to connect to %s"
 msgstr ""
 
-#: ../potfiles-workaround/remote-assistance.py:171
+#: ../potfiles-workaround/remote-assistance.py:172
 #, python-format
 msgid "Retrying in %d..."
 msgstr ""
