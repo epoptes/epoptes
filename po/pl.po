@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-03-20 02:58+0200\n"
+"POT-Creation-Date: 2012-03-20 18:47+0200\n"
 "PO-Revision-Date: 2012-02-26 17:52+0000\n"
 "Last-Translator: kadkarol <karol.sienkowski@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-20 05:50+0000\n"
-"X-Generator: Launchpad (build 14969)\n"
+"X-Launchpad-Export-Date: 2012-03-21 05:58+0000\n"
+"X-Generator: Launchpad (build 14981)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -304,31 +304,6 @@ msgstr "_Pomoc"
 msgid "_Send message"
 msgstr "_Wyślij wiadomość"
 
-#: ../bin/remote-assistance.py:114 ../bin/remote-assistance.py:153
-#: ../data/remote_assistance.ui.h:9
-msgid "Not connected."
-msgstr ""
-
-#: ../bin/remote-assistance.py:142
-#, python-format
-msgid "Connecting to %s..."
-msgstr ""
-
-#: ../bin/remote-assistance.py:150
-#, python-format
-msgid "Connection to %s estabilished. (Mode: %s)"
-msgstr ""
-
-#: ../bin/remote-assistance.py:158
-#, python-format
-msgid "Failed to connect to %s."
-msgstr ""
-
-#: ../bin/remote-assistance.py:172
-#, python-format
-msgid "Retrying in %d..."
-msgstr ""
-
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
 msgstr "Wyłączony:"
@@ -356,39 +331,39 @@ msgstr "%(user)s z %(host)s"
 msgid "Properties of %s"
 msgstr "Właściwości %s"
 
-#: ../epoptes/ui/gui.py:117
+#: ../epoptes/ui/gui.py:122
 msgid "Detected clients"
 msgstr "Wykryci klienci"
 
-#: ../epoptes/ui/gui.py:209
+#: ../epoptes/ui/gui.py:214
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Czy na pewno chcesz wyłączyć wszystkie komputery?"
 
-#: ../epoptes/ui/gui.py:214
+#: ../epoptes/ui/gui.py:219
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Czy na pewno chcesz zrestartować wszystkie komputery?"
 
-#: ../epoptes/ui/gui.py:220
+#: ../epoptes/ui/gui.py:225
 msgid "Are you sure you want to log off all the users?"
 msgstr "Czy na pewno chcesz wylogować wszystkich użytkowników?"
 
-#: ../epoptes/ui/gui.py:358
+#: ../epoptes/ui/gui.py:363
 msgid "The screen is locked by a system administrator."
 msgstr "Ekran jest zablokowany przez administratora systemu"
 
-#: ../epoptes/ui/gui.py:387
+#: ../epoptes/ui/gui.py:392
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr "Czy na pewno chcesz usunąć wybranych klientów z grupy \"%s\"?"
 
-#: ../epoptes/ui/gui.py:418
+#: ../epoptes/ui/gui.py:423
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Czy na pewno  chcesz usunąć grupę \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:619
+#: ../epoptes/ui/gui.py:625
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -404,40 +379,6 @@ msgstr ""
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "Adres URL, plik lub polecenie dla wybranych klientów"
-
-#: ../data/remote_assistance.ui.h:1
-msgid "<b>Connection information</b>"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:2
-msgid "<b>Status</b>"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:3
-msgid "Console (screen)"
-msgstr "Konsola (ekran)"
-
-#: ../data/remote_assistance.ui.h:4
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-"Wprowadź informacje kontaktowe, które chcesz udostępnić za pomocą pulpitu"
-
-#: ../data/remote_assistance.ui.h:5
-msgid "Graphics (VNC)"
-msgstr "Obraz (VNC)"
-
-#: ../data/remote_assistance.ui.h:6
-msgid "Host:"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:7
-msgid "Keep reconnecting"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:8
-msgid "Method:"
-msgstr ""
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
@@ -553,12 +494,3 @@ msgstr ""
 "\n"
 "Powinieneś otrzymać kopię licencji GNU General Public wraz z epoptes. Jeśli "
 "nie, zobacz <http://www.gnu.org/licenses/>."
-
-#~ msgid "IP:"
-#~ msgstr "IP:"
-
-#~ msgid "Port:"
-#~ msgstr "Port:"
-
-#~ msgid "Connection type:"
-#~ msgstr "Typ połączenia:"

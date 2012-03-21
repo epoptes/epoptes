@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-20 02:58+0200\n"
-"PO-Revision-Date: 2012-03-15 18:19+0000\n"
+"POT-Creation-Date: 2012-03-20 18:47+0200\n"
+"PO-Revision-Date: 2012-03-20 09:15+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-20 05:50+0000\n"
-"X-Generator: Launchpad (build 14969)\n"
+"X-Launchpad-Export-Date: 2012-03-21 05:58+0000\n"
+"X-Generator: Launchpad (build 14981)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -18,8 +18,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  himlims https://launchpad.net/~himlims\n"
-"  kadkarol https://launchpad.net/~karol-sienkowski\n"
-"  rob https://launchpad.net/~rvdb"
+"  kadkarol https://launchpad.net/~karol-sienkowski"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Ask a question"
@@ -303,31 +302,6 @@ msgstr "_Help"
 msgid "_Send message"
 msgstr "Bericht v_ersturen"
 
-#: ../bin/remote-assistance.py:114 ../bin/remote-assistance.py:153
-#: ../data/remote_assistance.ui.h:9
-msgid "Not connected."
-msgstr ""
-
-#: ../bin/remote-assistance.py:142
-#, python-format
-msgid "Connecting to %s..."
-msgstr ""
-
-#: ../bin/remote-assistance.py:150
-#, python-format
-msgid "Connection to %s estabilished. (Mode: %s)"
-msgstr ""
-
-#: ../bin/remote-assistance.py:158
-#, python-format
-msgid "Failed to connect to %s."
-msgstr ""
-
-#: ../bin/remote-assistance.py:172
-#, python-format
-msgid "Retrying in %d..."
-msgstr ""
-
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
 msgstr "Uitschakelen:"
@@ -355,27 +329,27 @@ msgstr "%(user)s van %(host)s"
 msgid "Properties of %s"
 msgstr "Eigenschappen van %s"
 
-#: ../epoptes/ui/gui.py:117
+#: ../epoptes/ui/gui.py:122
 msgid "Detected clients"
 msgstr "Gedetecteerde clienten"
 
-#: ../epoptes/ui/gui.py:209
+#: ../epoptes/ui/gui.py:214
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Weet u zeker dat u alle computers wilt uitschakelen?"
 
-#: ../epoptes/ui/gui.py:214
+#: ../epoptes/ui/gui.py:219
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Weet u zeker dat u alle computers wilt herstarten?"
 
-#: ../epoptes/ui/gui.py:220
+#: ../epoptes/ui/gui.py:225
 msgid "Are you sure you want to log off all the users?"
 msgstr "Weet u zeker dat u alle gebruikers wilt afmelden?"
 
-#: ../epoptes/ui/gui.py:358
+#: ../epoptes/ui/gui.py:363
 msgid "The screen is locked by a system administrator."
 msgstr "Het scherm is vergrendeld door een systeembeheerder."
 
-#: ../epoptes/ui/gui.py:387
+#: ../epoptes/ui/gui.py:392
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -383,13 +357,13 @@ msgstr ""
 "Weet u zeker dat u de geselecteerde clienten wilt verwijderen uit groep "
 "\"%s\" ?"
 
-#: ../epoptes/ui/gui.py:418
+#: ../epoptes/ui/gui.py:423
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Weet u zeker dat u de groep \"%s\" permanent wilt verwijderen?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:619
+#: ../epoptes/ui/gui.py:625
 #, python-format
 msgid ""
 "There was a try to connect an epoptes-client with version %s which is "
@@ -405,40 +379,6 @@ msgstr ""
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "URL, bestand of commando uitvoeren op de geselecteerde clienten"
-
-#: ../data/remote_assistance.ui.h:1
-msgid "<b>Connection information</b>"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:2
-msgid "<b>Status</b>"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:3
-msgid "Console (screen)"
-msgstr "Opdrachtvenster (scherm)"
-
-#: ../data/remote_assistance.ui.h:4
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-"Voer de informatie in van de persoon waarmee u uw bureaublad wilt delen"
-
-#: ../data/remote_assistance.ui.h:5
-msgid "Graphics (VNC)"
-msgstr "Grafisch (VNC)"
-
-#: ../data/remote_assistance.ui.h:6
-msgid "Host:"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:7
-msgid "Keep reconnecting"
-msgstr ""
-
-#: ../data/remote_assistance.ui.h:8
-msgid "Method:"
-msgstr ""
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
@@ -556,12 +496,3 @@ msgstr ""
 "\n"
 "Moet u een kopie van de GNU General Public License, samen met epoptes. Zo "
 "niet, zie <http://www.gnu.org/licenses/>."
-
-#~ msgid "Port:"
-#~ msgstr "Poort:"
-
-#~ msgid "Connection type:"
-#~ msgstr "Verbindingstype:"
-
-#~ msgid "IP:"
-#~ msgstr "IP:"
