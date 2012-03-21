@@ -32,8 +32,10 @@ import signal
 import os
 import gtk
 import gobject
-
-from epoptes.common import config
+import gettext
+gettext.install('epoptes', unicode=True)
+import locale
+locale.textdomain('epoptes')
 
 pid = os.getpid()
 

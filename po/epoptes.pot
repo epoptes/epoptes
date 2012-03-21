@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-20 18:47+0200\n"
+"POT-Creation-Date: 2012-03-21 15:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -362,10 +362,10 @@ msgstr ""
 #: ../epoptes/ui/gui.py:625
 #, python-format
 msgid ""
-"There was a try to connect an epoptes-client with version %s which is "
+"A connection attempt was made by a client with version %s, which is "
 "incompatible with the current epoptes version.\n"
 "\n"
-"You should update your chroot."
+"You need to update your clients to the latest epoptes-client version."
 msgstr ""
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
@@ -474,4 +474,63 @@ msgid ""
 "\n"
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+
+#: ../potfiles-workaround/remote-assistance.py:116
+#: ../potfiles-workaround/remote-assistance.py:152
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Not connected"
+msgstr ""
+
+#: ../potfiles-workaround/remote-assistance.py:141
+#, python-format
+msgid "Connecting to %s..."
+msgstr ""
+
+#: ../potfiles-workaround/remote-assistance.py:149
+#, python-format
+msgid "Connection to %s estabilished (mode: %s)"
+msgstr ""
+
+#: ../potfiles-workaround/remote-assistance.py:157
+#, python-format
+msgid "Failed to connect to %s"
+msgstr ""
+
+#: ../potfiles-workaround/remote-assistance.py:171
+#, python-format
+msgid "Retrying in %d..."
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid "Connection information"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:4
+msgid "Graphics (VNC)"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Host:"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Keep reconnecting"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Method:"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Status"
 msgstr ""
