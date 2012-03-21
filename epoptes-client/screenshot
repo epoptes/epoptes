@@ -25,7 +25,7 @@
 ############################################################################
 
 import gtk.gdk as gdk
-from sys import stdout, argv
+from sys import stdout, stderr, argv
 
 if len(argv) == 3:
     width, height = int(argv[1]), int(argv[2])
@@ -49,6 +49,9 @@ pixbuf.get_from_drawable(pmap, root.get_colormap(), 0, 0, 0, 0, width, height)
 rowst = str(pixbuf.get_rowstride())
 pixels = pixbuf.get_pixels()
 
-stdout.flush()
-stdout.write('%s\n%ix%i\n%s' %(rowst, width, height, pixels))
-stdout.flush()
+try:
+    stdout.flush()
+    stdout.write('%s\n%ix%i\n%s' %(rowst, width, height, pixels))
+    stdout.flush()
+except:
+    stderr.write("Error while sending screenshot\n")
