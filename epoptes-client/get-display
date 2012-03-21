@@ -62,7 +62,10 @@ while read var equals value; do
         x11-display)
             value=${value%\'}
             DISPLAY=${value#\'}
-            exit_if_found
+            if [ -n "$DISPLAY" ]; then
+                XAUTHORITY="$(getent passwd "$USER" | cut -d: -f6)/.Xauthority"
+                exit_if_found
+            fi            
             ;;
     esac
 done <<EOF
