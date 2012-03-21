@@ -22,14 +22,23 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
+def split_hostname(hostname):
+    """Returns a 2-tuple containing the IP address and the port number extracted
+    from hostname. If there is no port specified, 5500 will be returned.
+    """
+    if ':' in hostname:
+        hostname, port = hostname.split(':', 1)
+        port = int(port)
+    else:
+        port = 5500
+    return (hostname, port)
+
 import sys
-import subprocess
-if __name__ == '__main__' and len(sys.argv) > 1:
-    cmd = "socat" # FIXME: Set the correct socat command
-    subprocess.Popen(cmd, shell=True)
-    exit()
-import signal
 import os
+if __name__ == '__main__' and len(sys.argv) > 1:
+    os.execl("/bin/sh", "sh", "-c", """socat tcp:%s:%d SYSTEM:"sleep 1; exec screen -xRR ra$$",pty,stderr & exec screen -S ra$$""" % split_hostname(sys.argv[1]))
+import signal
+import subprocess
 import gtk
 import gobject
 import gettext
@@ -38,16 +47,16 @@ import locale
 locale.textdomain('epoptes')
 
 pid = os.getpid()
-os.chdir('/usr/share/epoptes-client')
+#os.chdir('/usr/share/epoptes-client')
 
 class Support:
     def __init__(self):
         self.wTree = gtk.Builder()
         self.wTree.add_from_file('remote_assistance.ui')
-        signal.signal(signal.SIGUSR1, self.connected)
-        signal.signal(signal.SIGUSR2, self.disconnected)
-        self.wTree.connect_signals(self)
         self.get = self.wTree.get_object
+        
+        signal.signal(signal.SIGUSR1, self.connected)
+        self.wTree.connect_signals(self)
         
         self.status_icon = self.get('status_icon')
         self.status_label = self.get('status_label')
@@ -60,75 +69,102 @@ class Support:
         self.status_box.pack_start(self.spinner, False)
         self.status_box.reorder_child(self.spinner, 0)
         
-        self.timeout_id = None
+        self.retry_timeout_id = None
         
         self.retry = False
         self.retry_interval = 10
-        self.manually_stoped = False
+        self.manually_stopped = False
         
         self.proc = None
         self.host = ''
-        self.has_connected = False
+        self.connected = False
         
         self.get('support_dialog').show()
         
         
     def connect(self, widget=None):
-        '''Gets called when the user presses Connect button'''
+        """Gets called when the user presses Connect button"""
         
         self.host = self.get('host_entry').get_text().strip()
-        cmd = "x11vnc -q -nopw -connect_or_exit '%s' -afteraccept 'kill -USR1 %d'; kill -USR2 %d" %(self.host, pid, pid)
-        if self.method_combo.get_active() == 1:
-            cmd = 'socat tcp:server:5500 SYSTEM:"{ kill -USR1 %d; sleep 1; xterm -e screen -xRR ra$$; } & exec screen -S ra$$",pty,stderr; kill -USR2 %d' %(pid, pid)
-        self.proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        ip, port = split_hostname(self.host)
+        
+        vnc = self.method_combo.get_active() == 0
+        if vnc:
+            cmd = ['x11vnc', '-q', '-nopw', '-connect_or_exit', '%s:%d' % (ip, port), '-afteraccept', 'kill -USR1 %d' % pid]
+        else:
+            cmd = ['socat', 'tcp:%s:%d' % (ip, port), 
+                'SYSTEM:"{ kill -USR1 %d; sleep 1; xterm -e screen -xRR ra$$; } & exec screen -S ra$$",pty,stderr' % pid]
+        
+        self.proc = subprocess.Popen(cmd)
         
         # Set the status as "Connecting"
-        if self.timeout_id:
-            gobject.source_remove(self.timeout_id)
-            self.timeout_id = None
+        if self.retry_timeout_id:
+            gobject.source_remove(self.retry_timeout_id)
+            self.retry_timeout_id = None
         self.set_state('connecting')
         
+        # Start polling the process every 1 second to see if it's still alive
+        gobject.timeout_add(1000, self.poll_process)
     
-    def connected(self, signum, frame):
-        '''Gets called when the program receives SIGUSR1 (succesful connection)'''
-        self.set_state('connected')
-    
-    def disconnect(self, widget):
-        if self.timeout_id:
+    def disconnect(self, widget=None):
+        self.manually_stopped = True
+        if self.retry_timeout_id is not None:
             self.set_state('disconnected')
-            gobject.source_remove(self.timeout_id)
-            self.timeout_id = None
-            self.manually_stopped = True
-        
-        #FIXME: Kill the process.
-        self.proc.kill()
+            gobject.source_remove(self.retry_timeout_id)
+            self.retry_timeout_id = None
+        if self.proc:
+            self.proc.kill()
         self.set_action_button('connect')
     
-    def disconnected(self, signum=None, frame=None):
-        '''Gets called when the program receives SIGUSR2
-        (failed connection or disconnect)'''
-        
-        # If there was no connection before, this is not a disconnect
-        # but a failed attempt to connect. So display an appropriate message.
-        if self.has_connected:
-            self.set_state('disconnected')
-            if self.retry and not self.manually_stoped:
-                self.update_and_retry(_('Not connected'), self.retry_interval)
-                self.set_action_button('disconnect')
-            else:
-                self.set_action_button('connect')
+    def poll_process(self):
+        # if process has not terminated yet return True to continue the timeout
+        if self.proc.poll() is None:
+            return True
         else:
-            self.set_state('failed')
-        
-        self.has_connected = False
-        
-    def cancel(self, widget=None, event=None):
-        '''Gets called when the user presses Cancel button'''
+            # Check if it's a disconnect or a failure and call the correct signal
+            if self.connected:
+                self.disconnected()
+                self.connected = False
+            else:
+                self.failed()
+            self.proc = None
+            return False
+    
+    
+    #=== Process signal handlers start ===#
+    
+    def connected(self, signum, frame):
+        """Gets called when the program receives SIGUSR1 (succesful connection)"""
+        self.set_state('connected')
+    
+    def disconnected(self):
+        """Gets called when the process is terminated but a successful connection
+        has taken place"""
+        self.set_state('disconnected')
+        if self.retry and not self.manually_stopped:
+            self.update_and_retry(_('Not connected'), self.retry_interval)
+            self.set_action_button('disconnect')
+            self.manually_stopped = True
+        else:
+            self.set_action_button('connect')
+    
+    def failed(self):
+        """Gets called when the process is terminated but there wasn't any
+        successful connection"""
+        self.set_state('failed')
+    
+    #=== Process signal handlers end ===#
+    
+    
+    def on_close_button_clicked(self, widget):
+        """Gets called when the user clicks the Close button"""
         if self.proc:
-            # FIXME: Kill the process.
-            self.proc.kill()
+            self.disconnect()
         exit()
-        
+    
+    def on_dialog_delete_event(self, widget, event):
+        self.on_close_button_clicked(None)
+    
     def host_changed(self, widget):
         txt = widget.get_text().strip()
         if self.action_button.get_label() == gtk.STOCK_CONNECT:
@@ -142,9 +178,10 @@ class Support:
             self.status_label.set_text(_('Connecting to %s...') %self.host)
             self.set_action_button('disconnect')
         elif state == 'connected':
-            self.has_connected = True
-            mode = 'VNC'
-            if self.method_combo.get_active() == 1:
+            self.connected = True
+            if self.method_combo.get_active() == 0:
+                mode = 'VNC'
+            else:
                 mode = 'console'
             self.status_icon.set_from_stock(gtk.STOCK_YES, gtk.ICON_SIZE_BUTTON)
             self.status_label.set_text(_('Connection to %s estabilished (mode: %s)') %(self.host, mode))
@@ -169,13 +206,13 @@ class Support:
         if interval == 0:
             self.connect()
         else:
-            self.status_label.set_text(msg+' '+_('Retrying in %d...') %interval)
-            self.timeout_id = gobject.timeout_add(1000, self.update_and_retry, msg, interval-1)
+            self.status_label.set_text(msg+' '+_('Retrying in %d...') % interval)
+            self.retry_timeout_id = gobject.timeout_add(1000, self.update_and_retry, msg, interval-1)
         return False
     
     def set_action_button(self, mode):
-        '''Change the Connect button to Disconnect and vice versa,
-        according to mode and setting the correct signals.'''
+        """Change the Connect button to Disconnect and vice versa,
+        according to mode and set the correct signal."""
         
         callback = None
         btn = self.action_button
@@ -191,13 +228,13 @@ class Support:
             self.action_signal_handler = btn.connect('clicked', callback)
     
     def start_spinner(self):
-        '''Replace the status icon with a running spinner'''
+        """Replace the status icon with a running spinner"""
         self.status_icon.hide()
         self.spinner.show()
         self.spinner.start()
     
     def stop_spinner(self):
-        '''Replace the spinner with the status icon'''
+        """Replace the spinner with the status icon"""
         self.spinner.stop()
         self.spinner.hide()
         self.status_icon.show()

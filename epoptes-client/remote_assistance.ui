@@ -6,7 +6,7 @@
     <property name="border_width">6</property>
     <property name="type_hint">normal</property>
     <property name="has_separator">False</property>
-    <signal name="delete_event" handler="cancel"/>
+    <signal name="delete_event" handler="on_dialog_delete_event"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -243,7 +243,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-                <signal name="clicked" handler="cancel"/>
+                <signal name="clicked" handler="on_close_button_clicked"/>
               </object>
               <packing>
                 <property name="expand">False</property>
