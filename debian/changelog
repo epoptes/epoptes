@@ -1,5 +1,11 @@
 epoptes (0.5.0-1) unstable; urgency=low
 
+  * Allow more than one epoptes instances to monitor/assist clients.
+  * screenshot: don't crash if the connection breaks (LP: #954441).
+  * epoptes-client: depend on python-gtk2, suggest ssvnc.
+  * Move remote-assistance to epoptes-client to match dependencies.
+  * Hide the remote assistance menu item when epoptes-client is not installed.
+  * Fix windowed broadcast.
   * get-display: don't fail if DISPLAY has an invalid (cached) value.
   * Avoid disconnecting clients on broken DNS configurations (LP: #949055).
   * Fix "unlock" trunk regression (LP: 959522).
