@@ -184,7 +184,7 @@ class Support:
             else:
                 mode = 'console'
             self.status_icon.set_from_stock(gtk.STOCK_YES, gtk.ICON_SIZE_BUTTON)
-            self.status_label.set_text(_('Connection to %s estabilished (mode: %s)') %(self.host, mode))
+            self.status_label.set_text(_('Connected to %s') % self.host)
             self.set_action_button('disconnect')
         elif state == 'disconnected':
             msg = _('Not connected')
