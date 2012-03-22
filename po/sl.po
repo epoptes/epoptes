@@ -1,34 +1,32 @@
-# Russian translation for epoptes
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Slovenian translation for epoptes
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the epoptes package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-21 21:04+0200\n"
-"PO-Revision-Date: 2012-03-21 20:54+0000\n"
-"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"PO-Revision-Date: 2012-03-21 21:26+0000\n"
+"Last-Translator: Sasa Batistic <Unknown>\n"
+"Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-03-22 06:18+0000\n"
 "X-Generator: Launchpad (build 14981)\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
-"X-Poedit-Language: Russian\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas\n"
-"  Oleg Koptev https://launchpad.net/~koptev-oleg"
+"  Andrej Znidarsic https://launchpad.net/~andrej.znidarsic\n"
+"  Sasa Batistic https://launchpad.net/~sasa-batistic"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Confirm action"
-msgstr "Подтвердить действие"
+msgstr "Potrdi dejanje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
@@ -36,333 +34,337 @@ msgstr "Epoptes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "_File"
-msgstr "_Файл"
+msgstr "_Datoteka"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Labels"
-msgstr "Метки"
+msgstr "Oznake"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Computer (user)"
-msgstr "Компьютер (пользователь)"
+msgstr "Računalnik (uporabnik)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Computer"
-msgstr "Компьютер"
+msgstr "Računalnik"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "User (computer)"
-msgstr "Пользователь (компьютер)"
+msgstr "Uporabnik (računalnik)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "User"
-msgstr "Пользователь"
+msgstr "Uporabnik"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Show real names"
-msgstr "Показать действительные имена"
+msgstr "Pokaži prava imena"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "_Clients"
-msgstr "_Клиенты"
+msgstr "_Odjemalci"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Session"
-msgstr "Сеанс"
+msgstr "Seja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Boot"
-msgstr "Загрузить"
+msgstr "Zagon"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Log out"
-msgstr "Завершить сеанс"
+msgstr "Odjava"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Reboot"
-msgstr "Перезагрузить"
+msgstr "Ponovni zagon"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Shutdown"
-msgstr "Выключить"
+msgstr "Izklop"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Broadcasts"
-msgstr "Вещание"
+msgstr "Vsesmerna oddajanja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Monitor user"
-msgstr ""
+msgstr "Nadziraj uporabnika"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Assist user"
-msgstr "Помочь пользователю"
+msgstr "Pomagaj uporabniku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Take control of the selected user's computer"
-msgstr ""
+msgstr "Prevzemi nadzor nad računalnikom izbranega uporabnika"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Broadcast video"
-msgstr ""
+msgstr "Vsesmerno oddajanje videa"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Broadcast screen"
-msgstr "Вещание с экрана"
+msgstr "Zaslon vsesmernega oddajanja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Вещание с вашего экрана выбранным клиентам (во весь экран)"
+msgstr ""
+"Vsesmerno oddajajte vašega zaslona izbranim odjemalcem, celozaslonsko"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast screen (windowed)"
-msgstr "Вещание с экрана (в окне)"
+msgstr "Zaslon vsesmernega oddajanja (v oknu)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Вещание с вашего экрана выбранным клиентам (в окне)"
+msgstr "Vsesmerno oddajajte vašega zaslona izbranim odjemalcem v oknu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr ""
+msgstr "Vsesmerno oddajanje uporabnika"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
-msgstr "Остановить вещания"
+msgstr "Zaustavi vsesmerna oddajanja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stops all active broadcasts"
-msgstr "Остановить все активные вещания"
+msgstr "Zaustavi vsa dejavna vsesmerna oddajanja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Open broadcasts window"
-msgstr ""
+msgstr "Odpri okno vsesmernega oddajanja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
 msgstr ""
+"Odprite sejo v oknu, da preprečite vsesmerno oddajanje celotnega zaslona"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
-msgstr "Выполнить"
+msgstr "Izvedi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
-msgstr "Выполнить команду на выбранных клиентах"
+msgstr "Izvedi ukaz na izbranih odjemalcih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
-msgstr "_Отправить сообщение"
+msgstr "Pošlji _sporočilo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr "Отправить сообщение на выбранные клиенты"
+msgstr "Pošlji sporočilo izbranim odjemalcem"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr "Открыть терминал"
+msgstr "Odpri terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
-msgstr "Локальный пользователь"
+msgstr "Uporabnik, krajevni"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
-msgstr "Локальный Root"
+msgstr "Skrbnik, krajevni"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
-msgstr "Удалённый Root"
+msgstr "Skrbnik, oddaljeni"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Restrictions"
-msgstr "Ограничения"
+msgstr "Omejitve"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Lock screen"
-msgstr "Блокировать экран"
+msgstr "Zakleni zaslon"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unlock screen"
-msgstr "Разблокировать экран"
+msgstr "Odkleni zaslon"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Block Internet"
-msgstr "Блокировать Интернет"
+msgstr "Zapora interneta"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unblock Internet"
-msgstr "Разблокировать Интернет"
+msgstr "Sprosti internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Mute sound"
-msgstr "Выключить звук"
+msgstr "Utišaj zvok"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Unmute sound"
-msgstr "Включить звук"
+msgstr "Povrni glasnost zvoka"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Background image"
-msgstr "Фоновое изображение"
+msgstr "Slika ozadja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Lock background"
-msgstr "Блокировать фон"
+msgstr "Zakleni ozadje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Set default background"
-msgstr "Выбрать фон по умолчанию"
+msgstr "Nastavi privzeto ozadje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set background"
-msgstr "Выбрать фон"
+msgstr "Nastavi ozadje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Remove from group"
-msgstr "Удалить из группы"
+msgstr "Odstrani iz skupine"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "_Help"
-msgstr "_Справка"
+msgstr "Pomo_č"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Report a bug"
-msgstr "Сообщить об ошибке"
+msgstr "Pošlji poročilo o hrošču"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Ask a question"
-msgstr "Задать вопрос"
+msgstr "Zastavi vprašanje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Translate this application"
-msgstr "Перевести это приложение"
+msgstr "Prevedi ta program"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Live chat (IRC)"
-msgstr "Чат (IRC)"
+msgstr "Klepet v živo (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Remote support"
-msgstr "Удалённая помощь"
+msgstr "Oddaljena podpora"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Загрузить выбранные клиенты (Wake On LAN)"
+msgstr "Izbrani odjemalci ob zagonu (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Log out users connected on selected clients"
-msgstr "Завершить сеансы пользователей, подключенных к выбранным клиентам"
+msgstr "Odjavi uporabnike, ki so povezani z izbranimi odjemalci"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Reboot the selected clients"
-msgstr "Перезагрузить выбранные клиенты"
+msgstr "Ponovni zagon izbranih odjemalcev"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Shutdown the selected clients"
-msgstr "Выключить выбранные клиенты"
+msgstr "Izklopi izbrane odjemalce"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Broadcast your screen to the selected clients"
-msgstr "Вещание с вашего экрана выбранным клиентам"
+msgstr "Vsesmerno oddajajte vašega zaslona izbranim odjemalcem"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Stop all broadcasts on every client"
-msgstr "Остановить все вещания всем клиентам"
+msgstr "Zaustavi vsa vsesmerna oddajanja vsakega odjemalca"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr "Выполнить команду"
+msgstr "Izvedi ukaz"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
-msgstr "Отправить сообщение"
+msgstr "Pošlji sporočilo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "Lock screen of the selected clients"
-msgstr "Блокировать экраны выбранных клиентов"
+msgstr "Zakleni zaslon izbranih odjemalcev"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Unlock the screen of the selected clients"
-msgstr "Разблокировать экраны выбранных клиентов"
+msgstr "Odkleni zaslon izbranih odjemalcev"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Show information for the selected client"
-msgstr "Показать информацию для выделенного клиента"
+msgstr "Prikaži podrobnosti izbranih odjemalcem"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
-msgstr "Информация"
+msgstr "Podrobnosti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Create a new group"
-msgstr "Создать новую группу"
+msgstr "Ustvari novo skupino"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Remove the selected group"
-msgstr "Удалить выбранную группу"
+msgstr "Odstrani izbrano skupino"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Broadcast screen (fullscreen)"
-msgstr ""
+msgstr "Zaslon vsesmernega oddajanja (celozaslonsko)"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr "Отключить:"
+msgstr "Izklop:"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr "Подключено:"
+msgstr "Povezano:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s на %(host)s"
+msgstr "%(user)s na %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr "Отключено:"
+msgstr "Nepovezano:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s с %(host)s"
+msgstr "%(user)s od %(host)s"
 
 #: ../epoptes/ui/client_information.py:64
 #, python-format
 msgid "Properties of %s"
-msgstr "Свойства %s"
+msgstr "Lastnosti %s"
 
 #: ../epoptes/ui/gui.py:127
 msgid "Detected clients"
-msgstr "Обнаруженные клиенты"
+msgstr "Zaznani odjemalci"
 
 #: ../epoptes/ui/gui.py:217
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Вы действительно хотите выключить все компьютеры?"
+msgstr "Ali ste prepričani, da želite izklopiti vse računalnike?"
 
 #: ../epoptes/ui/gui.py:222
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Вы действительно хотите перезагрузить все компьютеры?"
+msgstr "Ali ste prepričani, da želite ponovno zagnati vse računalnike?"
 
 #: ../epoptes/ui/gui.py:228
 msgid "Are you sure you want to log off all the users?"
-msgstr "Вы действительно хотите завершить сеансы всех пользователей?"
+msgstr "Ali ste prepričani, da želite odjaviti vse uporabnike?"
 
 #: ../epoptes/ui/gui.py:368
 msgid "The screen is locked by a system administrator."
-msgstr "Экран заблокирован системным администратором."
+msgstr "Zaslon je zaklenil skrbnik sistema."
 
 #: ../epoptes/ui/gui.py:397
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr "Вы действительно хотите удалить выделенные клиенты из группы «%s»?"
+msgstr ""
+"Ali ste prepričani, da želite odstraniti izbrane odjemalce(odjemalca) iz "
+"skupine \"%s\"?"
 
 #: ../epoptes/ui/gui.py:428
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Вы действительно хотите удалить группу «%s»?"
+msgstr "Ali ste prepričani, da želite odstraniti skupino \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:630
@@ -373,99 +375,104 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Povezavo je poskusil vzpostaviti odjemalec z različico %s, ki ni združljiva "
+"s trenutno različico epoptes.\n"
+"\n"
+"Svoje odjemalce boste morali posodobiti na zadnjo različico epoptes-"
+"odjemalcev."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, файл или команда для выполнения на выбранных клиентах:"
+msgstr "URL, datoteka ali ukaz za izvedbo na izbranih odjemalcih:"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr "Сообщение от администратора"
+msgstr "Sporočilo od skrbnika"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr "Инструмент администрирования компьютерного класса Epoptes"
+msgstr "Skrbniško orodje računalniškega laboratorija Epoptes"
 
 #: ../bin/epoptes.py:54
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr "Для запуска Epoptes пользователь %s должен быть членом группы %s."
+msgstr "Uporabnik %s mora biti član skupine %s za izvajanje epoptes."
 
 #: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
-msgstr "Ошибка"
+msgstr "Napaka"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Graphics card:"
-msgstr "Видеоадаптер:"
+msgstr "Grafična kartica:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
-msgstr "ОЗУ:"
+msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Processor:"
-msgstr "Процессор:"
+msgstr "Procesor:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "User:"
-msgstr "Пользователь:"
+msgstr "Uporabnik:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "IP address:"
-msgstr "IP-адрес:"
+msgstr "Naslov IP:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "MAC address:"
-msgstr "MAC-адрес:"
+msgstr "Naslov MAC:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Client hostname:"
-msgstr "Имя хоста клиента:"
+msgstr "Gostiteljevo ime odjemalca:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Client type:"
-msgstr "Тип клиента:"
+msgstr "Vrsta odjemalca:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client alias:"
-msgstr "Псевдоним клиента:"
+msgstr "Vzdevek odjemalca:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
-msgstr "Изменить псевдоним"
+msgstr "Uredi vzdevek"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
-msgstr "Задать новый псевдоним для выбранного клиента"
+msgstr "Nastavi nov vzdevek za izbrane odjemalce"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr "Заголовок сообщения:"
+msgstr "Naslov sporočila:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr "Текст сообщения:"
+msgstr "Besedilno sporočilo:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr "Использовать разметку Pango"
+msgstr "Uporabi označevanje Pango"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
-msgstr "_Отправить"
+msgstr "_Pošlji"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr "Предупреждение"
+msgstr "Opozorilo"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr "Авторское право &#xA9; 2011-2012 Epoptes Team"
+msgstr "Avtorske pravice &#xA9; 2011-2012 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "Инструмент для контроля и управления компьютерным классом."
+msgstr "Upravljanje računalniškega laboratorija in orodje nadzorovanja."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -481,18 +488,17 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
-"Epoptes — свободная программа: вы можете распространять и/или изменять её "
-"при соблюдении GNU General Public License, опубликованной Free Software "
-"Foundation (либо версии 3 этой лицензии, либо любой более поздней). \n"
+"Epoptes je prosta programska oprema: lahko jo razširjate naprej in/ali "
+"spreminjate pod pogoji GNU General Public License, ki jo je objavila Free "
+"Software Foundation, tako licenčno različico 3 ali katero poznejšo "
+"različico. \n"
 "\n"
-"Epoptes распространяется в надежде, что она будет полезной, но БЕЗ КАКОЙ-"
-"ЛИБО ГАРАНТИИ, в том числе без подразумеваемой гарантии КОММЕРЧЕСКОЙ "
-"ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЁННОЙ ЦЕЛИ. Более подробно это изложено "
-"в GNU General Public License. \n"
+"Epoptes se razširja v upanju, da bo uporaben, ampak BREZ JAMSTVA; celo brez "
+"naznačenega jamstva PRODAJE ali PRIPRAVNOSTI ZA DOLOČEN NAMEN. Poglejte GNU "
+"General Public License za več podrobnosti. \n"
 "\n"
-"Вы должны были получить копию лицензии GNU General Public License вместе с "
-"Epoptes. Если вы не получили лицензию, её можно найти на "
-"<http://www.gnu.org/licenses/>."
+"Dobili ste kopijo GNU General Public License skupaj z epoptes. Če ne, "
+"poglejte <http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
 #: ../epoptes-client/remote-assistance.py:190
@@ -500,61 +506,62 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr "Не подсоединён"
+msgstr "Ni povezave"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr "Устанавливается соединение с %s..."
+msgstr "Povezovanje z %s ..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connection to %s estabilished (mode: %s)"
-msgstr "Соединение с %s выполнено успешно (режим: %s)"
+msgstr "Povezava z %s je vzpostavljena (način: %s)"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "Не удалось подключиться к %s"
+msgstr "Spodletela povezava z %s"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Повтор через %d..."
+msgstr "Ponovni poskus v %d ..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr "Введите данные удалённого помощника"
+msgstr ""
+"Vpišite podrobnosti stika, s katerim želite imeti Namizje v souporabi"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr "Метод:"
+msgstr "Postopek:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr "Узел:"
+msgstr "Gostitelj:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr "Продолжать соединяться"
+msgstr "Nadaljuj s ponovnim povezovanjem"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr "Информация о соединение"
+msgstr "Podrobnosti o povezavi"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr "Статус"
+msgstr "Stanje"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr "Графика (VNC)"
+msgstr "Grafika (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr "Консоль (экран)"
+msgstr "Konzola (zaslon)"
