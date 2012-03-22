@@ -1,5 +1,6 @@
-epoptes (0.5.0-1) unstable; urgency=low
+epoptes (0.5.0-0ubuntu1) precise; urgency=low
 
+  * Fix typo in remote-assistance (LP: #961907).
   * Allow more than one epoptes instances to monitor/assist clients.
   * screenshot: don't crash if the connection breaks (LP: #954441).
   * epoptes-client: depend on python-gtk2, suggest ssvnc.
@@ -20,6 +21,8 @@ epoptes (0.5.0-1) unstable; urgency=low
   * Allow epoptes-clients using XDMCP (LP: #950720).
   * Permit VNC'ing to the login screen (LP: #889669).
   * Fix "mute/unmute not found" error (LP: #953521).
+  * Add Brazilian Portuguese, Hebrew, Slovenian, Ukrainian and Vietnamese
+    translations. Many thanks to the translators!
 
  -- Alkis Georgopoulos <alkisg@gmail.com>  Tue, 20 Mar 2012 16:43:32 +0200
 
