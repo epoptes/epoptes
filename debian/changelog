@@ -1,3 +1,10 @@
+epoptes (0.5.1-1) unstable; urgency=low
+
+  * New upstream version:
+    - Updated translations.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Fri, 23 Mar 2012 11:05:43 -0700
+
 epoptes (0.5.0-0ubuntu1) precise; urgency=low
 
   * Fix typo in remote-assistance (LP: #961907).
