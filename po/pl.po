@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-02-26 17:52+0000\n"
+"PO-Revision-Date: 2012-03-23 08:12+0000\n"
 "Last-Translator: kadkarol <karol.sienkowski@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-23 05:10+0000\n"
-"X-Generator: Launchpad (build 14996)\n"
+"X-Launchpad-Export-Date: 2012-03-24 05:25+0000\n"
+"X-Generator: Launchpad (build 14981)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -371,6 +371,9 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Próba połączenia została wykonana z klientem epoptes w wersji %s, kŧóra jest "
+"niekompatybilna z aktualną wersją\n"
+"Należy zaktualizować epoptes-client."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
@@ -378,7 +381,7 @@ msgstr "Adres URL, plik lub polecenie dla wybranych klientów"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr ""
+msgstr "Wiadomość od administratora"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -439,7 +442,7 @@ msgstr "Ustaw nowy alias dla wybranego klienta"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr ""
+msgstr "Tytuł wiadomości"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
@@ -447,7 +450,7 @@ msgstr "Treść wiadomości:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr ""
+msgstr "Użyj znaczników Pango"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
@@ -459,7 +462,7 @@ msgstr "Ostrzeżenie"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011-2012 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -497,61 +500,61 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr ""
+msgstr "Brak połączenia"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr ""
+msgstr "Łączenie z %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "Połączono z %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr ""
+msgstr "Połączenie się z %s nie powiodło się"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr ""
+msgstr "Ponawianie z %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+msgstr "Wprowadź informacje kontaktowe, które chcesz udostępnić z pulpitem"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr ""
+msgstr "Metoda"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr ""
+msgstr "Host:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr ""
+msgstr "Połącz ponownie"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr ""
+msgstr "Informacje o połączeniu"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr ""
+msgstr "Grafika (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr ""
+msgstr "Konsola (screen)"
