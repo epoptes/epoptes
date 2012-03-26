@@ -231,7 +231,7 @@ class EpoptesGui(object):
     def reverseConnection(self, widget, path, view_column, cmd):
         # Open vncviewer in listen mode
         if self.vncviewer is None:
-            self.vncport = self.findUnusedPort(5500)
+            self.vncport = self.findUnusedPort()
             self.vncviewer = subprocess.Popen(
                 ['xvnc4viewer', '-listen', str(self.vncport)])
 
@@ -247,27 +247,16 @@ class EpoptesGui(object):
         self.reverseConnection(widget, path, view_column, 'get_monitored')
 
 
-    def findUnusedPort(self, base=None):
-        """Find an unused port, optionally starting from "base"."""
+    def findUnusedPort(self):
+        """Find an unused port."""
         import socket
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        if base is None:
-            s.bind(('', 0))
-            s.listen(1)
-            port = s.getsockname()[1]
-            s.close()
-            return port
-        else:
-            port = int(base)
-            while port < 65535:
-                try:
-                    s.connect(('', port))
-                    s.shutdown(2)
-                    port += 1
-                except:
-                    return port
-            return None
+        s.bind(('', 0))
+        s.listen(1)
+        port = s.getsockname()[1]
+        s.close()
+        return port
 
 
     def _broadcastScreen(self, fullscreen=''):
