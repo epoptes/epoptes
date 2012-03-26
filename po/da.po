@@ -1,0 +1,560 @@
+# Danish translation for epoptes
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the epoptes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: epoptes\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-22 09:27+0200\n"
+"PO-Revision-Date: 2012-03-25 09:29+0000\n"
+"Last-Translator: Ole Guldberg <olegb@omgwtf.dk>\n"
+"Language-Team: Danish <da@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-26 05:13+0000\n"
+"X-Generator: Launchpad (build 15008)\n"
+
+#: ../epoptes/ui/about_dialog.py:43
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Ole Guldberg https://launchpad.net/~olegb"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "Confirm action"
+msgstr "Bekræft handling"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
+msgid "Epoptes"
+msgstr "Epoptes"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "_File"
+msgstr "_Fil"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Labels"
+msgstr "Etiketter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "Computer (user)"
+msgstr "Computer (bruger)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "Computer"
+msgstr "Computer"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "User (computer)"
+msgstr "Bruger (computer)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "User"
+msgstr "Bruger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Show real names"
+msgstr "Vis virkelige navne"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "_Clients"
+msgstr "_Klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Session"
+msgstr "Session"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Boot"
+msgstr "Opstart"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Log out"
+msgstr "Logud"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Reboot"
+msgstr "Genstart"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Shutdown"
+msgstr "Luk ned"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Broadcasts"
+msgstr "rundsending"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Monitor user"
+msgstr "Overvåg bruger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Assist user"
+msgstr "Hjælp bruger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Take control of the selected user's computer"
+msgstr "Tag kontrol over den valgte brugers computer"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcast video"
+msgstr "Rundsend video"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast screen"
+msgstr "Rundsend skærm"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "Rundsend din skærm til de valgt klienter i fuldskærm"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast screen (windowed)"
+msgstr "Rundsend skærmvindue"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "Rundsend din skærm til de valgt klienter i et vindue"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Broadcast user"
+msgstr "Rundsend bruger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Stop broadcasts"
+msgstr "Stop rundsendinger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Stops all active broadcasts"
+msgstr "Stop alle aktive rundsendinger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Open broadcasts window"
+msgstr "Åben rundsendingsvindue"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "Åben et sessionsvindue for at forhindre at rundsende hele din skærm"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "Execute"
+msgstr "Udfør"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Execute a command on the selected clients"
+msgstr "Udfør en kommando på de valgt klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "_Send message"
+msgstr "_Send besked"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "Send a message to the selected clients"
+msgstr "Send en besked til de valgte klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Open terminal"
+msgstr "Åben terminal"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "User, locally"
+msgstr "Lokal bruger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Root, locally"
+msgstr "Lokal administrator"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Root, remotely"
+msgstr "Ekstern administrator"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Restrictions"
+msgstr "Begrænsninger"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
+msgid "Lock screen"
+msgstr "Lås skærm"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Unlock screen"
+msgstr "Lås skærm op"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Block Internet"
+msgstr "Bloker internettet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Unblock Internet"
+msgstr "Fjern blokering af internettet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Mute sound"
+msgstr "Slå lyden fra"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Unmute sound"
+msgstr "Slå lyden til"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Background image"
+msgstr "Baggrundsbillede"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "Lock background"
+msgstr "Lås baggrund"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Set default background"
+msgstr "Indstil standard baggrund"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Set background"
+msgstr "Indstil baggrund"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Remove from group"
+msgstr "Fjern fra gruppe"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Report a bug"
+msgstr "Rapporter en fejl"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Ask a question"
+msgstr "Stil et spørgsmål"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Translate this application"
+msgstr "Oversæt dette program"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Live chat (IRC)"
+msgstr "Live chat (IRC)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "Remote support"
+msgstr "Fjernsupport"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Start valgte klienter (Wake On LAN)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Log out users connected on selected clients"
+msgstr "Log brugerne på de valgte klienter ud"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Reboot the selected clients"
+msgstr "Genstart de valgte klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "Shutdown the selected clients"
+msgstr "Luk de valgte klienter ned"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
+msgid "Broadcast your screen to the selected clients"
+msgstr "Rundsend din skærm til de valgte klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
+msgid "Stop all broadcasts on every client"
+msgstr "Stop rundsendinger til alle klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+msgid "Execute command"
+msgstr "Kør kommando"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+msgid "Send message"
+msgstr "Send besked"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
+msgid "Lock screen of the selected clients"
+msgstr "Lås skærm på de valgte klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
+msgid "Unlock the screen of the selected clients"
+msgstr "Læs skærmen op på de valgte klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
+msgid "Show information for the selected client"
+msgstr "Vis information om de valgte klienter"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Information"
+msgstr "Information"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:68
+msgid "Create a new group"
+msgstr "Opret en ny gruppe"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Remove the selected group"
+msgstr "Fjern den valgte gruppe"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
+msgid "Broadcast screen (fullscreen)"
+msgstr "Rundsend skærm (fuldskærm)"
+
+#: ../epoptes/ui/notifications.py:42
+msgid "Shut down:"
+msgstr "Luk ned:"
+
+#: ../epoptes/ui/notifications.py:45
+msgid "Connected:"
+msgstr "Opret forbindelse:"
+
+#: ../epoptes/ui/notifications.py:45
+#, python-format
+msgid "%(user)s on %(host)s"
+msgstr "%(user)s på %(host)s"
+
+#: ../epoptes/ui/notifications.py:48
+msgid "Disconnected:"
+msgstr "Luk forbindelse:"
+
+#: ../epoptes/ui/notifications.py:48
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr "%(user)s fra %(host)s"
+
+#: ../epoptes/ui/client_information.py:64
+#, python-format
+msgid "Properties of %s"
+msgstr "Egenskaber for %s"
+
+#: ../epoptes/ui/gui.py:127
+msgid "Detected clients"
+msgstr "Find klienter"
+
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Er du sikker på du vil lukke alle computerne?"
+
+#: ../epoptes/ui/gui.py:222
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Er du sikker på at du vil genstarte alle computerne?"
+
+#: ../epoptes/ui/gui.py:228
+msgid "Are you sure you want to log off all the users?"
+msgstr "Er du sikker på du vil logge alle brugerne af?"
+
+#: ../epoptes/ui/gui.py:368
+msgid "The screen is locked by a system administrator."
+msgstr "Skærmen er lås af administrator."
+
+#: ../epoptes/ui/gui.py:397
+#, python-format
+msgid ""
+"Are you sure you want to remove the selected client(s) from group \"%s\"?"
+msgstr ""
+"Er du sikker på du vil fjerne de valgte klient(er) fra gruppe \"%s\"?"
+
+#: ../epoptes/ui/gui.py:428
+#, python-format
+msgid "Are you sure you want to remove group \"%s\"?"
+msgstr "Er du sikker på du vil fjerne gruppe \"%s\"?"
+
+#. Show different messages for LTSP clients and standalones.
+#: ../epoptes/ui/gui.py:630
+#, python-format
+msgid ""
+"A connection attempt was made by a client with version %s, which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You need to update your clients to the latest epoptes-client version."
+msgstr ""
+"En klient med version %s forsøgte at oprette forbindelse, denne version er "
+"ikke kompatibel med den nuværende epoptes version.\n"
+"\n"
+"Du skal opdatere dine klienter til den seneste epoptes-klient version."
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr "URL, fil eller kommando der skal afvikles på de valgte klienter:"
+
+#: ../epoptes/common/config.py:217
+msgid "Message from administrator"
+msgstr "Besked fra administrator"
+
+#: ../data/epoptes.desktop.in.h:2
+msgid "Epoptes computer lab administration tool"
+msgstr "Epoptes computerlaboratorieværktøj"
+
+#: ../bin/epoptes.py:54
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr "Bruger %s skal være medlem af gruppen %s for at afvikle epoptes."
+
+#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
+msgid "Error"
+msgstr "Fejl"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Graphics card:"
+msgstr "Grafikkort:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Processor:"
+msgstr "Processor:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "User:"
+msgstr "Bruger:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP-adresse:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "MAC address:"
+msgstr "MAC-adresse:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Client hostname:"
+msgstr "Klient værtsnavn:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "Client type:"
+msgstr "Klienttype:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Client alias:"
+msgstr "Klientalias:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Rediger alias"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Indstil nyt alias for den valgte klient"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:2
+msgid "Message title:"
+msgstr "Besked titel:"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:3
+msgid "Message text:"
+msgstr "Besked tekst:"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+msgid "Use Pango markup"
+msgstr "Brug Pango -markup"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:5
+msgid "_Send"
+msgstr "_Send"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "Advarsel"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:1
+msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
+msgstr "Copyright &#xA9; 2011-2012 Epoptes Team"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Et computerlaboratoriehåndtering og overvågningsværktøj."
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+msgid ""
+"Epoptes is free software: you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation, either version 3 of the License, or any later version. \n"
+"\n"
+"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"epoptes. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"Epoptes er fri software: du kan redistrubuere det og/eller ændre det under "
+"vilkårene i GNU General Public License som udgivet af the Free Software "
+"Foundation, version 3 af Licensen, eller en senere version.\n"
+"\n"
+"Epoptes bliver distribueret i det håb at du vil finde det nyttigt, men "
+"programmet kommer UDEN GARANTI; selv uden garanti for merkantibilitet eller "
+"et specielt brug. Se GNU General Public License for flere detaljer.\n"
+"\n"
+"Du skule have modtaget en kopi af GNU General Public Licensen sammen med "
+"epoptes. Hvis ikke så se mere på <http://www.gnu.org/licenses/>."
+
+#: ../epoptes-client/remote-assistance.py:145
+#: ../epoptes-client/remote-assistance.py:190
+#: ../potfiles-workaround/remote-assistance.py:145
+#: ../potfiles-workaround/remote-assistance.py:190
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Not connected"
+msgstr "Ikke forbundet"
+
+#: ../epoptes-client/remote-assistance.py:178
+#: ../potfiles-workaround/remote-assistance.py:178
+#, python-format
+msgid "Connecting to %s..."
+msgstr "Forbinder til %s..."
+
+#: ../epoptes-client/remote-assistance.py:187
+#: ../potfiles-workaround/remote-assistance.py:187
+#, python-format
+msgid "Connected to %s"
+msgstr "Forbundet til %s"
+
+#: ../epoptes-client/remote-assistance.py:195
+#: ../potfiles-workaround/remote-assistance.py:195
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Kunne ikke forbinde til %s"
+
+#: ../epoptes-client/remote-assistance.py:209
+#: ../potfiles-workaround/remote-assistance.py:209
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Prøver igen om %d ..."
+
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "Indtast  informationerne om den kontakt du vil dele din skærm med"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Method:"
+msgstr "Metode:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Host:"
+msgstr "Vært:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:4
+msgid "Keep reconnecting"
+msgstr "Bliv ved med at prøve at forbinde"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Connection information"
+msgstr "Forbindelsesinformation"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Status"
+msgstr "Status"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Graphics (VNC)"
+msgstr "Grafik (VNC)"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Console (screen)"
+msgstr "Konsol (skærm)"
