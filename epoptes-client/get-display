@@ -42,7 +42,7 @@ exit_if_found() {
 exit_if_found
 
 # Plan B: check if we can get the info from some running process
-for p in $(pgrep -x 'ldm|kdm_greet|lxdm-greeter-gt|dbus-daemon'); do
+for p in $(pgrep -x 'ldm|gdmgreeter|kdm_greet|lxdm-greeter-gt|dbus-daemon'); do
     # The first DISPLAY= is only there to prevent a possible syntax error
     export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
         egrep '^DISPLAY=|^XAUTHORITY=')
