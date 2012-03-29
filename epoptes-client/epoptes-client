@@ -78,7 +78,8 @@ basic_info() {
         export $(
             . /usr/share/ltsp/ltsp_config >/dev/null
             echo "LTSP_CLIENT=$LTSP_CLIENT"
-            echo "LTSP_FATCLIENT=$LTSP_FATCLIENT")
+            echo "LTSP_FATCLIENT=$LTSP_FATCLIENT"
+            echo "EPOPTES_CLIENT_VERIFY_CERTIFICATE=$EPOPTES_CLIENT_VERIFY_CERTIFICATE")
         # LTSP_CLIENT may not be available in system sesssions, if so fake it
         LTSP_CLIENT=${LTSP_CLIENT:-127.0.0.1}
     fi
@@ -210,10 +211,17 @@ exec 5>&1
 # this makes pgrep'ing for epoptes-client easier.
 cmdline='bash -c \"exec -a epoptes-client sh\"'
 
+# Offer an lts.conf (or environment) variable to disable cert verification.
+if my_boolean_is_true "${EPOPTES_CLIENT_VERIFY_CERTIFICATE:-True}"; then
+    cert_param="cafile=/etc/epoptes/server.crt"
+else
+    cert_param="verify=0"
+fi
+
 # Connect to the server, or keep retrying until the server gets online
 # (for standalone workstations booted before the server).
-if [ -s /etc/epoptes/server.crt ]; then
-    exec socat openssl-connect:$SERVER:$PORT,cafile=/etc/epoptes/server.crt,interval=60,forever, EXEC:"$cmdline"
+if [ -s /etc/epoptes/server.crt ] || [ "$cert_param" = "verify=0" ]; then
+    exec socat openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever EXEC:"$cmdline"
 elif [ -f /etc/epoptes/server.crt ]; then
    exec socat tcp:$SERVER:$PORT,interval=60,forever EXEC:"$cmdline",nofork
 else
