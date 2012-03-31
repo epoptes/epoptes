@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-02-27 08:16+0000\n"
+"PO-Revision-Date: 2012-03-30 09:20+0000\n"
 "Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-23 05:10+0000\n"
-"X-Generator: Launchpad (build 14996)\n"
+"X-Launchpad-Export-Date: 2012-03-31 05:31+0000\n"
+"X-Generator: Launchpad (build 15032)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -373,6 +373,11 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Ett anslutningsförsök gjordes av en klient med version %s, som inte är "
+"kompatibel med den aktuella versionen av epoptes.\n"
+"\n"
+"Du måste uppdatera dina klienter till den senaste versionen av epoptes-"
+"client."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
@@ -380,7 +385,7 @@ msgstr "URL, fil eller kommando att köra på markerade klienter:"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr ""
+msgstr "Meddelande från administratören"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -441,7 +446,7 @@ msgstr "Ange ett nytt alias för markerad klient"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr ""
+msgstr "Titel för meddelandet:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
@@ -449,7 +454,7 @@ msgstr "Meddelandetext:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr ""
+msgstr "Använd Pango-markup"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
@@ -499,61 +504,61 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr ""
+msgstr "Inte ansluten"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr ""
+msgstr "Ansluter till %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "Ansluten till %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr ""
+msgstr "Misslyckades med att ansluta till %s"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr ""
+msgstr "Försöker igen om %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+msgstr "Ange informationen för kontakten som du vill dela ditt skrivbord med"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr ""
+msgstr "Metod:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr ""
+msgstr "Värddator:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr ""
+msgstr "Fortsätt ansluta igen"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr ""
+msgstr "Anslutningsinformation"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr ""
+msgstr "Grafik (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr ""
+msgstr "Konsoll (screen)"
