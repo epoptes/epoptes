@@ -1,3 +1,13 @@
+epoptes (0.5.2-1) unstable; urgency=low
+
+  * Correctly match URLs in execute function.
+  * Introduce EPOPTES_CLIENT_VERIFY_CERTIFICATE lts.conf option.
+  * Make get-display work with older gdm versions (LP: #966060).
+  * findUnusedPort: drop optional 'base' parameter as it may cause delays.
+  * Add Danish translation. Many thanks to the translators!
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Sun, 01 Apr 2012 22:09:31 +0300
+
 epoptes (0.5.1-1) unstable; urgency=low
 
   * New upstream version:
