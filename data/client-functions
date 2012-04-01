@@ -125,7 +125,11 @@ execute() {
         '')
             echo "Can't execute an empty command." >&2
             ;;
-        www.|http:|https:|ftp:|file:|mailto:)
+        www.*)
+            set "http://$1"
+            launcher="xdg-open"
+            ;;
+        http:*|https:*|ftp:*|file:*|mailto:*)
             launcher="xdg-open"
             ;;
         *)
