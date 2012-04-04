@@ -1,0 +1,563 @@
+# Portuguese translation for epoptes
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the epoptes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: epoptes\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-22 09:27+0200\n"
+"PO-Revision-Date: 2012-04-03 16:05+0000\n"
+"Last-Translator: José Anjos <joseanjos@gmail.com>\n"
+"Language-Team: Portuguese <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-04-04 05:08+0000\n"
+"X-Generator: Launchpad (build 15055)\n"
+
+#: ../epoptes/ui/about_dialog.py:43
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  José Anjos https://launchpad.net/~joseanjos"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "Confirm action"
+msgstr "Confirmar ação"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
+msgid "Epoptes"
+msgstr "Epoptes"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "_File"
+msgstr "_Ficheiro"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Labels"
+msgstr "Etiquetas"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "Computer (user)"
+msgstr "Computador (utilizador)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "Computer"
+msgstr "Computador"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "User (computer)"
+msgstr "Utilizador (computador)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "User"
+msgstr "Utilizador"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Show real names"
+msgstr "Mostrar nomes reais"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "_Clients"
+msgstr "_Clientes"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Session"
+msgstr "Sessão"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Boot"
+msgstr "Arranque"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Log out"
+msgstr "Terminar sessão"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Reboot"
+msgstr "Reiniciar"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Shutdown"
+msgstr "Encerrar"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Broadcasts"
+msgstr "Transmissões"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Monitor user"
+msgstr "Monitorizar utilizador"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Assist user"
+msgstr "Ajudar utilizador"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Take control of the selected user's computer"
+msgstr "Controlar o computador selecionado"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcast video"
+msgstr "Tansmitir video"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast screen"
+msgstr "Tranmitir ecrã"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "Transmitir o seu ecrã para os clientes selecionados, ecrã completo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast screen (windowed)"
+msgstr "Transmitir ecrã (windowed)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "Transmitir o seu ecrã para os clientes selecionados, numa janela"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Broadcast user"
+msgstr "Tranmitir utilizador"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Stop broadcasts"
+msgstr "Parar transmissões"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Stops all active broadcasts"
+msgstr "Parar todas as transmissões ativas"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Open broadcasts window"
+msgstr "Abrir janela de transmissão"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "Abra uma sessão na janela para evitar a transmissão de todo o ecrã"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "Execute"
+msgstr "Executar"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Execute a command on the selected clients"
+msgstr "Executar um comando no cliente selecionado"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "_Send message"
+msgstr "_Enviar a mensagem"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "Send a message to the selected clients"
+msgstr "Enviar uma mensagem para os clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Open terminal"
+msgstr "Abrir o terminal"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "User, locally"
+msgstr "Utilizador, localmente"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Root, locally"
+msgstr "Root, localmente"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Root, remotely"
+msgstr "Root, remotamente"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Restrictions"
+msgstr "Restrições"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
+msgid "Lock screen"
+msgstr "Trancar ecrã"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Unlock screen"
+msgstr "Destrancar ecrã"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Block Internet"
+msgstr "Bloquear Internet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Unblock Internet"
+msgstr "Desbloquear Internet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Mute sound"
+msgstr "Silenciar o som"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Unmute sound"
+msgstr "Activar o som"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Background image"
+msgstr "Imagem de fundo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "Lock background"
+msgstr "Trancar o fundo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Set default background"
+msgstr "Definir o fundo por omissão"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Set background"
+msgstr "Definir o fundo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Remove from group"
+msgstr "Remover do grupo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "_Help"
+msgstr "_Ajuda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Report a bug"
+msgstr "Reportar uma anomalia"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Ask a question"
+msgstr "Fazer uma pergunta"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Translate this application"
+msgstr "Traduzir esta aplicação"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Live chat (IRC)"
+msgstr "Chat em tempo real (IRC)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "Remote support"
+msgstr "Suporte remoto"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Ligar clientes selecionados (Wake On Lan)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Log out users connected on selected clients"
+msgstr "Terminar sessão dos utilizadores ligados, nos clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Reboot the selected clients"
+msgstr "Reiniciar os clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "Shutdown the selected clients"
+msgstr "Desligar os clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
+msgid "Broadcast your screen to the selected clients"
+msgstr "Transmitir o seu ecrã para os clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
+msgid "Stop all broadcasts on every client"
+msgstr "Parar todas as transmissões em todos os clientes"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+msgid "Execute command"
+msgstr "Executar o comando"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+msgid "Send message"
+msgstr "Enviar mensagem"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
+msgid "Lock screen of the selected clients"
+msgstr "Trancar o ecrã dos clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
+msgid "Unlock the screen of the selected clients"
+msgstr "Destrancar o ecrã dos clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
+msgid "Show information for the selected client"
+msgstr "Mostrar informação dos clientes selecionados"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Information"
+msgstr "Informação"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:68
+msgid "Create a new group"
+msgstr "Criar novo grupo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Remove the selected group"
+msgstr "Remover grupo selecionado"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
+msgid "Broadcast screen (fullscreen)"
+msgstr "Transmitir ecrã (ecrã inteiro)"
+
+#: ../epoptes/ui/notifications.py:42
+msgid "Shut down:"
+msgstr "Encerrar"
+
+#: ../epoptes/ui/notifications.py:45
+msgid "Connected:"
+msgstr "Conetado"
+
+#: ../epoptes/ui/notifications.py:45
+#, python-format
+msgid "%(user)s on %(host)s"
+msgstr "%(user)s em %(host)s"
+
+#: ../epoptes/ui/notifications.py:48
+msgid "Disconnected:"
+msgstr "Desconetado"
+
+#: ../epoptes/ui/notifications.py:48
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr "%(user)s de %(host)s"
+
+#: ../epoptes/ui/client_information.py:64
+#, python-format
+msgid "Properties of %s"
+msgstr "Propriedades de %s"
+
+#: ../epoptes/ui/gui.py:127
+msgid "Detected clients"
+msgstr "Clientes detetados"
+
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Tem a certeza que quer desligar todos os computadores?"
+
+#: ../epoptes/ui/gui.py:222
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Tem a certeza que quer reiniciar todos os computadores?"
+
+#: ../epoptes/ui/gui.py:228
+msgid "Are you sure you want to log off all the users?"
+msgstr "Tem a certeza que quer terminar a sessão de todos os utilizadores?"
+
+#: ../epoptes/ui/gui.py:368
+msgid "The screen is locked by a system administrator."
+msgstr "O ecrã está bloqueado pelo administrador do sistema."
+
+#: ../epoptes/ui/gui.py:397
+#, python-format
+msgid ""
+"Are you sure you want to remove the selected client(s) from group \"%s\"?"
+msgstr ""
+"Tem a certeza que quer remover o(s) cliente(s) selecionado(s) do grupo "
+"\"%s\"?"
+
+#: ../epoptes/ui/gui.py:428
+#, python-format
+msgid "Are you sure you want to remove group \"%s\"?"
+msgstr "Tem a certeza que quer remover o grupo \"%s\"?"
+
+#. Show different messages for LTSP clients and standalones.
+#: ../epoptes/ui/gui.py:630
+#, python-format
+msgid ""
+"A connection attempt was made by a client with version %s, which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You need to update your clients to the latest epoptes-client version."
+msgstr ""
+"Foi feita uma tentativa de ligação por um cliente com a versão %s, que é "
+"incompatível com a versão atual do Epoptes.\n"
+"\n"
+"Tem que atualizar os clientes para a ultima versão do epopts-client."
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr "URL, ficheiro ou comando para executar nos clientes selecionados:"
+
+#: ../epoptes/common/config.py:217
+msgid "Message from administrator"
+msgstr "Mensagem do administrador"
+
+#: ../data/epoptes.desktop.in.h:2
+msgid "Epoptes computer lab administration tool"
+msgstr "Ferramenta de administração para laboratório computacional Epoptes."
+
+#: ../bin/epoptes.py:54
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr "O utilizador %s tem que ser membro do grupo %s para correr o epoptes"
+
+#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
+msgid "Error"
+msgstr "Erro"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Graphics card:"
+msgstr "Placa gráfica:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Processor:"
+msgstr "Processador:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "User:"
+msgstr "Utilizador:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "Endereço IP:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "MAC address:"
+msgstr "Endereço MAC:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Client hostname:"
+msgstr "Nome do cliente (hostname)"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "Client type:"
+msgstr "Tipo de cliente"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Client alias:"
+msgstr "Cliente alias (pseudônimo)"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Editar alias"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Definir novo alias para o cliente selecionado"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:2
+msgid "Message title:"
+msgstr "Título da mensagem"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:3
+msgid "Message text:"
+msgstr "Texto da mensagem"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+msgid "Use Pango markup"
+msgstr "Utilizar marcação Pango"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:5
+msgid "_Send"
+msgstr "_Enviar"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "Aviso"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:1
+msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
+msgstr "Copyright &#xA9; 2011-2012 Equipa Epoptes"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Uma ferramenta de gestão e monitorização do laboratório"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+msgid ""
+"Epoptes is free software: you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation, either version 3 of the License, or any later version. \n"
+"\n"
+"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"epoptes. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"Epoptes é um software livre: pode redistribuí-lo e/ou modifica-lo nos termos "
+"da GNU General Public License conforme publicado pela Free Software "
+"Foundation, ou pela 3ª versão da Licença, ou qualquer versão mais recente. \n"
+"\n"
+"Epopts é distribuído na esperança que seja útil, mas SEM QUALQUER GARANTIA; "
+"nem sequer da garantia implícita do MERCHANTABILITY or FITNESS FOR A "
+"PARTICULAR PURPOSE. Veja a GNU General Public License para mais detalhes. \n"
+"\n"
+"Deverá ter recebido uma cópia da GNU General Public License junto com o "
+"epopts. Senão, veja <http://www.gnu.org/licenses/>."
+
+#: ../epoptes-client/remote-assistance.py:145
+#: ../epoptes-client/remote-assistance.py:190
+#: ../potfiles-workaround/remote-assistance.py:145
+#: ../potfiles-workaround/remote-assistance.py:190
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Not connected"
+msgstr "Não ligado"
+
+#: ../epoptes-client/remote-assistance.py:178
+#: ../potfiles-workaround/remote-assistance.py:178
+#, python-format
+msgid "Connecting to %s..."
+msgstr "A ligar a %s..."
+
+#: ../epoptes-client/remote-assistance.py:187
+#: ../potfiles-workaround/remote-assistance.py:187
+#, python-format
+msgid "Connected to %s"
+msgstr "Ligado a %s"
+
+#: ../epoptes-client/remote-assistance.py:195
+#: ../potfiles-workaround/remote-assistance.py:195
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Falhou a ligar a %s"
+
+#: ../epoptes-client/remote-assistance.py:209
+#: ../potfiles-workaround/remote-assistance.py:209
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Repetindo em %d"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr ""
+"Introduza a informação do contacto com quem pretende partilhar a sua Área de "
+"Trabalho"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Method:"
+msgstr "Método:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Host:"
+msgstr "Máquina:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:4
+msgid "Keep reconnecting"
+msgstr "Continuar a reconetar"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Connection information"
+msgstr "Informação da ligação"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Status"
+msgstr "Estado"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Graphics (VNC)"
+msgstr "Gráfico (VNC)"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Console (screen)"
+msgstr "Consola (ecrã)"
