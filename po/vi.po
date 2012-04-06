@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-03-23 00:35+0000\n"
+"PO-Revision-Date: 2012-04-05 14:29+0000\n"
 "Last-Translator: Vu Do Quynh <vdquynh@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-24 05:26+0000\n"
-"X-Generator: Launchpad (build 14981)\n"
+"X-Launchpad-Export-Date: 2012-04-06 04:55+0000\n"
+"X-Generator: Launchpad (build 15060)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -89,7 +89,7 @@ msgstr "Phát tán"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Monitor user"
-msgstr ""
+msgstr "Giám sát người dùng"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Assist user"
@@ -161,11 +161,11 @@ msgstr "Mở terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
-msgstr ""
+msgstr "Người dùng, cục bộ"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
-msgstr ""
+msgstr "Root, cục bộ"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
@@ -314,16 +314,16 @@ msgstr "Kết nối:"
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr ""
+msgstr "%(user)s trên %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr ""
+msgstr "Không kết nối:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr ""
+msgstr "%(user)s từ %(host)s"
 
 #: ../epoptes/ui/client_information.py:64
 #, python-format
@@ -332,7 +332,7 @@ msgstr "Thuộc tính của %s"
 
 #: ../epoptes/ui/gui.py:127
 msgid "Detected clients"
-msgstr ""
+msgstr "Máy khách đang có"
 
 #: ../epoptes/ui/gui.py:217
 msgid "Are you sure you want to shutdown all the computers?"
@@ -399,7 +399,7 @@ msgstr "Lỗi"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Graphics card:"
-msgstr ""
+msgstr "Card đồ hoạ:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
@@ -435,7 +435,7 @@ msgstr "Tên dùng cho máy khách:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
-msgstr ""
+msgstr "Sửa tên dùng"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
@@ -447,7 +447,7 @@ msgstr "Tên thông điệp:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr ""
+msgstr "Văn bản thông điệp:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
@@ -483,6 +483,18 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Epoptes là phần mềm tự do nguồn mở: bạn có thể phân phối lại va/hoặc sửa đổi "
+"phần mềm căn cứ vào giấy phép bản quyền GNU General Public License do Free "
+"Software Foundation đã công bố, phiên bản 3 hoặc mới hơn. \n"
+"\n"
+"Epoptes được phân phối với sự hy vọng sẽ có ích lợi, nhưng KHÔNG CÓ BẢO ĐẢM "
+"GÌ HẾT; kể cả sự bảo đảm để THƯƠNG MẠI HOÁ hoặc để THỰC HIỆN MỘT NHIỆM VỤ CỤ "
+"THỂ. Vui lòng đọc giấy phép bản quyền GNU General Public License để thêm chi "
+"tiết. \n"
+"\n"
+"Bạn phải nhận một bản sao của giấy phép bản quyền GNU General Public License "
+"đi kèm với phần mềm Epoptes. Nếu không, vui lòng xem "
+"<http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
 #: ../epoptes-client/remote-assistance.py:190
@@ -519,7 +531,7 @@ msgstr "Thử lại trong %d..."
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+msgstr "Điền thông tin liên lạc để chia sẻ Desktop"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
@@ -547,4 +559,4 @@ msgstr "Đồ hoạ (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr ""
+msgstr "Thiết bị cuối (màn hình)"
