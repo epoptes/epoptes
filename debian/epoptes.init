@@ -16,11 +16,16 @@ PIDFILE=/var/run/epoptes.pid
 LOGFILE=/var/log/epoptes.log
 DESC="Epoptes service"
 
-# If this is an LTSP chroot, then only run the service if EPOPTES=True
-if [ -f /etc/ltsp_chroot ] && [ -f /usr/share/ltsp/ltsp-common-functions ]; then
-    . /usr/share/ltsp/ltsp-common-functions
+# If this is an LTSP client, then only run the service if EPOPTES=True
+if egrep -qs 'ltsp|nfs|nbd' /proc/cmdline && [ -x /usr/bin/getltscfg ]; then
     eval $(getltscfg -a) || true
-    boolean_is_true "$EPOPTES" || exit 0
+    case "$EPOPTES" in
+       [Tt][Rr][Uu][Ee]|[Yy]|[Yy][Ee][Ss])
+            ;;
+       *)
+            exit 0
+            ;;
+    esac
 fi
 
 . /lib/lsb/init-functions

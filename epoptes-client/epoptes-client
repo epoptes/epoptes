@@ -73,7 +73,7 @@ basic_info() {
     # not in our environment, and we need to source ltsp_config.
     # But we don't want to pollute the environment with any of its other vars.
     if [ "$UID" -eq 0 ] && [ -f /usr/share/ltsp/ltsp_config ] && ! chrooted &&
-        egrep -q 'ltsp|nfs|nbd' /proc/cmdline 2>/dev/null 
+        egrep -qs 'ltsp|nfs|nbd' /proc/cmdline
     then
         export $(
             . /usr/share/ltsp/ltsp_config >/dev/null

@@ -22,7 +22,7 @@ test -x "$DAEMON" || exit 0
 # an if-up event.
 # So we only need to run on LTSP chroots earlier than 5.3.
 test -f /etc/ltsp_chroot || exit 0
-grep -Eqsw "init=/sbin/init-ltsp|ltsp" /proc/cmdline && exit 0
+grep -qs "init=/sbin/init-ltsp" /proc/cmdline && exit 0
 
 case "$1" in
     start|restart|force-reload)
