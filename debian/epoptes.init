@@ -11,7 +11,7 @@
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/bin/twistd
+DAEMON=/usr/bin/python
 PIDFILE=/var/run/epoptes.pid
 LOGFILE=/var/log/epoptes.log
 DESC="Epoptes service"
@@ -28,7 +28,8 @@ fi
 case "$1" in
     start)
         log_daemon_msg "Starting the epoptes daemon"
-        start-stop-daemon --start --quiet --oknodo --exec "$DAEMON" -- --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
+        start-stop-daemon --start --startas /usr/bin/twistd --quiet --oknodo --pidfile "$PIDFILE" --exec "$DAEMON" -- \
+            --pidfile "$PIDFILE" --logfile "$LOGFILE" epoptes
         log_end_msg $?
         ;;
     stop)
