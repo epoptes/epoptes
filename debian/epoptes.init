@@ -18,8 +18,7 @@ DESC="Epoptes service"
 
 # If this is an LTSP client, then only run the service if EPOPTES=True
 if egrep -qs 'ltsp|nfs|nbd' /proc/cmdline && [ -x /usr/bin/getltscfg ]; then
-    eval $(getltscfg -a) || true
-    case "$EPOPTES" in
+    case "$(getltscfg EPOPTES || true)" in
        [Tt][Rr][Uu][Ee]|[Yy]|[Yy][Ee][Ss])
             ;;
        *)
