@@ -1,4 +1,4 @@
-# Afrikaans translation for epoptes
+# Malay translation for epoptes
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the epoptes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-04-07 07:03+0000\n"
-"Last-Translator: Jonathan Carter <jonathan@ubuntu.com>\n"
-"Language-Team: Afrikaans <af@li.org>\n"
+"PO-Revision-Date: 2012-04-07 13:23+0000\n"
+"Last-Translator: abuyop <Unknown>\n"
+"Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Jonathan Carter https://launchpad.net/~jonathan"
+"  abuyop https://launchpad.net/~abuyop"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Confirm action"
-msgstr "Bevestig aksie"
+msgstr "Sahkan tindakan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
@@ -33,334 +33,334 @@ msgstr "Epoptes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "_File"
-msgstr "_Lêer"
+msgstr "_Fail"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Labels"
-msgstr "Etikette"
+msgstr "Label"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Computer (user)"
-msgstr "Rekenaar (gebruiker)"
+msgstr "Komputer (pengguna)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Computer"
-msgstr "Rekenaar"
+msgstr "Komputer"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "User (computer)"
-msgstr "Gebruiker (rekenaar)"
+msgstr "Pengguna (komputer)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "User"
-msgstr "Gebruiker"
+msgstr "Pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Show real names"
-msgstr "Wys regte name"
+msgstr "Papar nama sebenar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "_Clients"
-msgstr "_Kliënte"
+msgstr "_Klien"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Session"
-msgstr "Sessie"
+msgstr "Sesi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Boot"
-msgstr "Skakel Aan"
+msgstr "But"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Log out"
-msgstr "Meld af"
+msgstr "Daftar keluar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Reboot"
-msgstr "Herlaai"
+msgstr "But Semula"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Shutdown"
-msgstr "Skakel af"
+msgstr "Matikan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Broadcasts"
-msgstr "Saai uit"
+msgstr "Siar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Monitor user"
-msgstr "Monitor gebruiker"
+msgstr "Pantau pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Assist user"
-msgstr "Help gebruiker"
+msgstr "Bantu pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Take control of the selected user's computer"
-msgstr "Neem beheer van die gebruiker se rekenaar"
+msgstr "Ambil alih kawalan komputer terpilih pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Broadcast video"
-msgstr "Saai video uit"
+msgstr "Siar video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Broadcast screen"
-msgstr "Saai skerm uit"
+msgstr "Siar skrin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Saai jou skerm uit na gekiesde kliënte, volskerm"
+msgstr "Siarkan skrin anda kepada klien terpilih, skirn penuh"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast screen (windowed)"
-msgstr "Saai skerm uit (in venster)"
+msgstr "Siar skrin (bertetingkap)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Saai jou skerm uit na die geskiesde kliënte, in 'n venster"
+msgstr "Siarkan skrin anda kepada klien terpilih, dalam tetingkap"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr "Saai gebruiker uit"
+msgstr "Siar pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
-msgstr "Stop uitsaai aksies"
+msgstr "Henti siar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stops all active broadcasts"
-msgstr "Stop alle aktieve uitsendings"
+msgstr "Hentikan semua siaran aktif"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Open broadcasts window"
-msgstr "Maak uitsaai venster oop"
+msgstr "Buka tetingkap siar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Maak 'n sessie oop in 'n venster vir uitsending"
+msgstr ""
+"Buka sesi bertetingkap untuk menghindari penyiaran keseluruhan skrin anda"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
-msgstr "Voer uit"
+msgstr "Lakukan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
-msgstr "Voer 'n bevel uit op gekooste kliënte"
+msgstr "Lakukan perintah pada klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
-msgstr "_Stuur boodskap"
+msgstr "_Hantar mesej"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr "Stuur 'n boodskap na die gekooste kliënte"
+msgstr "Hantar mesej ke klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr "Maak 'n terminaal oop"
+msgstr "Buka terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
-msgstr "Gebruiker, plaaslik"
+msgstr "Pengguna, setempat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
-msgstr "Root, plaaslik"
+msgstr "Root, setempat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
-msgstr "Root, afgelëe"
+msgstr "Root, jauh"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Restrictions"
-msgstr "Beperkings"
+msgstr "Sekatan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Lock screen"
-msgstr "Sluit skerm"
+msgstr "Kunci skrin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unlock screen"
-msgstr "Onsluit skerm"
+msgstr "Buka skrin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Block Internet"
-msgstr "Blok Internet"
+msgstr "Sekat Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unblock Internet"
-msgstr "Onblok Internet"
+msgstr "Buka Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Mute sound"
-msgstr "Bedoof klank"
+msgstr "Senyapkan bunyi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Unmute sound"
-msgstr "Onbedoof klank"
+msgstr "Jangan senyapkan bunyi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Background image"
-msgstr "Agtergrondbeeld"
+msgstr "Imej latar belakang"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Lock background"
-msgstr "Sluit agtergrond"
+msgstr "Kunci latar belakang"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Set default background"
-msgstr "Verstel verstekte agtergrond"
+msgstr "Tetapkan latar belakang lalai"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set background"
-msgstr "Verstel agtergrond"
+msgstr "Tetapkan latar belakang"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Remove from group"
-msgstr "Verwyder van groep"
+msgstr "Buang dari kumpulan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "_Help"
-msgstr "_Hulp"
+msgstr "_Bantuan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Report a bug"
-msgstr "Rapporteer 'n gogga"
+msgstr "Laporkan pepijat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Ask a question"
-msgstr "Vra 'n vraag"
+msgstr "Tanya soalan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Translate this application"
-msgstr "Vertaal hierdie program"
+msgstr "Terjemah aplikasi ini"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Live chat (IRC)"
-msgstr "Praat regstreeks (IRC)"
+msgstr "Sembang langsung (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Remote support"
-msgstr "Afgelëe ondersteuning"
+msgstr "Sokongan jauh"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Skakel aan gekooste kliënte (\"Wake on LAN\")"
+msgstr "Butkan klien terpilih (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Log out users connected on selected clients"
-msgstr "Meld af gebruikers op gekooste kliënte"
+msgstr "Daftar keluar pengguna yang bersambung pada klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Reboot the selected clients"
-msgstr "Herlaai gekooste rekenaars"
+msgstr "But semula klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Shutdown the selected clients"
-msgstr "Skakel af die gekooste rekenaars"
+msgstr "Matikan klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Broadcast your screen to the selected clients"
-msgstr "Saai uit jou skerm na die gekooste rekenaars"
+msgstr "Siarkan skrin anda kepada klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Stop all broadcasts on every client"
-msgstr "Stop alle uitsendings op elke rekenaar"
+msgstr "Hentikan semua siaran pada setiap klien"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr "Voeg bevel uit"
+msgstr "Lakukan perintah"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
-msgstr "Stuur boodskap"
+msgstr "Hantar mesej"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "Lock screen of the selected clients"
-msgstr "Sluit skerm op die gekooste rekenaars"
+msgstr "Kunci skrin klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Unlock the screen of the selected clients"
-msgstr "Sluit oop die skerms op die gekooste rekenaars"
+msgstr "Buka skrin klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Show information for the selected client"
-msgstr "Wys informasie vir die gekooste rekenaar"
+msgstr "Papar maklumat klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
-msgstr "Informasie"
+msgstr "Maklumat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Create a new group"
-msgstr "Skep 'n nuwe groep"
+msgstr "Cipta kumpulan baru"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Remove the selected group"
-msgstr "Verwyder die gekooste groep"
+msgstr "Buang kumpulan terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Broadcast screen (fullscreen)"
-msgstr "Saai skerm uit (volskerm)"
+msgstr "Siar skrin (skrin penuh)"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr "Skakel af:"
+msgstr "Matikan:"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr "Gekoppel:"
+msgstr "Bersambung:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s op %(host)s"
+msgstr "%(user)s pada %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr "Ongekoppeld:"
+msgstr "Terputus:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s van %(host)s"
+msgstr "%(user)s daripada %(host)s"
 
 #: ../epoptes/ui/client_information.py:64
 #, python-format
 msgid "Properties of %s"
-msgstr "Eienskappe van %s"
+msgstr "Sifat %s"
 
 #: ../epoptes/ui/gui.py:127
 msgid "Detected clients"
-msgstr "Bevinde rekenaars"
+msgstr "Klien dikesan"
 
 #: ../epoptes/ui/gui.py:217
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Is jy seker jy wil alle rekenaars afskakel?"
+msgstr "Anda pasti hendak matikan semua komputer?"
 
 #: ../epoptes/ui/gui.py:222
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Is jy seker jy wil alle rekenaars herlaai?"
+msgstr "Anda pasti hendak butkan semula semua komputer?"
 
 #: ../epoptes/ui/gui.py:228
 msgid "Are you sure you want to log off all the users?"
-msgstr "Is jy seker jy wil alle gebruikers af meld?"
+msgstr "Anda pasti hendak daftar keluarkan semua pengguna?"
 
 #: ../epoptes/ui/gui.py:368
 msgid "The screen is locked by a system administrator."
-msgstr "Hierdie skerm is gesluit deur 'n sisteem administrator."
+msgstr "Skrin telah dikunci oleh pentadbir sistem"
 
 #: ../epoptes/ui/gui.py:397
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr ""
-"Is jy seker jy wil alle verkose rekenaar(s) verwyder van groep \"%s\"?"
+msgstr "Anda pasti hendak membuang klien terpilih dari kumpulan \"%s\"?"
 
 #: ../epoptes/ui/gui.py:428
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Is jy seker jy wil groep \"%s\" verwyder?"
+msgstr "Anda pasti hendak membuang kumpulan \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:630
@@ -371,101 +371,103 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"A konneksie poging is gemaak deur 'n kliënt met weergawe %s, wat nie "
-"versonbaar is met die huidige Epoptes weergawe nie"
+"Satu sambungan cuba dibuat oleh klien dengan versi %s, yang mana tidak "
+"serasi dengan versi epoptes semasa.\n"
+"\n"
+"Anda perlu kemaskinikan klien anda kepada versi epoptes-client terkini."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, lêer of bevel om uit te voer op gekooste kliënte."
+msgstr "URL, fail atau perintah untuk dilakukan pada klien terpilih:"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr "Boodskap van administrator"
+msgstr "Mesej dari pentadbir"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr "Epoptes rekenaarkameradministrasieprogram"
+msgstr "Alat pentadbiran makmal komputer Epoptes"
 
 #: ../bin/epoptes.py:54
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr "Gebruiker %s moet 'n lid wees van groep %s om Epoptes te loop."
+msgstr "Pengguna %s mestilah ahli kumpulan %s untuk jalankan epoptes."
 
 #: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
-msgstr "Probleem"
+msgstr "Ralat"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Graphics card:"
-msgstr "Grafiese kaart:"
+msgstr "Kad grafik:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
-msgstr "RAM (geheue):"
+msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Processor:"
-msgstr "Verwerker:"
+msgstr "Pemproses:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "User:"
-msgstr "Gebruiker:"
+msgstr "Pengguna:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "IP address:"
-msgstr "IP-adres:"
+msgstr "Alamat IP:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "MAC address:"
-msgstr "MAC adres:"
+msgstr "Alamat MAC"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Client hostname:"
-msgstr "Kliënt rekenaarnaam:"
+msgstr "Nama hos klien:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Client type:"
-msgstr "Tipe kliënt:"
+msgstr "Jenis klien:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client alias:"
-msgstr "Huidige alias:"
+msgstr "Alias klien:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
-msgstr "Wysig alias"
+msgstr "Sunting alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
-msgstr "Wys 'n nuwe alias vir die verkooste kliënt"
+msgstr "Tetapkan alias baru untuk klien terpilih"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr "Boodskap titel"
+msgstr "Tajuk mesej:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr "Boodskap teks:"
+msgstr "Teks mesej:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr "Gebruik Pango markering"
+msgstr "Guna penanda Pango"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
-msgstr "_Stuur"
+msgstr "_Hantar"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr "Waarskuwing"
+msgstr "Amaran"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr "Kopiereg &#xA9; 2011-2012 Epoptes Span"
+msgstr "Hakcipta &#xA9; 2011-2012 Pasukan Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "'n Rekenaar kamer bestuur in monitering program."
+msgstr "Alat pemantuan dan pengurusan makmal komputer."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -488,52 +490,52 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr "Nie gekoppel nie"
+msgstr "Tidak bersambung"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr "Gekoppel aan %s..."
+msgstr "Bersambung ke %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr "Verbind aan %s"
+msgstr "Menyambung ke %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "Kon nie koppel aan %s nie"
+msgstr "Gagal sambung ke %s"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Herprobeer in %d..."
+msgstr "Cuba lagi dalam %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+msgstr "Masukkan maklumat kenalan yang anda hendak kongsikan Desktop dengan"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr "Metode:"
+msgstr "Kaedah:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr "Rekenaarnaam:"
+msgstr "Hos:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr "Herprobeer koppeling"
+msgstr "Kekal menyambung semula"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr "Konneksie informasie"
+msgstr "Maklumat sambungan"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
@@ -541,8 +543,8 @@ msgstr "Status"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr "Grafies (VNC)"
+msgstr "Grafik (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr "Konsool (skerm)"
+msgstr "Konsol (skrin)"
