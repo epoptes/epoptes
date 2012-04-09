@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: epoptes 0.3.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-03-04 18:49+0000\n"
+"PO-Revision-Date: 2012-04-08 16:24+0000\n"
 "Last-Translator: Slavko <Unknown>\n"
 "Language-Team: slovenčina <debian-l10n-slovak@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-23 05:10+0000\n"
-"X-Generator: Launchpad (build 14996)\n"
+"X-Launchpad-Export-Date: 2012-04-09 05:10+0000\n"
+"X-Generator: Launchpad (build 15060)\n"
 "Language: sk\n"
 "X-POFile-SpellExtra: screen epoptes IRC LAN General distribouvať\n"
 
@@ -374,6 +374,10 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Bol urobený pokus o pripojenie klientom verzie %s, ktorá nie je kompatibilná "
+"s aktuálnou verziou Epoptes.\n"
+"\n"
+"Svojich klientov musíte aktualizovať na najnovšiu verziu epoptes-client."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
@@ -381,7 +385,7 @@ msgstr "URL, súbor alebo príkaz na spustenie na zvolených klientoch:"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr ""
+msgstr "Správa od administrátora"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -442,7 +446,7 @@ msgstr "Nastaviť nový alias pre zvoleného klienta"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr ""
+msgstr "Nadpis správy:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
@@ -450,7 +454,7 @@ msgstr "Text správy:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr ""
+msgstr "Použiť značkovanie Pango"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
@@ -499,61 +503,62 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr ""
+msgstr "Nepripojené"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr ""
+msgstr "Pripájanie k %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "Pripojené k %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr ""
+msgstr "Pripojenie k %s zlyhalo"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr ""
+msgstr "Opakovanie za %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
 msgstr ""
+"Zadajte informácie o kontakte, s ktorým chcete zdieľať svoje prostredie"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr ""
+msgstr "Metóda:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr ""
+msgstr "Stroj:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr ""
+msgstr "Nechať pripojené"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr ""
+msgstr "Informácie o spojení"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr ""
+msgstr "Stav"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr ""
+msgstr "Graficky (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr ""
+msgstr "Konzola (screen)"
