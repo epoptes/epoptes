@@ -1,3 +1,12 @@
+epoptes (0.5.3-1) precise; urgency=low
+
+  * Use better checks to detect LTSP clients (LP: #975784).
+  * Correct start-stop-daemon parameters (LP: #975433).
+  * Add Afrikaans, English (Australia), Malay and Portuguese translations.
+    Many thanks to the translators!
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Mon, 09 Apr 2012 18:58:03 +0300
+
 epoptes (0.5.2-1) unstable; urgency=low
 
   * Correctly match URLs in execute function.
