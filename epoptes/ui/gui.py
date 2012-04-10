@@ -193,8 +193,6 @@ class EpoptesGui(object):
             self.vncserver.kill()
         if not self.vncviewer is None:
             self.vncviewer.kill()
-        # Work around http://twistedmatrix.com/trac/ticket/5503
-        reactor.crash()
         reactor.stop()
             
     def toggleRealNames(self, widget=None):
