@@ -1,4 +1,4 @@
-# Malay translation for epoptes
+# Czech translation for epoptes
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the epoptes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-04-09 07:27+0000\n"
-"Last-Translator: Fotis Tsamis <Unknown>\n"
-"Language-Team: Malay <ms@li.org>\n"
+"PO-Revision-Date: 2012-04-09 11:08+0000\n"
+"Last-Translator: Danielsnojack <Unknown>\n"
+"Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,12 +21,11 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas\n"
-"  abuyop https://launchpad.net/~abuyop"
+"  Danielsnojack https://launchpad.net/~krhanek"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Confirm action"
-msgstr "Sahkan tindakan"
+msgstr "Potvrdit akci"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
@@ -34,334 +33,333 @@ msgstr "Epoptes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "_File"
-msgstr "_Fail"
+msgstr "_Soubor"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Labels"
-msgstr "Label"
+msgstr "Popisky"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Computer (user)"
-msgstr "Komputer (pengguna)"
+msgstr "Počítač (uživatel)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "Computer"
-msgstr "Komputer"
+msgstr "Počítač"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "User (computer)"
-msgstr "Pengguna (komputer)"
+msgstr "Uživatel (počítač)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "User"
-msgstr "Pengguna"
+msgstr "Uživatel"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Show real names"
-msgstr "Papar nama sebenar"
+msgstr "Zobraz skutečná jména"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "_Clients"
-msgstr "_Klien"
+msgstr "_Klienti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Session"
-msgstr "Sesi"
+msgstr "Sezení"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Boot"
-msgstr "But"
+msgstr "Spustit počítač"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Log out"
-msgstr "Daftar keluar"
+msgstr "Odhlásit"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Reboot"
-msgstr "But Semula"
+msgstr "Restartovat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Shutdown"
-msgstr "Matikan"
+msgstr "Vypnout"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Broadcasts"
-msgstr "Siar"
+msgstr "Vysílat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Monitor user"
-msgstr "Pantau pengguna"
+msgstr "Sledovat uživatele"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Assist user"
-msgstr "Bantu pengguna"
+msgstr "Asistovat uživateli"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Take control of the selected user's computer"
-msgstr "Ambil alih kawalan komputer terpilih pengguna"
+msgstr "Převzít kontrolu nad vybraným počítačem"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Broadcast video"
-msgstr "Siar video"
+msgstr "Vysílat video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Broadcast screen"
-msgstr "Siar skrin"
+msgstr "Vysílat obrazovku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Siarkan skrin anda kepada klien terpilih, skirn penuh"
+msgstr "Vysílat svou obrazovku vybraným klientům na celou obrazovku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast screen (windowed)"
-msgstr "Siar skrin (bertetingkap)"
+msgstr "Vysílat obrazovku (okno)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Siarkan skrin anda kepada klien terpilih, dalam tetingkap"
+msgstr "Vysílat svou obrazovku vybraným klientům v okně"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr "Siar pengguna"
+msgstr "Vysílat uživatele"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
-msgstr "Henti siar"
+msgstr "Zastavit vysílání"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stops all active broadcasts"
-msgstr "Hentikan semua siaran aktif"
+msgstr "Zastavit všechna aktivní vysílání"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Open broadcasts window"
-msgstr "Buka tetingkap siar"
+msgstr "Otevřít okno vysílání"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr ""
-"Buka sesi bertetingkap untuk menghindari penyiaran keseluruhan skrin anda"
+msgstr "Otevřít sezení v okně, aby se nevysílala celá obrazovka"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
-msgstr "Lakukan"
+msgstr "Vykonat příkaz"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
-msgstr "Lakukan perintah pada klien terpilih"
+msgstr "Vykonat příkaz na vybraných klientech"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
-msgstr "_Hantar mesej"
+msgstr "_Odeslat zprávu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr "Hantar mesej ke klien terpilih"
+msgstr "Odelsat zprávu vybraným klientům"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr "Buka terminal"
+msgstr "Otevřít terminál"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
-msgstr "Pengguna, setempat"
+msgstr "Lokální uživatel"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
-msgstr "Root, setempat"
+msgstr "Lokální root"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
-msgstr "Root, jauh"
+msgstr "Vzdálený root"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Restrictions"
-msgstr "Sekatan"
+msgstr "Omezení"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Lock screen"
-msgstr "Kunci skrin"
+msgstr "Zamknout obrazovku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unlock screen"
-msgstr "Buka skrin"
+msgstr "Odemknout obrazovku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Block Internet"
-msgstr "Sekat Internet"
+msgstr "Zablokovat Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unblock Internet"
-msgstr "Buka Internet"
+msgstr "Odblokovat Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Mute sound"
-msgstr "Senyapkan bunyi"
+msgstr "Ztlumit zvuk"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Unmute sound"
-msgstr "Jangan senyapkan bunyi"
+msgstr "Zrušit ztlumení zvuku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Background image"
-msgstr "Imej latar belakang"
+msgstr "Obrázek na pozadí"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Lock background"
-msgstr "Kunci latar belakang"
+msgstr "Zamknout pozadí"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Set default background"
-msgstr "Tetapkan latar belakang lalai"
+msgstr "Nastavit výchozí pozadí"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set background"
-msgstr "Tetapkan latar belakang"
+msgstr "Nastavit pozadí"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Remove from group"
-msgstr "Buang dari kumpulan"
+msgstr "Odebrat ze skupiny"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "_Help"
-msgstr "_Bantuan"
+msgstr "_Nápověda"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Report a bug"
-msgstr "Laporkan pepijat"
+msgstr "Nahlásit chybu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Ask a question"
-msgstr "Tanya soalan"
+msgstr "Položit otázku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Translate this application"
-msgstr "Terjemah aplikasi ini"
+msgstr "Přeložit tuto aplikaci"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Live chat (IRC)"
-msgstr "Sembang langsung (IRC)"
+msgstr "spusit chat (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Remote support"
-msgstr "Sokongan jauh"
+msgstr "Vzdálená podpora"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Butkan klien terpilih (Wake On LAN)"
+msgstr "Spustit vybrané počítače (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Log out users connected on selected clients"
-msgstr "Daftar keluar pengguna yang bersambung pada klien terpilih"
+msgstr "Odhlásit uživatele na vybraných počítačích"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Reboot the selected clients"
-msgstr "But semula klien terpilih"
+msgstr "Restartovat vybrané počítače"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Shutdown the selected clients"
-msgstr "Matikan klien terpilih"
+msgstr "Vypnout vybrané počítače"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Broadcast your screen to the selected clients"
-msgstr "Siarkan skrin anda kepada klien terpilih"
+msgstr "Vysílat svou obrazovku vybraným počítačům"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Stop all broadcasts on every client"
-msgstr "Hentikan semua siaran pada setiap klien"
+msgstr "Zastavit všechna vysílání"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr "Lakukan perintah"
+msgstr "Vykonat příkaz"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
-msgstr "Hantar mesej"
+msgstr "Odeslat zprávu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "Lock screen of the selected clients"
-msgstr "Kunci skrin klien terpilih"
+msgstr "Zamknout obrazovku na vybraných počítačích"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Unlock the screen of the selected clients"
-msgstr "Buka skrin klien terpilih"
+msgstr "Odemknout obrazovku na vybraných počítačích"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Show information for the selected client"
-msgstr "Papar maklumat klien terpilih"
+msgstr "Zobrazit informaci na vybraných počítačích"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
-msgstr "Maklumat"
+msgstr "Informace"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Create a new group"
-msgstr "Cipta kumpulan baru"
+msgstr "Vytvořit novou skupinu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Remove the selected group"
-msgstr "Buang kumpulan terpilih"
+msgstr "Odstranit vybranou skupinu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Broadcast screen (fullscreen)"
-msgstr "Siar skrin (skrin penuh)"
+msgstr "Vysílat obrazovku na celou obrazovku"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr "Matikan:"
+msgstr "Vypnout:"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr "Bersambung:"
+msgstr "Připojeno:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s pada %(host)s"
+msgstr "%(user)s na %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
-msgstr "Terputus:"
+msgstr "Odpojeno:"
 
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s daripada %(host)s"
+msgstr "%(user)s z %(host)s"
 
 #: ../epoptes/ui/client_information.py:64
 #, python-format
 msgid "Properties of %s"
-msgstr "Sifat %s"
+msgstr "Vlastnosti %s"
 
 #: ../epoptes/ui/gui.py:127
 msgid "Detected clients"
-msgstr "Klien dikesan"
+msgstr "Detekované počítače"
 
 #: ../epoptes/ui/gui.py:217
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Anda pasti hendak matikan semua komputer?"
+msgstr "Jste si jistý, že chcete vypnout všechny počítače?"
 
 #: ../epoptes/ui/gui.py:222
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Anda pasti hendak butkan semula semua komputer?"
+msgstr "Jste si jistý, že chcete restartovat všechny počítače?"
 
 #: ../epoptes/ui/gui.py:228
 msgid "Are you sure you want to log off all the users?"
-msgstr "Anda pasti hendak daftar keluarkan semua pengguna?"
+msgstr "Jste si jistý, že chcete odhlásit všechny uživatele?"
 
 #: ../epoptes/ui/gui.py:368
 msgid "The screen is locked by a system administrator."
-msgstr "Skrin telah dikunci oleh pentadbir sistem"
+msgstr "Obrazovka je uzamčena administrátorem"
 
 #: ../epoptes/ui/gui.py:397
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr "Anda pasti hendak membuang klien terpilih dari kumpulan \"%s\"?"
+msgstr "Jste si jistý, že chcete odebrat vybrané počítače ze skupiny \"%s\"?"
 
 #: ../epoptes/ui/gui.py:428
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Anda pasti hendak membuang kumpulan \"%s\"?"
+msgstr "Jste si jistý, že chcete odebrat skupinu \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:630
@@ -372,35 +370,35 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"Satu sambungan cuba dibuat oleh klien dengan versi %s, yang mana tidak "
-"serasi dengan versi epoptes semasa.\n"
-"\n"
-"Anda perlu kemaskinikan klien anda kepada versi epoptes-client terkini."
+"Byl zaznamenán pokus o připojení z počítače s klientem verze %s,  která je "
+"nekompatibilní s aktuální verzí epoptes.\n"
+"Je třeba aktualizovat klienty na poslední verzi epoptes-client."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, fail atau perintah untuk dilakukan pada klien terpilih:"
+msgstr ""
+"URL, soubor, nebo příkaz, který se má vykonat na vybraných počítačích:"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr "Mesej dari pentadbir"
+msgstr "Zpráva od administrátora"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr "Alat pentadbiran makmal komputer Epoptes"
+msgstr "Nástroj pro správu počítačových laboratoří Epoptes"
 
 #: ../bin/epoptes.py:54
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr "Pengguna %s mestilah ahli kumpulan %s untuk jalankan epoptes."
+msgstr "Pro spuštění epoptes musí být uživatel %s členem skupiny %s."
 
 #: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
-msgstr "Ralat"
+msgstr "Chyba"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Graphics card:"
-msgstr "Kad grafik:"
+msgstr "Grafická karta:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
@@ -408,67 +406,67 @@ msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Processor:"
-msgstr "Pemproses:"
+msgstr "Procesor:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "User:"
-msgstr "Pengguna:"
+msgstr "Uživatel:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "IP address:"
-msgstr "Alamat IP:"
+msgstr "IP adresa:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "MAC address:"
-msgstr "Alamat MAC"
+msgstr "MAC adresa:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Client hostname:"
-msgstr "Nama hos klien:"
+msgstr "Jméno počítače:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Client type:"
-msgstr "Jenis klien:"
+msgstr "Typ klienta:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client alias:"
-msgstr "Alias klien:"
+msgstr "Přezdívka klienta:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
-msgstr "Sunting alias"
+msgstr "Změnit přezdívku"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
-msgstr "Tetapkan alias baru untuk klien terpilih"
+msgstr "Nastavit novou přezdívku pro vybrané klienty"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr "Tajuk mesej:"
+msgstr "Titulek zprávy:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr "Teks mesej:"
+msgstr "Text zprávy:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr "Guna penanda Pango"
+msgstr "Použít Pango markup"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
-msgstr "_Hantar"
+msgstr "_Odeslat"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr "Amaran"
+msgstr "Varování"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr "Hakcipta &#xA9; 2011-2012 Pasukan Epoptes"
+msgstr "Copyright &#xA9; 2011-2012 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "Alat pemantuan dan pengurusan makmal komputer."
+msgstr "Nástroj pro správu a sledování počítačové učebny."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -484,6 +482,16 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Epoptes je svobodný software, můžete jej šířit a / nebo modifikovat podle "
+"podmínek GNU General Public License, vydávané Free Software Foundation, buď "
+"verze 3 této licence anebo kterékoli pozdější verze.\n"
+"\n"
+"Epoptes je rozšiřován v naději, že bude užitečný, ale BEZ JAKÉKOLIV ZÁRUKY; "
+"neposkytují se ani odvozené záruky PRODEJNOSTI anebo VHODNOSTI PRO URČITÝ "
+"ÚČEL. Prohlédněte si GNU General Public License pro více detailů.\n"
+"\n"
+"Spolu s epoptes byste měli obdržet kopii GNU General Public License. Pokud "
+"ne, viz <http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
 #: ../epoptes-client/remote-assistance.py:190
@@ -491,61 +499,61 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr "Tidak bersambung"
+msgstr "Nepřipojeno"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr "Bersambung ke %s..."
+msgstr "Připojuji se k %s…"
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr "Menyambung ke %s"
+msgstr "Připojeno k %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "Gagal sambung ke %s"
+msgstr "Selhalo připojování k %s"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Cuba lagi dalam %d..."
+msgstr "Opakuji za %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr "Masukkan maklumat kenalan yang anda hendak kongsikan Desktop dengan"
+msgstr "Vložte informaci o kontaktu, se kterým chcete sdílet Vaší plochu"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr "Kaedah:"
+msgstr "Metoda:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr "Hos:"
+msgstr "Hostitel:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr "Kekal menyambung semula"
+msgstr "Zachovat pokusy o znovupřipojení"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr "Maklumat sambungan"
+msgstr "Informace o spojení"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr "Status"
+msgstr "Stav"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr "Grafik (VNC)"
+msgstr "Grafická verze (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr "Konsol (skrin)"
+msgstr "Conzole (obrazovka)"
