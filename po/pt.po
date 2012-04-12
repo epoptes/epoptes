@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-04-04 06:51+0000\n"
-"Last-Translator: José Anjos <joseanjos@gmail.com>\n"
+"PO-Revision-Date: 2012-04-11 14:51+0000\n"
+"Last-Translator: Xosé <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-05 05:17+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-04-12 05:20+0000\n"
+"X-Generator: Launchpad (build 15070)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  José Anjos https://launchpad.net/~joseanjos"
+"  José Anjos https://launchpad.net/~joseanjos\n"
+"  Xosé https://launchpad.net/~ubuntu-galizaweb"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Confirm action"
@@ -121,7 +122,7 @@ msgstr "Transmitir o seu ecrã para os clientes selecionados, numa janela"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr "Tranmitir utilizador"
+msgstr "Transmitir utilizador"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
@@ -137,7 +138,7 @@ msgstr "Abrir janela de transmissão"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Abra uma sessão na janela para evitar a transmissão de todo o ecrã"
+msgstr "Abra uma sessão numa janela para evitar a transmissão de todo o ecrã"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"

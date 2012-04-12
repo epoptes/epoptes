@@ -8,19 +8,20 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-04-10 18:42+0000\n"
+"PO-Revision-Date: 2012-04-11 14:49+0000\n"
 "Last-Translator: Xosé <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-11 04:57+0000\n"
+"X-Launchpad-Export-Date: 2012-04-12 05:20+0000\n"
 "X-Generator: Launchpad (build 15070)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  Xosé https://launchpad.net/~ubuntu-galizaweb"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -379,11 +380,11 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
+msgstr "URL, ficheiro ou orde que executar nos clientes escollidos:"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr ""
+msgstr "Mensaxe do administrador"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
@@ -392,7 +393,7 @@ msgstr "Ferramenta de administración de aulas de informática Epoptes"
 #: ../bin/epoptes.py:54
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
+msgstr "O usuario %s ten que ser membro do grupo %s para executar o epoptes."
 
 #: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
@@ -400,7 +401,7 @@ msgstr "Erro"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Graphics card:"
-msgstr ""
+msgstr "Placa gráfica:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
@@ -424,51 +425,51 @@ msgstr "Enderezo MAC:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Client hostname:"
-msgstr ""
+msgstr "Nome da máquina do cliente:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "Client type:"
-msgstr ""
+msgstr "Tipo de cliente:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client alias:"
-msgstr ""
+msgstr "Alcume do cliente:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
-msgstr ""
+msgstr "Editar o alcume"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
-msgstr ""
+msgstr "Asignarlle un alcume novo ao cliente escollido"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "Message title:"
-msgstr ""
+msgstr "Título da mensaxe:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message text:"
-msgstr ""
+msgstr "Texto da mensaxe:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr ""
+msgstr "Empregar as marcas de Pango"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
-msgstr ""
+msgstr "_Enviar"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Copyright &#xA9; 2011-2012 A equipa do Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr ""
+msgstr "Unha ferramenta de xestión e vixilancia para aulas de informática"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -484,6 +485,18 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"O Epoptes é software libre: pódeo redistribuir e/ou modificalo baixo os "
+"termos da Licenza Pública Xeral de GNU tal e como os publica a Fundación "
+"para o Software Libre, tanto na versión 3 da Licenza como en calquera "
+"versión posterior.\n"
+"\n"
+"O Epoptes distribúese coa esperanza de que sexa útil, mais SEN NINGUNHA "
+"GARANTÍA; nen sequera a garantía implícita de COMERCIABILIDADE ou de "
+"ADECUACIÓN A UN PROPÓSITO DETERMINADO. Vexa a Licenza Pública de GNU para "
+"máis detalles.\n"
+"\n"
+"Tivo que recibir unha copia da Licenza Pública Xeral de GNU xunto co "
+"Epoptes. De non ser así, vexa <http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
 #: ../epoptes-client/remote-assistance.py:190
@@ -491,61 +504,63 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr ""
+msgstr "Non conectado"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr ""
+msgstr "A conectarse a %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr ""
+msgstr "Conectado a %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr ""
+msgstr "Fallou a conexión con %s"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr ""
+msgstr "A reintentar en %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
 msgstr ""
+"Introduza a información do contacto con quen desexa compartir o seu "
+"Escritorio"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr ""
+msgstr "Método:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr ""
+msgstr "Servidor:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr ""
+msgstr "Continuar tentando a conexión"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr ""
+msgstr "Información sobre a conexión"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr ""
+msgstr "Gráfica (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr ""
+msgstr "Consola (pantalla)"
