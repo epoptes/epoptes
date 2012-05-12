@@ -1,0 +1,546 @@
+# Arabic translation for epoptes
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the epoptes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: epoptes\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-22 09:27+0200\n"
+"PO-Revision-Date: 2012-05-12 06:18+0000\n"
+"Last-Translator: Zied ALAYA <zied.alaya@ubuntu.com>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-05-12 06:19+0000\n"
+"X-Generator: Launchpad (build 15225)\n"
+
+#: ../epoptes/ui/about_dialog.py:43
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Zied ALAYA https://launchpad.net/~zied.alaya"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "Confirm action"
+msgstr "أكد الإجراء"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
+msgid "Epoptes"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "_File"
+msgstr "_ملف"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Labels"
+msgstr "ملصقات"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "Computer (user)"
+msgstr "حاسوب (مستخدم)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "Computer"
+msgstr "حاسوب"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "User (computer)"
+msgstr "مستخدم  (حاسوب)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "User"
+msgstr "المستخدم"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Show real names"
+msgstr "أظهر الأسماء الحقيقية"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "_Clients"
+msgstr "_عملاء"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Session"
+msgstr "الجلسة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Boot"
+msgstr "إقلاع"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Reboot"
+msgstr "إعادة تشغيل الجهاز"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Shutdown"
+msgstr "إيقاف التشغيل"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Broadcasts"
+msgstr "البث"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Monitor user"
+msgstr "مراقبة المستخدم"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Assist user"
+msgstr "مساعدة المستخدم"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Take control of the selected user's computer"
+msgstr "أخذ السيطرة على جهاز المستخدم المختار"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcast video"
+msgstr "بث الفيديو"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast screen"
+msgstr "بث الشاشة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "بث شاشتك إلى العملاء المحددون، شاشة كاملة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast screen (windowed)"
+msgstr "بث الشاشة (في إطارات)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "بث شاشتك إلى العملاء المحددون، في نافذة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Broadcast user"
+msgstr "بث المستخدم"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Stop broadcasts"
+msgstr "أوقف البث"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Stops all active broadcasts"
+msgstr "إيقاف كل بث ناشط"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Open broadcasts window"
+msgstr "إفتح نافذة البث"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "فتح جلسة عمل في إطارات لمنع بث شاشتك بأكملها"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "Execute"
+msgstr "تنفيذ"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Execute a command on the selected clients"
+msgstr "تنفيذ أمر على العملاء المحددون"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "_Send message"
+msgstr "_أرسِل رسالة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "Send a message to the selected clients"
+msgstr "إرسال رسالة إلى العملاء المختارين"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Open terminal"
+msgstr "فتح مطراف"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "User, locally"
+msgstr "مستعمل، محلياً"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Root, locally"
+msgstr "جذر، محلياً"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Root, remotely"
+msgstr "جذر، عن بعد"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Restrictions"
+msgstr "قيود"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
+msgid "Lock screen"
+msgstr "أوصِد الشاشة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Unlock screen"
+msgstr "إلغاء قفل الشاشة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Block Internet"
+msgstr "حظر الانترنت"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Unblock Internet"
+msgstr "إعادة الانترنت"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Mute sound"
+msgstr "أصمت الصوت"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Unmute sound"
+msgstr "إعادة الصوت"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Background image"
+msgstr "صورة الخلفية"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "Lock background"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Set default background"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Set background"
+msgstr "ضبط الخلفية"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Remove from group"
+msgstr "إزالة من مجموعة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "_Help"
+msgstr "_مساعدة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Report a bug"
+msgstr "بلّغ عن علة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Ask a question"
+msgstr "إسأل سؤال"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Translate this application"
+msgstr "ترجم هذا البرنامج"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Live chat (IRC)"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "Remote support"
+msgstr "إعانة عن بعد"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "تشغيل العملاء المحددون (ايقاض على الشبكة المحلية)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Log out users connected on selected clients"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Reboot the selected clients"
+msgstr "إعادة تشغيل العملاء المحددون"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "Shutdown the selected clients"
+msgstr "اغلاق العملاء المحددون"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
+msgid "Broadcast your screen to the selected clients"
+msgstr "بث شاشتك إلىالعملاء المحددون"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
+msgid "Stop all broadcasts on every client"
+msgstr "وقف جميع عمليات البث على كل عميل"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+msgid "Execute command"
+msgstr "تنفيذ الأمر"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+msgid "Send message"
+msgstr "إرسال رسالة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
+msgid "Lock screen of the selected clients"
+msgstr "قفل الشاشة للعملاء المحددون"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
+msgid "Unlock the screen of the selected clients"
+msgstr "إلغاء قفل الشاشة للعملاء المحددون"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
+msgid "Show information for the selected client"
+msgstr "مزيد من المعلومات للعميل المحدد"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+msgid "Information"
+msgstr "معلومة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:68
+msgid "Create a new group"
+msgstr "انشاء مجموعة جديدة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Remove the selected group"
+msgstr "حذف المجموعة المختارة"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
+msgid "Broadcast screen (fullscreen)"
+msgstr "بث الشاشة (شاشة كاملة)"
+
+#: ../epoptes/ui/notifications.py:42
+msgid "Shut down:"
+msgstr "إيقاف التشغيل"
+
+#: ../epoptes/ui/notifications.py:45
+msgid "Connected:"
+msgstr "متصل :"
+
+#: ../epoptes/ui/notifications.py:45
+#, python-format
+msgid "%(user)s on %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/notifications.py:48
+msgid "Disconnected:"
+msgstr "إتصال مقطوع:"
+
+#: ../epoptes/ui/notifications.py:48
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/client_information.py:64
+#, python-format
+msgid "Properties of %s"
+msgstr "خاصيات %s"
+
+#: ../epoptes/ui/gui.py:127
+msgid "Detected clients"
+msgstr "العملاء المكتشفون"
+
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "هل أنت متأكد من انك تريد إيقاف التشغيل جميع أجهزة الكمبيوتر؟"
+
+#: ../epoptes/ui/gui.py:222
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "هل أنت متأكدٌ بأنك تريد إعادة تشغيل جميع الأجهزة؟"
+
+#: ../epoptes/ui/gui.py:228
+msgid "Are you sure you want to log off all the users?"
+msgstr "هل أنت متأكد بأنك تريد إنهاء الجلسة لجميع المستخدمين؟"
+
+#: ../epoptes/ui/gui.py:368
+msgid "The screen is locked by a system administrator."
+msgstr "الشاشة مقفلة من قبل أحد مدراء النظام."
+
+#: ../epoptes/ui/gui.py:397
+#, python-format
+msgid ""
+"Are you sure you want to remove the selected client(s) from group \"%s\"?"
+msgstr ""
+"هل أنت متأكد أنك تريد إزالة العميل (العملاء) المحدد(ون) من  المجموعة \"%s\"؟"
+
+#: ../epoptes/ui/gui.py:428
+#, python-format
+msgid "Are you sure you want to remove group \"%s\"?"
+msgstr "هل أنت متأكدٌ بأنك تريد محو المجموعة المختارة \"%s\"؟"
+
+#. Show different messages for LTSP clients and standalones.
+#: ../epoptes/ui/gui.py:630
+#, python-format
+msgid ""
+"A connection attempt was made by a client with version %s, which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You need to update your clients to the latest epoptes-client version."
+msgstr ""
+
+#: ../epoptes/ui/gtk/executeCommand.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+
+#: ../epoptes/common/config.py:217
+msgid "Message from administrator"
+msgstr "رسالة من الأدمين"
+
+#: ../data/epoptes.desktop.in.h:2
+msgid "Epoptes computer lab administration tool"
+msgstr ""
+
+#: ../bin/epoptes.py:54
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr ""
+
+#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
+msgid "Error"
+msgstr "خطأ"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Graphics card:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "RAM:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Processor:"
+msgstr "المعالج:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "User:"
+msgstr "المستخدم:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "MAC address:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Client hostname:"
+msgstr "اسم المضيف العميل:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "Client type:"
+msgstr "نوع العميل:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Client alias:"
+msgstr "كنية العميل:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "حرر البديل"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "إختر كنية جديدة للعميل المحدد"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:2
+msgid "Message title:"
+msgstr "عنوان الرسالة"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:3
+msgid "Message text:"
+msgstr "نص الرسالة:"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+msgid "Use Pango markup"
+msgstr "استخدام العلامات بانغو"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:5
+msgid "_Send"
+msgstr "_ارسل"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "تنبيه"
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:1
+msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
+msgstr ""
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "أداة إدارة مختبر حواسيب  وأداة رصد."
+
+#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+msgid ""
+"Epoptes is free software: you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation, either version 3 of the License, or any later version. \n"
+"\n"
+"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"epoptes. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+
+#: ../epoptes-client/remote-assistance.py:145
+#: ../epoptes-client/remote-assistance.py:190
+#: ../potfiles-workaround/remote-assistance.py:145
+#: ../potfiles-workaround/remote-assistance.py:190
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Not connected"
+msgstr "غير متّصل"
+
+#: ../epoptes-client/remote-assistance.py:178
+#: ../potfiles-workaround/remote-assistance.py:178
+#, python-format
+msgid "Connecting to %s..."
+msgstr "اتصال بـ %s..."
+
+#: ../epoptes-client/remote-assistance.py:187
+#: ../potfiles-workaround/remote-assistance.py:187
+#, python-format
+msgid "Connected to %s"
+msgstr "متصل بـ %s"
+
+#: ../epoptes-client/remote-assistance.py:195
+#: ../potfiles-workaround/remote-assistance.py:195
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "فشل في الاتصال ب-%s"
+
+#: ../epoptes-client/remote-assistance.py:209
+#: ../potfiles-workaround/remote-assistance.py:209
+#, python-format
+msgid "Retrying in %d..."
+msgstr "إعادة المحاولة بعد %d"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "أدخل المعلومات  عن جهة الاتصال التي تريد مشاركتها سطح مكتبك"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Method:"
+msgstr "طريقة:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Host:"
+msgstr "المضيف:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:4
+msgid "Keep reconnecting"
+msgstr "أبقي إعادة الاتصال"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Connection information"
+msgstr "معلومات عن الاتصال"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Status"
+msgstr "الحالة"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Graphics (VNC)"
+msgstr ""
+
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Console (screen)"
+msgstr "كونسول(شاشة)"
