@@ -8,19 +8,20 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-05-12 08:51+0000\n"
+"PO-Revision-Date: 2012-05-13 20:56+0000\n"
 "Last-Translator: Zied ALAYA <zied.alaya@ubuntu.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-13 04:58+0000\n"
-"X-Generator: Launchpad (build 15225)\n"
+"X-Launchpad-Export-Date: 2012-05-14 05:21+0000\n"
+"X-Generator: Launchpad (build 15238)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Charfi https://launchpad.net/~rezguicharfeddine\n"
 "  Zied ALAYA https://launchpad.net/~zied.alaya"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -205,11 +206,11 @@ msgstr "صورة الخلفية"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Lock background"
-msgstr ""
+msgstr "إغلاق الخلفية"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Set default background"
-msgstr ""
+msgstr "إختر الخلفية الافتراضية"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set background"
@@ -225,39 +226,39 @@ msgstr "_مساعدة"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Report a bug"
-msgstr "بلّغ عن علة"
+msgstr "بلّغ عن خلل"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Ask a question"
-msgstr "إسأل سؤال"
+msgstr "أطرح سؤالا"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Translate this application"
-msgstr "ترجم هذا البرنامج"
+msgstr "ترجم هذه التطبيقه"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Live chat (IRC)"
-msgstr ""
+msgstr "الدردشة المباشرة (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Remote support"
-msgstr "إعانة عن بعد"
+msgstr "مساعدة عن بعد"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "تشغيل العملاء المحددون (ايقاض على الشبكة المحلية)"
+msgstr "تشغيل العملاء المنتقين (ايقاض على الشبكة المحلية)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Log out users connected on selected clients"
-msgstr "تسجيل الخروج المستخدمين المتصلين على العملاء المحددون"
+msgstr "تسجيل خروج المستخدمين المتصلين على العملاء المنتقين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Reboot the selected clients"
-msgstr "إعادة تشغيل العملاء المحددون"
+msgstr "إعادة تشغيل العملاء المنتقين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Shutdown the selected clients"
-msgstr "اغلاق العملاء المحددون"
+msgstr "اغلاق العملاء المنتقين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Broadcast your screen to the selected clients"
@@ -314,7 +315,7 @@ msgstr "متصل :"
 #: ../epoptes/ui/notifications.py:45
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr ""
+msgstr "%(user)s on %(host)s"
 
 #: ../epoptes/ui/notifications.py:48
 msgid "Disconnected:"
@@ -323,7 +324,7 @@ msgstr "إتصال مقطوع:"
 #: ../epoptes/ui/notifications.py:48
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr ""
+msgstr "%(user)s from %(host)s"
 
 #: ../epoptes/ui/client_information.py:64
 #, python-format
@@ -374,7 +375,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
+msgstr "رابط، ملف أو الأمر لتنفيذ على العملاء المنتقين :"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
@@ -395,11 +396,11 @@ msgstr "خطأ"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Graphics card:"
-msgstr ""
+msgstr "بطاقة الرسومات"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "RAM:"
-msgstr ""
+msgstr "ذاكرة الوصول العشوائي"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Processor:"
@@ -411,11 +412,11 @@ msgstr "المستخدم:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "IP address:"
-msgstr ""
+msgstr "عنوان آي بي"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "MAC address:"
-msgstr ""
+msgstr "العنوان ماك"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Client hostname:"
@@ -459,7 +460,7 @@ msgstr "تنبيه"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "جميع الحقوق محفوظة © 2011-2012 فريق إبوبتس"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -539,7 +540,7 @@ msgstr "الحالة"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr ""
+msgstr "رسوميات (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
