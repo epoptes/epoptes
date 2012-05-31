@@ -3,19 +3,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-03-23 07:23+0000\n"
-"Last-Translator: rob <linuxned@gmail.com>\n"
+"PO-Revision-Date: 2012-05-31 03:14+0000\n"
+"Last-Translator: Faisal Ali <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-24 05:25+0000\n"
-"X-Generator: Launchpad (build 14981)\n"
+"X-Launchpad-Export-Date: 2012-05-31 05:17+0000\n"
+"X-Generator: Launchpad (build 15322)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Faisal Ali https://launchpad.net/~xashiish\n"
 "  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  Hannie Dumoleyn https://launchpad.net/~lafeber-dumoleyn\n"
 "  himlims https://launchpad.net/~himlims\n"
@@ -142,7 +143,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
-msgstr "Uitvoeren"
+msgstr "Fuli"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
@@ -150,15 +151,15 @@ msgstr "Commando uitvoeren bij de geselecteerde clienten"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
-msgstr "Bericht v_ersturen"
+msgstr "_Dir fariin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr "Een bericht versturen naar de geselecteerde clienten"
+msgstr "U dir fariin clientska aad dooratay"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr "Terminalvenster openen"
+msgstr "Fur terminalka"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
