@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-04-06 06:31+0000\n"
-"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
+"PO-Revision-Date: 2012-06-04 15:51+0000\n"
+"Last-Translator: Семёнов Юрий Сергеевич <cbne@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-07 05:11+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-06-05 05:14+0000\n"
+"X-Generator: Launchpad (build 15353)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
 
@@ -23,9 +23,10 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Aleksey Kabanov https://launchpad.net/~ak099\n"
 "  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
-"  cbne https://launchpad.net/~cbne"
+"  Семёнов Юрий Сергеевич https://launchpad.net/~cbne"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Confirm action"
@@ -93,7 +94,7 @@ msgstr "Вещание"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Monitor user"
-msgstr ""
+msgstr "Пользователь монитора"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Assist user"
@@ -125,7 +126,7 @@ msgstr "Вещание с вашего экрана выбранным клие�
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr ""
+msgstr "Передача пользователя"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
@@ -141,7 +142,7 @@ msgstr "Открыть окно передачи"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr ""
+msgstr "Открыть окно сессии для предотвращения блокировки вашего экрана"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
@@ -305,7 +306,7 @@ msgstr "Удалить выбранную группу"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Broadcast screen (fullscreen)"
-msgstr ""
+msgstr "Экран передачи (На весь экран)"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"

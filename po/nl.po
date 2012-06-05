@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-05-31 08:06+0000\n"
-"Last-Translator: Fotis Tsamis <Unknown>\n"
+"PO-Revision-Date: 2012-06-04 16:51+0000\n"
+"Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-06-01 05:46+0000\n"
-"X-Generator: Launchpad (build 15342)\n"
+"X-Launchpad-Export-Date: 2012-06-05 05:14+0000\n"
+"X-Generator: Launchpad (build 15353)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -143,7 +143,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
-msgstr "Fuli"
+msgstr "Uitvoeren"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
@@ -151,15 +151,15 @@ msgstr "Commando uitvoeren bij de geselecteerde clienten"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
-msgstr "_Dir fariin"
+msgstr "Bericht v_ersturen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr "U dir fariin clientska aad dooratay"
+msgstr "Een bericht versturen naar de geselecteerde clienten"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr "Fur terminalka"
+msgstr "Terminalvenster openen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
@@ -259,7 +259,7 @@ msgstr "De geselecteerde clienten herstarten"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Shutdown the selected clients"
-msgstr "Geselecteerde clienten uitschakelen"
+msgstr "De geselecteerde clienten uitschakelen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Broadcast your screen to the selected clients"
@@ -357,7 +357,7 @@ msgstr "Het scherm is vergrendeld door een systeembeheerder."
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
-"Weet u zeker dat u de geselecteerde clienten wilt verwijderen uit groep "
+"Weet u zeker dat u de geselecteerde client(en) wilt verwijderen uit groep "
 "\"%s\" ?"
 
 #: ../epoptes/ui/gui.py:428
@@ -374,10 +374,10 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"Er is geprobeerd verbinding te maken door een client met versie %s; deze is "
-"niet compatibel met de huidige versie van epoptes.\n"
+"Er is geprobeerd verbinding te maken door een client met versie %s, die niet "
+"compatibel is met de huidige versie van Epoptes.\n"
 "\n"
-"U dient uw clients te voorzien van de nieuwste versie van epoptes-client."
+"U dient uw clienten te voorzien van de nieuwste versie van epoptes-client."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
@@ -395,7 +395,7 @@ msgstr "Epoptes-computerlokaalbeheerprogramma"
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
-"Gebruiker %s moet lid zijn van groep %s om epoptes te kunnen gebruiken."
+"Gebruiker %s moet lid zijn van groep %s om Epoptes te kunnen gebruiken."
 
 #: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
@@ -459,7 +459,7 @@ msgstr "Pango-tekstmarkeertaal gebruiken"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
-msgstr "Ver_sturen"
+msgstr "V_ersturen"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
@@ -497,8 +497,8 @@ msgstr ""
 "GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor "
 "meer details.\n"
 "\n"
-"Moet u een kopie van de GNU General Public License, samen met epoptes. Zo "
-"niet, zie <http://www.gnu.org/licenses/>."
+"Je dient een kopie van de GNU General Public License te hebben ontvangen, "
+"samen met Epoptes. Zo niet, zie <http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
 #: ../epoptes-client/remote-assistance.py:190
@@ -544,7 +544,7 @@ msgstr "Methode:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr "Host:"
+msgstr "Computernaam:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
