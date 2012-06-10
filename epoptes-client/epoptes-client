@@ -86,7 +86,8 @@ basic_info() {
 
     # LTSP_FATCLIENT may not be available in user sessions, autodetect it
     if [ -n "$LTSP_CLIENT" ] && [ -z "$LTSP_FATCLIENT" ] &&
-        [ "$UID" -gt 0 ] && [ -x /usr/bin/getltscfg ]
+        [ "$UID" -gt 0 ] && [ -x /usr/bin/getltscfg ] &&
+        egrep -qs 'ltsp|nfs|nbd' /proc/cmdline
     then
         LTSP_FATCLIENT=True
     fi
