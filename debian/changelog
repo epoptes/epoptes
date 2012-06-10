@@ -1,3 +1,16 @@
+epoptes (0.5.4-1) unstable; urgency=low
+
+  * New upstream version:
+    - Remove workaround for bug fixed in twisted.
+    - Ensure that epoptes-client is actually booted to LTSP before assuming it
+      is operating as a Fat client.
+    - New translations: Arabic (ar), Catalan (ca), Czech (cs), Galician (gl),
+      Lithuanian (lt), Turkish (tr), Chinese (Simplified) (zh_CN)
+    - Updated translations: Afrikaans (af), Hebrew (he), Malay (ms), 
+      Norwegian Bokmal (nb), Dutch (nl), Portuguese (pt), Russian (ru)
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 10 Jun 2012 10:58:01 -0700
+
 epoptes (0.5.3-1) unstable; urgency=low
 
   * Use better checks to detect LTSP clients (LP: #975784).
