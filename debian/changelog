@@ -1,3 +1,11 @@
+epoptes (0.5.5-1) unstable; urgency=low
+
+  * New upstream version:
+    - Split vncport to vncviewerport and vncserverport (LP: #1013808).
+    - New translation: Somali (so).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Fri, 15 Jun 2012 14:10:45 -0700
+
 epoptes (0.5.4-1) unstable; urgency=low
 
   * New upstream version:
