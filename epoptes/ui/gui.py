@@ -229,12 +229,12 @@ class EpoptesGui(object):
     def reverseConnection(self, widget, path, view_column, cmd):
         # Open vncviewer in listen mode
         if self.vncviewer is None:
-            self.vncport = self.findUnusedPort()
+            self.vncviewerport = self.findUnusedPort()
             self.vncviewer = subprocess.Popen(
-                ['xvnc4viewer', '-listen', str(self.vncport)])
+                ['xvnc4viewer', '-listen', str(self.vncviewerport)])
 
         # And, tell the clients to connect to the server
-        self.execOnSelectedClients([cmd, self.vncport])
+        self.execOnSelectedClients([cmd, self.vncviewerport])
 
 
     def assistUser(self, widget, path=None, view_column=None):
@@ -268,13 +268,13 @@ class EpoptesGui(object):
             pwd=f.read()
             f.close()
             self.pwd=''.join('\\%o' % ord(c) for c in pwd)
-            self.vncport = self.findUnusedPort()
+            self.vncserverport = self.findUnusedPort()
             self.vncserver = subprocess.Popen(['x11vnc', '-noshm', '-nopw',
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
-                '-24to32', '-rfbport', str(self.vncport), '-rfbauth', pwdfile])
+                '-24to32', '-rfbport', str(self.vncserverport), '-rfbauth', pwdfile])
         self.execOnSelectedClients(['stop_screensaver'],
             mode=EM_SYSTEM_AND_SESSION)
-        self.execOnSelectedClients(["receive_broadcast", self.vncport, 
+        self.execOnSelectedClients(["receive_broadcast", self.vncserverport, 
                                     self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
 
 
