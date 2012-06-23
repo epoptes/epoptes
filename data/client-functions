@@ -257,13 +257,13 @@ receive_broadcast() {
         sleep 0.$(($(hexdump -e \"%d\" -n 2 /dev/urandom) % 50 + 50))
         if [ "$VNCVIEWER" = "ssvncviewer" ]; then
             exec ssvncviewer -shared -viewonly -passwd /dev/stdin \
-                ${3:+fullscreen} "$SERVER:$1"
+                ${3:+-fullscreen} "$SERVER:$1"
         elif [ "$VNCVIEWER" = "xvnc4viewer" ]; then
             exec xvnc4viewer -Shared -ViewOnly -passwd /dev/stdin \
-                ${3:+FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
+                ${3:+-FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
         else
             exec vncviewer -shared -viewonly -passwd /dev/stdin \
-                ${3:+fullscreen} "$SERVER:$1"
+                ${3:+-fullscreen} "$SERVER:$1"
         fi
     } >/dev/null 2>&1 &
     EPOPTES_VNCVIEWER_PID="$!"
