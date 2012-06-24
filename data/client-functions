@@ -64,9 +64,9 @@ info() {
                 | sed "s/.* \([0-9.]*\)\/.*/\\1/")
             test -n "$IP" || die "Empty IP"
         fi
-        CPU=$(cat /proc/cpuinfo | grep "^model name" | head -1 | sed "s/.*: //")
+        CPU=$(cat /proc/cpuinfo | grep "^model name" | head -n 1 | sed "s/.*: //")
         RAM=$(free -m | grep "^Mem" | awk '{print $2}')
-        VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p')
+        VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
         OS=$(uname -o)
 
         export VERSION USER NAME HOME HOSTNAME MAC IP CPU RAM VGA OS
