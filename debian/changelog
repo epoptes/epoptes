@@ -1,3 +1,13 @@
+epoptes (0.5.6-1) unstable; urgency=low
+
+  * New upstream version:
+    - Support ssvnc as an alternative to xvnc4viewer.
+    - Disable alias editing for clients in the 'Detected' group.
+    - Correctly parse info for clients with multiple VGAs (LP: #1017140).
+    - Prefix "-" to fullscreen parameter (LP: #1015239).
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Wed, 27 Jun 2012 21:11:16 +0300
+
 epoptes (0.5.5-1) unstable; urgency=low
 
   * New upstream version:
