@@ -430,7 +430,10 @@ class EpoptesGui(object):
 
     #FIXME: Remove the second parameter, find a better way
     def on_tb_client_properties_clicked(self, widget=None):
-        ClientInformation(self.getSelectedClients(), self.daemon.command).run()
+        dlg = ClientInformation(self.getSelectedClients(), self.daemon.command)
+        if self.isDefaultGroupSelected():
+            dlg.edit_button.set_sensitive(False)
+        dlg.run()
         self.setLabel(self.getSelectedClients()[0])
 
 

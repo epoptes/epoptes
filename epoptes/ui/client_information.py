@@ -37,6 +37,7 @@ class ClientInformation:
         self.selected = selected
         
         self.dlg = self.get('infodlg')
+        self.edit_button = self.get('edit_alias_button')
         set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
 
         for client in selected:
