@@ -230,8 +230,13 @@ class EpoptesGui(object):
         # Open vncviewer in listen mode
         if self.vncviewer is None:
             self.vncviewerport = self.findUnusedPort()
-            self.vncviewer = subprocess.Popen(
-                ['xvnc4viewer', '-listen', str(self.vncviewerport)])
+            # If the user installed ssvnc, prefer it over xvnc4viewer
+            if os.path.isfile('/usr/bin/ssvncviewer'):
+                self.vncviewer = subprocess.Popen(['ssvncviewer',
+                    '-multilisten', str(self.vncviewerport-5500)])
+            else:
+                self.vncviewer = subprocess.Popen(['xvnc4viewer',
+                    '-listen', str(self.vncviewerport)])
 
         # And, tell the clients to connect to the server
         self.execOnSelectedClients([cmd, self.vncviewerport])
