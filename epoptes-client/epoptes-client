@@ -127,7 +127,7 @@ fetch_certificate()
 
 
 # Main.
-export VERSION="0.5.5" # Automatically updated by mkdst
+export VERSION="0.5.6" # Automatically updated by mkdst
 
 # Check the first parameter as it may turn out we don't need to run at all
 case "$1" in
