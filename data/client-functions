@@ -244,12 +244,10 @@ receive_broadcast() {
     test "$UID" -eq 0 && export $(./get-display)
     xset dpms force on
     if [ -z "$VNCVIEWER" ]; then
-        # ssvncviewer is one of the few that can cope with 24bpp (LP: #953512)
-        if grep -q "Depth 24 pixmap format is 24 bpp" /var/log/Xorg.?.log &&
-            [ -x /usr/bin/ssvncviewer ]
-        then
+        # If the user installed ssvnc, prefer it over xvnc4viewer
+        if [ -x /usr/bin/ssvncviewer ]; then
             VNCVIEWER=ssvncviewer
-        else
+        elif [ -x /usr/bin/xvnc4viewer ]; then
             VNCVIEWER=xvnc4viewer
         fi
     fi
