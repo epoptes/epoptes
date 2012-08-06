@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-03-22 09:27+0200\n"
-"PO-Revision-Date: 2012-06-14 07:54+0000\n"
-"Last-Translator: Fotis Tsamis <Unknown>\n"
+"PO-Revision-Date: 2012-08-05 13:54+0000\n"
+"Last-Translator: Faisal Ali <Unknown>\n"
 "Language-Team: Somali <so@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-02 04:58+0000\n"
-"X-Generator: Launchpad (build 15520)\n"
+"X-Launchpad-Export-Date: 2012-08-06 05:07+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -86,7 +86,7 @@ msgstr "Dami/Bakhtii"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Broadcasts"
-msgstr ""
+msgstr "Tebbin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Monitor user"
@@ -372,10 +372,14 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Kombutuuyar wata barnaamij noociisu yahay %s, ayaa isku dayey inuu ku soo "
+"xidho kumana haboona noocan hadda jira.\n"
+"\n"
+"Waa inaad noocii ugu danbeeyey epoptes-client soo gishataa."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
+msgstr "URL, file ama amarka lagu fulinayo macaamiishan"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
@@ -448,7 +452,7 @@ msgstr "Fariinta:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Use Pango markup"
-msgstr ""
+msgstr "Isticmaal Pango markup"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "_Send"
