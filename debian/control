@@ -15,7 +15,8 @@ Package: epoptes
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, adduser, librsvg2-common,
  notification-daemon | xfce4-notifyd, openssl, python-dbus, python-gtk2,
- python-notify, python-twisted-core, python-vte, xvnc4viewer | ssvnc
+ python-notify, python-twisted-core, python-vte,
+ xvnc4viewer | ssvnc | vnc-viewer
 Recommends: epoptes-client, xterm
 Description: Computer lab management tool
  Epoptes is an open source computer lab management and monitoring tool. It
@@ -31,7 +32,7 @@ Package: epoptes-client
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, bsdmainutils, iproute,
  librsvg2-common, procps, python-gtk2, screen, socat, x11vnc,
- xvnc4viewer | ssvnc
+ xvnc4viewer | ssvnc | vnc-viewer
 Recommends: openssl, xterm
 Description: Computer lab management tool (client)
  Epoptes is an open source computer lab management and monitoring tool. It
