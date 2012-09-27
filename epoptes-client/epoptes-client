@@ -152,6 +152,12 @@ esac
 # When called from /etc/xdg/autostart, /sbin is not in the system path.
 PATH="$PATH:/sbin:/usr/sbin"
 
+# When launched as a service, LANG might not be set.
+if [ -z "$LANG" ] && [ -r /etc/default/locale ]; then
+    . /etc/default/locale
+    export LANG
+fi
+
 basic_info
 # The configuration file overrides the default values
 if [ -f /etc/default/epoptes-client ]; then
