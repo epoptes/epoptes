@@ -12,4 +12,7 @@ ifeq ($(PYTHON_VARIANT),)
 endif
 
 %:
-	dh  $@ --with $(PYTHON_VARIANT)
+	dh $@ --with $(PYTHON_VARIANT)
+
+override_dh_installinit:
+	dh_installinit -u"defaults 30"
