@@ -1345,6 +1345,7 @@
                         <property name="reorderable">True</property>
                         <property name="search_column">0</property>
                         <signal name="drag-drop" handler="on_gtree_drag_drop" swapped="no"/>
+                        <signal name="drag-motion" handler="on_gtree_drag_motion" swapped="no"/>
                         <child>
                           <object class="GtkTreeViewColumn" id="group_name_column">
                             <property name="title">Groups</property>

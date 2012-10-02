@@ -147,6 +147,25 @@ class EpoptesGui(object):
     #################################################################
     #                       Callback functions                      #
     #################################################################
+    def on_gtree_drag_motion(self, widget, context, x, y, etime):
+        drag_info = widget.get_dest_row_at_pos(x, y)
+        # Don't allow dropping in the empty space of the treeview,
+        # or inside the 'Detected' group, or inside the currently selected group
+        selected_path = self.gstore.get_path(self.getSelectedGroup()[0])
+        if (not drag_info or drag_info[0] == self.default_group.ref.get_path() or
+            drag_info[0] == selected_path):
+            widget.set_drag_dest_row(None, gtk.TREE_VIEW_DROP_AFTER)
+        else:
+            path, pos = drag_info
+            # Don't allow dropping between the groups treeview rows
+            if pos == gtk.TREE_VIEW_DROP_BEFORE:
+                widget.set_drag_dest_row(path, gtk.TREE_VIEW_DROP_INTO_OR_BEFORE)
+            elif pos == gtk.TREE_VIEW_DROP_AFTER:
+                widget.set_drag_dest_row(path, gtk.TREE_VIEW_DROP_INTO_OR_AFTER)
+        
+        context.drag_status(context.suggested_action, etime)
+        return True
+    
     def on_gtree_drag_drop(self, wid, context, x, y, time):
         dest = self.gtree.get_dest_row_at_pos(x, y)
         if dest is not None:
