@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-03-22 09:27+0200\n"
+"POT-Creation-Date: 2012-10-02 20:17+0300\n"
 "PO-Revision-Date: 2012-04-05 14:29+0000\n"
 "Last-Translator: Vu Do Quynh <vdquynh@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-09-01 05:34+0000\n"
-"X-Generator: Launchpad (build 15890)\n"
+"X-Launchpad-Export-Date: 2012-10-03 05:37+0000\n"
+"X-Generator: Launchpad (build 16061)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -24,284 +24,284 @@ msgstr ""
 "  Vu Do Quynh https://launchpad.net/~vu-do-quynh"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "Confirm action"
-msgstr "Xác nhận thao tác"
+msgid "Broadcast screen (fullscreen)"
+msgstr "Phát tán màn hình (toàn màn hình)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:2 ../data/epoptes.desktop.in.h:1
-msgid "Epoptes"
-msgstr "Epoptes"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "_File"
-msgstr "_Tập tin"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
-msgid "Labels"
-msgstr "Nhãn"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
-msgid "Computer (user)"
-msgstr "Máy tính (người dùng)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
-msgid "Computer"
-msgstr "Máy tính"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "User (computer)"
-msgstr "Người dùng (máy tính)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "User"
-msgstr "Người dùng"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
-msgid "Show real names"
-msgstr "Hiện tên thật"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
-msgid "_Clients"
-msgstr "_Khách"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "Session"
-msgstr "Phiên làm việc"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
-msgid "Boot"
-msgstr "Khởi động"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
-msgid "Log out"
-msgstr "Đăng xuất"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Reboot"
-msgstr "Khởi động lại"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Shutdown"
-msgstr "Tắt máy"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Broadcasts"
-msgstr "Phát tán"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
-msgid "Monitor user"
-msgstr "Giám sát người dùng"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
-msgid "Assist user"
-msgstr "Hỗ trợ người dùng"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Take control of the selected user's computer"
-msgstr "Kiểm soát máy tính người dùng đã được chọn"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Broadcast video"
-msgstr "Phát tán video"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
-msgid "Broadcast screen"
-msgstr "Phát tán màn hình"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
 msgstr "Phát tán màn hình đến các máy khách đã chọn, toàn màn hình"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
 msgstr "Phát tán màn hình (trong cửa sổ)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
+#: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
 msgstr "Phát tán màn hình đến các máy khách đã chọn, trong một cửa sổ"
 
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "Confirm action"
+msgstr "Xác nhận thao tác"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6 ../data/epoptes.desktop.in.h:1
+msgid "Epoptes"
+msgstr "Epoptes"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "_File"
+msgstr "_Tập tin"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "Labels"
+msgstr "Nhãn"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Computer (user)"
+msgstr "Máy tính (người dùng)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Computer"
+msgstr "Máy tính"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "User (computer)"
+msgstr "Người dùng (máy tính)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "User"
+msgstr "Người dùng"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Show real names"
+msgstr "Hiện tên thật"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "_Clients"
+msgstr "_Khách"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Session"
+msgstr "Phiên làm việc"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Boot"
+msgstr "Khởi động"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Log out"
+msgstr "Đăng xuất"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Reboot"
+msgstr "Khởi động lại"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Shutdown"
+msgstr "Tắt máy"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcasts"
+msgstr "Phát tán"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Monitor user"
+msgstr "Giám sát người dùng"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Assist user"
+msgstr "Hỗ trợ người dùng"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Take control of the selected user's computer"
+msgstr "Kiểm soát máy tính người dùng đã được chọn"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Broadcast video"
+msgstr "Phát tán video"
+
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Broadcast screen"
+msgstr "Phát tán màn hình"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Broadcast user"
 msgstr "Phát tán người dùng"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stop broadcasts"
 msgstr "Dừng các phát tán"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Stops all active broadcasts"
 msgstr "Dừng mọi phát tán tích cực"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open broadcasts window"
 msgstr "Mở cửa sổ phát tán"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Open a windowed session to prevent broadcasting your whole screen"
 msgstr "Mở phiên làm việc trong cửa sổ để tránh phát tán toàn bộ màn hình"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute"
 msgstr "Thực hiện"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Execute a command on the selected clients"
 msgstr "Thực hiện lệnh trên các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "_Send message"
 msgstr "_Gửi tin"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Send a message to the selected clients"
 msgstr "Gửi một tin đến các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Open terminal"
 msgstr "Mở terminal"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "User, locally"
 msgstr "Người dùng, cục bộ"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, locally"
 msgstr "Root, cục bộ"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Root, remotely"
 msgstr "Root, từ xa"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Restrictions"
 msgstr "Những hạn chế"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Lock screen"
 msgstr "Khoá màn hình"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Unlock screen"
 msgstr "Bỏ khoá màn hình"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Block Internet"
 msgstr "Chặn internet"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Unblock Internet"
 msgstr "Bỏ chặn internet"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Mute sound"
 msgstr "Tắt âm thanh"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Unmute sound"
 msgstr "Bỏ tắt âm thanh"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Background image"
 msgstr "Ảnh nền"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Lock background"
 msgstr "khoá ảnh nền"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set default background"
 msgstr "Thiết lập ảnh nền mặc định"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Set background"
 msgstr "Thiết lập ảnh nền"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
 msgstr "Loại bỏ từ nhóm"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "_Help"
 msgstr "_Trợ giúp"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Report a bug"
 msgstr "Báo cáo lỗi"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Ask a question"
 msgstr "Đặt câu hỏi"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
 msgstr "Dịch úng dụng này"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Live chat (IRC)"
 msgstr "Trao đổi trực tuyến (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Remote support"
 msgstr "Hỗ trợ từ xa"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Khởi động những máy khách đã chọn (Wake On LAN)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Log out users connected on selected clients"
 msgstr "Đăng xuất những người dùng đã đăng nhập các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Reboot the selected clients"
 msgstr "Khởi động lại các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Shutdown the selected clients"
 msgstr "Tắt các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Broadcast your screen to the selected clients"
 msgstr "Phát tán màn hình đến các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Stop all broadcasts on every client"
 msgstr "Dừng mọi phát tán đến mọi máy khách"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Thực hiện lệnh"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
 msgstr "Gửi thông điệp"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Lock screen of the selected clients"
 msgstr "Khoá màn hình của các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
 msgstr "Bỏ khoá màn hình của các máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Show information for the selected client"
 msgstr "Hiện thông tin về máy khách đã chọn"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
 msgstr "Thông tin"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Create a new group"
 msgstr "Tạo một nhóm mới"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Remove the selected group"
 msgstr "Loại bỏ nhóm đã chọn"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
-msgid "Broadcast screen (fullscreen)"
-msgstr "Phát tán màn hình (toàn màn hình)"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
@@ -325,7 +325,7 @@ msgstr "Không kết nối:"
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s từ %(host)s"
 
-#: ../epoptes/ui/client_information.py:64
+#: ../epoptes/ui/client_information.py:65
 #, python-format
 msgid "Properties of %s"
 msgstr "Thuộc tính của %s"
@@ -334,36 +334,36 @@ msgstr "Thuộc tính của %s"
 msgid "Detected clients"
 msgstr "Máy khách đang có"
 
-#: ../epoptes/ui/gui.py:217
+#: ../epoptes/ui/gui.py:234
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Có thật sự muốn tắt tất cả các máy tính không?"
 
-#: ../epoptes/ui/gui.py:222
+#: ../epoptes/ui/gui.py:239
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Có thật sự muốn khởi động lại tất cả các máy tính không?"
 
-#: ../epoptes/ui/gui.py:228
+#: ../epoptes/ui/gui.py:245
 msgid "Are you sure you want to log off all the users?"
 msgstr "Có thật sự muốn đăng xuất tất cả người dùng không?"
 
-#: ../epoptes/ui/gui.py:368
+#: ../epoptes/ui/gui.py:382
 msgid "The screen is locked by a system administrator."
 msgstr "Màn hình đã bị một người quản trị khoá lại."
 
-#: ../epoptes/ui/gui.py:397
+#: ../epoptes/ui/gui.py:411
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 "Có thật sự muốn loại bỏ các máy khách đã chọn ra khỏi nhóm \"%s\" không?"
 
-#: ../epoptes/ui/gui.py:428
+#: ../epoptes/ui/gui.py:442
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Có thật sự muốn loại bỏ nhóm \"%s\" không?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:630
+#: ../epoptes/ui/gui.py:647
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -398,72 +398,72 @@ msgid "Error"
 msgstr "Lỗi"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Graphics card:"
-msgstr "Card đồ hoạ:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "RAM:"
-msgstr "RAM:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Processor:"
-msgstr "Bộ xử lý:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "User:"
-msgstr "Người dùng:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "IP address:"
-msgstr "Địa chỉ IP:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "MAC address:"
-msgstr "Địa chỉ MAC:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "Client hostname:"
-msgstr "Tên máy khách:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "Client type:"
-msgstr "Loại khách:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Client alias:"
-msgstr "Tên dùng cho máy khách:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
 msgstr "Sửa tên dùng"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:11
+#: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Set a new alias for the selected client"
 msgstr "Đặt một tên dùng mới cho máy khách đã chọn"
 
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Graphics card:"
+msgstr "Card đồ hoạ:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "Processor:"
+msgstr "Bộ xử lý:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Người dùng:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "IP address:"
+msgstr "Địa chỉ IP:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "MAC address:"
+msgstr "Địa chỉ MAC:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Client hostname:"
+msgstr "Tên máy khách:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Client type:"
+msgstr "Loại khách:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Client alias:"
+msgstr "Tên dùng cho máy khách:"
+
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
+msgid "_Send"
+msgstr "_Gửi"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message title:"
 msgstr "Tên thông điệp:"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:3
+#: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Message text:"
 msgstr "Văn bản thông điệp:"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:4
+#: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Use Pango markup"
 msgstr "Dùng đánh dấu Pango"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "_Send"
-msgstr "_Gửi"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
 msgstr "Cảnh báo"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright &#xA9; 2011-2012 Epoptes Team"
-msgstr "Copyright &#xA9; 2011-2012 Epoptes Team"
+msgid "Copyright © 2011-2012 Epoptes Team"
+msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
