@@ -298,11 +298,12 @@ class EpoptesGui(object):
             self.vncserverport = self.findUnusedPort()
             self.vncserver = subprocess.Popen(['x11vnc', '-noshm', '-nopw',
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
-                '-24to32', '-rfbport', str(self.vncserverport), '-rfbauth', pwdfile])
+                '-24to32', '-threads', '-rfbport', str(self.vncserverport),
+                '-rfbauth', pwdfile])
         self.execOnSelectedClients(['stop_screensaver'],
             mode=EM_SYSTEM_AND_SESSION)
         self.execOnSelectedClients(["receive_broadcast", self.vncserverport, 
-                                    self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
+            self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
 
 
     def broadcastScreen(self, widget):
