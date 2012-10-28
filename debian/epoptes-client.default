@@ -9,3 +9,6 @@
 # The port where the server will be listening on, and where the client will try
 # to connect to. For security reasons it defaults to a system port, 789.
 #PORT=789
+
+# Set Wake On LAN for devices that support it. Comment it out to disable it.
+WOL=g

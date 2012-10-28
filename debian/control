@@ -34,6 +34,7 @@ Depends: ${python:Depends}, ${misc:Depends}, bsdmainutils, iproute,
  librsvg2-common, procps, python-gtk2, screen, socat, x11vnc,
  xvnc4viewer | ssvnc | vnc-viewer
 Recommends: openssl, xterm
+Suggests: ethtool
 Description: Computer lab management tool (client)
  Epoptes is an open source computer lab management and monitoring tool. It
  allows for screen broadcasting and monitoring, remote command execution, 

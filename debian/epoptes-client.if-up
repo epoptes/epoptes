@@ -21,4 +21,13 @@ else
 fi
 
 $logger -t epoptes -p syslog.info "Running epoptes-client, IFACE=$IFACE, pid=$$"
+
+if [ -x /sbin/ethtool ] && [ -f /etc/default/epoptes-client ]; then
+    . /etc/default/epoptes-client
+    if [ -n "$WOL" ]; then
+        # $WOL is unquoted in case someone wants to add sopass
+        ethtool -s "$IFACE" wol $WOL
+    fi
+fi
+
 /usr/sbin/epoptes-client &
