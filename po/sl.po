@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-10-02 20:17+0300\n"
+"POT-Creation-Date: 2012-10-31 03:51+0200\n"
 "PO-Revision-Date: 2012-10-10 05:20+0000\n"
 "Last-Translator: Andrej Znidarsic <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-11 05:35+0000\n"
-"X-Generator: Launchpad (build 16118)\n"
+"X-Launchpad-Export-Date: 2012-10-31 05:17+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -350,11 +350,11 @@ msgstr "Ali ste prepričani, da želite ponovno zagnati vse računalnike?"
 msgid "Are you sure you want to log off all the users?"
 msgstr "Ali ste prepričani, da želite odjaviti vse uporabnike?"
 
-#: ../epoptes/ui/gui.py:382
+#: ../epoptes/ui/gui.py:383
 msgid "The screen is locked by a system administrator."
 msgstr "Zaslon je zaklenil skrbnik sistema."
 
-#: ../epoptes/ui/gui.py:411
+#: ../epoptes/ui/gui.py:412
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -362,13 +362,13 @@ msgstr ""
 "Ali ste prepričani, da želite odstraniti izbrane odjemalce(odjemalca) iz "
 "skupine \"%s\"?"
 
-#: ../epoptes/ui/gui.py:442
+#: ../epoptes/ui/gui.py:443
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Ali ste prepričani, da želite odstraniti skupino \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:647
+#: ../epoptes/ui/gui.py:648
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
