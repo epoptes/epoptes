@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-02 20:17+0300\n"
+"POT-Creation-Date: 2012-10-31 03:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -344,23 +344,23 @@ msgstr ""
 msgid "Are you sure you want to log off all the users?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:382
+#: ../epoptes/ui/gui.py:383
 msgid "The screen is locked by a system administrator."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:411
+#: ../epoptes/ui/gui.py:412
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:442
+#: ../epoptes/ui/gui.py:443
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:647
+#: ../epoptes/ui/gui.py:648
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "

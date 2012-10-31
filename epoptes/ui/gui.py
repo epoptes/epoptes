@@ -826,14 +826,13 @@ which is incompatible with the current epoptes version.\
             user = "epoptes_user." # The dot is converted to a random digit
         self.openLink("http://webchat.freenode.net/?nick=" + user + 
             "&channels=ltsp&prompt=1")
-
-
-    ## FIXME: We don't use this (we want to). there was a problem with twisted :-\
+    
+    
     def iconsSizeScaleChanged(self, widget):
         adj = self.get('iconsSizeAdjustment')
         self.scrWidth = int(adj.get_value())
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
-        self.getAllScreenshots()
+        self.getAllScreenshots() #FIXME: Not implemented
 
 
     def scrIncreaseSize(self, widget):
@@ -847,9 +846,7 @@ which is incompatible with the current epoptes version.\
         adj = self.get('iconsSizeAdjustment')
         adj.set_value(adj.get_value() - 2)
     
-    ## END_FIXME
-
-
+    
     def contextMenuPopup(self, widget, event):
         clicked = widget.get_path_at_pos(int(event.x), int(event.y))
 
