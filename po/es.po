@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-31 03:51+0200\n"
-"PO-Revision-Date: 2012-06-23 08:01+0000\n"
-"Last-Translator: carlos <carpingue@gmail.com>\n"
+"PO-Revision-Date: 2012-12-18 16:17+0000\n"
+"Last-Translator: Eduardo Alberto Calvo <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 05:14+0000\n"
-"X-Generator: Launchpad (build 16218)\n"
+"X-Launchpad-Export-Date: 2012-12-19 05:29+0000\n"
+"X-Generator: Launchpad (build 16378)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Adolfo Jayme Barrientos https://launchpad.net/~fitoschido\n"
+"  Eduardo Alberto Calvo https://launchpad.net/~edu5800\n"
 "  carlos https://launchpad.net/~carpingue"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -466,7 +467,7 @@ msgstr "Atención"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Derechos reservados © 2011-2012 Equipo Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
