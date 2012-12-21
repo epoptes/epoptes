@@ -8,21 +8,22 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-31 03:51+0200\n"
-"PO-Revision-Date: 2012-05-14 13:17+0000\n"
-"Last-Translator: Zied ALAYA <zied.alaya@ubuntu.com>\n"
+"PO-Revision-Date: 2012-12-20 16:19+0000\n"
+"Last-Translator: zeine77 <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 05:14+0000\n"
-"X-Generator: Launchpad (build 16218)\n"
+"X-Launchpad-Export-Date: 2012-12-21 05:14+0000\n"
+"X-Generator: Launchpad (build 16378)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Charfi https://launchpad.net/~rezguicharfeddine\n"
-"  Zied ALAYA https://launchpad.net/~zied.alaya"
+"  Zied ALAYA https://launchpad.net/~zied.alaya\n"
+"  zeine77 https://launchpad.net/~mohamed-eyil"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
@@ -30,7 +31,7 @@ msgstr "بث الشاشة (شاشة كاملة)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "بث شاشتك إلى العملاء المحددون، شاشة كاملة"
+msgstr "بث شاشتك إلى العملاء المحددين، شاشة كاملة"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
@@ -38,7 +39,7 @@ msgstr "بث الشاشة (في إطارات)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "بث شاشتك إلى العملاء المحددون، في نافذة"
+msgstr "بث شاشتك إلى العملاء المحددين، في نافذة"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
@@ -150,7 +151,7 @@ msgstr "تنفيذ"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Execute a command on the selected clients"
-msgstr "تنفيذ أمر على العملاء المحددون"
+msgstr "تنفيذ أمر على العملاء المحددين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "_Send message"
@@ -250,23 +251,23 @@ msgstr "مساعدة عن بعد"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "تشغيل العملاء المنتقين (ايقاض على الشبكة المحلية)"
+msgstr "تشغيل العملاء المحددين (ايقاظ على الشبكة المحلية)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Log out users connected on selected clients"
-msgstr "تسجيل خروج المستخدمين المتصلين على العملاء المنتقين"
+msgstr "تسجيل خروج المستخدمين المتصلين على العملاء المحددي"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Reboot the selected clients"
-msgstr "إعادة تشغيل العملاء المنتقين"
+msgstr "إعادة تشغيل العملاء المحددين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Shutdown the selected clients"
-msgstr "اغلاق العملاء المنتقين"
+msgstr "إيقاف تشغيل العملاء المحددين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Broadcast your screen to the selected clients"
-msgstr "بث شاشتك إلىالعملاء المحددون"
+msgstr "بث شاشتك إلى العملاء المحددين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Stop all broadcasts on every client"
@@ -282,15 +283,15 @@ msgstr "إرسال رسالة"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Lock screen of the selected clients"
-msgstr "قفل الشاشة للعملاء المحددون"
+msgstr "قفل الشاشة على العملاء المحددين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
-msgstr "إلغاء قفل الشاشة للعملاء المحددون"
+msgstr "إلغاء قفل الشاشة للعملاء المحددين"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Show information for the selected client"
-msgstr "مزيد من المعلومات للعميل المحدد"
+msgstr "مزيد من المعلومات عن العميل المحدد"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
@@ -337,7 +338,7 @@ msgstr "العملاء المكتشفون"
 
 #: ../epoptes/ui/gui.py:234
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "هل أنت متأكد من انك تريد إيقاف التشغيل جميع أجهزة الكمبيوتر؟"
+msgstr "هل أنت متأكد من انك تريد إيقاف تشغيل جميع أجهزة الكمبيوتر؟"
 
 #: ../epoptes/ui/gui.py:239
 msgid "Are you sure you want to reboot all the computers?"
@@ -356,7 +357,7 @@ msgstr "الشاشة مقفلة من قبل أحد مدراء النظام."
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
-"هل أنت متأكد أنك تريد إزالة العميل (العملاء) المحدد(ون) من  المجموعة \"%s\"؟"
+"هل أنت متأكد أنك تريد إزالة العميل (العملاء) المحدد(ين) من  المجموعة \"%s\"؟"
 
 #: ../epoptes/ui/gui.py:443
 #, python-format
@@ -372,22 +373,22 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"وقعت  محاولة الاتصال من قبل عميل مع الإصدار %s، والذي هو غير متوافق مع "
-"الإصدار الحالي إبوبتس.\n"
+"وقعت  محاولة اتصال من قبل عميل يستخدم الإصدار %s الغير متوافق مع إصدار "
+"إبوبتس الحالي.\n"
 "\n"
-"تحتاج إلى تحديث عملائك إلى أحدث إصدار إبوبتس العميل."
+"تحتاج إلى تحديث عملائك إلى آخر إصدار من عميل إبوبتس."
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "رابط، ملف أو الأمر لتنفيذ على العملاء المنتقين :"
+msgstr "رابط، ملف أو أمر للتنفيذ على العملاء المحددين :"
 
 #: ../epoptes/common/config.py:217
 msgid "Message from administrator"
-msgstr "رسالة من الأدمين"
+msgstr "رسالة من المدير"
 
 #: ../data/epoptes.desktop.in.h:2
 msgid "Epoptes computer lab administration tool"
-msgstr "أداة إدارة مختبر حواسيب  لئبوبتس"
+msgstr "أداة إدارة مختبر حواسيب إبوبتس"
 
 #: ../bin/epoptes.py:54
 #, python-format
@@ -400,7 +401,7 @@ msgstr "خطأ"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
-msgstr "حرر البديل"
+msgstr "حرر الكنية"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Set a new alias for the selected client"
@@ -428,11 +429,11 @@ msgstr "عنوان آي بي"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "MAC address:"
-msgstr "العنوان ماك"
+msgstr "عنوان ماك"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client hostname:"
-msgstr "اسم المضيف العميل:"
+msgstr "اسم مضيف العميل:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Client type:"
@@ -456,7 +457,7 @@ msgstr "نص الرسالة:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Use Pango markup"
-msgstr "استخدام العلامات بانغو"
+msgstr "استخدام علامات بانغو"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
@@ -464,11 +465,11 @@ msgstr "تنبيه"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "حقوق النسخ © محفوظة لفريق إبوبتس 2011-2012"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "أداة إدارة مختبر حواسيب  وأداة رصد."
+msgstr "أداة لإدارة مختبر الحواسيب والرصد."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -484,15 +485,15 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
-"إبوبتس  برمجية الحرة: يمكنك إعادة توزيعه و / أو تعديله تحت شروط رخصة جنو "
-"العمومية العامة والتي نشرتهامؤسسة البرمجيات الحرة، إما الإصدار 3 من الرخصة، "
-"أو أي إصدار لاحق.\n"
+"إبوبتس  برنامج حر: يمكنك إعادة توزيعه و / أو تعديله تحت شروط رخصة جنو "
+"العمومية العامة المنشورة من طرف مؤسسة البرمجيات الحرة، وفقا للإصدار 3 من "
+"الرخصة، أو أي إصدار لاحق.\n"
 "\n"
-"وتوزع إبوبتس على أمل أن يكون مفيدا، ولكن من دون اي ضمانات؛ حتى دون ضمان "
+"يُوزع إبوبتس على أمل أن يكون مفيدا، ولكن من دون أي ضمانات؛ حتى دون ضمان "
 "صلاحية التسويق أو الملاءمة لغرض معين. راجع رخصة جنو العمومية العامة لمزيد من "
 "التفاصيل.\n"
 "\n"
-"وينبغي أن كنت قد تلقيت نسخة من رخصة جنو العمومية العامة جنبا إلى جنب مع "
+"يفترض أن تكون قد تلقيت نسخة من رخصة جنو العمومية العامة جنبا إلى جنب مع "
 "إبوبتس. إن لم يكن، راجع <http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
@@ -542,7 +543,7 @@ msgstr "المضيف:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr "أبقي إعادة الاتصال"
+msgstr "أبقِ إعادة الاتصال"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
