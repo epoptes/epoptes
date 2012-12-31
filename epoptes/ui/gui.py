@@ -883,10 +883,15 @@ which is incompatible with the current epoptes version.\
         self.get('miClientProperties').set_sensitive(sensitive)
         self.get('tb_client_properties').set_sensitive(sensitive)
         
-        if len(selected) >= 1 and not self.isDefaultGroupSelected():
+        if len(selected) > 0 and not self.isDefaultGroupSelected():
             self.get('miRemoveFromGroup').set_sensitive(True)
         else:
             self.get('miRemoveFromGroup').set_sensitive(False)
+        
+        if len(selected) > 1:
+            self.get('statusbar_label').set_text(_('%d clients selected' % len(selected)))
+        else:
+            self.get('statusbar_label').set_text('')
 
 
     def execOnClients(self, command, clients=[], reply=None,
