@@ -21,7 +21,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  abuyop https://launchpad.net/~abuyop"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1

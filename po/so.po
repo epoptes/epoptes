@@ -22,7 +22,6 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Faisal Ali https://launchpad.net/~xashiish\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"

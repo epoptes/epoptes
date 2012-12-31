@@ -21,7 +21,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  Marcin Wilk https://launchpad.net/~nicram\n"
 "  kadkarol https://launchpad.net/~karol-sienkowski"
 
