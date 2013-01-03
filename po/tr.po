@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-31 03:51+0200\n"
-"PO-Revision-Date: 2013-01-01 11:57+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"PO-Revision-Date: 2013-01-02 12:00+0000\n"
+"Last-Translator: Namık ERDOĞAN <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-02 04:49+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-03 05:20+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fotis Tsamis https://launchpad.net/~phantomas\n"
+"  Namık ERDOĞAN https://launchpad.net/~erdogannamik\n"
 "  kaissa https://launchpad.net/~kaissa"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -42,11 +43,11 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
-msgstr ""
+msgstr "Eylemi Onayla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
-msgstr ""
+msgstr "Epoptes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "_File"
@@ -54,11 +55,11 @@ msgstr "_Dosya"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Labels"
-msgstr ""
+msgstr "Etiketler"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Computer (user)"
-msgstr "Bilgisayar"
+msgstr "Bilgisayar(kullanıcı)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Computer"
@@ -82,11 +83,11 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Session"
-msgstr ""
+msgstr "Oturum"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Boot"
-msgstr ""
+msgstr "Açılış"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Log out"
@@ -130,15 +131,15 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stop broadcasts"
-msgstr ""
+msgstr "Yayınları durdur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Stops all active broadcasts"
-msgstr ""
+msgstr "Tüm aktif yayınları durdur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open broadcasts window"
-msgstr ""
+msgstr "Yayınlama penceresini aç"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Open a windowed session to prevent broadcasting your whole screen"
@@ -146,11 +147,11 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute"
-msgstr ""
+msgstr "Çalıştır"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Execute a command on the selected clients"
-msgstr ""
+msgstr "Seçilen istemcilerde komut çalıştır"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "_Send message"
@@ -158,15 +159,15 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Send a message to the selected clients"
-msgstr ""
+msgstr "Seçilen istemcilere ileti gönder"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Open terminal"
-msgstr ""
+msgstr "Terminal aç"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "User, locally"
-msgstr ""
+msgstr "Kullanıcı , yerel olarak"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, locally"
@@ -178,51 +179,51 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Restrictions"
-msgstr ""
+msgstr "Kısıtlamalar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Lock screen"
-msgstr ""
+msgstr "Ekranı kilitle"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Unlock screen"
-msgstr ""
+msgstr "Ekran kilidini kaldır"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Block Internet"
-msgstr ""
+msgstr "İnternet'i engelle"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Unblock Internet"
-msgstr ""
+msgstr "İnternet engellemesini kaldır"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Mute sound"
-msgstr ""
+msgstr "Sessiz moda geç"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Unmute sound"
-msgstr ""
+msgstr "Sessiz moddan çık"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Background image"
-msgstr ""
+msgstr "Artalan görüntüsü"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Lock background"
-msgstr ""
+msgstr "Artalanı kilitle"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set default background"
-msgstr ""
+msgstr "varsayılan artalanı ayarla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Set background"
-msgstr ""
+msgstr "Artalan ayarla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
-msgstr ""
+msgstr "Gruptan kaldır."
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "_Help"
@@ -230,7 +231,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Report a bug"
-msgstr ""
+msgstr "Hata bildir"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Ask a question"
@@ -238,7 +239,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
-msgstr ""
+msgstr "Bu uygulamayı çevir"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Live chat (IRC)"
@@ -258,59 +259,59 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Reboot the selected clients"
-msgstr ""
+msgstr "Seçili istemcileri yeniden başlat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Shutdown the selected clients"
-msgstr ""
+msgstr "Seçili istemcileri kapat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Broadcast your screen to the selected clients"
-msgstr ""
+msgstr "Seçili istemcilere senin ekranını yayınla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Stop all broadcasts on every client"
-msgstr ""
+msgstr "Her istemcideki tüm yayınları durdur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr ""
+msgstr "Komutu çalıştır"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
-msgstr ""
+msgstr "İleti gönder"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Lock screen of the selected clients"
-msgstr ""
+msgstr "Seçili istemcinin ekranını kilitle"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
-msgstr ""
+msgstr "Seçili istemcinin ekran kilidini aç"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Show information for the selected client"
-msgstr ""
+msgstr "Seçili işlemci ile ilgili bilgileri göster"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
-msgstr ""
+msgstr "Bilgiler"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Create a new group"
-msgstr ""
+msgstr "Yeni bir grup oluştur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Remove the selected group"
-msgstr ""
+msgstr "Seçili grubu kaldır"
 
 #: ../epoptes/ui/notifications.py:42
 msgid "Shut down:"
-msgstr ""
+msgstr "Kapat :"
 
 #: ../epoptes/ui/notifications.py:45
 msgid "Connected:"
-msgstr ""
+msgstr "Bağlı:"
 
 #: ../epoptes/ui/notifications.py:45
 #, python-format
@@ -329,19 +330,19 @@ msgstr ""
 #: ../epoptes/ui/client_information.py:65
 #, python-format
 msgid "Properties of %s"
-msgstr ""
+msgstr "%s özellikleri"
 
 #: ../epoptes/ui/gui.py:127
 msgid "Detected clients"
-msgstr ""
+msgstr "Belirlenen istemciler"
 
 #: ../epoptes/ui/gui.py:234
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr ""
+msgstr "Tüm bilgisayarları kapatmak istediğinizden emin misiniz?"
 
 #: ../epoptes/ui/gui.py:239
 msgid "Are you sure you want to reboot all the computers?"
-msgstr ""
+msgstr "Tüm bilgisayarları yeniden başlatmak istediğinizden emin misiniz?"
 
 #: ../epoptes/ui/gui.py:245
 msgid "Are you sure you want to log off all the users?"
@@ -349,13 +350,14 @@ msgstr ""
 
 #: ../epoptes/ui/gui.py:383
 msgid "The screen is locked by a system administrator."
-msgstr ""
+msgstr "Ekran sistem yöneticisi tarafından kilitlendi."
 
 #: ../epoptes/ui/gui.py:412
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
+"\"%s\" grubundan seçili istemci(ler)i  çıkarmak istediğinizden emin misiniz?"
 
 #: ../epoptes/ui/gui.py:443
 #, python-format
