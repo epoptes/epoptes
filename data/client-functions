@@ -196,12 +196,20 @@ unlock_screen() {
 # Parameters:
 # $1 = seconds to keep sound muted, 0 means forever - currently ignored.
 mute_sound() {
-    background amixer -c 0 -q sset Master mute
+    if [ -x /usr/bin/pactl ]; then
+        background pactl set-sink-mute @DEFAULT_SINK@ 1
+    elif [ -x /usr/bin/amixer ]; then
+        background amixer -c 0 -q sset Master mute
+    fi
 }
 
 # Unute the system sound.
 unmute_sound() {
-    background amixer -c 0 -q sset Master unmute
+    if [ -x /usr/bin/pactl ]; then
+        background pactl set-sink-mute @DEFAULT_SINK@ 0
+    elif [ -x /usr/bin/amixer ]; then
+        background amixer -c 0 -q sset Master unmute
+    fi
 }
 
 # Display some text to the user.
