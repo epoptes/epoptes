@@ -145,9 +145,9 @@
   </object>
   <object class="GtkAdjustment" id="iconsSizeAdjustment">
     <property name="lower">50</property>
-    <property name="upper">200</property>
+    <property name="upper">250</property>
     <property name="value">50</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">5</property>
     <signal name="value-changed" handler="iconsSizeScaleChanged" swapped="no"/>
   </object>
   <object class="GtkImage" id="image12">
@@ -1557,6 +1557,9 @@
                     <property name="adjustment">iconsSizeAdjustment</property>
                     <property name="digits">0</property>
                     <property name="draw_value">False</property>
+                    <signal name="button-press-event" handler="iconsSizeScale_button_event" swapped="no"/>
+                    <signal name="button-release-event" handler="iconsSizeScale_button_event" swapped="no"/>
+                    <signal name="button-release-event" handler="on_iconsSizeScale_button_release_event" swapped="no"/>
                     <signal name="value-changed" handler="iconsSizeScaleChanged" swapped="no"/>
                   </object>
                   <packing>

@@ -204,7 +204,7 @@ if os.getuid() != 0:
     settings_file = os.path.join(path, 'settings')
     if not os.path.isfile(settings_file):
         _settings = open(settings_file, 'w')
-        _settings.write('[GUI]\n#thumbnails_width=200\n#thumbnails_height=150')
+        _settings.write('[GUI]')
         _settings.close()
     
     settings = read_ini_file(settings_file)

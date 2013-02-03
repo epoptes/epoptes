@@ -72,8 +72,6 @@ class EpoptesGui(object):
         if self.uid != 0:
             if 'thumbnails_width' in config.user:
                 self.scrWidth = config.user['thumbnails_width']
-            if 'thumbnails_height' in config.user:
-                self.scrHeight = config.user['thumbnails_height']
         self.offline = gtk.gdk.pixbuf_new_from_file('images/offline.svg')
         self.thin = gtk.gdk.pixbuf_new_from_file('images/thin.svg')
         self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
@@ -104,9 +102,6 @@ class EpoptesGui(object):
         self.gtree.set_model(self.gstore)
         self.gtree.get_selection().connect("changed", self.on_group_selection_changed)
         
-        # Enable this when the scrollbar for the screenshot size is available
-        #self.get('iconsSizeAdjustment').set_value(self.scrWidth)
-
         self.mainwin = self.get('mainwindow')
         
         self.cstore = gtk.ListStore(str, gtk.gdk.Pixbuf, object, str)
@@ -128,6 +123,9 @@ class EpoptesGui(object):
         default_iter = self.gstore.append([self.default_group.name, self.default_group, False])
         self.default_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(default_iter))
         self.gtree.get_selection().select_path(self.default_group.ref.get_path())
+        
+        self.get('iconsSizeAdjustment').set_value(self.scrWidth)
+        self.reload_imagetypes()
         
         saved_clients, groups = config.read_groups(os.path.expanduser('~/.config/epoptes/groups.json'))
         for grp in groups:
@@ -193,17 +191,10 @@ class EpoptesGui(object):
         settings = config.settings
         if not settings.has_section('GUI'):
             settings.add_section('GUI')        
-        if self.get('miClientsViewHostUser').get_active():
-            label = 0
-        elif self.get('miClientsViewHost').get_active():
-            label = 1
-        elif self.get('miClientsViewUserHost').get_active():
-            label = 2
-        elif self.get('miClientsViewUser').get_active():
-            label = 3
         
         settings.set('GUI', 'selected_group', sel_group)
         settings.set('GUI', 'showRealNames', self.showRealNames)
+        settings.set('GUI', 'thumbnails_width', self.scrWidth)
         f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
         settings.write(f)
         f.close()
@@ -717,13 +708,8 @@ which is incompatible with the current epoptes version.\
 
     def getShowRealNames(self):
         return self.get('')
-
-
-    def getAllScreenshots(self):
-        # TODO: Ask for screenshots for every client (Look diff at Rev:326)
-        pass
-
-
+    
+    
     def screenshotTimeout(self, handle):
         print "Screenshot for client %s timed out. Requesting a new one..." % handle
         self.askScreenshot(handle)
@@ -828,23 +814,71 @@ which is incompatible with the current epoptes version.\
             "&channels=ltsp&prompt=1")
     
     
+    def iconsSizeScale_button_event(self, widget, event):
+        """A hack to make the left click work like middle click
+        in the scale. (For jump-to functionality)
+        """
+        if event.button == 1:
+            event.button = 2
+        return False
+    
+    
+    def reload_imagetypes(self):
+        """Improve the quality of previously resized svg icons,
+        by reloading them.
+        """
+        old_pixbufs = self.imagetypes.values()
+        loadSVG = lambda path: gtk.gdk.pixbuf_new_from_file_at_size(path, 
+                                                  self.scrWidth, self.scrHeight)
+        self.imagetypes = {
+            'offline' : loadSVG('images/offline.svg'),
+            'thin' : loadSVG('images/thin.svg'),
+            'fat' : loadSVG('images/fat.svg'),
+            'standalone' : loadSVG('images/standalone.svg')
+        }
+        
+        rows = [row for row in self.cstore if row[C_PIXBUF] in old_pixbufs]
+        for row in rows:
+            row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
+    
+    
+    def on_iconsSizeScale_button_release_event(self, widget, event):
+        # Here we want to resize the SVG icons from imagetypes at a better
+        # quality than this of the quick pixbuf scale, since we assume that
+        # the user has decided the desired zoom level.
+        self.reload_imagetypes()
+    
+    
     def iconsSizeScaleChanged(self, widget):
         adj = self.get('iconsSizeAdjustment')
         self.scrWidth = int(adj.get_value())
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
-        self.getAllScreenshots() #FIXME: Not implemented
-
-
+        
+        # Fast scale all the thumbnails to make the change quickly visible
+        for row in self.cstore:
+            new_thumb = row[1].scale_simple(self.scrWidth, self.scrHeight, gtk.gdk.INTERP_NEAREST)
+            if row[C_PIXBUF] in self.imagetypes.values():
+                self.imagetypes[row[C_INSTANCE].type] = new_thumb
+            row[C_PIXBUF] = new_thumb
+        
+        # Hack to remove the extra padding that remains after a 'zoom out'
+        self.cview.set_resize_mode(gtk.RESIZE_IMMEDIATE)
+        self.cview.get_cells()[1].set_fixed_size(-1, -1)
+        self.cview.check_resize()
+    
+    
     def scrIncreaseSize(self, widget):
         # Increase the size of screenshots by 2 pixels in width
         adj = self.get('iconsSizeAdjustment')
-        adj.set_value(adj.get_value() + 2)
+        adj.set_value(adj.get_value() + 15)
+        self.reload_imagetypes()
 
 
     def scrDecreaseSize(self, widget):
         # Decrease the size of screenshots by 2 pixels in width
         adj = self.get('iconsSizeAdjustment')
-        adj.set_value(adj.get_value() - 2)
+        adj.set_value(adj.get_value() - 15)
+        self.reload_imagetypes()
     
     
     def contextMenuPopup(self, widget, event):
