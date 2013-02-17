@@ -168,13 +168,12 @@ class EpoptesGui(object):
         dest = self.gtree.get_dest_row_at_pos(x, y)
         if dest is not None:
             path, pos = dest
-            if pos in (gtk.TREE_VIEW_DROP_INTO_OR_BEFORE, gtk.TREE_VIEW_DROP_INTO_OR_AFTER):
-                group = self.gstore[path][G_INSTANCE]
-                if not group is self.default_group:
-                    for cln in self.getSelectedClients():
-                        cln = cln[C_INSTANCE]
-                        if not group.has_client(cln):
-                            group.add_client(cln)
+            group = self.gstore[path][G_INSTANCE]
+            if not group is self.default_group:
+                for cln in self.getSelectedClients():
+                    cln = cln[C_INSTANCE]
+                    if not group.has_client(cln):
+                        group.add_client(cln)
     
         context.finish(True, False, time)
         return True
