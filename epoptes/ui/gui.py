@@ -854,11 +854,19 @@ which is incompatible with the current epoptes version.\
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
         
         # Fast scale all the thumbnails to make the change quickly visible
+        old_pixbufs = self.imagetypes.values()
         for row in self.cstore:
-            new_thumb = row[1].scale_simple(self.scrWidth, self.scrHeight, gtk.gdk.INTERP_NEAREST)
-            if row[C_PIXBUF] in self.imagetypes.values():
-                self.imagetypes[row[C_INSTANCE].type] = new_thumb
-            row[C_PIXBUF] = new_thumb
+            if row[C_PIXBUF] in old_pixbufs:
+                ctype = row[C_INSTANCE].type
+                cur_w = self.imagetypes[ctype].get_width()
+                cur_h = self.imagetypes[ctype].get_height()
+                if not (cur_w == self.scrWidth and cur_h == self.scrHeight):
+                    new_thumb = row[C_PIXBUF].scale_simple(self.scrWidth, self.scrHeight, gtk.gdk.INTERP_NEAREST)
+                    self.imagetypes[ctype] = new_thumb
+                row[C_PIXBUF] = self.imagetypes[ctype]
+            else:
+                new_thumb = row[C_PIXBUF].scale_simple(self.scrWidth, self.scrHeight, gtk.gdk.INTERP_NEAREST)
+                row[C_PIXBUF] = new_thumb
         
         # Hack to remove the extra padding that remains after a 'zoom out'
         self.cview.set_resize_mode(gtk.RESIZE_IMMEDIATE)
