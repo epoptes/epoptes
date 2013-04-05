@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-31 03:51+0200\n"
-"PO-Revision-Date: 2013-04-03 10:43+0000\n"
+"PO-Revision-Date: 2013-04-04 12:18+0000\n"
 "Last-Translator: Djurdjina Knezevic <djina_bbizkit@live.com>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-04-04 05:39+0000\n"
-"X-Generator: Launchpad (build 16546)\n"
+"X-Launchpad-Export-Date: 2013-04-05 05:49+0000\n"
+"X-Generator: Launchpad (build 16550)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -58,7 +58,7 @@ msgstr "Nazivi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Computer (user)"
-msgstr "Kompjuter (korisnik)"
+msgstr "Računar (korisnik)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Computer"
@@ -235,7 +235,7 @@ msgstr "Prijavi grešku"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Ask a question"
-msgstr "Pitaj pitanje"
+msgstr "Postavi pitanje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
@@ -468,7 +468,7 @@ msgstr "Copyright © 2011-2012 Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "_Alatka za upravljanje i nadgledanje računarske laboratorije."
+msgstr "Alatka za upravljanje i nadgledanje računarske laboratorije."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -508,7 +508,7 @@ msgstr "Niste povezani"
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr "_Povezivanje sa %s..."
+msgstr "Povezivanje sa %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
@@ -526,13 +526,13 @@ msgstr "Neuspješno povezan sa %s"
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr "_Ponovo pokušavanje za %d..."
+msgstr "Ponovo pokušavanje za %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
 msgstr ""
-"_Unesite informacije kontakta sa kojim želite podijeliti vašu radnu površinu"
+"Unesite informacije kontakta sa kojim želite podijeliti vašu radnu površinu"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
