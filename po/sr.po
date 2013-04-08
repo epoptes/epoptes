@@ -8,40 +8,41 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-31 03:51+0200\n"
-"PO-Revision-Date: 2013-04-05 14:22+0000\n"
-"Last-Translator: Djurdjina Knezevic <djina_bbizkit@live.com>\n"
+"PO-Revision-Date: 2013-04-07 10:52+0000\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-04-06 05:49+0000\n"
+"X-Launchpad-Export-Date: 2013-04-08 05:32+0000\n"
 "X-Generator: Launchpad (build 16550)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Djurdjina Knezevic https://launchpad.net/~djina-bbizkit"
+"  Djurdjina Knezevic https://launchpad.net/~djina-bbizkit\n"
+"  Саша Петровић https://launchpad.net/~salepetronije"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
-msgstr "Емитуј екран (пуни прозор)"
+msgstr "Проследи екран (цео екран)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Емитујте ваш екран одабраним клијентима, пуни екран"
+msgstr "Прослеђује приказ Вашег екрана одабраним клијентима, цео екран"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
-msgstr "Емитуј екран (у прозору)"
+msgstr "Проследи екран (у прозору)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Емитујте  ваш екран одабраним клијентима, у прозору"
+msgstr "Прослеђује приказ Вашег екрана одабраним клијентима, у прозору"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
-msgstr "Потврди радњу"
+msgstr "Потврдите радњу"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6 ../data/epoptes.desktop.in.h:1
 msgid "Epoptes"
