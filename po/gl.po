@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-31 03:51+0200\n"
-"PO-Revision-Date: 2013-01-01 11:58+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"PO-Revision-Date: 2013-06-27 16:52+0000\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-25 05:20+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-06-28 06:07+0000\n"
+"X-Generator: Launchpad (build 16681)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fotis Tsamis https://launchpad.net/~phantomas\n"
+"  Miguel Anxo Bouzada https://launchpad.net/~mbouzada\n"
 "  Xosé https://launchpad.net/~ubuntu-galizaweb"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -465,7 +466,7 @@ msgstr "Advertencia"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2012 Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2012 O equipo de Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
