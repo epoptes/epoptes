@@ -1176,6 +1176,35 @@
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image19</property>
                 <signal name="clicked" handler="broadcastScreen" swapped="no"/>
+                <child type="menu">
+                  <object class="GtkMenu" id="menu2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="ubuntu_local">True</property>
+                    <child>
+                      <object class="GtkMenuItem" id="tbBroadcast_full">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="broadcastScreen" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="tbBroadcast_windowed">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Broadcast screen (windowed)</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="broadcastScreenWindowed" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
