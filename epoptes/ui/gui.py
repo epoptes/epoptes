@@ -234,7 +234,7 @@ class EpoptesGui(object):
             warn=_('Are you sure you want to log off all the users?'))
 
 
-    def reverseConnection(self, widget, path, view_column, cmd):
+    def reverseConnection(self, widget, path, view_column, cmd, *args):
         # Open vncviewer in listen mode
         if self.vncviewer is None:
             self.vncviewerport = self.findUnusedPort()
@@ -250,11 +250,16 @@ class EpoptesGui(object):
                     '-listen', str(self.vncviewerport-5500)])
 
         # And, tell the clients to connect to the server
-        self.execOnSelectedClients([cmd, self.vncviewerport])
+        self.execOnSelectedClients([cmd, self.vncviewerport] + list(args))
 
 
     def assistUser(self, widget, path=None, view_column=None):
-        self.reverseConnection(widget, path, view_column, 'get_assisted')
+        if config.settings.has_option('GUI', 'grabkbdptr'):
+            grab = config.settings.getboolean('GUI', 'grabkbdptr')
+        if grab:
+            self.reverseConnection(widget, path, view_column, 'get_assisted', 'True')
+        else:
+            self.reverseConnection(widget, path, view_column, 'get_assisted')
 
 
     def monitorUser(self, widget, path=None, view_column=None):

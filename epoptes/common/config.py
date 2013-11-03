@@ -217,6 +217,8 @@ if not settings.has_option('GUI', 'messages_default_title'):
     settings.set('GUI', 'messages_default_title', _('Message from administrator'))
 if not settings.has_option('GUI', 'messages_use_markup'):
     settings.set('GUI', 'messages_use_markup', 'False')
+if not settings.has_option('GUI', 'grabkbdptr'):
+    settings.set('GUI', 'grabkbdptr', 'False')
 
 history = read_plain_file(os.path.join(path, 'history'))
 
