@@ -69,9 +69,8 @@ class EpoptesGui(object):
             echo $LTSP_CLIENT_MAC"""],
             stdout=subprocess.PIPE).communicate()[0].split()
         self.uid = os.getuid()
-        if self.uid != 0:
-            if 'thumbnails_width' in config.user:
-                self.scrWidth = config.user['thumbnails_width']
+        if 'thumbnails_width' in config.user:
+            self.scrWidth = config.user['thumbnails_width']
         self.offline = gtk.gdk.pixbuf_new_from_file('images/offline.svg')
         self.thin = gtk.gdk.pixbuf_new_from_file('images/thin.svg')
         self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
