@@ -401,7 +401,7 @@ class EpoptesGui(object):
         if self.warnDlgPopup(_('Are you sure you want to remove the selected client(s) from group "%s"?') %group.name):
             for client in clients:
                 group.remove_client(client[C_INSTANCE])
-            self.fillIconView(self.getSelectedGroup()[1])
+            self.fillIconView(self.getSelectedGroup()[1], True)
 
 
     def set_move_group_sensitivity(self):
@@ -530,7 +530,7 @@ class EpoptesGui(object):
         if not client is None:
             for row in self.cstore:
                 if row[C_INSTANCE] is client: 
-                    self.fillIconView(self.getSelectedGroup()[1])
+                    self.fillIconView(self.getSelectedGroup()[1], True)
                     break
 
 
@@ -576,8 +576,10 @@ class EpoptesGui(object):
             self.cstore.append([self.calculateLabel(client), self.imagetypes[client.type], client, ''])
 
 
-    def fillIconView(self, group):
+    def fillIconView(self, group, keep_selection=False):
         """Fill the clients iconview from a Group class instance."""
+        if keep_selection:
+            selection = [row[C_INSTANCE] for row in self.getSelectedClients()]
         self.cstore.clear()
         if self.isDefaultGroupSelected():
             clients_list = [client for client in structs.clients if client.type != 'offline']
@@ -586,6 +588,11 @@ class EpoptesGui(object):
         # Add the new clients to the iconview
         for client in clients_list:
             self.addToIconView(client)
+        if keep_selection:
+            for row in self.cstore:
+                if row[C_INSTANCE] in selection:
+                    self.cview.select_path(row.path)
+                    selection.remove(row[C_INSTANCE])
 
 
     def isDefaultGroupSelected(self):
@@ -668,7 +675,7 @@ which is incompatible with the current epoptes version.\
                 loginNotify(user, host)
         
         if sel_group.has_client(client) or self.isDefaultGroupSelected():
-            self.fillIconView(sel_group)
+            self.fillIconView(sel_group, True)
 
 
     def setLabel(self, row):
