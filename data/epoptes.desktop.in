@@ -1,5 +1,6 @@
 [Desktop Entry]
-_Name=Epoptes
+Name=Epoptes
+Name[el]=Επόπτης
 _Comment=Epoptes computer lab administration tool
 TryExec=/usr/bin/epoptes
 Exec=/usr/bin/epoptes
