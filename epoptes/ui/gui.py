@@ -826,10 +826,13 @@ which is incompatible with the current epoptes version.\
     
     def iconsSizeScale_button_event(self, widget, event):
         """A hack to make the left click work like middle click
-        in the scale. (For jump-to functionality)
+        in the scale (for jump-to functionality). Right click resets
+        the thumbnail size.
         """
         if event.button == 1:
             event.button = 2
+        elif event.button == 3:
+            self.iconsSizeScaleChanged(None, 200) # Reset the thumbnail size
         return False
     
     
@@ -852,16 +855,20 @@ which is incompatible with the current epoptes version.\
             row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
     
     
-    def on_iconsSizeScale_button_release_event(self, widget, event):
+    def on_iconsSizeScale_button_release_event(self, widget=None, event=None):
         # Here we want to resize the SVG icons from imagetypes at a better
         # quality than this of the quick pixbuf scale, since we assume that
         # the user has decided the desired zoom level.
         self.reload_imagetypes()
     
     
-    def iconsSizeScaleChanged(self, widget):
+    def iconsSizeScaleChanged(self, widget=None, width=None):
         adj = self.get('iconsSizeAdjustment')
-        self.scrWidth = int(adj.get_value())
+        if width:
+            adj.set_value(width)
+        else:
+            width = adj.get_value()
+        self.scrWidth = int(width)
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
         
         # Fast scale all the thumbnails to make the change quickly visible
