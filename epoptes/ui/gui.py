@@ -58,13 +58,14 @@ from epoptes.core import structs
 class EpoptesGui(object):
     
     def __init__(self):
-        self.shownCompatibilityWarning = False 
+        self.shownCompatibilityWarning = False
         self.vncserver = None
         self.vncviewer = None
         self.scrWidth = 100
         self.scrHeight = 75
+        self.showRealNames = False
         self.currentScreenshots = dict()
-        self.current_macs = subprocess.Popen(['sh', '-c', 
+        self.current_macs = subprocess.Popen(['sh', '-c',
             """ip -oneline -family inet link show | sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/{s//\\1/;y/abcdef-/ABCDEF:/;p;}'
             echo $LTSP_CLIENT_MAC"""],
             stdout=subprocess.PIPE).communicate()[0].split()
@@ -82,9 +83,6 @@ class EpoptesGui(object):
         self.wTree.add_from_file('epoptes.ui')
         
         self.get = lambda obj: self.wTree.get_object(obj)
-        self.showRealNames = False
-        if config.settings.has_option('GUI', 'showRealNames'):
-            self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
         
         # Connect glade handlers with the callback functions
         self.wTree.connect_signals(self)
@@ -139,6 +137,8 @@ class EpoptesGui(object):
                 self.get(config.settings.get('GUI', 'label')).set_active(True)
             except:
                 pass
+        if config.settings.has_option('GUI', 'showRealNames'):
+            self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
         
 
     #################################################################
