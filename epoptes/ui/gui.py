@@ -832,7 +832,7 @@ which is incompatible with the current epoptes version.\
         if event.button == 1:
             event.button = 2
         elif event.button == 3:
-            self.iconsSizeScaleChanged(None, 200) # Reset the thumbnail size
+            self.iconsSizeScaleChanged(None, 120) # Reset the thumbnail size
         return False
     
     
