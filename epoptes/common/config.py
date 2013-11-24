@@ -57,7 +57,7 @@ def write_plain_file(filename, contents):
 
     try:
         if not os.path.isdir(path):
-            os.mkdir(path)
+            os.makedirs(path)
         f = open(filename, 'w')
         f.write('\n'.join(contents))
         return True
@@ -140,6 +140,12 @@ def save_groups(filename, model):
     """Save the groups and their members from model (gtk.ListStore)
     in JSON format.
     """
+    path = os.path.expanduser('~/.config/epoptes/')
+    try:
+        if not os.path.isdir(path):
+            os.makedirs(path)
+    except:
+        pass
     
     data = {'clients' : {}, 'groups' : []}
     uid=0
@@ -173,9 +179,12 @@ def save_groups(filename, model):
                                'members' : members})
         
     # Save the dict in JSON format
-    f=open(filename, 'w')
-    f.write(json.dumps(data, indent=2))
-    f.close()
+    try:
+        f=open(filename, 'w')
+        f.write(json.dumps(data, indent=2))
+        f.close()
+    except:
+        pass
 
 def write_history():
     write_plain_file(os.path.join(path, 'history'), history)
@@ -198,16 +207,10 @@ finally:
 
 
 path = os.path.expanduser('~/.config/epoptes/')
-if not os.path.isdir(path):
-    os.mkdir(path)
-
 settings_file = os.path.join(path, 'settings')
-if not os.path.isfile(settings_file):
-    _settings = open(settings_file, 'w')
-    _settings.write('[GUI]')
-    _settings.close()
-
 settings = read_ini_file(settings_file)
+if not settings.has_section('GUI'):
+    settings.add_section('GUI')
 user = {}
 if settings.has_option('GUI', 'thumbnails_width'):
     user['thumbnails_width'] = settings.getint('GUI', 'thumbnails_width')

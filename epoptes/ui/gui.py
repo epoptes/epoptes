@@ -193,10 +193,12 @@ class EpoptesGui(object):
         settings.set('GUI', 'selected_group', sel_group)
         settings.set('GUI', 'showRealNames', self.showRealNames)
         settings.set('GUI', 'thumbnails_width', self.scrWidth)
-        f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
-        settings.write(f)
-        f.close()
-        
+        try:
+            f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
+            settings.write(f)
+            f.close()
+        except:
+            pass
         if not self.vncserver is None:
             self.vncserver.kill()
         if not self.vncviewer is None:
