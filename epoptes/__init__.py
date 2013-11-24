@@ -9,5 +9,5 @@ PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with 
 Epoptes. If not, see <http://www.gnu.org/licenses/>.'''
 
-__version__ = "0.5.6" # Automatically updated by mkdst
+__version__ = "0.5.7" # Automatically updated by mkdst
 __license__ = "GPL"
