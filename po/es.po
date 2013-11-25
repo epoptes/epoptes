@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-10-31 03:51+0200\n"
+"POT-Creation-Date: 2013-11-24 22:07+0200\n"
 "PO-Revision-Date: 2013-01-01 11:58+0000\n"
 "Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-03 05:36+0000\n"
-"X-Generator: Launchpad (build 16820)\n"
+"X-Launchpad-Export-Date: 2013-11-25 05:55+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -46,263 +46,259 @@ msgstr "Mostrar su pantalla a los Alumnos seleccionados, ventana"
 msgid "Confirm action"
 msgstr "Confirmar acción"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:6 ../data/epoptes.desktop.in.h:1
-msgid "Epoptes"
-msgstr "Epoptes"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "_File"
 msgstr "_Archivo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Labels"
 msgstr "Etiquetas"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Computer (user)"
 msgstr "Ordenador (usuario)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Computer"
 msgstr "Ordenador"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "User (computer)"
 msgstr "Usuario (ordenador)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "User"
 msgstr "Usuario"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Show real names"
 msgstr "Mostrar los nombres auténticos"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "_Clients"
 msgstr "_Clientes"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Session"
 msgstr "Sesión"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Boot"
 msgstr "Iniciar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Reboot"
 msgstr "Reiniciar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Shutdown"
 msgstr "Apagar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Broadcasts"
 msgstr "Emisiones"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Monitor user"
 msgstr "Ver  Alumno"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Assist user"
 msgstr "Controlar Alumno"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Take control of the selected user's computer"
 msgstr "Controlar  Alumno seleccionado"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast video"
 msgstr "Transmitir vídeo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Broadcast screen"
 msgstr "Demostración"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
 msgstr "Demostración de alumno"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
 msgstr "Parar las demostraciones"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stops all active broadcasts"
 msgstr "Parar todas las demostraciones activas"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Open broadcasts window"
 msgstr "Abrir la ventana de demostración"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
 msgstr "Abrir una  ventana para impedir mostrar la pantalla completa"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
 msgstr "Ejecutar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
 msgstr "Ejecutar un comando en los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
 msgstr "_Enviar mensaje"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
 msgstr "Enviar un mensaje a los clientes seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
 msgstr "Abrir un terminal"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
 msgstr "Usuario, local"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
 msgstr "Root, local"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
 msgstr "Root, remoto"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Restrictions"
 msgstr "Restricciones"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Lock screen"
 msgstr "Bloquear la pantalla"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unlock screen"
 msgstr "Desbloquear la pantalla"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Block Internet"
 msgstr "Bloquear Internet"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unblock Internet"
 msgstr "Desbloquear Internet"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Mute sound"
 msgstr "Desactivar sonido"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Unmute sound"
 msgstr "Activar sonido"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Background image"
 msgstr "Imagen de fondo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Lock background"
 msgstr "Bloquear fondo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Set default background"
 msgstr "Establecer fondo por defecto"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set background"
 msgstr "Establecer fondo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Remove from group"
 msgstr "Eliminar del grupo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "_Help"
 msgstr "_Ayuda"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Report a bug"
 msgstr "Informar de un error"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Ask a question"
 msgstr "Preguntar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Translate this application"
 msgstr "Traducir esta aplicación..."
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Live chat (IRC)"
 msgstr "Chat en vivo (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Remote support"
 msgstr "Asistencia remota"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Iniciar alumnos seleccionados (WOL)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Log out users connected on selected clients"
 msgstr "Desconectar los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Reboot the selected clients"
 msgstr "Reiniciar los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Shutdown the selected clients"
 msgstr "Apagar los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Broadcast your screen to the selected clients"
 msgstr "Mostrar tu pantalla a los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Stop all broadcasts on every client"
 msgstr "Parar las demostraciones en todos los alumnos"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Ejecutar comando"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
 msgstr "Enviar mensaje"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:64
 msgid "Lock screen of the selected clients"
 msgstr "Bloquear la pantalla de los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Unlock the screen of the selected clients"
 msgstr "Desbloquear la pantalla de los alumnos seleccionados"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Show information for the selected client"
 msgstr "Mostrar la información del alumno seleccionado"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
 msgstr "Información"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
+#: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Create a new group"
 msgstr "Crear un grupo nuevo"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
 msgid "Remove the selected group"
 msgstr "Eliminar el grupo seleccionado"
 
@@ -333,27 +329,27 @@ msgstr "%(user)s  de %(host)s"
 msgid "Properties of %s"
 msgstr "Propiedades de %s"
 
-#: ../epoptes/ui/gui.py:127
+#: ../epoptes/ui/gui.py:119
 msgid "Detected clients"
 msgstr "Alumnos detectados"
 
-#: ../epoptes/ui/gui.py:234
+#: ../epoptes/ui/gui.py:225
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "¿Está seguro de que quiere apagar todos los ordenadores?"
 
-#: ../epoptes/ui/gui.py:239
+#: ../epoptes/ui/gui.py:230
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "¿Está seguro de que quiere reiniciar todos los ordenadores?"
 
-#: ../epoptes/ui/gui.py:245
+#: ../epoptes/ui/gui.py:236
 msgid "Are you sure you want to log off all the users?"
 msgstr "¿Está seguro de que quiere desconectar todos los usuarios?"
 
-#: ../epoptes/ui/gui.py:383
+#: ../epoptes/ui/gui.py:379
 msgid "The screen is locked by a system administrator."
 msgstr "La pantalla está bloqueada por el tutor."
 
-#: ../epoptes/ui/gui.py:412
+#: ../epoptes/ui/gui.py:408
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -361,13 +357,13 @@ msgstr ""
 "¿Está seguro de que quiere eliminar los alumnos seleccionados del grupo "
 "\"%s\"?"
 
-#: ../epoptes/ui/gui.py:443
+#: ../epoptes/ui/gui.py:439
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "¿Está seguro de que quiere eliminar el grupo  \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:648
+#: ../epoptes/ui/gui.py:651
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -380,15 +376,20 @@ msgstr ""
 "\n"
 "Necesita actualizar sus clientes a la versión más reciente de epoptes-client."
 
+#: ../epoptes/ui/gui.py:953
+#, python-format
+msgid "%d clients selected"
+msgstr ""
+
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "Web, archivo o comando para abrir en los clientes seleccionados"
 
-#: ../epoptes/common/config.py:217
+#: ../epoptes/common/config.py:220
 msgid "Message from administrator"
 msgstr "Mensaje desde el tutor"
 
-#: ../data/epoptes.desktop.in.h:2
+#: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes computer lab administration tool"
 msgstr "Herramienta de administración del aula de ordenadores"
 
@@ -467,8 +468,8 @@ msgid "Warning"
 msgstr "Atención"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2012 Epoptes Team"
-msgstr "Derechos reservados © 2011-2012 Equipo Epoptes"
+msgid "Copyright © 2011-2013 Epoptes Team"
+msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -566,3 +567,9 @@ msgstr "Gráfico (VNC)"
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
 msgstr "Consola (pantalla)"
+
+#~ msgid "Epoptes"
+#~ msgstr "Epoptes"
+
+#~ msgid "Copyright © 2011-2012 Epoptes Team"
+#~ msgstr "Derechos reservados © 2011-2012 Equipo Epoptes"
