@@ -1,3 +1,29 @@
+epoptes (0.5.7-1) unstable; urgency=low
+
+  * New upstream version:
+    - Add a config option for grabbing the keyboard and the mouse pointer
+      when assisting a user (LP: #977637).
+    - Preserve the clients selection when a client connects, disconnects, or
+      is removed from the selected group (LP: #1045065).
+    - Send WOL to all interfaces (LP: #1157241).
+    - Fix epoptes crashing when running as root (LP: #977049).
+    - Fix logout in Mate.
+    - Improve the thumbnails zooming functionality.
+    - Prefer pactl for muting when available (LP: #1026331).
+    - Grab local input when assisting a client (LP: #977637).
+    - Support xtightvncviewer as an alternative to xvnc4viewer.
+    - Prefer ssvncviewer over xvnc4viewer (LP: #1030853).
+
+  * epoptes:
+    - Add python-openssl as an epoptes dependency (Closes: #703512).
+    - Start the epoptes service later for LDAP/Samba (LP: #1054665).
+  * epoptes-client:
+    - Enable Wake On Lan when ethtool is installed. Add Suggests on ethtool.
+  * debian/control:
+    - Update Standards-Version to 3.9.5, no changes necessary. 
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 24 Nov 2013 16:58:37 -0800
+
 epoptes (0.5.6-1) unstable; urgency=low
 
   * New upstream version:
