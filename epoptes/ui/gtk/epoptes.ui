@@ -1377,7 +1377,7 @@
                         <signal name="drag-motion" handler="on_gtree_drag_motion" swapped="no"/>
                         <child>
                           <object class="GtkTreeViewColumn" id="group_name_column">
-                            <property name="title">Groups</property>
+                            <property name="title" translatable="yes">Groups</property>
                             <child>
                               <object class="GtkCellRendererText" id="cellrenderertext1">
                                 <signal name="edited" handler="on_group_renamed" swapped="no"/>

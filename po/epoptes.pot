@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-24 22:07+0200\n"
+"POT-Creation-Date: 2013-12-21 19:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,10 +290,14 @@ msgid "Information"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
-msgid "Create a new group"
+msgid "Groups"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Create a new group"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Remove the selected group"
 msgstr ""
 
