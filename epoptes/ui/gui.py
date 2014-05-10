@@ -46,6 +46,7 @@ from execcommand import *
 from sendmessage import *
 from about_dialog import About
 from client_information import ClientInformation
+from benchmark import NetworkBenchmark
 from epoptes.daemon import uiconnection
 from epoptes.core.lib_users import *
 from epoptes.common import ltsconf
@@ -204,7 +205,11 @@ class EpoptesGui(object):
         if not self.vncviewer is None:
             self.vncviewer.kill()
         reactor.stop()
-            
+
+    def on_miBenchmark_activate(self, widget):
+        dlg = NetworkBenchmark(self.mainwin, self.cstore, self.daemon.command)
+        dlg.run()
+
     def toggleRealNames(self, widget=None):
         """Show/hide the real names of the users instead of the usernames"""
         self.showRealNames = widget.get_active()
