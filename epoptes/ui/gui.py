@@ -207,7 +207,7 @@ class EpoptesGui(object):
         reactor.stop()
 
     def on_miBenchmark_activate(self, widget):
-        dlg = NetworkBenchmark(self.mainwin, self.cstore, self.daemon.command)
+        dlg = NetworkBenchmark(self.mainwin, self.getSelectedClients() or self.cstore, self.daemon.command)
         dlg.run()
 
     def toggleRealNames(self, widget=None):
