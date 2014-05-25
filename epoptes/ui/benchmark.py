@@ -191,6 +191,7 @@ class NetworkBenchmark:
         self.iperf.kill()
         string = self.iperf.stdout.read()
         self.kill_iperf_on_clients()
+        #print "Output: '%s'" % string
         data = string.strip().split('\n')
         data = [line.split(',') for line in data]
         for line in data:
@@ -209,17 +210,17 @@ class NetworkBenchmark:
             else:
                 self.results[self.clients[client][1]][0] = round(float(bandwidth)/(1000**2), 1) # Upload (Mbps)
 
-        final = []
+        graph_input = []
         total_up = 0
         total_down = 0
         for k, v in self.results.iteritems():
-            final.append((k, v[0], v[1]))
-            self.get('results_store').append([k, str(v[0]) + ' Mbps', str(v[1]) + ' Mbps'])
+            graph_input.append((k, v[0], v[1]))
+            self.get('results_store').append([k, int(v[0]), int(v[1])])
             total_up += v[0]
             total_down += v[1]
         clients=len(data)/2
         h=clients*50+100
-        surface = createChart(final, 498, h)
+        surface = createChart(graph_input, 498, h)
         data = surface.get_data()
         w, h, st = surface.get_width(), surface.get_height(), surface.get_stride()
         pixbuf = gdk.pixbuf_new_from_data(data, gtk.gdk.COLORSPACE_RGB, 1, 8, w,h,st)

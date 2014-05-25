@@ -228,9 +228,9 @@ bandwidth that is available for your lab.</property>
       <!-- column-name computer -->
       <column type="gchararray"/>
       <!-- column-name upload -->
-      <column type="gchararray"/>
+      <column type="gint"/>
       <!-- column-name download -->
-      <column type="gchararray"/>
+      <column type="gint"/>
     </columns>
   </object>
   <object class="GtkWindow" id="results_dialog">
@@ -287,11 +287,11 @@ bandwidth that is available for your lab.</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="model">results_store</property>
-                        <property name="headers_clickable">False</property>
                         <property name="search_column">0</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="computer_column">
                             <property name="title" translatable="yes">Computer</property>
+                            <property name="sort_column_id">0</property>
                             <child>
                               <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
                             </child>
@@ -306,22 +306,38 @@ bandwidth that is available for your lab.</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="upload_column">
                             <property name="title" translatable="yes">Upload bandwidth</property>
+                            <property name="sort_column_id">1</property>
                             <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                              <object class="GtkCellRendererText" id="cellrenderertext2">
+                                <property name="alignment">right</property>
+                              </object>
                               <attributes>
                                 <attribute name="text">1</attribute>
                               </attributes>
+                            </child>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext5">
+                                <property name="text">Mbps</property>
+                              </object>
                             </child>
                           </object>
                         </child>
                         <child>
                           <object class="GtkTreeViewColumn" id="download_column">
                             <property name="title" translatable="yes">Download bandwidth</property>
+                            <property name="sort_column_id">2</property>
                             <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                              <object class="GtkCellRendererText" id="cellrenderertext3">
+                                <property name="alignment">right</property>
+                              </object>
                               <attributes>
                                 <attribute name="text">2</attribute>
                               </attributes>
+                            </child>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext4">
+                                <property name="text">Mbps</property>
+                              </object>
                             </child>
                           </object>
                         </child>
@@ -420,7 +436,7 @@ bandwidth that is available for your lab.</property>
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">The average server download bandwidth per client</property>
                             <property name="xalign">1</property>
-                            <property name="label" translatable="yes">Average client upload:</property>
+                            <property name="label" translatable="yes">Average server download:</property>
                           </object>
                         </child>
                         <child>
@@ -429,7 +445,7 @@ bandwidth that is available for your lab.</property>
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">The total server download bandwidth, for all clients, simultaneously</property>
                             <property name="xalign">1</property>
-                            <property name="label" translatable="yes">Total client upload:</property>
+                            <property name="label" translatable="yes">Total server download:</property>
                           </object>
                           <packing>
                             <property name="top_attach">1</property>
