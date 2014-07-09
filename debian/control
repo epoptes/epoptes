@@ -30,9 +30,10 @@ Description: Computer lab management tool
 
 Package: epoptes-client
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, bsdmainutils, iproute,
- librsvg2-common, procps, python-gtk2, screen, socat, x11vnc,
- xvnc4viewer | ssvnc | vnc-viewer, iperf
+Depends: ${python:Depends}, ${misc:Depends}, bsdmainutils,
+ iproute2 | iproute, librsvg2-common, procps, python-gtk2,
+ screen, socat, x11vnc, xvnc4viewer | ssvnc | vnc-viewer,
+ iperf
 Recommends: openssl, xterm
 Suggests: ethtool
 Description: Computer lab management tool (client)
