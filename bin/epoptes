@@ -32,6 +32,11 @@ import epoptes
 # cd to the epoptes directory, so that all paths are relative
 os.chdir('/usr/share/epoptes')
 
+if len(sys.argv) > 1:
+    if sys.argv[1] in ('--version', '-version'):
+        print "Epoptes %s" % epoptes.__version__
+        sys.exit(0)
+
 # Do these potentially expensive imports now we know the environment is sane
 from twisted.internet import gtk2reactor
 gtk2reactor.install()
