@@ -16,7 +16,8 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, adduser, librsvg2-common,
  notification-daemon | xfce4-notifyd, openssl, python-openssl,
  python-dbus, python-gtk2, python-notify, python-twisted-core,
- python-vte, xvnc4viewer | ssvnc | vnc-viewer, iperf, python-pycha
+ python-vte, xvnc4viewer | ssvnc | vnc-viewer, iperf, python-pycha,
+ python-netifaces
 Recommends: epoptes-client, xterm
 Description: Computer lab management tool
  Epoptes is an open source computer lab management and monitoring tool. It
