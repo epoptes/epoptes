@@ -30,7 +30,7 @@ import netifaces
 
 def getBroadcastList():
     brlist = ['<broadcast>']
-    for ifname in netifaces.interfaces:
+    for ifname in netifaces.interfaces():
         if ifname != 'lo':
             for addr in netifaces.ifaddresses(ifname)[netifaces.AF_INET]:
                 if 'broadcast' in addr:
