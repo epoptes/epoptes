@@ -221,6 +221,11 @@ cmdline='bash -c \"exec -a epoptes-client sh\"'
 # Offer an lts.conf (or environment) variable to disable cert verification.
 if my_boolean_is_true "${EPOPTES_CLIENT_VERIFY_CERTIFICATE:-True}"; then
     cert_param="cafile=/etc/epoptes/server.crt"
+    # Check if socat provides the commonname option and use it in order to 
+    # support certificates which don't have a commonname set
+    if socat -hhh | grep -q openssl-commonname; then
+        cert_param="$cert_param,commonname=\"\""
+    fi
 else
     cert_param="verify=0"
 fi
