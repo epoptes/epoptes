@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-11-24 22:07+0200\n"
+"POT-Creation-Date: 2015-08-14 23:47+0300\n"
 "PO-Revision-Date: 2012-12-30 06:57+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-25 05:55+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2015-08-15 05:24+0000\n"
+"X-Generator: Launchpad (build 17686)\n"
 "Language: uk\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -62,7 +62,7 @@ msgstr "Мітки"
 msgid "Computer (user)"
 msgstr "Комп’ютер (користувач)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
+#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
 msgid "Computer"
 msgstr "Комп’ютер"
 
@@ -224,88 +224,96 @@ msgid "Set background"
 msgstr "Встановити тло"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
 msgstr "Вилучити з групи"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "_Help"
 msgstr "_Довідка"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Report a bug"
 msgstr "Повідомити про ваду"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Ask a question"
 msgstr "Задати питання"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
 msgstr "Перекласти цю програму"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Live chat (IRC)"
 msgstr "Інтерактивне спілкування (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Remote support"
 msgstr "Дистанційна підтримка"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Завантажити позначені клієнтські вузли (Wake On LAN)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Log out users connected on selected clients"
 msgstr ""
 "Виконати вихід для користувачів, з’єднаних з позначеними клієнтськими вузлами"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Reboot the selected clients"
 msgstr "Перезавантажити позначені клієнтські вузли"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Shutdown the selected clients"
 msgstr "Завершити роботу позначених клієнтських вузлів"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Broadcast your screen to the selected clients"
 msgstr ""
 "Транслювати зображення на вашому екрані вибраним клієнтським комп’ютерам"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Stop all broadcasts on every client"
 msgstr "Припинити всі трансляції для всіх клієнтських вузлів"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Виконати команду"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
 msgstr "Надіслати повідомлення"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Lock screen of the selected clients"
 msgstr "Заблокувати екрани позначених клієнтських вузлів"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
 msgstr "Розблокувати екрани позначених клієнтських вузлів"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Show information for the selected client"
 msgstr "Показати параметри позначеного клієнтського вузла"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
 msgstr "Інформація"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Groups"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Create a new group"
 msgstr "Створити нову групу"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
+#: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Remove the selected group"
 msgstr "Вилучити позначену групу"
 
@@ -336,40 +344,40 @@ msgstr "%(user)s від %(host)s"
 msgid "Properties of %s"
 msgstr "Властивості %s"
 
-#: ../epoptes/ui/gui.py:119
+#: ../epoptes/ui/gui.py:120
 msgid "Detected clients"
 msgstr "Виявлені клієнти"
 
-#: ../epoptes/ui/gui.py:225
+#: ../epoptes/ui/gui.py:230
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Ви справді хочете вимкнути всі ці комп’ютери?"
 
-#: ../epoptes/ui/gui.py:230
+#: ../epoptes/ui/gui.py:235
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Ви справді хочете перезавантажити всі ці комп’ютери?"
 
-#: ../epoptes/ui/gui.py:236
+#: ../epoptes/ui/gui.py:241
 msgid "Are you sure you want to log off all the users?"
 msgstr ""
 "Ви справді хочете виконати вихід із системи для всіх цих користувачів?"
 
-#: ../epoptes/ui/gui.py:379
+#: ../epoptes/ui/gui.py:384
 msgid "The screen is locked by a system administrator."
 msgstr "Екран заблоковано адміністратором системи."
 
-#: ../epoptes/ui/gui.py:408
+#: ../epoptes/ui/gui.py:413
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr "Ви справді бажаєте вилучити з групи «%s» позначені клієнтські вузли?"
 
-#: ../epoptes/ui/gui.py:439
+#: ../epoptes/ui/gui.py:444
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Ви справді бажаєте вилучити групу «%s»?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:651
+#: ../epoptes/ui/gui.py:656
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -382,7 +390,7 @@ msgstr ""
 "\n"
 "Вам слід оновити клієнтські частини до найсвіжішої версії epoptes-client."
 
-#: ../epoptes/ui/gui.py:953
+#: ../epoptes/ui/gui.py:958
 #, python-format
 msgid "%d clients selected"
 msgstr ""
@@ -392,6 +400,43 @@ msgid "URL, file or command to execute on the selected clients:"
 msgstr ""
 "Адреса, файл або команда, яку слід виконати на позначених клієнтських вузлах:"
 
+#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
+msgid "Epoptes Network Benchmark Results"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:86
+msgid "Upload Rate"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:87
+msgid "Download Rate"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:134
+msgid "There are no selected clients to run the benchmark on."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:147
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:152
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:176
+msgid "Processing data..."
+msgstr ""
+
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
 msgstr "Повідомлення від адміністратора"
@@ -400,15 +445,89 @@ msgstr "Повідомлення від адміністратора"
 msgid "Epoptes computer lab administration tool"
 msgstr "Інструмент для адміністрування комп’ютерних класів Epoptes"
 
-#: ../bin/epoptes.py:54
+#: ../bin/epoptes.py:58
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
 "Щоб мати змогу запускати epoptes, користувач %s має бути учасником групи %s."
 
-#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
+#: ../bin/epoptes.py:62 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
 msgstr "Помилка"
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
+msgid "Upload bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
+msgid "Download bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
+msgid "Show a graph instead of a table."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+msgid "Overall Bandwidth Statistics"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
+msgid "The average server download bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
+msgid "Average server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
+msgid "Total server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
+msgid "The average server upload bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
+msgid "Average server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
+msgid "Total server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
+msgid "Epoptes Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
+msgid ""
+"The network benchmark will test the effective network\n"
+"bandwidth that is available for your lab."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:18
+msgid "Run the benchmark for"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+msgid "seconds"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+msgid "Start"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "Попередження"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
@@ -470,12 +589,8 @@ msgstr "Текст повідомлення:"
 msgid "Use Pango markup"
 msgstr "Використовувати розмітку Pango"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Попередження"
-
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2013 Epoptes Team"
+msgid "Copyright © 2011-2015 The Epoptes Team"
 msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2

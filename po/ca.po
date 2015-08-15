@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-11-24 22:07+0200\n"
-"PO-Revision-Date: 2012-06-06 07:27+0000\n"
-"Last-Translator: Joan Font <correu@wanadoo.es>\n"
+"POT-Creation-Date: 2015-08-14 23:47+0300\n"
+"PO-Revision-Date: 2014-04-21 21:27+0000\n"
+"Last-Translator: Lluís Dalmau <lluis.dalmau@guifi.net>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-25 05:55+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2015-08-15 05:24+0000\n"
+"X-Generator: Launchpad (build 17686)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Joan Font https://launchpad.net/~correu"
+"  Joan Font https://launchpad.net/~correu\n"
+"  Lluís Dalmau https://launchpad.net/~lluis-dalmau"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
@@ -55,7 +56,7 @@ msgstr "Etiquetes"
 msgid "Computer (user)"
 msgstr "Ordinador (usuari)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
+#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
 msgid "Computer"
 msgstr "Ordinador"
 
@@ -216,86 +217,94 @@ msgid "Set background"
 msgstr "Posa el fons de pantalla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
 msgstr "Esborra del grup"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "_Help"
 msgstr "Ajuda"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Report a bug"
 msgstr "Informar d'una errada"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Ask a question"
 msgstr "Fer una pregunta"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Translate this application"
 msgstr "Tradueix aquesta aplicació"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Live chat (IRC)"
 msgstr "Xat en directe (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Remote support"
 msgstr "Assistència remota"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Arrenca els ordinadors seleccionats (WOL)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Log out users connected on selected clients"
 msgstr "Desconnecta els usuaris seleccionats"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Reboot the selected clients"
 msgstr "Reinicia els ordinadors seleccionats"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Shutdown the selected clients"
 msgstr "Apaga els ordinadors seleccionats"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Broadcast your screen to the selected clients"
 msgstr "Difondre la pantalla als usuaris seleccionats"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Stop all broadcasts on every client"
 msgstr "Aturar totes les transmissions"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Executar la comanda"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
 msgstr "Enviar missatge"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Lock screen of the selected clients"
 msgstr "Bloquejar la pantalla als usuaris"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
 msgstr "Desbloquejar la pantalla als usuaris"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Show information for the selected client"
 msgstr "Mostrar informació de l'usuari"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
 msgstr "Informació"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Groups"
+msgstr "Grups"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Create a new group"
 msgstr "Crear un grup nou"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
+#: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Remove the selected group"
 msgstr "Esborrar el grup seleccionat"
 
@@ -326,40 +335,40 @@ msgstr "%(user)s de %(host)s"
 msgid "Properties of %s"
 msgstr "Propietats de %s"
 
-#: ../epoptes/ui/gui.py:119
+#: ../epoptes/ui/gui.py:120
 msgid "Detected clients"
 msgstr "Clients detectats"
 
-#: ../epoptes/ui/gui.py:225
+#: ../epoptes/ui/gui.py:230
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Esteu segur que voleu aturar tots els ordinadors?"
 
-#: ../epoptes/ui/gui.py:230
+#: ../epoptes/ui/gui.py:235
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Esteu segur que voleu reiniciar tots els ordinadors?"
 
-#: ../epoptes/ui/gui.py:236
+#: ../epoptes/ui/gui.py:241
 msgid "Are you sure you want to log off all the users?"
 msgstr "Esteu segur que voleu desconnectar tots els usuaris?"
 
-#: ../epoptes/ui/gui.py:379
+#: ../epoptes/ui/gui.py:384
 msgid "The screen is locked by a system administrator."
 msgstr "L'administrador ha blocat la pantalla"
 
-#: ../epoptes/ui/gui.py:408
+#: ../epoptes/ui/gui.py:413
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 "Esteu segur que voleu treure els usuaris seleccionats del grup \"%s\"?"
 
-#: ../epoptes/ui/gui.py:439
+#: ../epoptes/ui/gui.py:444
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Esteu segur que voleu esborrar el grup \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:651
+#: ../epoptes/ui/gui.py:656
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -372,14 +381,51 @@ msgstr ""
 "\n"
 "Cal que tots els ordinadors disposin de la darrera versió de l'Epoptes."
 
-#: ../epoptes/ui/gui.py:953
+#: ../epoptes/ui/gui.py:958
 #, python-format
 msgid "%d clients selected"
-msgstr ""
+msgstr "%d de clients seleccionats"
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "URL, fitxer o comanda per executar als ordinadors seleccionats:"
+
+#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
+msgid "Epoptes Network Benchmark Results"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:86
+msgid "Upload Rate"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:87
+msgid "Download Rate"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:134
+msgid "There are no selected clients to run the benchmark on."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:147
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:152
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:176
+msgid "Processing data..."
+msgstr ""
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -389,14 +435,88 @@ msgstr "Missatge de l'administrador"
 msgid "Epoptes computer lab administration tool"
 msgstr "Eina d'administració d'aules d'informàtica Epoptes"
 
-#: ../bin/epoptes.py:54
+#: ../bin/epoptes.py:58
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr "Per executar l'Epoptes l'usuari %s cal que sigui membre del grup %s."
 
-#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
+#: ../bin/epoptes.py:62 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
 msgstr "S'ha produït un error"
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
+msgid "Upload bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
+msgid "Download bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
+msgid "Show a graph instead of a table."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+msgid "Overall Bandwidth Statistics"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
+msgid "The average server download bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
+msgid "Average server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
+msgid "Total server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
+msgid "The average server upload bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
+msgid "Average server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
+msgid "Total server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
+msgid "Epoptes Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
+msgid ""
+"The network benchmark will test the effective network\n"
+"bandwidth that is available for your lab."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:18
+msgid "Run the benchmark for"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+msgid "seconds"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+msgid "Start"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "Avís"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
@@ -458,12 +578,8 @@ msgstr "Text del missatge:"
 msgid "Use Pango markup"
 msgstr "Utilitza etiquetes Pango"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Avís"
-
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2013 Epoptes Team"
+msgid "Copyright © 2011-2015 The Epoptes Team"
 msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2

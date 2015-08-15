@@ -7,22 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-11-24 22:07+0200\n"
-"PO-Revision-Date: 2013-01-01 11:56+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"POT-Creation-Date: 2015-08-14 23:47+0300\n"
+"PO-Revision-Date: 2015-01-01 13:19+0000\n"
+"Last-Translator: srekkas <srekkas.as@gmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-25 05:55+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2015-08-15 05:24+0000\n"
+"X-Generator: Launchpad (build 17686)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Danute https://launchpad.net/~d-informatika\n"
-"  Fotis Tsamis https://launchpad.net/~phantomas"
+"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
+"  srekkas https://launchpad.net/~srekkas-as"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
@@ -31,14 +32,15 @@ msgstr "Transliuoti vaizdą (per visą ekraną)"
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
 msgstr ""
+"Transliuoti savo kompiuterio vaizdą pasirinktiems vartotojams per visą ekraną"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
-msgstr ""
+msgstr "Transliuoti ekraną (lange)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr ""
+msgstr "Transliuoti savo ekraną pasirinktiems vartotojams atskirame lange"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
@@ -56,7 +58,7 @@ msgstr "Etiketės"
 msgid "Computer (user)"
 msgstr "Kompiuteris (vartotojas)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9
+#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
 msgid "Computer"
 msgstr "Kompiuteris"
 
@@ -70,11 +72,11 @@ msgstr "Vartotojas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Show real names"
-msgstr ""
+msgstr "Rodyti tikrus vardus"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "_Clients"
-msgstr ""
+msgstr "_Klientai"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Session"
@@ -82,7 +84,7 @@ msgstr "Seansas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Boot"
-msgstr ""
+msgstr "Užkrauti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Log out"
@@ -98,15 +100,15 @@ msgstr "Išjungti kompiuterį"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Broadcasts"
-msgstr ""
+msgstr "Transliacijos"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Monitor user"
-msgstr ""
+msgstr "Stebėti vartotoją"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Assist user"
-msgstr ""
+msgstr "Asistuoti vartotojui"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Take control of the selected user's computer"
@@ -114,31 +116,31 @@ msgstr "Valdyti pasirinkto vartotojo kompiuterį"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast video"
-msgstr ""
+msgstr "Transliuoti vaizdą"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Broadcast screen"
-msgstr ""
+msgstr "Transliuoti administratoriaus ekraną"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr ""
+msgstr "Transliuoti vartotojo ekraną"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
-msgstr ""
+msgstr "Sustabdyti transliacijas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stops all active broadcasts"
-msgstr ""
+msgstr "Sustabdyti visas aktyvias transliacijas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Open broadcasts window"
-msgstr ""
+msgstr "Atverti transliacijų langą"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr ""
+msgstr "Atverti seansą lange, kad nebūtų transliuojamas visas jūsų ekranas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
@@ -146,7 +148,7 @@ msgstr "Vykdyti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
-msgstr ""
+msgstr "Vykdyti komandą pasirinktų vartotojų kompiuteriuose"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
@@ -154,23 +156,23 @@ msgstr "_Siųsti žinutę"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr ""
+msgstr "Siųsti žinutę pasirinktiems vartotojams"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr ""
+msgstr "Atverti terminalą"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
-msgstr ""
+msgstr "Vartotojas, lokaliai"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
-msgstr ""
+msgstr "Root vartotojas, lokaliai"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
-msgstr ""
+msgstr "Root vartotojas, nuotolinis"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Restrictions"
@@ -217,86 +219,94 @@ msgid "Set background"
 msgstr "Nustatyti foną"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
 msgstr "Pašalinti iš grupės"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "_Help"
 msgstr "_Žinynas"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Report a bug"
 msgstr "Pranešk apie klaidą"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Ask a question"
 msgstr "Paklausk"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Translate this application"
-msgstr ""
-
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Live chat (IRC)"
-msgstr ""
+msgid "Translate this application"
+msgstr "Versti šią programą"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Remote support"
-msgstr ""
+msgid "Live chat (IRC)"
+msgstr "Pokalbiai (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Boot selected clients (Wake On LAN)"
-msgstr ""
+msgid "Remote support"
+msgstr "Nuotolinis palaikymas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Įjungti pasirinktus kompiuterius (Wake On Lan)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Log out users connected on selected clients"
 msgstr "Atjungti pasirinktų kompiuterių prisijungusius vartotojus"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Reboot the selected clients"
 msgstr "Perkrauti pasirinktus kompiuterius"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Shutdown the selected clients"
 msgstr "Išjungti pasirinktus kompiuterius"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Broadcast your screen to the selected clients"
 msgstr "Transliuoti savo ekrano vaizdą pasirinktiems kompiuteriams"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Stop all broadcasts on every client"
 msgstr "Sustabdyti visas transliacijas"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Vykdyti komandą"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
 msgstr "Siųsti pranešimą"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Lock screen of the selected clients"
 msgstr "Užrakinti pasirinktų kompiuterių ekranus"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Unlock the screen of the selected clients"
 msgstr "Atrakinti pasirinktų kompiuterių ekranus"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Show information for the selected client"
 msgstr "Parodyti informaciją apie pasirinktus kompiuterius"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
 msgstr "Informacija"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:69
+msgid "Groups"
+msgstr "Grupės"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Create a new group"
 msgstr "Sukurti naują grupę"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
+#: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Remove the selected group"
 msgstr "Pašalinti pasirinktą grupę"
 
@@ -327,39 +337,39 @@ msgstr ""
 msgid "Properties of %s"
 msgstr "%s savybės"
 
-#: ../epoptes/ui/gui.py:119
+#: ../epoptes/ui/gui.py:120
 msgid "Detected clients"
 msgstr "Aptikti kompiuteriai"
 
-#: ../epoptes/ui/gui.py:225
+#: ../epoptes/ui/gui.py:230
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Ar tikrai norite išjungti visus kompiuterius?"
 
-#: ../epoptes/ui/gui.py:230
+#: ../epoptes/ui/gui.py:235
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Ar tikrai norite perkrauti visus kompiuterius?"
 
-#: ../epoptes/ui/gui.py:236
+#: ../epoptes/ui/gui.py:241
 msgid "Are you sure you want to log off all the users?"
 msgstr "Ar tikrai norite atjungti visus vartotojus?"
 
-#: ../epoptes/ui/gui.py:379
+#: ../epoptes/ui/gui.py:384
 msgid "The screen is locked by a system administrator."
 msgstr "Ekranas užrakintas sistemos administratoriaus."
 
-#: ../epoptes/ui/gui.py:408
+#: ../epoptes/ui/gui.py:413
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr ""
+msgstr "Ar tikrai norite pašalinti pasirinktą klientą (-us) iš „%s“ grupės?"
 
-#: ../epoptes/ui/gui.py:439
+#: ../epoptes/ui/gui.py:444
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr ""
+msgstr "Ar tikrai norite pašalinti „%s“ grupę?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:651
+#: ../epoptes/ui/gui.py:656
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -367,14 +377,53 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Klientas su nesuderinama versija %s bandė prisijungti, \n"
+"jums reikia atnaujinti kliento \"epoptes-client\" versiją"
 
-#: ../epoptes/ui/gui.py:953
+#: ../epoptes/ui/gui.py:958
 #, python-format
 msgid "%d clients selected"
-msgstr ""
+msgstr "%d klientai pažymėti"
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
+msgstr "URL, failas ar komanda vykdoma pažymėtuose klientuose"
+
+#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
+msgid "Epoptes Network Benchmark Results"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:86
+msgid "Upload Rate"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:87
+msgid "Download Rate"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:134
+msgid "There are no selected clients to run the benchmark on."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:147
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:152
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:176
+msgid "Processing data..."
 msgstr ""
 
 #: ../epoptes/common/config.py:220
@@ -383,24 +432,98 @@ msgstr "Pranešimas administratoriui"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes computer lab administration tool"
-msgstr ""
+msgstr "Epoptes administravimo įrankis"
 
-#: ../bin/epoptes.py:54
+#: ../bin/epoptes.py:58
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
+msgstr "%s vartotojas turi būti %s grupėje, kad galėtų paleisti epoptes."
 
-#: ../bin/epoptes.py:58 ../epoptes/ui/gtk/sendMessage.ui.h:8
+#: ../bin/epoptes.py:62 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
 msgstr "Klaida"
 
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
+msgid "Upload bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
+msgid "Download bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
+msgid "Show a graph instead of a table."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+msgid "Overall Bandwidth Statistics"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
+msgid "The average server download bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
+msgid "Average server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
+msgid "Total server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
+msgid "The average server upload bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
+msgid "Average server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
+msgid "Total server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
+msgid "Epoptes Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
+msgid ""
+"The network benchmark will test the effective network\n"
+"bandwidth that is available for your lab."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:18
+msgid "Run the benchmark for"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+msgid "seconds"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+msgid "Start"
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "Įspėjimas"
+
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
-msgstr ""
+msgstr "Redaguoti alternatyvų pavadinimą"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Set a new alias for the selected client"
-msgstr ""
+msgstr "Nustatyti naują alternatyvų pavadinimą pažymėtiems klientams"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Graphics card:"
@@ -408,7 +531,7 @@ msgstr "Vaizdo plokštė:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "RAM:"
-msgstr ""
+msgstr "Operatyvioji atmintinė (RAM):"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Processor:"
@@ -428,15 +551,15 @@ msgstr "MAC adresas:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client hostname:"
-msgstr ""
+msgstr "Kliento hostname"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Client type:"
-msgstr ""
+msgstr "Kliento tipas:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Client alias:"
-msgstr ""
+msgstr "Esamas alternatyvus pavadinimas"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "_Send"
@@ -452,19 +575,15 @@ msgstr "Pranešimo tekstas:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Use Pango markup"
-msgstr ""
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Įspėjimas"
+msgstr "Naudoti Pango  aprašą"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2013 Epoptes Team"
+msgid "Copyright © 2011-2015 The Epoptes Team"
 msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr ""
+msgstr "Kompiuterių klasės valdymo ir stebėjimo įrankis."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -511,12 +630,12 @@ msgstr "Nepavyko prisijungti prie %s"
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr ""
+msgstr "Bandoma iš naujo už %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+msgstr "Įveskite kontakto informaciją, su kuriuo norite dalintis Darbalaukiu"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
@@ -528,7 +647,7 @@ msgstr "Serveris:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr ""
+msgstr "Mėginti prisijungti iš naujo"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
@@ -544,7 +663,7 @@ msgstr ""
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr ""
+msgstr "Konsolė (ekranas)"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
