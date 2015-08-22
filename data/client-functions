@@ -51,6 +51,7 @@ info() {
             IP="$LTSP_CLIENT"
         else
             server_ip=$(getent hosts "$SERVER" | cut -d' ' -f1)
+            server_ip=${server_ip:-$SERVER}
             def_iface=$(ip -oneline -family inet route get "$server_ip" \
                 | sed -n '/.* dev \([^ ]*\).*/s//\1/p')
             test "${def_iface:-lo}" = "lo" && def_iface=$(ip -oneline -family \
