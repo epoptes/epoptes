@@ -4,7 +4,7 @@
 ###########################################################################
 # Notifications.
 #
-# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# Copyright (C) 2015 Fotis Tsamis <ftsamis@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,22 +29,64 @@ import os
 if not pynotify.init("epoptes-notifications"):
     sys.exit(1)
 
-append = 'x-canonical-append' in pynotify.get_server_caps()
+
+class NotificationCache(object):
+    """A class to store notifications by 'summary' until they get closed/hidden.
+    This helps to emulate the x-canonical-append capability on systems that
+    do not provide it.
+    """
+    def __init__(self):
+        self.notifications = {}
+
+    def add_notification(self, n, title):
+        # The title argument is important to handle unicode summaries correctly.
+        # n.props.summary does not return unicode objects.
+        self.notifications[title] = n
+        n.connect("closed", self.remove_notification, title)
+
+    def get_notification(self, title):
+        if title in self.notifications:
+            return self.notifications[title]
+
+    def remove_notification(self, n, title):
+        # The title argument is important to handle unicode summaries correctly.
+        del self.notifications[title]
+
 
 def notify(title, body, icon):
-    if not append:
-        return False
     n = pynotify.Notification(title, body, icon)
     n.set_hint_string("x-canonical-append", "true")
     n.show()
 
+
+def cached_notify(title, body, icon):
+    """A function to replace pynotify.notify if the 'x-canonical-append'
+    capability is not provided.
+    """
+    n = cache.get_notification(title)
+    if n:
+        n.close()
+        n.update(title, n.props.body+'\n'+body, icon)
+    else:
+        n = pynotify.Notification(title, body, icon)
+        cache.add_notification(n, title)
+    n.show()
+
+
+append = 'x-canonical-append' in pynotify.get_server_caps()
+if not append:
+    cache = NotificationCache()
+    notify = cached_notify
+
+print os.getcwd()
+
 def shutdownNotify(host):
-    notify(_("Shut down:"), "%s" %(host), "notification-message-im")
+    notify(_("Shut down:"), "%s" %(host), os.path.abspath("images/shutdown.svg"))
 
 def loginNotify(user, host):
-    notify(_("Connected:"), _("%(user)s on %(host)s") %{"user":user, "host":host}, 
-                                "notification-message-im")
+    notify(_("Connected:"), _("%(user)s on %(host)s") %{"user":user, "host":host},
+                                os.path.abspath("images/login.svg"))
 def logoutNotify(user, host):
-    notify(_("Disconnected:"), _("%(user)s from %(host)s") %{"user":user, "host":host}, 
-                                "notification-message-im")
+    notify(_("Disconnected:"), _("%(user)s from %(host)s") %{"user":user, "host":host},
+                                os.path.abspath("images/logout.svg"))
 
