@@ -609,7 +609,9 @@ class EpoptesGui(object):
 
     def isDefaultGroupSelected(self):
         """Return True if the default group is selected"""
-        return self.getSelectedGroup()[1] is self.default_group
+        if self.getSelectedGroup():
+            return self.getSelectedGroup()[1] is self.default_group
+        return True
 
 
     def getSelectedGroup(self):
