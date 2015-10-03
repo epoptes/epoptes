@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-14 23:47+0300\n"
-"PO-Revision-Date: 2015-08-15 08:26+0000\n"
-"Last-Translator: Sergey Krylov <kr@student.su>\n"
+"POT-Creation-Date: 2015-10-03 00:51+0300\n"
+"PO-Revision-Date: 2015-09-08 14:44+0000\n"
+"Last-Translator: Voldemar <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-08-16 04:48+0000\n"
-"X-Generator: Launchpad (build 17686)\n"
+"X-Launchpad-Export-Date: 2015-10-03 05:28+0000\n"
+"X-Generator: Launchpad (build 17783)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
 
@@ -28,6 +28,7 @@ msgstr ""
 "  HsH https://launchpad.net/~hsh\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
 "  Sergey Krylov https://launchpad.net/~d-kr\n"
+"  Voldemar https://launchpad.net/~komyshnyi\n"
 "  Семёнов Юрий Сергеевич https://launchpad.net/~cbne"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
@@ -314,24 +315,24 @@ msgstr "Создать новую группу"
 msgid "Remove the selected group"
 msgstr "Удалить выбранную группу"
 
-#: ../epoptes/ui/notifications.py:42
+#: ../epoptes/ui/notifications.py:92
 msgid "Shut down:"
 msgstr "Отключить:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 msgid "Connected:"
 msgstr "Подключено:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s на %(host)s"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 msgid "Disconnected:"
 msgstr "Отключено:"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s с %(host)s"
@@ -373,7 +374,7 @@ msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Вы действительно хотите удалить группу «%s»?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:656
+#: ../epoptes/ui/gui.py:658
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -387,7 +388,7 @@ msgstr ""
 "Требуется обновить пакет epoptes-client на клиентских машинах до последней "
 "версии ."
 
-#: ../epoptes/ui/gui.py:958
+#: ../epoptes/ui/gui.py:960
 #, python-format
 msgid "%d clients selected"
 msgstr "%d клиентов выбрано"
@@ -402,15 +403,15 @@ msgstr ""
 
 #: ../epoptes/ui/benchmark.py:86
 msgid "Upload Rate"
-msgstr ""
+msgstr "Скорость раздачи"
 
 #: ../epoptes/ui/benchmark.py:87
 msgid "Download Rate"
-msgstr ""
+msgstr "Скорость загрузки"
 
 #: ../epoptes/ui/benchmark.py:134
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Нет выбранных клиентов для запуска теста."
 
 #: ../epoptes/ui/benchmark.py:147
 msgid ""
@@ -427,11 +428,11 @@ msgstr ""
 #: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Тест завершится через %d сек..."
 
 #: ../epoptes/ui/benchmark.py:176
 msgid "Processing data..."
-msgstr ""
+msgstr "Обработка данных..."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -460,7 +461,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr ""
+msgstr "Показать график вместо таблицы."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid "Overall Bandwidth Statistics"
@@ -500,7 +501,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Epoptes Network Benchmark"
-msgstr ""
+msgstr "Тест сети Epoptes"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid ""
@@ -510,15 +511,15 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:18
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Выполнить тест для"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "seconds"
-msgstr ""
+msgstr "сек"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "Start"
-msgstr ""
+msgstr "Начать"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"

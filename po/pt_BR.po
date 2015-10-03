@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-14 23:47+0300\n"
-"PO-Revision-Date: 2015-08-26 11:30+0000\n"
+"POT-Creation-Date: 2015-10-03 00:51+0300\n"
+"PO-Revision-Date: 2015-09-02 15:23+0000\n"
 "Last-Translator: Laércio de Sousa <lbsousajr@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-08-27 05:35+0000\n"
-"X-Generator: Launchpad (build 17690)\n"
+"X-Launchpad-Export-Date: 2015-10-03 05:28+0000\n"
+"X-Generator: Launchpad (build 17783)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -223,7 +223,7 @@ msgstr "Definir plano de fundo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Benchmark da rede"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -313,24 +313,24 @@ msgstr "Cria um novo grupo"
 msgid "Remove the selected group"
 msgstr "Remover o grupo selecionado"
 
-#: ../epoptes/ui/notifications.py:42
+#: ../epoptes/ui/notifications.py:92
 msgid "Shut down:"
 msgstr "Desligar:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 msgid "Connected:"
 msgstr "Conectado:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s em %(host)s"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 msgid "Disconnected:"
 msgstr "Desconectado:"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s de %(host)s"
@@ -375,7 +375,7 @@ msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Você tem certeza de que deseja remover o grupo \"%s\"?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:656
+#: ../epoptes/ui/gui.py:658
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -388,7 +388,7 @@ msgstr ""
 "\n"
 "Você precisa atualizar seus clientes para última versão do epoptes-client."
 
-#: ../epoptes/ui/gui.py:958
+#: ../epoptes/ui/gui.py:960
 #, python-format
 msgid "%d clients selected"
 msgstr "%d clientes selecionados"
@@ -399,36 +399,40 @@ msgstr "URL, arquivo ou comando para executar nos clientes selecionados:"
 
 #: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr ""
+msgstr "Resultados do benchmark da rede do Epoptes"
 
 #: ../epoptes/ui/benchmark.py:86
 msgid "Upload Rate"
-msgstr ""
+msgstr "Taxa de upload"
 
 #: ../epoptes/ui/benchmark.py:87
 msgid "Download Rate"
-msgstr ""
+msgstr "Taxa de download"
 
 #: ../epoptes/ui/benchmark.py:134
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Não há clientes selecionados para executar o benchmark."
 
 #: ../epoptes/ui/benchmark.py:147
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Todos os clientes selecionados estão desconectados ou não estão executando o "
+"epoptes-client como root."
 
 #: ../epoptes/ui/benchmark.py:152
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Os seguintes clientes serão excluídos do benchmark porque estão "
+"desconectados ou não estão executando o epoptes-client como root."
 
 #: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Terminando o benchmark em %d segundos..."
 
 #: ../epoptes/ui/benchmark.py:176
 msgid "Processing data..."
@@ -461,57 +465,63 @@ msgstr "Largura de banda de download"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr ""
+msgstr "Exibir um gráfico em vez de uma tabela."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid "Overall Bandwidth Statistics"
-msgstr ""
+msgstr "Estatística geral de largura de banda"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "A largura de banda média de download do servidor por cliente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "Average server download:"
-msgstr ""
+msgstr "Taxa média de download do servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "The total server download bandwidth, for all clients, simultaneously"
 msgstr ""
+"A largura de banda total de download do servidor para todos os clientes "
+"simultaneamente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "Total server download:"
-msgstr ""
+msgstr "Taxa total de download do servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "The average server upload bandwidth per client"
-msgstr ""
+msgstr "A largura de banda média de upload do servidor por cliente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "Average server upload:"
-msgstr ""
+msgstr "Taxa média de upload do servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "The total server upload bandwidth, for all clients, simultaneously"
 msgstr ""
+"A largura de banda total de upload do servidor para todos os clientes "
+"simultaneamente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "Total server upload:"
-msgstr ""
+msgstr "Taxa total de upload do servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Epoptes Network Benchmark"
-msgstr ""
+msgstr "Benchmark da rede do Epoptes"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"O benchmark da rede testará a largura de banda\n"
+"efetiva disponível para a rede do seu laboratório."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:18
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Executar o benchmark por"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "seconds"
@@ -587,7 +597,7 @@ msgstr "Usar marcação Pango"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2015 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2015 The Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."

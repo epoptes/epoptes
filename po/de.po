@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-14 23:47+0300\n"
+"POT-Creation-Date: 2015-10-03 00:51+0300\n"
 "PO-Revision-Date: 2015-08-15 08:26+0000\n"
 "Last-Translator: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-08-16 04:48+0000\n"
-"X-Generator: Launchpad (build 17686)\n"
+"X-Launchpad-Export-Date: 2015-10-03 05:28+0000\n"
+"X-Generator: Launchpad (build 17783)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -316,24 +316,24 @@ msgstr "Neue Gruppe anlegen"
 msgid "Remove the selected group"
 msgstr "Ausgewählte Gruppe entfernen"
 
-#: ../epoptes/ui/notifications.py:42
+#: ../epoptes/ui/notifications.py:92
 msgid "Shut down:"
 msgstr "Herunterfahren:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 msgid "Connected:"
 msgstr "Verbunden:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s auf %(host)s"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 msgid "Disconnected:"
 msgstr "Getrennt:"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s von %(host)s"
@@ -375,7 +375,7 @@ msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Die Gruppe ,,%s'' wirklich löschen?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:656
+#: ../epoptes/ui/gui.py:658
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -389,7 +389,7 @@ msgstr ""
 "Sie müssen Ihre Clienten auf die aktuelle Epoptes-Client-Version "
 "aktualisieren."
 
-#: ../epoptes/ui/gui.py:958
+#: ../epoptes/ui/gui.py:960
 #, python-format
 msgid "%d clients selected"
 msgstr "%d Clients ausgewählt"

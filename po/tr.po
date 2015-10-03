@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-14 23:47+0300\n"
+"POT-Creation-Date: 2015-10-03 00:51+0300\n"
 "PO-Revision-Date: 2015-08-15 08:26+0000\n"
 "Last-Translator: İbrahim <ikorucu77@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-08-16 04:49+0000\n"
-"X-Generator: Launchpad (build 17686)\n"
+"X-Launchpad-Export-Date: 2015-10-03 05:28+0000\n"
+"X-Generator: Launchpad (build 17783)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -310,24 +310,24 @@ msgstr "Yeni bir grup oluştur"
 msgid "Remove the selected group"
 msgstr "Seçili grubu kaldır"
 
-#: ../epoptes/ui/notifications.py:42
+#: ../epoptes/ui/notifications.py:92
 msgid "Shut down:"
 msgstr "Kapat :"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 msgid "Connected:"
 msgstr "Bağlı:"
 
-#: ../epoptes/ui/notifications.py:45
+#: ../epoptes/ui/notifications.py:95
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s bu kullanıcılar %(host)s üzerindedir"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 msgid "Disconnected:"
 msgstr "Bağlı değil:"
 
-#: ../epoptes/ui/notifications.py:48
+#: ../epoptes/ui/notifications.py:98
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s bu kullanıcılar %(host)s den bağlanıyor"
@@ -370,7 +370,7 @@ msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "\"%s\" grubunu ayırmak istediğinize emin misiniz?"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:656
+#: ../epoptes/ui/gui.py:658
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -384,7 +384,7 @@ msgstr ""
 "Bu bağlantı yapan istemcinin sürümünü en son epoptes-client sürümüne "
 "yükseltmelisiniz."
 
-#: ../epoptes/ui/gui.py:958
+#: ../epoptes/ui/gui.py:960
 #, python-format
 msgid "%d clients selected"
 msgstr ""
