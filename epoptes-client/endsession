@@ -64,6 +64,13 @@ do_logout() {
 
     # LXDE
     test -n "$_LXSESSION_PID" && kill "$_LXSESSION_PID" && return
+    
+    # systemd
+    test -n "$XDG_SESSION_ID" && \
+    dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
+      --dest=org.freedesktop.login1 /org/freedesktop/login1 \
+      org.freedesktop.login1.Manager.TerminateSession string:"$XDG_SESSION_ID" \
+      2>&1 && return
 
     die "I don't know how to logout in this environment"
 }
@@ -96,7 +103,12 @@ do_reboot() {
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.PowerManagement /org/freedesktop/PowerManagement \
       org.freedesktop.PowerManagement.Reboot 2>&1 && return
-
+    
+    # systemd
+    dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
+      --dest=org.freedesktop.login1 /org/freedesktop/login1 \
+      org.freedesktop.login1.Manager.Reboot boolean:true 2>&1 && return
+    
     # ConsoleKit is the last resort since it doesn't allow inhibiting
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager \
@@ -133,7 +145,12 @@ do_shutdown() {
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.PowerManagement /org/freedesktop/PowerManagement \
       org.freedesktop.PowerManagement.Shutdown && return
-
+    
+    # systemd
+    dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
+      --dest=org.freedesktop.login1 /org/freedesktop/login1 \
+      org.freedesktop.login1.Manager.PowerOff boolean:true 2>&1 && return
+    
     # ConsoleKit is the last resort since it doesn't allow inhibiting
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager \
