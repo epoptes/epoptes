@@ -93,7 +93,7 @@ class Support:
             cmd = ['x11vnc', '-q', '-nopw', '-connect_or_exit', '%s:%d' % (ip, port), '-afteraccept', 'kill -USR1 %d' % pid]
         else:
             cmd = ['socat', 'tcp:%s:%d' % (ip, port), 
-                'SYSTEM:"{ kill -USR1 %d; sleep 1; xterm -e screen -xRR ra$$; } & exec screen -S ra$$",pty,stderr' % pid]
+                'SYSTEM:"{ kill -USR1 %d; sleep 1; xterm -e screen -xRR ra$$; } & TERM=linux exec screen -S ra$$",pty,stderr' % pid]
         
         self.proc = subprocess.Popen(cmd)
         
