@@ -4,7 +4,7 @@
 # Connects to a remote server and offers it a local shell.
 # Usage: epoptes [server] [port]
 #
-# Copyright (C) 2010-2012 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010-2015 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -127,7 +127,7 @@ fetch_certificate()
 
 
 # Main.
-export VERSION="0.5.7" # Automatically updated by mkdst
+export VERSION="0.5.8" # Automatically updated by mkdst
 
 # Check the first parameter as it may turn out we don't need to run at all
 case "$1" in
