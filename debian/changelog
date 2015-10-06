@@ -1,3 +1,29 @@
+epoptes (0.5.8-1) unstable; urgency=low
+
+  * New upstream version:
+    - TERM was missing in text-based remote assistance (LP: #1117158).
+    - Add support for shutdown/reboot/logout on systemd (LP: #1447321).
+    - Fix a crash which occured when changing the group selection.
+    - Emulate x-canonical-append for notifications when necessary.
+    - Support newer socat versions >= 1.7.3.
+    - Generate a certificate valid since the Epoch.
+    - Use python-netifaces to discover the broadcast addresses (LP: #1341278).
+    - Handle the --version argument.
+    - Read epoptes socket without checking for group membership (LP: #1338051).
+    - Add a network throughput measurement feature.
+    - Make the Groups header translatable.
+
+  * epoptes:
+    - Remove python-vte from dependencies (Closes: #790167).
+    - Depend on iperf and python-pycha.
+  * epoptes-client:
+    - Depend on iproute2 instead of only iproute (Closes: #753715).
+    - Add iperf on dependencies.
+  * debian/control:
+    - Update Standards-Version to 3.9.6, no changes necessary. 
+
+ -- Fotis Tsamis <ftsamis@gmail.com>  Tue, 06 Oct 2015 22:18:44 +0300
+
 epoptes (0.5.7-1) unstable; urgency=low
 
   * New upstream version:
