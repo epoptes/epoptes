@@ -30,11 +30,16 @@ import netifaces
 
 def getBroadcastList():
     brlist = ['<broadcast>']
-    for ifname in netifaces.interfaces():
-        if ifname != 'lo':
-            for addr in netifaces.ifaddresses(ifname)[netifaces.AF_INET]:
-                if 'broadcast' in addr:
-                    brlist.append(addr['broadcast'])
+    ifaces = [iface for iface in netifaces.interfaces() if iface != 'lo']
+    for ifname in ifaces:
+        # An interface can have more than one address, even within the 
+        # same family (AF_INET), or none, so check this case too.
+        addresses = netifaces.ifaddresses(ifname)
+        if netifaces.AF_INET not in addresses:
+            continue
+        for addr in addresses[netifaces.AF_INET]:
+            if 'broadcast' in addr:
+                brlist.append(addr['broadcast'])
     return brlist
 
 
