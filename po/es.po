@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-03 00:51+0300\n"
-"PO-Revision-Date: 2015-08-15 08:27+0000\n"
-"Last-Translator: Juan Ezeiza <jezeiza@axular.net>\n"
+"PO-Revision-Date: 2015-10-21 07:40+0000\n"
+"Last-Translator: Óscar <osvamon@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-10-12 05:24+0000\n"
-"X-Generator: Launchpad (build 17802)\n"
+"X-Launchpad-Export-Date: 2015-10-22 05:39+0000\n"
+"X-Generator: Launchpad (build 17812)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -24,7 +24,8 @@ msgstr ""
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Juan Ezeiza https://launchpad.net/~jezeiza\n"
-"  carlos https://launchpad.net/~carpingue"
+"  carlos https://launchpad.net/~carpingue\n"
+"  Óscar https://launchpad.net/~osvamon"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
@@ -220,7 +221,7 @@ msgstr "Establecer fondo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Evaluador de Red (Benchmark)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -395,40 +396,45 @@ msgstr "Web, archivo o comando para abrir en los clientes seleccionados"
 
 #: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr ""
+msgstr "Resultados del Evaluador de Red (Benchmark) de Epoptes"
 
 #: ../epoptes/ui/benchmark.py:86
 msgid "Upload Rate"
-msgstr ""
+msgstr "Tasa de subida"
 
 #: ../epoptes/ui/benchmark.py:87
 msgid "Download Rate"
-msgstr ""
+msgstr "Tasa de descarga"
 
 #: ../epoptes/ui/benchmark.py:134
 msgid "There are no selected clients to run the benchmark on."
 msgstr ""
+"No hay clientes seleccionados sobre los que lanzar el evaluador (benchmark)."
 
 #: ../epoptes/ui/benchmark.py:147
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Todos los clientes seleccionados están desconectados, o no tienen epoptes-"
+"client en ejecución como root."
 
 #: ../epoptes/ui/benchmark.py:152
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Los siguientes clientes serán excluidos de la evaluación (benchmark) porque "
+"están desconectados, o no tienen epoptes-client en ejecución como root."
 
 #: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "La evaluación (benchmark) terminará en %d segundos..."
 
 #: ../epoptes/ui/benchmark.py:176
 msgid "Processing data..."
-msgstr ""
+msgstr "Procesando datos..."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -450,55 +456,59 @@ msgstr "Error"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Ancho de banda de subida"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:4
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Ancho de banda de bajada"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr ""
+msgstr "Mostrar un gráfico en lugar de una tabla."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid "Overall Bandwidth Statistics"
-msgstr ""
+msgstr "Estadísticas Totales de Ancho de Banda"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "Media de ancho de banda de descarga del servidor por cliente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "Average server download:"
-msgstr ""
+msgstr "Media de descarga del servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "The total server download bandwidth, for all clients, simultaneously"
 msgstr ""
+"Total de ancho de banda de descarga del servidor, para todos los clientes "
+"simultáneamente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "Total server download:"
-msgstr ""
+msgstr "Total de descarga del servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "The average server upload bandwidth per client"
-msgstr ""
+msgstr "Media de ancho de banda de subida al servidor por cliente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "Average server upload:"
-msgstr ""
+msgstr "Media de subida al servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "The total server upload bandwidth, for all clients, simultaneously"
 msgstr ""
+"Total de ancho de banda de subida al servidor, para todos los clientes "
+"simultáneamente"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "Total server upload:"
-msgstr ""
+msgstr "Total de subida al servidor:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Epoptes Network Benchmark"
-msgstr ""
+msgstr "Evaluador (Benchmark) de Red de Epoptes"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid ""
@@ -508,15 +518,15 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:18
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Lanzar el evaluador (benchmark) para"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "seconds"
-msgstr ""
+msgstr "segundos"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "Start"
-msgstr ""
+msgstr "Comenzar"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
@@ -584,7 +594,7 @@ msgstr "Utilizar Pango markup"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2015 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2015 El Equipo de Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
