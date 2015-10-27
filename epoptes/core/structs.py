@@ -44,7 +44,7 @@ class Client:
         """Return True only if there is no system or session handle
         for this client but there is a MAC address.
         """
-        return not(self.users and self.hsystem) and self.mac
+        return not(self.users or self.hsystem) and self.mac
         
     def get_name(self):
         """Return the alias of the client or the hostname if the 
