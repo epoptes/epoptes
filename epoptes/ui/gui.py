@@ -218,7 +218,11 @@ class EpoptesGui(object):
 
     def wake_on_lan(self, widget):
         """Boot the selected computers with WOL"""
-        for client in self.getSelectedClients():
+        if len(clients) == 0: # No client selected, send the command to all
+            clients = self.cstore
+        else:
+            clients = self.getSelectedClients()
+        for client in clients:
             # Make sure that only offline computers will be sent to wol
             client = client[C_INSTANCE]
             if client.is_offline():
