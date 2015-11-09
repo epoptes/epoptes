@@ -51,7 +51,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         self.buffer = StringIO()
         self.pingTimer = None
         self.pingTimeout = None
-        self.connectionLostCalled = False
+        self.timedOut = False
 
 
     def getDelimiter(self):
@@ -91,8 +91,9 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def connectionMade(self):
         peer = self.transport.getPeer()
-        
         self.handle = u"%s:%s" % (peer.host, peer.port)
+        print "Connected:", self.handle
+        
         d = self.command(self.factory.startupCommands.encode("utf-8"))
         
         def forwardConnection(result):
@@ -108,12 +109,8 @@ class DelimitedBashReceiver(protocol.Protocol):
 
 
     def connectionLost(self, reason):
-        # May be called twice, from pingTimedOut() and from loseConnection()
-        if self.connectionLostCalled:
-            return
-        else:
-            self.connectionLostCalled = True
-
+        print "Connection lost:", self.handle
+        
         try: self.pingTimeout.cancel()
         except Exception: pass
 
@@ -132,7 +129,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             return
 
         (delimiter, d) = self.currentDelimiters[0]
-        # TODO: print "Searching for delimiter:", delimiter
+        #print "Searching for delimiter:", delimiter
 
         # Optimize for large buffers by not searching the whole thing every time
         searchLength = len(data) + len(delimiter)
@@ -142,7 +139,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         searchStr = self.buffer.read()
         searchPos = searchStr.find(delimiter)
         if searchPos != -1:
-            # TODO: print "Found delimiter:", delimiter
+            #print "Found delimiter:", delimiter
 
             # Two steps here is correct! If the delimiter was received in the
             # first packet, then the searchLength is greater than the buffer
@@ -196,18 +193,20 @@ class DelimitedBashReceiver(protocol.Protocol):
                                              self.pingTimedOut)
 
     def pingResponse(self, _):
-        # In 10 secs timeouts occur, so ignore responses that arrive later
-        if self.connectionLostCalled:
-            return
-        self.pingTimeout.cancel()
+        # Responses that arrive after a client has timed out, mean a "reconnect"
+        if self.timedOut:
+            print "Reconnected:", self.handle
+            exchange.clientReconnected(self.handle)
+            self.timedOut = False
+        else:
+            self.pingTimeout.cancel()
         self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
 
 
     def pingTimedOut(self):
-        print "Ping timeout!"
-        self.transport.loseConnection()
-        # loseConnection() may take time, inform the GUI now!
-        self.connectionLost(error.TimeoutError())
+        print "Ping timeout:", self.handle
+        self.timedOut = True
+        exchange.clientTimedOut(self.handle)
 
 
 class DelimitedBashReceiverFactory(protocol.ServerFactory):
