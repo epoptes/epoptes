@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-03 00:51+0300\n"
-"PO-Revision-Date: 2015-02-22 00:38+0000\n"
+"PO-Revision-Date: 2015-11-13 04:32+0000\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-10-12 05:24+0000\n"
-"X-Generator: Launchpad (build 17802)\n"
+"X-Launchpad-Export-Date: 2015-11-13 05:23+0000\n"
+"X-Generator: Launchpad (build 17845)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -217,7 +217,7 @@ msgstr "設定背景"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Network Benchmark"
-msgstr ""
+msgstr "網路測速"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -389,40 +389,40 @@ msgstr "URL、檔案或要在選取客戶端執行的指令："
 
 #: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr ""
+msgstr "Epoptes 網路測速結果"
 
 #: ../epoptes/ui/benchmark.py:86
 msgid "Upload Rate"
-msgstr ""
+msgstr "上傳速率"
 
 #: ../epoptes/ui/benchmark.py:87
 msgid "Download Rate"
-msgstr ""
+msgstr "下載速率"
 
 #: ../epoptes/ui/benchmark.py:134
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "尚未選取要執行測速的客戶端。"
 
 #: ../epoptes/ui/benchmark.py:147
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
-msgstr ""
+msgstr "所有已選取的客戶端有的已離線，有的並非以 root 執行 epoptes-client。"
 
 #: ../epoptes/ui/benchmark.py:152
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
-msgstr ""
+msgstr "下列客戶端由於離線或未以 root 執行 epoptes-client，將被排除在測速之外。"
 
 #: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "測速於 %d 秒完成…"
 
 #: ../epoptes/ui/benchmark.py:176
 msgid "Processing data..."
-msgstr ""
+msgstr "正在處理資料…"
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -443,73 +443,75 @@ msgstr "錯誤"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "上傳頻寬"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:4
 msgid "Download bandwidth"
-msgstr ""
+msgstr "下載頻寬"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr ""
+msgstr "顯示圖形取代表格。"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid "Overall Bandwidth Statistics"
-msgstr ""
+msgstr "整體頻寬統計"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "各客戶端平均伺服器下載頻寬"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "Average server download:"
-msgstr ""
+msgstr "平均伺服器下載："
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
+msgstr "伺服器下載頻寬合計，全客戶端同一時間計算"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "Total server download:"
-msgstr ""
+msgstr "伺服器下載合計："
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "The average server upload bandwidth per client"
-msgstr ""
+msgstr "每客戶端平均伺服器上傳頻寬"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "Average server upload:"
-msgstr ""
+msgstr "平均伺服器上傳："
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
+msgstr "伺服器上傳頻寬合計，全客戶端同一時間計算"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "Total server upload:"
-msgstr ""
+msgstr "伺服器上傳合計："
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Epoptes Network Benchmark"
-msgstr ""
+msgstr "Epoptes 網路測速"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"網路測速會測試網路頻寬\n"
+"在您教室的效能"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:18
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "執行測速於"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "seconds"
-msgstr ""
+msgstr "秒"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "Start"
-msgstr ""
+msgstr "開始"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
@@ -577,7 +579,7 @@ msgstr "使用 Pango 繪製"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2015 The Epoptes Team"
-msgstr ""
+msgstr "版權所有 © 2011-2015 Epoptes 團隊"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
