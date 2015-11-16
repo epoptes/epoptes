@@ -28,6 +28,7 @@ Global registry type stuff
 """
 
 knownClients = {}
+timedOutClients = {}
 knownGUIs = []
 
 
@@ -47,3 +48,11 @@ def clientDisconnected(handle):
     del knownClients[handle]
     for gui in knownGUIs:
         gui.clientDisconnected(handle)
+
+def clientTimedOut(handle):
+    timedOutClients[handle] = knownClients[handle]
+    clientDisconnected(handle)
+    
+def clientReconnected(handle):
+    clientConnected(handle, timedOutClients[handle])
+    del timedOutClients[handle]

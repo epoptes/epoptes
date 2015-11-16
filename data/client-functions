@@ -167,12 +167,9 @@ shutdown() {
 # $1 = thumbnail width.
 # $2 = thumbnail height.
 screenshot() {
-    if ./screenshot "$1" "$2"; then
-        BAD_SCREENSHOTS=0
-    elif [ "$BAD_SCREENSHOTS" -eq 3 ]; then
-        die "3 failed screenshots, exiting..."
-    else
+    if ! ./screenshot "$1" "$2"; then
         BAD_SCREENSHOTS=$(($BAD_SCREENSHOTS+1))
+        echo "$BAD_SCREENSHOTS failed thumbnails so far!" >&2
     fi
 }
 

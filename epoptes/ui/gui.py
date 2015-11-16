@@ -731,12 +731,6 @@ which is incompatible with the current epoptes version.\
     def getShowRealNames(self):
         return self.get('')
     
-    
-    def screenshotTimeout(self, handle):
-        print "Screenshot for client %s timed out. Requesting a new one..." % handle
-        self.askScreenshot(handle)
-        return False
-
 
     def askScreenshot(self, handle, firstTime=False):
         # Should always return False to prevent glib from calling us again
@@ -756,9 +750,8 @@ which is incompatible with the current epoptes version.\
         # of searching the whole model (Need to modify execOnClients)
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
-                timeoutID = gobject.timeout_add(10000, lambda h=handle: self.screenshotTimeout(h))
                 self.execOnClients(['screenshot', self.scrWidth, self.scrHeight], handles=[handle], 
-                                   reply=self.gotScreenshot, params=[timeoutID])
+                                   reply=self.gotScreenshot)
                 return False
         # That handle is no longer in the cstore, remove it
         try: del self.currentScreenshots[handle]
@@ -766,10 +759,7 @@ which is incompatible with the current epoptes version.\
         return False
 
 
-    def gotScreenshot(self, handle, reply, timeoutID):
-        # Cancel the timeout event. If it already happened, exit.
-        if not gobject.source_remove(timeoutID):
-            return
+    def gotScreenshot(self, handle, reply):
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
                 # We want to ask for thumbnails every 5 sec after the last one.
