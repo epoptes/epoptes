@@ -2,7 +2,7 @@
 
 ###########################################################################
 # Connects to a remote server and offers it a local shell.
-# Usage: epoptes [server] [port]
+# Usage: epoptes-client [-c|-h|-v] [SERVER] [PORT]
 #
 # Copyright (C) 2010-2015 Alkis Georgopoulos <alkisg@gmail.com>
 #
@@ -23,12 +23,8 @@
 # Public License can be found in `/usr/share/common-licenses/GPL'.
 ###########################################################################
 
-# epoptes-client may be called either as root, to control the client, or as a
-# user, to control the user session.
-# As root, epoptes-client starts from if-up.d on standalone clients.
-# Unfortunately, thin and fat clients don't get if-up.d events, so just for
-# this case we're using a helper sysvinit script.
-# As a user, epoptes-client runs from /etc/xdg/autostart.
+# epoptes-client is called either from if-up.d as root, to control the client,
+# or from /etc/xdg/autostart as a user, to control the user session.
 # Users can cancel that from their System > Preferences > Services gnome menu.
 
 die() {
@@ -201,11 +197,8 @@ log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
 #  * and the daemon sends /usr/share/epoptes/client-functions to that shell
 
 # Kill all ghost instances of epoptes-client of the same user.
-# That may happen if network connectivity is lost for a while.
-# Standalone workstations don't hang if the network is down, and nbd might cope
-# with that for LTSP clients, but epoptes kills disconnected epoptes-clients.
 # The current epoptes-client is excluded because it starts with /bin/sh.
-pkill -U $UID -f '^epoptes-client$'
+pkill --signal QUIT -U $UID -f '^epoptes-client$'
 
 # Remember the stdout descriptor to use it in the second phase.
 # stdio will be redirected to the server, but stderr will be kept in the
@@ -233,7 +226,7 @@ fi
 # Connect to the server, or keep retrying until the server gets online
 # (for standalone workstations booted before the server).
 if [ -s /etc/epoptes/server.crt ] || [ "$cert_param" = "verify=0" ]; then
-    exec socat openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever EXEC:"$cmdline"
+    exec socat -T 20 openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever EXEC:"$cmdline"
 elif [ -f /etc/epoptes/server.crt ]; then
    exec socat tcp:$SERVER:$PORT,interval=60,forever EXEC:"$cmdline",nofork
 else

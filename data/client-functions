@@ -3,7 +3,7 @@
 # The daemon reads this file when it starts, and sends it to clients when they
 # connect. The clients actually source it and then wait for further commands.
 #
-# Copyright (C) 2010, 2012 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010, 2015 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,11 +22,29 @@
 # Public License can be found in `/usr/share/common-licenses/GPL'.
 ###########################################################################
 
+# Dash handles signals a bit differently from bash.
+# We need to trap both 0 and 15 otherwise the trap function isn't called at all.
+# 0 is normal program termination, it's called on `service epoptes restart`.
+# 15 is SIGTERM, it's called when socat reaches the -T timeout.
+# We don't always want to relaunch though.
+# For user sessions, we abort when we don't have access to X.
+# For root connections, maybe we could check the runlevel?
+# Also, epoptes-client kills -QUIT all the other epoptes-client processes.
+on_signal() {
+    code="$?"
+    trap - 0 15
+    echo "epoptes-client got signal: $1, relaunching..." >&5
+    # Restore the stdio descriptors to the previously saved 5
+    ( sleep 10; ping; exec epoptes-client >&5 2>&1; ) &
+    exit "$code"
+}
+
 # Output a message and exit with an error.
 # Parameters:
 # $1..$N = The message.
 die() {
-    echo "epoptes-client ERROR: $@" >&2
+    echo "epoptes-client ERROR: $@" >&5
+    trap - 0 15
     exit 1
 }
 
@@ -120,11 +138,11 @@ execute() {
     local launcher
 
     # Do some logging, either in ~/.xsession-errors or on the console.
-    echo "$(LANG=C date '+%c'), epoptes-client executing: $1" >&2
+    echo "$(LANG=C date '+%c'), epoptes-client executing: $1" >&5
 
     case "$1" in
         '')
-            echo "Can't execute an empty command." >&2
+            echo "Can't execute an empty command." >&5
             ;;
         www.*)
             set "http://$1"
@@ -169,7 +187,7 @@ shutdown() {
 screenshot() {
     if ! ./screenshot "$1" "$2"; then
         BAD_SCREENSHOTS=$(($BAD_SCREENSHOTS+1))
-        echo "$BAD_SCREENSHOTS failed thumbnails so far!" >&2
+        echo "$BAD_SCREENSHOTS failed thumbnails so far!" >&5
     fi
 }
 
@@ -311,7 +329,7 @@ TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
 # exit automatically, so tell it to exit as soon as X is unavailable.
 ping() {
     if [ "$UID" -gt 0 ]; then
-        xprop -root -f EPOPTES_CLIENT 32c -set EPOPTES_CLIENT $$ || exit
+        xprop -root -f EPOPTES_CLIENT 32c -set EPOPTES_CLIENT $$ || die "No X"
     fi
 }
 
@@ -339,3 +357,7 @@ else
 fi
 
 info
+
+for i in 0 15; do
+    trap "on_signal $i" $i
+done
