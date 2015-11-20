@@ -644,9 +644,7 @@ class EpoptesGui(object):
         
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.
-        # FIXME FiXME: Both ifs don't work for root clients that run in the same
-        # computer as epoptes
-        if (mac in self.current_macs) and (uid == self.uid):
+        if (mac in self.current_macs) and ((uid == self.uid) or (uid == 0)):
             print "* Won't add this client to my lists"
             return False
         
