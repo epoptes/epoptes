@@ -181,9 +181,8 @@ else
     cd /usr/share/epoptes-client
 fi
 
-# Source the lsb init functions, for log_begin_msg.
-# Unfortunately it seems that Centos and Fedora don't have that file.
-if [ -f /lib/lsb/init-functions ]; then
+# Source lsb init functions for log_begin_msg, but only on Debian-based distros
+if [ -f /lib/lsb/init-functions ] && [ -f /etc/debian_version ]; then
     . /lib/lsb/init-functions
 else
     alias log_begin_msg="echo -n"
