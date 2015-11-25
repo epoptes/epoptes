@@ -48,6 +48,19 @@ die() {
     exit 1
 }
 
+xprop_set() {
+    xprop -root -f "$1" 8u -set "$1" "$2"
+}
+
+xprop_get() {
+    # xprop -root UNSET_VAR echoes an error message to stdout instead of stderr
+    xprop -root "$1" 2>/dev/null | sed 's/^[^=]*//;s/^= "//;s/"$//;s/\\"/"/'
+}
+
+xprop_unset() {
+    xprop -root -remove "$1"
+}
+
 # Calculate, export and return a collection of useful variables.
 info() {
     local server_ip def_iface
@@ -196,15 +209,21 @@ screenshot() {
 # $1 = seconds to keep screen locked, 0 means forever - currently ignored.
 # $2 = message to display to the user.
 lock_screen() {
-    test -n "$EPOPTES_LOCK_SCREEN_PID" && kill "$EPOPTES_LOCK_SCREEN_PID"
-    EPOPTES_LOCK_SCREEN_PID=$(background -p ./lock-screen "$2")
+    local pid
+
+    unlock_screen
+    pid=$(background -p ./lock-screen "$2")
+    xprop_set EPOPTES_LOCK_SCREEN_PID "$pid"
 }
 
 # Unlock a locked screen.
 unlock_screen() {
-    if [ -n "$EPOPTES_LOCK_SCREEN_PID" ]; then
-        kill "$EPOPTES_LOCK_SCREEN_PID"
-        unset EPOPTES_LOCK_SCREEN_PID
+    local pid
+
+    pid=$(xprop_get EPOPTES_LOCK_SCREEN_PID)
+    if [ -n "$pid" ]; then
+        kill "$pid"
+        xprop_unset EPOPTES_LOCK_SCREEN_PID
     fi
 }
 
@@ -289,15 +308,18 @@ receive_broadcast() {
                 ${3:+-fullscreen} "$SERVER:$1"
         fi
     } >/dev/null 2>&1 &
-    EPOPTES_VNCVIEWER_PID="$!"
+    xprop_set EPOPTES_VNCVIEWER_PID "$!"
 }
 
 # The vnc clients should automatically exit when the server is killed.
 # Unfortunately, that isn't always true, so try to kill them anyway.
 stop_receptions() {
-    if [ -n "$EPOPTES_VNCVIEWER_PID" ]; then
-        kill "$EPOPTES_VNCVIEWER_PID"
-        unset EPOPTES_VNCVIEWER_PID
+    local pid
+
+    pid=$(xprop_get EPOPTES_VNCVIEWER_PID)
+    if [ -n "$pid" ]; then
+        kill "$pid"
+        xprop_unset EPOPTES_VNCVIEWER_PID
     fi
 }
 
