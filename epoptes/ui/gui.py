@@ -255,6 +255,11 @@ class EpoptesGui(object):
             elif os.path.isfile('/usr/bin/xvnc4viewer'):
                 self.vncviewer = subprocess.Popen(['xvnc4viewer',
                     '-listen', str(self.vncviewerport)])
+            # Support tigervnc on rpm distributions (LP: #1501747)
+            elif os.path.isfile('/usr/share/locale/de/LC_MESSAGES/tigervnc.mo'):
+                self.vncviewer = subprocess.Popen(['vncviewer',
+                    '-listen', str(self.vncviewerport)])
+            # The rest of the viewers, like tightvnc
             else:
                 self.vncviewer = subprocess.Popen(['vncviewer',
                     '-listen', str(self.vncviewerport-5500)])
