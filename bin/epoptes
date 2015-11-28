@@ -52,14 +52,19 @@ from epoptes.common import config
 epoptesGui = gui.EpoptesGui()
 
 def connectionFailed(failure):
-    msg = failure.getErrorMessage() + '\n\n'
-    print "Connection with epoptes failed:"
-    print msg
-    msg += _("User %s must be a member of group %s to run epoptes.") % \
-        (os.environ['USER'], config.system['SOCKET_GROUP'])
-    dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK,
-        message_format=msg)
-    dlg.set_title(_('Error'))
+    msg = _("An error occured while trying to connect to the epoptes service:")
+    msg += ' <i>' + failure.value.message + '</i>\n\n'
+    print "Connection with epoptes failed:", failure.value.message
+    # Permission denied error
+    if failure.value.osError == 13:
+        msg += _("User %s must be a member of group %s to run epoptes.") % \
+              (os.environ['USER'], config.system['SOCKET_GROUP'])
+    # No such file error
+    elif failure.value.osError == 2:
+        msg += _("Make sure the epoptes service is running.")
+    dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+    dlg.set_markup(msg)
+    dlg.set_title(_('Service connection error'))
     dlg.run()
     dlg.destroy()
     reactor.stop()

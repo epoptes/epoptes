@@ -140,6 +140,8 @@ class EpoptesGui(object):
                 pass
         if config.settings.has_option('GUI', 'showRealNames'):
             self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
+        self.clean_quit = False
+        self.mainwin.set_sensitive(False)
         
 
     #################################################################
@@ -184,6 +186,7 @@ class EpoptesGui(object):
 
         Close main window
         """
+        self.clean_quit = True
         sel_group = self.gstore.get_path(self.getSelectedGroup()[0])[0]
         self.gstore.remove(self.gstore.get_iter(self.default_group.ref.get_path()))
         config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'), self.gstore)
@@ -511,9 +514,24 @@ class EpoptesGui(object):
 
 
     def connected(self, daemon):
+        self.mainwin.set_sensitive(True)
         self.daemon = daemon
         daemon.enumerateClients().addCallback(lambda h: self.amp_gotClients(h))
+        self.fillIconView(self.getSelectedGroup()[1])
 
+    def disconnected(self, daemon):
+        self.mainwin.set_sensitive(False)
+        if self.clean_quit:
+            return
+        msg = _("Lost connection with the epoptes service.")
+        msg += "\n\n" + _("Make sure the service is running and then restart epoptes.")
+        dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK,
+                                 message_format=msg)
+        dlg.set_title(_('Service connection error'))
+        dlg.run()
+        dlg.destroy()
+        reactor.stop()
+        
 
     # AMP callbacks
     def amp_clientConnected(self, handle):

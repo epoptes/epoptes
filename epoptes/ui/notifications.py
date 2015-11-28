@@ -78,8 +78,6 @@ if not append:
     cache = NotificationCache()
     notify = cached_notify
 
-print os.getcwd()
-
 def shutdownNotify(host):
     notify(_("Shut down:"), "%s" %(host), os.path.abspath("images/shutdown.svg"))
 
