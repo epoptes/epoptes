@@ -140,7 +140,6 @@ class EpoptesGui(object):
                 pass
         if config.settings.has_option('GUI', 'showRealNames'):
             self.get('mcShowRealNames').set_active(config.settings.getboolean('GUI', 'showRealNames'))
-        self.clean_quit = False
         self.mainwin.set_sensitive(False)
         
 
@@ -186,7 +185,6 @@ class EpoptesGui(object):
 
         Close main window
         """
-        self.clean_quit = True
         sel_group = self.gstore.get_path(self.getSelectedGroup()[0])[0]
         self.gstore.remove(self.gstore.get_iter(self.default_group.ref.get_path()))
         config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'), self.gstore)
@@ -521,7 +519,8 @@ class EpoptesGui(object):
 
     def disconnected(self, daemon):
         self.mainwin.set_sensitive(False)
-        if self.clean_quit:
+        
+        if not reactor.running:
             return
         msg = _("Lost connection with the epoptes service.")
         msg += "\n\n" + _("Make sure the service is running and then restart epoptes.")
