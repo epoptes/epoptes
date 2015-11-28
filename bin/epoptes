@@ -51,6 +51,10 @@ from epoptes.common import config
 
 epoptesGui = gui.EpoptesGui()
 
+path = os.path.expanduser('~/.config/epoptes/')
+if not os.path.isdir(path):
+    os.makedirs(path)
+
 def connectionFailed(failure):
     msg = _("An error occured while trying to connect to the epoptes service:")
     msg += ' <i>' + failure.value.message + '</i>\n\n'
