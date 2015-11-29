@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-03 00:51+0300\n"
+"POT-Creation-Date: 2015-11-28 19:07+0200\n"
 "PO-Revision-Date: 2015-08-15 08:27+0000\n"
 "Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-23 05:21+0000\n"
+"X-Launchpad-Export-Date: 2015-11-29 05:18+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -312,24 +312,24 @@ msgstr "Δημιουργία νέας ομάδας"
 msgid "Remove the selected group"
 msgstr "Διαγραφή της επιλεγμένης ομάδας"
 
-#: ../epoptes/ui/notifications.py:92
+#: ../epoptes/ui/notifications.py:82
 msgid "Shut down:"
 msgstr "Τερματίστηκαν:"
 
-#: ../epoptes/ui/notifications.py:95
+#: ../epoptes/ui/notifications.py:85
 msgid "Connected:"
 msgstr "Συνδέθηκαν:"
 
-#: ../epoptes/ui/notifications.py:95
+#: ../epoptes/ui/notifications.py:85
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s σε %(host)s"
 
-#: ../epoptes/ui/notifications.py:98
+#: ../epoptes/ui/notifications.py:88
 msgid "Disconnected:"
 msgstr "Αποσυνδέθηκαν:"
 
-#: ../epoptes/ui/notifications.py:98
+#: ../epoptes/ui/notifications.py:88
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s από %(host)s"
@@ -343,23 +343,23 @@ msgstr "Ιδιότητες του %s"
 msgid "Detected clients"
 msgstr "Εντοπίστηκαν"
 
-#: ../epoptes/ui/gui.py:230
+#: ../epoptes/ui/gui.py:236
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Θέλετε σίγουρα να τερματίσετε όλους τους υπολογιστές;"
 
-#: ../epoptes/ui/gui.py:235
+#: ../epoptes/ui/gui.py:241
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Θέλετε σίγουρα να επανεκκινήσετε όλους τους υπολογιστές;"
 
-#: ../epoptes/ui/gui.py:241
+#: ../epoptes/ui/gui.py:247
 msgid "Are you sure you want to log off all the users?"
 msgstr "Θέλετε σίγουρα να αποσυνδέσετε όλους τους χρήστες;"
 
-#: ../epoptes/ui/gui.py:384
+#: ../epoptes/ui/gui.py:395
 msgid "The screen is locked by a system administrator."
 msgstr "Η οθόνη έχει κλειδωθεί από τον διαχειριστή του συστήματος."
 
-#: ../epoptes/ui/gui.py:413
+#: ../epoptes/ui/gui.py:424
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -367,13 +367,25 @@ msgstr ""
 "Θέλετε σίγουρα να αφαιρέσετε τους επιλεγμένους υπολογιστές από το group "
 "\"%s\";"
 
-#: ../epoptes/ui/gui.py:444
+#: ../epoptes/ui/gui.py:455
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Θέλετε σίγουρα να αφαιρέσετε το group \"%s\";"
 
+#: ../epoptes/ui/gui.py:526
+msgid "Lost connection with the epoptes service."
+msgstr ""
+
+#: ../epoptes/ui/gui.py:527
+msgid "Make sure the service is running and then restart epoptes."
+msgstr ""
+
+#: ../epoptes/ui/gui.py:530 ../bin/epoptes.py:67
+msgid "Service connection error"
+msgstr ""
+
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:658
+#: ../epoptes/ui/gui.py:682
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -387,7 +399,7 @@ msgstr ""
 "Χρειάζεται να ενημερώσετε τους υπολογιστές σας με την τελευταία έκδοση του "
 "πακέτου epoptes-client."
 
-#: ../epoptes/ui/gui.py:960
+#: ../epoptes/ui/gui.py:974
 #, python-format
 msgid "%d clients selected"
 msgstr "Επιλέχθηκαν %d υπολογιστές"
@@ -448,16 +460,20 @@ msgstr "Μήνυμα από τον διαχειριστή"
 msgid "Epoptes computer lab administration tool"
 msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
 
-#: ../bin/epoptes.py:58
+#: ../bin/epoptes.py:55
+msgid "An error occured while trying to connect to the epoptes service:"
+msgstr ""
+
+#: ../bin/epoptes.py:60
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
 "Ο χρήστης %s πρέπει να είναι μέλος της ομάδας %s για να εκτελέσει τον "
 "epoptes."
 
-#: ../bin/epoptes.py:62 ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "Error"
-msgstr "Σφάλμα"
+#: ../bin/epoptes.py:64
+msgid "Make sure the epoptes service is running."
+msgstr ""
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
@@ -598,6 +614,10 @@ msgstr "Κείμενο μηνύματος:"
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Use Pango markup"
 msgstr "Χρήση Pango markup"
+
+#: ../epoptes/ui/gtk/sendMessage.ui.h:8
+msgid "Error"
+msgstr "Σφάλμα"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2015 The Epoptes Team"
