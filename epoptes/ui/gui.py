@@ -35,6 +35,9 @@ import logging
 import sys
 import shlex
 import pipes
+import getpass
+import socket
+import locale
 from gobject import TYPE_PYOBJECT as gPyobject
 from twisted.internet import reactor
 from twisted.python import log
@@ -839,11 +842,11 @@ which is incompatible with the current epoptes version.\
 
 
     def openIRCLink(self, widget):
-        user = os.getenv("USER")
-        if user is None:
-            user = "epoptes_user." # The dot is converted to a random digit
-        self.openLink("http://webchat.freenode.net/?nick=" + user + 
-            "&channels=ltsp&prompt=1")
+        host = socket.gethostname()
+        user = getpass.getuser()
+        lang = locale.getlocale()[0]
+        self.openLink("http://ts.sch.gr/repo/irc?user=%s&host=%s&lang=%s" % \
+                       (user, host, lang))
     
     
     def iconsSizeScale_button_event(self, widget, event):
