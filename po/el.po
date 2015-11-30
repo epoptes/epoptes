@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-28 19:07+0200\n"
-"PO-Revision-Date: 2015-08-15 08:27+0000\n"
+"PO-Revision-Date: 2015-11-29 13:08+0000\n"
 "Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-29 05:18+0000\n"
+"X-Launchpad-Export-Date: 2015-11-30 05:20+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -374,15 +374,15 @@ msgstr "Θέλετε σίγουρα να αφαιρέσετε το group \"%s\";
 
 #: ../epoptes/ui/gui.py:526
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Χάθηκε η σύνδεση με την υπηρεσία epoptes"
 
 #: ../epoptes/ui/gui.py:527
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Βεβαιωθείτε πως η υπηρεσία εκτελείται και επανεκκινήστε τον Επόπτη."
 
 #: ../epoptes/ui/gui.py:530 ../bin/epoptes.py:67
 msgid "Service connection error"
-msgstr ""
+msgstr "Σφάλμα σύνδεσης με την υπηρεσία"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:682
@@ -462,7 +462,7 @@ msgstr "Λογισμικό διαχείρισης και εποπτείας ερ
 
 #: ../bin/epoptes.py:55
 msgid "An error occured while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Προέκυψε ένα σφάλμα κατά τη σύνδεση με την υπηρεσία epoptes:"
 
 #: ../bin/epoptes.py:60
 #, python-format
@@ -473,7 +473,7 @@ msgstr ""
 
 #: ../bin/epoptes.py:64
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Βεβαιωθείτε πως η υπηρεσία epoptes εκτελείται."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
