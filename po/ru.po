@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-28 19:07+0200\n"
-"PO-Revision-Date: 2015-10-03 09:26+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"PO-Revision-Date: 2015-12-08 11:47+0000\n"
+"Last-Translator: Aleksey Kabanov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-29 05:18+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-09 05:32+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
 
@@ -225,7 +225,7 @@ msgstr "Выбрать фон"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Тест производительности сети"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -375,15 +375,15 @@ msgstr "Вы действительно хотите удалить группу
 
 #: ../epoptes/ui/gui.py:526
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Потеряно соединение с сервисом epoptes."
 
 #: ../epoptes/ui/gui.py:527
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Убедитесь, что сервис работает, затем перезапустите epoptes."
 
 #: ../epoptes/ui/gui.py:530 ../bin/epoptes.py:67
 msgid "Service connection error"
-msgstr ""
+msgstr "Ошибка подключения к сервису"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:682
@@ -411,7 +411,7 @@ msgstr "URL, файл или команда для выполнения на в�
 
 #: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr ""
+msgstr "Результаты тестирования сети Epoptes"
 
 #: ../epoptes/ui/benchmark.py:86
 msgid "Upload Rate"
@@ -430,12 +430,16 @@ msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Все выбранные клиенты либо отключены, либо epoptes-client на них запущен не "
+"от имени root."
 
 #: ../epoptes/ui/benchmark.py:152
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Следующие клиенты будут исключены из тестирования, так как они либо "
+"отключены, либо epoptes-client на них запущен не от имени root."
 
 #: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
 #, python-format
@@ -456,7 +460,7 @@ msgstr "Инструмент администрирования компьюте
 
 #: ../bin/epoptes.py:55
 msgid "An error occured while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Произошла ошибка при попытке подключения к сервису epoptes:"
 
 #: ../bin/epoptes.py:60
 #, python-format
@@ -465,7 +469,7 @@ msgstr "Для запуска Epoptes пользователь %s должен �
 
 #: ../bin/epoptes.py:64
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Убедитесь, что сервис epoptes запущен."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
@@ -607,7 +611,7 @@ msgstr "Ошибка"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2015 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2015 Команда  Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -691,7 +695,7 @@ msgstr "Продолжать соединяться"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr "Информация о соединение"
+msgstr "Информация о соединении"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
