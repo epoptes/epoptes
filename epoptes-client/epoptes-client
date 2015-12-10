@@ -197,7 +197,7 @@ log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
 
 # Kill all ghost instances of epoptes-client of the same user.
 # The current epoptes-client is excluded because it starts with /bin/sh.
-pkill --signal QUIT -U $UID -f '^epoptes-client$'
+pkill -QUIT -U "$UID" -f '^epoptes-client$'
 
 # Remember the stdout descriptor to use it in the second phase.
 # stdio will be redirected to the server, but stderr will be kept in the
