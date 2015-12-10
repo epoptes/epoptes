@@ -145,8 +145,8 @@ case "$1" in
         ;;
 esac
 
-# When called from /etc/xdg/autostart, /sbin is not in the system path.
-PATH="$PATH:/sbin:/usr/sbin"
+# Set a reasonable PATH to execute commands or to relaunch epoptes-client.
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # When launched as a service, LANG might not be set.
 if [ -z "$LANG" ] && [ -r /etc/default/locale ]; then
