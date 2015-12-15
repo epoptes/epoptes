@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-28 19:07+0200\n"
-"PO-Revision-Date: 2015-10-03 09:27+0000\n"
-"Last-Translator: Alexander Gabilondo <alexgabi@irakasle.net>\n"
+"PO-Revision-Date: 2015-12-14 12:37+0000\n"
+"Last-Translator: Juan Ezeiza <jezeiza@axular.net>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-29 05:18+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-15 05:26+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -370,15 +370,15 @@ msgstr "\"%s\" taldea ezabatu nahi duzula ziur al zaude?"
 
 #: ../epoptes/ui/gui.py:526
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Epoptes zerbitzuarekiko konexioa galdu da."
 
 #: ../epoptes/ui/gui.py:527
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Ziurtatu zerbitzua martxan dagoela eta berrabiarazi epoptes."
 
 #: ../epoptes/ui/gui.py:530 ../bin/epoptes.py:67
 msgid "Service connection error"
-msgstr ""
+msgstr "Errorea zerbitzuaren konexioan"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:682
@@ -456,7 +456,7 @@ msgstr "Epoptes ordenagailu-laborategiaren kudeaketa-tresna"
 
 #: ../bin/epoptes.py:55
 msgid "An error occured while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Epoptes zerbitzuarekin konexio-saiakeran errorea gertatu da:"
 
 #: ../bin/epoptes.py:60
 #, python-format
@@ -466,7 +466,7 @@ msgstr ""
 
 #: ../bin/epoptes.py:64
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Ziurtatu epoptes zerbitzua martxan dagoela."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
