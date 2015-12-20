@@ -181,13 +181,8 @@ class EpoptesGui(object):
     
         context.finish(True, False, time)
         return True
-
-    def on_mainwin_destroy(self, widget):
-        """
-        Quit clicked
-
-        Close main window
-        """
+    
+    def save_settings(self):
         sel_group = self.gstore.get_path(self.getSelectedGroup()[0])[0]
         self.gstore.remove(self.gstore.get_iter(self.default_group.ref.get_path()))
         config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'), self.gstore)
@@ -204,6 +199,14 @@ class EpoptesGui(object):
             f.close()
         except:
             pass
+    
+    def on_mainwin_destroy(self, widget):
+        """
+        Quit clicked
+
+        Close main window
+        """
+        self.save_settings()
         if not self.vncserver is None:
             self.vncserver.kill()
         if not self.vncviewer is None:
@@ -522,9 +525,11 @@ class EpoptesGui(object):
 
     def disconnected(self, daemon):
         self.mainwin.set_sensitive(False)
-        
+        # If the reactor is not running at this point it means that we were
+        # closed normally.
         if not reactor.running:
             return
+        self.save_settings()
         msg = _("Lost connection with the epoptes service.")
         msg += "\n\n" + _("Make sure the service is running and then restart epoptes.")
         dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK,
