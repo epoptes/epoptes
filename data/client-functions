@@ -3,7 +3,7 @@
 # The daemon reads this file when it starts, and sends it to clients when they
 # connect. The clients actually source it and then wait for further commands.
 #
-# Copyright (C) 2010, 2015 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010-2015 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -46,6 +46,21 @@ die() {
     echo "epoptes-client ERROR: $@" >&5
     trap - 0 15
     exit 1
+}
+
+# Some actions like broadcasting need access to the display even if they
+# run as root. Xorg might have been restarted though, so detect DISPLAY.
+ensure_display() {
+    local vars
+
+    test "$UID" -eq 0 || return 0
+    if xwininfo -root -size >/dev/null 2>&1; then
+        return 0
+    elif vars=$(./get-display); then
+        export $vars
+    else
+        return 1
+    fi
 }
 
 xprop_set() {
@@ -128,14 +143,11 @@ EOF
 background() {
     local print_pid
 
+    ensure_display
     if [ "$1" = "-p" ]; then
         print_pid=true
         shift
     fi
-
-    # On root clients, try to get the active DISPLAY, the command may need it.
-    test "$UID" -eq 0 && export $(./get-display)
-
     # The command is ran on a subshell with stdin and stdout redirected to
     # /dev/null, so that it doesn't interfere with the output of other commands.
     # stderr isn't changed, i.e. ~/.xsession-errors will be used.
@@ -220,6 +232,7 @@ lock_screen() {
 unlock_screen() {
     local pid
 
+    ensure_display
     pid=$(xprop_get EPOPTES_LOCK_SCREEN_PID)
     if [ -n "$pid" ]; then
         kill "$pid"
@@ -285,7 +298,6 @@ stop_screensaver() {
 # $3 = fullscreen.
 receive_broadcast() {
     stop_receptions
-    test "$UID" -eq 0 && export $(./get-display)
     xset dpms force on
     if [ -z "$VNCVIEWER" ]; then
         # If the user installed ssvnc, prefer it over xvnc4viewer
@@ -316,6 +328,7 @@ receive_broadcast() {
 stop_receptions() {
     local pid
 
+    ensure_display
     pid=$(xprop_get EPOPTES_VNCVIEWER_PID)
     if [ -n "$pid" ]; then
         kill "$pid"
