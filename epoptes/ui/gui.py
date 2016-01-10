@@ -373,8 +373,14 @@ class EpoptesGui(object):
                 continue
 
             port = self.findUnusedPort()
-
-            subprocess.Popen(['xterm', '-e', 'socat',
+            
+            user = '--'
+            if em == EM_SESSION and client[C_SESSION_HANDLE]:
+                user = inst.users[client[C_SESSION_HANDLE]]['uname']
+            elif em == EM_SYSTEM:
+                user = 'root'
+            title = '%s@%s' % (user, inst.get_name())
+            subprocess.Popen(['xterm', '-T', title, '-e', 'socat',
                 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
             self.execOnClients(['remote_term', port], [client], mode=em)
 
