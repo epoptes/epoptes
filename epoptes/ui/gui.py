@@ -97,6 +97,9 @@ class EpoptesGui(object):
             self.get('mi_remote_assistance').set_property('visible', False)
             self.get('remote_assistance_separator').set_property('visible', False)
         
+        self.groups_menu = self.get('mAddToGroup')
+        self.add_to_group_menu = self.get('miAddToGroup')
+        
         self.gstore = gtk.ListStore(str, object, bool)
         
         self.gtree = self.get("groups_tree")
@@ -129,8 +132,14 @@ class EpoptesGui(object):
         self.reload_imagetypes()
         
         saved_clients, groups = config.read_groups(os.path.expanduser('~/.config/epoptes/groups.json'))
+        if len(groups) > 0:
+            self.add_to_group_menu.set_sensitive(True)
         for grp in groups:
             self.gstore.append([grp.name, grp, True])
+            mitem = gtk.MenuItem(grp.name)
+            mitem.show()
+            mitem.connect('activate', self.on_add_to_group_clicked, grp)
+            self.groups_menu.append(mitem)
         
         self.fillIconView(self.getSelectedGroup()[1])
         if config.settings.has_option('GUI', 'selected_group'):
@@ -427,6 +436,13 @@ class EpoptesGui(object):
         self.execOnSelectedClients(['unmute_sound'], mode=EM_SYSTEM_AND_SESSION)
 
 
+    def on_add_to_group_clicked(self, widget, group):
+        clients = self.getSelectedClients()
+        for client in clients:
+            if not group.has_client(client[C_INSTANCE]):
+                group.add_client(client[C_INSTANCE])
+
+
     def on_remove_from_group_clicked(self, widget):
         clients = self.getSelectedClients()
         group = self.getSelectedGroup()[1]
@@ -447,15 +463,22 @@ class EpoptesGui(object):
 
     def on_move_group_down_clicked(self, widget):
         selected_group_iter = self.getSelectedGroup()[0]
+        path = self.gstore.get_path(selected_group_iter)[0]
         self.gstore.swap(selected_group_iter, self.gstore.iter_next(selected_group_iter))
         self.set_move_group_sensitivity()
+        mitem = self.groups_menu.get_children()[path-1]
+        self.groups_menu.reorder_child(mitem, path)
 
 
     def on_move_group_up_clicked(self, widget):
         selected_group_iter = self.getSelectedGroup()[0]
-        previous_iter = self.gstore.get_iter(self.gstore.get_path(selected_group_iter)[0]-1)
+        path = self.gstore.get_path(selected_group_iter)[0]
+        previous_iter = self.gstore.get_iter(path-1)
         self.gstore.swap(selected_group_iter, previous_iter)
         self.set_move_group_sensitivity()
+        mitem = self.groups_menu.get_children()[path-1]
+        self.groups_menu.reorder_child(mitem, path-2)
+        
 
 
     def on_remove_group_clicked(self, widget):
@@ -463,7 +486,10 @@ class EpoptesGui(object):
         group = self.gstore[group_iter][G_INSTANCE]
         
         if self.warnDlgPopup(_('Are you sure you want to remove group "%s"?') % group.name):
+            path = self.gstore.get_path(group_iter)[0]
             self.gstore.remove(group_iter)
+            menuitem = self.groups_menu.get_children()[path-1]
+            self.groups_menu.remove(menuitem)
 
 
     def on_add_group_clicked(self, widget):
@@ -471,11 +497,13 @@ class EpoptesGui(object):
         iter = self.gstore.append([new_group.name, new_group, True])
         # Edit the name of the newly created group
         self.gtree.set_cursor(self.gstore.get_path(iter), self.get('group_name_column'), True)
+        self.appendToGroupsMenu(new_group)
 
 
     def on_group_renamed(self, widget, path, new_name):
         self.gstore[path][G_LABEL] = new_name
         self.gstore[path][G_INSTANCE].name = new_name
+        self.groups_menu.get_children()[int(path)-1].set_label(new_name)
 
 
     #FIXME: Remove the second parameter, find a better way
@@ -603,6 +631,11 @@ class EpoptesGui(object):
                 
         if selected is not None:
             self.fillIconView(selected[1])
+            path = self.gstore.get_path(selected[0])[0]
+            self.groups_menu.foreach(lambda w : w.set_sensitive(True))
+            menuitems = self.groups_menu.get_children()
+            if path != 0 and path-1 < len(menuitems):
+                menuitems[path-1].set_sensitive(False)
         else:
             if not self.default_group.ref.valid():
                 return
@@ -827,6 +860,17 @@ which is incompatible with the current epoptes version.\
             items.append(self.cstore[i])
         return items
 
+    def appendToGroupsMenu(self, group):
+        mitem = gtk.MenuItem(group.name)
+        mitem.show()
+        mitem.connect('activate', self.on_add_to_group_clicked, group)
+        self.groups_menu.append(mitem)
+    
+    def removeFromGroupsMenu(self, group):
+        mitem = gtk.MenuItem(group.name)
+        mitem.show()
+        mitem.connect('activate', self.on_add_to_group_clicked, group)
+        self.groups_menu.append(mitem)
 
     def changeHostname(self, mac, new_name):
         pass #FIXME: Implement this (virtual hostname)
@@ -972,15 +1016,20 @@ which is incompatible with the current epoptes version.\
 
     def on_clients_selection_changed(self, widget=None):
         selected = self.getSelectedClients()
-        sensitive = False
+        single_client = False
         if len(selected) == 1:
-            sensitive = True
-        self.get('miClientProperties').set_sensitive(sensitive)
-        self.get('tb_client_properties').set_sensitive(sensitive)
+            single_client = True
+        self.get('miClientProperties').set_sensitive(single_client)
+        self.get('tb_client_properties').set_sensitive(single_client)
         
-        if len(selected) > 0 and not self.isDefaultGroupSelected():
-            self.get('miRemoveFromGroup').set_sensitive(True)
+        if len(selected) > 0:
+            self.get('miAddToGroup').set_sensitive(True)
+            if not self.isDefaultGroupSelected():
+                self.get('miRemoveFromGroup').set_sensitive(True)
+            else:
+                self.get('miRemoveFromGroup').set_sensitive(False)
         else:
+            self.get('miAddToGroup').set_sensitive(False)
             self.get('miRemoveFromGroup').set_sensitive(False)
         
         if len(selected) > 1:

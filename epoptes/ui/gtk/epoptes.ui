@@ -936,14 +936,20 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="miBenchmark">
+                      <object class="GtkMenuItem" id="miAddToGroup">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Network Benchmark</property>
+                        <property name="label" translatable="yes">Add to group</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_miBenchmark_activate" swapped="no"/>
-                      </object>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="mAddToGroup">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                          </object>
+                        </child>
+                      </object>  
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="miRemoveFromGroup">
@@ -954,6 +960,22 @@
                         <property name="image">image13</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="on_remove_from_group_clicked" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="miBenchmark">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Network Benchmark</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_miBenchmark_activate" swapped="no"/>
                       </object>
                     </child>
                     <child>
