@@ -7,9 +7,9 @@
       <!-- column-name computer -->
       <column type="gchararray"/>
       <!-- column-name upload -->
-      <column type="gint"/>
+      <column type="glong"/>
       <!-- column-name download -->
-      <column type="gint"/>
+      <column type="glong"/>
     </columns>
   </object>
   <object class="GtkWindow" id="results_dialog">
@@ -94,11 +94,6 @@
                                 <attribute name="text">1</attribute>
                               </attributes>
                             </child>
-                            <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext5">
-                                <property name="text">Mbps</property>
-                              </object>
-                            </child>
                           </object>
                         </child>
                         <child>
@@ -112,11 +107,6 @@
                               <attributes>
                                 <attribute name="text">2</attribute>
                               </attributes>
-                            </child>
-                            <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext4">
-                                <property name="text">Mbps</property>
-                              </object>
                             </child>
                           </object>
                         </child>
@@ -169,6 +159,45 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="warning_hbox">
+            <property name="can_focus">False</property>
+            <property name="visible">False</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkImage" id="image55">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="stock">gtk-dialog-warning</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="error_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Could not get measurements from some of the clients. The statistics will be affected.</property>
+                <attributes>
+                  <attribute name="style" value="italic"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -357,7 +386,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -384,16 +413,16 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>
     </child>
   </object>
   <object class="GtkAdjustment" id="seconds_adjustment">
-    <property name="lower">20</property>
-    <property name="upper">300</property>
-    <property name="value">30</property>
+    <property name="lower">10</property>
+    <property name="upper">340</property>
+    <property name="value">20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
@@ -618,7 +647,7 @@ bandwidth that is available for your lab.</property>
       </object>
     </child>
   </object>
-  <object class="GtkMessageDialog" id="warndlg">
+  <object class="GtkMessageDialog" id="msgdlg">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Warning</property>
@@ -643,7 +672,7 @@ bandwidth that is available for your lab.</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_warn_close" swapped="no"/>
+                <signal name="clicked" handler="on_message_dialog_close" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

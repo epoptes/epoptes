@@ -260,6 +260,33 @@ unmute_sound() {
     fi
 }
 
+# Start a network benchmark and print its pid.
+# Stop it automatically after a while.
+# Parameters:
+# $1 = seconds to run (optional).
+start_benchmark() {
+    local pid
+
+    pid=$(background -p iperf -c "$SERVER" -r ${1:+-t "$1"})
+    { sleep $((2*${1:-10}+5)); stop_benchmark "$pid"; } &
+    echo "$pid"
+}
+
+# Manually stop a previously running benchmark.
+# Parameters:
+# $1 = pid
+stop_benchmark() {
+    if [ -n "$1" ]; then
+        kill "$1" || return 0
+        sleep 1
+        # For some reason, iperf -c <unknown host> needs 2 kills!
+        kill "$1" || return 0
+        sleep 1
+        # If it's not killed by now, it's hanged
+        kill -9 "$1"
+    fi 2>/dev/null
+}
+
 # Display some text to the user.
 # Parameters:
 # $1 = text.
