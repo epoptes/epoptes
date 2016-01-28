@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 9),
  python-distutils-extra (>= 2.4)
 Standards-Version: 3.9.6
 Vcs-Bzr: http://bazaar.launchpad.net/~epoptes/epoptes/trunk
-Vcs-Browser: http://bazaar.launchpad.net/~epoptes/epoptes/trunk/files
+Vcs-Browser: https://bazaar.launchpad.net/~epoptes/epoptes/trunk/files
 Homepage: http://www.epoptes.org
 
 Package: epoptes
