@@ -1,3 +1,37 @@
+epoptes (0.5.9-1) unstable; urgency=low
+
+  * New upstream version:
+    - Major improvements and bug fixes to the network benchmark module.
+    - Add an "Add to group" option to the Clients menu.
+    - Remove the ubuntu_local property from epoptes.ui.
+    - Add a meaningful title to xterm when opening a remote terminal locally, 
+      instead of 'socat' (LP: #1526740).
+    - Use a more compatible syntax for pkill.
+    - Set a reasonable PATH to execute commands or to relaunch epoptes-client.
+    - Explicitly depend on packages indirectly pulled by epoptes-client
+      (LP: #1503820).
+    - Use a custom php site to redirect to a proper IRC support channel based
+      on user's locale, with a meaningful nickname.
+    - Create the ~/.config/epoptes directory when epoptes runs, if it
+      doesn't exist (LP: #1395808).
+    - Detect when epoptes loses connection with epoptesd.
+    - Support tigervnc on rpm distributions (LP: #1501747).
+    - When epoptes is ran with ltsp-remoteapps, exclude that fat client from
+      the UI (LP: #1058711).
+    - Only source /lib/lsb/init-functions on Debian-based distros
+      (LP: #1226094).
+    - Relaunch epoptes-client after 20 seconds of network inactivity.
+    - Remove ping timeouts from epoptesd for epoptes-client connections,
+      allowing reconnects when something on the network fails temporarily.
+    - Make WoL work on every computer if none is selected.
+    - Fix the is_offline() check for clients.
+    - Fix a WoL exception if an interface had no AF_INET address configured.
+
+  * epoptes:
+    - faketime doesn't work without /run/shm (#778462).
+
+ -- Fotis Tsamis <ftsamis@gmail.com>  Thu, 28 Jan 2016 03:24:22 +0300 
+
 epoptes (0.5.8-1) unstable; urgency=low
 
   * New upstream version:
