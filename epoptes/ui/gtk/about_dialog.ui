@@ -9,7 +9,7 @@
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="program_name">Epoptes</property>
-    <property name="copyright" translatable="yes">Copyright © 2011-2015 The Epoptes Team</property>
+    <property name="copyright" translatable="yes">Copyright © 2011-2016 The Epoptes Team</property>
     <property name="comments" translatable="yes">A computer lab management and monitoring tool.</property>
     <property name="website">http://www.epoptes.org</property>
     <property name="license" translatable="yes">Epoptes is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version. 
