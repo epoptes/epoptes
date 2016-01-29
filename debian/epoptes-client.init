@@ -24,6 +24,8 @@ test -x "$DAEMON" || exit 0
 test -f /etc/ltsp_chroot || exit 0
 grep -qs "init=/sbin/init-ltsp" /proc/cmdline && exit 0
 
+. /lib/lsb/init-functions
+
 case "$1" in
     start|restart|force-reload)
         "$DAEMON" &
