@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-28 19:07+0200\n"
+"POT-Creation-Date: 2016-01-28 03:26+0200\n"
 "PO-Revision-Date: 2015-12-14 13:57+0000\n"
 "Last-Translator: sedat akbal <sedatakbal@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-18 05:40+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-29 05:29+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -220,94 +220,98 @@ msgid "Set background"
 msgstr "Artalan ayarla"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Network Benchmark"
-msgstr "Ağ Testi"
+msgid "Add to group"
+msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
 msgstr "Gruptan kaldır."
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Network Benchmark"
+msgstr "Ağ Testi"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "_Help"
 msgstr "_Yardım"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Report a bug"
 msgstr "Hata bildir"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Ask a question"
 msgstr "Bir soru sor"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Translate this application"
 msgstr "Bu uygulamayı çevir"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Live chat (IRC)"
 msgstr "Gerçek zamalı sohbet (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Remote support"
 msgstr "Uzaktan Destek"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Seçili istemcilerin bilgisayarını Aç (Yerel Ağdan Açılış)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Log out users connected on selected clients"
 msgstr "Seçili iştemcilere bağlanmış kullanıcıların oturumunu kapat"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
+#: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Reboot the selected clients"
 msgstr "Seçili istemcileri yeniden başlat"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Shutdown the selected clients"
 msgstr "Seçili istemcileri kapat"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Broadcast your screen to the selected clients"
 msgstr "Seçili istemcilere senin ekranını yayınla"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Stop all broadcasts on every client"
 msgstr "Tüm istemcilerdeki tüm yayınları durdur"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:63 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
 msgstr "Komut çalıştır"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
 msgstr "İleti gönder"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Lock screen of the selected clients"
 msgstr "Seçili istemcinin ekranını kilitle"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Unlock the screen of the selected clients"
 msgstr "Seçili istemcinin ekran kilidini aç"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67
+#: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Show information for the selected client"
 msgstr "Seçili işlemci ile ilgili bilgileri göster"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:69 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
 msgstr "Bilgiler"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69
+#: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Groups"
 msgstr "Gruplar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
+#: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Create a new group"
 msgstr "Yeni bir grup oluştur"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:71
+#: ../epoptes/ui/gtk/epoptes.ui.h:72
 msgid "Remove the selected group"
 msgstr "Seçili grubu kaldır"
 
@@ -338,52 +342,52 @@ msgstr "%(user)s bu kullanıcılar %(host)s den bağlanıyor"
 msgid "Properties of %s"
 msgstr "%s özellikleri"
 
-#: ../epoptes/ui/gui.py:120
+#: ../epoptes/ui/gui.py:126
 msgid "Detected clients"
 msgstr "Tesbit edilen istemciler"
 
-#: ../epoptes/ui/gui.py:236
+#: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Tüm bilgisayarları kapatmak istediğinizden emin misiniz?"
 
-#: ../epoptes/ui/gui.py:241
+#: ../epoptes/ui/gui.py:254
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Tüm bilgisayarları yeniden başlatmak istediğinizden emin misiniz?"
 
-#: ../epoptes/ui/gui.py:247
+#: ../epoptes/ui/gui.py:260
 msgid "Are you sure you want to log off all the users?"
 msgstr "Tüm kullanıcıların oturumunu kapatmak istediğinizden emin misiniz?"
 
-#: ../epoptes/ui/gui.py:395
+#: ../epoptes/ui/gui.py:414
 msgid "The screen is locked by a system administrator."
 msgstr "Ekran sistem yöneticisi tarafından kilitlendi."
 
-#: ../epoptes/ui/gui.py:424
+#: ../epoptes/ui/gui.py:450
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 "\"%s\" grubundan seçili istemci(ler)i  çıkarmak istediğinizden emin misiniz?"
 
-#: ../epoptes/ui/gui.py:455
+#: ../epoptes/ui/gui.py:488
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "\"%s\" grubunu ayırmak istediğinize emin misiniz?"
 
-#: ../epoptes/ui/gui.py:526
+#: ../epoptes/ui/gui.py:567
 msgid "Lost connection with the epoptes service."
 msgstr "Epoptes hizmeti ile bağlantı kayboldu"
 
-#: ../epoptes/ui/gui.py:527
+#: ../epoptes/ui/gui.py:568
 msgid "Make sure the service is running and then restart epoptes."
 msgstr "Hizmetin çalıştığından emin olun ve Epoptesi yeniden çalıştırın"
 
-#: ../epoptes/ui/gui.py:530 ../bin/epoptes.py:67
+#: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
 msgid "Service connection error"
 msgstr "Hizmet bağlantı hatası"
 
 #. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:682
+#: ../epoptes/ui/gui.py:728
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -395,7 +399,7 @@ msgstr ""
 "bağlanmayı denedi\n"
 "İstemcinizi en son Epoptes-istemci sürümüne güncellemeniz gerekmetedir."
 
-#: ../epoptes/ui/gui.py:974
+#: ../epoptes/ui/gui.py:1036
 #, python-format
 msgid "%d clients selected"
 msgstr "%d istemcisi seçildi"
@@ -404,23 +408,32 @@ msgstr "%d istemcisi seçildi"
 msgid "URL, file or command to execute on the selected clients:"
 msgstr "Seçili istemcilerde çalıştırılacak URL, dosya veya komut"
 
-#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/netbenchmark.ui.h:1
+#: ../epoptes/ui/benchmark.py:91 ../epoptes/ui/gtk/netbenchmark.ui.h:22
+#: ../epoptes/ui/gtk/sendMessage.ui.h:7
+msgid "Warning"
+msgstr "Uyarı"
+
+#: ../epoptes/ui/benchmark.py:100 ../epoptes/ui/gtk/sendMessage.ui.h:8
+msgid "Error"
+msgstr "Hata"
+
+#: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
 msgstr "Epoptes Ağ Testi Sonuçları"
 
-#: ../epoptes/ui/benchmark.py:86
+#: ../epoptes/ui/benchmark.py:160
 msgid "Upload Rate"
 msgstr "Yükleme Oranı"
 
-#: ../epoptes/ui/benchmark.py:87
+#: ../epoptes/ui/benchmark.py:161
 msgid "Download Rate"
 msgstr "İndirme Oranı"
 
-#: ../epoptes/ui/benchmark.py:134
+#: ../epoptes/ui/benchmark.py:174
 msgid "There are no selected clients to run the benchmark on."
 msgstr "Test etmek için seçilmiş herhangi bir istemci bulunmamakta."
 
-#: ../epoptes/ui/benchmark.py:147
+#: ../epoptes/ui/benchmark.py:187
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
@@ -428,7 +441,7 @@ msgstr ""
 "Seçilmiş istemciler ya çevrimdışı yada yönetici olarak epoptes-istemcisine "
 "sahip değil"
 
-#: ../epoptes/ui/benchmark.py:152
+#: ../epoptes/ui/benchmark.py:192
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
@@ -436,14 +449,28 @@ msgstr ""
 "Takip eden istemciler, çevrimdışı olduklarından yada yönetici olarak Epoptes-"
 "istemcisine sahip olmadıklarından testten hariç tutulacaklar."
 
-#: ../epoptes/ui/benchmark.py:162 ../epoptes/ui/benchmark.py:179
+#: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
 msgstr "Test %d saniye içinde bitiyor"
 
-#: ../epoptes/ui/benchmark.py:176
+#: ../epoptes/ui/benchmark.py:233
+#, python-format
+msgid ""
+"Something went wrong with the iperf server process:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
 msgstr "Veri işleniyor..."
+
+#: ../epoptes/ui/benchmark.py:344
+msgid ""
+"Did not get measurements from any of the clients. Check your network "
+"settings."
+msgstr ""
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -453,17 +480,17 @@ msgstr "Yöneticiden Gelen Mesaj"
 msgid "Epoptes computer lab administration tool"
 msgstr "Epoptes bilgisayar laboratuarı yönetim aracı"
 
-#: ../bin/epoptes.py:55
+#: ../bin/epoptes.py:59
 msgid "An error occured while trying to connect to the epoptes service:"
 msgstr "Epoptes hizmetine bağlanırken bir hata meydana geldi."
 
-#: ../bin/epoptes.py:60
+#: ../bin/epoptes.py:64
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
 "Kullanıcı %s %s grubunun üyesi olmalıdır. (usermod komutunu kullanın)."
 
-#: ../bin/epoptes.py:64
+#: ../bin/epoptes.py:68
 msgid "Make sure the epoptes service is running."
 msgstr "Epoptes hizmetinin çalıştığından emin olun"
 
@@ -480,47 +507,53 @@ msgid "Show a graph instead of a table."
 msgstr "Tablo yerine grafik göster"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+msgid ""
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
+msgstr ""
+
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
 msgstr "Genel Band genişliği İstatistikleri"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "The average server download bandwidth per client"
 msgstr "Her bir istemci için ortalama indirme band genişliği"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "Average server download:"
 msgstr "Ortalama sunucu indirmesi:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "The total server download bandwidth, for all clients, simultaneously"
 msgstr ""
 "Sunucu toplam indirme band genişliği, tüm istemciler için , eşzamanlı"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "Total server download:"
 msgstr "Toplam sunucu indirmesi:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "The average server upload bandwidth per client"
 msgstr "Her istemci için ortalama sunucu yükleme band genişliği"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "Average server upload:"
 msgstr "Ortalama sunucu yüklemesi:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "The total server upload bandwidth, for all clients, simultaneously"
 msgstr "Sunucu toplam yükleme band genişliği, tüm istemciler için, eşzamanlı"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Total server upload:"
 msgstr "Toplam sunucu yüklemesi:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid "Epoptes Network Benchmark"
 msgstr "Epoptes Ağ Testi"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:17
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
@@ -528,21 +561,17 @@ msgstr ""
 "Ağ testi, laboratuarınız için varolan etkin ağ\n"
 "genişliğini test edecek."
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:18
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "Run the benchmark for"
 msgstr "Testi çalıştır =>"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "seconds"
 msgstr "saniye"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+#: ../epoptes/ui/gtk/netbenchmark.ui.h:21
 msgid "Start"
 msgstr "Başlat"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:21 ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Uyarı"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
@@ -604,13 +633,9 @@ msgstr "İleti Metni:"
 msgid "Use Pango markup"
 msgstr "Pango işaretleme kullan"
 
-#: ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "Error"
-msgstr "Hata"
-
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2015 The Epoptes Team"
-msgstr "Telif hakkı © 2011-2015 Epoptes Takımı"
+msgid "Copyright © 2011-2016 The Epoptes Team"
+msgstr ""
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -710,3 +735,6 @@ msgstr "Komut Satırı (Ekranda)"
 
 #~ msgid "Copyright © 2011-2012 Epoptes Team"
 #~ msgstr "Copyright © 2011-2012 Epoptes Team"
+
+#~ msgid "Copyright © 2011-2015 The Epoptes Team"
+#~ msgstr "Telif hakkı © 2011-2015 Epoptes Takımı"
