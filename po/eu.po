@@ -482,7 +482,7 @@ msgid "Epoptes computer lab administration tool"
 msgstr "Epoptes ordenagailu-laborategiaren kudeaketa-tresna"
 
 #: ../bin/epoptes.py:59
-msgid "An error occured while trying to connect to the epoptes service:"
+msgid "An error occurred while trying to connect to the epoptes service:"
 msgstr "Epoptes zerbitzuarekin konexio-saiakeran errorea gertatu da:"
 
 #: ../bin/epoptes.py:64

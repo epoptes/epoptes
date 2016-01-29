@@ -37,7 +37,7 @@ epoptes (0.5.8-1) unstable; urgency=low
   * New upstream version:
     - TERM was missing in text-based remote assistance (LP: #1117158).
     - Add support for shutdown/reboot/logout on systemd (LP: #1447321).
-    - Fix a crash which occured when changing the group selection.
+    - Fix a crash which occurred when changing the group selection.
     - Emulate x-canonical-append for notifications when necessary.
     - Support newer socat versions >= 1.7.3.
     - Generate a certificate valid since the Epoch.

@@ -493,7 +493,7 @@ msgid "Epoptes computer lab administration tool"
 msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
 
 #: ../bin/epoptes.py:59
-msgid "An error occured while trying to connect to the epoptes service:"
+msgid "An error occurred while trying to connect to the epoptes service:"
 msgstr "Προέκυψε ένα σφάλμα κατά τη σύνδεση με την υπηρεσία epoptes:"
 
 #: ../bin/epoptes.py:64

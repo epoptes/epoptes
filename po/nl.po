@@ -482,7 +482,7 @@ msgid "Epoptes computer lab administration tool"
 msgstr "Epoptes-computerlokaalbeheerprogramma"
 
 #: ../bin/epoptes.py:59
-msgid "An error occured while trying to connect to the epoptes service:"
+msgid "An error occurred while trying to connect to the epoptes service:"
 msgstr ""
 "Er is een fout opgetreden bij het verbinding maken met de Epoptes-dienst:"
 

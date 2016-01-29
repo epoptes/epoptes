@@ -474,7 +474,7 @@ msgid "Epoptes computer lab administration tool"
 msgstr "Công cụ quản lý máy tính trong phòng máy tính Epoptes"
 
 #: ../bin/epoptes.py:59
-msgid "An error occured while trying to connect to the epoptes service:"
+msgid "An error occurred while trying to connect to the epoptes service:"
 msgstr ""
 
 #: ../bin/epoptes.py:64
