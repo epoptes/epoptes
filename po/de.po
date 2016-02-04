@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2015-08-15 08:26+0000\n"
-"Last-Translator: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>\n"
+"PO-Revision-Date: 2016-02-03 07:16+0000\n"
+"Last-Translator: zefanja <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:31+0000\n"
+"X-Launchpad-Export-Date: 2016-02-04 05:45+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -28,7 +28,8 @@ msgstr ""
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Hendrik Knackstedt https://launchpad.net/~hennekn\n"
 "  Mike Gabriel https://launchpad.net/~sunweaver\n"
-"  karakal https://launchpad.net/~hans-peter-lackner"
+"  karakal https://launchpad.net/~hans-peter-lackner\n"
+"  zefanja https://launchpad.net/~zefanja"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
@@ -226,7 +227,7 @@ msgstr "Hintergrund festlegen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Zur Gruppe hinzufügen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -234,7 +235,7 @@ msgstr "Aus Gruppe entfernen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Netzwerk Benchmark"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "_Help"
@@ -380,15 +381,17 @@ msgstr "Die Gruppe ,,%s'' wirklich löschen?"
 
 #: ../epoptes/ui/gui.py:567
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Verbindung zum Epoptes-Dienst verloren"
 
 #: ../epoptes/ui/gui.py:568
 msgid "Make sure the service is running and then restart epoptes."
 msgstr ""
+"Stellen Sie sicher, dass der Epoptes-Dienst gestartet ist. Starten Sie dann "
+"Epoptes neu."
 
 #: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
 msgid "Service connection error"
-msgstr ""
+msgstr "Verbindungsfehler"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
@@ -425,36 +428,41 @@ msgstr "Fehler"
 
 #: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr ""
+msgstr "Epoptes Netzwerk Benchmark Ergebnisse"
 
 #: ../epoptes/ui/benchmark.py:160
 msgid "Upload Rate"
-msgstr ""
+msgstr "Geschwindigkeit beim Hochladen"
 
 #: ../epoptes/ui/benchmark.py:161
 msgid "Download Rate"
-msgstr ""
+msgstr "Geschwindigkeit beim Herunterladen"
 
 #: ../epoptes/ui/benchmark.py:174
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Es sind keine Computer für den Benchmark ausgewählt"
 
 #: ../epoptes/ui/benchmark.py:187
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Alle ausgewählten Computer sind entweder nicht verbunden oder epoptes-client "
+"ist nicht mit Rootrechten gestartet."
 
 #: ../epoptes/ui/benchmark.py:192
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Die folgenden Computer werden vom Benchmark nicht berücksichtigt, da sie "
+"entweder nicht verbunden sind oder der epoptes-client nicht mit Rootrechten "
+"gestartet wurde."
 
 #: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Benchmark ist in %d Sekunden fertig..."
 
 #: ../epoptes/ui/benchmark.py:233
 #, python-format
@@ -463,16 +471,21 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Ein Fehler ist aufgetreten mit dem iperf server Prozess:\n"
+"\n"
+"%s"
 
 #: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
-msgstr ""
+msgstr "Daten werden verarbeitet …"
 
 #: ../epoptes/ui/benchmark.py:344
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"Keine Messdaten von irgendeinem Computer bekommen. Überprüfen Sie die "
+"Netzwerkeinstellungen."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -484,7 +497,7 @@ msgstr "Admin-Werkzeug für Epoptes-basiertes PC-Labor"
 
 #: ../bin/epoptes.py:59
 msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Ein Fehler ist beim Verbinden zum Epoptes-Dienst aufgetreten."
 
 #: ../bin/epoptes.py:64
 #, python-format
@@ -495,83 +508,87 @@ msgstr ""
 
 #: ../bin/epoptes.py:68
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Stellen Sie sicher, dass der Epoptes-Dienst gestartet ist."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Uploadbandbreite"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:4
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Downloadbandbreite"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr ""
+msgstr "Grafik anstelle einer Tabelle zeigen"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Konnte von einigen Computern keine Messdaten erhalten. Dies beeinflusst die "
+"Statistiken."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
-msgstr ""
+msgstr "Gesamtbandbreitenstatistik"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "Durchschnittliche Server Downloadbandbreite pro Computer"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "Average server download:"
-msgstr ""
+msgstr "Druchschnittlicher Server Download"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
+msgstr "Gesamte gleichzeitige Server Downloadbandbreite für alle Computer"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "Total server download:"
-msgstr ""
+msgstr "Gesamter Server Download"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "The average server upload bandwidth per client"
-msgstr ""
+msgstr "Durchschnittliche Server Uploadbandbreite pro Computer"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "Average server upload:"
-msgstr ""
+msgstr "Durchschnittlicher Server Upload"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
+msgstr "Gesamte gleichzeitige Server Uploadbandbreite für alle Computer"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Total server upload:"
-msgstr ""
+msgstr "Gesamter Server Upload"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid "Epoptes Network Benchmark"
-msgstr ""
+msgstr "Epoptes Netzwerk Benchmark"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:17
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"Der Netzwerk Benchmark testet die effektiv \n"
+"verfügbare Netzwerkbandbreite"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Benchmark starten für"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "seconds"
-msgstr ""
+msgstr "Sekunden"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21
 msgid "Start"
-msgstr ""
+msgstr "Starten"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
@@ -635,7 +652,7 @@ msgstr "Text mittels Pango darstellen"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2016 The Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
