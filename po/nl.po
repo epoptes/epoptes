@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-01-29 16:28+0000\n"
-"Last-Translator: rob <linuxned@gmail.com>\n"
+"PO-Revision-Date: 2016-02-04 12:31+0000\n"
+"Last-Translator: Rob Bosch <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:31+0000\n"
+"X-Launchpad-Export-Date: 2016-02-05 06:18+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -19,6 +19,7 @@ msgstr ""
 "  Faisal Ali https://launchpad.net/~xashiish\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Hannie Dumoleyn https://launchpad.net/~lafeber-dumoleyn\n"
+"  Rob Bosch https://launchpad.net/~rob-bosch\n"
 "  Sjoerd Dirk Meijer https://launchpad.net/~e-internet\n"
 "  himlims https://launchpad.net/~himlims\n"
 "  kadkarol https://launchpad.net/~karol-sienkowski\n"
@@ -220,7 +221,7 @@ msgstr "Achtergrond instellen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Toevoegen aan groep"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -472,6 +473,8 @@ msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"Geen metingen ontvangen van geen enkele cliënt. Controleer je netwerk "
+"instellingen."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -513,6 +516,8 @@ msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Kon geen metingen krijgen van enkele cliënts. De statistieken zullen "
+"daardoor beïnvloed zijn."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
@@ -636,7 +641,7 @@ msgstr "Pango-tekstmarkeertaal gebruiken"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2016 Het Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
