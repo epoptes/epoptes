@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-01-29 16:27+0000\n"
+"PO-Revision-Date: 2016-02-05 08:35+0000\n"
 "Last-Translator: Juan Ezeiza <jezeiza@axular.net>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:31+0000\n"
+"X-Launchpad-Export-Date: 2016-02-06 05:57+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -218,7 +218,7 @@ msgstr "Ezarri atzealdeko irudia"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Gehitu taldeari"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -462,6 +462,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Zerbait gaizki joan da iperf zerbitzari-prozesuarekin:\n"
+"\n"
+"%s"
 
 #: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
@@ -471,7 +474,7 @@ msgstr "Datuak prozesatzen..."
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
-msgstr ""
+msgstr "Ez da ezein bezeroren daturik jaso. Azter itzazu sareko ezarpenak."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -512,6 +515,8 @@ msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Bezero batzuen datuak ezin izan dira jaso. Horrek estatistiketan eragina "
+"izango du."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
@@ -637,7 +642,7 @@ msgstr "Erabili Pango markup"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2016 Epoptes Taldea"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
