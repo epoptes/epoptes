@@ -27,15 +27,24 @@
 # 0 is normal program termination, it's called on `service epoptes restart`.
 # 15 is SIGTERM, it's called when socat reaches the -T timeout.
 # We don't always want to relaunch though.
-# For user sessions, we abort when we don't have access to X.
-# For root connections, maybe we could check the runlevel?
+# For user sessions, ping() aborts when X isn't running.
+# Root connections abort when the system is shutting down.
 # Also, epoptes-client kills -QUIT all the other epoptes-client processes.
 on_signal() {
+    # local code  # we can't do that, it resets $?
+
     code="$?"
     trap - 0 15
-    echo "epoptes-client got signal: $1, relaunching..." >&5
-    # Restore the stdio descriptors to the previously saved 5
-    ( sleep 10; ping; exec epoptes-client $SERVER $PORT >&5 2>&1; ) &
+    # Don't relaunch if the system is shutting down
+    if [ "$UID" -eq 0 ] && [ -d /run/systemd/system ] && [ -x /bin/systemctl ] \
+        && systemctl list-jobs | grep -q 'shutdown.target[[:space:]]*start'
+    then
+        echo "epoptes-client got signal: $1, but system is shutting down" >&5
+    else
+        echo "epoptes-client got signal: $1, relaunching..." >&5
+        # Restore the stdio descriptors to the previously saved 5
+        ( sleep 10; ping; exec epoptes-client $SERVER $PORT >&5 2>&1; ) &
+    fi
     exit "$code"
 }
 
