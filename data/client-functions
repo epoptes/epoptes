@@ -321,9 +321,11 @@ get_assisted() {
 }
 
 # Deactivate the screensaver, in order for the users to watch a broadcast.
-stop_screensaver() {
-    if [ -x /usr/bin/gnome-screensaver-command ]; then
-        gnome-screensaver-command -d
+reset_screensaver() {
+    if [ -x /usr/bin/xdg-screensaver ]; then
+        xdg-screensaver reset
+    else
+        xset s reset
     fi
 }
 
@@ -333,8 +335,9 @@ stop_screensaver() {
 # $2 = password (encrypted as in ~/.vnc/passwd and octal-escaped).
 # $3 = fullscreen.
 receive_broadcast() {
+    receiving_broadcast=true
     stop_receptions
-    xset dpms force on
+    reset_screensaver
     if [ -z "$VNCVIEWER" ]; then
         # If the user installed ssvnc, prefer it over xvnc4viewer
         if [ -x /usr/bin/ssvncviewer ]; then
@@ -364,6 +367,7 @@ receive_broadcast() {
 stop_receptions() {
     local pid
 
+    unset receiving_broadcast
     ensure_display
     pid=$(xprop_get EPOPTES_VNCVIEWER_PID)
     if [ -n "$pid" ]; then
@@ -401,6 +405,9 @@ TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
 ping() {
     if [ "$UID" -gt 0 ]; then
         xprop -root -f EPOPTES_CLIENT 32c -set EPOPTES_CLIENT $$ || die "No X"
+    fi
+    if [ "$receiving_broadcast" = true ]; then
+        reset_screensaver
     fi
 }
 

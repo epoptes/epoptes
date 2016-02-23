@@ -325,7 +325,9 @@ class EpoptesGui(object):
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
                 '-24to32', '-threads', '-rfbport', str(self.vncserverport),
                 '-rfbauth', pwdfile])
-        self.execOnSelectedClients(['stop_screensaver'],
+        # Running `xdg-screensaver reset` as root doesn't reset the D.E.
+        # screensaver, so send the reset command to both epoptes processes
+        self.execOnSelectedClients(['reset_screensaver'],
             mode=EM_SYSTEM_AND_SESSION)
         self.execOnSelectedClients(["receive_broadcast", self.vncserverport, 
             self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
