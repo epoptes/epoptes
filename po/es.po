@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2015-10-22 12:07+0000\n"
-"Last-Translator: Óscar <osvamon@gmail.com>\n"
+"PO-Revision-Date: 2016-03-02 04:13+0000\n"
+"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:32+0000\n"
-"X-Generator: Launchpad (build 17908)\n"
+"X-Launchpad-Export-Date: 2016-03-02 05:31+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
+"  Angel Caido https://launchpad.net/~alkhimia-linux\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Juan Ezeiza https://launchpad.net/~jezeiza\n"
 "  carlos https://launchpad.net/~carpingue\n"
@@ -29,23 +30,24 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
-msgstr "Demostración (pantalla completa)"
+msgstr "Compartir pantalla [en Pantalla Completa]"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Mostrar su pantalla a los clientes seleccionados, pantalla completa"
+msgstr ""
+"Comparta su pantalla con los clientes seleccionados, en pantalla completa"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
-msgstr "Demostración (ventana)"
+msgstr "Comparta su pantalla [en Ventana]"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Mostrar su pantalla a los Alumnos seleccionados, ventana"
+msgstr "Compartir su pantalla con los alumnos seleccionados, en una ventana."
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
-msgstr "Confirmar acción"
+msgstr "Confirme acción"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "_File"
@@ -105,15 +107,15 @@ msgstr "Emisiones"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Monitor user"
-msgstr "Ver  Alumno"
+msgstr "Monitorear usuario"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Assist user"
-msgstr "Controlar Alumno"
+msgstr "Ayudar usuario"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Take control of the selected user's computer"
-msgstr "Controlar  Alumno seleccionado"
+msgstr "Controlar el ordenador del usuario seleccionado"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast video"
@@ -221,7 +223,7 @@ msgstr "Establecer fondo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Agregar al grupo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -377,15 +379,16 @@ msgstr "¿Está seguro de que quiere eliminar el grupo  \"%s\"?"
 
 #: ../epoptes/ui/gui.py:567
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Se ha perdido  la conexión con Epoptes."
 
 #: ../epoptes/ui/gui.py:568
 msgid "Make sure the service is running and then restart epoptes."
 msgstr ""
+"Asegúrese que se esté ejecutando el servicio y después reinicie Epoptes."
 
 #: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
 msgid "Service connection error"
-msgstr ""
+msgstr "Error de Conexión."
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
@@ -464,6 +467,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Algo salió mal con el proceso del servidor iperf:\n"
+"\n"
+"%s"
 
 #: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
@@ -474,6 +480,8 @@ msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"No se obtuvieron medidas de ninguno de los clientes. Revise su configuración "
+"de red."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -485,7 +493,7 @@ msgstr "Herramienta de administración del aula de ordenadores"
 
 #: ../bin/epoptes.py:59
 msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Ocurrió un error mientras se intentaba conectar a epoptes:"
 
 #: ../bin/epoptes.py:64
 #, python-format
@@ -495,7 +503,7 @@ msgstr ""
 
 #: ../bin/epoptes.py:68
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Asegúrese que epoptes se esté ejecutando."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
@@ -514,6 +522,8 @@ msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"No se pudieron obtener medidas de algunos de los clientes. Esto afectará a "
+"las estadísticas."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
@@ -564,6 +574,8 @@ msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"La evaluación (benchmark) de la red examinará el ancho\n"
+"de banda disponible para su aula."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "Run the benchmark for"
