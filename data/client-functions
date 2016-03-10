@@ -105,23 +105,22 @@ info() {
             MAC="$LTSP_CLIENT_MAC"
             IP="$LTSP_CLIENT"
         else
-            server_ip=$(getent hosts "$SERVER" | cut -d' ' -f1)
+            server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
             server_ip=${server_ip:-$SERVER}
-            def_iface=$(ip -oneline -family inet route get "$server_ip" \
-                | sed -n '/.* dev \([^ ]*\).*/s//\1/p')
-            test "${def_iface:-lo}" = "lo" && def_iface=$(ip -oneline -family \
-                inet route show | sed -n '/^default .* dev \([^ ]*\).*/s//\1/p')
-            def_iface=${def_iface:-eth0}
-            MAC=$(ip -oneline -family inet link show dev "$def_iface" \
-                | sed "s/.*ether \([^ ]*\).*/\\1/")
-            MAC=$(echo "$MAC" | sed 'y/abcdef-/ABCDEF:/;s/[^A-F0-9:]//g')
-            test -n "$MAC" || die "Empty MAC"
-            IP=$(ip -oneline -family inet addr show dev "$def_iface" \
-                | sed "s/.* \([0-9.]*\)\/.*/\\1/")
+            read def_iface IP <<EOF
+$(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
+EOF
+            test "${def_iface:-lo}" = "lo" && read def_iface IP <<EOF
+$(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
+EOF
+            test "${def_iface:-lo}" != "lo" || die "Empty def_iface"
             test -n "$IP" || die "Empty IP"
+            MAC=$(ip link show dev "$def_iface" |
+                awk '/ether/ { print toupper($2) }')
+            test -n "$MAC" || die "Empty MAC"
         fi
-        CPU=$(cat /proc/cpuinfo | grep "^model name" | head -n 1 | sed "s/.*: //")
-        RAM=$(free -m | grep "^Mem" | awk '{print $2}')
+        CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
+        RAM=$(awk '/^MemTotal:/ { print int($2/1024) }' /proc/meminfo)
         VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
         OS=$(uname -o)
 
