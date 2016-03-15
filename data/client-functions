@@ -110,13 +110,16 @@ info() {
             read def_iface IP <<EOF
 $(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
-            test "${def_iface:-lo}" = "lo" && read def_iface IP <<EOF
+            test "${def_iface:-lo}" != "lo" || read def_iface IP <<EOF
 $(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
             test "${def_iface:-lo}" != "lo" || die "Empty def_iface"
             test -n "$IP" || die "Empty IP"
             MAC=$(ip link show dev "$def_iface" |
                 awk '/ether/ { print toupper($2) }')
+            # Some interfaces might not have a MAC (e.g. tun), use a fallback
+            test -n "$MAC" || MAC=$(ip link show |
+                awk '/ether/ { print toupper($2); exit }')
             test -n "$MAC" || die "Empty MAC"
         fi
         CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
@@ -124,7 +127,7 @@ EOF
         VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
         OS=$(uname -o)
 
-        export VERSION USER NAME HOME HOSTNAME MAC IP CPU RAM VGA OS
+        export VERSION USER NAME HOME HOSTNAME IP MAC CPU RAM VGA OS
         cached_info=true
     fi
     cat <<EOF
