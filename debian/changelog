@@ -1,3 +1,27 @@
+epoptes (0.5.10-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Add a fallback to detect network interfaces that may not have a
+      MAC address (e.g. TUN devices).
+    - Fix multiple issues in info() function (LP: #1549467).
+    - Prevent screensaver while broadcasting (LP: #1548695).
+    - Avoid 90 sec shutdown delay on Debian/systemd.
+  * epoptes-client.init:
+    - Source LSB init-functions to make lintian happy.
+  * epoptes.postinst:
+    - Generate certificates with openssl without leaving ~/.rnd directory
+      in root's homedir.
+  * epoptes.init:
+    - Determine if running as an LTSP client by checking for init-ltsp in
+      boot commandline. Thanks to Alkis for the fix!
+  * debian/control:
+    - Use https URL for Vcs-Browser.
+    - Update to Standards-Version 3.9.7, no changes.
+  * debian/copyright:
+    - Updated copyrights years.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Fri, 25 Mar 2016 20:17:03 -0700
+
 epoptes (0.5.9-1) unstable; urgency=low
 
   * New upstream version:
