@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-04-01 06:03+0000\n"
+"PO-Revision-Date: 2016-04-03 10:19+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:15+0000\n"
+"X-Launchpad-Export-Date: 2016-04-04 05:27+0000\n"
 "X-Generator: Launchpad (build 17972)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
@@ -217,7 +217,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Apondre al grop"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -301,7 +301,7 @@ msgstr "Informacions"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Groups"
-msgstr ""
+msgstr "Gropes"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Create a new group"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: ../epoptes/ui/benchmark.py:161
 msgid "Download Rate"
-msgstr ""
+msgstr "Debit de telecargament"
 
 #: ../epoptes/ui/benchmark.py:174
 msgid "There are no selected clients to run the benchmark on."
@@ -551,11 +551,11 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "seconds"
-msgstr ""
+msgstr "millisegondas"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21
 msgid "Start"
-msgstr ""
+msgstr "Aviar"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
