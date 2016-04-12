@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-01-29 16:25+0000\n"
-"Last-Translator: Laércio de Sousa <lbsousajr@gmail.com>\n"
+"PO-Revision-Date: 2016-04-11 12:34+0000\n"
+"Last-Translator: Matheus Z Galdino <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:15+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2016-04-12 05:27+0000\n"
+"X-Generator: Launchpad (build 17990)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -24,6 +24,7 @@ msgstr ""
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Humberto José de Sousa https://launchpad.net/~hpesao\n"
 "  Laércio de Sousa https://launchpad.net/~lbssousa\n"
+"  Matheus Z Galdino https://launchpad.net/~matheus-i\n"
 "  Rogênio Belém https://launchpad.net/~rogeniobelem\n"
 "  Tiago Hillebrandt https://launchpad.net/~tiagohillebrandt"
 
@@ -223,7 +224,7 @@ msgstr "Definir plano de fundo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Adicionar ao grupo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -467,6 +468,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Algo deu errado com o processo do servidor iperf:\n"
+"\n"
+"% s"
 
 #: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
@@ -477,6 +481,8 @@ msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"Não conseguiu obter medidas de nenhum dos clientes. Cheque suas "
+"configurações de rede."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -516,6 +522,8 @@ msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Não poderia obter medidas de alguns dos clientes. As estatísticas serão "
+"afetadas."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
@@ -643,7 +651,7 @@ msgstr "Usar marcação Pango"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2016 The Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
