@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-02-04 15:09+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"PO-Revision-Date: 2016-08-04 14:32+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:15+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2016-08-05 05:35+0000\n"
+"X-Generator: Launchpad (build 18169)\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
@@ -25,6 +25,7 @@ msgstr ""
 "  Anton Asche https://launchpad.net/~aasche\n"
 "  Daniel Winzen https://launchpad.net/~q-d\n"
 "  Dennis Baudys https://launchpad.net/~thecondordb\n"
+"  Ettore Atalan https://launchpad.net/~atalanttore\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Hendrik Knackstedt https://launchpad.net/~hennekn\n"
 "  Mike Gabriel https://launchpad.net/~sunweaver\n"
@@ -37,15 +38,16 @@ msgstr "Bildschirm übertragen (Vollbild)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Sende Bildschirminhalt im Vollbild an die gewählten Clients"
+msgstr "Bildschirminhalt im Vollbild an die gewählten Clients übertragen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
-msgstr "Sende Bildschirminhalt (Fenster)"
+msgstr "Bildschirminhalt übertragen (Fenster)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Sende Bildschirminhalt in einem Fenster an die gewählten Clients"
+msgstr ""
+"Bildschirminhalt in einem Fenster an die gewählten Clients übertragen"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
