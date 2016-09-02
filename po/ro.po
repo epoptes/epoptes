@@ -1,398 +1,387 @@
-# Ukrainian translation for epoptes
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# Romanian translation for epoptes
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the epoptes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Yuri Chornoivan <yurchor@ukr.net>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-08-29 22:31+0000\n"
+"PO-Revision-Date: 2016-09-01 23:24+0000\n"
 "Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-31 06:11+0000\n"
+"X-Launchpad-Export-Date: 2016-09-02 07:19+0000\n"
 "X-Generator: Launchpad (build 18179)\n"
-"Language: uk\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
-"  Vladyslav Dukhin https://launchpad.net/~primeare\n"
-"  Yuri Chornoivan https://launchpad.net/~yurchor-gmail\n"
-"  yurchor https://launchpad.net/~yurchor-deactivatedaccount"
+"  Nicolae Crefelean https://launchpad.net/~kneekoo"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "Broadcast screen (fullscreen)"
-msgstr "Транслювати зображення на екрані (на весь екран)"
+msgstr "Difuzează ecranul (în întregime)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr ""
-"Транслювати зображення на вашому екрані вибраним клієнтським комп’ютерам на "
-"весь екран"
+msgstr "Difuzează întregul ecran către clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Broadcast screen (windowed)"
-msgstr "Транслювати зображення на екрані (у вікні)"
+msgstr "Difuzează ecranul (în fereastră)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr ""
-"Транслювати зображення на вашому екрані вибраним клієнтським комп’ютерам у "
-"вікні"
+msgstr "Difuzează ercanul într-o fereastră, către clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "Confirm action"
-msgstr "Підтвердження дії"
+msgstr "Confirmă acțiunea"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "_File"
-msgstr "_Файл"
+msgstr "_Fișier"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Labels"
-msgstr "Мітки"
+msgstr "Etichete"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Computer (user)"
-msgstr "Комп’ютер (користувач)"
+msgstr "Calculator (utilizator)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
 msgid "Computer"
-msgstr "Комп’ютер"
+msgstr "Calculator"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "User (computer)"
-msgstr "Користувач (комп’ютер)"
+msgstr "Utilizator (calculator)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "User"
-msgstr "Користувач"
+msgstr "Utilizator"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Show real names"
-msgstr "Показувати справжні імена"
+msgstr "Arată numele reale"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "_Clients"
-msgstr "_Клієнти"
+msgstr "_Clienți"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Session"
-msgstr "Сеанс"
+msgstr "Sesiune"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Boot"
-msgstr "Завантажити"
+msgstr "Pornire"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Log out"
-msgstr "Вийти"
+msgstr "Deconectare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Reboot"
-msgstr "Перезавантажити"
+msgstr "Repornire"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Shutdown"
-msgstr "Вимкнути"
+msgstr "Oprire"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Broadcasts"
-msgstr "Трансляції"
+msgstr "Difuzări"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Monitor user"
-msgstr "Стежити за користувачем"
+msgstr "Monitorizează utilizatorul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Assist user"
-msgstr "Допомогти користувачеві"
+msgstr "Asistă utilizatorul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Take control of the selected user's computer"
-msgstr "Перебрати керування над комп’ютером вибраного користувача"
+msgstr "Preia controlul calculatorului selectat"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast video"
-msgstr "Транслювати відео"
+msgstr "Difuzează video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Broadcast screen"
-msgstr "Транслювати зображення на екрані"
+msgstr "Difuzează ecranul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Broadcast user"
-msgstr "Транслювати користувача"
+msgstr "Difuzează utilizatorul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Stop broadcasts"
-msgstr "Припинити трансляції"
+msgstr "Oprește difuzările"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Stops all active broadcasts"
-msgstr "Припинити всі активні трансляції"
+msgstr "Oprește toate difuzările active"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Open broadcasts window"
-msgstr "Відкрити вікно трансляцій"
+msgstr "Deschide fereastra de difuzări"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Open a windowed session to prevent broadcasting your whole screen"
 msgstr ""
-"Відкрити сеанс у вікні, щоб запобігти трансляції всього зображення екрана"
+"Deschide o sesiune în fereastră pentru prevenirea difuzării întregului ecran"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "Execute"
-msgstr "Виконати"
+msgstr "Execută"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Execute a command on the selected clients"
-msgstr "Виконати команду на позначених клієнтських вузлах"
+msgstr "Execută o comandă pe clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "_Send message"
-msgstr "_Надіслати повідомлення"
+msgstr "_Trimite mesaj"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "Send a message to the selected clients"
-msgstr "Надіслати повідомлення позначеним клієнтським вузлам"
+msgstr "Trimite un mesaj clienților selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Open terminal"
-msgstr "Відкрити термінал"
+msgstr "Deschide terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "User, locally"
-msgstr "Користувач, локально"
+msgstr "Utilizator, local"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Root, locally"
-msgstr "Root, локально"
+msgstr "Root, local"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Root, remotely"
-msgstr "Root, дистанційно"
+msgstr "Root, la distanță"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Restrictions"
-msgstr "Обмеження"
+msgstr "Restricții"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Lock screen"
-msgstr "Заблокувати екран"
+msgstr "Blocare ecran"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unlock screen"
-msgstr "Розблокувати екран"
+msgstr "Deblocare ecran"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Block Internet"
-msgstr "Заблокувати інтернет"
+msgstr "Blocare internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unblock Internet"
-msgstr "Розблокувати інтернет"
+msgstr "Deblocare internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Mute sound"
-msgstr "Вимкнути звук"
+msgstr "Oprește sunetul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Unmute sound"
-msgstr "Увімкнути звук"
+msgstr "Pornește sunetul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Background image"
-msgstr "Зображення тла"
+msgstr "Imagine de fundal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "Lock background"
-msgstr "Заблокувати тло"
+msgstr "Blocare fundal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Set default background"
-msgstr "Встановити типове тло"
+msgstr "Stabilește fundalul implicit"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Set background"
-msgstr "Встановити тло"
+msgstr "Stabilește fundalul"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr "Додати до групи"
+msgstr "Adaugă în grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
-msgstr "Вилучити з групи"
+msgstr "Elimină din grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Network Benchmark"
-msgstr "Тест мережевого з'єднання"
+msgstr "Testare rețea"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "_Help"
-msgstr "_Довідка"
+msgstr "_Ajutor"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Report a bug"
-msgstr "Повідомити про ваду"
+msgstr "Raportare eroare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Ask a question"
-msgstr "Задати питання"
+msgstr "Puneți o întrebare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Translate this application"
-msgstr "Перекласти цю програму"
+msgstr "Traduceți această aplicație"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Live chat (IRC)"
-msgstr "Інтерактивне спілкування (IRC)"
+msgstr "Chat live (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Remote support"
-msgstr "Дистанційна підтримка"
+msgstr "Asistență la distanță"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Завантажити позначені клієнтські вузли (Wake On LAN)"
+msgstr "Pornește clienții selectați (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Log out users connected on selected clients"
-msgstr ""
-"Виконати вихід для користувачів, з’єднаних з позначеними клієнтськими вузлами"
+msgstr "Deconectează utilizatorii clienților selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60
 msgid "Reboot the selected clients"
-msgstr "Перезавантажити позначені клієнтські вузли"
+msgstr "Repornește clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Shutdown the selected clients"
-msgstr "Завершити роботу позначених клієнтських вузлів"
+msgstr "Oprește clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Broadcast your screen to the selected clients"
-msgstr ""
-"Транслювати зображення на вашому екрані вибраним клієнтським комп’ютерам"
+msgstr "Difuzează ecranul către clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Stop all broadcasts on every client"
-msgstr "Припинити всі трансляції для всіх клієнтських вузлів"
+msgstr "Oprește toate difuzțările pe toți clienții"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/executeCommand.ui.h:1
 msgid "Execute command"
-msgstr "Виконати команду"
+msgstr "Executare comandă"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:1
 msgid "Send message"
-msgstr "Надіслати повідомлення"
+msgstr "Trimitere mesaj"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Lock screen of the selected clients"
-msgstr "Заблокувати екрани позначених клієнтських вузлів"
+msgstr "Blochează ecranele clienților selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Unlock the screen of the selected clients"
-msgstr "Розблокувати екрани позначених клієнтських вузлів"
+msgstr "Deblochează ecranele clienților selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:68
 msgid "Show information for the selected client"
-msgstr "Показати параметри позначеного клієнтського вузла"
+msgstr "Afișează informații despre clienții selectați"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:69 ../epoptes/ui/gtk/sendMessage.ui.h:6
 msgid "Information"
-msgstr "Інформація"
+msgstr "Informații"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Groups"
-msgstr "Групи"
+msgstr "Grupuri"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Create a new group"
-msgstr "Створити нову групу"
+msgstr "Creează un grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:72
 msgid "Remove the selected group"
-msgstr "Вилучити позначену групу"
+msgstr "Șterge grupul selectat"
 
 #: ../epoptes/ui/notifications.py:82
 msgid "Shut down:"
-msgstr "Завершити роботу:"
+msgstr "Oprire:"
 
 #: ../epoptes/ui/notifications.py:85
 msgid "Connected:"
-msgstr "З’єднано:"
+msgstr "Conectat:"
 
 #: ../epoptes/ui/notifications.py:85
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s з %(host)s"
+msgstr ""
 
 #: ../epoptes/ui/notifications.py:88
 msgid "Disconnected:"
-msgstr "Роз’єднано:"
+msgstr "Deconectat:"
 
 #: ../epoptes/ui/notifications.py:88
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s від %(host)s"
+msgstr ""
 
 #: ../epoptes/ui/client_information.py:65
 #, python-format
 msgid "Properties of %s"
-msgstr "Властивості %s"
+msgstr "Properietățile %s"
 
 #: ../epoptes/ui/gui.py:126
 msgid "Detected clients"
-msgstr "Виявлені клієнти"
+msgstr "Clienți detectați"
 
 #: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Ви справді хочете вимкнути всі ці комп’ютери?"
+msgstr "Sigur doriți oprirea tuturor calculatoarelor?"
 
 #: ../epoptes/ui/gui.py:254
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Ви справді хочете перезавантажити всі ці комп’ютери?"
+msgstr "Sigur doriți repornirea tuturor calculatoarelor?"
 
 #: ../epoptes/ui/gui.py:260
 msgid "Are you sure you want to log off all the users?"
-msgstr ""
-"Ви справді хочете виконати вихід із системи для всіх цих користувачів?"
+msgstr "Sigur doriți deconectarea tuturor utilizatorilor?"
 
 #: ../epoptes/ui/gui.py:414
 msgid "The screen is locked by a system administrator."
-msgstr "Екран заблоковано адміністратором системи."
+msgstr "Ecranul este blocat de un administrator."
 
 #: ../epoptes/ui/gui.py:450
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr "Ви справді бажаєте вилучити з групи «%s» позначені клієнтські вузли?"
+msgstr "Sigur doriți ștergerea selecției din grupul „%s”?"
 
 #: ../epoptes/ui/gui.py:488
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Ви справді бажаєте вилучити групу «%s»?"
+msgstr "Sigur doriți ștergerea grupului „%s”?"
 
 #: ../epoptes/ui/gui.py:567
 msgid "Lost connection with the epoptes service."
-msgstr "Втрачений зв'язок зі службою epoptes."
+msgstr "S-a pierdut conexiunea cu serviciul epoptes."
 
 #: ../epoptes/ui/gui.py:568
 msgid "Make sure the service is running and then restart epoptes."
-msgstr "Переконайтеся, що служба запущена, а потім перезапустіть epoptes."
+msgstr "Asigurați-vă că serviciul rulează și reporniți epoptes."
 
 #: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
 msgid "Service connection error"
-msgstr "Помилка з'єднання зі службою"
+msgstr "Eroare la conexiunea cu serviciul"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
@@ -403,67 +392,65 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"Було виконано спробу встановлення з’єднання за допомогою клієнтської частини "
-"версії %s, яка є несумісною з поточною версією epoptes.\n"
+"S-a încercat conectarea unui client cu versiunea %s, care este incompatibilă "
+"cu versiunea curentă epoptes.\n"
 "\n"
-"Вам слід оновити клієнтські частини до найсвіжішої версії epoptes-client."
+"Trebuie să actualizați clienții la cea mai recentă versiune epoptes-client."
 
 #: ../epoptes/ui/gui.py:1036
 #, python-format
 msgid "%d clients selected"
-msgstr "%d клієнтів обрано"
+msgstr "%d clienți selectați"
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
-"Адреса, файл або команда, яку слід виконати на позначених клієнтських вузлах:"
+msgstr "URL, fișier sau comandă de executat pe clienții selectați:"
 
 #: ../epoptes/ui/benchmark.py:91 ../epoptes/ui/gtk/netbenchmark.ui.h:22
 #: ../epoptes/ui/gtk/sendMessage.ui.h:7
 msgid "Warning"
-msgstr "Попередження"
+msgstr "Atenție"
 
 #: ../epoptes/ui/benchmark.py:100 ../epoptes/ui/gtk/sendMessage.ui.h:8
 msgid "Error"
-msgstr "Помилка"
+msgstr "Eroare"
 
 #: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr "Результат тесту мережевого з'єднання Epoptes"
+msgstr "Rezultatele testării de rețea Epoptes"
 
 #: ../epoptes/ui/benchmark.py:160
 msgid "Upload Rate"
-msgstr "Швидкість віддачі"
+msgstr "Viteza de transmitere"
 
 #: ../epoptes/ui/benchmark.py:161
 msgid "Download Rate"
-msgstr "Швидкість завантаження"
+msgstr "Viteza de recepție"
 
 #: ../epoptes/ui/benchmark.py:174
 msgid "There are no selected clients to run the benchmark on."
-msgstr "Не обрано клієнтів для запуску тестування."
+msgstr "Nu ați selectat niciun client pentru rularea testului."
 
 #: ../epoptes/ui/benchmark.py:187
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
-"Всі вибрані клієнти або не знаходяться в мережі, або не мають клієнту "
-"Epoptes, що запущений від імені суперкористувача."
+"Fie toți clienții selectați sunt opriți, sau epoptes-client nu rulează ca "
+"root pe clienți."
 
 #: ../epoptes/ui/benchmark.py:192
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
-"Наступні клієнти будуть виключені з тесту, тому що або не знаходяться в "
-"мережі, або не мають клієнту Epoptes, що запущений від імені "
-"суперкористувача."
+"Următorii clienți vor fi excluși din test deoarece sunt opriți sau epoptes-"
+"client nu rulează ca root pe aceștia."
 
 #: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr "Тест закінчиться через %d секунд..."
+msgstr "Testare finalizată în %d secunde..."
 
 #: ../epoptes/ui/benchmark.py:233
 #, python-format
@@ -472,196 +459,190 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"Щось пішло не так з процесом сервера iperf:\n"
+"Procesul server iperf a pățit ceva:\n"
+"\n"
 "%s"
 
 #: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
-msgstr "Обробка даних…"
+msgstr "Se procesează datele..."
 
 #: ../epoptes/ui/benchmark.py:344
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
-"Не отримано вимірювання від якого-небудь з клієнтів. Перевірте налаштування "
-"мережі."
+"Nu s-au obținut măsurători de la niciun client. Verificați setările de rețea."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
-msgstr "Повідомлення від адміністратора"
+msgstr "Mesaj de la administrator"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes computer lab administration tool"
-msgstr "Інструмент для адміністрування комп’ютерних класів Epoptes"
+msgstr "Utilitar pentru administrarea laboratorului de informatică"
 
 #: ../bin/epoptes.py:59
 msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr "Сталася помилка під час спроби підключення до служби epoptes:"
+msgstr "O eroare a fost întâmpinată la conectarea la serviciul epoptes:"
 
 #: ../bin/epoptes.py:64
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
-"Щоб мати змогу запускати epoptes, користувач %s має бути учасником групи %s."
+"Utilizatorul %s trebuie să fie un membru al grupului %s pentru rularea "
+"epoptes."
 
 #: ../bin/epoptes.py:68
 msgid "Make sure the epoptes service is running."
-msgstr "Переконайтеся, що служба epoptes працює."
+msgstr "Asigurați-vă că serviciu epoptes rulează."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
-msgstr "Пропускна здатність каналу вивантаження"
+msgstr "Lățime de bandă pentru transmitere"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:4
 msgid "Download bandwidth"
-msgstr "Пропускна здатність каналу завантаження"
+msgstr "Lățime de bandă pentru recepție"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr "Показати графік замість таблиці."
+msgstr "Afișează un grafic în loc de tabel."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
-"Не вдалося отримати вимірювання від деяких клієнтів. Це вплине на "
-"статистичні дані."
+"Nu s-au putut obține măsurătorile unor clienți. Statisticile vor fi afectate."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
-msgstr "Загальна статистика пропускної здатності каналу"
+msgstr "Statistică generală la lățimii de bandă"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "The average server download bandwidth per client"
-msgstr ""
-"Середня пропускна здатність каналу завантаження від сервера до клієнта"
+msgstr "Lățimea de bandă medie per client, pentru repcepție"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "Average server download:"
-msgstr "Середнє завантаження з сервера:"
+msgstr "Medie recepție server:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
-"Загальна пропускна здатність завантаження з сервера для всіх клієнтів "
-"одночасно"
+msgstr "Lățimea de bandă totală a serverului, pentru toți clienții, simultan"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "Total server download:"
-msgstr "Загальне завантаження з сервера:"
+msgstr "Total recepție server:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "The average server upload bandwidth per client"
-msgstr ""
-"Середня пропускна здатність каналу вивантаження від сервера до клієнта"
+msgstr "Lățimea de bandă medie pentru transmisie, per client"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "Average server upload:"
-msgstr "Середнє вивантаження з сервера:"
+msgstr "Medie transmitere server:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
-"Загальна пропускна здатність вивантаженя з сервера для всіх клієнтів "
-"одночасно"
+msgstr "Lățimea de bandă totală a serverului, pentru toți clienții, simultan"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Total server upload:"
-msgstr "Загальне вивантаження з сервера:"
+msgstr "Total transmisie server:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid "Epoptes Network Benchmark"
-msgstr "Тест мережевого з'єднання Epoptes"
+msgstr "Testare rețea Epoptes"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:17
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
-"Тест мережевого з'єднання буде тестувати ефективну пропускну\n"
-"здатність мережі, яка доступна для вашої лабораторії."
+"Evaluarea rețelei va testa lățimea de bandă efectivă\n"
+"disponibilă pentru laboratorul dvs."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "Run the benchmark for"
-msgstr "Запустити тест для"
+msgstr "Rulați evaluarea timp de"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "seconds"
-msgstr "секунд(и)"
+msgstr "secunde"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21
 msgid "Start"
-msgstr "Запустити"
+msgstr "Start"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
-msgstr "Змінити псевдонім"
+msgstr "Modifică aliasul"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Set a new alias for the selected client"
-msgstr "Встановити новий псевдонім для позначеного клієнтського вузла"
+msgstr "Stabilește un nou alias pentru clientul selectat"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Graphics card:"
-msgstr "Графічна картка:"
+msgstr "Placa video:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "RAM:"
-msgstr "Оперативна пам’ять:"
+msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "Processor:"
-msgstr "Процесор:"
+msgstr "Procesor:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "User:"
-msgstr "Користувач:"
+msgstr "Utilizator:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "IP address:"
-msgstr "IP-адреса:"
+msgstr "Adresa IP:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "MAC address:"
-msgstr "MAC-адреса:"
+msgstr "Adresa MAC:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Client hostname:"
-msgstr "Назва клієнтського вузла:"
+msgstr "Numele de gazdă a clientului:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Client type:"
-msgstr "Тип клієнтського вузла:"
+msgstr "Tipul clientului:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Client alias:"
-msgstr "Псевдонім клієнтського вузла:"
+msgstr "Aliasul clientului:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:2
 msgid "_Send"
-msgstr "_Надіслати"
+msgstr "_Trimite"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:3
 msgid "Message title:"
-msgstr "Заголовок повідомлення:"
+msgstr "Titlul mesajului:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:4
 msgid "Message text:"
-msgstr "Текст повідомлення:"
+msgstr "Conținutul mesajului:"
 
 #: ../epoptes/ui/gtk/sendMessage.ui.h:5
 msgid "Use Pango markup"
-msgstr "Використовувати розмітку Pango"
+msgstr "Folosește marcarea Pango"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr "Copyright © 2011-2016 The Epoptes Team"
+msgstr "Copyright © 2011-2016 Echipa Epoptes"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "Інструмент для спостереження і керування комп’ютерними класами."
+msgstr "Un utilitar pentru gestionarea laboratoarelor de calculatoare."
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:3
 msgid ""
@@ -677,17 +658,17 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "epoptes. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
-"Програма Epoptes є вільною; її можна поширювати та змінювати на умовах "
-"ліцензії GNU General Public License версії 3 або новішої, оприлюдненої "
-"Фондом вільного програмного забезпечення\n"
+"Epoptes este un program liber: îl puteți redistribui și/sau modifica în "
+"conformitate cu termenii Licenței Publice Generale GNU, așa cum este "
+"publicată de Free Software Foundation; fie versiunea 3 a Licenței, fie "
+"oricare versiune ulterioară. \n"
 "\n"
-"Epoptes поширюється зі сподіванням, що буде корисною, але  БЕЗ БУДЬ-ЯКИХ "
-"ГАРАНТІЙ, ЯВНИХ ЧИ НЕЯВНИХ, ЗОКРЕМА БЕЗ ГАРАНТІЙ КОМЕРЦІЙНОЇ ЦІННОСТІ ТА "
-"ПРИДАТНОСТІ ДЛЯ КОНКРЕТНОЇ МЕТИ. Для отримання додаткових відомостей "
-"зверніться до ліцензії GNU.\n"
+"Epoptes este distribuit în speranța că va fi util, însă FĂRĂ NICIO GARANȚIE, "
+"inclusiv fără garanția de COMERCIALIZARE sau de CONFORMITATE UNUI ANUMIT "
+"SCOP. Citiți Licența Publică Generală GNU pentru mai multe detalii. \n"
 "\n"
-"Копія ліцензії GNU надається разом з Epoptes. \n"
-"Її також можна знайти на сайті <http://www.gnu.org/licenses/>."
+"Ar trebui să fi primit o copie a Licenței Publice Generale GNU împreună cu "
+"epoptes. În caz contrar, consultați <http://www.gnu.org/licenses/>."
 
 #: ../epoptes-client/remote-assistance.py:145
 #: ../epoptes-client/remote-assistance.py:190
@@ -695,67 +676,63 @@ msgstr ""
 #: ../potfiles-workaround/remote-assistance.py:190
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Not connected"
-msgstr "Не з’єднано"
+msgstr "Neconectat"
 
 #: ../epoptes-client/remote-assistance.py:178
 #: ../potfiles-workaround/remote-assistance.py:178
 #, python-format
 msgid "Connecting to %s..."
-msgstr "Встановлення з’єднання з %s…"
+msgstr "Conectare la %s..."
 
 #: ../epoptes-client/remote-assistance.py:187
 #: ../potfiles-workaround/remote-assistance.py:187
 #, python-format
 msgid "Connected to %s"
-msgstr "З’єднано з %s"
+msgstr "Conectat la %s"
 
 #: ../epoptes-client/remote-assistance.py:195
 #: ../potfiles-workaround/remote-assistance.py:195
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "Не вдалось з’єднатись до %s"
+msgstr "Conectare nereușită la %s"
 
 #: ../epoptes-client/remote-assistance.py:209
 #: ../potfiles-workaround/remote-assistance.py:209
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Повторна спроба за %d…"
+msgstr "Reîncercare în %d..."
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr "Вкажіть дані контакту, якому слід надати доступ до вашої стільниці"
+msgstr ""
+"Introduceți informațiile de contact ale persoanei cu care doriți să vă "
+"partajați Ecranul"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Method:"
-msgstr "Спосіб:"
+msgstr "Metoda:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Host:"
-msgstr "Вузол:"
+msgstr "Gazda:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid "Keep reconnecting"
-msgstr "Повторювати спроби з’єднання"
+msgstr "Continuă reconectarea"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Connection information"
-msgstr "Параметри з’єднання"
+msgstr "Informații despre conexiune"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Status"
-msgstr "Стан"
+msgstr "Stare"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Graphics (VNC)"
-msgstr "Графічне (VNC)"
+msgstr "Grafică (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Console (screen)"
-msgstr "Консольне (screen)"
-
-#~ msgid "Epoptes"
-#~ msgstr "Epoptes"
-
-#~ msgid "Copyright © 2011-2012 Epoptes Team"
-#~ msgstr "© Комнада Epoptes, 2011–2012"
+msgstr "Consolă (ecran)"
