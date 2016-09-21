@@ -1,3 +1,9 @@
+epoptes (0.5.10-1~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Wed, 21 Sep 2016 14:45:04 -0700
+
 epoptes (0.5.10-1) unstable; urgency=medium
 
   * New upstream version:
