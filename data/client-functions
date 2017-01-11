@@ -344,6 +344,8 @@ receive_broadcast() {
         # If the user installed ssvnc, prefer it over xvnc4viewer
         if [ -x /usr/bin/ssvncviewer ]; then
             VNCVIEWER=ssvncviewer
+        elif [ -x /usr/bin/xtigervncviewer ]; then
+            VNCVIEWER=xtigervncviewer
         elif [ -x /usr/bin/xvnc4viewer ]; then
             VNCVIEWER=xvnc4viewer
         fi
@@ -353,8 +355,8 @@ receive_broadcast() {
         if [ "$VNCVIEWER" = "ssvncviewer" ]; then
             exec ssvncviewer -shared -viewonly -passwd /dev/stdin \
                 ${3:+-fullscreen} "$SERVER:$1"
-        elif [ "$VNCVIEWER" = "xvnc4viewer" ]; then
-            exec xvnc4viewer -Shared -ViewOnly -passwd /dev/stdin \
+        elif [ "$VNCVIEWER" = "xvnc4viewer" ] || [ "$VNCVIEWER" = "xtigervncviewer" ]; then
+            exec ${VNCVIEWER} -Shared -ViewOnly -passwd /dev/stdin \
                 ${3:+-FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
         else
             exec vncviewer -shared -viewonly -passwd /dev/stdin \

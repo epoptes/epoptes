@@ -268,6 +268,9 @@ class EpoptesGui(object):
             if os.path.isfile('/usr/bin/ssvncviewer'):
                 self.vncviewer = subprocess.Popen(['ssvncviewer',
                     '-multilisten', str(self.vncviewerport-5500)])
+            elif os.path.isfile('/usr/bin/xtigervncviewer'):
+                self.vncviewer = subprocess.Popen(['xtigervncviewer',
+                    '-listen', str(self.vncviewerport)])
             elif os.path.isfile('/usr/bin/xvnc4viewer'):
                 self.vncviewer = subprocess.Popen(['xvnc4viewer',
                     '-listen', str(self.vncviewerport)])
