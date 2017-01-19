@@ -87,3 +87,12 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Twisted
+dropin.cache
+twistd.pid
+
+# IDEs
+.project
+.pydevproject
+.idea/
