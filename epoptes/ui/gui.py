@@ -262,7 +262,7 @@ class EpoptesGui(object):
 
     def reverseConnection(self, widget, path, view_column, cmd, *args):
         # Open vncviewer in listen mode
-        if self.vncviewer is None:
+        if self.vncviewer is None or self.vncviewer.poll() is not None:
             self.vncviewerport = self.findUnusedPort()
             # If the user installed ssvnc, prefer it over xvnc4viewer
             if os.path.isfile('/usr/bin/ssvncviewer'):
