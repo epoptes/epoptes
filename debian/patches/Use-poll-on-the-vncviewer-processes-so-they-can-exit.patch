@@ -1,0 +1,26 @@
+From 92878b03dab0fd8fd04d4aae5f338b569373ba43 Mon Sep 17 00:00:00 2001
+From: Fotis Tsamis <ftsamis@gmail.com>
+Date: Wed, 18 Jan 2017 20:11:42 +0200
+Subject: [PATCH] Use poll() on the vncviewer processes so they can exit
+ cleanly.
+
+---
+ epoptes/ui/gui.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/epoptes/ui/gui.py b/epoptes/ui/gui.py
+index b577503..1efb643 100644
+--- a/epoptes/ui/gui.py
++++ b/epoptes/ui/gui.py
+@@ -262,7 +262,7 @@ class EpoptesGui(object):
+ 
+     def reverseConnection(self, widget, path, view_column, cmd, *args):
+         # Open vncviewer in listen mode
+-        if self.vncviewer is None:
++        if self.vncviewer is None or self.vncviewer.poll() is not None:
+             self.vncviewerport = self.findUnusedPort()
+             # If the user installed ssvnc, prefer it over xvnc4viewer
+             if os.path.isfile('/usr/bin/ssvncviewer'):
+-- 
+2.11.0
+

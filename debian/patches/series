@@ -1,0 +1,2 @@
+Add-support-for-tigervnc-s-xtigervncviewer-binary.patch
+Use-poll-on-the-vncviewer-processes-so-they-can-exit.patch
