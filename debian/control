@@ -32,7 +32,7 @@ Depends: ${python:Depends}, ${misc:Depends},
  socat,
  x11vnc,
  xterm,
- xvnc4viewer | ssvnc | vnc-viewer,
+ tigervnc-viewer | xvnc4viewer | ssvnc | vnc-viewer,
 Recommends: epoptes-client
 Description: Computer lab management tool
  Epoptes is an open source computer lab management and monitoring tool. It
@@ -57,7 +57,7 @@ Depends: ${python:Depends}, ${misc:Depends},
  screen,
  socat,
  x11vnc,
- xvnc4viewer | ssvnc | vnc-viewer,
+ tigervnc-viewer | xvnc4viewer | ssvnc | vnc-viewer,
 Recommends: openssl, xterm
 Suggests: ethtool
 Description: Computer lab management tool (client)
