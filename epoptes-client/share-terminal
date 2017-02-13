@@ -1,0 +1,41 @@
+#!/bin/sh
+###########################################################################
+# Shares the current terminal with a remote person over a secure connection.
+# Usage: share-terminal host
+#
+# Copyright (C) 2017 Alkis Georgopoulos <alkisg@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL'.
+###########################################################################
+
+die() {
+    echo "$@" >&2
+    exit 1
+}
+
+test -n "$1" || die "Usage: $0 <ip>
+Shares the current terminal with a remote person over a secure connection."
+test -f /usr/bin/socat || die "Please install socat."
+test -f /usr/bin/screen || die "Please install screen."
+echo "Connecting to $1..."
+
+read LINES COLUMNS <<EOF
+$(stty size)
+EOF
+export COLUMNS LINES TERM=screen
+socat SYSTEM:"sleep 1; exec screen -xRR ra",pty,stderr openssl-connect:"$1":5499,verify=0 &
+exec screen -l -S ra

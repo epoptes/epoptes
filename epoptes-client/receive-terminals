@@ -1,0 +1,61 @@
+#!/bin/sh
+###########################################################################
+# Receives remote shells over secure connections.
+# Usage: receive-terminals
+#
+# Copyright (C) 2017 Alkis Georgopoulos <alkisg@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL'.
+###########################################################################
+
+die() {
+    echo "$@" >&2
+    exit 1
+}
+
+test -n "$DISPLAY" || die "Please run $0 from within Xorg."
+test -f /usr/bin/socat || die "Please install socat."
+test -f /usr/bin/xterm || die "Please install xterm."
+
+printf "Generating an openssl certificate to secure connections..."
+
+# Save some time by doing openssl and wget in parallel
+PEM=$(mktemp -t receive-terminals-XXXXX.pem)
+trap "rm -f $PEM" INT QUIT
+openssl req -batch -x509 -days 365 -nodes -newkey rsa:4096 -out "$PEM" -keyout "$PEM" 2>/dev/null &
+
+# Set your external IP in the environment if you don't want it auto-detected
+test -n "$IP" || IP=$(wget -T 5 -q http://alkisg.mysch.gr/ip/ -O - | sed -n "s/^IP='\(.*\)'/\\1/p")
+# Falling back to the internal IP
+test -n "$IP" || IP=$(ip route get 8.8.8.8 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\2/p')
+test -n "$IP" || IP="your-ip"
+
+# Wait for openssl to finish
+wait
+
+cat <<EOF
+ [OK]
+
+Accepting remote shell secure connections. Clients can connect by running:
+    /usr/share/epoptes-client/share-terminal $IP
+If they don't have epoptes-client installed, they can run this instead:
+  TERM=screen COLUMNS=\$COLUMNS LINES=\$LINES socat SYSTEM:"sleep 1; exec screen -xRR ra",pty,stderr openssl-connect:$IP:5499,verify=0 & screen -l -S ra
+Press Ctrl+C to end.
+EOF
+
+# You can set XTERM_PARAMS like -geometry 132x50, if you like
+socat openssl-listen:5499,cert="$PEM",reuseaddr,keepalive=1,fork,verify=0 SYSTEM:"xterm $XTERM_PARAMS -e 'socat stdio,raw,echo=0 fd:67'",fdin=67
