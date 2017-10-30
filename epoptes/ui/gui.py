@@ -374,17 +374,26 @@ class EpoptesGui(object):
 
 
     ## FIXME / FIXUS: Should we allow it?
-    def openTerminal(self, em):
+    def openTerminal(self, em, one_per_host=False):
         clients = self.getSelectedClients()
         
         # If there is no client selected, send the command to all
         if len(clients) == 0:
             clients = self.cstore
 
+        addresses = []
+
         for client in clients:
             inst = client[C_INSTANCE]
             if inst.type == 'offline':
                 continue
+
+            if one_per_host:
+                host_address = client[C_SESSION_HANDLE].split(':')[0]
+                if host_address in addresses:
+                    continue
+                else:
+                    addresses.append(host_address)
 
             port = self.findUnusedPort()
             
@@ -404,7 +413,7 @@ class EpoptesGui(object):
 
 
     def openRootTerminal(self, widget):
-        self.openTerminal(EM_SYSTEM)
+        self.openTerminal(EM_SYSTEM, one_per_host=True)
 
 
     def remoteRootTerminal(self, widget):
