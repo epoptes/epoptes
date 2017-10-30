@@ -1,0 +1,129 @@
+#!/bin/sh
+###########################################################################
+# Wraps x11vnc with an alternative treatment
+# for -grabkbd and -grabptr options.
+#
+# This is a workaround for a x11vnc -grabptr limitation
+# where only mouse buttons, but not pointer movement,
+# can be grabbed.
+#
+# It's also a workaround for a x11vnc bug where
+# remote client windows can't be dragged within
+# VNC viewer, if -grabkbd is passed.
+# (https://github.com/LibVNC/x11vnc/issues/18)
+#
+# Usage: x11vnc-wrapper <x11vnc args>
+#
+# Copyright (C) 2015 Laércio de Sousa <laerciosousa@sme-mogidascruzes.sp.gov.br>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# On Debian GNU/Linux systems, the complete text of the GNU General
+# Public License can be found in `/usr/share/common-licenses/GPL'.
+###########################################################################
+# Grab pointer devices.
+# Parameters:
+# $1..$N = devices' IDs
+grab_pointer_devices() {
+    while [ ${#} -gt 0 ]
+    do
+        xinput --set-prop "${1}" "Device Accel Constant Deceleration" 999999
+        shift
+    done
+}
+
+# Ungrab pointer devices.
+# Parameters:
+# $1..$N = devices' IDs
+ungrab_pointer_devices() {
+    while [ ${#} -gt 0 ]
+    do
+        xinput --set-prop "${1}" "Device Accel Constant Deceleration" 1
+        shift
+    done
+}
+
+# Grab key devices.
+# Parameters:
+# $1..$N = devices' IDs
+grab_key_devices() {
+    while [ ${#} -gt 0 ]
+    do
+        xinput --disable "${1}"
+        shift
+    done
+}
+
+# Ungrab key devices.
+# Parameters:
+# $1..$N = devices' IDs
+ungrab_key_devices() {
+    while [ ${#} -gt 0 ]
+    do
+        xinput --enable "${1}"
+        shift
+    done
+}
+
+keyboards=
+pointers=
+
+while [ ${#} -gt 0 ]
+do
+    case "${1}" in
+        -grabkbd)
+            keyboards="$(xinput --list | awk '/slave.*keyboard/ {
+                                             if ($0 !~ /XTEST/) {
+                                                 match($0, /id=[0-9]+/)
+                                                 if (RSTART)
+                                                     print substr($0, RSTART+3, RLENGTH-3)
+                                             }
+                                         }')"
+        ;;
+
+        -grabptr)
+            args="${args} ${1}"
+            pointers="$(xinput --list | awk '/slave.*pointer/ {
+                                            if ($0 !~ /XTEST/) {
+                                                match($0, /id=[0-9]+/)
+                                                if (RSTART)
+                                                     print substr($0, RSTART+3, RLENGTH-3)
+                                            }
+                                        }')"
+        ;;
+
+        *)
+            args="${args} ${1}"
+        ;;
+    esac
+
+    shift
+done
+
+grab_key_devices ${keyboards}
+grab_pointer_devices ${pointers}
+
+# Just a safety measure to ensure input devices
+# will be properly ungrabbed if we receive a
+# SIGTERM or SIGINT while x11vnc is running.
+#
+# Uses SIGTERM-propagation scheme as proposed in
+# http://veithen.github.io/2014/11/16/sigterm-propagation.html
+trap 'kill -TERM ${x11vnc_pid}; ungrab_key_devices ${keyboards}; ungrab_pointer_devices ${pointers}; exit 0' TERM INT
+x11vnc ${args} &
+x11vnc_pid=${!}
+wait ${x11vnc_pid}
+
+ungrab_key_devices ${keyboards}
+ungrab_pointer_devices ${pointers}
