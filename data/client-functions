@@ -355,9 +355,12 @@ receive_broadcast() {
         if [ "$VNCVIEWER" = "ssvncviewer" ]; then
             exec ssvncviewer -shared -viewonly -passwd /dev/stdin \
                 ${3:+-fullscreen} "$SERVER:$1"
-        elif [ "$VNCVIEWER" = "xvnc4viewer" ] || [ "$VNCVIEWER" = "xtigervncviewer" ]; then
+        elif [ "$VNCVIEWER" = "xvnc4viewer" ]; then
             exec ${VNCVIEWER} -Shared -ViewOnly -passwd /dev/stdin \
                 ${3:+-FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
+        elif [ "$VNCVIEWER" = "xtigervncviewer" ]; then
+            exec ${VNCVIEWER} -Shared -ViewOnly -passwd /dev/stdin \
+                ${3:+-FullScreen -MenuKey F13} "$SERVER:$1"
         else
             exec vncviewer -shared -viewonly -passwd /dev/stdin \
                 ${3:+-fullscreen} "$SERVER:$1"
