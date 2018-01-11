@@ -64,13 +64,16 @@ def cached_notify(title, body, icon):
     capability is not provided.
     """
     n = cache.get_notification(title)
-    if n:
-        n.close()
-        n.update(title, n.props.body+'\n'+body, icon)
-    else:
-        n = pynotify.Notification(title, body, icon)
-        cache.add_notification(n, title)
-    n.show()
+    try:
+        if n:
+            n.close()
+            n.update(title, n.props.body+'\n'+body, icon)
+        else:
+            n = pynotify.Notification(title, body, icon)
+            cache.add_notification(n, title)
+        n.show()
+    except:
+        print("Error showing notification. No notification server?")
 
 
 append = 'x-canonical-append' in pynotify.get_server_caps()
