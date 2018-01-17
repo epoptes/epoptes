@@ -72,7 +72,26 @@ done <<EOF
 $(ck-list-sessions)
 EOF
 
-# Plan D: give up!
+# Plan D: consult systemd-logind
+while read sessionid uid user seat; do
+    eval $(loginctl show-session -p Display -p Active "$sessionid")
+
+    if [ "$Active" = "yes" ] && [ -n "$Display" ]; then
+        DISPLAY="$Display"
+        if [ -f "/var/run/lightdm/$user/xauthority" ]; then
+            # Some lightdm setups use a system location for storing authority files
+            XAUTHORITY="/var/run/lightdm/$user/xauthority"
+        else
+            # In most other cases authority file is in home directory
+            XAUTHORITY="$(getent passwd "$user" | cut -d: -f6)/.Xauthority"
+        fi
+        exit_if_found
+    fi
+done <<EOF
+$(loginctl --no-legend)
+EOF
+
+# Plan E: give up!
 echo "Could not detect or access the active display" >&2
 echo "DISPLAY=
 XAUTHORITY="
