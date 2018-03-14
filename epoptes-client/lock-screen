@@ -5,6 +5,7 @@
 # Lock the screen.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -45,7 +46,7 @@ class lockscreen:
         image.set_from_pixbuf(imagepb)
         vbox.pack_start(image, True)
 
-        # Italic fonts are trancated in the sides, so add a space
+        # Italic fonts are truncated in the sides, so add a space
         self.label = gtk.Label(" " + msg + " ")
         self.label.modify_font(pango.FontDescription('FreeSans italic 18'))
         self.fade(True)
