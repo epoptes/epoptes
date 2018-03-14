@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -24,36 +24,40 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gtk
-import gtk.gdk as gdk
-import pango
-import gobject
+import gi
 import sys
 import time
+gi.require_version('Gdk', '3.0')
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gdk
+from gi.repository import GdkPixbuf
+from gi.repository import GObject
+from gi.repository import Gtk
+from gi.repository import Pango
 
 
 class LockScreen:
     def lock(self, msg="The screen is locked by a system administrator."):
-        backlock = gtk.Window(gtk.WINDOW_POPUP)
+        backlock = Gtk.Window(Gtk.WindowType.POPUP)
         backlock.resize(1, 1)
-        backlock.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
-        frontview = gtk.Window()
-        frontview.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
+        backlock.modify_bg(Gtk.StateType.NORMAL, Gdk.Color(0, 0, 0))
+        frontview = Gtk.Window()
+        frontview.modify_bg(Gtk.StateType.NORMAL, Gdk.Color(0, 0, 0))
 
-        vbox = gtk.VBox(spacing=75)
+        vbox = Gtk.VBox(spacing=75)
 
-        imagepb = gtk.gdk.pixbuf_new_from_file_at_size('lock.svg', 250, 250)
-        image = gtk.Image()
+        imagepb = GdkPixbuf.Pixbuf.new_from_file_at_size('lock.svg', 250, 250)
+        image = Gtk.Image()
         image.set_from_pixbuf(imagepb)
-        vbox.pack_start(image, True)
+        vbox.pack_start(image, True, True, 0)
 
         # Italic fonts are truncated in the sides, so add a space
-        self.label = gtk.Label(" " + msg + " ")
-        self.label.modify_font(pango.FontDescription('FreeSans italic 18'))
+        self.label = Gtk.Label(label=" " + msg + " ")
+        self.label.modify_font(Pango.FontDescription('FreeSans italic 18'))
         self.fade(True)
-        vbox.pack_start(self.label, True)
+        vbox.pack_start(self.label, True, True, 0)
 
-        align = gtk.Alignment(0.5, 0.5, 0, 0)
+        align = Gtk.Alignment.new(0.5, 0.5, 0, 0)
         align.add(vbox)
         frontview.add(align)
 
@@ -62,34 +66,33 @@ class LockScreen:
 
         frontview.set_keep_above(True)
         frontview.fullscreen()
-        gdk.beep()
-        gdk.keyboard_grab(backlock.window, False, 0L)
+        Gdk.beep()
+        Gdk.keyboard_grab(backlock.get_window(), False, 0)
 
         # To automatically unlock the screen after 7 seconds, uncomment this:
-        #gobject.timeout_add(7000, self.unlock)
+        #GObject.timeout_add(7000, self.unlock)
 
     def fade(self, firsttime=False):
         if firsttime:
             self.fadesecs = 3.0
             self.fadestart = time.time()
             # For debugging:
-            #print self.fadestart, self.fadesecs
+            #print(self.fadestart, self.fadesecs)
 
         percentage = (time.time() - self.fadestart) / self.fadesecs
-        i = min(round(255 * percentage), 255)
-        c = "#%02x%02x%02x" % (i, i, i)
+        i = min(round(Gdk.Color.MAX_VALUE * percentage), Gdk.Color.MAX_VALUE)
         # For debugging:
-        #print time.time(), '-', 100 * percentage, "completed, rendering color ", c
-        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color(c))
+        #print(time.time(), '-', 100 * percentage, "completed, rendering color ", i)
+        self.label.modify_fg(Gtk.StateType.NORMAL, Gdk.Color(i, i, i))
         # Put a sleep() here if you want to test for slow thin clients:
         #time.sleep(0.6)
-        if i < 255:
-            gobject.timeout_add(60, self.fade)
+        if i < Gdk.Color.MAX_VALUE:
+            GObject.timeout_add(60, self.fade)
 
         return False
 
     def unlock(self):
-        gdk.keyboard_ungrab(0L)
+        Gdk.keyboard_ungrab(0)
         exit()
 
 
@@ -97,4 +100,4 @@ if len(sys.argv) <= 1:
     LockScreen().lock()
 else:
     LockScreen().lock(sys.argv[1])
-gtk.main()
+Gtk.main()
