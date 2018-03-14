@@ -31,7 +31,8 @@ import gobject
 import sys
 import time
 
-class lockscreen:
+
+class LockScreen:
     def lock(self, msg="The screen is locked by a system administrator."):
         backlock = gtk.Window(gtk.WINDOW_POPUP)
         backlock.resize(1, 1)
@@ -67,7 +68,6 @@ class lockscreen:
         # To automatically unlock the screen after 7 seconds, uncomment this:
         #gobject.timeout_add(7000, self.unlock)
 
-
     def fade(self, firsttime=False):
         if firsttime:
             self.fadesecs = 3.0
@@ -88,14 +88,13 @@ class lockscreen:
 
         return False
 
-
     def unlock(self):
         gdk.keyboard_ungrab(0L)
         exit()
 
 
 if len(sys.argv) <= 1:
-    lockscreen().lock()
+    LockScreen().lock()
 else:
-    lockscreen().lock(sys.argv[1])
+    LockScreen().lock(sys.argv[1])
 gtk.main()
