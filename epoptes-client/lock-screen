@@ -43,17 +43,21 @@ class LockScreen:
         backlock.modify_bg(Gtk.StateType.NORMAL, Gdk.Color(0, 0, 0))
         frontview = Gtk.Window()
         frontview.modify_bg(Gtk.StateType.NORMAL, Gdk.Color(0, 0, 0))
+        screen = Gdk.Screen.get_default()
+        swidth = screen.get_width()
+        sheight = screen.get_height()
+        smin = min(swidth, sheight)
+        frontview.resize(swidth, sheight)
 
         vbox = Gtk.VBox(spacing=75)
 
-        imagepb = GdkPixbuf.Pixbuf.new_from_file_at_size('lock.svg', 250, 250)
+        imagepb = GdkPixbuf.Pixbuf.new_from_file_at_size('lock.svg', smin/3, smin/3)
         image = Gtk.Image()
         image.set_from_pixbuf(imagepb)
         vbox.pack_start(image, True, True, 0)
 
-        # Italic fonts are truncated in the sides, so add a space
-        self.label = Gtk.Label(label=" " + msg + " ")
-        self.label.modify_font(Pango.FontDescription('FreeSans italic 18'))
+        self.label = Gtk.Label()
+        self.label.set_markup('<span size="' + str(10*swidth) + '"> ' + msg + ' </span>')
         self.fade(True)
         vbox.pack_start(self.label, True, True, 0)
 
