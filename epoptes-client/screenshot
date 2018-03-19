@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Screenshot.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 # Many thanks to Uli Schlachter <psychon@znc.in> for helping with the cairo stuff
 #
 # This program is free software: you can redistribute it and/or modify
@@ -14,7 +15,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -24,34 +25,42 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ############################################################################
 
-import gtk.gdk as gdk
-from sys import stdout, stderr, argv
+import cairo
+import gi
+import sys
+gi.require_version('Gdk', '3.0')
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gdk
+from gi.repository import Gtk
 
-if len(argv) == 3:
-    width, height = int(argv[1]), int(argv[2])
+
+if len(sys.argv) == 3:
+    width, height = int(sys.argv[1]), int(sys.argv[2])
 else:
+    sys.stderr.write("Usage: screenshot width height\n")
     exit(1)
 
-root = gdk.get_default_root_window()
+root = Gdk.get_default_root_window()
 if root is None:
     exit(1)
-r_width, r_height = root.get_size()
+geometry = root.get_geometry()
 
-pmap = gdk.Pixmap(root, width, height)
-cr = pmap.cairo_create()
-cr.scale(float(width)/r_width, float(height)/r_height)
-cr.set_source_pixmap(root, 0, 0)
+surface = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
+cr = cairo.Context(surface)
+cr.scale(float(width)/geometry.width, float(height)/geometry.height)
+Gdk.cairo_set_source_window(cr, root, 0, 0)
 cr.paint()
 
-pixbuf = gdk.Pixbuf(gdk.COLORSPACE_RGB, False, 8, width, height)
-pixbuf.get_from_drawable(pmap, root.get_colormap(), 0, 0, 0, 0, width, height)
-
-rowst = str(pixbuf.get_rowstride())
+pixbuf = Gdk.pixbuf_get_from_surface(surface, 0, 0, width, height)
+rowst = pixbuf.get_rowstride()
 pixels = pixbuf.get_pixels()
 
 try:
-    stdout.flush()
-    stdout.write('%s\n%ix%i\n%s' %(rowst, width, height, pixels))
-    stdout.flush()
+    sys.stdout.buffer.flush()
+    sys.stdout.buffer.write(bytearray("%i\n%ix%i\n" % (rowst, width, height), "ascii"))
+    sys.stdout.buffer.write(pixels)
+    # TODO: for some reason, the last padding isn't included, so do it manually
+    sys.stdout.buffer.write(b"\0"*(rowst - 3*width))
+    sys.stdout.buffer.flush()
 except:
-    stderr.write("Error while sending screenshot\n")
+    sys.stderr.write("Error while sending screenshot\n")
