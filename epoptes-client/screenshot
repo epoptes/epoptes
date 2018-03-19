@@ -57,7 +57,7 @@ pixels = pixbuf.get_pixels()
 
 try:
     sys.stdout.buffer.flush()
-    sys.stdout.buffer.write(bytearray("%s\n%ix%i\n" % (rowst, width, height), "ascii"))
+    sys.stdout.buffer.write(bytearray("%i\n%ix%i\n" % (rowst, width, height), "ascii"))
     sys.stdout.buffer.write(pixels)
     # TODO: for some reason, the last padding isn't included, so do it manually
     sys.stdout.buffer.write(b"\0"*(rowst - 3*width))
