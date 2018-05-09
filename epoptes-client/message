@@ -30,7 +30,7 @@ from gi.repository import Gtk
 
 class MessageWindow(Gtk.Window):
 
-    def __init__(self, text, title="Epoptes", markup=True, icon_name=Gtk.STOCK_INFO):
+    def __init__(self, text, title="Epoptes", markup=True, icon_name="dialog-information"):
         Gtk.Window.__init__(self, title=title, icon_name=icon_name)
 
         spacing = 10
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         argv[1],
         argv[2] if len(argv) > 2 else "Epoptes",
         argv[3] == "True" if len(argv) > 3 else True,
-        argv[4] if len(argv) > 4 else Gtk.STOCK_INFO
+        argv[4] if len(argv) > 4 else "dialog-information"
     )
     window.connect("destroy", Gtk.main_quit)
     window.show_all()
