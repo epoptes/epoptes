@@ -21,20 +21,22 @@
       </row>
     </data>
   </object>
-  <object class="GtkDialog" id="support_dialog">
+  <object class="GtkWindow" id="support_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">6</property>
-    <property name="type_hint">normal</property>
+    <property name="default_width">360</property>
+    <property name="icon_name">system-help</property>
     <signal name="delete-event" handler="on_dialog_delete_event" swapped="no"/>
     <child>
       <placeholder/>
     </child>
-    <child internal-child="vbox">
+    <child>
       <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">12</property>
-        <child internal-child="action_area">
+        <child>
           <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -93,7 +95,7 @@
                   <object class="GtkImage" id="image1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="stock">gtk-dialog-question</property>
+                    <property name="icon_name">dialog-question</property>
                     <property name="icon_size">6</property>
                   </object>
                   <packing>
@@ -224,8 +226,8 @@
                             <signal name="toggled" handler="toggle_retry" swapped="no"/>
                           </object>
                           <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -344,9 +346,5 @@
         </child>
       </object>
     </child>
-    <action-widgets>
-      <action-widget response="0">close_button</action-widget>
-      <action-widget response="0">connect_button</action-widget>
-    </action-widgets>
   </object>
 </interface>
