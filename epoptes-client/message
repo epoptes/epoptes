@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
-# Show a message using gtk.MessageDialog.
+# Display a simple window with a message.
 #
-# Copyright (C) 2012 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2012-2018 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,50 +23,58 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ############################################################################
 
-import gtk
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
-def MessageDialog(text, title="Epoptes", markup=True, icon="dialog-information"):
-    if icon == "dialog-error":
-        type = gtk.MESSAGE_ERROR
-    elif icon == "dialog-question":
-        type = gtk.MESSAGE_QUESTION
-    elif icon == "dialog-warning":
-        type = gtk.MESSAGE_WARNING
-    else:
-        type = gtk.MESSAGE_INFO
-    dlg = gtk.MessageDialog(None, 0, type, gtk.BUTTONS_CLOSE, text)
-    dlg.set_modal(True)
-    dlg.set_title(title)
-    dlg.set_property('use-markup', markup)
-    dlg.set_property('skip-taskbar-hint', False)
-    dlg.set_property('icon-name', icon)
-    dlg.run()
-    dlg.destroy()
+
+class MessageWindow(Gtk.Window):
+
+    def __init__(self, text, title="Epoptes", markup=True, icon_name=Gtk.STOCK_INFO):
+        Gtk.Window.__init__(self, title=title, icon_name=icon_name)
+
+        spacing = 10
+        grid = Gtk.Grid(
+            column_spacing=spacing, row_spacing=spacing, margin_left=spacing, margin_top=spacing, margin_right=spacing,
+            margin_bottom=spacing)
+        self.add(grid)
+
+        image = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.DIALOG)
+        grid.add(image)
+
+        # Always load the plain text first in case the markup parsing fails
+        label = Gtk.Label(
+            label=text, selectable=True, hexpand=True, vexpand=True, halign=Gtk.Align.START, valign=Gtk.Align.START)
+        if markup:
+            label.set_markup(text)
+        grid.add(label)
+
+        button = Gtk.Button.new_from_stock(Gtk.STOCK_CLOSE)
+        button.set_hexpand(False)
+        button.set_halign(Gtk.Align.END)
+        button.connect("clicked", Gtk.main_quit)
+        grid.attach(button, 1, 1, 2, 1)
+        self.set_focus_child(button)
+
+        accelgroup = Gtk.AccelGroup()
+        key, modifier = Gtk.accelerator_parse('Escape')
+        accelgroup.connect(key, modifier, Gtk.AccelFlags.VISIBLE, Gtk.main_quit)
+        self.add_accel_group(accelgroup)
 
 
 if __name__ == '__main__':
-    from sys import argv
+    from sys import argv, stderr
 
-    if not (len(argv) >= 1 and len(argv) <= 5):
-        print "Usage: message text [title] [markup] [icon]"
+    if len(argv) <= 1 or len(argv) > 5:
+        stderr.write("Usage: message text [title] [markup] [icon_name]\n")
         exit(1)
 
-    if len(argv) == 5:
-        type = argv[4]
-    else:
-        type = "dialog-information"
-
-    if len(argv) >= 4:
-        markup = argv[3] == "True"
-    else:
-        markup = "False"
-
-    if len(argv) >= 3:
-        title = argv[2]
-    else:
-        title = 'Epoptes'
-
-    if len(argv) >= 2:
-        text = argv[1]
-
-    MessageDialog(text, title, markup, type)
+    window = MessageWindow(
+        argv[1],
+        argv[2] if len(argv) > 2 else "Epoptes",
+        argv[3] == "True" if len(argv) > 3 else True,
+        argv[4] if len(argv) > 4 else Gtk.STOCK_INFO
+    )
+    window.connect("destroy", Gtk.main_quit)
+    window.show_all()
+    Gtk.main()
