@@ -31,7 +31,7 @@ gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import Gtk
 
 
@@ -45,26 +45,25 @@ class LockScreen:
         gtk_provider = Gtk.CssProvider()
         gtk_context = Gtk.StyleContext()
         gtk_context.add_provider_for_screen(screen, gtk_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-        gtk_provider.load_from_data(bytes("""window { background-color: black; }""".encode()))
+        gtk_provider.load_from_data(bytes("""
+* {{ transition-property: color;  transition-duration: 4s; }}
+window {{ background-color: black; }}
+label {{ font-size: {0:.0f}px; }}
+label#black {{ color: black; }}
+label#white {{ color: #e0e0e0; }}
+""".format(swidth / 70).encode()))
 
-        backlock = Gtk.Window(Gtk.WindowType.POPUP)
+        backlock = Gtk.Window(type=Gtk.WindowType.POPUP)
         backlock.resize(1, 1)
         frontview = Gtk.Window()
         frontview.resize(swidth, sheight)
 
         box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL, spacing=smin/12, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
-
-        imagepb = GdkPixbuf.Pixbuf.new_from_file_at_size('lock.svg', smin/3, smin/3)
-        image = Gtk.Image()
-        image.set_from_pixbuf(imagepb)
+        image = Gtk.Image(pixbuf=GdkPixbuf.Pixbuf.new_from_file_at_size('lock.svg', smin/3, smin/3))
         box.pack_start(image, False, False, 0)
-
-        self.label = Gtk.Label()
-        self.label.set_markup('<span size="' + str(10*swidth) + '"> ' + msg + ' </span>')
-        self.fade(True)
+        self.label = Gtk.Label(label=msg, name="black")
         box.pack_start(self.label, False, False, 0)
-
         frontview.add(box)
 
         backlock.show_all()
@@ -75,27 +74,14 @@ class LockScreen:
         Gdk.beep()
         Gdk.keyboard_grab(backlock.get_window(), False, 0)
 
-        # To automatically unlock the screen after 7 seconds, uncomment this:
-        # GObject.timeout_add(7000, self.unlock)
+        # Transitions need an event to start
+        GLib.timeout_add(100, self.do_transition)
 
-    def fade(self, firsttime=False):
-        if firsttime:
-            self.fadesecs = 3.0
-            self.fadestart = time.time()
-            # For debugging:
-            # print(self.fadestart, self.fadesecs)
+        # To automatically unlock the screen after 5 seconds, uncomment this:
+        # GLib.timeout_add(5000, self.unlock)
 
-        percentage = (time.time() - self.fadestart) / self.fadesecs
-        i = min(round(Gdk.Color.MAX_VALUE * percentage), Gdk.Color.MAX_VALUE)
-        # For debugging:
-        # print(time.time(), '-', 100 * percentage, "completed, rendering color ", i)
-        self.label.modify_fg(Gtk.StateType.NORMAL, Gdk.Color(i, i, i))
-        # Put a sleep() here if you want to test for slow thin clients:
-        # time.sleep(0.6)
-        if i < Gdk.Color.MAX_VALUE:
-            GObject.timeout_add(60, self.fade)
-
-        return False
+    def do_transition(self):
+        self.label.set_name("white")
 
     def unlock(self):
         Gdk.keyboard_ungrab(0)
