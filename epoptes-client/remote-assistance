@@ -65,7 +65,6 @@ class Support:
         self.status_label = self.get('status_label')
         self.method_combo = self.get('method_combobox')
         self.action_button = self.get('connect_button')
-        self.status_box = self.get('status_hbox')
         self.spinner = self.get('status_spinner')
         self.action_signal_handler = self.action_button.connect('clicked', self.connect)
 
@@ -79,7 +78,7 @@ class Support:
         self.host = ''
         self.connected = False
         
-        self.get('support_dialog').show()
+        self.get('support_window').show()
         
         
     def connect(self, widget=None):
@@ -162,7 +161,7 @@ class Support:
             self.disconnect()
         exit()
     
-    def on_dialog_delete_event(self, widget, event):
+    def on_window_delete_event(self, widget, event):
         self.on_close_button_clicked(None)
     
     def host_changed(self, widget):
