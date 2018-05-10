@@ -33,10 +33,7 @@ class MessageWindow(Gtk.Window):
     def __init__(self, text, title="Epoptes", markup=True, icon_name="dialog-information"):
         Gtk.Window.__init__(self, title=title, icon_name=icon_name)
 
-        spacing = 10
-        grid = Gtk.Grid(
-            column_spacing=spacing, row_spacing=spacing, margin_left=spacing, margin_top=spacing, margin_right=spacing,
-            margin_bottom=spacing)
+        grid = Gtk.Grid(column_spacing=10, row_spacing=10, margin=10)
         self.add(grid)
 
         image = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.DIALOG)
