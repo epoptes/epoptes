@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Lock the screen.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,78 +24,86 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gtk
-import gtk.gdk as gdk
-import pango
-import gobject
+import gi
 import sys
 import time
+gi.require_version('Gdk', '3.0')
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gdk
+from gi.repository import GdkPixbuf
+from gi.repository import GObject
+from gi.repository import Gtk
 
-class lockscreen:
+
+class LockScreen:
     def lock(self, msg="The screen is locked by a system administrator."):
-        backlock = gtk.Window(gtk.WINDOW_POPUP)
+        screen = Gdk.Screen.get_default()
+        swidth = screen.get_width()
+        sheight = screen.get_height()
+        smin = min(swidth, sheight)
+
+        gtk_provider = Gtk.CssProvider()
+        gtk_context = Gtk.StyleContext()
+        gtk_context.add_provider_for_screen(screen, gtk_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+        gtk_provider.load_from_data(bytes("""window { background-color: black; }""".encode()))
+
+        backlock = Gtk.Window(Gtk.WindowType.POPUP)
         backlock.resize(1, 1)
-        backlock.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
-        frontview = gtk.Window()
-        frontview.modify_bg(gtk.STATE_NORMAL, gdk.Color("#000000"))
+        frontview = Gtk.Window()
+        frontview.resize(swidth, sheight)
 
-        vbox = gtk.VBox(spacing=75)
+        box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL, spacing=smin/12, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
 
-        imagepb = gtk.gdk.pixbuf_new_from_file_at_size('lock.svg', 250, 250)
-        image = gtk.Image()
+        imagepb = GdkPixbuf.Pixbuf.new_from_file_at_size('lock.svg', smin/3, smin/3)
+        image = Gtk.Image()
         image.set_from_pixbuf(imagepb)
-        vbox.pack_start(image, True)
+        box.pack_start(image, False, False, 0)
 
-        # Italic fonts are trancated in the sides, so add a space
-        self.label = gtk.Label(" " + msg + " ")
-        self.label.modify_font(pango.FontDescription('FreeSans italic 18'))
+        self.label = Gtk.Label()
+        self.label.set_markup('<span size="' + str(10*swidth) + '"> ' + msg + ' </span>')
         self.fade(True)
-        vbox.pack_start(self.label, True)
+        box.pack_start(self.label, False, False, 0)
 
-        align = gtk.Alignment(0.5, 0.5, 0, 0)
-        align.add(vbox)
-        frontview.add(align)
+        frontview.add(box)
 
         backlock.show_all()
         frontview.show_all()
 
         frontview.set_keep_above(True)
         frontview.fullscreen()
-        gdk.beep()
-        gdk.keyboard_grab(backlock.window, False, 0L)
+        Gdk.beep()
+        Gdk.keyboard_grab(backlock.get_window(), False, 0)
 
         # To automatically unlock the screen after 7 seconds, uncomment this:
-        #gobject.timeout_add(7000, self.unlock)
-
+        # GObject.timeout_add(7000, self.unlock)
 
     def fade(self, firsttime=False):
         if firsttime:
             self.fadesecs = 3.0
             self.fadestart = time.time()
             # For debugging:
-            #print self.fadestart, self.fadesecs
+            # print(self.fadestart, self.fadesecs)
 
         percentage = (time.time() - self.fadestart) / self.fadesecs
-        i = min(round(255 * percentage), 255)
-        c = "#%02x%02x%02x" % (i, i, i)
+        i = min(round(Gdk.Color.MAX_VALUE * percentage), Gdk.Color.MAX_VALUE)
         # For debugging:
-        #print time.time(), '-', 100 * percentage, "completed, rendering color ", c
-        self.label.modify_fg(gtk.STATE_NORMAL, gdk.Color(c))
+        # print(time.time(), '-', 100 * percentage, "completed, rendering color ", i)
+        self.label.modify_fg(Gtk.StateType.NORMAL, Gdk.Color(i, i, i))
         # Put a sleep() here if you want to test for slow thin clients:
-        #time.sleep(0.6)
-        if i < 255:
-            gobject.timeout_add(60, self.fade)
+        # time.sleep(0.6)
+        if i < Gdk.Color.MAX_VALUE:
+            GObject.timeout_add(60, self.fade)
 
         return False
 
-
     def unlock(self):
-        gdk.keyboard_ungrab(0L)
+        Gdk.keyboard_ungrab(0)
         exit()
 
 
 if len(sys.argv) <= 1:
-    lockscreen().lock()
+    LockScreen().lock()
 else:
-    lockscreen().lock(sys.argv[1])
-gtk.main()
+    LockScreen().lock(sys.argv[1])
+Gtk.main()
