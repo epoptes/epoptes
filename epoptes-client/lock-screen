@@ -36,7 +36,7 @@ from gi.repository import Gtk
 
 
 class LockScreen:
-    def lock(self, msg="The screen is locked by a system administrator."):
+    def lock(self, msg, unlock_secs):
         screen = Gdk.Screen.get_default()
         swidth = screen.get_width()
         sheight = screen.get_height()
@@ -77,8 +77,9 @@ label#white {{ color: #e0e0e0; }}
         # Transitions need an event to start
         GLib.timeout_add(100, self.do_transition)
 
-        # To automatically unlock the screen after 5 seconds, uncomment this:
-        # GLib.timeout_add(5000, self.unlock)
+        # While developing, run e.g. `./lock-screen "" 5` to only lock for 5 seconds
+        if unlock_secs is not None:
+            GLib.timeout_add(unlock_secs*1000, self.unlock)
 
     def do_transition(self):
         self.label.set_name("white")
@@ -88,8 +89,8 @@ label#white {{ color: #e0e0e0; }}
         exit()
 
 
-if len(sys.argv) <= 1:
-    LockScreen().lock()
-else:
-    LockScreen().lock(sys.argv[1])
+LockScreen().lock(
+    sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else "The screen is locked by a system administrator.",
+    int(sys.argv[2]) if len(sys.argv) > 2 else None
+)
 Gtk.main()
