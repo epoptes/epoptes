@@ -43,7 +43,7 @@ import subprocess
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from gi.repository import GObject
+from gi.repository import GLib
 import gettext
 gettext.install('epoptes')
 import locale
@@ -98,18 +98,18 @@ class Support:
         
         # Set the status as "Connecting"
         if self.retry_timeout_id:
-            GObject.source_remove(self.retry_timeout_id)
+            GLib.source_remove(self.retry_timeout_id)
             self.retry_timeout_id = None
         self.set_state('connecting')
         
         # Start polling the process every 1 second to see if it's still alive
-        GObject.timeout_add(1000, self.poll_process)
+        GLib.timeout_add(1000, self.poll_process)
     
     def disconnect(self, widget=None):
         self.manually_stopped = True
         if self.retry_timeout_id is not None:
             self.set_state('disconnected')
-            GObject.source_remove(self.retry_timeout_id)
+            GLib.source_remove(self.retry_timeout_id)
             self.retry_timeout_id = None
         if self.proc:
             self.proc.kill()
@@ -206,7 +206,7 @@ class Support:
             self.connect()
         else:
             self.status_label.set_text(msg+' '+_('Retrying in %d...') % interval)
-            self.retry_timeout_id = GObject.timeout_add(1000, self.update_and_retry, msg, interval-1)
+            self.retry_timeout_id = GLib.timeout_add(1000, self.update_and_retry, msg, interval-1)
         return False
     
     def set_action_button(self, mode):
