@@ -19,8 +19,9 @@
   <object class="GtkWindow" id="support_window">
     <property name="can_focus">False</property>
     <property name="border_width">6</property>
+    <property name="title" translatable="yes">Remote support</property>
     <property name="default_width">440</property>
-    <property name="icon_name">system-help</property>
+    <property name="icon_name">preferences-system-network</property>
     <signal name="delete-event" handler="on_window_delete_event" swapped="no"/>
     <child>
       <placeholder/>
@@ -45,7 +46,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="pixel_size">48</property>
-                <property name="icon_name">dialog-question</property>
+                <property name="icon_name">preferences-system-network</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
