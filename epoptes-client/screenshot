@@ -45,10 +45,12 @@ geometry = root.get_geometry()
 
 surface = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
 cr = cairo.Context(surface)
+# TODO: check if this actually does client-size resizing
 cr.scale(float(width)/geometry.width, float(height)/geometry.height)
 Gdk.cairo_set_source_window(cr, root, 0, 0)
 cr.paint()
 
+# TODO: is a pixbuf necessary, or can we get the bytes directly from the cairo surface?
 pixbuf = Gdk.pixbuf_get_from_surface(surface, 0, 0, width, height)
 rowst = pixbuf.get_rowstride()
 pixels = pixbuf.get_pixels()
