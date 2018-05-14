@@ -47,10 +47,10 @@ class LockScreen:
         gtk_context.add_provider_for_screen(screen, gtk_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
         gtk_provider.load_from_data(bytes("""
 * {{ transition-property: color;  transition-duration: 4s; }}
-window {{ background-color: black; }}
-label {{ font-size: {0:.0f}px; }}
-label#black {{ color: black; }}
-label#white {{ color: #e0e0e0; }}
+window, GtkWindow {{ background-color: black; }}
+label, GtkLabel {{ font-size: {0:.0f}px; }}
+label#black, GtkLabel#black {{ color: black; }}
+label#white, GtkLabel#white {{ color: #e0e0e0; }}
 """.format(swidth / 70).encode()))
 
         backlock = Gtk.Window(type=Gtk.WindowType.POPUP)
