@@ -1,9 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 ###########################################################################
-# Remote assistance
+# Reverse screen sharing using VNC or GNU screen.
 #
 # Copyright (C) 2012 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,7 +13,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -39,10 +40,12 @@ if __name__ == '__main__' and len(sys.argv) > 1:
     os.execl("/bin/sh", "sh", "-c", """socat tcp:%s:%d SYSTEM:"sleep 1; exec screen -xRR ra$$",pty,stderr & exec screen -S ra$$""" % split_hostname(sys.argv[1]))
 import signal
 import subprocess
-import gtk
-import gobject
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+from gi.repository import GLib
 import gettext
-gettext.install('epoptes', unicode=True)
+gettext.install('epoptes')
 import locale
 locale.textdomain('epoptes')
 
@@ -51,7 +54,7 @@ pid = os.getpid()
 
 class Support:
     def __init__(self):
-        self.wTree = gtk.Builder()
+        self.wTree = Gtk.Builder()
         self.wTree.add_from_file('remote_assistance.ui')
         self.get = self.wTree.get_object
         
@@ -62,13 +65,9 @@ class Support:
         self.status_label = self.get('status_label')
         self.method_combo = self.get('method_combobox')
         self.action_button = self.get('connect_button')
-        self.status_box = self.get('status_hbox')
+        self.spinner = self.get('status_spinner')
         self.action_signal_handler = self.action_button.connect('clicked', self.connect)
-        self.spinner = gtk.Spinner()
-        self.spinner.set_size_request(16, 16)
-        self.status_box.pack_start(self.spinner, False)
-        self.status_box.reorder_child(self.spinner, 0)
-        
+
         self.retry_timeout_id = None
         
         self.retry = False
@@ -79,7 +78,7 @@ class Support:
         self.host = ''
         self.connected = False
         
-        self.get('support_dialog').show()
+        self.get('support_window').show()
         
         
     def connect(self, widget=None):
@@ -99,18 +98,18 @@ class Support:
         
         # Set the status as "Connecting"
         if self.retry_timeout_id:
-            gobject.source_remove(self.retry_timeout_id)
+            GLib.source_remove(self.retry_timeout_id)
             self.retry_timeout_id = None
         self.set_state('connecting')
         
         # Start polling the process every 1 second to see if it's still alive
-        gobject.timeout_add(1000, self.poll_process)
+        GLib.timeout_add(1000, self.poll_process)
     
     def disconnect(self, widget=None):
         self.manually_stopped = True
         if self.retry_timeout_id is not None:
             self.set_state('disconnected')
-            gobject.source_remove(self.retry_timeout_id)
+            GLib.source_remove(self.retry_timeout_id)
             self.retry_timeout_id = None
         if self.proc:
             self.proc.kill()
@@ -162,13 +161,13 @@ class Support:
             self.disconnect()
         exit()
     
-    def on_dialog_delete_event(self, widget, event):
+    def on_window_delete_event(self, widget, event):
         self.on_close_button_clicked(None)
     
     def host_changed(self, widget):
         txt = widget.get_text().strip()
-        if self.action_button.get_label() == gtk.STOCK_CONNECT:
-        	self.action_button.set_property('sensitive', len(txt) > 0)
+        if self.action_button.get_label() == Gtk.STOCK_CONNECT:
+            self.action_button.set_property('sensitive', len(txt) > 0)
     
     def set_state(self, state):
         self.stop_spinner()
@@ -183,18 +182,18 @@ class Support:
                 mode = 'VNC'
             else:
                 mode = 'console'
-            self.status_icon.set_from_stock(gtk.STOCK_YES, gtk.ICON_SIZE_BUTTON)
+            self.status_icon.set_from_stock(Gtk.STOCK_YES, Gtk.IconSize.BUTTON)
             self.status_label.set_text(_('Connected to %s') % self.host)
             self.set_action_button('disconnect')
         elif state == 'disconnected':
             msg = _('Not connected')
-            self.status_icon.set_from_stock(gtk.STOCK_NO, gtk.ICON_SIZE_BUTTON)
+            self.status_icon.set_from_stock(Gtk.STOCK_NO, Gtk.IconSize.BUTTON)
             self.status_label.set_text(msg)
         
         elif state == 'failed':
             msg = _('Failed to connect to %s') %self.host
             self.status_label.set_text(msg)
-            self.status_icon.set_from_stock(gtk.STOCK_DIALOG_ERROR, gtk.ICON_SIZE_BUTTON)
+            self.status_icon.set_from_stock(Gtk.STOCK_DIALOG_ERROR, Gtk.IconSize.BUTTON)
             
             if self.retry:
                 self.update_and_retry(msg, self.retry_interval)
@@ -207,7 +206,7 @@ class Support:
             self.connect()
         else:
             self.status_label.set_text(msg+' '+_('Retrying in %d...') % interval)
-            self.retry_timeout_id = gobject.timeout_add(1000, self.update_and_retry, msg, interval-1)
+            self.retry_timeout_id = GLib.timeout_add(1000, self.update_and_retry, msg, interval-1)
         return False
     
     def set_action_button(self, mode):
@@ -217,10 +216,10 @@ class Support:
         callback = None
         btn = self.action_button
         if mode == 'connect':
-            btn.set_label(gtk.STOCK_CONNECT)
+            btn.set_label(Gtk.STOCK_CONNECT)
             callback = self.connect
         elif mode == 'disconnect':
-            btn.set_label(gtk.STOCK_DISCONNECT)
+            btn.set_label(Gtk.STOCK_DISCONNECT)
             callback = self.disconnect
         
         if callback:
@@ -245,4 +244,4 @@ class Support:
         
 if __name__ == '__main__':
     Support()
-    gtk.main()
+    Gtk.main()
