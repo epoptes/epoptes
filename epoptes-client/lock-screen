@@ -89,8 +89,15 @@ label#white, GtkLabel#white {{ color: #e0e0e0; }}
         exit()
 
 
-LockScreen().lock(
-    sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else "The screen is locked by a system administrator.",
-    int(sys.argv[2]) if len(sys.argv) > 2 else None
-)
-Gtk.main()
+if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1]:
+        msg = sys.argv[1]
+    else:
+        msg = "The screen is locked by a system administrator."
+
+    if len(sys.argv) > 2:
+        unlock_secs = int(sys.argv[2])
+    else:
+        unlock_secs = None
+    LockScreen().lock(msg, unlock_secs)
+    Gtk.main()
