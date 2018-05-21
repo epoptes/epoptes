@@ -27,7 +27,7 @@
 import os
 import uuid
 from twisted.internet import reactor, protocol, defer, error
-from io import StringIO
+from io import BytesIO
 
 from . import exchange
 
@@ -44,7 +44,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def __init__(self):
         self.currentDelimiters = []
-        self.buffer = StringIO()
+        self.buffer = BytesIO()
         self.pingTimer = None
         self.pingTimeout = None
         self.timedOut = False
@@ -79,8 +79,8 @@ class DelimitedBashReceiver(protocol.Protocol):
             cmd, delimiter)
 
         # TODO: check the python's debug logging implementation
-        # print "Sending:", delimitedCommand,
-        self.transport.write(delimitedCommand)
+        # print("Sending:", str(delimitedCommand))
+        self.transport.write(bytes(delimitedCommand, 'utf-8'))
 
         return d
 
@@ -90,7 +90,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         self.handle = "%s:%s" % (peer.host, peer.port)
         print("Connected:", self.handle)
         
-        d = self.command(self.factory.startupCommands.encode("utf-8"))
+        d = self.command(self.factory.startupCommands)
         
         def forwardConnection(result):
             exchange.clientConnected(self.handle, self)
@@ -133,7 +133,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         self.buffer.seek(-searchLength, os.SEEK_END)
 
         searchStr = self.buffer.read()
-        searchPos = searchStr.find(delimiter)
+        searchPos = searchStr.find(bytes(delimiter, 'ascii'))
         if searchPos != -1:
             #print "Found delimiter:", delimiter
 
@@ -150,7 +150,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             # Throw away the delimiter
             self.buffer.read(len(delimiter))
 
-            newBuffer = StringIO()
+            newBuffer = BytesIO()
             newBuffer.write(self.buffer.read())
             self.buffer = newBuffer
 
@@ -178,7 +178,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             self.currentDelimiters.pop(0)
             d.callback(response)
                 
-        newBuffer = StringIO()
+        newBuffer = BytesIO()
         newBuffer.write(rest)
         self.buffer = newBuffer
 

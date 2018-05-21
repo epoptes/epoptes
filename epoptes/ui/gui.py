@@ -202,9 +202,9 @@ class EpoptesGui(object):
         if not settings.has_section('GUI'):
             settings.add_section('GUI')        
         
-        settings.set('GUI', 'selected_group', sel_group)
-        settings.set('GUI', 'showRealNames', self.showRealNames)
-        settings.set('GUI', 'thumbnails_width', self.scrWidth)
+        settings.set('GUI', 'selected_group', str(sel_group))
+        settings.set('GUI', 'showRealNames', str(self.showRealNames))
+        settings.set('GUI', 'thumbnails_width', str(self.scrWidth))
         try:
             f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
             settings.write(f)
