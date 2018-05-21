@@ -14,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -32,12 +32,13 @@ from epoptes import __version__
 
 
 class About:
-    def __init__(self):
+    def __init__(self, parent):
         self.wTree = Gtk.Builder()
         self.wTree.add_from_file('about_dialog.ui')
         self.wTree.connect_signals(self)
 
         self.dialog = self.wTree.get_object('aboutdialog')
+        self.dialog.set_transient_for(parent)
         self.dialog.set_version(__version__)
 
     def run(self):

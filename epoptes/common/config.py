@@ -4,7 +4,7 @@
 ###########################################################################
 # Configuration file parser and other default configuration variables.
 #
-# Copyright (C) 2011 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2011-2018 Alkis Georgopoulos <alkisg@gmail.com>
 # Copyright (C) 2011 Fotis Tsamis <ftsamis@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -227,5 +227,4 @@ history = read_plain_file(os.path.join(path, 'history'))
 
 # For debugging reasons, if ran from command line, dump the config
 if __name__ == '__main__':
-    print system
-
+    print(system)

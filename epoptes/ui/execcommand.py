@@ -5,6 +5,7 @@
 # Command execution.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,44 +24,35 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gtk
-import os
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
 from epoptes.common import config
 
 
-wTree = gtk.Builder()
-get = lambda obj: wTree.get_object(obj)
-store = gtk.ListStore(str)
-
-def startExecuteCmdDlg():
+def startExecuteCmdDlg(parent):
     """Show the execute commands dialog and return the inserted command.
 
     If the dialog was closed, return an empty string.
     """
+    wTree = Gtk.Builder()
+    get = lambda obj: wTree.get_object(obj)
     wTree.add_from_file('executeCommand.ui')
     dlg = get('execDialog')
+    dlg.set_transient_for(parent)
     combo = get('combobox')
-    entry = combo.child
-    completion = get('entrycompletion')
-    entry.set_completion(completion)
-    completion.set_model(store)
-    entry.set_activates_default(True)
-    combo.set_model(store)
-    combo.set_text_column(0)
-    
+    entry = combo.get_child()
+    entry.executeButton = get('execute')
     entry.connect('changed', text_changed)
-    
-    combo = get('combobox')
-    store.clear()
-    
+
     for cmd in config.history:
-        store.append([cmd])
+        combo.append_text(cmd)
     
     cmd = ''
     reply = dlg.run()
     if reply == 1:
-        cmd = combo.child.get_text().strip()
+        cmd = combo.get_child().get_text().strip()
         if cmd in config.history:
             config.history.remove(cmd)
         config.history.insert(0, cmd)
@@ -69,8 +61,6 @@ def startExecuteCmdDlg():
     
     return cmd
 
+
 def text_changed(editable):
-    if editable.get_text().strip():
-        get('execute').set_sensitive(True)
-    else:
-        get('execute').set_sensitive(False)
+    editable.executeButton.set_sensitive(editable.get_text().strip())

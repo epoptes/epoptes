@@ -5,6 +5,7 @@
 # GUI.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,11 +24,13 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import pygtk
-pygtk.require('2.0')
-
-import gtk
-import gobject
+from __future__ import print_function
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+from gi.repository import Gdk
+from gi.repository import GLib
+from gi.repository import GdkPixbuf
 import os
 import re
 import dbus
@@ -76,14 +79,14 @@ class EpoptesGui(object):
         self.uid = os.getuid()
         if 'thumbnails_width' in config.user:
             self.scrWidth = config.user['thumbnails_width']
-        self.offline = gtk.gdk.pixbuf_new_from_file('images/offline.svg')
-        self.thin = gtk.gdk.pixbuf_new_from_file('images/thin.svg')
-        self.fat = gtk.gdk.pixbuf_new_from_file('images/fat.svg')
-        self.standalone = gtk.gdk.pixbuf_new_from_file('images/standalone.svg')
+        self.offline = GdkPixbuf.Pixbuf.new_from_file('images/offline.svg')
+        self.thin = GdkPixbuf.Pixbuf.new_from_file('images/thin.svg')
+        self.fat = GdkPixbuf.Pixbuf.new_from_file('images/fat.svg')
+        self.standalone = GdkPixbuf.Pixbuf.new_from_file('images/standalone.svg')
         self.imagetypes = {'thin' : self.thin, 'fat' : self.fat,
             'standalone' : self.standalone, 'offline' : self.offline}
         
-        self.wTree = gtk.Builder()
+        self.wTree = Gtk.Builder()
         self.wTree.add_from_file('epoptes.ui')
         
         self.get = lambda obj: self.wTree.get_object(obj)
@@ -100,7 +103,7 @@ class EpoptesGui(object):
         self.groups_menu = self.get('mAddToGroup')
         self.add_to_group_menu = self.get('miAddToGroup')
         
-        self.gstore = gtk.ListStore(str, object, bool)
+        self.gstore = Gtk.ListStore(str, object, bool)
         
         self.gtree = self.get("groups_tree")
         self.gtree.set_model(self.gstore)
@@ -108,7 +111,7 @@ class EpoptesGui(object):
         
         self.mainwin = self.get('mainwindow')
         
-        self.cstore = gtk.ListStore(str, gtk.gdk.Pixbuf, object, str)
+        self.cstore = Gtk.ListStore(str, GdkPixbuf.Pixbuf, object, str)
         self.cview = self.get('clientsview')
         self.cView_order = (1, 0)
         self.set_cView(*self.cView_order)
@@ -117,15 +120,16 @@ class EpoptesGui(object):
         self.cview.set_pixbuf_column(C_PIXBUF)
         self.cview.set_text_column(C_LABEL)
         
-        self.cstore.set_sort_column_id(C_LABEL, gtk.SORT_ASCENDING)
+        self.cstore.set_sort_column_id(C_LABEL, Gtk.SortType.ASCENDING)
         self.on_clients_selection_changed()
         
-        self.cview.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, [("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
-        self.gtree.enable_model_drag_dest([("add", gtk.TARGET_SAME_APP, 0)], gtk.gdk.ACTION_COPY)
+        self.cview.enable_model_drag_source(
+            Gdk.ModifierType.BUTTON1_MASK, [Gtk.TargetEntry.new("add", Gtk.TargetFlags.SAME_APP, 0)], Gdk.DragAction.COPY)
+        self.gtree.enable_model_drag_dest([("add", Gtk.TargetFlags.SAME_APP, 0)], Gdk.DragAction.COPY)
         
         self.default_group = structs.Group('<b>'+_('Detected clients')+'</b>')
         default_iter = self.gstore.append([self.default_group.name, self.default_group, False])
-        self.default_group.ref = gtk.TreeRowReference(self.gstore, self.gstore.get_path(default_iter))
+        self.default_group.ref = Gtk.TreeRowReference(self.gstore, self.gstore.get_path(default_iter))
         self.gtree.get_selection().select_path(self.default_group.ref.get_path())
         
         self.get('iconsSizeAdjustment').set_value(self.scrWidth)
@@ -136,7 +140,7 @@ class EpoptesGui(object):
             self.add_to_group_menu.set_sensitive(True)
         for grp in groups:
             self.gstore.append([grp.name, grp, True])
-            mitem = gtk.MenuItem(grp.name)
+            mitem = Gtk.MenuItem(label=grp.name)
             mitem.show()
             mitem.connect('activate', self.on_add_to_group_clicked, grp)
             self.groups_menu.append(mitem)
@@ -165,14 +169,14 @@ class EpoptesGui(object):
         selected_path = self.gstore.get_path(self.getSelectedGroup()[0])
         if (not drag_info or drag_info[0] == self.default_group.ref.get_path() or
             drag_info[0] == selected_path):
-            widget.set_drag_dest_row(None, gtk.TREE_VIEW_DROP_AFTER)
+            widget.set_drag_dest_row(None, Gtk.TreeViewDropPosition.AFTER)
         else:
             path, pos = drag_info
             # Don't allow dropping between the groups treeview rows
-            if pos == gtk.TREE_VIEW_DROP_BEFORE:
-                widget.set_drag_dest_row(path, gtk.TREE_VIEW_DROP_INTO_OR_BEFORE)
-            elif pos == gtk.TREE_VIEW_DROP_AFTER:
-                widget.set_drag_dest_row(path, gtk.TREE_VIEW_DROP_INTO_OR_AFTER)
+            if pos == Gtk.TreeViewDropPosition.BEFORE:
+                widget.set_drag_dest_row(path, Gtk.TreeViewDropPosition.INTO_OR_BEFORE)
+            elif pos == Gtk.TreeViewDropPosition.AFTER:
+                widget.set_drag_dest_row(path, Gtk.TreeViewDropPosition.INTO_OR_AFTER)
         
         context.drag_status(context.suggested_action, etime)
         return True
@@ -354,7 +358,7 @@ class EpoptesGui(object):
 
     ## FIXME FIXME: Should we allow for running arbitrary commands in clients?
     def execDialog(self, widget):
-        cmd = startExecuteCmdDlg()
+        cmd = startExecuteCmdDlg(self.mainwin)
         # If Cancel or Close were clicked
         if cmd == '':
             return
@@ -366,7 +370,7 @@ class EpoptesGui(object):
 
 
     def sendMessageDialog(self, widget):
-        msg = startSendMessageDlg()
+        msg = startSendMessageDlg(self.mainwin)
         if msg:
             cmd = list(msg)
             cmd.insert(0, 'message')
@@ -513,7 +517,7 @@ class EpoptesGui(object):
 
     #FIXME: Remove the second parameter, find a better way
     def on_tb_client_properties_clicked(self, widget=None):
-        dlg = ClientInformation(self.getSelectedClients(), self.daemon.command)
+        dlg = ClientInformation(self.mainwin, self.getSelectedClients(), self.daemon.command)
         if self.isDefaultGroupSelected():
             dlg.edit_button.set_sensitive(False)
         dlg.run()
@@ -526,7 +530,7 @@ class EpoptesGui(object):
 
 
     def on_mi_about_activate(self, widget=None):
-        About().run()
+        About(self.mainwin).run()
 
 
     def on_cViewHU_toggled(self, mitem):
@@ -571,7 +575,7 @@ class EpoptesGui(object):
         self.save_settings()
         msg = _("Lost connection with the epoptes service.")
         msg += "\n\n" + _("Make sure the service is running and then restart epoptes.")
-        dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK,
+        dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK,
                                  message_format=msg)
         dlg.set_title(_('Service connection error'))
         dlg.run()
@@ -581,14 +585,14 @@ class EpoptesGui(object):
 
     # AMP callbacks
     def amp_clientConnected(self, handle):
-        print "New connection from", handle
+        print("New connection from", handle)
         d = self.daemon.command(handle, u'info')
         d.addCallback(lambda r: self.addClient(handle, r))
         d.addErrback(lambda err: self.printErrors("when connecting client %s: %s" %(handle, err)))
 
 
     def amp_clientDisconnected(self, handle):
-        print "Disconnect from", handle
+        print("Disconnect from", handle)
         
         def determine_offline(client):
             if client.hsystem == '' and client.users == {}:
@@ -597,14 +601,14 @@ class EpoptesGui(object):
         for client in structs.clients:
             if client.hsystem == handle:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
-                    shutdownNotify(client.get_name())
+                    shutdown_notify(client.get_name())
                 client.hsystem = ''
                 determine_offline(client)
                 break
             
             elif handle in client.users:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
-                    logoutNotify(client.users[handle]['uname'], client.get_name())
+                    logout_notify(client.users[handle]['uname'], client.get_name())
                 del client.users[handle]
                 determine_offline(client)
                 break
@@ -619,7 +623,7 @@ class EpoptesGui(object):
 
 
     def amp_gotClients(self, handles):
-        print "Got clients:", ', '.join(handles) or 'None'
+        print( "Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
             d = self.daemon.command(handle, u'info')
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
@@ -703,7 +707,7 @@ class EpoptesGui(object):
 
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
-        print "---\n**addClient's been called for", handle
+        print("---\n**addClient's been called for", handle)
         try:
             info = {}
             for line in r.strip().split('\n'):
@@ -713,16 +717,16 @@ class EpoptesGui(object):
                 info['user'], info['hostname'], info['ip'], info['mac'], \
                 info['type'], int(info['uid']), info['version'], info['name']
         except:
-            print "Can't extract client information, won't add this client"
+            print("Can't extract client information, won't add this client")
             return
         
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.
         if (mac in self.current_macs) and ((uid == self.uid) or (uid == 0)):
-            print "* Won't add this client to my lists"
+            print("* Won't add this client to my lists")
             return False
         
-        print '  Continuing inside addClient...'
+        print('  Continuing inside addClient...')
         
         # Compatibility check
         if [int(x) for x in re.split('[^0-9]*', version)] < COMPATIBILITY_VERSION:
@@ -744,24 +748,24 @@ which is incompatible with the current epoptes version.\
             # Find if the new handle is a known client
             if mac == inst.mac:
                 client = inst
-                print '* This is an existing client'
+                print('* This is an existing client')
                 break
         if client is None:
-            print '* This client is a new one, creating an instance'
+            print('* This client is a new one, creating an instance')
             client = structs.Client(mac=mac)
             
         # Update/fill the client information
         client.type, client.hostname = type, host
         if uid == 0:
             # This is a root epoptes-client
-            print '* I am a root client'
+            print('* I am a root client')
             client.hsystem = handle
         else:
             # This is a user epoptes-client
-            print '* I am a user client, will add', user, 'in my list'
+            print('* I am a user client, will add', user, 'in my list')
             client.add_user(user, name, handle)
             if not already and (sel_group.has_client(client) or self.isDefaultGroupSelected()):
-                loginNotify(user, host)
+                login_notify(user, host)
         
         if sel_group.has_client(client) or self.isDefaultGroupSelected():
             self.fillIconView(sel_group, True)
@@ -785,6 +789,8 @@ which is incompatible with the current epoptes version.\
         """
         user_pos, name_pos = self.cView_order
         
+        # TODO: this is needed when "Labels > Show real names" is selected. Remove it in python 3.
+        username = unicode(username, 'utf-8')
         alias = client.get_name()
         if username == '' or user_pos == -1:
             return alias
@@ -818,7 +824,7 @@ which is incompatible with the current epoptes version.\
                             self.cstore[i.path][C_PIXBUF] = self.currentScreenshots[handle]
                             break
                 return False
-        # TODO: Implement this using gtk.TreeRowReferences instead
+        # TODO: Implement this using Gtk.TreeRowReferences instead
         # of searching the whole model (Need to modify execOnClients)
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
@@ -837,8 +843,8 @@ which is incompatible with the current epoptes version.\
                 # We want to ask for thumbnails every 5 sec after the last one.
                 # So if the client is too stressed and needs 7 secs to
                 # send a thumbnail, we'll ask for one every 12 secs.
-                gobject.timeout_add(5000, self.askScreenshot, handle)
-#                print "I got a screenshot from %s." % handle
+                GLib.timeout_add(5000, self.askScreenshot, handle)
+#                print("I got a screenshot from %s." % handle)
                 if not reply:
                     return
                 try:
@@ -847,8 +853,8 @@ which is incompatible with the current epoptes version.\
                     return
                 rowstride = int(rowstride)
                 width, height = size.split('x')
-                pxb = gtk.gdk.pixbuf_new_from_data(pixels,
-                    gtk.gdk.COLORSPACE_RGB, False, 8, int(width), int(height),
+                pxb = GdkPixbuf.Pixbuf.new_from_data(pixels,
+                    GdkPixbuf.Colorspace.RGB, False, 8, int(width), int(height),
                     rowstride)
                 self.currentScreenshots[handle] = pxb
                 self.cstore[i.path][C_PIXBUF] = pxb
@@ -866,13 +872,13 @@ which is incompatible with the current epoptes version.\
         return items
 
     def appendToGroupsMenu(self, group):
-        mitem = gtk.MenuItem(group.name)
+        mitem = Gtk.MenuItem(group.name)
         mitem.show()
         mitem.connect('activate', self.on_add_to_group_clicked, group)
         self.groups_menu.append(mitem)
     
     def removeFromGroupsMenu(self, group):
-        mitem = gtk.MenuItem(group.name)
+        mitem = Gtk.MenuItem(group.name)
         mitem.show()
         mitem.connect('activate', self.on_add_to_group_clicked, group)
         self.groups_menu.append(mitem)
@@ -926,7 +932,7 @@ which is incompatible with the current epoptes version.\
         by reloading them.
         """
         old_pixbufs = self.imagetypes.values()
-        loadSVG = lambda path: gtk.gdk.pixbuf_new_from_file_at_size(path, 
+        loadSVG = lambda path: GdkPixbuf.Pixbuf.new_from_file_at_size(path, 
                                                   self.scrWidth, self.scrHeight)
         self.imagetypes = {
             'offline' : loadSVG('images/offline.svg'),
@@ -955,7 +961,7 @@ which is incompatible with the current epoptes version.\
             width = adj.get_value()
         self.scrWidth = int(width)
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
-        
+
         # Fast scale all the thumbnails to make the change quickly visible
         old_pixbufs = self.imagetypes.values()
         for row in self.cstore:
@@ -964,15 +970,15 @@ which is incompatible with the current epoptes version.\
                 cur_w = self.imagetypes[ctype].get_width()
                 cur_h = self.imagetypes[ctype].get_height()
                 if not (cur_w == self.scrWidth and cur_h == self.scrHeight):
-                    new_thumb = row[C_PIXBUF].scale_simple(self.scrWidth, self.scrHeight, gtk.gdk.INTERP_NEAREST)
+                    new_thumb = row[C_PIXBUF].scale_simple(self.scrWidth, self.scrHeight, GdkPixbuf.InterpType.NEAREST)
                     self.imagetypes[ctype] = new_thumb
                 row[C_PIXBUF] = self.imagetypes[ctype]
             else:
-                new_thumb = row[C_PIXBUF].scale_simple(self.scrWidth, self.scrHeight, gtk.gdk.INTERP_NEAREST)
+                new_thumb = row[C_PIXBUF].scale_simple(self.scrWidth, self.scrHeight, GdkPixbuf.InterpType.NEAREST)
                 row[C_PIXBUF] = new_thumb
         
         # Hack to remove the extra padding that remains after a 'zoom out'
-        self.cview.set_resize_mode(gtk.RESIZE_IMMEDIATE)
+        self.cview.set_resize_mode(Gtk.ResizeMode.IMMEDIATE)
         self.cview.get_cells()[1].set_fixed_size(-1, -1)
         self.cview.check_resize()
     
@@ -1014,7 +1020,7 @@ which is incompatible with the current epoptes version.\
             if widget is self.cview:
                 menu = self.get('clients').get_submenu()
             
-            menu.popup(None, None, None, event.button, event.time)
+            menu.popup(None, None, None, None, event.button, event.time)
             menu.show()
             return True
 
@@ -1049,11 +1055,12 @@ which is incompatible with the current epoptes version.\
         if params is None:
             params = []
         if len(self.cstore) == 0:
-            # print 'No clients'
+            # print('No clients')
             return False
         
         if isinstance(command, list) and len(command) > 0:
-            command = '%s %s' %(command[0], ' '.join([pipes.quote(str(x)) for x in command[1:]]))
+            # TODO: remove .decode() in Python 3
+            command = '%s %s' %(command[0], ' '.join([pipes.quote(str(x).decode('utf-8')) for x in command[1:]]))
                     
         if (clients != [] or handles != []) and warning != '':
             if self.warnDlgPopup(warning) == False:
@@ -1110,5 +1117,5 @@ which is incompatible with the current epoptes version.\
 
 
     def printErrors(self, error):
-        print '  **Twisted error:', error
+        print('  **Twisted error:', error)
         return

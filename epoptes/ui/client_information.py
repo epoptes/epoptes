@@ -5,6 +5,7 @@
 # Get client properties.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,21 +24,25 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gtk
-import pygtk
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
 from epoptes.common.constants import *
 
+
 class ClientInformation:
-    def __init__(self, selected, execute):
-        self.wTree = gtk.Builder()
+    def __init__(self, parent, selected, execute):
+        self.wTree = Gtk.Builder()
         self.wTree.add_from_file('client_information.ui')
         self.wTree.connect_signals(self)
         self.get = self.wTree.get_object
         self.selected = selected
         
         self.dlg = self.get('infodlg')
+        self.dlg.set_transient_for(parent)
         self.edit_button = self.get('edit_alias_button')
+        // TODO: reduce unnecessary lambdas
         set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
 
         for client in selected:
@@ -63,7 +68,7 @@ class ClientInformation:
                     user += ' (%s)' %realname
             set('client_online_user', user)
             self.dlg.set_title(_('Properties of %s') %inst.get_name())
-        
+
     def run(self):
         self.dlg.run()
         self.dlg.destroy()
