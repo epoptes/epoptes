@@ -4,7 +4,7 @@
 ###########################################################################
 # Launch the epoptes UI.
 #
-# Copyright (C) 2011 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2011-2018 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,10 +23,14 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
+from __future__ import print_function
 import os
 import os.path
 import sys
-import gtk
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+
 import epoptes
 
 # cd to the epoptes directory, so that all paths are relative
@@ -34,12 +38,12 @@ os.chdir('/usr/share/epoptes')
 
 if len(sys.argv) > 1:
     if sys.argv[1] in ('--version', '-version'):
-        print "Epoptes %s" % epoptes.__version__
+        print("Epoptes %s" % epoptes.__version__)
         sys.exit(0)
 
 # Do these potentially expensive imports now we know the environment is sane
-from twisted.internet import gtk2reactor
-gtk2reactor.install()
+from twisted.internet import gtk3reactor
+gtk3reactor.install()
 from twisted.internet import reactor
 from twisted.internet.protocol import ClientCreator
 from twisted.protocols import amp
@@ -55,10 +59,11 @@ path = os.path.expanduser('~/.config/epoptes/')
 if not os.path.isdir(path):
     os.makedirs(path)
 
+
 def connectionFailed(failure):
     msg = _("An error occurred while trying to connect to the epoptes service:")
     msg += ' <i>' + failure.value.message + '</i>\n\n'
-    print "Connection with epoptes failed:", failure.value.message
+    print("Connection with epoptes failed:", failure.value.message)
     # Permission denied error
     if failure.value.osError == 13:
         msg += _("User %s must be a member of group %s to run epoptes.") % \
@@ -66,12 +71,13 @@ def connectionFailed(failure):
     # No such file error
     elif failure.value.osError == 2:
         msg += _("Make sure the epoptes service is running.")
-    dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+    dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK)
     dlg.set_markup(msg)
     dlg.set_title(_('Service connection error'))
     dlg.run()
     dlg.destroy()
     reactor.stop()
+
 
 d = ClientCreator(reactor, epoptes.daemon.uiconnection.Daemon, epoptesGui).connectUNIX(config.system['DIR'] + "/epoptes.socket")
 d.addErrback(connectionFailed)

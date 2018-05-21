@@ -5,6 +5,7 @@
 # Network benchmark.
 #
 # Copyright (C) 2016 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -26,10 +27,10 @@
 import os
 import subprocess
 import fcntl
-import gtk
-import gtk.gdk as gdk
-import pygtk
-import gobject
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+from gi.repository import GLib
 from twisted.internet import reactor
 
 from graph import Graph
@@ -62,7 +63,7 @@ def read_nonblocking(f):
 
 class NetworkBenchmark:
     def __init__(self, parent, clients, execute):
-        self.wTree = gtk.Builder()
+        self.wTree = Gtk.Builder()
         self.wTree.add_from_file('netbenchmark.ui')
         self.wTree.connect_signals(self)
         self.get = self.wTree.get_object
@@ -83,28 +84,24 @@ class NetworkBenchmark:
         self.output_timeout = None
         self.more_output = None
 
-
     def warning_message(self, msg):
         msgdlg = self.get('msgdlg')
-        msgdlg.set_property("message-type", gtk.MESSAGE_WARNING)
-        msgdlg.set_transient_for(self.dlg)
+        msgdlg.set_property("message-type", Gtk.MessageType.WARNING)
+        msgdlg.set_transient_for(self.parent)
         msgdlg.set_title(_("Warning"))
         msgdlg.set_markup(msg)
         msgdlg.show_all()
 
-
     def error_message(self, msg):
         msgdlg = self.get('msgdlg')
-        msgdlg.set_property("message-type", gtk.MESSAGE_ERROR)
+        msgdlg.set_property("message-type", Gtk.MessageType.ERROR)
         msgdlg.set_transient_for(self.dlg)
         msgdlg.set_title(_("Error"))
         msgdlg.set_markup(msg)
         msgdlg.show_all()
 
-
     def on_message_dialog_close(self, widget):
         self.get('msgdlg').hide()
-
 
     def store_pid(self, handle, pid):
         """Store the PID of the iperf process running on each client
@@ -221,7 +218,7 @@ class NetworkBenchmark:
         self.get('seconds_spinbox').set_sensitive(False)
         self.get('hbox_buttons').set_visible(False)
         self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
-        self.countdown_event = gobject.timeout_add(1000, self.update_time_left)
+        self.countdown_event = GLib.timeout_add(1000, self.update_time_left)
         self.get('hbox_status').set_visible(True)
 
 
@@ -282,8 +279,8 @@ class NetworkBenchmark:
 
 
     def get_results(self):
-        self.more_output = gobject.timeout_add(200, self.get_more_output)
-        self.output_timeout = gobject.timeout_add(self.timeout*1000, self.show_results, True)
+        self.more_output = GLib.timeout_add(200, self.get_more_output)
+        self.output_timeout = GLib.timeout_add(self.timeout*1000, self.show_results, True)
         
 
     def data_func(self, column, cell, model, iter, index):
@@ -298,9 +295,9 @@ class NetworkBenchmark:
         # At this point we either have all our output or we give up waiting
         self.stop_benchmark()
         if self.output_timeout:
-            gobject.source_remove(self.output_timeout)
+            GLib.source_remove(self.output_timeout)
         if self.more_output:
-            gobject.source_remove(self.more_output)
+            GLib.source_remove(self.more_output)
         
         upload_col = self.get('upload_column')
         download_col = self.get('download_column')
@@ -347,7 +344,7 @@ class NetworkBenchmark:
 
     def cancel_benchmark(self):
         self.stop_benchmark()
-        gobject.source_remove(self.countdown_event)
+        GLib.source_remove(self.countdown_event)
         self.get('hbox_status').set_visible(False)
         self.get('seconds_spinbox').set_sensitive(True)
         self.get('hbox_buttons').set_visible(True)

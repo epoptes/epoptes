@@ -5,6 +5,7 @@
 # Graph generator.
 #
 # Copyright (C) 2016 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,14 +24,17 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gtk
-import cairo
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+import cairo  # TODO: put python-gi-cairo in debian dependencies
 from pycha.bar import HorizontalBarChart
 
-class Graph(gtk.DrawingArea):
+
+class Graph(Gtk.DrawingArea):
     def __init__(self):
-        gtk.DrawingArea.__init__(self)
-        self.connect("expose-event", self.expose)
+        Gtk.DrawingArea.__init__(self)
+        self.connect("draw", self.draw)
         self.connect("size-allocate", self.size_allocate)
         self._surface = None
         self._options = None
@@ -47,15 +51,7 @@ class Graph(gtk.DrawingArea):
         chart.addDataset(self._data)
         chart.render()
  
-    def expose(self, widget, event):
-        context = widget.window.cairo_create()
-        context.rectangle(event.area.x, event.area.y,
-                          event.area.width, event.area.height)
-        context.clip()
-        self.draw(context)
-        return False
- 
-    def draw(self, context):
+    def draw(self, widget, context):
         rect = self.get_allocation()
         self._surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
                                            rect.width, rect.height)
@@ -65,4 +61,3 @@ class Graph(gtk.DrawingArea):
  
     def size_allocate(self, widget, requisition):
         self.queue_draw()
-
