@@ -35,8 +35,6 @@ except ImportError:
     print('To build epoptes you need https://launchpad.net/python-distutils-extra', file=sys.stderr)
     sys.exit(1)
 
-assert StrictVersion(DistUtilsExtra.auto.__version__) >= '2.4', 'needs DistUtilsExtra.auto >= 2.4'
-
 import posixpath, re
 
 

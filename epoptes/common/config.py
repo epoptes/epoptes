@@ -29,7 +29,7 @@ import shlex
 import configparser
 import json
 import gettext
-gettext.install('epoptes', str=True)
+gettext.install('epoptes')
 import locale
 locale.textdomain('epoptes')
 

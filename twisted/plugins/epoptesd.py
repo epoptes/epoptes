@@ -25,7 +25,7 @@
 ###########################################################################
 
 import os
-from zope.interface import implements
+from zope.interface import implementer
 
 from twisted.python import usage
 from twisted.plugin import IPlugin
@@ -54,8 +54,8 @@ class ServerContextFactory:
         return ctx
 
 
+@implementer(IServiceMaker, IPlugin)
 class ServiceMaker(object):
-    implements(IServiceMaker, IPlugin)
     tapname = "epoptes"
     description = "Epoptes Daemon"
     options = Options

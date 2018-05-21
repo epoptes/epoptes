@@ -45,8 +45,8 @@ from gobject import TYPE_PYOBJECT as gPyobject
 from twisted.internet import reactor
 from twisted.python import log
 
-from ...epoptes import ui
-from ...epoptes import __version__
+from .. import ui
+from .. import __version__
 from ..common.constants import *
 from ..common import config
 from ..common import ltsconf
@@ -739,8 +739,6 @@ which is incompatible with the current epoptes version.\
         """
         user_pos, name_pos = self.cView_order
         
-        # TODO: this is needed when "Labels > Show real names" is selected. Remove it in python 3.
-        username = str(username, 'utf-8')
         alias = client.get_name()
         if username == '' or user_pos == -1:
             return alias
