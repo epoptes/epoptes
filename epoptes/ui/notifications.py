@@ -5,6 +5,7 @@
 # Notifications.
 #
 # Copyright (C) 2015 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,10 +24,13 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import pynotify
 import os
+import gi
+import sys
+gi.require_version('Notify', '0.7')
+from gi.repository import Notify
 
-if not pynotify.init("epoptes-notifications"):
+if not Notify.init("epoptes-notifications"):
     sys.exit(1)
 
 
@@ -54,13 +58,13 @@ class NotificationCache(object):
 
 
 def notify(title, body, icon):
-    n = pynotify.Notification(title, body, icon)
+    n = Notify.Notification.new(title, body, icon)
     n.set_hint_string("x-canonical-append", "true")
     n.show()
 
 
 def cached_notify(title, body, icon):
-    """A function to replace pynotify.notify if the 'x-canonical-append'
+    """A function to replace Notify.notify if the 'x-canonical-append'
     capability is not provided.
     """
     n = cache.get_notification(title)
@@ -68,23 +72,26 @@ def cached_notify(title, body, icon):
         n.close()
         n.update(title, n.props.body+'\n'+body, icon)
     else:
-        n = pynotify.Notification(title, body, icon)
+        n = Notify.Notification.new(title, body, icon)
         cache.add_notification(n, title)
     n.show()
 
 
-append = 'x-canonical-append' in pynotify.get_server_caps()
+append = 'x-canonical-append' in Notify.get_server_caps()
 if not append:
     cache = NotificationCache()
     notify = cached_notify
 
-def shutdownNotify(host):
+
+def shutdown_notify(host):
     notify(_("Shut down:"), "%s" %(host), os.path.abspath("images/shutdown.svg"))
 
-def loginNotify(user, host):
+
+def login_notify(user, host):
     notify(_("Connected:"), _("%(user)s on %(host)s") %{"user":user, "host":host},
                                 os.path.abspath("images/login.svg"))
-def logoutNotify(user, host):
+
+
+def logout_notify(user, host):
     notify(_("Disconnected:"), _("%(user)s from %(host)s") %{"user":user, "host":host},
                                 os.path.abspath("images/logout.svg"))
-

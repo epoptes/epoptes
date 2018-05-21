@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy project-wide -->
-  <!-- interface-local-resource-path /home/phantomas/code/epoptes/trunk/data/images -->
-  <object class="GtkMenu" id="broadcastmenu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkImageMenuItem" id="broadcast_full">
-        <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
-        <property name="use_action_appearance">False</property>
-        <property name="image">image43</property>
-        <property name="use_stock">False</property>
-        <signal name="activate" handler="broadcastScreen" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkImageMenuItem" id="broadcast_window">
-        <property name="label" translatable="yes">Broadcast screen (windowed)</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
-        <property name="use_action_appearance">False</property>
-        <property name="image">image42</property>
-        <property name="use_stock">False</property>
-        <signal name="activate" handler="broadcastScreenWindowed" swapped="no"/>
-      </object>
-    </child>
-  </object>
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkDialog" id="entrydialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -40,13 +11,17 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox4">
+      <object class="GtkBox" id="dialog-vbox4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area4">
+          <object class="GtkButtonBox" id="dialog-action_area4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -56,7 +31,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -71,7 +45,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -96,8 +69,6 @@
             <property name="invisible_char">●</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -111,37 +82,6 @@
       <action-widget response="1">button1</action-widget>
       <action-widget response="0">button2</action-widget>
     </action-widgets>
-  </object>
-  <object class="GtkMessageDialog" id="executionwarning">
-    <property name="can_focus">False</property>
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">Confirm action</property>
-    <property name="modal">True</property>
-    <property name="type_hint">normal</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="transient_for">mainwindow</property>
-    <property name="message_type">warning</property>
-    <property name="buttons">yes-no</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox6">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area6">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
   </object>
   <object class="GtkAdjustment" id="iconsSizeAdjustment">
     <property name="lower">50</property>
@@ -326,6 +266,32 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">images/16/broadcast.png</property>
   </object>
+  <object class="GtkMenu" id="broadcastmenu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkImageMenuItem" id="broadcast_full">
+        <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
+        <property name="image">image43</property>
+        <property name="use_stock">False</property>
+        <signal name="activate" handler="broadcastScreen" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="broadcast_window">
+        <property name="label" translatable="yes">Broadcast screen (windowed)</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
+        <property name="image">image42</property>
+        <property name="use_stock">False</property>
+        <signal name="activate" handler="broadcastScreenWindowed" swapped="no"/>
+      </object>
+    </child>
+  </object>
   <object class="GtkImage" id="image47">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -391,11 +357,6 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">images/16/broadcast-stop.png</property>
   </object>
-  <object class="GtkImage" id="image8">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">emblem-people</property>
-  </object>
   <object class="GtkWindow" id="mainwindow">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -405,9 +366,13 @@
     <property name="icon">../icons/hicolor/scalable/apps/epoptes.svg</property>
     <signal name="destroy" handler="on_mainwin_destroy" swapped="no"/>
     <child>
-      <object class="GtkVBox" id="vbox1">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkMenuBar" id="miClients">
             <property name="visible">True</property>
@@ -416,7 +381,6 @@
               <object class="GtkMenuItem" id="file">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -428,7 +392,6 @@
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_mainwin_destroy" swapped="no"/>
@@ -442,7 +405,6 @@
               <object class="GtkMenuItem" id="miClientView">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Labels</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu15">
@@ -452,7 +414,6 @@
                       <object class="GtkRadioMenuItem" id="miClientsViewHostUser">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Computer (user)</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
@@ -465,7 +426,6 @@
                       <object class="GtkRadioMenuItem" id="miClientsViewHost">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Computer</property>
                         <property name="use_underline">True</property>
                         <property name="draw_as_radio">True</property>
@@ -477,7 +437,6 @@
                       <object class="GtkRadioMenuItem" id="miClientsViewUserHost">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">User (computer)</property>
                         <property name="use_underline">True</property>
                         <property name="draw_as_radio">True</property>
@@ -489,7 +448,6 @@
                       <object class="GtkRadioMenuItem" id="miClientsViewUser">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">User</property>
                         <property name="use_underline">True</property>
                         <property name="draw_as_radio">True</property>
@@ -505,7 +463,6 @@
                       <object class="GtkCheckMenuItem" id="mcShowRealNames">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Show real names</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="toggleRealNames" swapped="no"/>
@@ -519,7 +476,6 @@
               <object class="GtkMenuItem" id="clients">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Clients</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -530,7 +486,6 @@
                       <object class="GtkMenuItem" id="miSession">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Session</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
@@ -542,7 +497,6 @@
                                 <property name="label" translatable="yes">Boot</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image40</property>
                                 <property name="use_stock">False</property>
@@ -554,7 +508,6 @@
                                 <property name="label" translatable="yes">Log out</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image30</property>
                                 <property name="use_stock">False</property>
@@ -566,7 +519,6 @@
                                 <property name="label" translatable="yes">Reboot</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image41</property>
                                 <property name="use_stock">False</property>
@@ -578,7 +530,6 @@
                                 <property name="label" translatable="yes">Shutdown</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image31</property>
                                 <property name="use_stock">False</property>
@@ -593,7 +544,6 @@
                       <object class="GtkMenuItem" id="miTransmissions">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Broadcasts</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
@@ -605,7 +555,6 @@
                                 <property name="label" translatable="yes">Monitor user</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="image">image12</property>
                                 <property name="use_stock">False</property>
                                 <signal name="activate" handler="monitorUser" swapped="no"/>
@@ -617,7 +566,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Take control of the selected user's computer</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image36</property>
                                 <property name="use_stock">False</property>
@@ -629,7 +577,6 @@
                                 <property name="label" translatable="yes">Broadcast video</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image35</property>
                                 <property name="use_stock">False</property>
@@ -641,7 +588,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image34</property>
                                 <property name="use_stock">False</property>
@@ -654,7 +600,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image14</property>
                                 <property name="use_stock">False</property>
@@ -666,7 +611,6 @@
                                 <property name="label" translatable="yes">Broadcast user</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image33</property>
                                 <property name="use_stock">False</property>
@@ -678,7 +622,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Stops all active broadcasts</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image7</property>
                                 <property name="use_stock">False</property>
@@ -690,7 +633,6 @@
                                 <property name="label" translatable="yes">Open broadcasts window</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Open a windowed session to prevent broadcasting your whole screen</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="image">image38</property>
                                 <property name="use_stock">False</property>
                               </object>
@@ -703,7 +645,6 @@
                       <object class="GtkMenuItem" id="miExecuteMenu">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Execute</property>
                         <child type="submenu">
                           <object class="GtkMenu" id="menu5">
@@ -715,7 +656,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Execute a command on the selected clients</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="use_stock">True</property>
                                 <signal name="activate" handler="execDialog" swapped="no"/>
@@ -727,7 +667,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Send a message to the selected clients</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image56</property>
                                 <property name="use_stock">False</property>
@@ -738,7 +677,6 @@
                               <object class="GtkMenuItem" id="miOpenTerminal">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Open terminal</property>
                                 <child type="submenu">
                                   <object class="GtkMenu" id="menu12">
@@ -749,7 +687,6 @@
                                         <property name="label" translatable="yes">User, locally</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="image">image60</property>
                                         <property name="use_stock">False</property>
                                         <signal name="activate" handler="openUserTerminal" swapped="no"/>
@@ -760,7 +697,6 @@
                                         <property name="label" translatable="yes">Root, locally</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="image">image61</property>
                                         <property name="use_stock">False</property>
                                         <signal name="activate" handler="openRootTerminal" swapped="no"/>
@@ -771,7 +707,6 @@
                                         <property name="label" translatable="yes">Root, remotely</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="image">image62</property>
                                         <property name="use_stock">False</property>
                                         <signal name="activate" handler="remoteRootTerminal" swapped="no"/>
@@ -789,7 +724,6 @@
                       <object class="GtkMenuItem" id="miClientRestrictions">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Restrictions</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
@@ -801,7 +735,6 @@
                                 <property name="label" translatable="yes">Lock screen</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="image">image29</property>
                                 <property name="use_stock">False</property>
                                 <signal name="activate" handler="lockScreen" swapped="no"/>
@@ -812,7 +745,6 @@
                                 <property name="label" translatable="yes">Unlock screen</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="image">image37</property>
                                 <property name="use_stock">False</property>
                                 <signal name="activate" handler="unlockScreen" swapped="no"/>
@@ -828,7 +760,6 @@
                                 <property name="label" translatable="yes">Block Internet</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image47</property>
                                 <property name="use_stock">False</property>
@@ -839,7 +770,6 @@
                                 <property name="label" translatable="yes">Unblock Internet</property>
                                 <property name="sensitive">False</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image48</property>
                                 <property name="use_stock">False</property>
@@ -856,7 +786,6 @@
                                 <property name="label" translatable="yes">Mute sound</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image50</property>
                                 <property name="use_stock">False</property>
@@ -868,7 +797,6 @@
                                 <property name="label" translatable="yes">Unmute sound</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="use_underline">True</property>
                                 <property name="image">image49</property>
                                 <property name="use_stock">False</property>
@@ -878,7 +806,6 @@
                             <child>
                               <object class="GtkMenuItem" id="miUsersBackground">
                                 <property name="can_focus">False</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">Background image</property>
                                 <property name="use_underline">True</property>
                                 <child type="submenu">
@@ -891,7 +818,6 @@
                                         <property name="visible">True</property>
                                         <property name="sensitive">False</property>
                                         <property name="can_focus">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="use_underline">True</property>
                                         <property name="image">image26</property>
                                         <property name="use_stock">False</property>
@@ -903,7 +829,6 @@
                                         <property name="visible">True</property>
                                         <property name="sensitive">False</property>
                                         <property name="can_focus">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="use_underline">True</property>
                                         <property name="image">image27</property>
                                         <property name="use_stock">False</property>
@@ -915,7 +840,6 @@
                                         <property name="visible">True</property>
                                         <property name="sensitive">False</property>
                                         <property name="can_focus">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="use_underline">True</property>
                                         <property name="image">image28</property>
                                         <property name="use_stock">False</property>
@@ -940,7 +864,6 @@
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Add to group</property>
                         <property name="use_underline">True</property>
                         <child type="submenu">
@@ -949,14 +872,13 @@
                             <property name="can_focus">False</property>
                           </object>
                         </child>
-                      </object>  
+                      </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="miRemoveFromGroup">
                         <property name="label" translatable="yes">Remove from group</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image13</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="on_remove_from_group_clicked" swapped="no"/>
@@ -972,7 +894,6 @@
                       <object class="GtkMenuItem" id="miBenchmark">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Network Benchmark</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_miBenchmark_activate" swapped="no"/>
@@ -983,7 +904,6 @@
                         <property name="label">gtk-info</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_tb_client_properties_clicked" swapped="no"/>
@@ -997,7 +917,6 @@
               <object class="GtkMenuItem" id="help">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -1009,7 +928,6 @@
                         <property name="label">gtk-home</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="openHelpLink" swapped="no"/>
@@ -1020,7 +938,6 @@
                         <property name="label" translatable="yes">Report a bug</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image2</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="openBugsLink" swapped="no"/>
@@ -1031,7 +948,6 @@
                         <property name="label" translatable="yes">Ask a question</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image3</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="openQuestionsLink" swapped="no"/>
@@ -1042,7 +958,6 @@
                         <property name="label" translatable="yes">Translate this application</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image51</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="openTranslationsLink" swapped="no"/>
@@ -1053,7 +968,6 @@
                         <property name="label" translatable="yes">Live chat (IRC)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image52</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="openIRCLink" swapped="no"/>
@@ -1070,7 +984,6 @@
                         <property name="label" translatable="yes">Remote support</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image39</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="on_mi_remote_assistance_activate" swapped="no"/>
@@ -1087,7 +1000,6 @@
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_mi_about_activate" swapped="no"/>
@@ -1114,7 +1026,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Boot selected clients (Wake On LAN)</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Boot</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image15</property>
@@ -1130,7 +1041,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Log out users connected on selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Log out</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image16</property>
@@ -1146,7 +1056,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Reboot the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Reboot</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image17</property>
@@ -1162,7 +1071,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Shutdown the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Shutdown</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image18</property>
@@ -1180,6 +1088,7 @@
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -1187,7 +1096,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Take control of the selected user's computer</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Assist user</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image32</property>
@@ -1203,7 +1111,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Broadcast screen</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image19</property>
@@ -1217,7 +1124,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, fullscreen</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Broadcast screen (fullscreen)</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="broadcastScreen" swapped="no"/>
@@ -1228,7 +1134,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Broadcast your screen to the selected clients, in a window</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Broadcast screen (windowed)</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="broadcastScreenWindowed" swapped="no"/>
@@ -1239,6 +1144,7 @@
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -1246,7 +1152,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Stop all broadcasts on every client</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Stop broadcasts</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image20</property>
@@ -1264,6 +1169,7 @@
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -1271,7 +1177,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Execute a command on the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Execute command</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image21</property>
@@ -1287,7 +1192,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Send a message to the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Send message</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image22</property>
@@ -1305,6 +1209,7 @@
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -1312,7 +1217,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Lock screen of the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Lock screen</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image23</property>
@@ -1328,7 +1232,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Unlock the screen of the selected clients</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Unlock screen</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image24</property>
@@ -1346,6 +1249,7 @@
               </object>
               <packing>
                 <property name="expand">False</property>
+                <property name="homogeneous">False</property>
               </packing>
             </child>
             <child>
@@ -1353,7 +1257,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Show information for the selected client</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">Information</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image25</property>
@@ -1372,7 +1275,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHSeparator" id="hseparator1">
+          <object class="GtkSeparator" id="hseparator1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
@@ -1383,20 +1286,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkHPaned" id="hpaned1">
+          <object class="GtkPaned" id="hpaned1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="position">150</property>
             <child>
-              <object class="GtkVBox" id="vbox2">
+              <object class="GtkBox" id="vbox2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
                     <child>
                       <object class="GtkTreeView" id="groups_tree">
                         <property name="visible">True</property>
@@ -1406,6 +1308,9 @@
                         <property name="search_column">0</property>
                         <signal name="drag-drop" handler="on_gtree_drag_drop" swapped="no"/>
                         <signal name="drag-motion" handler="on_gtree_drag_motion" swapped="no"/>
+                        <child internal-child="selection">
+                          <object class="GtkTreeSelection"/>
+                        </child>
                         <child>
                           <object class="GtkTreeViewColumn" id="group_name_column">
                             <property name="title" translatable="yes">Groups</property>
@@ -1430,7 +1335,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHBox" id="hbox2">
+                  <object class="GtkBox" id="hbox2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -1438,7 +1343,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="relief">none</property>
                         <signal name="clicked" handler="on_add_group_clicked" swapped="no"/>
                         <child>
@@ -1461,7 +1365,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="relief">none</property>
                         <signal name="clicked" handler="on_remove_group_clicked" swapped="no"/>
                         <child>
@@ -1484,7 +1387,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="relief">none</property>
                         <signal name="clicked" handler="on_move_group_up_clicked" swapped="no"/>
                         <child>
@@ -1506,7 +1408,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="relief">none</property>
                         <signal name="clicked" handler="on_move_group_down_clicked" swapped="no"/>
                         <child>
@@ -1540,17 +1441,16 @@
               <object class="GtkScrolledWindow" id="scrolledwindow3">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
                 <property name="shadow_type">etched-out</property>
                 <child>
                   <object class="GtkIconView" id="clientsview">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="margin">0</property>
                     <property name="selection_mode">multiple</property>
                     <signal name="button-press-event" handler="contextMenuPopup" swapped="no"/>
-                    <signal name="selection-changed" handler="on_clients_selection_changed" swapped="no"/>
                     <signal name="item-activated" handler="monitorUser" swapped="no"/>
+                    <signal name="selection-changed" handler="on_clients_selection_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -1584,7 +1484,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox4">
+              <object class="GtkBox" id="hbox4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
@@ -1592,7 +1492,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="relief">none</property>
                     <signal name="clicked" handler="scrDecreaseSize" swapped="no"/>
                     <child>
@@ -1610,7 +1509,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHScale" id="hscale1">
+                  <object class="GtkScale" id="hscale1">
                     <property name="width_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -1633,7 +1532,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="relief">none</property>
                     <signal name="clicked" handler="scrIncreaseSize" swapped="no"/>
                     <child>
@@ -1669,6 +1567,46 @@
       </object>
     </child>
   </object>
+  <object class="GtkMessageDialog" id="executionwarning">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Confirm action</property>
+    <property name="modal">True</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="transient_for">mainwindow</property>
+    <property name="message_type">warning</property>
+    <property name="buttons">yes-no</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox6">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area6">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="image8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">emblem-people</property>
+  </object>
   <object class="GtkMessageDialog" id="warningDialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -1677,13 +1615,17 @@
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="message_type">warning</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox9">
+      <object class="GtkBox" id="dialog-vbox9">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area9">
+          <object class="GtkButtonBox" id="dialog-action_area9">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -1693,7 +1635,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_button_close_clicked" swapped="no"/>
               </object>

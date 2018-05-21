@@ -5,6 +5,7 @@
 # Message sending.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -23,18 +24,15 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gtk
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 import os
-import pygtk
 
 from epoptes.common import config
 
-pygtk.require('2.0')
 
-wTree = gtk.Builder()
-get = lambda obj: wTree.get_object(obj)
-
-def startSendMessageDlg():
+def startSendMessageDlg(parent):
     """
     Retrieve dialog window from glade format and
     according to type of message requested to send
@@ -42,8 +40,11 @@ def startSendMessageDlg():
     and the message type.
     """
 
+    wTree = Gtk.Builder()
+    get = lambda obj: wTree.get_object(obj)
     wTree.add_from_file('sendMessage.ui')
     dlg = get('sendMessageDialog')
+    dlg.set_transient_for(parent)
     
     textView = get('Message')
     title_entry = get('title_entry')
@@ -58,7 +59,7 @@ def startSendMessageDlg():
         buf = textView.get_buffer()
         s = buf.get_start_iter()
         e = buf.get_end_iter()
-        text = textView.get_buffer().get_text(s,e)
+        text = textView.get_buffer().get_text(s, e, False)
 
         title = title_entry.get_text().strip()
         
