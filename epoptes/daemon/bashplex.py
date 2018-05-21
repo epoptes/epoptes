@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # BASH plex.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,15 +26,10 @@
 
 import os
 import uuid
-
 from twisted.internet import reactor, protocol, defer, error
+from io import StringIO
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
-
-import exchange
+from . import exchange
 
 
 class DelimitedBashReceiver(protocol.Protocol):
@@ -91,8 +87,8 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def connectionMade(self):
         peer = self.transport.getPeer()
-        self.handle = u"%s:%s" % (peer.host, peer.port)
-        print "Connected:", self.handle
+        self.handle = "%s:%s" % (peer.host, peer.port)
+        print("Connected:", self.handle)
         
         d = self.command(self.factory.startupCommands.encode("utf-8"))
         
@@ -101,7 +97,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
         
         def killConnection(error):
-            print "Error: Could not send the startup functions to the client:", error
+            print("Error: Could not send the startup functions to the client:", error)
             self._loseConnection()
         
         d.addCallback(forwardConnection)
@@ -109,7 +105,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
 
     def connectionLost(self, reason):
-        print "Connection lost:", self.handle
+        print("Connection lost:", self.handle)
         
         try: self.pingTimeout.cancel()
         except Exception: pass
@@ -195,7 +191,7 @@ class DelimitedBashReceiver(protocol.Protocol):
     def pingResponse(self, _):
         # Responses that arrive after a client has timed out, mean a "reconnect"
         if self.timedOut:
-            print "Reconnected:", self.handle
+            print("Reconnected:", self.handle)
             exchange.clientReconnected(self.handle)
             self.timedOut = False
         else:
@@ -204,7 +200,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
 
     def pingTimedOut(self):
-        print "Ping timeout:", self.handle
+        print("Ping timeout:", self.handle)
         self.timedOut = True
         exchange.clientTimedOut(self.handle)
 

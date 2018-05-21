@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -33,8 +33,8 @@ from gi.repository import Gtk
 from gi.repository import GLib
 from twisted.internet import reactor
 
-from graph import Graph
-from epoptes.common.constants import *
+from .graph import Graph
+from ..common.constants import *
 
 
 def humanize(value, decimal=1, unit=''):
@@ -109,7 +109,6 @@ class NetworkBenchmark:
         """
         self.processes[handle] = int(pid)
 
-
     def create_graph(self, entries):
         options = {
             'axis': {
@@ -165,7 +164,6 @@ class NetworkBenchmark:
         g.set_size_request(-1, height)
         return g
 
-
     def run(self):
         if not self.clients_par:
             self.warning_message(_('There are no selected clients to run the benchmark on.'))
@@ -188,7 +186,6 @@ class NetworkBenchmark:
         if off:
             self.warning_message(_('The following clients will be excluded from the benchmark because they are either offline, or do not have epoptes-client running as root.') + '\n\n' + ', '.join(off))
 
-
     def start_benchmark(self, seconds):
         self.iperf = subprocess.Popen('iperf -s -xS -yC'.split(), 
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -197,7 +194,6 @@ class NetworkBenchmark:
             handle = self.clients[client][0]
             d = self.execute(handle, 'start_benchmark %d' % seconds)
             d.addCallback(lambda r, h=client : self.store_pid(h, r))
-
 
     def stop_benchmark(self):
         for client in self.clients:
@@ -209,7 +205,6 @@ class NetworkBenchmark:
         if self.iperf and self.iperf.poll() is None:
             self.iperf.kill()
 
-
     def on_btn_startBenchmark_clicked(self, widget):
         seconds = int(self.get('seconds_adjustment').get_value())
         # Half time for upload speed and half for download
@@ -220,7 +215,6 @@ class NetworkBenchmark:
         self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
         self.countdown_event = GLib.timeout_add(1000, self.update_time_left)
         self.get('hbox_status').set_visible(True)
-
 
     def update_time_left(self):
         self.timeleft -= 1
@@ -238,7 +232,6 @@ class NetworkBenchmark:
             return False
         self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
         return True
-
 
     def parse_iperf_output(self, output):
         """Parse 'output' as a string of single or multiple lines of CSV in the form of
@@ -267,7 +260,6 @@ class NetworkBenchmark:
                     self.results[client_ip][0] = int(bandwidth)
                     self.measurements_n += 1
 
-
     def get_more_output(self):
         output = read_nonblocking(self.iperf.stdout)
         if output:
@@ -277,19 +269,16 @@ class NetworkBenchmark:
             return False
         return True
 
-
     def get_results(self):
         self.more_output = GLib.timeout_add(200, self.get_more_output)
         self.output_timeout = GLib.timeout_add(self.timeout*1000, self.show_results, True)
         
-
     def data_func(self, column, cell, model, iter, index):
         bps = model[iter][index]
         if bps <= 0:
             cell.set_property("text", "—")
         else:
             cell.set_property("text", humanize(bps, unit='bps'))
-
 
     def show_results(self, timed_out=False):
         # At this point we either have all our output or we give up waiting
@@ -341,7 +330,6 @@ class NetworkBenchmark:
             self.error_message(_("Did not get measurements from any of the clients. Check your network settings."))
             self.dlg.set_visible(False)
 
-
     def cancel_benchmark(self):
         self.stop_benchmark()
         GLib.source_remove(self.countdown_event)
@@ -349,14 +337,11 @@ class NetworkBenchmark:
         self.get('seconds_spinbox').set_sensitive(True)
         self.get('hbox_buttons').set_visible(True)
 
-
     def on_cancel_btn_clicked(self, widget):
         self.cancel_benchmark()
 
-
     def on_close_button_clicked(self, widget):
         self.get('results_dialog').destroy()
-
 
     def show_graph_toggled(self, widget):
         viewport = self.get('viewport')
@@ -368,11 +353,8 @@ class NetworkBenchmark:
             viewport.remove(self.graph)
             viewport.add(self.table)
 
-
     def on_btn_close_clicked(self, widget):
         self.dlg.destroy()
 
-
     def on_window_destroy(self, widget, event):
         self.dlg.destroy()
-

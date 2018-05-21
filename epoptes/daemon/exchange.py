@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Global registry type stuff.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,7 +34,7 @@ knownGUIs = []
 
 
 def clientConnected(handle, client):
-#    print "Client connected: %s" % handle.encode("utf-8")
+    # print("Client connected: %s" % handle.encode("utf-8"))
     knownClients[handle] = client
     for gui in knownGUIs:
         gui.clientConnected(handle)
@@ -41,18 +42,20 @@ def clientConnected(handle, client):
 
 def clientDisconnected(handle):
     if handle not in knownClients:
-        print "Disconnect from unknown client: %s" % handle.encode("utf-8")
+        print("Disconnect from unknown client: %s" % handle.encode("utf-8"))
         return
 
-#    print "Client disconnected: %s" % handle.encode("utf-8")
+    # print("Client disconnected: %s" % handle.encode("utf-8"))
     del knownClients[handle]
     for gui in knownGUIs:
         gui.clientDisconnected(handle)
 
+
 def clientTimedOut(handle):
     timedOutClients[handle] = knownClients[handle]
     clientDisconnected(handle)
-    
+
+
 def clientReconnected(handle):
     clientConnected(handle, timedOutClients[handle])
     del timedOutClients[handle]

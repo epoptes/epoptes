@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # UI connection.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,19 +29,18 @@ import os
 from twisted.internet import protocol
 from twisted.protocols import amp
 
-import commands
+from . import commands
+
 
 class Daemon(amp.AMP):
 
     def __init__(self, client):
         self.client = client
 
-
     def connectionMade(self):
         amp.AMP.connectionMade(self)
         self.client.connected(self)
 
-    
     def connectionLost(self, reason):
         amp.AMP.connectionLost(self, reason)
         self.client.disconnected(self)
@@ -50,18 +50,15 @@ class Daemon(amp.AMP):
         self.client.amp_clientConnected(handle)
         return {}
 
-
     @commands.ClientDisconnected.responder
     def clientDisconnected(self, handle):
         self.client.amp_clientDisconnected(handle)
         return {}
 
-
     def enumerateClients(self):
         d = self.callRemote(commands.EnumerateClients)
         d.addCallback(lambda r: r['handles'])
         return d
-        
 
     def command(self, handle, command):
         d = self.callRemote(commands.ClientCommand,
@@ -79,4 +76,3 @@ class Daemon(amp.AMP):
 
         d.addCallback(gotResult)
         return d
-

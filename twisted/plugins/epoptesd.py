@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Epoptesd.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -77,8 +78,8 @@ class ServiceMaker(object):
         
         if not os.path.isdir(config.system['DIR']):
             #TODO: for some reason this does 0750 instead
-            os.makedirs(config.system['DIR'], 02770)
-        os.chmod(config.system['DIR'], 02770)
+            os.makedirs(config.system['DIR'], 0o2770)
+        os.chmod(config.system['DIR'], 0o2770)
         os.chown(config.system['DIR'], -1, gid)
 
         guiService = internet.UNIXServer(
@@ -103,5 +104,6 @@ class ServiceMaker(object):
                 continue
             result += line
         return result
+
 
 serviceMaker = ServiceMaker()

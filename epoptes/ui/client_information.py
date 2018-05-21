@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -28,7 +28,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from epoptes.common.constants import *
+from ..common.constants import *
 
 
 class ClientInformation:
@@ -42,7 +42,7 @@ class ClientInformation:
         self.dlg = self.get('infodlg')
         self.dlg.set_transient_for(parent)
         self.edit_button = self.get('edit_alias_button')
-        // TODO: reduce unnecessary lambdas
+        # TODO: reduce unnecessary lambdas
         set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
 
         for client in selected:
@@ -62,7 +62,7 @@ class ClientInformation:
             set('client_type', inst.type)
             user = '--'
             if client[C_SESSION_HANDLE]:
-                uname, realname = inst.users[client[C_SESSION_HANDLE]].values()
+                uname, realname = list(inst.users[client[C_SESSION_HANDLE]].values())
                 user = uname
                 if realname:
                     user += ' (%s)' %realname

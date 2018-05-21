@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Configuration file parser and other default configuration variables.
 #
 # Copyright (C) 2011-2018 Alkis Georgopoulos <alkisg@gmail.com>
-# Copyright (C) 2011 Fotis Tsamis <ftsamis@gmail.com>
+# 2011, Fotis Tsamis <ftsamis@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,15 +26,16 @@
 
 import os
 import shlex
-import ConfigParser
+import configparser
 import json
 import gettext
-gettext.install('epoptes', unicode=True)
+gettext.install('epoptes', str=True)
 import locale
 locale.textdomain('epoptes')
 
-from epoptes.core import structs
-from epoptes.common.constants import *
+from ..core import structs
+from .constants import *
+
 
 def read_plain_file(filename):
     """Return the whole contents of a plain text file into a string list.
@@ -68,7 +69,7 @@ def write_plain_file(filename, contents):
 def read_ini_file(filename):
     """Return a ConfigParser from the contents of a configuration file.
     """
-    conf = ConfigParser.ConfigParser()
+    conf = configparser.ConfigParser()
     try:
         conf.read(filename)
     except:
@@ -122,19 +123,19 @@ def read_groups(filename):
     
     saved_clients = {}
 
-    for key, cln in data['clients'].iteritems():
+    for key, cln in data['clients'].items():
         new = structs.Client('offline', cln['mac'], '', cln['alias'])
         saved_clients[key] = new
 
     groups = []
     for grp in data['groups']:
         members = {}
-        for key, dct in grp['members'].iteritems():
+        for key, dct in grp['members'].items():
             members[saved_clients[key]] = dct
     
         groups.append(structs.Group(grp['name'], members))
     
-    return (saved_clients.values(), groups)
+    return (list(saved_clients.values()), groups)
     
 def save_groups(filename, model):
     """Save the groups and their members from model (gtk.ListStore)
@@ -171,7 +172,7 @@ def save_groups(filename, model):
         members = {}
         
         # Get the IDs created above
-        for cln, props in grp.members.iteritems():
+        for cln, props in grp.members.items():
             members[uid_pairs[cln]] = props
         
         

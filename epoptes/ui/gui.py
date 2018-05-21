@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -24,7 +24,7 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-from __future__ import print_function
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -45,21 +45,21 @@ from gobject import TYPE_PYOBJECT as gPyobject
 from twisted.internet import reactor
 from twisted.python import log
 
-from epoptes import __version__
-from epoptes import ui
-from notifications import *
-from execcommand import *
-from sendmessage import *
-from about_dialog import About
-from client_information import ClientInformation
-from benchmark import NetworkBenchmark
-from epoptes.daemon import uiconnection
-from epoptes.core.lib_users import *
-from epoptes.common import ltsconf
-from epoptes.common import config
-from epoptes.common.constants import *
-from epoptes.core import wol
-from epoptes.core import structs
+from ...epoptes import ui
+from ...epoptes import __version__
+from ..common.constants import *
+from ..common import config
+from ..common import ltsconf
+from ..core import structs
+from ..core import wol
+from ..core.lib_users import *
+from ..daemon import uiconnection
+from .about_dialog import About
+from .benchmark import NetworkBenchmark
+from .client_information import ClientInformation
+from .execcommand import *
+from .notifications import *
+from .sendmessage import *
 
 
 class EpoptesGui(object):
@@ -93,8 +93,7 @@ class EpoptesGui(object):
         
         # Connect glade handlers with the callback functions
         self.wTree.connect_signals(self)
-        
-        
+
         # Hide the remote assistance menuitem if epoptes-client is not installed
         if not os.path.isfile('/usr/share/epoptes-client/remote-assistance'):
             self.get('mi_remote_assistance').set_property('visible', False)
@@ -257,12 +256,10 @@ class EpoptesGui(object):
         self.execOnSelectedClients(["reboot"],
             warn=_('Are you sure you want to reboot all the computers?'))
 
-
     def logout(self, widget):
         """Log off the users of the selected clients."""
         self.execOnSelectedClients(['logout'], mode=EM_SESSION,
             warn=_('Are you sure you want to log off all the users?'))
-
 
     def reverseConnection(self, widget, path, view_column, cmd, *args):
         # Open vncviewer in listen mode
@@ -290,7 +287,6 @@ class EpoptesGui(object):
         # And, tell the clients to connect to the server
         self.execOnSelectedClients([cmd, self.vncviewerport] + list(args))
 
-
     def assistUser(self, widget, path=None, view_column=None):
         if config.settings.has_option('GUI', 'grabkbdptr'):
             grab = config.settings.getboolean('GUI', 'grabkbdptr')
@@ -299,10 +295,8 @@ class EpoptesGui(object):
         else:
             self.reverseConnection(widget, path, view_column, 'get_assisted')
 
-
     def monitorUser(self, widget, path=None, view_column=None):
         self.reverseConnection(widget, path, view_column, 'get_monitored')
-
 
     def findUnusedPort(self):
         """Find an unused port."""
@@ -314,7 +308,6 @@ class EpoptesGui(object):
         port = s.getsockname()[1]
         s.close()
         return port
-
 
     def _broadcastScreen(self, fullscreen=''):
         if self.vncserver is None:
@@ -339,14 +332,11 @@ class EpoptesGui(object):
         self.execOnSelectedClients(["receive_broadcast", self.vncserverport, 
             self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
 
-
     def broadcastScreen(self, widget):
         self._broadcastScreen('true')
 
-
     def broadcastScreenWindowed(self, widget):
         self._broadcastScreen('')
-
 
     def stopTransmissions(self, widget):
         self.execOnClients(['stop_receptions'], self.cstore,
@@ -354,7 +344,6 @@ class EpoptesGui(object):
         if not self.vncserver is None:
             self.vncserver.kill()
             self.vncserver = None
-
 
     ## FIXME FIXME: Should we allow for running arbitrary commands in clients?
     def execDialog(self, widget):
@@ -368,14 +357,12 @@ class EpoptesGui(object):
             cmd = cmd[4:]
         self.execOnSelectedClients(['execute', cmd], mode=em)
 
-
     def sendMessageDialog(self, widget):
         msg = startSendMessageDlg(self.mainwin)
         if msg:
             cmd = list(msg)
             cmd.insert(0, 'message')
             self.execOnSelectedClients(cmd)
-
 
     ## FIXME / FIXUS: Should we allow it?
     def openTerminal(self, em):
@@ -402,19 +389,15 @@ class EpoptesGui(object):
                 'tcp-listen:%d,keepalive=1' % port, 'stdio,raw,echo=0'])
             self.execOnClients(['remote_term', port], [client], mode=em)
 
-
     def openUserTerminal(self, widget):
         self.openTerminal(EM_SESSION)
-
 
     def openRootTerminal(self, widget):
         self.openTerminal(EM_SYSTEM)
 
-
     def remoteRootTerminal(self, widget):
         self.execOnSelectedClients(['root_term'], mode=EM_SYSTEM)
     ## END_FIXUS
-
 
     def lockScreen(self, widget):
         """
@@ -423,13 +406,11 @@ class EpoptesGui(object):
         msg = _("The screen is locked by a system administrator.")
         self.execOnSelectedClients(['lock_screen', 0, msg])
 
-
     def unlockScreen(self, widget):
         """
         Unlock screen for all clients selected
         """
         self.execOnSelectedClients(['unlock_screen'], mode=EM_SESSION_AND_SYSTEM)
-
 
     def soundOff(self, widget):
         """
@@ -437,20 +418,17 @@ class EpoptesGui(object):
         """
         self.execOnSelectedClients(['mute_sound', 0], mode=EM_SYSTEM_OR_SESSION)
 
-
     def soundOn(self, widget):
         """
         Enable sound usage for clients selected
         """
         self.execOnSelectedClients(['unmute_sound'], mode=EM_SYSTEM_AND_SESSION)
 
-
     def on_add_to_group_clicked(self, widget, group):
         clients = self.getSelectedClients()
         for client in clients:
             if not group.has_client(client[C_INSTANCE]):
                 group.add_client(client[C_INSTANCE])
-
 
     def on_remove_from_group_clicked(self, widget):
         clients = self.getSelectedClients()
@@ -461,14 +439,12 @@ class EpoptesGui(object):
                 group.remove_client(client[C_INSTANCE])
             self.fillIconView(self.getSelectedGroup()[1], True)
 
-
     def set_move_group_sensitivity(self):
         selected = self.getSelectedGroup()
         selected_path = self.gstore.get_path(selected[0])[0]
         blocker = not selected[1] is self.default_group
         self.get('move_group_up').set_sensitive(blocker and selected_path > 1)
         self.get('move_group_down').set_sensitive(blocker and selected_path < len(self.gstore)-1)
-
 
     def on_move_group_down_clicked(self, widget):
         selected_group_iter = self.getSelectedGroup()[0]
@@ -477,7 +453,6 @@ class EpoptesGui(object):
         self.set_move_group_sensitivity()
         mitem = self.groups_menu.get_children()[path-1]
         self.groups_menu.reorder_child(mitem, path)
-
 
     def on_move_group_up_clicked(self, widget):
         selected_group_iter = self.getSelectedGroup()[0]
@@ -488,8 +463,6 @@ class EpoptesGui(object):
         mitem = self.groups_menu.get_children()[path-1]
         self.groups_menu.reorder_child(mitem, path-2)
         
-
-
     def on_remove_group_clicked(self, widget):
         group_iter = self.getSelectedGroup()[0]
         group = self.gstore[group_iter][G_INSTANCE]
@@ -500,7 +473,6 @@ class EpoptesGui(object):
             menuitem = self.groups_menu.get_children()[path-1]
             self.groups_menu.remove(menuitem)
 
-
     def on_add_group_clicked(self, widget):
         new_group = structs.Group()
         iter = self.gstore.append([new_group.name, new_group, True])
@@ -508,12 +480,10 @@ class EpoptesGui(object):
         self.gtree.set_cursor(self.gstore.get_path(iter), self.get('group_name_column'), True)
         self.appendToGroupsMenu(new_group)
 
-
     def on_group_renamed(self, widget, path, new_name):
         self.gstore[path][G_LABEL] = new_name
         self.gstore[path][G_INSTANCE].name = new_name
         self.groups_menu.get_children()[int(path)-1].set_label(new_name)
-
 
     #FIXME: Remove the second parameter, find a better way
     def on_tb_client_properties_clicked(self, widget=None):
@@ -523,42 +493,34 @@ class EpoptesGui(object):
         dlg.run()
         self.setLabel(self.getSelectedClients()[0])
 
-
     def on_mi_remote_assistance_activate(self, widget=None):
         path = '/usr/share/epoptes-client'
         subprocess.Popen('%s/remote-assistance' %path, shell=True, cwd=path)
 
-
     def on_mi_about_activate(self, widget=None):
         About(self.mainwin).run()
-
 
     def on_cViewHU_toggled(self, mitem):
         self.set_cView(1, 0)
         config.settings.set('GUI', 'label', 'miClientsViewHostUser')
 
-
     def on_cViewUH_toggled(self, mitem):
         self.set_cView(0, 1)
         config.settings.set('GUI', 'label', 'miClientsViewUserHost')
-
 
     def on_cViewH_toggled(self, mitem):
         self.set_cView(-1, 0)
         config.settings.set('GUI', 'label', 'miClientsViewHost')
 
-
     def on_cViewU_toggled(self, mitem):
         self.set_cView(0, -1)
         config.settings.set('GUI', 'label', 'miClientsViewUser')
-
 
     def set_cView(self, user_pos= -1, name_pos=0):
         # Save the order so all new clients get the selected format
         self.cView_order = (user_pos, name_pos)
         for row in self.cstore:            
             self.setLabel(row)
-
 
     def connected(self, daemon):
         self.mainwin.set_sensitive(True)
@@ -581,15 +543,13 @@ class EpoptesGui(object):
         dlg.run()
         dlg.destroy()
         reactor.stop()
-        
 
     # AMP callbacks
     def amp_clientConnected(self, handle):
         print("New connection from", handle)
-        d = self.daemon.command(handle, u'info')
+        d = self.daemon.command(handle, 'info')
         d.addCallback(lambda r: self.addClient(handle, r))
         d.addErrback(lambda err: self.printErrors("when connecting client %s: %s" %(handle, err)))
-
 
     def amp_clientDisconnected(self, handle):
         print("Disconnect from", handle)
@@ -621,18 +581,15 @@ class EpoptesGui(object):
                     self.fillIconView(self.getSelectedGroup()[1], True)
                     break
 
-
     def amp_gotClients(self, handles):
         print( "Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
-            d = self.daemon.command(handle, u'info')
+            d = self.daemon.command(handle, 'info')
             d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
             d.addErrback(lambda err: self.printErrors("when enumerating client %s: %s" %(handle, err)))
 
-
     def on_button_close_clicked(self, widget):
         self.get('warningDialog').hide()
-
 
     def on_group_selection_changed(self, treeselection):
         self.cstore.clear()
@@ -652,7 +609,6 @@ class EpoptesGui(object):
         self.get('remove_group').set_sensitive(not self.isDefaultGroupSelected())
         self.set_move_group_sensitivity()
 
-
     def addToIconView(self, client):
         """Properly add a Client class instance to the clients iconview."""
         # If there are one or more users on client, add a new iconview entry
@@ -662,12 +618,11 @@ class EpoptesGui(object):
         if self.showRealNames:
                 label = 'rname'
         if client.users:
-            for hsession, user in client.users.iteritems():
+            for hsession, user in client.users.items():
                 self.cstore.append([self.calculateLabel(client, user[label]), self.imagetypes[client.type], client, hsession])
                 self.askScreenshot(hsession, True)
         else:
             self.cstore.append([self.calculateLabel(client), self.imagetypes[client.type], client, ''])
-
 
     def fillIconView(self, group, keep_selection=False):
         """Fill the clients iconview from a Group class instance."""
@@ -687,13 +642,11 @@ class EpoptesGui(object):
                     self.cview.select_path(row.path)
                     selection.remove(row[C_INSTANCE])
 
-
     def isDefaultGroupSelected(self):
         """Return True if the default group is selected"""
         if self.getSelectedGroup():
             return self.getSelectedGroup()[1] is self.default_group
         return True
-
 
     def getSelectedGroup(self):
         """Return a 2-tuple containing the iter and the instance
@@ -703,7 +656,6 @@ class EpoptesGui(object):
             return (iter, self.gstore[iter][G_INSTANCE])
         else:
             return None
-
 
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
@@ -740,7 +692,7 @@ which is incompatible with the current epoptes version.\
                 dlg.set_property('text', msg)
                 dlg.set_transient_for(self.mainwin)
                 dlg.show()
-            self.daemon.command(handle, u"exit")
+            self.daemon.command(handle, "exit")
             return False
         sel_group = self.getSelectedGroup()[1]
         client = None
@@ -770,7 +722,6 @@ which is incompatible with the current epoptes version.\
         if sel_group.has_client(client) or self.isDefaultGroupSelected():
             self.fillIconView(sel_group, True)
 
-
     def setLabel(self, row):
         inst = row[C_INSTANCE]
         if row[C_SESSION_HANDLE]:            
@@ -782,7 +733,6 @@ which is incompatible with the current epoptes version.\
             user = ''
         row[C_LABEL] = self.calculateLabel(inst, user)
 
-
     def calculateLabel(self, client, username=''):
         """Return the iconview label from a hostname/alias
         and a username, according to the user options.
@@ -790,7 +740,7 @@ which is incompatible with the current epoptes version.\
         user_pos, name_pos = self.cView_order
         
         # TODO: this is needed when "Labels > Show real names" is selected. Remove it in python 3.
-        username = unicode(username, 'utf-8')
+        username = str(username, 'utf-8')
         alias = client.get_name()
         if username == '' or user_pos == -1:
             return alias
@@ -805,10 +755,8 @@ which is incompatible with the current epoptes version.\
                     label += " (%s)" % username
             return label
 
-
     def getShowRealNames(self):
         return self.get('')
-    
 
     def askScreenshot(self, handle, firstTime=False):
         # Should always return False to prevent glib from calling us again
@@ -836,7 +784,6 @@ which is incompatible with the current epoptes version.\
         except: pass
         return False
 
-
     def gotScreenshot(self, handle, reply):
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
@@ -863,7 +810,6 @@ which is incompatible with the current epoptes version.\
         try: del self.currentScreenshots[handle]
         except: pass
 
-
     def getSelectedClients(self):
         selected = self.cview.get_selected_items()
         items = []
@@ -886,26 +832,20 @@ which is incompatible with the current epoptes version.\
     def changeHostname(self, mac, new_name):
         pass #FIXME: Implement this (virtual hostname)
 
-
     def openLink(self, link):
         subprocess.Popen(["xdg-open", link])
-
 
     def openHelpLink(self, widget):
         self.openLink("http://www.epoptes.org")
 
-
     def openBugsLink(self, widget):
         self.openLink("https://bugs.launchpad.net/epoptes")
-
 
     def openQuestionsLink(self, widget):
         self.openLink("https://answers.launchpad.net/epoptes")
 
-
     def openTranslationsLink(self, widget):
         self.openLink("http://www.epoptes.org/translations")
-
 
     def openIRCLink(self, widget):
         host = socket.gethostname()
@@ -913,8 +853,7 @@ which is incompatible with the current epoptes version.\
         lang = locale.getlocale()[0]
         self.openLink("http://ts.sch.gr/repo/irc?user=%s&host=%s&lang=%s" % \
                        (user, host, lang))
-    
-    
+
     def iconsSizeScale_button_event(self, widget, event):
         """A hack to make the left click work like middle click
         in the scale (for jump-to functionality). Right click resets
@@ -925,13 +864,12 @@ which is incompatible with the current epoptes version.\
         elif event.button == 3:
             self.iconsSizeScaleChanged(None, 120) # Reset the thumbnail size
         return False
-    
-    
+
     def reload_imagetypes(self):
         """Improve the quality of previously resized svg icons,
         by reloading them.
         """
-        old_pixbufs = self.imagetypes.values()
+        old_pixbufs = list(self.imagetypes.values())
         loadSVG = lambda path: GdkPixbuf.Pixbuf.new_from_file_at_size(path, 
                                                   self.scrWidth, self.scrHeight)
         self.imagetypes = {
@@ -945,13 +883,11 @@ which is incompatible with the current epoptes version.\
         for row in rows:
             row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
     
-    
     def on_iconsSizeScale_button_release_event(self, widget=None, event=None):
         # Here we want to resize the SVG icons from imagetypes at a better
         # quality than this of the quick pixbuf scale, since we assume that
         # the user has decided the desired zoom level.
         self.reload_imagetypes()
-    
     
     def iconsSizeScaleChanged(self, widget=None, width=None):
         adj = self.get('iconsSizeAdjustment')
@@ -963,7 +899,7 @@ which is incompatible with the current epoptes version.\
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
 
         # Fast scale all the thumbnails to make the change quickly visible
-        old_pixbufs = self.imagetypes.values()
+        old_pixbufs = list(self.imagetypes.values())
         for row in self.cstore:
             if row[C_PIXBUF] in old_pixbufs:
                 ctype = row[C_INSTANCE].type
@@ -981,22 +917,19 @@ which is incompatible with the current epoptes version.\
         self.cview.set_resize_mode(Gtk.ResizeMode.IMMEDIATE)
         self.cview.get_cells()[1].set_fixed_size(-1, -1)
         self.cview.check_resize()
-    
-    
+
     def scrIncreaseSize(self, widget):
         # Increase the size of screenshots by 2 pixels in width
         adj = self.get('iconsSizeAdjustment')
         adj.set_value(adj.get_value() + 15)
         self.reload_imagetypes()
 
-
     def scrDecreaseSize(self, widget):
         # Decrease the size of screenshots by 2 pixels in width
         adj = self.get('iconsSizeAdjustment')
         adj.set_value(adj.get_value() - 15)
         self.reload_imagetypes()
-    
-    
+
     def contextMenuPopup(self, widget, event):
         clicked = widget.get_path_at_pos(int(event.x), int(event.y))
 
@@ -1024,7 +957,6 @@ which is incompatible with the current epoptes version.\
             menu.show()
             return True
 
-
     def on_clients_selection_changed(self, widget=None):
         selected = self.getSelectedClients()
         single_client = False
@@ -1048,7 +980,6 @@ which is incompatible with the current epoptes version.\
         else:
             self.get('statusbar_label').set_text('')
 
-
     def execOnClients(self, command, clients=[], reply=None,
             mode=EM_SESSION_OR_SYSTEM, handles=[], warning='', params=None):
         '''reply should be a method in which the result will be sent'''
@@ -1067,7 +998,7 @@ which is incompatible with the current epoptes version.\
                 return
         if clients == [] and handles != []:
             for handle in handles:
-                cmd = self.daemon.command(handle, unicode(command))
+                cmd = self.daemon.command(handle, str(command))
                 if reply:
                     cmd.addCallback(lambda re, h=handle, p=params: reply(h, re, *p))
                     cmd.addErrback(lambda err: self.printErrors("when executing command %s on client %s: %s" %(command,handle, err)))
@@ -1087,11 +1018,10 @@ which is incompatible with the current epoptes version.\
                 if handle == '':
                     continue
                 sent = True
-                cmd = self.daemon.command(handle, unicode(command))
+                cmd = self.daemon.command(handle, str(command))
                 if reply:
                     cmd.addCallback(lambda re, h=handle, p=params: reply(h, re, *p))
                     cmd.addErrback(lambda err: self.printErrors("when executing command %s on client %s: %s" %(command,handle, err)))
-
 
     def execOnSelectedClients(self, command, reply=None,
             mode=EM_SESSION_OR_SYSTEM, warn=''):
@@ -1101,7 +1031,6 @@ which is incompatible with the current epoptes version.\
         else: # Show the warning only when no clients are selected
             warn = ''
         self.execOnClients(command, clients, reply, mode, warning=warn)
-
 
     def warnDlgPopup(self, warning):
         dlg = self.get('executionwarning')
@@ -1114,7 +1043,6 @@ which is incompatible with the current epoptes version.\
             return True
         else:
             return False
-
 
     def printErrors(self, error):
         print('  **Twisted error:', error)

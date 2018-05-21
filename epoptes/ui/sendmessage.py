@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -29,7 +29,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import os
 
-from epoptes.common import config
+from ..common import config
 
 
 def startSendMessageDlg(parent):

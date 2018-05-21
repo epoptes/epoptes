@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -6,6 +6,7 @@
 # can be started up with Wake-On-Lan.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,6 +27,7 @@
 
 import re
 import os
+
 
 class ltsConf:
     
@@ -103,7 +105,7 @@ class ltsConf:
     
     def getSavedClients(self):
         list = []
-        for client, vars in self.clients.iteritems():
+        for client, vars in self.clients.items():
             if 'HOSTNAME' in vars:
                 list.append(client)
         return list
@@ -150,7 +152,7 @@ class ltsConf:
             self.write()
     
     def getSections(self):
-        return self.clients.keys()
+        return list(self.clients.keys())
     
     def sectionExists(self, section):
         if section in self.clients:
@@ -161,5 +163,3 @@ class ltsConf:
         if self.sectionExists(section) and item in self.clients[section]:
             return True
         return False
-        
-    

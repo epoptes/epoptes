@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Classes for creating client and group objects.
 #
 # Copyright (C) 2011 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,6 +25,8 @@
 ###########################################################################
 
 clients = []
+
+
 class Client:
     def __init__(self, type='', mac='', hostname='', alias='', users={}, hsystem=''):
         self.type = type
@@ -68,7 +71,7 @@ class Group:
     
     def get_members(self):
         """Return a list with all the clients that are members of the group"""
-        return self.members.keys()
+        return list(self.members.keys())
     
     def has_client(self, client):
         """Check if a client is member of the group"""
@@ -85,7 +88,7 @@ class Group:
     
     def set_properties(self, client, **props):
         """Set x_pos, y_pos or size property for a client on the group"""
-        for prop, value in props.iteritems():
+        for prop, value in props.items():
             if isinstance(value, (int, float)):
                 self.members[client][prop] = value
                 #TODO: Save the new values to the disk.
@@ -95,4 +98,3 @@ class Group:
     def get_property(self, client, prop):
         """Return the value of the 'prop' property for client"""
         return self.members[client][prop]
-    
