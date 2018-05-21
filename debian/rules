@@ -4,15 +4,8 @@
 # Uncomment this to turn on verbose mode.
 # export DH_VERBOSE=1
 
-# Fall back to python-central on systems that lack dh_python2
-PYTHON_VARIANT = $(shell test -f /usr/bin/dh_python2 && echo "python2")
-ifeq ($(PYTHON_VARIANT),)
-	PYTHON_VARIANT=python_central
-	export DH_PYCENTRAL=include-links dh_pycentral -i
-endif
-
 %:
-	dh $@ --with $(PYTHON_VARIANT)
+	dh $@ --with python3
 
 override_dh_installinit:
 	dh_installinit -u"defaults 30"
