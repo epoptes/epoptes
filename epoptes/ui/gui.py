@@ -789,15 +789,15 @@ which is incompatible with the current epoptes version.\
                 # So if the client is too stressed and needs 7 secs to
                 # send a thumbnail, we'll ask for one every 12 secs.
                 GLib.timeout_add(5000, self.askScreenshot, handle)
-#                print("I got a screenshot from %s." % handle)
+                # print("I got a screenshot from %s." % handle)
                 if not reply:
                     return
                 try:
-                    rowstride, size, pixels = reply.split('\n', 2)
+                    rowstride, size, pixels = reply.split(b'\n', 2)
                 except:
                     return
                 rowstride = int(rowstride)
-                width, height = size.split('x')
+                width, height = size.split(b'x')
                 pxb = GdkPixbuf.Pixbuf.new_from_data(pixels,
                     GdkPixbuf.Colorspace.RGB, False, 8, int(width), int(height),
                     rowstride)
