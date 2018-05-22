@@ -47,4 +47,4 @@ class ClientCommand(amp.Command):
                  (b'command', amp.Unicode())]
 
     response = [(b'result', amp.String()),
-                (b'filename', amp.String())]
+                (b'filename', amp.Unicode())]

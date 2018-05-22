@@ -28,7 +28,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import cairo  # TODO: put python-gi-cairo in debian dependencies
-from pycha.bar import HorizontalBarChart
+#from pycha.bar import HorizontalBarChart
 
 
 class Graph(Gtk.DrawingArea):

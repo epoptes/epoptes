@@ -50,11 +50,11 @@ class ClientInformation:
             handle = inst.hsystem or client[C_SESSION_HANDLE]
             if handle:
                 execute(handle, 'echo $RAM').addCallback(
-                    lambda r: set('client_ram', r.strip()+' MB'))
+                    lambda r: set('client_ram', r.decode().strip()+' MB'))
                 execute(handle, 'echo $CPU').addCallback(
-                    lambda r: set('client_cpu', r))
+                    lambda r: set('client_cpu', r.decode()))
                 execute(handle, 'echo $VGA').addCallback(
-                    lambda r: set('client_vga', r))
+                    lambda r: set('client_vga', r.decode()))
             set('client_alias', inst.alias)
             set('client_hostname', inst.hostname)
             set('client_mac', inst.mac)

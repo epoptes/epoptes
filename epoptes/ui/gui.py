@@ -548,7 +548,7 @@ class EpoptesGui(object):
     def amp_clientConnected(self, handle):
         print("New connection from", handle)
         d = self.daemon.command(handle, 'info')
-        d.addCallback(lambda r: self.addClient(handle, r))
+        d.addCallback(lambda r: self.addClient(handle, r.decode()))
         d.addErrback(lambda err: self.printErrors("when connecting client %s: %s" %(handle, err)))
 
     def amp_clientDisconnected(self, handle):
@@ -585,7 +585,7 @@ class EpoptesGui(object):
         print( "Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
             d = self.daemon.command(handle, 'info')
-            d.addCallback(lambda r, h=handle: self.addClient(h, r, True))
+            d.addCallback(lambda r, h=handle: self.addClient(h, r.decode(), True))
             d.addErrback(lambda err: self.printErrors("when enumerating client %s: %s" %(handle, err)))
 
     def on_button_close_clicked(self, widget):
@@ -988,8 +988,7 @@ which is incompatible with the current epoptes version.\
             return False
         
         if isinstance(command, list) and len(command) > 0:
-            # TODO: remove .decode() in Python 3
-            command = '%s %s' %(command[0], ' '.join([pipes.quote(str(x).decode('utf-8')) for x in command[1:]]))
+            command = '%s %s' %(command[0], ' '.join([pipes.quote(str(x)) for x in command[1:]]))
                     
         if (clients != [] or handles != []) and warning != '':
             if self.warnDlgPopup(warning) == False:
