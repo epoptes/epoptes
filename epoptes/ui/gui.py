@@ -316,10 +316,10 @@ class EpoptesGui(object):
             pwdfile=os.path.expanduser('~/.config/epoptes/vncpasswd')
             pwd=''.join(random.sample(string.ascii_letters + string.digits, 8))
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
-            f=open(pwdfile)
+            f=open(pwdfile, 'rb')
             pwd=f.read()
             f.close()
-            self.pwd=''.join('\\%o' % ord(c) for c in pwd)
+            self.pwd = ''.join('\\%o' % c for c in pwd)
             self.vncserverport = self.findUnusedPort()
             self.vncserver = subprocess.Popen(['x11vnc', '-noshm', '-nopw',
                 '-quiet', '-viewonly', '-shared', '-forever', '-nolookup',
