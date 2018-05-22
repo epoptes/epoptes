@@ -60,7 +60,7 @@ class GUI(amp.AMP):
             #raise ValueError("Unknown client")
             return {'filename': '', 'result': ''}
 
-        d = exchange.knownClients[handle].command(command.encode("utf-8"))
+        d = exchange.knownClients[handle].command(command)
         
         def sendResult(result):
             if len(result) > 65000:

@@ -34,7 +34,7 @@ knownGUIs = []
 
 
 def clientConnected(handle, client):
-    # print("Client connected: %s" % handle.encode("utf-8"))
+    # print("Client connected: %s" % handle)
     knownClients[handle] = client
     for gui in knownGUIs:
         gui.clientConnected(handle)
@@ -42,10 +42,10 @@ def clientConnected(handle, client):
 
 def clientDisconnected(handle):
     if handle not in knownClients:
-        print("Disconnect from unknown client: %s" % handle.encode("utf-8"))
+        print("Disconnect from unknown client: %s" % handle)
         return
 
-    # print("Client disconnected: %s" % handle.encode("utf-8"))
+    # print("Client disconnected: %s" % handle.)
     del knownClients[handle]
     for gui in knownGUIs:
         gui.clientDisconnected(handle)
