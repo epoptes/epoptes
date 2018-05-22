@@ -314,7 +314,7 @@ class EpoptesGui(object):
             import random
             import string
             pwdfile=os.path.expanduser('~/.config/epoptes/vncpasswd')
-            pwd=''.join(random.sample(string.letters + string.digits, 8))
+            pwd=''.join(random.sample(string.ascii_letters + string.digits, 8))
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
             f=open(pwdfile)
             pwd=f.read()

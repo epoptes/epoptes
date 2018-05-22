@@ -79,7 +79,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             cmd, delimiter)
 
         # TODO: check the python's debug logging implementation
-        # print("Sending:", str(delimitedCommand))
+        # print("Sending:", delimitedCommand)
         self.transport.write(bytes(delimitedCommand, 'utf-8'))
 
         return d
@@ -133,9 +133,9 @@ class DelimitedBashReceiver(protocol.Protocol):
         self.buffer.seek(-searchLength, os.SEEK_END)
 
         searchStr = self.buffer.read()
-        searchPos = searchStr.find(bytes(delimiter, 'ascii'))
+        searchPos = searchStr.find(bytes(delimiter, 'utf-8'))
         if searchPos != -1:
-            #print "Found delimiter:", delimiter
+            # print("Found delimiter:", delimiter)
 
             # Two steps here is correct! If the delimiter was received in the
             # first packet, then the searchLength is greater than the buffer
@@ -171,7 +171,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         while self.currentDelimiters:
             (delimiter, d) = self.currentDelimiters[0]
             try:
-                response, rest = rest.split(delimiter)
+                response, rest = rest.split(bytes(delimiter, 'utf-8'))
             except ValueError:
                 break
                         
