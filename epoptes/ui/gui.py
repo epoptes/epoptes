@@ -658,7 +658,7 @@ class EpoptesGui(object):
 
     def addClient(self, handle, r, already=False):
         # already is True if the client was started before epoptes
-        print("---\n**addClient's been called for", handle)
+        print("addClient's been called for", handle)
         try:
             info = {}
             for line in r.strip().split('\n'):
@@ -668,16 +668,14 @@ class EpoptesGui(object):
                 info['user'], info['hostname'], info['ip'], info['mac'], \
                 info['type'], int(info['uid']), info['version'], info['name']
         except:
-            print("Can't extract client information, won't add this client")
+            print("  Can't extract client information, won't add this client")
             return
         
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.
         if (mac in self.current_macs) and ((uid == self.uid) or (uid == 0)):
-            print("* Won't add this client to my lists")
+            print("  Won't add this client to my lists")
             return False
-        
-        print('  Continuing inside addClient...')
         
         # Compatibility check
         if tuple(map(int, version.split('.'))) < COMPATIBILITY_VERSION:
@@ -699,17 +697,17 @@ which is incompatible with the current epoptes version.\
             # Find if the new handle is a known client
             if mac == inst.mac:
                 client = inst
-                print('* This is an existing client')
+                print('  Old client: ', end='')
                 break
         if client is None:
-            print('* This client is a new one, creating an instance')
+            print('  New client: ', end='')
             client = structs.Client(mac=mac)
-            
+        print('hostname=%s, type=%s, uid=%s, user=%s' % (host, type, uid, user))
+
         # Update/fill the client information
         client.type, client.hostname = type, host
         if uid == 0:
             # This is a root epoptes-client
-            print('* I am a root client')
             client.hsystem = handle
         else:
             # This is a user epoptes-client
