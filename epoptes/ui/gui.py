@@ -798,9 +798,10 @@ which is incompatible with the current epoptes version.\
                     return
                 rowstride = int(rowstride)
                 width, height = size.split(b'x')
-                pxb = GdkPixbuf.Pixbuf.new_from_data(pixels,
-                    GdkPixbuf.Colorspace.RGB, False, 8, int(width), int(height),
-                    rowstride)
+                # TODO: see if there's any way to avoid casting to GLib.Bytes
+                pxb = GdkPixbuf.Pixbuf.new_from_bytes(
+                    GLib.Bytes.new(pixels), GdkPixbuf.Colorspace.RGB, False, 8,
+                    int(width), int(height), rowstride)
                 self.currentScreenshots[handle] = pxb
                 self.cstore[i.path][C_PIXBUF] = pxb
                 return
