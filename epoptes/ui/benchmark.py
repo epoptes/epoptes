@@ -56,7 +56,7 @@ def read_nonblocking(f):
         fl = fcntl.fcntl(fd, fcntl.F_GETFL)
         fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
         try:
-            return f.read()
+            return f.read().decode()
         except:
             return None
 
