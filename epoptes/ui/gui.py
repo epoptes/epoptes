@@ -32,7 +32,6 @@ from gi.repository import Gdk
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
 import os
-import re
 import dbus
 import logging
 import sys
@@ -681,7 +680,7 @@ class EpoptesGui(object):
         print('  Continuing inside addClient...')
         
         # Compatibility check
-        if [int(x) for x in re.split('[^0-9]*', version)] < COMPATIBILITY_VERSION:
+        if tuple(map(int, version.split('.'))) < COMPATIBILITY_VERSION:
             if not self.shownCompatibilityWarning:
                 self.shownCompatibilityWarning = True
                 dlg = self.get('warningDialog')
