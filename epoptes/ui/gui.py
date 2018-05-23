@@ -913,7 +913,10 @@ which is incompatible with the current epoptes version.\
         
         # Hack to remove the extra padding that remains after a 'zoom out'
         self.cview.set_resize_mode(Gtk.ResizeMode.IMMEDIATE)
-        self.cview.get_cells()[1].set_fixed_size(-1, -1)
+        # TODO: Weird Gtk3 issue, they calculate excess width:
+        # https://bugzilla.gnome.org/show_bug.cgi?id=680953
+        # https://stackoverflow.com/questions/14090094/what-causes-the-different-display-behaviour-for-a-gtkiconview-between-different
+        self.cview.get_cells()[0].set_fixed_size(6 + width/4, -1)
         self.cview.check_resize()
 
     def scrIncreaseSize(self, widget):
