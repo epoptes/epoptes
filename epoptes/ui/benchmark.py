@@ -27,8 +27,7 @@
 import os
 import subprocess
 import fcntl
-import gi
-gi.require_version('Gtk', '3.0')
+from . import gi_versions
 from gi.repository import Gtk
 from gi.repository import GLib
 from twisted.internet import reactor

@@ -23,11 +23,10 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
+from epoptes.ui import gi_versions
 import os
 import os.path
 import sys
-import gi
-gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 import epoptes

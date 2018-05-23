@@ -24,10 +24,9 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
+from . import gi_versions
 import os
-import gi
 import sys
-gi.require_version('Notify', '0.7')
 from gi.repository import Notify
 
 if not Notify.init("epoptes-notifications"):

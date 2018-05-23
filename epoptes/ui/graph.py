@@ -24,10 +24,9 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gi
-gi.require_version('Gtk', '3.0')
+from . import gi_versions
 from gi.repository import Gtk
-import cairo  # TODO: put python-gi-cairo in debian dependencies
+import cairo
 #from pycha.bar import HorizontalBarChart
 
 
