@@ -850,14 +850,12 @@ which is incompatible with the current epoptes version.\
                        (user, host, lang))
 
     def iconsSizeScale_button_event(self, widget, event):
-        """A hack to make the left click work like middle click
-        in the scale (for jump-to functionality). Right click resets
-        the thumbnail size.
+        """Make right click reset the thumbnail size.
         """
-        if event.button == 1:
-            event.button = 2
-        elif event.button == 3:
-            self.iconsSizeScaleChanged(None, 120) # Reset the thumbnail size
+        if event.button == 3:
+            self.iconsSizeScaleChanged(None, 120)
+            self.reload_imagetypes()
+            return True
         return False
 
     def reload_imagetypes(self):
