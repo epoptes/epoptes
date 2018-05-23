@@ -32,7 +32,6 @@ from gi.repository import Gtk
 from gi.repository import GLib
 from twisted.internet import reactor
 
-from .graph import Graph
 from ..common.constants import *
 
 
@@ -76,7 +75,6 @@ class NetworkBenchmark:
         self.dlg = self.get('benchmark_dialog')
         self.dlg.set_transient_for(self.parent)
         self.table = self.get('results_treeview')
-        self.graph = None
         self.measurements_n = 0
         self.timeleft = 0
         self.timeout = 5
@@ -107,61 +105,6 @@ class NetworkBenchmark:
         allowing us to kill it later.
         """
         self.processes[handle] = int(pid)
-
-    def create_graph(self, entries):
-        options = {
-            'axis': {
-                'x': {
-                    'ticks': [dict(v=i, label=l[0]) for i, l in enumerate(entries)],
-                    'rotate': 0,
-                    'label' : 'Computers'
-                },
-                'y': {
-                    #'tickCount': 15,
-                    'tickPrecision' : 0,
-                    #'range' : [20,1100],
-                    #'interval' : 10,
-                    'label' : 'MBits/s',
-                    'rotate': 0
-                }
-            },
-            'background': {
-                'chartColor': '#FBFBFB',
-                'baseColor': '#FBFBFB',
-                'lineColor': '#444446'
-            },
-            'colorScheme': {
-                'name': 'rainbow',
-                'args': {
-                    'initialColor': 'green',
-                },
-            },
-            'legend': {
-                'position': {
-                    'right': 20,
-                    'top' : 20
-                    }
-            },
-            'padding': {
-                'left': 2,
-                'right' : 20,
-                'top' : 2,
-                'bottom': 2
-            },
-            'title': _('Epoptes Network Benchmark Results')
-        }
-
-        dataSet = (
-            (_('Upload Rate'), [[i, l[1]] for i, l in enumerate(entries)]),
-            (_('Download Rate'), [[i, l[2]] for i, l in enumerate(entries)])
-        )
-
-        g = Graph()
-        g.set_options(options)
-        g.set_data(dataSet)
-        height = len(entries)*50+100
-        g.set_size_request(-1, height)
-        return g
 
     def run(self):
         if not self.clients_par:
@@ -294,7 +237,6 @@ class NetworkBenchmark:
         
         results_n = len(self.results)
         if results_n > 0:
-            graph_entries = []
             total_up = 0
             total_down = 0
             # List all the clients regardless of if we received measurements
@@ -304,13 +246,10 @@ class NetworkBenchmark:
                     up, down = self.results[client_ip]
                 else:
                     up, down = (0,0)
-                graph_entries.append((client_name, bits_to_mbits(up), bits_to_mbits(down)))
                 self.get('results_store').append([client_name, up, down])
                 total_up += up
                 total_down += down
             
-            self.graph = self.create_graph(graph_entries)
-            self.graph.set_visible(True)
             self.dlg.set_visible(False)
             results_dlg = self.get('results_dialog')
             results_dlg.set_transient_for(self.parent)
@@ -341,16 +280,6 @@ class NetworkBenchmark:
 
     def on_close_button_clicked(self, widget):
         self.get('results_dialog').destroy()
-
-    def show_graph_toggled(self, widget):
-        viewport = self.get('viewport')
-        if viewport.get_child() == self.table:
-            if self.graph:
-                viewport.remove(self.table)
-                viewport.add(self.graph)
-        else:
-            viewport.remove(self.graph)
-            viewport.add(self.table)
 
     def on_btn_close_clicked(self, widget):
         self.dlg.destroy()
