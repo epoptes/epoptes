@@ -57,19 +57,19 @@ class GUI(amp.AMP):
     def clientCommand(self, handle, command):
         if handle not in exchange.knownClients:
             print(" Unknown client %s, can't execute %s" %(handle,command))
-            #raise ValueError("Unknown client")
-            return {'filename': '', 'result': ''}
+            # raise ValueError("Unknown client")
+            return {'filename': '', 'result': b''}
 
         d = exchange.knownClients[handle].command(command)
         
         def sendResult(result):
-            if len(result) > 65000:
+            if len(result) < 65000:
+                return {'filename': '', 'result': result}
+            else:
                 tf = tempfile.NamedTemporaryFile('wb', dir="/var/run/epoptes", delete=False)
                 tf.write(result)
                 os.fchmod(tf.file.fileno(), 0o660)
-                return {'filename': tf.name, 'result': ''}
-            else:
-                return {'result': result, 'filename': ''}
+                return {'filename': tf.name, 'result': b''}
 
         d.addCallback(sendResult)
         return d
