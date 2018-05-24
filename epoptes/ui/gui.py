@@ -710,7 +710,6 @@ which is incompatible with the current epoptes version.\
             client.hsystem = handle
         else:
             # This is a user epoptes-client
-            print('* I am a user client, will add', user, 'in my list')
             client.add_user(user, name, handle)
             if not already and (sel_group.has_client(client) or self.isDefaultGroupSelected()):
                 login_notify(user, host)
