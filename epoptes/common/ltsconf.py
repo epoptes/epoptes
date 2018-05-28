@@ -152,7 +152,7 @@ class ltsConf:
             self.write()
     
     def getSections(self):
-        return list(self.clients.keys())
+        return self.clients.keys()
     
     def sectionExists(self, section):
         if section in self.clients:

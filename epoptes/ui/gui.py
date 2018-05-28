@@ -861,7 +861,7 @@ which is incompatible with the current epoptes version.\
         """Improve the quality of previously resized svg icons,
         by reloading them.
         """
-        old_pixbufs = list(self.imagetypes.values())
+        old_pixbufs = self.imagetypes.values()
         loadSVG = lambda path: GdkPixbuf.Pixbuf.new_from_file_at_size(path, 
                                                   self.scrWidth, self.scrHeight)
         self.imagetypes = {
@@ -891,7 +891,7 @@ which is incompatible with the current epoptes version.\
         self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
 
         # Fast scale all the thumbnails to make the change quickly visible
-        old_pixbufs = list(self.imagetypes.values())
+        old_pixbufs = self.imagetypes.values()
         for row in self.cstore:
             if row[C_PIXBUF] in old_pixbufs:
                 ctype = row[C_INSTANCE].type

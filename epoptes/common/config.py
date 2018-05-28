@@ -135,7 +135,7 @@ def read_groups(filename):
     
         groups.append(structs.Group(grp['name'], members))
     
-    return (list(saved_clients.values()), groups)
+    return (saved_clients.values(), groups)
     
 def save_groups(filename, model):
     """Save the groups and their members from model (gtk.ListStore)

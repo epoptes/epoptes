@@ -71,7 +71,7 @@ class Group:
     
     def get_members(self):
         """Return a list with all the clients that are members of the group"""
-        return list(self.members.keys())
+        return self.members.keys()
     
     def has_client(self, client):
         """Check if a client is member of the group"""

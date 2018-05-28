@@ -61,7 +61,7 @@ class ClientInformation:
             set('client_type', inst.type)
             user = '--'
             if client[C_SESSION_HANDLE]:
-                uname, realname = list(inst.users[client[C_SESSION_HANDLE]].values())
+                uname, realname = inst.users[client[C_SESSION_HANDLE]].values()
                 user = uname
                 if realname:
                     user += ' (%s)' %realname
