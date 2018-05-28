@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Commands.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -27,23 +28,23 @@ from twisted.protocols import amp
 
 
 class ClientConnected(amp.Command):
-    arguments = [('handle', amp.Unicode())]
+    arguments = [(b'handle', amp.Unicode())]
     response = []
 
 
 class ClientDisconnected(amp.Command):
-    arguments = [('handle', amp.Unicode())]
+    arguments = [(b'handle', amp.Unicode())]
     response = []
 
 
 class EnumerateClients(amp.Command):
     arguments = []
-    response = [('handles', amp.ListOf(amp.Unicode()))]
+    response = [(b'handles', amp.ListOf(amp.Unicode()))]
 
 
 class ClientCommand(amp.Command):
-    arguments = [('handle', amp.Unicode()),
-                 ('command', amp.Unicode())]
+    arguments = [(b'handle', amp.Unicode()),
+                 (b'command', amp.Unicode())]
 
-    response = [('result', amp.String()),
-                ('filename', amp.String())]
+    response = [(b'result', amp.String()),
+                (b'filename', amp.Unicode())]

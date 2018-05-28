@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Utility functions to get a user's localized XDG directories.
 #
-# Copyright (C) 2010 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010-2018 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -137,7 +137,7 @@ def default_dirs(lang):
     lnames = localized_names(lang)
     ddirs = read_vars_file('/etc/xdg/user-dirs.defaults')
     result = lnames
-    for key, val in ddirs.iteritems():
+    for key, val in ddirs.items():
         if key in d2n:
             result[d2n[key]] = localize_dir(val, lnames)
 
@@ -170,7 +170,7 @@ def user_dirs(home):
 
     udirs = read_vars_file("%s/.config/user-dirs.dirs" % home)
     result = {}
-    for key, val in udirs.iteritems():
+    for key, val in udirs.items():
         if key in u2n:
             result[u2n[key]] = val
 
@@ -248,7 +248,7 @@ def get_xdg_dirs(user):
     # And merge them into result, while replacing $HOME when necessary
     result = ddirs
     result.update(udirs)
-    for key, val in result.iteritems():
+    for key, val in result.items():
         if val.startswith('$HOME'):
             result[key] = val.replace('$HOME', home, 1)
         elif not val.startswith('/'):
@@ -266,5 +266,5 @@ if __name__ == '__main__':
     else:
         user = os.environ["USER"]
 
-    for key, val in get_xdg_dirs(user).iteritems():
-        print "%s=%s" % (key, val)
+    for key, val in get_xdg_dirs(user).items():
+        print("%s=%s" % (key, val))

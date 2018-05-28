@@ -1,11 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
-# Imports/exports user accounds from/to various sources.
+# Imports/exports user accounts from/to various sources.
 #
-# Copyright (C) 2009 Τεχνική Στήριξη ΣΕΠΕΗΥ <devs@ts.sch.gr>
-#  * Original: Sep 2009 - Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2009-2018 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +13,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -73,11 +72,11 @@ def run_command(cmdline):
     if res == 0:
         return ""
     else:
-        print "Σφάλμα κατά την εκτέλεση εντολής:"
-        print " $ %s" % ' '.join(cmdline)
-        print p.stdout.read()
+        print("Σφάλμα κατά την εκτέλεση εντολής:")
+        print(" $ %s" % ' '.join(cmdline))
+        print(p.stdout.read())
         err = p.stderr.read()
-        print err
+        print(err)
         if err == '':
             err = "\n"
         return err
@@ -86,6 +85,7 @@ def run_command(cmdline):
 def sorted_users(users):
     # TODO
     return users
+
 
 def read_users_from_passwd(dirname="/etc"):
     """
@@ -103,8 +103,8 @@ def read_users_from_passwd(dirname="/etc"):
             if p.pw_name in sn:
                 s = sn[p.pw_name]
             else:
-                #print " * I couldn't find user %s in shadow file. Are you \
-#root?" % p.pw_name
+                # print(" * I couldn't find user %s in shadow file. Are you \
+#root?" % p.pw_name)
                 s = spwd.struct_spwd(["", "x", "", "", "", "", "", "", ""])
             rname, office, wphone, hphone = (p.pw_gecos + ",,,").split(",")[:4]
             u = User(p.pw_name, p.pw_uid, rname, office, wphone, hphone,
@@ -129,15 +129,15 @@ def print_user(u):
     """
     Prints a user to stdout, mainly for debugging
     """
-    print u.name, u.uid, u.rname, u.office, u.wphone, u.hphone, u.dir, u.shell,\
-        u.groups, u.min, u.max, u.warn, u.inact, u.expire, u.pwd, u.plainpw
+    print(u.name, u.uid, u.rname, u.office, u.wphone, u.hphone, u.dir, u.shell,\
+        u.groups, u.min, u.max, u.warn, u.inact, u.expire, u.pwd, u.plainpw)
 
 
 def print_users(users):
     """
     Prints all the users to stdout, mainly for debugging
     """
-    for name, u in users.iteritems():
+    for name, u in users.items():
         print_user(u)
 
 
@@ -147,7 +147,7 @@ def export_users_to_csv(users, filename):
     """
     cw = csv.writer(open(filename, "w"))
     cw.writerow(FIELD_NAMES)
-    for name, u in users.iteritems():
+    for name, u in users.items():
         cw.writerow([u.name, u.uid, u.rname, u.office, u.wphone, u.hphone, 
             u.dir, u.shell, ",".join(u.groups), u.min, u.max, u.warn, u.inact, 
             u.expire, u.pwd, u.plainpw])
@@ -158,9 +158,9 @@ def import_users_from_csv(filename):
     Imports users from a comma-seperated-values file
     """
     cr = csv.reader(open(filename, "r"))
-    if cr.next() != FIELD_NAMES:
-        print "Wrong headers in .csv file. Please use an exported file as a \
-            template, and don't change the headers or move columns."
+    if next(cr) != FIELD_NAMES:
+        print("Wrong headers in .csv file. Please use an exported file as a \
+            template, and don't change the headers or move columns.")
         return {}
 
     users={}
@@ -183,7 +183,7 @@ def import_users_from_sch(clipboard):
     second_line = clipboard.split("\n",3)[1:2]
 
     if second_line != [header]:
-        print "Unexpected header line:", "\n".join(second_line)
+        print("Unexpected header line:", "\n".join(second_line))
         return {}
     usersdata = re.findall('([0-9 ]*)\t\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)', 
         clipboard)
@@ -207,6 +207,7 @@ def mkpasswd(plainpw):
     salt=''.join([ random.choice(alphabet) for i in range(8) ])
 
     return crypt.crypt(plainpw, "$6$%s$" % salt)
+
 
 def add_group(gname, gid=""):
     """
@@ -234,7 +235,7 @@ def add_user(u):
     cmdline = ["useradd", "--create-home", "--user-group"]
 
     if u.name == "":
-        print "add_user: missing name"
+        print("add_user: missing name")
         return False
 
     if u.uid != "":
@@ -286,10 +287,9 @@ def add_user(u):
 
 
 def write_users_to_passwd(users, dirname="/etc"):
-    for name, u in users.iteritems():
+    for name, u in users.items():
         add_user(u)
 
 
 def print_bold(message):
-    print ("\033[;;1m%s\033[;;m" % message)
-
+    print("\033[;;1m%s\033[;;m" % message)

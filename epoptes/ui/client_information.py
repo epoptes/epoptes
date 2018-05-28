@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -24,11 +24,10 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gi
-gi.require_version('Gtk', '3.0')
+from . import gi_versions
 from gi.repository import Gtk
 
-from epoptes.common.constants import *
+from ..common.constants import *
 
 
 class ClientInformation:
@@ -42,7 +41,7 @@ class ClientInformation:
         self.dlg = self.get('infodlg')
         self.dlg.set_transient_for(parent)
         self.edit_button = self.get('edit_alias_button')
-        // TODO: reduce unnecessary lambdas
+        # TODO: reduce unnecessary lambdas
         set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
 
         for client in selected:
@@ -50,11 +49,11 @@ class ClientInformation:
             handle = inst.hsystem or client[C_SESSION_HANDLE]
             if handle:
                 execute(handle, 'echo $RAM').addCallback(
-                    lambda r: set('client_ram', r.strip()+' MB'))
+                    lambda r: set('client_ram', r.decode().strip()+' MB'))
                 execute(handle, 'echo $CPU').addCallback(
-                    lambda r: set('client_cpu', r))
+                    lambda r: set('client_cpu', r.decode()))
                 execute(handle, 'echo $VGA').addCallback(
-                    lambda r: set('client_vga', r))
+                    lambda r: set('client_vga', r.decode()))
             set('client_alias', inst.alias)
             set('client_hostname', inst.hostname)
             set('client_mac', inst.mac)

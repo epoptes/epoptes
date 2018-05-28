@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -6,7 +6,7 @@
 # distutils which provides i18n, icon support, etc.
 # https://launchpad.net/python-distutils-extra
 #
-# Copyright (C) 2011 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2011-2018 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -32,12 +32,11 @@ try:
     import DistUtilsExtra.auto
 except ImportError:
     import sys
-    print >> sys.stderr, 'To build epoptes you need https://launchpad.net/python-distutils-extra'
+    print('To build epoptes you need https://launchpad.net/python-distutils-extra', file=sys.stderr)
     sys.exit(1)
 
-assert StrictVersion(DistUtilsExtra.auto.__version__) >= '2.4', 'needs DistUtilsExtra.auto >= 2.4'
-
 import posixpath, re
+
 
 def changelog_version(changelog="debian/changelog"):
     version = "dev"
@@ -49,11 +48,13 @@ def changelog_version(changelog="debian/changelog"):
 
     return version
 
+
 def subtract_files(a, b):
     res = set(a)
     for dir, files in b:
         res -= set(files)
     return list(res)
+
 
 client_special_files=[
     ('/etc/xdg/autostart/',

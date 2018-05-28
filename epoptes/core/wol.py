@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Wake on LAN.
 #
-# Copyright (C) 2010-2013 Alkis Georgopoulos <alkisg@gmail.com>
+# Copyright (C) 2010-2018 Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -27,6 +27,7 @@ import sys
 import socket
 import struct
 import netifaces
+
 
 def getBroadcastList():
     brlist = ['<broadcast>']
@@ -55,7 +56,7 @@ def wake_on_lan(macaddress):
     else:
         raise ValueError('Incorrect MAC address format')
  
-    print "Sending magic packet to", macaddress
+    print("Sending magic packet to", macaddress)
     # Pad the synchronization stream.
     data = ''.join(['FFFFFFFFFFFF', macaddress * 20])
     send_data = '' 
@@ -70,6 +71,7 @@ def wake_on_lan(macaddress):
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     for br in getBroadcastList():
         sock.sendto(send_data, (br, 9))
+
 
 if __name__ == '__main__':
     for mac in sys.argv[1:]:

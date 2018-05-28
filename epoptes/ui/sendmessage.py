@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -24,12 +24,11 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-import gi
-gi.require_version('Gtk', '3.0')
+from . import gi_versions
 from gi.repository import Gtk
 import os
 
-from epoptes.common import config
+from ..common import config
 
 
 def startSendMessageDlg(parent):

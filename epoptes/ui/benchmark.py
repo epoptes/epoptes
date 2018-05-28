@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
@@ -27,14 +27,12 @@
 import os
 import subprocess
 import fcntl
-import gi
-gi.require_version('Gtk', '3.0')
+from . import gi_versions
 from gi.repository import Gtk
 from gi.repository import GLib
 from twisted.internet import reactor
 
-from graph import Graph
-from epoptes.common.constants import *
+from ..common.constants import *
 
 
 def humanize(value, decimal=1, unit=''):
@@ -56,7 +54,7 @@ def read_nonblocking(f):
         fl = fcntl.fcntl(fd, fcntl.F_GETFL)
         fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
         try:
-            return f.read()
+            return f.read().decode()
         except:
             return None
 
@@ -77,7 +75,6 @@ class NetworkBenchmark:
         self.dlg = self.get('benchmark_dialog')
         self.dlg.set_transient_for(self.parent)
         self.table = self.get('results_treeview')
-        self.graph = None
         self.measurements_n = 0
         self.timeleft = 0
         self.timeout = 5
@@ -109,63 +106,6 @@ class NetworkBenchmark:
         """
         self.processes[handle] = int(pid)
 
-
-    def create_graph(self, entries):
-        options = {
-            'axis': {
-                'x': {
-                    'ticks': [dict(v=i, label=l[0]) for i, l in enumerate(entries)],
-                    'rotate': 0,
-                    'label' : 'Computers'
-                },
-                'y': {
-                    #'tickCount': 15,
-                    'tickPrecision' : 0,
-                    #'range' : [20,1100],
-                    #'interval' : 10,
-                    'label' : 'MBits/s',
-                    'rotate': 0
-                }
-            },
-            'background': {
-                'chartColor': '#FBFBFB',
-                'baseColor': '#FBFBFB',
-                'lineColor': '#444446'
-            },
-            'colorScheme': {
-                'name': 'rainbow',
-                'args': {
-                    'initialColor': 'green',
-                },
-            },
-            'legend': {
-                'position': {
-                    'right': 20,
-                    'top' : 20
-                    }
-            },
-            'padding': {
-                'left': 2,
-                'right' : 20,
-                'top' : 2,
-                'bottom': 2
-            },
-            'title': _('Epoptes Network Benchmark Results')
-        }
-
-        dataSet = (
-            (_('Upload Rate'), [[i, l[1]] for i, l in enumerate(entries)]),
-            (_('Download Rate'), [[i, l[2]] for i, l in enumerate(entries)])
-        )
-
-        g = Graph()
-        g.set_options(options)
-        g.set_data(dataSet)
-        height = len(entries)*50+100
-        g.set_size_request(-1, height)
-        return g
-
-
     def run(self):
         if not self.clients_par:
             self.warning_message(_('There are no selected clients to run the benchmark on.'))
@@ -188,7 +128,6 @@ class NetworkBenchmark:
         if off:
             self.warning_message(_('The following clients will be excluded from the benchmark because they are either offline, or do not have epoptes-client running as root.') + '\n\n' + ', '.join(off))
 
-
     def start_benchmark(self, seconds):
         self.iperf = subprocess.Popen('iperf -s -xS -yC'.split(), 
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -197,7 +136,6 @@ class NetworkBenchmark:
             handle = self.clients[client][0]
             d = self.execute(handle, 'start_benchmark %d' % seconds)
             d.addCallback(lambda r, h=client : self.store_pid(h, r))
-
 
     def stop_benchmark(self):
         for client in self.clients:
@@ -209,7 +147,6 @@ class NetworkBenchmark:
         if self.iperf and self.iperf.poll() is None:
             self.iperf.kill()
 
-
     def on_btn_startBenchmark_clicked(self, widget):
         seconds = int(self.get('seconds_adjustment').get_value())
         # Half time for upload speed and half for download
@@ -220,7 +157,6 @@ class NetworkBenchmark:
         self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
         self.countdown_event = GLib.timeout_add(1000, self.update_time_left)
         self.get('hbox_status').set_visible(True)
-
 
     def update_time_left(self):
         self.timeleft -= 1
@@ -238,7 +174,6 @@ class NetworkBenchmark:
             return False
         self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
         return True
-
 
     def parse_iperf_output(self, output):
         """Parse 'output' as a string of single or multiple lines of CSV in the form of
@@ -267,7 +202,6 @@ class NetworkBenchmark:
                     self.results[client_ip][0] = int(bandwidth)
                     self.measurements_n += 1
 
-
     def get_more_output(self):
         output = read_nonblocking(self.iperf.stdout)
         if output:
@@ -277,19 +211,16 @@ class NetworkBenchmark:
             return False
         return True
 
-
     def get_results(self):
         self.more_output = GLib.timeout_add(200, self.get_more_output)
         self.output_timeout = GLib.timeout_add(self.timeout*1000, self.show_results, True)
         
-
     def data_func(self, column, cell, model, iter, index):
         bps = model[iter][index]
         if bps <= 0:
             cell.set_property("text", "—")
         else:
             cell.set_property("text", humanize(bps, unit='bps'))
-
 
     def show_results(self, timed_out=False):
         # At this point we either have all our output or we give up waiting
@@ -306,7 +237,6 @@ class NetworkBenchmark:
         
         results_n = len(self.results)
         if results_n > 0:
-            graph_entries = []
             total_up = 0
             total_down = 0
             # List all the clients regardless of if we received measurements
@@ -316,13 +246,10 @@ class NetworkBenchmark:
                     up, down = self.results[client_ip]
                 else:
                     up, down = (0,0)
-                graph_entries.append((client_name, bits_to_mbits(up), bits_to_mbits(down)))
                 self.get('results_store').append([client_name, up, down])
                 total_up += up
                 total_down += down
             
-            self.graph = self.create_graph(graph_entries)
-            self.graph.set_visible(True)
             self.dlg.set_visible(False)
             results_dlg = self.get('results_dialog')
             results_dlg.set_transient_for(self.parent)
@@ -341,7 +268,6 @@ class NetworkBenchmark:
             self.error_message(_("Did not get measurements from any of the clients. Check your network settings."))
             self.dlg.set_visible(False)
 
-
     def cancel_benchmark(self):
         self.stop_benchmark()
         GLib.source_remove(self.countdown_event)
@@ -349,30 +275,14 @@ class NetworkBenchmark:
         self.get('seconds_spinbox').set_sensitive(True)
         self.get('hbox_buttons').set_visible(True)
 
-
     def on_cancel_btn_clicked(self, widget):
         self.cancel_benchmark()
-
 
     def on_close_button_clicked(self, widget):
         self.get('results_dialog').destroy()
 
-
-    def show_graph_toggled(self, widget):
-        viewport = self.get('viewport')
-        if viewport.get_child() == self.table:
-            if self.graph:
-                viewport.remove(self.table)
-                viewport.add(self.graph)
-        else:
-            viewport.remove(self.graph)
-            viewport.add(self.table)
-
-
     def on_btn_close_clicked(self, widget):
         self.dlg.destroy()
 
-
     def on_window_destroy(self, widget, event):
         self.dlg.destroy()
-

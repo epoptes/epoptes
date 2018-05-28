@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ###########################################################################
 # Epoptesd.
 #
 # Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
+# 2018, Alkis Georgopoulos <alkisg@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,7 +14,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -24,7 +25,7 @@
 ###########################################################################
 
 import os
-from zope.interface import implements
+from zope.interface import implementer
 
 from twisted.python import usage
 from twisted.plugin import IPlugin
@@ -53,8 +54,8 @@ class ServerContextFactory:
         return ctx
 
 
+@implementer(IServiceMaker, IPlugin)
 class ServiceMaker(object):
-    implements(IServiceMaker, IPlugin)
     tapname = "epoptes"
     description = "Epoptes Daemon"
     options = Options
@@ -77,8 +78,8 @@ class ServiceMaker(object):
         
         if not os.path.isdir(config.system['DIR']):
             #TODO: for some reason this does 0750 instead
-            os.makedirs(config.system['DIR'], 02770)
-        os.chmod(config.system['DIR'], 02770)
+            os.makedirs(config.system['DIR'], 0o2770)
+        os.chmod(config.system['DIR'], 0o2770)
         os.chown(config.system['DIR'], -1, gid)
 
         guiService = internet.UNIXServer(
@@ -103,5 +104,6 @@ class ServiceMaker(object):
                 continue
             result += line
         return result
+
 
 serviceMaker = ServiceMaker()
