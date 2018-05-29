@@ -303,8 +303,14 @@ stop_benchmark() {
 # $1 = text.
 # $2 = title.
 # $3 = True/False, whether the text contains pango markup.
+# $4 = icon name.
 message() {
-    background ./message "$1" "$2" "$3"
+    # TODO: remove compatibility fallback after a few versions
+    if [ -f "./message.py" ]; then
+        background ./message.py "$@"
+    else
+        background ./message "$@"
+    fi
 }
 
 # Connect to the server to be monitored.
