@@ -769,7 +769,8 @@ which is incompatible with the current epoptes version.\
         # of searching the whole model (Need to modify execOnClients)
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
-                self.execOnClients(['screenshot', self.scrWidth, self.scrHeight], handles=[handle], 
+                # TODO: rename "thumbnail" and "screenshot" to "thumbshot"
+                self.execOnClients(['thumbshot', self.scrWidth, self.scrHeight], handles=[handle],
                                    reply=self.gotScreenshot)
                 return False
         # That handle is no longer in the cstore, remove it

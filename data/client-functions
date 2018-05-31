@@ -216,14 +216,22 @@ shutdown() {
     ./endsession --shutdown
 }
 
-# Create a thumbnail of the user screen.
+# Create a thumbshot of the user screen.
 # Parameters:
-# $1 = thumbnail width.
-# $2 = thumbnail height.
-screenshot() {
-    if ! ./screenshot "$1" "$2"; then
-        BAD_SCREENSHOTS=$(($BAD_SCREENSHOTS+1))
-        echo "$BAD_SCREENSHOTS failed thumbnails so far!" >&5
+# $1 = thumbshot width.
+# $2 = thumbshot height.
+thumbshot() {
+    # TODO: remove compatibility fallback after a few versions
+    local executable
+
+    if [ -f "./thumbshot.py" ]; then
+        executable=./thumbshot.py
+    else
+        executable=./screenshot
+    fi
+    if ! $executable "$1" "$2"; then
+        BAD_THUMBSHOTS=$(($BAD_THUMBSHOTS+1))
+        echo "$BAD_THUMBSHOTS failed thumbshots so far!" >&5
     fi
 }
 
