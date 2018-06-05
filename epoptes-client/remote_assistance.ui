@@ -2,9 +2,9 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
-  <object class="GtkListStore" id="method_liststore">
+  <object class="GtkListStore" id="lss_method">
     <columns>
-      <!-- column-name gchararray1 -->
+      <!-- column-name gcaMethod -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -16,13 +16,14 @@
       </row>
     </data>
   </object>
-  <object class="GtkWindow" id="support_window">
+  <object class="GtkWindow" id="wnd_support">
     <property name="can_focus">False</property>
     <property name="border_width">6</property>
     <property name="title" translatable="yes">Remote support</property>
+    <property name="window_position">center</property>
     <property name="default_width">440</property>
     <property name="icon_name">preferences-system-network</property>
-    <signal name="delete-event" handler="on_window_delete_event" swapped="no"/>
+    <signal name="delete-event" handler="on_wnd_support_delete_event" swapped="no"/>
     <child>
       <placeholder/>
     </child>
@@ -104,14 +105,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBox" id="method_combobox">
+                  <object class="GtkComboBox" id="cmb_method">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
-                    <property name="model">method_liststore</property>
+                    <property name="model">lss_method</property>
                     <property name="active">0</property>
                     <child>
-                      <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                      <object class="GtkCellRendererText" id="crtMethod"/>
                       <attributes>
                         <attribute name="text">0</attribute>
                       </attributes>
@@ -136,7 +137,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="host_entry">
+                  <object class="GtkEntry" id="ent_host">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">True</property>
@@ -145,7 +146,7 @@
                     <property name="receives_default">True</property>
                     <property name="hexpand">True</property>
                     <property name="invisible_char">●</property>
-                    <signal name="changed" handler="host_changed" swapped="no"/>
+                    <signal name="changed" handler="on_ent_host_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -172,14 +173,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="reconnect_checkbox">
+          <object class="GtkCheckButton" id="chb_reconnect">
             <property name="label" translatable="yes">Keep reconnecting</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="halign">start</property>
             <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="toggle_retry" swapped="no"/>
+            <signal name="toggled" handler="on_chb_reconnect_toggled" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -201,7 +202,7 @@
                 <property name="margin_top">3</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkSpinner" id="status_spinner">
+                  <object class="GtkSpinner" id="spn_status">
                     <property name="can_focus">False</property>
                   </object>
                   <packing>
@@ -211,7 +212,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="status_icon">
+                  <object class="GtkImage" id="icn_status">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="stock">gtk-no</property>
@@ -223,7 +224,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="status_label">
+                  <object class="GtkLabel" id="lbl_status">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Not connected</property>
@@ -260,13 +261,13 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="close_button">
+              <object class="GtkButton">
                 <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_close_button_clicked" swapped="no"/>
+                <signal name="clicked" handler="on_btn_close_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -275,7 +276,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="connect_button">
+              <object class="GtkButton" id="btn_action">
                 <property name="label">gtk-connect</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
@@ -284,6 +285,7 @@
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_btn_action_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
