@@ -61,8 +61,6 @@ client_special_files=[
         ['epoptes-client/epoptes-client.desktop']),
     ('/usr/sbin/',
         ['epoptes-client/epoptes-client']),
-    ('/usr/share/ldm/rc.d/',
-        ['epoptes-client/X50-client-env']),
     ]
 client_usr_share_files=[
     ('/usr/share/epoptes-client/',
