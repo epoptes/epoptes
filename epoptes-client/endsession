@@ -1,30 +1,18 @@
 #!/bin/sh
-###########################################################################
-# Requests a logout, reboot or shutdown.
-# Currently it supports Gnome, KDE, XFCE and LXDE.
-# Usage: endsession --logout|--reboot|--shutdown
-#
-# Copyright (C) 2011 Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL'.
-###########################################################################
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2011-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+usage() {
+    printf "Usage: $0 --logout|--reboot|--shutdown\n%s" \
+'
+Request a logout, reboot or shutdown.
+Currently it supports Gnome, KDE, XFCE and LXDE.
+'
+}
 
 die() {
-    echo "$@" >&2
+    printf "%s\n" "$@" >&2
     exit 1
 }
 
@@ -174,7 +162,7 @@ case "$1" in
         action=shutdown
         ;;
     *)
-        die "Usage: endsession --logout|--reboot|--shutdown"
+        die "$(usage)"
         ;;
 esac
 
