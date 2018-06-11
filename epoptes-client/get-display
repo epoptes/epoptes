@@ -62,7 +62,7 @@ while read var equals value; do
             if [ -n "$DISPLAY" ]; then
                 XAUTHORITY="$(getent passwd "$USER" | cut -d: -f6)/.Xauthority"
                 exit_if_found
-            fi            
+            fi
             ;;
     esac
 done <<EOF

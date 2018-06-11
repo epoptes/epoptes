@@ -52,7 +52,7 @@ do_logout() {
 
     # LXDE
     test -n "$_LXSESSION_PID" && kill "$_LXSESSION_PID" && return
-    
+
     # systemd
     test -n "$XDG_SESSION_ID" && \
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
@@ -81,22 +81,22 @@ do_reboot() {
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout \
       int32:0 int32:1 int32:0 2>&1 && return
-    
+
     # Mate
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.mate.SessionManager /org/mate/SessionManager \
       org.mate.SessionManager.RequestReboot 2>&1 && return
-    
-    # XFCE and LXDE 
+
+    # XFCE and LXDE
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.PowerManagement /org/freedesktop/PowerManagement \
       org.freedesktop.PowerManagement.Reboot 2>&1 && return
-    
+
     # systemd
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.login1 /org/freedesktop/login1 \
       org.freedesktop.login1.Manager.Reboot boolean:true 2>&1 && return
-    
+
     # ConsoleKit is the last resort since it doesn't allow inhibiting
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager \
@@ -123,22 +123,22 @@ do_shutdown() {
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout \
       int32:0 int32:2 int32:0 2>&1 && return
-    
+
     # Mate
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.mate.SessionManager /org/mate/SessionManager \
       org.mate.SessionManager.RequestShutdown 2>&1 && return
 
-    # XFCE and LXDE 
+    # XFCE and LXDE
     dbus-send --session --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.PowerManagement /org/freedesktop/PowerManagement \
       org.freedesktop.PowerManagement.Shutdown && return
-    
+
     # systemd
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.login1 /org/freedesktop/login1 \
       org.freedesktop.login1.Manager.PowerOff boolean:true 2>&1 && return
-    
+
     # ConsoleKit is the last resort since it doesn't allow inhibiting
     dbus-send --system --type=method_call --print-reply --reply-timeout=2000 \
       --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager \
