@@ -47,7 +47,6 @@ from .. import ui
 from .. import __version__
 from ..common.constants import *
 from ..common import config
-from ..common import ltsconf
 from ..core import structs
 from ..core import wol
 from ..core.lib_users import *
