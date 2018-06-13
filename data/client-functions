@@ -216,14 +216,22 @@ shutdown() {
     ./endsession --shutdown
 }
 
-# Create a thumbnail of the user screen.
+# Create a thumbshot of the user screen.
 # Parameters:
-# $1 = thumbnail width.
-# $2 = thumbnail height.
-screenshot() {
-    if ! ./screenshot "$1" "$2"; then
-        BAD_SCREENSHOTS=$(($BAD_SCREENSHOTS+1))
-        echo "$BAD_SCREENSHOTS failed thumbnails so far!" >&5
+# $1 = thumbshot width.
+# $2 = thumbshot height.
+thumbshot() {
+    # TODO: remove compatibility fallback after a few versions
+    local executable
+
+    if [ -f "./thumbshot.py" ]; then
+        executable=./thumbshot.py
+    else
+        executable=./screenshot
+    fi
+    if ! $executable "$1" "$2"; then
+        BAD_THUMBSHOTS=$(($BAD_THUMBSHOTS+1))
+        echo "$BAD_THUMBSHOTS failed thumbshots so far!" >&5
     fi
 }
 
@@ -235,7 +243,12 @@ lock_screen() {
     local pid
 
     unlock_screen
-    pid=$(background -p ./lock-screen "$2")
+    # TODO: remove compatibility fallback after a few versions
+    if [ -f "./lock_screen.py" ]; then
+        pid=$(background -p ./lock_screen.py "$2")
+    else
+        pid=$(background -p ./lock-screen "$2")
+    fi
     xprop_set EPOPTES_LOCK_SCREEN_PID "$pid"
 }
 
@@ -303,8 +316,14 @@ stop_benchmark() {
 # $1 = text.
 # $2 = title.
 # $3 = True/False, whether the text contains pango markup.
+# $4 = icon name.
 message() {
-    background ./message "$1" "$2" "$3"
+    # TODO: remove compatibility fallback after a few versions
+    if [ -f "./message.py" ]; then
+        background ./message.py "$@"
+    else
+        background ./message "$@"
+    fi
 }
 
 # Connect to the server to be monitored.

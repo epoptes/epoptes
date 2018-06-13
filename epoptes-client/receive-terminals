@@ -1,35 +1,37 @@
 #!/bin/sh
-###########################################################################
-# Receives remote shells over secure connections.
-# Usage: receive-terminals
-#
-# Copyright (C) 2017 Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL'.
-###########################################################################
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2017-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+usage() {
+    printf "Usage: $0\n%s" \
+'
+Receive remote shells over secure connections.
+The clients are supposed to use `share-terminal`.
+'
+}
 
 die() {
-    echo "$@" >&2
+    printf "%s\n" "$@" >&2
     exit 1
 }
 
+# "phase2" is passed when socat receives a connection
+if [ "$1" = "phase2" ]; then
+    # Run this command on the client, and parse its output
+    printf '%s\n' ' printf "\n%s\n" "suggested-xterm-parameters $(hostname) $(stty size) "; clear' &
+    while read -r guard hostname lines columns junk; do
+        test "$guard" = "suggested-xterm-parameters" && break
+    done
+    # Allow the user to define custom XTERM_PARAMS in the environment
+    exec xterm $XTERM_PARAMS -T "Shared@${hostname}" -geometry "${columns}x${lines}" -e "socat fd:9 stdio,raw,echo=0" 9>&0
+elif [ "$#" -gt 0 ]; then
+    die "$(usage)"
+fi
+
 test -n "$DISPLAY" || die "Please run $0 from within Xorg."
-test -f /usr/bin/socat || die "Please install socat."
-test -f /usr/bin/xterm || die "Please install xterm."
+command -v socat >/dev/null 2>&1 || die "Please install socat."
+command -v xterm >/dev/null 2>&1  || die "Please install xterm."
 
 printf "Generating an openssl certificate to secure connections..."
 
@@ -47,15 +49,15 @@ test -n "$IP" || IP="your-ip"
 # Wait for openssl to finish
 wait
 
-cat <<EOF
- [OK]
+printf "%s" \
+" [OK]
 
 Accepting remote shell secure connections. Clients can connect by running:
-    /usr/share/epoptes-client/share-terminal $IP
+  /usr/share/epoptes-client/share-terminal $IP
 If they don't have epoptes-client installed, they can run this instead:
-  TERM=screen COLUMNS=\$COLUMNS LINES=\$LINES socat SYSTEM:"sleep 1; exec screen -xRR ra",pty,stderr openssl-connect:$IP:5499,verify=0 & screen -l -S ra
+  TERM=xterm COLUMNS=\$COLUMNS LINES=\$LINES socat SYSTEM:\"sleep 1; exec screen -xRR ra\",pty,stderr openssl-connect:$IP:5499,verify=0 & screen -l -S ra
 Press Ctrl+C to end.
-EOF
+"
 
-# You can set XTERM_PARAMS like -geometry 132x50, if you like
-socat openssl-listen:5499,cert="$PEM",reuseaddr,keepalive=1,fork,verify=0 SYSTEM:"xterm $XTERM_PARAMS -e 'socat stdio,raw,echo=0 fd:67'",fdin=67
+# We don't want `exec socat` because we have a trap that removes the PEM
+socat openssl-listen:5499,cert="$PEM",reuseaddr,keepalive=1,fork,verify=0 EXEC:"$0 phase2"

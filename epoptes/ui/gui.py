@@ -93,7 +93,7 @@ class EpoptesGui(object):
         self.wTree.connect_signals(self)
 
         # Hide the remote assistance menuitem if epoptes-client is not installed
-        if not os.path.isfile('/usr/share/epoptes-client/remote-assistance'):
+        if not os.path.isfile('/usr/share/epoptes-client/remote_assistance.py'):
             self.get('mi_remote_assistance').set_property('visible', False)
             self.get('remote_assistance_separator').set_property('visible', False)
         
@@ -493,7 +493,7 @@ class EpoptesGui(object):
 
     def on_mi_remote_assistance_activate(self, widget=None):
         path = '/usr/share/epoptes-client'
-        subprocess.Popen('%s/remote-assistance' %path, shell=True, cwd=path)
+        subprocess.Popen('%s/remote_assistance.py' %path, shell=True, cwd=path)
 
     def on_mi_about_activate(self, widget=None):
         About(self.mainwin).run()
@@ -769,7 +769,8 @@ which is incompatible with the current epoptes version.\
         # of searching the whole model (Need to modify execOnClients)
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
-                self.execOnClients(['screenshot', self.scrWidth, self.scrHeight], handles=[handle], 
+                # TODO: rename "thumbnail" and "screenshot" to "thumbshot"
+                self.execOnClients(['thumbshot', self.scrWidth, self.scrHeight], handles=[handle],
                                    reply=self.gotScreenshot)
                 return False
         # That handle is no longer in the cstore, remove it

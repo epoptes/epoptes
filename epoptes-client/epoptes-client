@@ -1,31 +1,22 @@
 #!/bin/sh
-
-###########################################################################
-# Connects to a remote server and offers it a local shell.
-# Usage: epoptes-client [-c|-h|-v] [SERVER] [PORT]
-#
-# Copyright (C) 2010-2015 Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL'.
-###########################################################################
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # epoptes-client is called either from if-up.d as root, to control the client,
 # or from /etc/xdg/autostart as a user, to control the user session.
 # Users can cancel that from their System > Preferences > Services gnome menu.
+
+usage() {
+    printf "Usage: $0 [-c|-h|-v] [SERVER] [PORT]\n%s" \
+'
+Connect to a remote server and offer it a local shell.
+'
+}
+
+version() {
+    export VERSION="1.0"  # Automatically updated while packaging
+}
 
 die() {
     echo "epoptes-client ERROR: $@" >&2
@@ -123,7 +114,7 @@ fetch_certificate()
 
 
 # Main.
-export VERSION="0.5.10" # Automatically updated by mkdst
+version
 
 # Check the first parameter as it may turn out we don't need to run at all
 case "$1" in
@@ -135,8 +126,8 @@ case "$1" in
         if [ -x /usr/bin/man ]; then
             exec man epoptes-client
         else
-            echo "Usage: $0 [-c|-h|-v] [SERVER] [PORT]"
-            exit 0
+            usage
+            exit
         fi
         ;;
     -c|--certificate)
@@ -213,7 +204,7 @@ cmdline='bash -c \"exec -a epoptes-client sh\"'
 # Offer an lts.conf (or environment) variable to disable cert verification.
 if my_boolean_is_true "${EPOPTES_CLIENT_VERIFY_CERTIFICATE:-True}"; then
     cert_param="cafile=/etc/epoptes/server.crt"
-    # Check if socat provides the commonname option and use it in order to 
+    # Check if socat provides the commonname option and use it in order to
     # support certificates which don't have a commonname set
     if socat -hhh | grep -q openssl-commonname; then
         cert_param="$cert_param,commonname=\"\""
