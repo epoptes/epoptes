@@ -39,11 +39,11 @@ import random
 
 DEFAULT_GROUPS = ["cdrom", "floppy", "dialout", "tape", "dip", "adm", "plugdev",
     "fax", "fuse", "video"]
-FIELD_NAMES = ["Όνομα χρήστη", "UID", "Ονοματεπώνυμο", "Γραφείο", 
+FIELD_NAMES = ["Όνομα χρήστη", "UID", "Ονοματεπώνυμο", "Γραφείο",
     "Τηλ. εργασίας", "Τηλ. οικίας", "Προσωπικός φάκελος", "Κέλυφος", "Ομάδες",
-    "Ελάχιστη διάρκεια κωδικού", "Μέγιστη διάρκεια κωδικού", 
+    "Ελάχιστη διάρκεια κωδικού", "Μέγιστη διάρκεια κωδικού",
     "Ημέρες προειδοποίησης λήξης", "Ημέρες απενεργοποίησης μετά τη λήξη",
-    "Ημέρες κλειδωμένου κωδικού", "Κρυπτογραφημένος κωδικός", 
+    "Ημέρες κλειδωμένου κωδικού", "Κρυπτογραφημένος κωδικός",
     "Κωδικός πρόσβασης"]
 
 UID_MIN = 1000  # TODO: the callee should read them from /etc/adduser.conf
@@ -108,7 +108,7 @@ def read_users_from_passwd(dirname="/etc"):
                 s = spwd.struct_spwd(["", "x", "", "", "", "", "", "", ""])
             rname, office, wphone, hphone = (p.pw_gecos + ",,,").split(",")[:4]
             u = User(p.pw_name, p.pw_uid, rname, office, wphone, hphone,
-                p.pw_dir, p.pw_shell, [], s.sp_min, s.sp_max, s.sp_warn, 
+                p.pw_dir, p.pw_shell, [], s.sp_min, s.sp_max, s.sp_warn,
                 s.sp_inact, s.sp_expire, s.sp_pwd, "")
             if u.inact == -1:
                 u.inact = ''
@@ -148,8 +148,8 @@ def export_users_to_csv(users, filename):
     cw = csv.writer(open(filename, "w"))
     cw.writerow(FIELD_NAMES)
     for name, u in users.items():
-        cw.writerow([u.name, u.uid, u.rname, u.office, u.wphone, u.hphone, 
-            u.dir, u.shell, ",".join(u.groups), u.min, u.max, u.warn, u.inact, 
+        cw.writerow([u.name, u.uid, u.rname, u.office, u.wphone, u.hphone,
+            u.dir, u.shell, ",".join(u.groups), u.min, u.max, u.warn, u.inact,
             u.expire, u.pwd, u.plainpw])
 
 
@@ -185,19 +185,19 @@ def import_users_from_sch(clipboard):
     if second_line != [header]:
         print("Unexpected header line:", "\n".join(second_line))
         return {}
-    usersdata = re.findall('([0-9 ]*)\t\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)', 
+    usersdata = re.findall('([0-9 ]*)\t\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)\t(.*)',
         clipboard)
 
     users = {}
     for user in usersdata:
-        u = User(name=user[1].strip(), rname=user[2].strip() + ' ' + 
-                user[3].strip(), office=user[4].strip(), 
+        u = User(name=user[1].strip(), rname=user[2].strip() + ' ' +
+                user[3].strip(), office=user[4].strip(),
                 groups=[user[6].strip(), user[7].strip()] + DEFAULT_GROUPS,
                 plainpw=user[1].strip())
         users[u.name] = u
 
     return users
-    
+
 
 def mkpasswd(plainpw):
     """

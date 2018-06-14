@@ -44,16 +44,16 @@ def startSendMessageDlg(parent):
     wTree.add_from_file('sendMessage.ui')
     dlg = get('sendMessageDialog')
     dlg.set_transient_for(parent)
-    
+
     textView = get('Message')
     title_entry = get('title_entry')
     title_entry.set_text(config.settings.get('GUI', 'messages_default_title'))
     use_markup_toggle = get('use_markup_toggle')
     use_markup_toggle.set_active(config.settings.getboolean('GUI', 'messages_use_markup'))
-    
+
     reply = dlg.run()
     msg = ()
-    
+
     if reply == 1:
         buf = textView.get_buffer()
         s = buf.get_start_iter()
@@ -61,14 +61,14 @@ def startSendMessageDlg(parent):
         text = textView.get_buffer().get_text(s, e, False)
 
         title = title_entry.get_text().strip()
-        
+
         use_markup = use_markup_toggle.get_active()
-        
+
         msg = (text, title, use_markup)
 
         config.settings.set('GUI', 'messages_default_title', title)
         config.settings.set('GUI', 'messages_use_markup', str(use_markup))
-    
+
         f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
         config.settings.write(f)
         f.close()

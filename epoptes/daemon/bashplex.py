@@ -89,24 +89,24 @@ class DelimitedBashReceiver(protocol.Protocol):
         peer = self.transport.getPeer()
         self.handle = "%s:%s" % (peer.host, peer.port)
         print("Connected:", self.handle)
-        
+
         d = self.command(self.factory.startupCommands)
-        
+
         def forwardConnection(result):
             exchange.clientConnected(self.handle, self)
             self.pingTimer = reactor.callLater(self.factory.pingInterval, self.ping)
-        
+
         def killConnection(error):
             print("Error: Could not send the startup functions to the client:", error)
             self._loseConnection()
-        
+
         d.addCallback(forwardConnection)
         d.addErrback(killConnection)
 
 
     def connectionLost(self, reason):
         print("Connection lost:", self.handle)
-        
+
         try: self.pingTimeout.cancel()
         except Exception: pass
 
@@ -161,7 +161,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
 
     def checkForFurtherResponses(self):
-        # See if there are more responses in the buffer. 
+        # See if there are more responses in the buffer.
         # The theory here is that if we got one already, we have less than one
         # packet of data left in the buffer, so reading it all isn't a big deal
 
@@ -174,10 +174,10 @@ class DelimitedBashReceiver(protocol.Protocol):
                 response, rest = rest.split(bytes(delimiter, 'utf-8'))
             except ValueError:
                 break
-                        
+
             self.currentDelimiters.pop(0)
             d.callback(response)
-                
+
         newBuffer = BytesIO()
         newBuffer.write(rest)
         self.buffer = newBuffer
@@ -185,7 +185,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def ping(self):
         self.command('ping').addCallback(self.pingResponse)
-        self.pingTimeout = reactor.callLater(self.factory.pingTimeout, 
+        self.pingTimeout = reactor.callLater(self.factory.pingTimeout,
                                              self.pingTimedOut)
 
     def pingResponse(self, _):
@@ -207,8 +207,8 @@ class DelimitedBashReceiver(protocol.Protocol):
 
 class DelimitedBashReceiverFactory(protocol.ServerFactory):
     protocol = DelimitedBashReceiver
-    
+
     pingInterval = 10
     pingTimeout = 10
-    
+
     startupCommands = ''

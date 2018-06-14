@@ -24,11 +24,11 @@
 # Public License can be found in `/usr/share/common-licenses/GPL".
 ###########################################################################
 
-# Warn users to update their chroots if they have a lower epoptes-client version 
+# Warn users to update their chroots if they have a lower epoptes-client version
 # than this
 COMPATIBILITY_VERSION = (0, 5)
 
-# ['ltsp123', '00-1b-24-89-65-d6', '127.0.0.1:46827', '10.160.31.126:44920', 
+# ['ltsp123', '00-1b-24-89-65-d6', '127.0.0.1:46827', '10.160.31.126:44920',
 #  'thin', 'user3', <gtk.gdk.Pixbuf>, '10.160.31.123', 'user (ltsp123)']
 C_LABEL = 0
 C_PIXBUF = 1

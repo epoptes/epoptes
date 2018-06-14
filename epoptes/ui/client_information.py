@@ -37,7 +37,7 @@ class ClientInformation:
         self.wTree.connect_signals(self)
         self.get = self.wTree.get_object
         self.selected = selected
-        
+
         self.dlg = self.get('infodlg')
         self.dlg.set_transient_for(parent)
         self.edit_button = self.get('edit_alias_button')
@@ -71,7 +71,7 @@ class ClientInformation:
     def run(self):
         self.dlg.run()
         self.dlg.destroy()
-        
+
     def on_edit_alias_clicked(self, widget):
         inst = self.selected[0][C_INSTANCE]
         edit_dlg = self.get('edit_alias_dialog')

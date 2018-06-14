@@ -47,7 +47,7 @@ def startExecuteCmdDlg(parent):
 
     for cmd in config.history:
         combo.append_text(cmd)
-    
+
     cmd = ''
     reply = dlg.run()
     if reply == 1:
@@ -57,7 +57,7 @@ def startExecuteCmdDlg(parent):
         config.history.insert(0, cmd)
         config.write_history()
     dlg.destroy()
-    
+
     return cmd
 
 

@@ -42,7 +42,7 @@ def read_plain_file(filename):
 
     If the file doesn't exist or isn't readable, return an empty list.
     """
-    
+
     try:
         f = open(filename, 'r')
         contents = [x.strip() for x in f.readlines()]
@@ -94,7 +94,7 @@ def read_shell_file(filename):
     If the file doesn't exist or isn't readable, return an empty list.
     Also strip all comments, if any.
     """
-    
+
     if not os.path.isfile(filename):
         return {}
     try:
@@ -110,7 +110,7 @@ def read_shell_file(filename):
 def read_groups(filename):
     """Parse a JSON file and create the appropriate group and
     client objects.
-    
+
     Return a 2-tuple with a client instances list and a group
     instances list.
     """
@@ -120,7 +120,7 @@ def read_groups(filename):
         f.close()
     except:
         return ([],[])
-    
+
     saved_clients = {}
 
     for key, cln in data['clients'].items():
@@ -132,11 +132,11 @@ def read_groups(filename):
         members = {}
         for key, dct in grp['members'].items():
             members[saved_clients[key]] = dct
-    
+
         groups.append(structs.Group(grp['name'], members))
-    
+
     return (saved_clients.values(), groups)
-    
+
 def save_groups(filename, model):
     """Save the groups and their members from model (gtk.ListStore)
     in JSON format.
@@ -147,19 +147,19 @@ def save_groups(filename, model):
             os.makedirs(path)
     except:
         pass
-    
+
     data = {'clients' : {}, 'groups' : []}
     uid=0
     uid_pairs = {}
     saved_clients = []
-    
+
     # Create a list with all the clients we want to save
     for grp in model:
         grp = grp[G_INSTANCE]
         for cln in grp.get_members():
             if cln not in saved_clients:
                 saved_clients.append(cln)
-    
+
     for cln in saved_clients:
         # Use an integer ID as a key instead of the memory address
         data['clients'][uid] = {'mac' : cln.mac, 'alias' : cln.alias}
@@ -170,15 +170,15 @@ def save_groups(filename, model):
     for grp in model:
         grp = grp[G_INSTANCE]
         members = {}
-        
+
         # Get the IDs created above
         for cln, props in grp.members.items():
             members[uid_pairs[cln]] = props
-        
-        
-        data['groups'].append({'name' : grp.name, 
+
+
+        data['groups'].append({'name' : grp.name,
                                'members' : members})
-        
+
     # Save the dict in JSON format
     try:
         f=open(filename, 'w')

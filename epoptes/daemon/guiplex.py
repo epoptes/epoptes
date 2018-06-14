@@ -61,7 +61,7 @@ class GUI(amp.AMP):
             return {'filename': '', 'result': b''}
 
         d = exchange.knownClients[handle].command(command)
-        
+
         def sendResult(result):
             if len(result) < 65000:
                 return {'filename': '', 'result': result}

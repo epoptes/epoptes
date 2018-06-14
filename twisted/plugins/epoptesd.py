@@ -61,7 +61,7 @@ class ServiceMaker(object):
     options = Options
 
     def makeService(self, options):
-        
+
         factory = bashplex.DelimitedBashReceiverFactory()
         factory.pingInterval=int(options['pingInterval'])
         factory.pingTimeout=int(options['pingTimeout'])
@@ -75,7 +75,7 @@ class ServiceMaker(object):
                 factory)
 
         gid = grp.getgrnam(config.system['SOCKET_GROUP'])[2]
-        
+
         if not os.path.isdir(config.system['DIR']):
             #TODO: for some reason this does 0750 instead
             os.makedirs(config.system['DIR'], 0o2770)
@@ -91,14 +91,14 @@ class ServiceMaker(object):
         topService.addService(guiService)
 
         return topService
-    
+
     def filterBash(self, script):
         f = open(script)
         functions = f.readlines()
         f.close()
-        
+
         result = ''
-        
+
         for line in functions:
             if line.strip() != '' and line.strip()[0] == '#':
                 continue

@@ -33,7 +33,7 @@ def getBroadcastList():
     brlist = ['<broadcast>']
     ifaces = [iface for iface in netifaces.interfaces() if iface != 'lo']
     for ifname in ifaces:
-        # An interface can have more than one address, even within the 
+        # An interface can have more than one address, even within the
         # same family (AF_INET), or none, so check this case too.
         addresses = netifaces.ifaddresses(ifname)
         if netifaces.AF_INET not in addresses:
@@ -55,11 +55,11 @@ def wake_on_lan(macaddress):
         macaddress = macaddress.replace(sep, '')
     else:
         raise ValueError('Incorrect MAC address format')
- 
+
     print("Sending magic packet to", macaddress)
     # Pad the synchronization stream.
     data = ''.join(['FFFFFFFFFFFF', macaddress * 20])
-    send_data = '' 
+    send_data = ''
 
     # Split up the hex values and pack.
     for i in range(0, len(data), 2):

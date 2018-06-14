@@ -129,7 +129,7 @@ class NetworkBenchmark:
             self.warning_message(_('The following clients will be excluded from the benchmark because they are either offline, or do not have epoptes-client running as root.') + '\n\n' + ', '.join(off))
 
     def start_benchmark(self, seconds):
-        self.iperf = subprocess.Popen('iperf -s -xS -yC'.split(), 
+        self.iperf = subprocess.Popen('iperf -s -xS -yC'.split(),
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         reactor.addSystemEventTrigger('before', 'shutdown', self.stop_benchmark)
         for client in self.clients:
@@ -166,7 +166,7 @@ class NetworkBenchmark:
             self.error_message(_("Something went wrong with the iperf server process:\n\n%s") % message)
             self.cancel_benchmark()
             return False
-        
+
         if self.timeleft == 0:
             self.get('cancel_btn').set_visible(False)
             self.get('time_left_label').set_text(_("Processing data..."))
@@ -214,7 +214,7 @@ class NetworkBenchmark:
     def get_results(self):
         self.more_output = GLib.timeout_add(200, self.get_more_output)
         self.output_timeout = GLib.timeout_add(self.timeout*1000, self.show_results, True)
-        
+
     def data_func(self, column, cell, model, iter, index):
         bps = model[iter][index]
         if bps <= 0:
@@ -229,12 +229,12 @@ class NetworkBenchmark:
             GLib.source_remove(self.output_timeout)
         if self.more_output:
             GLib.source_remove(self.more_output)
-        
+
         upload_col = self.get('upload_column')
         download_col = self.get('download_column')
         upload_col.set_cell_data_func(self.get('cellrenderertext2'), self.data_func, 1)
         download_col.set_cell_data_func(self.get('cellrenderertext3'), self.data_func, 2)
-        
+
         results_n = len(self.results)
         if results_n > 0:
             total_up = 0
@@ -249,12 +249,12 @@ class NetworkBenchmark:
                 self.get('results_store').append([client_name, up, down])
                 total_up += up
                 total_down += down
-            
+
             self.dlg.set_visible(False)
             results_dlg = self.get('results_dialog')
             results_dlg.set_transient_for(self.parent)
             results_dlg.show_all()
-            
+
             clients_n = len(self.clients)
             self.get('avg_client').set_text(humanize(total_up / clients_n, unit='bps'))
             self.get('total_client').set_text(humanize(total_up, unit='bps'))

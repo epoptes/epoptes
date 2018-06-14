@@ -44,7 +44,7 @@ class Daemon(amp.AMP):
     def connectionLost(self, reason):
         amp.AMP.connectionLost(self, reason)
         self.client.disconnected(self)
-    
+
     @commands.ClientConnected.responder
     def clientConnected(self, handle):
         self.client.amp_clientConnected(handle)
