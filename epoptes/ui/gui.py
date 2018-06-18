@@ -51,7 +51,7 @@ from ..core import structs
 from ..core import wol
 from ..core.lib_users import *
 from ..daemon import uiconnection
-from .about_dialog import About
+from .about import About
 from .benchmark import NetworkBenchmark
 from .client_information import ClientInformation
 from .execcommand import *
@@ -62,6 +62,7 @@ from .sendmessage import *
 class EpoptesGui(object):
 
     def __init__(self):
+        self.about = None
         self.shownCompatibilityWarning = False
         self.vncserver = None
         self.vncviewer = None
@@ -495,7 +496,9 @@ class EpoptesGui(object):
         subprocess.Popen('%s/remote_assistance.py' %path, shell=True, cwd=path)
 
     def on_mi_about_activate(self, widget=None):
-        About(self.mainwin).run()
+        if not self.about:
+            self.about = About(self.mainwin)
+        self.about.run()
 
     def on_cViewHU_toggled(self, mitem):
         self.set_cView(1, 0)

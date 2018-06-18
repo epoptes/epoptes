@@ -20,8 +20,10 @@ The following is a bit better:
     from gi.repository import Gtk, Gdk
 That last line "only" triggers pylint's "wrong-import-position" once.
 """
+import errno
 import gettext
 import locale
+import os
 
 import gi
 
@@ -31,3 +33,17 @@ gi.require_version('Notify', '0.7')
 gettext.textdomain('epoptes')
 locale.textdomain('epoptes')
 gettext = gettext.gettext
+
+
+def locate_resource(filename):
+    test = filename
+    if os.path.isfile(test):
+        return test
+    test = "/usr/share/epoptes/" + os.path.basename(filename)
+    if os.path.isfile(test):
+        return test
+    test = "/usr/share/epoptes/images/" + os.path.basename(filename)
+    if os.path.isfile(test):
+        return test
+    raise FileNotFoundError(
+        errno.ENOENT, os.strerror(errno.ENOENT), filename)

@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
-  <object class="GtkAboutDialog" id="aboutdialog">
+  <object class="GtkAboutDialog" id="dlg_about">
     <property name="can_focus">False</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">Epoptes</property>
