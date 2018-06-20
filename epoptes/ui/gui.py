@@ -56,13 +56,14 @@ from .benchmark import NetworkBenchmark
 from .client_information import ClientInformation
 from .execcommand import *
 from .notifications import *
-from .sendmessage import *
+from .send_message import SendMessage
 
 
 class EpoptesGui(object):
 
     def __init__(self):
         self.about = None
+        self.send_message = None
         self.shownCompatibilityWarning = False
         self.vncserver = None
         self.vncviewer = None
@@ -356,11 +357,11 @@ class EpoptesGui(object):
         self.execOnSelectedClients(['execute', cmd], mode=em)
 
     def sendMessageDialog(self, widget):
-        msg = startSendMessageDlg(self.mainwin)
-        if msg:
-            cmd = list(msg)
-            cmd.insert(0, 'message')
-            self.execOnSelectedClients(cmd)
+        if not self.send_message:
+            self.send_message = SendMessage(self.mainwin)
+        params = self.send_message.run()
+        if params:
+            self.execOnSelectedClients(['message'] + list(params))
 
     ## FIXME / FIXUS: Should we allow it?
     def openTerminal(self, em):
