@@ -54,7 +54,7 @@ from ..daemon import uiconnection
 from .about import About
 from .benchmark import NetworkBenchmark
 from .client_information import ClientInformation
-from .execcommand import *
+from .exec_command import ExecCommand
 from .notifications import *
 from .send_message import SendMessage
 
@@ -63,6 +63,7 @@ class EpoptesGui(object):
 
     def __init__(self):
         self.about = None
+        self.exec_command = None
         self.send_message = None
         self.shownCompatibilityWarning = False
         self.vncserver = None
@@ -346,14 +347,17 @@ class EpoptesGui(object):
 
     ## FIXME FIXME: Should we allow for running arbitrary commands in clients?
     def execDialog(self, widget):
-        cmd = startExecuteCmdDlg(self.mainwin)
+        if not self.exec_command:
+            self.exec_command = ExecCommand(self.mainwin)
+        cmd = self.exec_command.run()
         # If Cancel or Close were clicked
         if cmd == '':
             return
-        em = EM_SESSION
-        if cmd[:5] == 'sudo ':
+        if cmd.startswith("sudo "):
             em = EM_SYSTEM
-            cmd = cmd[4:]
+            cmd = cmd[5:]
+        else:
+            em = EM_SESSION
         self.execOnSelectedClients(['execute', cmd], mode=em)
 
     def sendMessageDialog(self, widget):

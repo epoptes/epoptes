@@ -43,6 +43,6 @@ class SendMessage:
             fset.close()
         else:
             result = ()
-
         self.dialog.hide()
+
         return result
