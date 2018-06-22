@@ -2,29 +2,29 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
-  <object class="GtkDialog" id="infodlg">
+  <object class="GtkDialog" id="dlg_client_information">
     <property name="can_focus">False</property>
     <property name="border_width">12</property>
-    <property name="icon_name">document-properties</property>
-    <property name="type_hint">normal</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">dialog</property>
     <child>
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox2">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area2">
+          <object class="GtkButtonBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="orientation">vertical</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button5">
+              <object class="GtkButton" id="btn_close">
                 <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -54,7 +54,7 @@
             <property name="column_spacing">12</property>
             <property name="row_homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="label5">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Client type:</property>
@@ -66,7 +66,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label8">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Client alias:</property>
@@ -78,7 +78,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label4">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Client hostname:</property>
@@ -90,7 +90,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label6">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">MAC address:</property>
@@ -102,7 +102,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label10">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">IP address:</property>
@@ -114,7 +114,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label7">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">User:</property>
@@ -126,7 +126,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label1">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Processor:</property>
@@ -138,7 +138,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label2">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">RAM:</property>
@@ -150,7 +150,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label3">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Graphics card:</property>
@@ -162,7 +162,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_type">
+              <object class="GtkLabel" id="lbl_type">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -174,7 +174,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_hostname">
+              <object class="GtkLabel" id="lbl_hostname">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -186,7 +186,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_mac">
+              <object class="GtkLabel" id="lbl_mac">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -198,7 +198,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_ip">
+              <object class="GtkLabel" id="lbl_ip">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -210,7 +210,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_online_user">
+              <object class="GtkLabel" id="lbl_user">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -222,7 +222,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_cpu">
+              <object class="GtkLabel" id="lbl_cpu">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -235,7 +235,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_ram">
+              <object class="GtkLabel" id="lbl_ram">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -248,7 +248,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="client_vga">
+              <object class="GtkLabel" id="lbl_vga">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="selectable">True</property>
@@ -266,7 +266,7 @@
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
                 <child>
-                  <object class="GtkLabel" id="client_alias">
+                  <object class="GtkLabel" id="lbl_alias">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="selectable">True</property>
@@ -279,13 +279,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="edit_alias_button">
+                  <object class="GtkButton" id="btn_edit_alias">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <signal name="clicked" handler="on_edit_alias_clicked" swapped="no"/>
                     <child>
-                      <object class="GtkImage" id="image1">
+                      <object class="GtkImage" id="img_edit_alias">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="stock">gtk-edit</property>
@@ -314,31 +314,32 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">button5</action-widget>
+      <action-widget response="0">btn_close</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkDialog" id="edit_alias_dialog">
+  <object class="GtkDialog" id="dlg_edit_alias">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Edit alias</property>
-    <property name="type_hint">normal</property>
-    <property name="transient_for">infodlg</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">dlg_client_information</property>
     <child>
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox3">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area3">
+          <object class="GtkButtonBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="alias_edited">
+              <object class="GtkButton" id="btn_ok">
                 <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -352,7 +353,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="alias_edit_cancel">
+              <object class="GtkButton" id="btn_cancel">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -378,7 +379,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkImage" id="image2">
+              <object class="GtkImage" id="img_edit">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="stock">gtk-edit</property>
@@ -391,7 +392,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label9">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Set a new alias for the selected client</property>
@@ -413,7 +414,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="alias_entry">
+          <object class="GtkEntry" id="ent_alias">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="invisible_char">●</property>
@@ -429,8 +430,8 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="1">alias_edited</action-widget>
-      <action-widget response="0">alias_edit_cancel</action-widget>
+      <action-widget response="1">btn_ok</action-widget>
+      <action-widget response="0">btn_cancel</action-widget>
     </action-widgets>
   </object>
 </interface>

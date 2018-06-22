@@ -63,6 +63,7 @@ class EpoptesGui(object):
 
     def __init__(self):
         self.about = None
+        self.client_information = None
         self.exec_command = None
         self.send_message = None
         self.shownCompatibilityWarning = False
@@ -488,12 +489,13 @@ class EpoptesGui(object):
         self.gstore[path][G_INSTANCE].name = new_name
         self.groups_menu.get_children()[int(path)-1].set_label(new_name)
 
-    #FIXME: Remove the second parameter, find a better way
-    def on_tb_client_properties_clicked(self, widget=None):
-        dlg = ClientInformation(self.mainwin, self.getSelectedClients(), self.daemon.command)
-        if self.isDefaultGroupSelected():
-            dlg.edit_button.set_sensitive(False)
-        dlg.run()
+    def on_tb_client_properties_clicked(self, _widget):
+        if not self.client_information:
+            self.client_information = ClientInformation(self.mainwin)
+        self.client_information.btn_edit_alias.set_sensitive(
+            not self.isDefaultGroupSelected())
+        self.client_information.run(
+            self.getSelectedClients()[0], self.daemon.command)
         self.setLabel(self.getSelectedClients()[0])
 
     def on_mi_remote_assistance_activate(self, widget=None):

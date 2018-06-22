@@ -1,84 +1,83 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# Get client properties.
-#
-# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
-# 2018, Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
-from . import gi_versions
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Client information dialog.
+"""
+from epoptes.common import gettext as _, locate_resource
+from epoptes.common.constants import C_INSTANCE, C_SESSION_HANDLE
 from gi.repository import Gtk
-
-from ..common.constants import *
 
 
 class ClientInformation:
-    def __init__(self, parent, selected, execute):
-        self.wTree = Gtk.Builder()
-        self.wTree.add_from_file('client_information.ui')
-        self.wTree.connect_signals(self)
-        self.get = self.wTree.get_object
-        self.selected = selected
+    """Load the dialog and settings into local variables."""
+    def __init__(self, parent):
+        builder = Gtk.Builder()
+        builder.add_from_file(locate_resource('client_information.ui'))
+        builder.connect_signals(self)
+        self.dialog = builder.get_object('dlg_client_information')
+        self.dialog.set_transient_for(parent)
+        self.btn_edit_alias = builder.get_object('btn_edit_alias')
+        self.dlg_edit_alias = builder.get_object('dlg_edit_alias')
+        self.ent_alias = builder.get_object('ent_alias')
+        self.lbl_type = builder.get_object('lbl_type')
+        self.lbl_alias = builder.get_object('lbl_alias')
+        self.lbl_hostname = builder.get_object('lbl_hostname')
+        self.lbl_mac = builder.get_object('lbl_mac')
+        self.lbl_ip = builder.get_object('lbl_ip')
+        self.lbl_user = builder.get_object('lbl_user')
+        self.lbl_cpu = builder.get_object('lbl_cpu')
+        self.lbl_ram = builder.get_object('lbl_ram')
+        self.lbl_vga = builder.get_object('lbl_vga')
+        self.client = None
 
-        self.dlg = self.get('infodlg')
-        self.dlg.set_transient_for(parent)
-        self.edit_button = self.get('edit_alias_button')
-        # TODO: reduce unnecessary lambdas
-        set = lambda wdg, txt: self.get(wdg).set_text(txt.strip())
+    def run(self, client, execute):
+        """Show the dialog, then hide it so that it may be reused."""
+        self.client = client
 
-        for client in selected:
-            inst = client[C_INSTANCE]
-            handle = inst.hsystem or client[C_SESSION_HANDLE]
-            if handle:
-                execute(handle, 'echo $RAM').addCallback(
-                    lambda r: set('client_ram', r.decode().strip()+' MB'))
-                execute(handle, 'echo $CPU').addCallback(
-                    lambda r: set('client_cpu', r.decode()))
-                execute(handle, 'echo $VGA').addCallback(
-                    lambda r: set('client_vga', r.decode()))
-            set('client_alias', inst.alias)
-            set('client_hostname', inst.hostname)
-            set('client_mac', inst.mac)
-            set('client_ip', handle.split(':')[0])
-            set('client_type', inst.type)
-            user = '--'
-            if client[C_SESSION_HANDLE]:
-                uname, realname = inst.users[client[C_SESSION_HANDLE]].values()
+        inst = client[C_INSTANCE]
+        handle = inst.hsystem or client[C_SESSION_HANDLE]
+
+        self.lbl_type.set_text(inst.type)
+        self.lbl_alias.set_text(inst.alias)
+        self.lbl_hostname.set_text(inst.hostname)
+        self.lbl_mac.set_text(inst.mac)
+        self.lbl_ip.set_text(handle.split(':')[0])
+        if client[C_SESSION_HANDLE]:
+            uname, realname = inst.users[client[C_SESSION_HANDLE]].values()
+            if realname:
+                user = '{} ({})'.format(uname, realname)
+            else:
                 user = uname
-                if realname:
-                    user += ' (%s)' %realname
-            set('client_online_user', user)
-            self.dlg.set_title(_('Properties of %s') %inst.get_name())
+        else:
+            user = ''
+        self.lbl_user.set_text(user)
+        self.lbl_cpu.set_text('')
+        self.lbl_ram.set_text('')
+        self.lbl_vga.set_text('')
+        if handle:
+            execute(handle, 'echo "$CPU"').addCallback(
+                self.cb_set_text, self.lbl_cpu)
+            execute(handle, 'echo "$RAM MiB"').addCallback(
+                self.cb_set_text, self.lbl_ram)
+            execute(handle, 'echo "$VGA"').addCallback(
+                self.cb_set_text, self.lbl_vga)
+        # TODO: consider new string formatting vs updating translations
+        self.dialog.set_title(_('Properties of %s') % inst.get_name())
+        self.dialog.run()
+        self.dialog.hide()
 
-    def run(self):
-        self.dlg.run()
-        self.dlg.destroy()
+    @staticmethod
+    def cb_set_text(result, widget):
+        """Set a widget text to the result of a twisted call."""
+        widget.set_text(result.decode().strip())
 
-    def on_edit_alias_clicked(self, widget):
-        inst = self.selected[0][C_INSTANCE]
-        edit_dlg = self.get('edit_alias_dialog')
-        entry = self.get('alias_entry')
-        entry.set_text(inst.alias)
-        resp = edit_dlg.run()
-        if resp == 1:
-            inst.set_name(entry.get_text().strip())
-            self.get('client_alias').set_text(inst.alias.strip())
-        edit_dlg.hide()
+    def on_edit_alias_clicked(self, _widget):
+        """Show a dialog to edit the alias."""
+        inst = self.client[C_INSTANCE]
+        self.ent_alias.set_text(inst.alias)
+        reply = self.dlg_edit_alias.run()
+        if reply == 1:
+            inst.set_name(self.ent_alias.get_text().strip())
+            self.lbl_alias.set_text(inst.alias.strip())
+        self.dlg_edit_alias.hide()
