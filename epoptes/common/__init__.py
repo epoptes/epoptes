@@ -35,7 +35,11 @@ locale.textdomain('epoptes')
 gettext = gettext.gettext
 
 
-def locate_resource(filename):
+def locate_resource(filename, absolute=True):
+    """Search for filename in some known paths."""
+    # Use recursion for absolute instead of multiple ifs:
+    if absolute:
+        return os.path.abspath(locate_resource(filename, False))
     test = filename
     if os.path.isfile(test):
         return test

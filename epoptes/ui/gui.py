@@ -55,7 +55,7 @@ from .about import About
 from .benchmark import NetworkBenchmark
 from .client_information import ClientInformation
 from .exec_command import ExecCommand
-from .notifications import *
+from .notifications import NotifyQueue
 from .send_message import SendMessage
 
 
@@ -65,6 +65,9 @@ class EpoptesGui(object):
         self.about = None
         self.client_information = None
         self.exec_command = None
+        self.notify_queue = NotifyQueue(
+            'Epoptes',
+            '/usr/share/icons/hicolor/scalable/apps/epoptes.svg')
         self.send_message = None
         self.shownCompatibilityWarning = False
         self.vncserver = None
@@ -568,14 +571,19 @@ class EpoptesGui(object):
         for client in structs.clients:
             if client.hsystem == handle:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
-                    shutdown_notify(client.get_name())
+                    self.notify_queue.enqueue(
+                        _("Shut down:"), client.get_name())
                 client.hsystem = ''
                 determine_offline(client)
                 break
 
             elif handle in client.users:
                 if self.getSelectedGroup()[1].has_client(client) or self.isDefaultGroupSelected():
-                    logout_notify(client.users[handle]['uname'], client.get_name())
+                    self.notify_queue.enqueue(
+                        _("Disconnected:"),
+                        _("%(user)s from %(host)s") %
+                        {"user": client.users[handle]['uname'],
+                         "host": client.get_name()})
                 del client.users[handle]
                 determine_offline(client)
                 break
@@ -721,7 +729,9 @@ which is incompatible with the current epoptes version.\
             # This is a user epoptes-client
             client.add_user(user, name, handle)
             if not already and (sel_group.has_client(client) or self.isDefaultGroupSelected()):
-                login_notify(user, host)
+                self.notify_queue.enqueue(
+                    _("Connected:"),
+                    _("%(user)s on %(host)s") % {"user": user, "host": host})
 
         if sel_group.has_client(client) or self.isDefaultGroupSelected():
             self.fillIconView(sel_group, True)
