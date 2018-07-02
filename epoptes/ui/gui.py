@@ -52,7 +52,7 @@ from ..core import wol
 from ..core.lib_users import *
 from ..daemon import uiconnection
 from .about import About
-from .benchmark import NetworkBenchmark
+from .benchmark import Benchmark
 from .client_information import ClientInformation
 from .exec_command import ExecCommand
 from .notifications import NotifyQueue
@@ -65,6 +65,7 @@ class EpoptesGui(object):
         self.about = None
         self.client_information = None
         self.exec_command = None
+        self.benchmark = None
         self.notify_queue = NotifyQueue(
             'Epoptes',
             '/usr/share/icons/hicolor/scalable/apps/epoptes.svg')
@@ -229,9 +230,10 @@ class EpoptesGui(object):
             self.vncviewer.kill()
         reactor.stop()
 
-    def on_miBenchmark_activate(self, widget):
-        dlg = NetworkBenchmark(self.mainwin, self.getSelectedClients() or self.cstore, self.daemon.command)
-        dlg.run()
+    def on_miBenchmark_activate(self, _widget):
+        if not self.benchmark:
+            self.benchmark = Benchmark(self.mainwin, self.daemon.command)
+        self.benchmark.run(self.getSelectedClients() or self.cstore)
 
     def toggleRealNames(self, widget=None):
         """Show/hide the real names of the users instead of the usernames"""
