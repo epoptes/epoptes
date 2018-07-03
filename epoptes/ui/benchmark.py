@@ -152,7 +152,7 @@ class Benchmark:
                 _("Benchmark finishing in %d seconds...") % self.timeleft)
         else:
             self.lbl_countdown.set_text(
-                _("Some clients didn't reply on time!") + "\n"
+                _("Some clients didn't respond in time!") + "\n"
                 + _("Waiting for %d more seconds...") % (self.timeleft + 3))
 
         # Always recall; the timeout will be cancelled in on_iperf_exit.
