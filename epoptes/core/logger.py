@@ -11,7 +11,7 @@ import sys
 
 class Logger:
     """Similar to logging.Logger, but simpler."""
-    def __init__(self, name=None):
+    def __init__(self, name=None, file=sys.stderr):
         """Check if debugging is activated for "name"."""
         debug = os.getenv('DEBUG', '')
         if debug and name.endswith(debug):
@@ -24,6 +24,7 @@ class Logger:
         self.w = func
         self.e = self.stderr
         self.c = self.stderr
+        self.file = file
 
     def null(self, *_args):
         """The self.[cdeiw] variables point here when debugging is disabled."""
@@ -32,4 +33,4 @@ class Logger:
     def stderr(self, *args):
         """The self.[cdeiw] variables point here when debugging is enabled."""
         if self:
-            print(*args, file=sys.stderr)
+            print(*args, file=self.file)

@@ -40,9 +40,9 @@ from OpenSSL import SSL
 
 class Options(usage.Options):
     optParameters = [
-        ("clientport", "p", 789, "Client Port"),
-        ('pingInterval', 'i', 10),
-        ('pingTimeout', 't', 10),
+        ("client-port", "p", 789, "Client Port"),
+        ('ping-interval', 'i', 10),
+        ('ping-timeout', 't', 10),
       ]
 
 
@@ -63,9 +63,9 @@ class ServiceMaker(object):
     def makeService(self, options):
 
         factory = bashplex.DelimitedBashReceiverFactory()
-        factory.pingInterval=int(options['pingInterval'])
-        factory.pingTimeout=int(options['pingTimeout'])
-        factory.startupCommands = self.filterBash('/usr/share/epoptes/client-functions')
+        factory.ping_interval=int(options['ping-interval'])
+        factory.ping_timeout=int(options['ping-timeout'])
+        factory.startup_commands = self.filterBash('/usr/share/epoptes/client-functions')
 
         if config.system['ENCRYPTION']:
             clientService = internet.SSLServer(int(config.system['PORT']),
