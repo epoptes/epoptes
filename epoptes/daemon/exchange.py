@@ -1,61 +1,47 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# Global registry type stuff.
-#
-# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
-# 2018, Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
 """
-Global registry type stuff
+Variables and functions to keep track of known clients and GUIs.
 """
+import sys
+from epoptes.core import logger
 
-knownClients = {}
-timedOutClients = {}
-knownGUIs = []
+# stdout in epoptesd/bashplex/guiplex is handled by twisted and goes to syslog.
+# stderr isn't, so tell Logger to use stdout.
+LOG = logger.Logger(__file__, sys.stdout)
+
+known_clients = {}
+timed_out_clients = {}  # To distinguish reconnections from new connections
+known_guis = []
 
 
-def clientConnected(handle, client):
-    # print("Client connected: %s" % handle)
-    knownClients[handle] = client
-    for gui in knownGUIs:
-        gui.clientConnected(handle)
+def client_connected(handle, client):
+    """Called from bashplex.py->connectionMade."""
+    known_clients[handle] = client
+    # Notify all known GUIs that an epoptes-client was connected
+    for gui in known_guis:
+        gui.client_connected(handle)
 
 
-def clientDisconnected(handle):
-    if handle not in knownClients:
-        print("Disconnect from unknown client: %s" % handle)
+def client_disconnected(handle):
+    """Called from bashplex.py->connectionLost."""
+    if handle not in known_clients:
+        LOG.e("Disconnect from unknown client: %s" % handle)
         return
-
-    # print("Client disconnected: %s" % handle.)
-    del knownClients[handle]
-    for gui in knownGUIs:
-        gui.clientDisconnected(handle)
-
-
-def clientTimedOut(handle):
-    timedOutClients[handle] = knownClients[handle]
-    clientDisconnected(handle)
+    del known_clients[handle]
+    # Notify all known GUIs that an epoptes-client was disconnected
+    for gui in known_guis:
+        gui.client_disconnected(handle)
 
 
-def clientReconnected(handle):
-    clientConnected(handle, timedOutClients[handle])
-    del timedOutClients[handle]
+def client_timed_out(handle):
+    """Called from bashplex.py->ping_timed_out."""
+    timed_out_clients[handle] = known_clients[handle]
+    client_disconnected(handle)
+
+
+def client_reconnected(handle):
+    """Called from bashplex.py->ping_response."""
+    client_connected(handle, timed_out_clients[handle])
+    del timed_out_clients[handle]
