@@ -534,10 +534,11 @@ class EpoptesGui(object):
         for row in self.cstore:
             self.setLabel(row)
 
+    # TODO: this is callback from uiconnection.py
     def connected(self, daemon):
         self.mainwin.set_sensitive(True)
         self.daemon = daemon
-        daemon.enumerateClients().addCallback(lambda h: self.amp_gotClients(h))
+        daemon.enumerate_clients().addCallback(lambda h: self.amp_gotClients(h))
         self.fillIconView(self.getSelectedGroup()[1])
 
     def disconnected(self, daemon):
@@ -557,13 +558,13 @@ class EpoptesGui(object):
         reactor.stop()
 
     # AMP callbacks
-    def amp_clientConnected(self, handle):
+    def amp_client_connected(self, handle):
         print("New connection from", handle)
         d = self.daemon.command(handle, 'info')
         d.addCallback(lambda r: self.addClient(handle, r.decode()))
         d.addErrback(lambda err: self.printErrors("when connecting client %s: %s" %(handle, err)))
 
-    def amp_clientDisconnected(self, handle):
+    def amp_client_disconnected(self, handle):
         print("Disconnect from", handle)
 
         def determine_offline(client):
