@@ -1,31 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Common constants.
+"""
 
-###########################################################################
-# Common constants.
-#
-# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
-# 2018, Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
-# Warn users to update their chroots if they have a lower epoptes-client version
-# than this
+# Warn users to update their clients if they have a lower version than this:
 COMPATIBILITY_VERSION = (0, 5)
 
 # ['ltsp123', '00-1b-24-89-65-d6', '127.0.0.1:46827', '10.160.31.126:44920',
