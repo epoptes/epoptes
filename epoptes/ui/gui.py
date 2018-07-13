@@ -25,7 +25,7 @@
 ###########################################################################
 
 
-from . import gi_versions
+from epoptes.common import gettext as _
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GLib
@@ -39,7 +39,10 @@ import pipes
 import getpass
 import socket
 import locale
-from gobject import TYPE_PYOBJECT as gPyobject
+from twisted.internet import gtk3reactor
+# This must be run after epoptes.common.config (=Gtk imported without version)
+# and before twisted.internet.reactor (=reactor already installed)
+gtk3reactor.install()
 from twisted.internet import reactor
 from twisted.python import log
 

@@ -1,65 +1,25 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# Launch the epoptes UI.
-#
-# Copyright (C) 2011-2018 Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
-from epoptes.ui import gi_versions
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Launch the epoptes UI.
+"""
 import os
 import os.path
 import sys
-from gi.repository import Gtk
 
 import epoptes
-
-# cd to the epoptes directory, so that all paths are relative
-if not os.path.isfile('remote_assistance.ui'):
-    os.chdir('/usr/share/epoptes')
-
-if len(sys.argv) > 1:
-    if sys.argv[1] in ('--version', '-version'):
-        print("Epoptes %s" % epoptes.__version__)
-        sys.exit(0)
-
-# Do these potentially expensive imports now we know the environment is sane
-from twisted.internet import gtk3reactor
-gtk3reactor.install()
-from twisted.internet import reactor
-from twisted.internet.protocol import ClientCreator
-from twisted.protocols import amp
-
+from epoptes.common import config, gettext as _
 from epoptes.daemon import uiconnection
 from epoptes.ui import gui
-from epoptes.common import config
+from gi.repository import Gtk
+from twisted.internet import reactor
+from twisted.internet.protocol import ClientCreator
 
 
-epoptesGui = gui.EpoptesGui()
-
-path = os.path.expanduser('~/.config/epoptes/')
-if not os.path.isdir(path):
-    os.makedirs(path)
-
-
-def connectionFailed(failure):
+def connection_failed(failure):
+    """Errback for gui <=> daemon connection."""
     msg = _("An error occurred while trying to connect to the epoptes service:")
     msg += ' <i>' + failure.value.message + '</i>\n\n'
     print("Connection with epoptes failed:", failure.value.message)
@@ -70,7 +30,8 @@ def connectionFailed(failure):
     # No such file error
     elif failure.value.osError == 2:
         msg += _("Make sure the epoptes service is running.")
-    dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK)
+    dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR,
+                            buttons=Gtk.ButtonsType.OK)
     dlg.set_markup(msg)
     dlg.set_title(_('Service connection error'))
     dlg.run()
@@ -78,7 +39,26 @@ def connectionFailed(failure):
     reactor.stop()
 
 
-d = ClientCreator(reactor, epoptes.daemon.uiconnection.Daemon, epoptesGui).connectUNIX(config.system['DIR'] + "/epoptes.socket")
-d.addErrback(connectionFailed)
+def main():
+    """Usage: epoptes [--version]."""
+    if len(sys.argv) > 1:
+        if sys.argv[1] in ('--version', '-version'):
+            print("Epoptes %s" % epoptes.__version__)
+            sys.exit(0)
 
-reactor.run()
+    # cd to the epoptes directory, so that all paths are relative
+    if not os.path.isfile('remote_assistance.ui'):
+        os.chdir('/usr/share/epoptes')
+    path = os.path.expanduser('~/.config/epoptes/')
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
+    egui = gui.EpoptesGui()
+    dfr = ClientCreator(reactor, uiconnection.Daemon, egui)\
+        .connectUNIX(config.system['DIR'] + "/epoptes.socket")
+    dfr.addErrback(connection_failed)
+    reactor.run()
+
+
+if __name__ == '__main__':
+    main()
