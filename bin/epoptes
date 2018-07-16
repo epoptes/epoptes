@@ -21,8 +21,8 @@ from twisted.internet.protocol import ClientCreator
 def connection_failed(failure):
     """Errback for gui <=> daemon connection."""
     msg = _("An error occurred while trying to connect to the epoptes service:")
-    msg += ' <i>' + failure.value.message + '</i>\n\n'
-    print("Connection with epoptes failed:", failure.value.message)
+    msg += ' <i>' + failure.getErrorMessage() + '</i>\n\n'
+    print("Connection with epoptes failed:", failure.getErrorMessage())
     # Permission denied error
     if failure.value.osError == 13:
         msg += _("User %s must be a member of group %s to run epoptes.") % \
