@@ -5,12 +5,16 @@
 """
 Launch the epoptes UI.
 """
+import getpass
+import grp
 import os
 import os.path
+import subprocess
 import sys
 
 import epoptes
 from epoptes.common import config, gettext as _
+from epoptes.core import logger
 from epoptes.daemon import uiconnection
 from epoptes.ui import gui
 from gi.repository import Gtk
@@ -18,15 +22,18 @@ from twisted.internet import reactor
 from twisted.internet.protocol import ClientCreator
 
 
+LOG = logger.Logger(__file__)
+
+
 def connection_failed(failure):
     """Errback for gui <=> daemon connection."""
     msg = _("An error occurred while trying to connect to the epoptes service:")
     msg += ' <i>' + failure.getErrorMessage() + '</i>\n\n'
-    print("Connection with epoptes failed:", failure.getErrorMessage())
+    LOG.c("Connection with epoptes failed:", failure.getErrorMessage())
     # Permission denied error
     if failure.value.osError == 13:
         msg += _("User %s must be a member of group %s to run epoptes.") % \
-              (os.environ['USER'], config.system['SOCKET_GROUP'])
+              (getpass.getuser(), config.system['SOCKET_GROUP'])
     # No such file error
     elif failure.value.osError == 2:
         msg += _("Make sure the epoptes service is running.")
@@ -37,6 +44,30 @@ def connection_failed(failure):
     dlg.run()
     dlg.destroy()
     reactor.stop()
+
+
+def need_sg_relaunch():
+    """After fresh installation, we need to relaunch with `sg`."""
+    # If we've already used sg once, don't retry it.
+    if os.getenv('EPOPTES_SG'):
+        return False
+    if not os.path.isfile('/usr/bin/sg'):
+        return False
+    socket = config.system['DIR'] + '/epoptes.socket'
+    if os.access(socket, os.W_OK):
+        return False
+    try:
+        epoptes_members = grp.getgrnam(config.system['SOCKET_GROUP']).gr_mem
+    except KeyError:
+        return False
+    if getpass.getuser() not in epoptes_members:
+        return False
+    # At this point it makes sense to try relaunching.
+    # The backgrounding is to allow sg and sh to terminate.
+    LOG.w('Relaunching epoptes using sg to gain group access')
+    subprocess.Popen(['/usr/bin/sg', config.system['SOCKET_GROUP'],
+                      'EPOPTES_SG=True {} &'.format(' '.join(sys.argv))])
+    return True
 
 
 def main():
@@ -52,6 +83,9 @@ def main():
     path = os.path.expanduser('~/.config/epoptes/')
     if not os.path.isdir(path):
         os.makedirs(path)
+
+    if need_sg_relaunch():
+        sys.exit(0)
 
     egui = gui.EpoptesGui()
     dfr = ClientCreator(reactor, uiconnection.Daemon, egui)\

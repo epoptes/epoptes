@@ -196,7 +196,7 @@ system = read_shell_file('/etc/default/epoptes')
 # TODO: check if the types, e.g. PORT=int, may cause problems.
 system.setdefault('PORT', 789)
 system.setdefault('SOCKET_GROUP', 'epoptes')
-system.setdefault('DIR', '/var/run/epoptes')
+system.setdefault('DIR', '/run/epoptes')
 # Allow running unencrypted, for clients with very low RAM.
 try:
     if os.path.getsize('/etc/epoptes/server.crt') == 0:

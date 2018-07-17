@@ -59,7 +59,7 @@ class GUI(amp.AMP):
             """Callback for bashplex.py->DelimitedBashReceiver.command."""
             if len(result) < 65000:
                 return {'filename': '', 'result': result}
-            tmpf = tempfile.NamedTemporaryFile('wb', dir="/var/run/epoptes",
+            tmpf = tempfile.NamedTemporaryFile('wb', dir="/run/epoptes",
                                                delete=False)
             tmpf.write(result)
             os.fchmod(tmpf.file.fileno(), 0o660)
