@@ -9,9 +9,10 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/sbin/epoptes-client
-ExecStop=/usr/bin/pkill -QUIT -U 0 -f '^epoptes-client$'
-# Don't put the unit in a failed state if it exits from the pkill above
-SuccessExitStatus=143
+KillSignal=SIGQUIT
+# Don't put the unit in a failed state if it exits from SIGQUIT.
+# 131 comes from 128+3, because socat returns 128+SIGQUIT.
+SuccessExitStatus=131
 
 [Install]
 WantedBy=multi-user.target
