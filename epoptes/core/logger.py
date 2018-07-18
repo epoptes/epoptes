@@ -20,8 +20,8 @@ class Logger:
             func = self.null
         # debug, info, warning, error, critical
         self.d = func
-        self.i = self.stderr
-        self.w = func
+        self.i = func
+        self.w = self.stderr
         self.e = self.stderr
         self.c = self.stderr
         self.file = file
