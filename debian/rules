@@ -12,3 +12,4 @@ export PYBUILD_INTERPRETERS=python3
 override_dh_install:
 	dh_install
 	sed "s/\(__version__\).*/\1 = '$(DEBVERS)'/" -i "$(CURDIR)"/debian/epoptes/usr/lib/python*/dist-packages/epoptes/__init__.py
+	sed "s/\(VERSION=\).*/\1'$(DEBVERS)'/" -i "$(CURDIR)"/debian/epoptes-client/usr/sbin/epoptes-client
