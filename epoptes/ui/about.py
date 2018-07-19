@@ -5,7 +5,7 @@
 About dialog.
 """
 from epoptes import __version__
-from epoptes.common import locate_resource
+from epoptes.ui.common import locate_resource
 from gi.repository import Gtk
 
 

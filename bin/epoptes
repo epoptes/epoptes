@@ -13,10 +13,11 @@ import subprocess
 import sys
 
 import epoptes
-from epoptes.common import config, gettext as _
+from epoptes.common import config
 from epoptes.core import logger
 from epoptes.daemon import uiconnection
 from epoptes.ui import gui
+from epoptes.ui.common import gettext as _
 from gi.repository import Gtk
 from twisted.internet import reactor
 from twisted.internet.protocol import ClientCreator

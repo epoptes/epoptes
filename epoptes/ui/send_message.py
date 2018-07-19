@@ -6,7 +6,8 @@ Send message dialog.
 """
 import os
 
-from epoptes.common import config, locate_resource
+from epoptes.common import config
+from epoptes.ui.common import locate_resource
 from gi.repository import Gtk
 
 

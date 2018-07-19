@@ -16,7 +16,7 @@ The following is a bit better:
 
     import twisted  # Import third party modules
 
-    from epoptes.common import gettext as _  # Import local modules
+    from epoptes.ui.common import gettext as _  # Import local modules
     from gi.repository import Gtk, Gdk
 That last line "only" triggers pylint's "wrong-import-position" once.
 """

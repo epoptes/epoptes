@@ -4,8 +4,8 @@
 """
 Client information dialog.
 """
-from epoptes.common import gettext as _, locate_resource
 from epoptes.common.constants import C_INSTANCE, C_SESSION_HANDLE
+from epoptes.ui.common import gettext as _, locate_resource
 from gi.repository import Gtk
 
 

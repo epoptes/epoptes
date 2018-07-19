@@ -63,7 +63,7 @@ Notes for current server implementations (get_server_info, get_server_caps):
 """
 import time
 
-from epoptes.common import gettext as _
+from epoptes.ui.common import gettext as _
 from gi.repository import Notify
 
 
@@ -137,7 +137,7 @@ class NotifyQueue:
 
 def main():
     """Run a notifications test from the command line.
-    If epoptes isn't installed, `import epoptes.common` needs to be removed."""
+    If epoptes isn't installed, `import epoptes.ui.common` must be removed."""
     print("get_server_info =", Notify.get_server_info())
     print("get_server_caps =", Notify.get_server_caps())
     events = [

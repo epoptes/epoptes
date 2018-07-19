@@ -7,9 +7,9 @@ Network benchmark.
 # TODO: either switch to iperf3, or reimplement it with python/twisted.
 # iperf2 doesn't work behind NAT and has several issues, for example:
 # https://sourceforge.net/p/iperf2/discussion/general/thread/db0fed22/
-from epoptes.common import gettext as _, locate_resource
 from epoptes.common.constants import C_INSTANCE
 from epoptes.core import spawn_process
+from epoptes.ui.common import gettext as _, locate_resource
 from gi.repository import GLib, Gtk
 
 

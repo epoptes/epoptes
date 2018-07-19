@@ -25,7 +25,7 @@
 ###########################################################################
 
 
-from epoptes.common import gettext as _
+from epoptes.ui.common import gettext as _
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GLib
