@@ -80,7 +80,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         """Receive the responses from the client pings."""
         # Responses that arrive after a client has timed out mean a "reconnect"
         if self.timed_out:
-            LOG.i("Reconnected:", self.handle)
+            LOG.w("Reconnected:", self.handle)
             exchange.client_reconnected(self.handle)
             self.timed_out = False
         else:
@@ -90,7 +90,7 @@ class DelimitedBashReceiver(protocol.Protocol):
 
     def ping_timed_out(self):
         """A response was not received for a ping within ping_timeout secs."""
-        LOG.i("Ping timeout:", self.handle)
+        LOG.w("Ping timeout:", self.handle)
         self.timed_out = True
         exchange.client_timed_out(self.handle)
 
@@ -110,14 +110,14 @@ class DelimitedBashReceiver(protocol.Protocol):
 
         peer = self.transport.getPeer()
         self.handle = "{}:{}".format(peer.host, peer.port)
-        LOG.i("Connected:", self.handle)
+        LOG.w("Connected:", self.handle)
         dfr = self.command(self.factory.startup_commands)
         dfr.addCallback(forward_connection)
         dfr.addErrback(kill_connection)
 
     def connectionLost(self, reason=protocol.connectionDone):
         """Override Protocol.connectionLost."""
-        LOG.i("Connection lost:", self.handle)
+        LOG.w("Connection lost:", self.handle)
         try:
             self.ping_timeout.cancel()
         except Exception:
