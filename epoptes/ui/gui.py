@@ -30,6 +30,7 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GLib
 from gi.repository import GdkPixbuf
+from distutils.version import LooseVersion
 import os
 import dbus
 import logging
@@ -700,7 +701,7 @@ class EpoptesGui(object):
             return False
 
         # Compatibility check
-        if tuple(map(int, version.split('.'))) < COMPATIBILITY_VERSION:
+        if LooseVersion(version) < LooseVersion(COMPATIBILITY_VERSION):
             if not self.shownCompatibilityWarning:
                 self.shownCompatibilityWarning = True
                 dlg = self.get('warningDialog')
