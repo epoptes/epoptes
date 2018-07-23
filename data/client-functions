@@ -456,15 +456,7 @@ if [ -z "$UID" ] || [ -z "$TYPE" ] || [ -z "$SERVER" ]; then
     die "Required environment variables are missing."
 fi
 
-# Source lsb init functions for log_end_msg, but only on Debian-based distros
-if [ -f /lib/lsb/init-functions ] && [ -f /etc/debian_version ]; then
-    ( # Use a subshell, we only need init-functions once
-    . /lib/lsb/init-functions
-    log_end_msg 0 >&5
-    )
-else
-    echo "[ OK ]" >&5
-fi
+echo "   ...done" >&5
 
 info
 
