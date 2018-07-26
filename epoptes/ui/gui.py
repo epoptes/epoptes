@@ -40,7 +40,7 @@ class EpoptesGui(object):
             'Epoptes',
             '/usr/share/icons/hicolor/scalable/apps/epoptes.svg')
         self.send_message = None
-        self.shownCompatibilityWarning = False
+        self.displayed_compatibility_warning = False
         self.vncserver = None
         self.vncviewer = None
         self.scrWidth = 100
@@ -74,7 +74,7 @@ class EpoptesGui(object):
         # Connect glade handlers with the callback functions
         self.wTree.connect_signals(self)
 
-        # Hide the remote assistance menuitem if epoptes-client is not installed
+        # Hide the remote assistance menuitem if epoptes-client isn't installed
         if not os.path.isfile('/usr/share/epoptes-client/remote_assistance.py'):
             self.get('mi_remote_assistance').set_property('visible', False)
             self.get('remote_assistance_separator').set_property('visible',
@@ -87,8 +87,8 @@ class EpoptesGui(object):
 
         self.gtree = self.get("groups_tree")
         self.gtree.set_model(self.gstore)
-        self.gtree.get_selection().connect("changed",
-                                           self.on_group_selection_changed)
+        self.gtree.get_selection().connect(
+            "changed", self.on_group_selection_changed)
 
         self.mainwin = self.get('mainwindow')
 
@@ -146,7 +146,6 @@ class EpoptesGui(object):
             self.get('mcShowRealNames').set_active(
                 config.settings.getboolean('GUI', 'showRealNames'))
         self.mainwin.set_sensitive(False)
-
 
     #################################################################
     #                       Callback functions                      #
@@ -441,9 +440,9 @@ class EpoptesGui(object):
         clients = self.getSelectedClients()
         group = self.getSelectedGroup()[1]
 
-        if self.warnDlgPopup(
-                _('Are you sure you want to remove '
-                  'the selected client(s) from group "%s"?') %group.name):
+        if self.confirmation_dialog(
+                _('Are you sure you want to remove the selected client(s)'
+                  ' from group "%s"?') % group.name):
             for client in clients:
                 group.remove_client(client[C_INSTANCE])
             self.fillIconView(self.getSelectedGroup()[1], True)
@@ -478,7 +477,7 @@ class EpoptesGui(object):
         group_iter = self.getSelectedGroup()[0]
         group = self.gstore[group_iter][G_INSTANCE]
 
-        if self.warnDlgPopup(
+        if self.confirmation_dialog(
                 _('Are you sure you want to remove group "%s"?') % group.name):
             path = self.gstore.get_path(group_iter)[0]
             self.gstore.remove(group_iter)
@@ -616,9 +615,6 @@ class EpoptesGui(object):
             d.addErrback(lambda err: self.printErrors(
                 "when enumerating client %s: %s" %(handle, err)))
 
-    def on_button_close_clicked(self, widget):
-        self.get('warningDialog').hide()
-
     def on_group_selection_changed(self, treeselection):
         self.cstore.clear()
         selected = self.getSelectedGroup()
@@ -715,19 +711,15 @@ class EpoptesGui(object):
 
         # Compatibility check
         if LooseVersion(version) < LooseVersion(COMPATIBILITY_VERSION):
-            if not self.shownCompatibilityWarning:
-                self.shownCompatibilityWarning = True
-                dlg = self.get('warningDialog')
-                # Show different messages for LTSP clients and standalones.
-                msg = _("""A connection attempt was made by a client with"""
-                        """ version %s, which is incompatible with the"""
-                        """ current epoptes version.\n\nYou need to update"""
-                        """ your clients to the latest epoptes-client"""
-                        """ version.""") % version
-                dlg.set_property('text', msg)
-                dlg.set_transient_for(self.mainwin)
-                dlg.show()
-            self.daemon.command(handle, "exit")
+            self.daemon.command(
+                handle, "die 'Incompatible Epoptes server version!'")
+            if not self.displayed_compatibility_warning:
+                self.displayed_compatibility_warning = True
+                self.warning_dialog(_(
+                    """A connection attempt was made by a client with"""
+                    """ version %s, which is incompatible with the current"""
+                    """ epoptes version.\n\nYou need to update your clients"""
+                    """ to the latest epoptes-client version.""") % version)
             return False
         sel_group = self.getSelectedGroup()[1]
         client = None
@@ -1029,8 +1021,9 @@ class EpoptesGui(object):
         else:
             self.get('statusbar_label').set_text('')
 
-    def execOnClients(self, command, clients=[], reply=None,
-            mode=EM_SESSION_OR_SYSTEM, handles=[], warning='', params=None):
+    def execOnClients(
+            self, command, clients=[], reply=None, mode=EM_SESSION_OR_SYSTEM,
+            handles=[], warning='', params=None):
         # reply should be a method in which the result will be sent
         if params is None:
             params = []
@@ -1043,11 +1036,12 @@ class EpoptesGui(object):
                 [pipes.quote(str(x)) for x in command[1:]]))
 
         if (clients != [] or handles != []) and warning != '':
-            if self.warnDlgPopup(warning) == False:
+            if not self.confirmation_dialog(warning):
                 return
         if clients == [] and handles != []:
             for handle in handles:
                 cmd = self.daemon.command(handle, str(command))
+                # TODO: do we need callbacks even when no reply?
                 if reply:
                     cmd.addCallback(
                         lambda re, h=handle, p=params: reply(h, re, *p))
@@ -1071,6 +1065,7 @@ class EpoptesGui(object):
                     continue
                 sent = True
                 cmd = self.daemon.command(handle, str(command))
+                # TODO: do we need callbacks even when no reply?
                 if reply:
                     cmd.addCallback(
                         lambda re, h=handle, p=params: reply(h, re, *p))
@@ -1087,17 +1082,20 @@ class EpoptesGui(object):
             warn = ''
         self.execOnClients(command, clients, reply, mode, warning=warn)
 
-    def warnDlgPopup(self, warning):
-        dlg = self.get('executionwarning')
-        dlg.set_property('text', warning)
+    def confirmation_dialog(self, text):
+        dlg = Gtk.MessageDialog(
+            self.mainwin, 0, Gtk.MessageType.WARNING, Gtk.ButtonsType.YES_NO,
+            text, title=_('Confirm action'))
         resp = dlg.run()
-        dlg.set_property('text', '')
-        dlg.hide()
-        # -8 is the response id of the "Yes" button (-9 for the "No")
-        if resp == -8:
-            return True
-        else:
-            return False
+        dlg.destroy()
+        return resp == Gtk.ResponseType.YES
+
+    def warning_dialog(self, text):
+        dlg = Gtk.MessageDialog(
+            self.mainwin, 0, Gtk.MessageType.WARNING, Gtk.ButtonsType.CLOSE,
+            text, title=_('Warning'))
+        dlg.run()
+        dlg.destroy()
 
     def printErrors(self, error):
         print('  **Twisted error:', error)
