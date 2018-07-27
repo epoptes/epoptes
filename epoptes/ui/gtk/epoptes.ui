@@ -349,7 +349,7 @@
     <property name="default_width">750</property>
     <property name="default_height">440</property>
     <property name="icon">../icons/hicolor/scalable/apps/epoptes.svg</property>
-    <signal name="destroy" handler="on_mainwin_destroy" swapped="no"/>
+    <signal name="destroy" handler="on_imi_file_quit_activate" swapped="no"/>
     <child>
       <placeholder/>
     </child>
@@ -359,27 +359,27 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar" id="miClients">
+          <object class="GtkMenuBar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuItem" id="file">
+              <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu1">
+                  <object class="GtkMenu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem1">
+                      <object class="GtkImageMenuItem" id="imi_file_quit">
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_mainwin_destroy" swapped="no"/>
+                        <signal name="activate" handler="on_imi_file_quit_activate" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -387,65 +387,65 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="miClientView">
+              <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Labels</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu15">
+                  <object class="GtkMenu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkRadioMenuItem" id="miClientsViewHostUser">
+                      <object class="GtkRadioMenuItem" id="rmi_labels_host_user">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Computer (user)</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
                         <property name="draw_as_radio">True</property>
-                        <property name="group">miClientsViewUser</property>
-                        <signal name="toggled" handler="on_cViewHU_toggled" swapped="no"/>
+                        <property name="group">rmi_labels_user</property>
+                        <signal name="toggled" handler="on_rmi_labels_host_user_toggled" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkRadioMenuItem" id="miClientsViewHost">
+                      <object class="GtkRadioMenuItem" id="rmi_labels_host">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Computer</property>
                         <property name="use_underline">True</property>
                         <property name="draw_as_radio">True</property>
-                        <property name="group">miClientsViewUser</property>
-                        <signal name="toggled" handler="on_cViewH_toggled" swapped="no"/>
+                        <property name="group">rmi_labels_user</property>
+                        <signal name="toggled" handler="on_rmi_labels_host_toggled" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkRadioMenuItem" id="miClientsViewUserHost">
+                      <object class="GtkRadioMenuItem" id="rmi_labels_user_host">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">User (computer)</property>
                         <property name="use_underline">True</property>
                         <property name="draw_as_radio">True</property>
-                        <property name="group">miClientsViewUser</property>
-                        <signal name="toggled" handler="on_cViewUH_toggled" swapped="no"/>
+                        <property name="group">rmi_labels_user</property>
+                        <signal name="toggled" handler="on_rmi_labels_user_host_toggled" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkRadioMenuItem" id="miClientsViewUser">
+                      <object class="GtkRadioMenuItem" id="rmi_labels_user">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">User</property>
                         <property name="use_underline">True</property>
                         <property name="draw_as_radio">True</property>
-                        <signal name="toggled" handler="on_cViewU_toggled" swapped="no"/>
+                        <signal name="toggled" handler="on_rmi_labels_user_toggled" swapped="no"/>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem5">
+                      <object class="GtkSeparatorMenuItem">
                         <property name="can_focus">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkCheckMenuItem" id="mcShowRealNames">
+                      <object class="GtkCheckMenuItem" id="cmi_show_real_names">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Show real names</property>
@@ -458,13 +458,13 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="clients">
+              <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Clients</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="mnClients">
+                  <object class="GtkMenu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -899,13 +899,13 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="help">
+              <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu4">
+                  <object class="GtkMenu">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>

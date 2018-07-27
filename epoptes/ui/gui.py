@@ -94,8 +94,7 @@ class EpoptesGui(object):
 
         self.cstore = Gtk.ListStore(str, GdkPixbuf.Pixbuf, object, str)
         self.cview = self.get('clientsview')
-        self.cView_order = (1, 0)
-        self.set_cView(*self.cView_order)
+        self.set_labels_order(1, 0, None)
 
         self.cview.set_model(self.cstore)
         self.cview.set_pixbuf_column(C_PIXBUF)
@@ -143,7 +142,7 @@ class EpoptesGui(object):
             except:
                 pass
         if config.settings.has_option('GUI', 'showRealNames'):
-            self.get('mcShowRealNames').set_active(
+            self.get('cmi_show_real_names').set_active(
                 config.settings.getboolean('GUI', 'showRealNames'))
         self.mainwin.set_sensitive(False)
 
@@ -205,18 +204,39 @@ class EpoptesGui(object):
         except:
             pass
 
-    def on_mainwin_destroy(self, widget):
-        """
-        Quit clicked
-
-        Close main window
-        """
+    def on_imi_file_quit_activate(self, _widget):
+        """Handle imi_file_quit.activate and mainwindow.destroy events."""
         self.save_settings()
         if self.vncserver is not None:
             self.vncserver.kill()
         if self.vncviewer is not None:
             self.vncviewer.kill()
         reactor.stop()
+
+    def on_rmi_labels_host_user_toggled(self, rmi):
+        """Handle rmi_labels_host_user.toggled event."""
+        self.set_labels_order(1, 0, rmi)
+
+    def on_rmi_labels_host_toggled(self, rmi):
+        """Handle rmi_labels_host.toggled event."""
+        self.set_labels_order(-1, 0, rmi)
+
+    def on_rmi_labels_user_host_toggled(self, rmi):
+        """Handle rmi_labels_user_host.toggled event."""
+        self.set_labels_order(0, 1, rmi)
+
+    def on_rmi_labels_user_toggled(self, rmi):
+        """Handle rmi_labels_user.toggled event."""
+        self.set_labels_order(0, -1, rmi)
+
+    def set_labels_order(self, user_pos, name_pos, rmi):
+        """Utility function for on_rmi_labels_*_toggled."""
+        # Save the order so all new clients get the selected format
+        if rmi:
+            config.settings.set('GUI', 'label', Gtk.Buildable.get_name(rmi))
+        self.cView_order = (user_pos, name_pos)
+        for row in self.cstore:
+            self.setLabel(row)
 
     def on_miBenchmark_activate(self, _widget):
         if not self.benchmark:
@@ -514,28 +534,6 @@ class EpoptesGui(object):
         if not self.about:
             self.about = About(self.mainwin)
         self.about.run()
-
-    def on_cViewHU_toggled(self, mitem):
-        self.set_cView(1, 0)
-        config.settings.set('GUI', 'label', 'miClientsViewHostUser')
-
-    def on_cViewUH_toggled(self, mitem):
-        self.set_cView(0, 1)
-        config.settings.set('GUI', 'label', 'miClientsViewUserHost')
-
-    def on_cViewH_toggled(self, mitem):
-        self.set_cView(-1, 0)
-        config.settings.set('GUI', 'label', 'miClientsViewHost')
-
-    def on_cViewU_toggled(self, mitem):
-        self.set_cView(0, -1)
-        config.settings.set('GUI', 'label', 'miClientsViewUser')
-
-    def set_cView(self, user_pos= -1, name_pos=0):
-        # Save the order so all new clients get the selected format
-        self.cView_order = (user_pos, name_pos)
-        for row in self.cstore:
-            self.setLabel(row)
 
     # TODO: this is callback from uiconnection.py
     def connected(self, daemon):
