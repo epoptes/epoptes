@@ -10,7 +10,9 @@ import getpass
 import locale
 import os
 import pipes
+import random
 import socket
+import string
 
 from epoptes.ui.reactor import reactor
 from epoptes.common.constants import *
@@ -77,11 +79,10 @@ class EpoptesGui(object):
         # Hide the remote assistance menuitem if epoptes-client isn't installed
         if not os.path.isfile('/usr/share/epoptes-client/remote_assistance.py'):
             self.get('mi_remote_assistance').set_property('visible', False)
-            self.get('remote_assistance_separator').set_property('visible',
-                                                                 False)
+            self.get('smi_help_remote_support').set_property('visible', False)
 
-        self.groups_menu = self.get('mAddToGroup')
-        self.add_to_group_menu = self.get('miAddToGroup')
+        self.mnu_add_to_group = self.get('mnu_add_to_group')
+        self.mni_add_to_group = self.get('mni_add_to_group')
 
         self.gstore = Gtk.ListStore(str, object, bool)
 
@@ -124,13 +125,15 @@ class EpoptesGui(object):
         saved_clients, groups = config.read_groups(
             os.path.expanduser('~/.config/epoptes/groups.json'))
         if len(groups) > 0:
-            self.add_to_group_menu.set_sensitive(True)
+            self.mni_add_to_group.set_sensitive(True)
         for grp in groups:
             self.gstore.append([grp.name, grp, True])
             mitem = Gtk.MenuItem(label=grp.name)
             mitem.show()
-            mitem.connect('activate', self.on_add_to_group_clicked, grp)
-            self.groups_menu.append(mitem)
+            # TODO: shouldn't mitem be the first parameter there?
+            mitem.connect(
+                'activate', self.on_imi_clients_add_to_group_activate, grp)
+            self.mnu_add_to_group.append(mitem)
 
         self.fillIconView(self.getSelectedGroup()[1])
         if config.settings.has_option('GUI', 'selected_group'):
@@ -230,7 +233,7 @@ class EpoptesGui(object):
         self.set_labels_order(0, -1, rmi)
 
     def set_labels_order(self, user_pos, name_pos, rmi):
-        """Utility function for on_rmi_labels_*_toggled."""
+        """Helper function for on_rmi_labels_*_toggled."""
         # Save the order so all new clients get the selected format
         if rmi:
             config.settings.set('GUI', 'label', Gtk.Buildable.get_name(rmi))
@@ -238,19 +241,14 @@ class EpoptesGui(object):
         for row in self.cstore:
             self.setLabel(row)
 
-    def on_miBenchmark_activate(self, _widget):
-        if not self.benchmark:
-            self.benchmark = Benchmark(self.mainwin, self.daemon.command)
-        self.benchmark.run(self.getSelectedClients() or self.cstore)
-
-    def toggleRealNames(self, widget=None):
-        """Show/hide the real names of the users instead of the usernames"""
+    def on_cmi_show_real_names_toggled(self, widget):
+        """Handle cmi_show_real_names.toggled event."""
         self.showRealNames = widget.get_active()
         for row in self.cstore:
             self.setLabel(row)
 
-    def wake_on_lan(self, widget):
-        """Boot the selected computers with WOL"""
+    def on_imi_session_boot_activate(self, _widget):
+        """Handle imi_session_boot.activate event."""
         clients = self.getSelectedClients()
         if len(clients) == 0:  # No client selected, send the command to all
             clients = self.cstore
@@ -260,28 +258,38 @@ class EpoptesGui(object):
             if client.is_offline():
                 wol.wake_on_lan(client.mac)
 
-    def poweroff(self, widget):
-        """Shut down the selected clients."""
-        self.execOnSelectedClients(
-            ["shutdown"],
-            warn=_('Are you sure you want to shutdown all the computers?'))
-
-    def reboot(self, widget):
-        """Reboot the selected clients."""
-        self.execOnSelectedClients(
-            ["reboot"],
-            warn=_('Are you sure you want to reboot all the computers?'))
-
-    def logout(self, widget):
-        """Log off the users of the selected clients."""
+    def on_imi_session_logout_activate(self, _widget):
+        """Handle imi_session_logout.activate event."""
         self.execOnSelectedClients(
             ['logout'], mode=EM_SESSION,
             warn=_('Are you sure you want to log off all the users?'))
 
-    def reverseConnection(self, widget, path, view_column, cmd, *args):
+    def on_imi_session_reboot_activate(self, _widget):
+        """Handle imi_session_reboot.activate event."""
+        self.execOnSelectedClients(
+            ["reboot"],
+            warn=_('Are you sure you want to reboot all the computers?'))
+
+    def on_imi_session_shutdown_activate(self, _widget):
+        """Handle imi_session_shutdown.activate event."""
+        self.execOnSelectedClients(
+            ["shutdown"],
+            warn=_('Are you sure you want to shutdown all the computers?'))
+
+    def find_unused_port(self):
+        """Find an unused port."""
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(('', 0))
+        s.listen(1)
+        port = s.getsockname()[1]
+        s.close()
+        return port
+
+    def reverse_connection(self, cmd, *args):
+        """Helper function for on_imi_broadcasts_*_activate."""
         # Open vncviewer in listen mode
         if self.vncviewer is None or self.vncviewer.poll() is not None:
-            self.vncviewerport = self.findUnusedPort()
+            self.vncviewerport = self.find_unused_port()
             # If the user installed ssvnc, prefer it over xvnc4viewer
             if os.path.isfile('/usr/bin/ssvncviewer'):
                 self.vncviewer = subprocess.Popen(
@@ -305,41 +313,30 @@ class EpoptesGui(object):
         # And, tell the clients to connect to the server
         self.execOnSelectedClients([cmd, self.vncviewerport] + list(args))
 
-    def assistUser(self, widget, path=None, view_column=None):
+    def on_imi_broadcasts_monitor_user_activate(self, _widget):
+        """Handle imi_sbroadcasts_monitor_user.activate event."""
+        self.reverse_connection('get_monitored')
+
+    def on_imi_broadcasts_assist_user_activate(self, _widget):
+        """Handle imi_sbroadcasts_assist_user.activate event."""
         if config.settings.has_option('GUI', 'grabkbdptr'):
             grab = config.settings.getboolean('GUI', 'grabkbdptr')
         if grab:
-            self.reverseConnection(
-                widget, path, view_column, 'get_assisted', 'True')
+            self.reverse_connection('get_assisted', 'True')
         else:
-            self.reverseConnection(widget, path, view_column, 'get_assisted')
+            self.reverse_connection('get_assisted')
 
-    def monitorUser(self, widget, path=None, view_column=None):
-        self.reverseConnection(widget, path, view_column, 'get_monitored')
-
-    def findUnusedPort(self):
-        """Find an unused port."""
-        import socket
-
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.bind(('', 0))
-        s.listen(1)
-        port = s.getsockname()[1]
-        s.close()
-        return port
-
-    def _broadcastScreen(self, fullscreen=''):
+    def broadcast_screen(self, fullscreen=''):
+        """Helper function for on_imi_broadcasts_broadcast_screen*_activate."""
         if self.vncserver is None:
-            import random
-            import string
-            pwdfile=os.path.expanduser('~/.config/epoptes/vncpasswd')
-            pwd=''.join(random.sample(string.ascii_letters + string.digits, 8))
+            pwdfile = os.path.expanduser('~/.config/epoptes/vncpasswd')
+            pwd = ''.join(random.sample(string.ascii_letters + string.digits, 8))
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
-            f=open(pwdfile, 'rb')
-            pwd=f.read()
+            f = open(pwdfile, 'rb')
+            pwd = f.read()
             f.close()
             self.pwd = ''.join('\\%o' % c for c in pwd)
-            self.vncserverport = self.findUnusedPort()
+            self.vncserverport = self.find_unused_port()
             self.vncserver = subprocess.Popen(
                 ['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', '-shared',
                  '-forever', '-nolookup', '-24to32', '-threads', '-rfbport',
@@ -351,21 +348,25 @@ class EpoptesGui(object):
         self.execOnSelectedClients(["receive_broadcast", self.vncserverport,
             self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
 
-    def broadcastScreen(self, widget):
-        self._broadcastScreen('true')
+    def on_imi_broadcasts_broadcast_screen_fullscreen_activate(self, _widget):
+        """Handle imi_broadcasts_broadcast_screen_fullscreen.activate event."""
+        self.broadcast_screen('true')
 
-    def broadcastScreenWindowed(self, widget):
-        self._broadcastScreen('')
+    def on_imi_broadcasts_broadcast_screen_windowed_activate(self, _widget):
+        """Handle imi_broadcasts_broadcast_screen_windowed.activate event."""
+        self.broadcast_screen('')
 
-    def stopTransmissions(self, widget):
+    def on_imi_broadcasts_stop_broadcasts_activate(self, _widget):
+        """Handle imi_broadcasts_stop_broadcasts.activate event."""
         self.execOnClients(['stop_receptions'], self.cstore,
-            mode=EM_SYSTEM_AND_SESSION)
-        if not self.vncserver is None:
+                           mode=EM_SYSTEM_AND_SESSION)
+        if self.vncserver is not None:
             self.vncserver.kill()
             self.vncserver = None
 
-    ## FIXME FIXME: Should we allow for running arbitrary commands in clients?
-    def execDialog(self, widget):
+    # TODO: Should we allow for running arbitrary commands in clients?
+    def on_imi_execute_execute_activate(self, _widget):
+        """Handle imi_execute_execute.activate event."""
         if not self.exec_command:
             self.exec_command = ExecCommand(self.mainwin)
         cmd = self.exec_command.run()
@@ -379,28 +380,25 @@ class EpoptesGui(object):
             em = EM_SESSION
         self.execOnSelectedClients(['execute', cmd], mode=em)
 
-    def sendMessageDialog(self, widget):
+    def on_imi_execute_send_message_activate(self, _widget):
+        """Handle imi_execute_send_message.activate event."""
         if not self.send_message:
             self.send_message = SendMessage(self.mainwin)
         params = self.send_message.run()
         if params:
             self.execOnSelectedClients(['message'] + list(params))
 
-    ## FIXME / FIXUS: Should we allow it?
-    def openTerminal(self, em):
+    def open_terminal(self, em):
+        """Helper function for on_imi_open_terminal_*_activate."""
         clients = self.getSelectedClients()
-
         # If there is no client selected, send the command to all
         if len(clients) == 0:
             clients = self.cstore
-
         for client in clients:
             inst = client[C_INSTANCE]
             if inst.type == 'offline':
                 continue
-
-            port = self.findUnusedPort()
-
+            port = self.find_unused_port()
             user = '--'
             if em == EM_SESSION and client[C_SESSION_HANDLE]:
                 user = inst.users[client[C_SESSION_HANDLE]]['uname']
@@ -412,60 +410,110 @@ class EpoptesGui(object):
                               'stdio,raw,echo=0'])
             self.execOnClients(['remote_term', port], [client], mode=em)
 
-    def openUserTerminal(self, widget):
-        self.openTerminal(EM_SESSION)
+    def on_imi_open_terminal_user_locally_activate(self, _widget):
+        """Handle imi_open_terminal_user_locally.activate event."""
+        self.open_terminal(EM_SESSION)
 
-    def openRootTerminal(self, widget):
-        self.openTerminal(EM_SYSTEM)
+    def on_imi_open_terminal_root_locally_activate(self, _widget):
+        """Handle imi_open_terminal_root_locally.activate event."""
+        self.open_terminal(EM_SYSTEM)
 
-    def remoteRootTerminal(self, widget):
+    def on_imi_open_terminal_root_remotely_activate(self, _widget):
+        """Handle imi_open_terminal_root_remotely.activate event."""
         self.execOnSelectedClients(['root_term'], mode=EM_SYSTEM)
-    ## END_FIXUS
 
-    def lockScreen(self, widget):
-        """
-        Lock screen for all the selected clients, displaying a message
-        """
+    def on_imi_restrictions_lock_screen_activate(self, _widget):
+        """Handle imi_restrictions_lock_screen.activate event."""
         msg = _("The screen is locked by a system administrator.")
         self.execOnSelectedClients(['lock_screen', 0, msg])
 
-    def unlockScreen(self, widget):
-        """
-        Unlock screen for all clients selected
-        """
+    def on_imi_restrictions_unlock_screen_activate(self, _widget):
+        """Handle imi_restrictions_unlock_screen.activate event."""
         self.execOnSelectedClients(
             ['unlock_screen'], mode=EM_SESSION_AND_SYSTEM)
 
-    def soundOff(self, widget):
-        """
-        Disable sound usage for clients selected
-        """
+    def on_imi_restrictions_mute_sound_activate(self, _widget):
+        """Handle imi_restrictions_mute_sound.activate event."""
         self.execOnSelectedClients(
             ['mute_sound', 0], mode=EM_SYSTEM_OR_SESSION)
 
-    def soundOn(self, widget):
-        """
-        Enable sound usage for clients selected
-        """
+    def on_imi_restrictions_unmute_sound_activate(self, _widget):
+        """Handle imi_restrictions_unmute_sound.activate event."""
         self.execOnSelectedClients(
             ['unmute_sound'], mode=EM_SYSTEM_AND_SESSION)
 
-    def on_add_to_group_clicked(self, widget, group):
+    def on_imi_clients_add_to_group_activate(self, _widget, group):
+        """Handle *dynamic* imi_clients_add_to_group.activate event."""
         clients = self.getSelectedClients()
         for client in clients:
             if not group.has_client(client[C_INSTANCE]):
                 group.add_client(client[C_INSTANCE])
 
-    def on_remove_from_group_clicked(self, widget):
+    def on_imi_clients_remove_from_group_activate(self, _widget):
+        """Handle imi_clients_remove_from_group.activate event."""
         clients = self.getSelectedClients()
         group = self.getSelectedGroup()[1]
-
         if self.confirmation_dialog(
                 _('Are you sure you want to remove the selected client(s)'
                   ' from group "%s"?') % group.name):
             for client in clients:
                 group.remove_client(client[C_INSTANCE])
             self.fillIconView(self.getSelectedGroup()[1], True)
+
+    def on_imi_clients_network_benchmark_activate(self, _widget):
+        """Handle imi_clients_network_benchmark.activate event."""
+        if not self.benchmark:
+            self.benchmark = Benchmark(self.mainwin, self.daemon.command)
+        self.benchmark.run(self.getSelectedClients() or self.cstore)
+
+    def on_imi_clients_information_activate(self, _widget):
+        """Handle imi_clients_information.activate event."""
+        if not self.client_information:
+            self.client_information = ClientInformation(self.mainwin)
+        self.client_information.btn_edit_alias.set_sensitive(
+            not self.isDefaultGroupSelected())
+        self.client_information.run(
+            self.getSelectedClients()[0], self.daemon.command)
+        self.setLabel(self.getSelectedClients()[0])
+
+    def open_url(self, link):
+        """Helper function for on_imi_open_terminal_*_activate."""
+        subprocess.Popen(["xdg-open", link])
+
+    def on_imi_help_home_activate(self, _widget):
+        """Handle imi_help_home.activate event."""
+        self.open_url("http://www.epoptes.org")
+
+    def on_imi_help_report_bug_activate(self, _widget):
+        """Handle imi_help_report_bug.activate event."""
+        self.open_url("https://bugs.launchpad.net/epoptes")
+
+    def on_imi_help_ask_question_activate(self, _widget):
+        """Handle imi_help_ask_question.activate event."""
+        self.open_url("https://answers.launchpad.net/epoptes")
+
+    def on_imi_help_translate_application_activate(self, _widget):
+        """Handle imi_help_translate_application.activate event."""
+        self.open_url("http://www.epoptes.org/translations")
+
+    def on_imi_help_live_chat_irc_activate(self, _widget):
+        """Handle imi_help_live_chat_irc.activate event."""
+        host = socket.gethostname()
+        user = getpass.getuser()
+        lang = locale.getlocale()[0]
+        self.open_url("http://ts.sch.gr/repo/irc?user=%s&host=%s&lang=%s" %
+                      (user, host, lang))
+
+    def on_imi_help_remote_support_activate(self, _widget):
+        """Handle imi_help_remote_support.activate event."""
+        path = '/usr/share/epoptes-client'
+        subprocess.Popen('%s/remote_assistance.py' % path, shell=True, cwd=path)
+
+    def on_imi_help_about_activate(self, _widget):
+        """Handle imi_help_about_activate.activate event."""
+        if not self.about:
+            self.about = About(self.mainwin)
+        self.about.run()
 
     def set_move_group_sensitivity(self):
         selected = self.getSelectedGroup()
@@ -481,8 +529,8 @@ class EpoptesGui(object):
         self.gstore.swap(selected_group_iter,
                          self.gstore.iter_next(selected_group_iter))
         self.set_move_group_sensitivity()
-        mitem = self.groups_menu.get_children()[path-1]
-        self.groups_menu.reorder_child(mitem, path)
+        mitem = self.mnu_add_to_group.get_children()[path-1]
+        self.mnu_add_to_group.reorder_child(mitem, path)
 
     def on_move_group_up_clicked(self, widget):
         selected_group_iter = self.getSelectedGroup()[0]
@@ -490,8 +538,8 @@ class EpoptesGui(object):
         previous_iter = self.gstore.get_iter(path-1)
         self.gstore.swap(selected_group_iter, previous_iter)
         self.set_move_group_sensitivity()
-        mitem = self.groups_menu.get_children()[path-1]
-        self.groups_menu.reorder_child(mitem, path-2)
+        mitem = self.mnu_add_to_group.get_children()[path-1]
+        self.mnu_add_to_group.reorder_child(mitem, path-2)
 
     def on_remove_group_clicked(self, widget):
         group_iter = self.getSelectedGroup()[0]
@@ -501,8 +549,8 @@ class EpoptesGui(object):
                 _('Are you sure you want to remove group "%s"?') % group.name):
             path = self.gstore.get_path(group_iter)[0]
             self.gstore.remove(group_iter)
-            menuitem = self.groups_menu.get_children()[path-1]
-            self.groups_menu.remove(menuitem)
+            menuitem = self.mnu_add_to_group.get_children()[path-1]
+            self.mnu_add_to_group.remove(menuitem)
 
     def on_add_group_clicked(self, widget):
         new_group = structs.Group()
@@ -515,25 +563,7 @@ class EpoptesGui(object):
     def on_group_renamed(self, widget, path, new_name):
         self.gstore[path][G_LABEL] = new_name
         self.gstore[path][G_INSTANCE].name = new_name
-        self.groups_menu.get_children()[int(path)-1].set_label(new_name)
-
-    def on_tb_client_properties_clicked(self, _widget):
-        if not self.client_information:
-            self.client_information = ClientInformation(self.mainwin)
-        self.client_information.btn_edit_alias.set_sensitive(
-            not self.isDefaultGroupSelected())
-        self.client_information.run(
-            self.getSelectedClients()[0], self.daemon.command)
-        self.setLabel(self.getSelectedClients()[0])
-
-    def on_mi_remote_assistance_activate(self, widget=None):
-        path = '/usr/share/epoptes-client'
-        subprocess.Popen('%s/remote_assistance.py' % path, shell=True, cwd=path)
-
-    def on_mi_about_activate(self, widget=None):
-        if not self.about:
-            self.about = About(self.mainwin)
-        self.about.run()
+        self.mnu_add_to_group.get_children()[int(path)-1].set_label(new_name)
 
     # TODO: this is callback from uiconnection.py
     def connected(self, daemon):
@@ -620,8 +650,8 @@ class EpoptesGui(object):
         if selected is not None:
             self.fillIconView(selected[1])
             path = self.gstore.get_path(selected[0])[0]
-            self.groups_menu.foreach(lambda w : w.set_sensitive(True))
-            menuitems = self.groups_menu.get_children()
+            self.mnu_add_to_group.foreach(lambda w : w.set_sensitive(True))
+            menuitems = self.mnu_add_to_group.get_children()
             if path != 0 and path-1 < len(menuitems):
                 menuitems[path-1].set_sensitive(False)
         else:
@@ -853,39 +883,19 @@ class EpoptesGui(object):
     def appendToGroupsMenu(self, group):
         mitem = Gtk.MenuItem(group.name)
         mitem.show()
-        mitem.connect('activate', self.on_add_to_group_clicked, group)
-        self.groups_menu.append(mitem)
+        mitem.connect(
+            'activate', self.on_imi_clients_add_to_group_activate, group)
+        self.mnu_add_to_group.append(mitem)
 
     def removeFromGroupsMenu(self, group):
         mitem = Gtk.MenuItem(group.name)
         mitem.show()
-        mitem.connect('activate', self.on_add_to_group_clicked, group)
-        self.groups_menu.append(mitem)
+        mitem.connect(
+            'activate', self.on_imi_clients_add_to_group_activate, group)
+        self.mnu_add_to_group.append(mitem)
 
     def changeHostname(self, mac, new_name):
-        pass # FIXME: Implement this (virtual hostname)
-
-    def openLink(self, link):
-        subprocess.Popen(["xdg-open", link])
-
-    def openHelpLink(self, widget):
-        self.openLink("http://www.epoptes.org")
-
-    def openBugsLink(self, widget):
-        self.openLink("https://bugs.launchpad.net/epoptes")
-
-    def openQuestionsLink(self, widget):
-        self.openLink("https://answers.launchpad.net/epoptes")
-
-    def openTranslationsLink(self, widget):
-        self.openLink("http://www.epoptes.org/translations")
-
-    def openIRCLink(self, widget):
-        host = socket.gethostname()
-        user = getpass.getuser()
-        lang = locale.getlocale()[0]
-        self.openLink("http://ts.sch.gr/repo/irc?user=%s&host=%s&lang=%s" % \
-                       (user, host, lang))
+        pass  # FIXME: Implement this (virtual hostname)
 
     def iconsSizeScale_button_event(self, widget, event):
         """Make right click reset the thumbnail size.
@@ -989,7 +999,7 @@ class EpoptesGui(object):
                 selection.unselect_all()
 
             if widget is self.cview:
-                menu = self.get('clients').get_submenu()
+                menu = self.get('mni_clients').get_submenu()
 
             menu.popup(None, None, None, None, event.button, event.time)
             menu.show()
@@ -1000,18 +1010,16 @@ class EpoptesGui(object):
         single_client = False
         if len(selected) == 1:
             single_client = True
-        self.get('miClientProperties').set_sensitive(single_client)
-        self.get('tb_client_properties').set_sensitive(single_client)
+        self.get('imi_clients_information').set_sensitive(single_client)
+        self.get('tlb_clients_information').set_sensitive(single_client)
 
         if len(selected) > 0:
-            self.get('miAddToGroup').set_sensitive(True)
-            if not self.isDefaultGroupSelected():
-                self.get('miRemoveFromGroup').set_sensitive(True)
-            else:
-                self.get('miRemoveFromGroup').set_sensitive(False)
+            self.get('mni_add_to_group').set_sensitive(True)
+            self.get('imi_clients_remove_from_group').set_sensitive(
+                not self.isDefaultGroupSelected())
         else:
-            self.get('miAddToGroup').set_sensitive(False)
-            self.get('miRemoveFromGroup').set_sensitive(False)
+            self.get('mni_add_to_group').set_sensitive(False)
+            self.get('imi_clients_remove_from_group').set_sensitive(False)
 
         if len(selected) > 1:
             self.get('statusbar_label').set_text(
