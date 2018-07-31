@@ -91,7 +91,7 @@ class EpoptesGui(object):
         self.gtree.get_selection().connect(
             "changed", self.on_group_selection_changed)
 
-        self.mainwin = self.get('mainwindow')
+        self.mainwin = self.get('wnd_main')
 
         self.cstore = Gtk.ListStore(str, GdkPixbuf.Pixbuf, object, str)
         self.cview = self.get('clientsview')
@@ -119,7 +119,7 @@ class EpoptesGui(object):
         self.gtree.get_selection().select_path(
             self.default_group.ref.get_path())
 
-        self.get('iconsSizeAdjustment').set_value(self.scrWidth)
+        self.get('adj_icon_size').set_value(self.scrWidth)
         self.reload_imagetypes()
 
         saved_clients, groups = config.read_groups(
@@ -208,7 +208,7 @@ class EpoptesGui(object):
             pass
 
     def on_imi_file_quit_activate(self, _widget):
-        """Handle imi_file_quit.activate and mainwindow.destroy events."""
+        """Handle imi_file_quit.activate and wnd_main.destroy events."""
         self.save_settings()
         if self.vncserver is not None:
             self.vncserver.kill()
@@ -365,8 +365,8 @@ class EpoptesGui(object):
             self.vncserver = None
 
     # TODO: Should we allow for running arbitrary commands in clients?
-    def on_imi_execute_execute_activate(self, _widget):
-        """Handle imi_execute_execute.activate event."""
+    def on_imi_execute_execute_command_activate(self, _widget):
+        """Handle imi_execute_execute_command.activate event."""
         if not self.exec_command:
             self.exec_command = ExecCommand(self.mainwin)
         cmd = self.exec_command.run()
@@ -931,7 +931,7 @@ class EpoptesGui(object):
         self.reload_imagetypes()
 
     def iconsSizeScaleChanged(self, widget=None, width=None):
-        adj = self.get('iconsSizeAdjustment')
+        adj = self.get('adj_icon_size')
         if width:
             adj.set_value(width)
         else:
@@ -968,13 +968,13 @@ class EpoptesGui(object):
 
     def scrIncreaseSize(self, widget):
         # Increase the size of screenshots by 2 pixels in width
-        adj = self.get('iconsSizeAdjustment')
+        adj = self.get('adj_icon_size')
         adj.set_value(adj.get_value() + 15)
         self.reload_imagetypes()
 
     def scrDecreaseSize(self, widget):
         # Decrease the size of screenshots by 2 pixels in width
-        adj = self.get('iconsSizeAdjustment')
+        adj = self.get('adj_icon_size')
         adj.set_value(adj.get_value() - 15)
         self.reload_imagetypes()
 
