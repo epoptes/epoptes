@@ -7,7 +7,7 @@
     <property name="upper">250</property>
     <property name="value">50</property>
     <property name="step_increment">5</property>
-    <signal name="value-changed" handler="iconsSizeScaleChanged" swapped="no"/>
+    <signal name="value-changed" handler="on_scl_icon_size_value_changed" swapped="no"/>
   </object>
   <object class="GtkImage" id="img_broadcasts_assist_user">
     <property name="visible">True</property>
@@ -828,7 +828,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToolbar" id="toolbar">
+          <object class="GtkToolbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="toolbar_style">icons</property>
@@ -1111,23 +1111,23 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <child>
-                      <object class="GtkTreeView" id="groups_tree">
+                      <object class="GtkTreeView" id="trv_groups">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="headers_clickable">False</property>
                         <property name="reorderable">True</property>
                         <property name="search_column">0</property>
-                        <signal name="drag-drop" handler="on_gtree_drag_drop" swapped="no"/>
-                        <signal name="drag-motion" handler="on_gtree_drag_motion" swapped="no"/>
+                        <signal name="drag-drop" handler="on_trv_groups_drag_drop" swapped="no"/>
+                        <signal name="drag-motion" handler="on_trv_groups_drag_motion" swapped="no"/>
                         <child internal-child="selection">
                           <object class="GtkTreeSelection"/>
                         </child>
                         <child>
-                          <object class="GtkTreeViewColumn" id="group_name_column">
+                          <object class="GtkTreeViewColumn" id="tvc_group">
                             <property name="title" translatable="yes">Groups</property>
                             <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext1">
-                                <signal name="edited" handler="on_group_renamed" swapped="no"/>
+                              <object class="GtkCellRendererText" id="crt_group">
+                                <signal name="edited" handler="on_crt_group_edited" swapped="no"/>
                               </object>
                               <attributes>
                                 <attribute name="editable">2</attribute>
@@ -1150,14 +1150,14 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkButton" id="add_group">
+                      <object class="GtkButton" id="btn_group_add">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="on_add_group_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_btn_group_add_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image1">
+                          <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">Create a new group</property>
@@ -1172,14 +1172,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="remove_group">
+                      <object class="GtkButton" id="btn_group_remove">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="on_remove_group_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_btn_group_remove_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image9">
+                          <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">Remove the selected group</property>
@@ -1194,14 +1194,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="move_group_up">
+                      <object class="GtkButton" id="btn_group_up">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="on_move_group_up_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_btn_group_up_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image10">
+                          <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">gtk-go-up</property>
@@ -1215,14 +1215,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="move_group_down">
+                      <object class="GtkButton" id="btn_group_down">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="relief">none</property>
-                        <signal name="clicked" handler="on_move_group_down_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_btn_group_down_clicked" swapped="no"/>
                         <child>
-                          <object class="GtkImage" id="image11">
+                          <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">gtk-go-down</property>
@@ -1254,14 +1254,14 @@
                 <property name="can_focus">True</property>
                 <property name="shadow_type">etched-out</property>
                 <child>
-                  <object class="GtkIconView" id="clientsview">
+                  <object class="GtkIconView" id="icv_clients">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="margin">0</property>
                     <property name="selection_mode">multiple</property>
-                    <signal name="button-press-event" handler="contextMenuPopup" swapped="no"/>
+                    <signal name="button-press-event" handler="on_icv_clients_button_press_event" swapped="no"/>
                     <signal name="item-activated" handler="on_imi_broadcasts_assist_user_activate" swapped="no"/>
-                    <signal name="selection-changed" handler="on_clients_selection_changed" swapped="no"/>
+                    <signal name="selection-changed" handler="on_icv_clients_selection_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -1278,12 +1278,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStatusbar" id="statusbar">
+          <object class="GtkStatusbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">2</property>
             <child>
-              <object class="GtkLabel" id="statusbar_label">
+              <object class="GtkLabel" id="lbl_status">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
               </object>
@@ -1299,14 +1299,14 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton" id="button10">
+                  <object class="GtkButton" id="btn_size_down">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="relief">none</property>
-                    <signal name="clicked" handler="scrDecreaseSize" swapped="no"/>
+                    <signal name="clicked" handler="on_btn_size_down_clicked" swapped="no"/>
                     <child>
-                      <object class="GtkImage" id="image59">
+                      <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="stock">gtk-zoom-out</property>
@@ -1327,10 +1327,9 @@
                     <property name="adjustment">adj_icon_size</property>
                     <property name="digits">0</property>
                     <property name="draw_value">False</property>
-                    <signal name="button-press-event" handler="iconsSizeScale_button_event" swapped="no"/>
-                    <signal name="button-release-event" handler="iconsSizeScale_button_event" swapped="no"/>
-                    <signal name="button-release-event" handler="on_iconsSizeScale_button_release_event" swapped="no"/>
-                    <signal name="value-changed" handler="iconsSizeScaleChanged" swapped="no"/>
+                    <signal name="button-press-event" handler="on_scl_icon_size_button_press_event" swapped="no"/>
+                    <signal name="button-release-event" handler="on_scl_icon_size_button_release_event" swapped="no"/>
+                    <signal name="value-changed" handler="on_scl_icon_size_value_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1339,14 +1338,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button11">
+                  <object class="GtkButton" id="btn_size_up">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="relief">none</property>
-                    <signal name="clicked" handler="scrIncreaseSize" swapped="no"/>
+                    <signal name="clicked" handler="on_btn_size_up_clicked" swapped="no"/>
                     <child>
-                      <object class="GtkImage" id="image58">
+                      <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="stock">gtk-zoom-in</property>

@@ -86,29 +86,29 @@ class EpoptesGui(object):
 
         self.gstore = Gtk.ListStore(str, object, bool)
 
-        self.gtree = self.get("groups_tree")
-        self.gtree.set_model(self.gstore)
-        self.gtree.get_selection().connect(
+        self.trv_groups = self.get("trv_groups")
+        self.trv_groups.set_model(self.gstore)
+        self.trv_groups.get_selection().connect(
             "changed", self.on_group_selection_changed)
 
         self.mainwin = self.get('wnd_main')
 
         self.cstore = Gtk.ListStore(str, GdkPixbuf.Pixbuf, object, str)
-        self.cview = self.get('clientsview')
+        self.icv_clients = self.get('icv_clients')
         self.set_labels_order(1, 0, None)
 
-        self.cview.set_model(self.cstore)
-        self.cview.set_pixbuf_column(C_PIXBUF)
-        self.cview.set_text_column(C_LABEL)
+        self.icv_clients.set_model(self.cstore)
+        self.icv_clients.set_pixbuf_column(C_PIXBUF)
+        self.icv_clients.set_text_column(C_LABEL)
 
         self.cstore.set_sort_column_id(C_LABEL, Gtk.SortType.ASCENDING)
-        self.on_clients_selection_changed()
+        self.on_icv_clients_selection_changed(None)
 
-        self.cview.enable_model_drag_source(
+        self.icv_clients.enable_model_drag_source(
             Gdk.ModifierType.BUTTON1_MASK,
             [Gtk.TargetEntry.new("add", Gtk.TargetFlags.SAME_APP, 0)],
             Gdk.DragAction.COPY)
-        self.gtree.enable_model_drag_dest(
+        self.trv_groups.enable_model_drag_dest(
             [("add", Gtk.TargetFlags.SAME_APP, 0)], Gdk.DragAction.COPY)
 
         self.default_group = structs.Group('<b>'+_('Detected clients')+'</b>')
@@ -116,7 +116,7 @@ class EpoptesGui(object):
             [self.default_group.name, self.default_group, False])
         self.default_group.ref = Gtk.TreeRowReference(
             self.gstore, self.gstore.get_path(default_iter))
-        self.gtree.get_selection().select_path(
+        self.trv_groups.get_selection().select_path(
             self.default_group.ref.get_path())
 
         self.get('adj_icon_size').set_value(self.scrWidth)
@@ -138,7 +138,7 @@ class EpoptesGui(object):
         self.fillIconView(self.getSelectedGroup()[1])
         if config.settings.has_option('GUI', 'selected_group'):
             path = config.settings.getint('GUI', 'selected_group')
-            self.gtree.get_selection().select_path(path)
+            self.trv_groups.get_selection().select_path(path)
         if config.settings.has_option('GUI', 'label'):
             try:
                 self.get(config.settings.get('GUI', 'label')).set_active(True)
@@ -152,42 +152,8 @@ class EpoptesGui(object):
     #################################################################
     #                       Callback functions                      #
     #################################################################
-    def on_gtree_drag_motion(self, widget, context, x, y, etime):
-        drag_info = widget.get_dest_row_at_pos(x, y)
-        # Don't allow dropping in the empty space of the treeview,
-        # or inside the 'Detected' group, or inside the currently selected group
-        selected_path = self.gstore.get_path(self.getSelectedGroup()[0])
-        if (not drag_info or drag_info[0] == self.default_group.ref.get_path()
-                or drag_info[0] == selected_path):
-            widget.set_drag_dest_row(None, Gtk.TreeViewDropPosition.AFTER)
-        else:
-            path, pos = drag_info
-            # Don't allow dropping between the groups treeview rows
-            if pos == Gtk.TreeViewDropPosition.BEFORE:
-                widget.set_drag_dest_row(
-                    path, Gtk.TreeViewDropPosition.INTO_OR_BEFORE)
-            elif pos == Gtk.TreeViewDropPosition.AFTER:
-                widget.set_drag_dest_row(
-                    path, Gtk.TreeViewDropPosition.INTO_OR_AFTER)
-
-        context.drag_status(context.suggested_action, etime)
-        return True
-
-    def on_gtree_drag_drop(self, wid, context, x, y, time):
-        dest = self.gtree.get_dest_row_at_pos(x, y)
-        if dest is not None:
-            path, pos = dest
-            group = self.gstore[path][G_INSTANCE]
-            if not group is self.default_group:
-                for cln in self.getSelectedClients():
-                    cln = cln[C_INSTANCE]
-                    if not group.has_client(cln):
-                        group.add_client(cln)
-
-        context.finish(True, False, time)
-        return True
-
     def save_settings(self):
+        """Helper function for on_imi_file_quit_activate."""
         sel_group = self.gstore.get_path(self.getSelectedGroup()[0])[0]
         self.gstore.remove(self.gstore.get_iter(
             self.default_group.ref.get_path()))
@@ -345,8 +311,9 @@ class EpoptesGui(object):
         # screensaver, so send the reset command to both epoptes processes
         self.execOnSelectedClients(
             ['reset_screensaver'], mode=EM_SYSTEM_AND_SESSION)
-        self.execOnSelectedClients(["receive_broadcast", self.vncserverport,
-            self.pwd, fullscreen], mode=EM_SYSTEM_OR_SESSION)
+        self.execOnSelectedClients(
+            ["receive_broadcast", self.vncserverport, self.pwd, fullscreen],
+            mode=EM_SYSTEM_OR_SESSION)
 
     def on_imi_broadcasts_broadcast_screen_fullscreen_activate(self, _widget):
         """Handle imi_broadcasts_broadcast_screen_fullscreen.activate event."""
@@ -515,33 +482,69 @@ class EpoptesGui(object):
             self.about = About(self.mainwin)
         self.about.run()
 
+    def on_trv_groups_drag_drop(self, wid, context, x, y, time):
+        """Handle trv_groups.drag_drop event."""
+        dest = self.trv_groups.get_dest_row_at_pos(x, y)
+        if dest is not None:
+            path, pos = dest
+            group = self.gstore[path][G_INSTANCE]
+            if group is not self.default_group:
+                for cln in self.getSelectedClients():
+                    cln = cln[C_INSTANCE]
+                    if not group.has_client(cln):
+                        group.add_client(cln)
+
+        context.finish(True, False, time)
+        return True
+
+    def on_trv_groups_drag_motion(self, widget, context, x, y, etime):
+        """Handle trv_groups.drag_motion event."""
+        drag_info = widget.get_dest_row_at_pos(x, y)
+        # Don't allow dropping in the empty space of the treeview,
+        # or inside the 'Detected' group, or inside the currently selected group
+        selected_path = self.gstore.get_path(self.getSelectedGroup()[0])
+        if (not drag_info or drag_info[0] == self.default_group.ref.get_path()
+                or drag_info[0] == selected_path):
+            widget.set_drag_dest_row(None, Gtk.TreeViewDropPosition.AFTER)
+        else:
+            path, pos = drag_info
+            # Don't allow dropping between the groups treeview rows
+            if pos == Gtk.TreeViewDropPosition.BEFORE:
+                widget.set_drag_dest_row(
+                    path, Gtk.TreeViewDropPosition.INTO_OR_BEFORE)
+            elif pos == Gtk.TreeViewDropPosition.AFTER:
+                widget.set_drag_dest_row(
+                    path, Gtk.TreeViewDropPosition.INTO_OR_AFTER)
+
+        context.drag_status(context.suggested_action, etime)
+        return True
+
+    def on_crt_group_edited(self, _widget, path, new_name):
+        """Handle crt_group.edited event."""
+        self.gstore[path][G_LABEL] = new_name
+        self.gstore[path][G_INSTANCE].name = new_name
+        self.mnu_add_to_group.get_children()[int(path)-1].set_label(new_name)
+
     def set_move_group_sensitivity(self):
+        """Helper function for on_btn_group_*_clicked."""
         selected = self.getSelectedGroup()
         selected_path = self.gstore.get_path(selected[0])[0]
         blocker = not selected[1] is self.default_group
-        self.get('move_group_up').set_sensitive(blocker and selected_path > 1)
-        self.get('move_group_down').set_sensitive(
+        self.get('btn_group_up').set_sensitive(blocker and selected_path > 1)
+        self.get('btn_group_down').set_sensitive(
             blocker and selected_path < len(self.gstore)-1)
 
-    def on_move_group_down_clicked(self, widget):
-        selected_group_iter = self.getSelectedGroup()[0]
-        path = self.gstore.get_path(selected_group_iter)[0]
-        self.gstore.swap(selected_group_iter,
-                         self.gstore.iter_next(selected_group_iter))
-        self.set_move_group_sensitivity()
-        mitem = self.mnu_add_to_group.get_children()[path-1]
-        self.mnu_add_to_group.reorder_child(mitem, path)
+    def on_btn_group_add_clicked(self, _widget):
+        """Handle btn_group_add.clicked event."""
+        new_group = structs.Group()
+        iter = self.gstore.append([new_group.name, new_group, True])
+        # Edit the name of the newly created group
+        self.trv_groups.set_cursor(
+            self.gstore.get_path(iter), self.get('tvc_group'), True)
+        self.appendToGroupsMenu(new_group)
 
-    def on_move_group_up_clicked(self, widget):
-        selected_group_iter = self.getSelectedGroup()[0]
-        path = self.gstore.get_path(selected_group_iter)[0]
-        previous_iter = self.gstore.get_iter(path-1)
-        self.gstore.swap(selected_group_iter, previous_iter)
-        self.set_move_group_sensitivity()
-        mitem = self.mnu_add_to_group.get_children()[path-1]
-        self.mnu_add_to_group.reorder_child(mitem, path-2)
-
-    def on_remove_group_clicked(self, widget):
+    def on_btn_group_remove_clicked(self, _widget):
+        """Handle btn_group_remove.clicked event."""
         group_iter = self.getSelectedGroup()[0]
         group = self.gstore[group_iter][G_INSTANCE]
 
@@ -552,18 +555,158 @@ class EpoptesGui(object):
             menuitem = self.mnu_add_to_group.get_children()[path-1]
             self.mnu_add_to_group.remove(menuitem)
 
-    def on_add_group_clicked(self, widget):
-        new_group = structs.Group()
-        iter = self.gstore.append([new_group.name, new_group, True])
-        # Edit the name of the newly created group
-        self.gtree.set_cursor(self.gstore.get_path(iter),
-                              self.get('group_name_column'), True)
-        self.appendToGroupsMenu(new_group)
+    def on_btn_group_up_clicked(self, _widget):
+        """Handle btn_group_up.clicked event."""
+        selected_group_iter = self.getSelectedGroup()[0]
+        path = self.gstore.get_path(selected_group_iter)[0]
+        previous_iter = self.gstore.get_iter(path-1)
+        self.gstore.swap(selected_group_iter, previous_iter)
+        self.set_move_group_sensitivity()
+        mitem = self.mnu_add_to_group.get_children()[path-1]
+        self.mnu_add_to_group.reorder_child(mitem, path-2)
 
-    def on_group_renamed(self, widget, path, new_name):
-        self.gstore[path][G_LABEL] = new_name
-        self.gstore[path][G_INSTANCE].name = new_name
-        self.mnu_add_to_group.get_children()[int(path)-1].set_label(new_name)
+    def on_btn_group_down_clicked(self, _widget):
+        """Handle btn_group_down.clicked event."""
+        selected_group_iter = self.getSelectedGroup()[0]
+        path = self.gstore.get_path(selected_group_iter)[0]
+        self.gstore.swap(selected_group_iter,
+                         self.gstore.iter_next(selected_group_iter))
+        self.set_move_group_sensitivity()
+        mitem = self.mnu_add_to_group.get_children()[path-1]
+        self.mnu_add_to_group.reorder_child(mitem, path)
+
+    def on_icv_clients_selection_changed(self, _widget):
+        """Handle icv_clients.selection_changed event."""
+        selected = self.getSelectedClients()
+        single_client = False
+        if len(selected) == 1:
+            single_client = True
+        self.get('imi_clients_information').set_sensitive(single_client)
+        self.get('tlb_clients_information').set_sensitive(single_client)
+
+        if len(selected) > 0:
+            self.get('mni_add_to_group').set_sensitive(True)
+            self.get('imi_clients_remove_from_group').set_sensitive(
+                not self.isDefaultGroupSelected())
+        else:
+            self.get('mni_add_to_group').set_sensitive(False)
+            self.get('imi_clients_remove_from_group').set_sensitive(False)
+
+        if len(selected) > 1:
+            self.get('lbl_status').set_text(
+                _('%d clients selected' % len(selected)))
+        else:
+            self.get('lbl_status').set_text('')
+
+    def on_icv_clients_button_press_event(self, widget, event):
+        """Handle icv_clients.button_press event."""
+        clicked = widget.get_path_at_pos(int(event.x), int(event.y))
+
+        if event.button == 3:
+            if widget is self.icv_clients:
+                selection = widget
+                selected = widget.get_selected_items()
+            else:
+                selection = widget.get_selection()
+                selected = selection.get_selected_rows()[1]
+                if clicked:
+                    clicked = clicked[0]
+
+            if clicked:
+                if clicked not in selected:
+                    selection.unselect_all()
+                    selection.select_path(clicked)
+            else:
+                selection.unselect_all()
+
+            if widget is self.icv_clients:
+                menu = self.get('mni_clients').get_submenu()
+
+            menu.popup(None, None, None, None, event.button, event.time)
+            menu.show()
+            return True
+
+    def reload_imagetypes(self):
+        """Helper function for on_btn_size_* and on_scl_icon_size_*.
+        Improve the quality of previously resized svg icons, by reloading them.
+        """
+        old_pixbufs = self.imagetypes.values()
+        loadSVG = lambda path: GdkPixbuf.Pixbuf.new_from_file_at_size(
+            path, self.scrWidth, self.scrHeight)
+        self.imagetypes = {
+            'offline': loadSVG('images/offline.svg'),
+            'thin': loadSVG('images/thin.svg'),
+            'fat': loadSVG('images/fat.svg'),
+            'standalone': loadSVG('images/standalone.svg')
+        }
+
+        rows = [row for row in self.cstore if row[C_PIXBUF] in old_pixbufs]
+        for row in rows:
+            row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
+
+    def on_btn_size_down_clicked(self, _widget):
+        """Handle btn_size_down.clicked event."""
+        adj = self.get('adj_icon_size')
+        adj.set_value(adj.get_value() - 15)
+        self.reload_imagetypes()
+
+    def on_btn_size_up_clicked(self, _widget):
+        """Handle btn_size_up.clicked event."""
+        adj = self.get('adj_icon_size')
+        adj.set_value(adj.get_value() + 15)
+        self.reload_imagetypes()
+
+    def on_scl_icon_size_value_changed(self, _widget, width=None):
+        """Handle scl_icon_size_value.changed event."""
+        adj = self.get('adj_icon_size')
+        if width:
+            adj.set_value(width)
+        else:
+            width = adj.get_value()
+        self.scrWidth = int(width)
+        self.scrHeight = int(3*self.scrWidth/4)  # Κeep the 4:3 aspect ratio
+
+        # Fast scale all the thumbnails to make the change quickly visible
+        old_pixbufs = self.imagetypes.values()
+        for row in self.cstore:
+            if row[C_PIXBUF] in old_pixbufs:
+                ctype = row[C_INSTANCE].type
+                cur_w = self.imagetypes[ctype].get_width()
+                cur_h = self.imagetypes[ctype].get_height()
+                if not (cur_w == self.scrWidth and cur_h == self.scrHeight):
+                    new_thumb = row[C_PIXBUF].scale_simple(
+                        self.scrWidth, self.scrHeight,
+                        GdkPixbuf.InterpType.NEAREST)
+                    self.imagetypes[ctype] = new_thumb
+                row[C_PIXBUF] = self.imagetypes[ctype]
+            else:
+                new_thumb = row[C_PIXBUF].scale_simple(
+                    self.scrWidth, self.scrHeight,
+                    GdkPixbuf.InterpType.NEAREST)
+                row[C_PIXBUF] = new_thumb
+
+        # Hack to remove the extra padding that remains after a 'zoom out'
+        self.icv_clients.set_resize_mode(Gtk.ResizeMode.IMMEDIATE)
+        # TODO: Weird Gtk3 issue, they calculate excess width:
+        # https://bugzilla.gnome.org/show_bug.cgi?id=680953
+        # https://stackoverflow.com/questions/14090094/what-causes-the-different-display-behaviour-for-a-gtkiconview-between-different
+        self.icv_clients.get_cells()[0].set_fixed_size(width/4, -1)
+        self.icv_clients.check_resize()
+
+    def on_scl_icon_size_button_press_event(self, _widget, event):
+        """Make right click reset the thumbnail size."""
+        if event.button == 3:
+            self.on_scl_icon_size_value_changed(None, 120)
+            self.reload_imagetypes()
+            return True
+        return False
+
+    def on_scl_icon_size_button_release_event(self, _widget, _event):
+        """Handle scl_icon_size.button_release event."""
+        # Here we want to resize the SVG icons from imagetypes at a better
+        # quality than this of the quick pixbuf scale, since we assume that
+        # the user has decided the desired zoom level.
+        self.reload_imagetypes()
 
     # TODO: this is callback from uiconnection.py
     def connected(self, daemon):
@@ -635,7 +778,7 @@ class EpoptesGui(object):
                     break
 
     def amp_gotClients(self, handles):
-        print( "Got clients:", ', '.join(handles) or 'None')
+        print("Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
             d = self.daemon.command(handle, 'info')
             d.addCallback(
@@ -657,9 +800,9 @@ class EpoptesGui(object):
         else:
             if not self.default_group.ref.valid():
                 return
-            self.gtree.get_selection().select_path(
+            self.trv_groups.get_selection().select_path(
                 self.default_group.ref.get_path())
-        self.get('remove_group').set_sensitive(
+        self.get('btn_group_remove').set_sensitive(
             not self.isDefaultGroupSelected())
         self.set_move_group_sensitivity()
 
@@ -698,7 +841,7 @@ class EpoptesGui(object):
         if keep_selection:
             for row in self.cstore:
                 if row[C_INSTANCE] in selection:
-                    self.cview.select_path(row.path)
+                    self.icv_clients.select_path(row.path)
                     selection.remove(row[C_INSTANCE])
 
     def isDefaultGroupSelected(self):
@@ -710,7 +853,7 @@ class EpoptesGui(object):
     def getSelectedGroup(self):
         """Return a 2-tuple containing the iter and the instance
         for the currently selected group."""
-        iter = self.gtree.get_selection().get_selected()[1]
+        iter = self.trv_groups.get_selection().get_selected()[1]
         if iter:
             return (iter, self.gstore[iter][G_INSTANCE])
         else:
@@ -874,7 +1017,7 @@ class EpoptesGui(object):
             pass
 
     def getSelectedClients(self):
-        selected = self.cview.get_selected_items()
+        selected = self.icv_clients.get_selected_items()
         items = []
         for i in selected:
             items.append(self.cstore[i])
@@ -896,136 +1039,6 @@ class EpoptesGui(object):
 
     def changeHostname(self, mac, new_name):
         pass  # FIXME: Implement this (virtual hostname)
-
-    def iconsSizeScale_button_event(self, widget, event):
-        """Make right click reset the thumbnail size.
-        """
-        if event.button == 3:
-            self.iconsSizeScaleChanged(None, 120)
-            self.reload_imagetypes()
-            return True
-        return False
-
-    def reload_imagetypes(self):
-        """Improve the quality of previously resized svg icons,
-        by reloading them.
-        """
-        old_pixbufs = self.imagetypes.values()
-        loadSVG = lambda path: GdkPixbuf.Pixbuf.new_from_file_at_size(
-            path, self.scrWidth, self.scrHeight)
-        self.imagetypes = {
-            'offline': loadSVG('images/offline.svg'),
-            'thin': loadSVG('images/thin.svg'),
-            'fat': loadSVG('images/fat.svg'),
-            'standalone': loadSVG('images/standalone.svg')
-        }
-
-        rows = [row for row in self.cstore if row[C_PIXBUF] in old_pixbufs]
-        for row in rows:
-            row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
-
-    def on_iconsSizeScale_button_release_event(self, widget=None, event=None):
-        # Here we want to resize the SVG icons from imagetypes at a better
-        # quality than this of the quick pixbuf scale, since we assume that
-        # the user has decided the desired zoom level.
-        self.reload_imagetypes()
-
-    def iconsSizeScaleChanged(self, widget=None, width=None):
-        adj = self.get('adj_icon_size')
-        if width:
-            adj.set_value(width)
-        else:
-            width = adj.get_value()
-        self.scrWidth = int(width)
-        self.scrHeight = int(3 * self.scrWidth / 4) # Κeep the 4:3 aspect ratio
-
-        # Fast scale all the thumbnails to make the change quickly visible
-        old_pixbufs = self.imagetypes.values()
-        for row in self.cstore:
-            if row[C_PIXBUF] in old_pixbufs:
-                ctype = row[C_INSTANCE].type
-                cur_w = self.imagetypes[ctype].get_width()
-                cur_h = self.imagetypes[ctype].get_height()
-                if not (cur_w == self.scrWidth and cur_h == self.scrHeight):
-                    new_thumb = row[C_PIXBUF].scale_simple(
-                        self.scrWidth, self.scrHeight,
-                        GdkPixbuf.InterpType.NEAREST)
-                    self.imagetypes[ctype] = new_thumb
-                row[C_PIXBUF] = self.imagetypes[ctype]
-            else:
-                new_thumb = row[C_PIXBUF].scale_simple(
-                    self.scrWidth, self.scrHeight,
-                    GdkPixbuf.InterpType.NEAREST)
-                row[C_PIXBUF] = new_thumb
-
-        # Hack to remove the extra padding that remains after a 'zoom out'
-        self.cview.set_resize_mode(Gtk.ResizeMode.IMMEDIATE)
-        # TODO: Weird Gtk3 issue, they calculate excess width:
-        # https://bugzilla.gnome.org/show_bug.cgi?id=680953
-        # https://stackoverflow.com/questions/14090094/what-causes-the-different-display-behaviour-for-a-gtkiconview-between-different
-        self.cview.get_cells()[0].set_fixed_size(width/4, -1)
-        self.cview.check_resize()
-
-    def scrIncreaseSize(self, widget):
-        # Increase the size of screenshots by 2 pixels in width
-        adj = self.get('adj_icon_size')
-        adj.set_value(adj.get_value() + 15)
-        self.reload_imagetypes()
-
-    def scrDecreaseSize(self, widget):
-        # Decrease the size of screenshots by 2 pixels in width
-        adj = self.get('adj_icon_size')
-        adj.set_value(adj.get_value() - 15)
-        self.reload_imagetypes()
-
-    def contextMenuPopup(self, widget, event):
-        clicked = widget.get_path_at_pos(int(event.x), int(event.y))
-
-        if event.button == 3:
-            if widget is self.cview:
-                selection = widget
-                selected = widget.get_selected_items()
-            else:
-                selection = widget.get_selection()
-                selected = selection.get_selected_rows()[1]
-                if clicked:
-                    clicked = clicked[0]
-
-            if clicked:
-                if clicked not in selected:
-                    selection.unselect_all()
-                    selection.select_path(clicked)
-            else:
-                selection.unselect_all()
-
-            if widget is self.cview:
-                menu = self.get('mni_clients').get_submenu()
-
-            menu.popup(None, None, None, None, event.button, event.time)
-            menu.show()
-            return True
-
-    def on_clients_selection_changed(self, widget=None):
-        selected = self.getSelectedClients()
-        single_client = False
-        if len(selected) == 1:
-            single_client = True
-        self.get('imi_clients_information').set_sensitive(single_client)
-        self.get('tlb_clients_information').set_sensitive(single_client)
-
-        if len(selected) > 0:
-            self.get('mni_add_to_group').set_sensitive(True)
-            self.get('imi_clients_remove_from_group').set_sensitive(
-                not self.isDefaultGroupSelected())
-        else:
-            self.get('mni_add_to_group').set_sensitive(False)
-            self.get('imi_clients_remove_from_group').set_sensitive(False)
-
-        if len(selected) > 1:
-            self.get('statusbar_label').set_text(
-                _('%d clients selected' % len(selected)))
-        else:
-            self.get('statusbar_label').set_text('')
 
     def execOnClients(
             self, command, clients=[], reply=None, mode=EM_SESSION_OR_SYSTEM,
