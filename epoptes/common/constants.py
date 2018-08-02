@@ -18,7 +18,7 @@ C_SESSION_HANDLE = 3
 G_LABEL = 0
 G_INSTANCE = 1
 
-# Execution Modes are used in execOnClients
+# Execution Modes are used in exec_on_clients
 EM_SESSION_ONLY = 0
 EM_SYSTEM_ONLY = 1
 EM_EXIT_IF_SENT = 2
