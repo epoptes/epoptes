@@ -32,12 +32,14 @@ from gi.repository import Gdk, GdkPixbuf, GLib, Gtk
 
 
 class EpoptesGui(object):
-
+    """Epoptes GUI class."""
     def __init__(self):
         self.about = None
-        self.client_information = None
-        self.exec_command = None
         self.benchmark = None
+        self.client_information = None
+        self.daemon = None
+        self.exec_command = None
+        self.labels_order = (1, 0)
         self.notify_queue = NotifyQueue(
             'Epoptes',
             '/usr/share/icons/hicolor/scalable/apps/epoptes.svg')
@@ -114,10 +116,10 @@ class EpoptesGui(object):
         self.default_group = structs.Group('<b>'+_('Detected clients')+'</b>')
         default_iter = self.gstore.append(
             [self.default_group.name, self.default_group, False])
-        self.default_group.ref = Gtk.TreeRowReference(
+        self.default_group_ref = Gtk.TreeRowReference(
             self.gstore, self.gstore.get_path(default_iter))
         self.trv_groups.get_selection().select_path(
-            self.default_group.ref.get_path())
+            self.default_group_ref.get_path())
 
         self.get('adj_icon_size').set_value(self.scrWidth)
         self.reload_imagetypes()
@@ -126,13 +128,13 @@ class EpoptesGui(object):
             os.path.expanduser('~/.config/epoptes/groups.json'))
         if len(groups) > 0:
             self.mni_add_to_group.set_sensitive(True)
-        for grp in groups:
-            self.gstore.append([grp.name, grp, True])
-            mitem = Gtk.MenuItem(label=grp.name)
+        for group in groups:
+            self.gstore.append([group.name, group, True])
+            mitem = Gtk.MenuItem(label=group.name)
             mitem.show()
             # TODO: shouldn't mitem be the first parameter there?
             mitem.connect(
-                'activate', self.on_imi_clients_add_to_group_activate, grp)
+                'activate', self.on_imi_clients_add_to_group_activate, group)
             self.mnu_add_to_group.append(mitem)
 
         self.fill_icon_view(self.get_selected_group()[1])
@@ -140,23 +142,20 @@ class EpoptesGui(object):
             path = config.settings.getint('GUI', 'selected_group')
             self.trv_groups.get_selection().select_path(path)
         if config.settings.has_option('GUI', 'label'):
-            try:
-                self.get(config.settings.get('GUI', 'label')).set_active(True)
-            except:
-                pass
+            mitem = self.get(config.settings.get('GUI', 'label'))
+            if not mitem:
+                mitem = self.get('rmi_labels_host_user')
+            mitem.set_active(True)
         if config.settings.has_option('GUI', 'showRealNames'):
             self.get('cmi_show_real_names').set_active(
                 config.settings.getboolean('GUI', 'showRealNames'))
         self.mainwin.set_sensitive(False)
 
-    #################################################################
-    #                       Callback functions                      #
-    #################################################################
     def save_settings(self):
         """Helper function for on_imi_file_quit_activate."""
         sel_group = self.gstore.get_path(self.get_selected_group()[0])[0]
         self.gstore.remove(self.gstore.get_iter(
-            self.default_group.ref.get_path()))
+            self.default_group_ref.get_path()))
         config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'),
                            self.gstore)
         settings = config.settings
@@ -203,7 +202,7 @@ class EpoptesGui(object):
         # Save the order so all new clients get the selected format
         if rmi:
             config.settings.set('GUI', 'label', Gtk.Buildable.get_name(rmi))
-        self.cView_order = (user_pos, name_pos)
+        self.labels_order = (user_pos, name_pos)
         for row in self.cstore:
             self.set_label(row)
 
@@ -242,7 +241,8 @@ class EpoptesGui(object):
             ["shutdown"],
             warn=_('Are you sure you want to shutdown all the computers?'))
 
-    def find_unused_port(self):
+    @staticmethod
+    def find_unused_port():
         """Find an unused port."""
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('', 0))
@@ -443,7 +443,8 @@ class EpoptesGui(object):
             self.get_selected_clients()[0], self.daemon.command)
         self.set_label(self.get_selected_clients()[0])
 
-    def open_url(self, link):
+    @staticmethod
+    def open_url(link):
         """Helper function for on_imi_open_terminal_*_activate."""
         subprocess.Popen(["xdg-open", link])
 
@@ -471,10 +472,11 @@ class EpoptesGui(object):
         self.open_url("http://ts.sch.gr/repo/irc?user=%s&host=%s&lang=%s" %
                       (user, host, lang))
 
-    def on_imi_help_remote_support_activate(self, _widget):
+    @staticmethod
+    def on_imi_help_remote_support_activate(_widget):
         """Handle imi_help_remote_support.activate event."""
-        path = '/usr/share/epoptes-client'
-        subprocess.Popen('%s/remote_assistance.py' % path, shell=True, cwd=path)
+        subprocess.Popen('./remote_assistance.py',
+                         cwd='/usr/share/epoptes-client')
 
     def on_imi_help_about_activate(self, _widget):
         """Handle imi_help_about_activate.activate event."""
@@ -503,7 +505,7 @@ class EpoptesGui(object):
         # Don't allow dropping in the empty space of the treeview,
         # or inside the 'Detected' group, or inside the currently selected group
         selected_path = self.gstore.get_path(self.get_selected_group()[0])
-        if (not drag_info or drag_info[0] == self.default_group.ref.get_path()
+        if (not drag_info or drag_info[0] == self.default_group_ref.get_path()
                 or drag_info[0] == selected_path):
             widget.set_drag_dest_row(None, Gtk.TreeViewDropPosition.AFTER)
         else:
@@ -537,10 +539,10 @@ class EpoptesGui(object):
     def on_btn_group_add_clicked(self, _widget):
         """Handle btn_group_add.clicked event."""
         new_group = structs.Group()
-        iter = self.gstore.append([new_group.name, new_group, True])
+        itr = self.gstore.append([new_group.name, new_group, True])
         # Edit the name of the newly created group
         self.trv_groups.set_cursor(
-            self.gstore.get_path(iter), self.get('tvc_group'), True)
+            self.gstore.get_path(itr), self.get('tvc_group'), True)
         self.append_to_groups_menu(new_group)
 
     def on_btn_group_remove_clicked(self, _widget):
@@ -715,7 +717,7 @@ class EpoptesGui(object):
         daemon.enumerate_clients().addCallback(lambda h: self.amp_got_clients(h))
         self.fill_icon_view(self.get_selected_group()[1])
 
-    def disconnected(self, daemon):
+    def disconnected(self, _daemon):
         self.mainwin.set_sensitive(False)
         # If the reactor is not running at this point it means that we were
         # closed normally.
@@ -798,10 +800,10 @@ class EpoptesGui(object):
             if path != 0 and path-1 < len(menuitems):
                 menuitems[path-1].set_sensitive(False)
         else:
-            if not self.default_group.ref.valid():
+            if not self.default_group_ref.valid():
                 return
             self.trv_groups.get_selection().select_path(
-                self.default_group.ref.get_path())
+                self.default_group_ref.get_path())
         self.get('btn_group_remove').set_sensitive(
             not self.is_default_group_selected())
         self.set_move_group_sensitivity()
@@ -850,11 +852,11 @@ class EpoptesGui(object):
         return True
 
     def get_selected_group(self):
-        """Return a 2-tuple containing the iter and the instance
+        """Return a 2-tuple containing the itr and the instance
         for the currently selected group."""
-        iter = self.trv_groups.get_selection().get_selected()[1]
-        if iter:
-            return iter, self.gstore[iter][G_INSTANCE]
+        itr = self.trv_groups.get_selection().get_selected()[1]
+        if itr:
+            return itr, self.gstore[itr][G_INSTANCE]
         else:
             return None
 
@@ -936,7 +938,7 @@ class EpoptesGui(object):
         """Return the iconview label from a hostname/alias
         and a username, according to the user options.
         """
-        user_pos, name_pos = self.cView_order
+        user_pos, name_pos = self.labels_order
 
         alias = client.get_name()
         if username == '' or user_pos == -1:
@@ -946,7 +948,7 @@ class EpoptesGui(object):
                 label = username
                 if name_pos == 1:
                     label += " (%s)" % alias
-            elif name_pos == 0:
+            else:  # name_pos == 0
                 label = alias
                 if user_pos == 1:
                     label += " (%s)" % username
@@ -1056,7 +1058,7 @@ class EpoptesGui(object):
                 # TODO: do we need callbacks even when no reply?
                 if reply:
                     cmd.addCallback(
-                        lambda re, h=handle, p=params: reply(h, re, *p))
+                        lambda r, h=handle, p=params: reply(h, r, *p))
                     cmd.addErrback(lambda err: self.print_errors(
                         "when executing command %s on client %s: %s" %
                         (command, handle, err)))
@@ -1080,7 +1082,7 @@ class EpoptesGui(object):
                 # TODO: do we need callbacks even when no reply?
                 if reply:
                     cmd.addCallback(
-                        lambda re, h=handle, p=params: reply(h, re, *p))
+                        lambda r, h=handle, p=params: reply(h, r, *p))
                     cmd.addErrback(lambda err: self.print_errors(
                         "when executing command %s on client %s: %s" %
                         (command, handle, err)))
@@ -1109,6 +1111,7 @@ class EpoptesGui(object):
         dlg.run()
         dlg.destroy()
 
-    def print_errors(self, error):
+    @staticmethod
+    def print_errors(error):
         print('  **Twisted error:', error)
         return
