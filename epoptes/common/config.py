@@ -1,125 +1,113 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# Configuration file parser and other default configuration variables.
-#
-# Copyright (C) 2011-2018 Alkis Georgopoulos <alkisg@gmail.com>
-# 2011, Fotis Tsamis <ftsamis@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
-import os
-import shlex
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Configuration file parser and other default configuration variables.
+TODO: change settings into a class.
+"""
 import configparser
 import json
-import gettext
-gettext.install('epoptes')
-import locale
-locale.textdomain('epoptes')
+import os
+import shlex
 
-from ..core import structs
-from .constants import *
+from epoptes.common.constants import G_INSTANCE
+from epoptes.core import logger, structs
+from epoptes.ui.common import gettext as _
+
+
+LOG = logger.Logger(__file__)
+
+
+def expand_filename(filename):
+    """Return the full path for the specified user settings file."""
+    return os.path.join(os.path.expanduser('~/.config/epoptes/'), filename)
+
+
+def makedirs_for_file(filename):
+    """Ensure that the directory where filename resides, exists."""
+    dirname = os.path.dirname(filename)
+    if not os.path.isdir(dirname):
+        os.makedirs(dirname)
 
 
 def read_plain_file(filename):
     """Return the whole contents of a plain text file into a string list.
-
     If the file doesn't exist or isn't readable, return an empty list.
     """
-
     try:
-        f = open(filename, 'r')
-        contents = [x.strip() for x in f.readlines()]
-        f.close()
+        file = open(filename, 'r')
+        contents = [x.strip() for x in file.readlines()]
+        file.close()
         return contents
-    except:
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
         return []
 
 
 def write_plain_file(filename, contents):
-    """Write the contents string list to filename. Return True if successful.
-    """
-
+    """Write the contents string list to filename. Return True on success."""
     try:
-        if not os.path.isdir(path):
-            os.makedirs(path)
-        f = open(filename, 'w')
-        f.write('\n'.join(contents))
+        makedirs_for_file(filename)
+        file = open(filename, 'w')
+        file.write('\n'.join(contents))
         return True
-    except:
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
         return False
 
 
 def read_ini_file(filename):
-    """Return a ConfigParser from the contents of a configuration file.
-    """
+    """Return a ConfigParser from the contents of a configuration file."""
     conf = configparser.ConfigParser()
     try:
         conf.read(filename)
-    except:
-        pass
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
     return conf
 
 
 def write_ini_file(filename, contents):
-    """Write contents to a ConfigParser file. Return True if successful.
-    """
-    conf = contents
+    """Write contents to a ConfigParser file. Return True on success."""
     try:
-        conf.write(filename)
+        makedirs_for_file(filename)
+        with open(filename, 'w') as file:
+            contents.write(file)
         return True
-    except:
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
         return False
 
 
 def read_shell_file(filename):
     """Return the variables of a shell-like configuration file in a dict.
-
     If the file doesn't exist or isn't readable, return an empty list.
     Also strip all comments, if any.
     """
-
     if not os.path.isfile(filename):
         return {}
     try:
-        f = open(filename, 'r')
-        contents = f.read()
-        f.close()
+        file = open(filename, 'r')
+        contents = file.read()
+        file.close()
         contents = shlex.split(contents, True)
         # TODO: maybe return at least all the valid pairs?
         return dict(v.split('=') for v in contents)
-    except:
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
         return {}
 
-def read_groups(filename):
-    """Parse a JSON file and create the appropriate group and
-    client objects.
 
-    Return a 2-tuple with a client instances list and a group
-    instances list.
+def read_groups(filename):
+    """Parse a JSON file and create the appropriate group and client objects.
+    Return a 2-tuple with a client instances list and a group instances list.
     """
     try:
-        f=open(filename)
-        data = json.loads(f.read())
-        f.close()
-    except:
-        return ([],[])
+        file = open(filename)
+        data = json.loads(file.read())
+        file.close()
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
+        return [], []
 
     saved_clients = {}
 
@@ -128,70 +116,58 @@ def read_groups(filename):
         saved_clients[key] = new
 
     groups = []
-    for grp in data['groups']:
+    for group in data['groups']:
         members = {}
-        for key, dct in grp['members'].items():
+        for key, dct in group['members'].items():
             members[saved_clients[key]] = dct
 
-        groups.append(structs.Group(grp['name'], members))
+        groups.append(structs.Group(group['name'], members))
 
-    return (saved_clients.values(), groups)
+    return saved_clients.values(), groups
+
 
 def save_groups(filename, model):
-    """Save the groups and their members from model (gtk.ListStore)
-    in JSON format.
+    """Save the groups and their members from model (gtk.ListStore) in JSON
+    format.
     """
-    path = os.path.expanduser('~/.config/epoptes/')
-    try:
-        if not os.path.isdir(path):
-            os.makedirs(path)
-    except:
-        pass
-
-    data = {'clients' : {}, 'groups' : []}
-    uid=0
+    data = {'clients': {}, 'groups': []}
+    uid = 0
     uid_pairs = {}
     saved_clients = []
 
     # Create a list with all the clients we want to save
-    for grp in model:
-        grp = grp[G_INSTANCE]
-        for cln in grp.get_members():
+    for group in model:
+        group = group[G_INSTANCE]
+        for cln in group.get_members():
             if cln not in saved_clients:
                 saved_clients.append(cln)
 
     for cln in saved_clients:
         # Use an integer ID as a key instead of the memory address
-        data['clients'][uid] = {'mac' : cln.mac, 'alias' : cln.alias}
+        data['clients'][uid] = {'mac': cln.mac, 'alias': cln.alias}
         # Pair memory addresses with integer IDs
         uid_pairs[cln] = uid
         uid += 1
 
-    for grp in model:
-        grp = grp[G_INSTANCE]
+    for group in model:
+        group = group[G_INSTANCE]
         members = {}
-
         # Get the IDs created above
-        for cln, props in grp.members.items():
+        for cln, props in group.members.items():
             members[uid_pairs[cln]] = props
-
-
-        data['groups'].append({'name' : grp.name,
-                               'members' : members})
+        data['groups'].append({'name': group.name, 'members': members})
 
     # Save the dict in JSON format
     try:
-        f=open(filename, 'w')
-        f.write(json.dumps(data, indent=2))
-        f.close()
-    except:
-        pass
-
-def write_history():
-    write_plain_file(os.path.join(path, 'history'), history)
+        makedirs_for_file(filename)
+        file = open(filename, 'w')
+        file.write(json.dumps(data, indent=2))
+        file.close()
+    except (IOError, OSError) as exc:
+        LOG.e(exc)
 
 
-# The system settings are shared with epoptes-clients, that's why the caps.
+# The system settings are shared with epoptes-client, that's why the caps.
 system = read_shell_file('/etc/default/epoptes')
 # TODO: check if the types, e.g. PORT=int, may cause problems.
 system.setdefault('PORT', 789)
@@ -201,31 +177,20 @@ system.setdefault('DIR', '/run/epoptes')
 try:
     if os.path.getsize('/etc/epoptes/server.crt') == 0:
         system.setdefault('ENCRYPTION', False)
-except:
-    pass
+except (IOError, OSError) as ex:
+    LOG.e(ex)
 finally:
     system.setdefault('ENCRYPTION', True)
 
-
-path = os.path.expanduser('~/.config/epoptes/')
-settings_file = os.path.join(path, 'settings')
-settings = read_ini_file(settings_file)
+settings = read_ini_file(expand_filename('settings'))
 if not settings.has_section('GUI'):
     settings.add_section('GUI')
-user = {}
-if settings.has_option('GUI', 'thumbnails_width'):
-    user['thumbnails_width'] = settings.getint('GUI', 'thumbnails_width')
-if settings.has_option('GUI', 'thumbnails_height'):
-    user['thumbnails_height'] = settings.getint('GUI', 'thumbnails_height')
 if not settings.has_option('GUI', 'messages_default_title'):
-    settings.set('GUI', 'messages_default_title', _('Message from administrator'))
+    settings.set('GUI', 'messages_default_title',
+                 _('Message from administrator'))
 if not settings.has_option('GUI', 'messages_use_markup'):
     settings.set('GUI', 'messages_use_markup', 'False')
 if not settings.has_option('GUI', 'grabkbdptr'):
     settings.set('GUI', 'grabkbdptr', 'False')
 
-history = read_plain_file(os.path.join(path, 'history'))
-
-# For debugging reasons, if ran from command line, dump the config
-if __name__ == '__main__':
-    print(system)
+history = read_plain_file(expand_filename('history'))

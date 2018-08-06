@@ -33,7 +33,8 @@ class ExecCommand:
             if result in config.history:
                 config.history.remove(result)
             config.history.insert(0, result)
-            config.write_history()
+            config.write_plain_file(
+                config.expand_filename('history'), config.history)
         else:
             result = ''
         self.dialog.hide()

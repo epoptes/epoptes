@@ -81,9 +81,6 @@ def main():
     # cd to the epoptes directory, so that all paths are relative
     if not os.path.isfile('remote_assistance.ui'):
         os.chdir('/usr/share/epoptes')
-    path = os.path.expanduser('~/.config/epoptes/')
-    if not os.path.isdir(path):
-        os.makedirs(path)
 
     if need_sg_relaunch():
         sys.exit(0)

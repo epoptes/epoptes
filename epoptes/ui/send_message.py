@@ -4,8 +4,6 @@
 """
 Send message dialog.
 """
-import os
-
 from epoptes.common import config
 from epoptes.ui.common import locate_resource
 from gi.repository import Gtk
@@ -38,10 +36,8 @@ class SendMessage:
             result = (text, title, use_markup)
             config.settings.set('GUI', 'messages_default_title', title)
             config.settings.set('GUI', 'messages_use_markup', str(use_markup))
-            # TODO: move this to config.py
-            fset = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
-            config.settings.write(fset)
-            fset.close()
+            config.write_ini_file(config.expand_filename('settings'),
+                                  config.settings)
         else:
             result = ()
         self.dialog.hide()

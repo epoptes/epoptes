@@ -59,8 +59,8 @@ class EpoptesGui(object):
             """echo $LTSP_CLIENT_MAC"""],
             stdout=subprocess.PIPE).communicate()[0].split()
         self.uid = os.getuid()
-        if 'thumbnails_width' in config.user:
-            self.scrWidth = config.user['thumbnails_width']
+        if config.settings.has_option('GUI', 'thumbnails_width'):
+            self.scrWidth = config.settings.getint('GUI', 'thumbnails_width')
         self.offline = GdkPixbuf.Pixbuf.new_from_file('images/offline.svg')
         self.thin = GdkPixbuf.Pixbuf.new_from_file('images/thin.svg')
         self.fat = GdkPixbuf.Pixbuf.new_from_file('images/fat.svg')
@@ -125,7 +125,7 @@ class EpoptesGui(object):
         self.reload_imagetypes()
 
         saved_clients, groups = config.read_groups(
-            os.path.expanduser('~/.config/epoptes/groups.json'))
+            config.expand_filename('groups.json'))
         if len(groups) > 0:
             self.mni_add_to_group.set_sensitive(True)
         for group in groups:
@@ -156,7 +156,7 @@ class EpoptesGui(object):
         sel_group = self.gstore.get_path(self.get_selected_group()[0])[0]
         self.gstore.remove(self.gstore.get_iter(
             self.default_group_ref.get_path()))
-        config.save_groups(os.path.expanduser('~/.config/epoptes/groups.json'),
+        config.save_groups(config.expand_filename('groups.json'),
                            self.gstore)
         settings = config.settings
         if not settings.has_section('GUI'):
@@ -165,12 +165,7 @@ class EpoptesGui(object):
         settings.set('GUI', 'selected_group', str(sel_group))
         settings.set('GUI', 'showRealNames', str(self.showRealNames))
         settings.set('GUI', 'thumbnails_width', str(self.scrWidth))
-        try:
-            f = open(os.path.expanduser('~/.config/epoptes/settings'), 'w')
-            settings.write(f)
-            f.close()
-        except:
-            pass
+        config.write_ini_file(config.expand_filename('settings'), settings)
 
     def on_imi_file_quit_activate(self, _widget):
         """Handle imi_file_quit.activate and wnd_main.destroy events."""
@@ -283,7 +278,8 @@ class EpoptesGui(object):
         """Handle imi_sbroadcasts_monitor_user.activate event."""
         self.reverse_connection('get_monitored')
 
-    def on_imi_broadcasts_assist_user_activate(self, _widget):
+    def on_imi_broadcasts_assist_user_activate(self, _widget,
+                                               _path=None, _view_column=None):
         """Handle imi_sbroadcasts_assist_user.activate event."""
         if config.settings.has_option('GUI', 'grabkbdptr'):
             grab = config.settings.getboolean('GUI', 'grabkbdptr')
@@ -295,7 +291,7 @@ class EpoptesGui(object):
     def broadcast_screen(self, fullscreen=''):
         """Helper function for on_imi_broadcasts_broadcast_screen*_activate."""
         if self.vncserver is None:
-            pwdfile = os.path.expanduser('~/.config/epoptes/vncpasswd')
+            pwdfile = config.expand_filename('vncpasswd')
             pwd = ''.join(random.sample(string.ascii_letters + string.digits, 8))
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
             f = open(pwdfile, 'rb')
