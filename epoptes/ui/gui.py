@@ -113,7 +113,8 @@ class EpoptesGui(object):
         self.trv_groups.enable_model_drag_dest(
             [("add", Gtk.TargetFlags.SAME_APP, 0)], Gdk.DragAction.COPY)
 
-        self.default_group = structs.Group('<b>'+_('Detected clients')+'</b>')
+        self.default_group = structs.Group(
+            '<b>'+_('Detected clients')+'</b>', {})
         default_iter = self.gstore.append(
             [self.default_group.name, self.default_group, False])
         self.default_group_ref = Gtk.TreeRowReference(
@@ -534,7 +535,7 @@ class EpoptesGui(object):
 
     def on_btn_group_add_clicked(self, _widget):
         """Handle btn_group_add.clicked event."""
-        new_group = structs.Group()
+        new_group = structs.Group(_('New group'), {})
         itr = self.gstore.append([new_group.name, new_group, True])
         # Edit the name of the newly created group
         self.trv_groups.set_cursor(
