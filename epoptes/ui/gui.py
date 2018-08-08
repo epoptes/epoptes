@@ -13,13 +13,13 @@ import pipes
 import random
 import socket
 import string
+import subprocess
 
 from epoptes.ui.reactor import reactor
 from epoptes.common.constants import *
 from epoptes.common import config
 from epoptes.core import structs
 from epoptes.core import wol
-from epoptes.core.lib_users import *
 from epoptes.ui.about import About
 from epoptes.ui.benchmark import Benchmark
 from epoptes.ui.client_information import ClientInformation
@@ -51,12 +51,12 @@ class EpoptesGui(object):
         self.scrHeight = 75
         self.showRealNames = False
         self.currentScreenshots = dict()
-        self.current_macs = subprocess.Popen([
-            'sh', '-c',
-            """ip -oneline -family inet link show | """
-            """sed -n '/.*ether[[:space:]]*\\([[:xdigit:]:]*\).*/"""
-            """{s//\\1/;y/abcdef-/ABCDEF:/;p;}';"""
-            """echo $LTSP_CLIENT_MAC"""],
+        self.current_macs = subprocess.Popen(
+            ['sh', '-c',
+             r"""ip -oneline -family inet link show | """
+             r"""sed -n '/.*ether[[:space:]]*\([[:xdigit:]:]*\).*/"""
+             r"""{s//\1/;y/abcdef-/ABCDEF:/;p;}';"""
+             r"""echo $LTSP_CLIENT_MAC"""],
             stdout=subprocess.PIPE).communicate()[0].split()
         self.uid = os.getuid()
         if config.settings.has_option('GUI', 'thumbnails_width'):
@@ -811,7 +811,7 @@ class EpoptesGui(object):
         # for each one of them.
         label = 'uname'
         if self.showRealNames:
-                label = 'rname'
+            label = 'rname'
         if client.users:
             for hsession, user in client.users.items():
                 self.cstore.append(
