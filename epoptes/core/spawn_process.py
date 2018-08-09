@@ -49,10 +49,11 @@ class SpawnProcess(protocol.ProcessProtocol):
         self.__init__(self.on_exit)
         self.lines_max = lines_max
         if timeout:
+            # noinspection PyUnresolvedReferences
             self.dc_timeout = reactor.callLater(timeout, self.stop, "timeout")
         else:
             self.dc_timeout = None
-        # Meh unknown ref, https://youtrack.jetbrains.net/issue/PY-1490
+        # noinspection PyUnresolvedReferences
         reactor.spawnProcess(self, cmdline[0], cmdline)
 
     def stop(self, reason=""):
@@ -88,6 +89,7 @@ class SpawnProcess(protocol.ProcessProtocol):
             self.transport.signalProcess('KILL')
         else:
             assert False, "Unable to kill child process!"
+        # noinspection PyUnresolvedReferences
         self.dc_stop = reactor.callLater(0.5, self.stop, self.state)
 
     def connectionMade(self):
@@ -123,6 +125,7 @@ class SpawnProcess(protocol.ProcessProtocol):
             self.dc_stop = None
         if not self.reason:
             self.reason = str(reason.value)
+        # noinspection PyUnresolvedReferences
         reactor.callLater(0, self.call_on_exit)
 
     def call_on_exit(self):
@@ -143,6 +146,7 @@ def main():
         LOG.d("  Callback err_data:", err_data)
         LOG.d("  Callback reason:", reason)
         # Quit a bit later in order to test if events occur properly
+        # noinspection PyUnresolvedReferences
         reactor.callLater(3, reactor.stop)
 
     script = """# Produce some output with delays
@@ -166,11 +170,13 @@ done
     if 'event-driven' in tests:  # e.g. a cancel button
         proc = SpawnProcess(on_test_exit)
         proc.spawn(['sh', '-c', script])
+        # noinspection PyUnresolvedReferences
         reactor.callLater(3, proc.stop, 'cancelled')
     if 'process-error' in tests:
         SpawnProcess(on_test_exit).spawn(
             ['sh', '-c', 'echo Started && sleep 1 && invalid-command'])
 
+    # noinspection PyUnresolvedReferences
     reactor.run()
 
 

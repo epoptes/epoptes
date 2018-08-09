@@ -159,6 +159,7 @@ class EpoptesGui(object):
             self.vncserver.kill()
         if self.vncviewer is not None:
             self.vncviewer.kill()
+        # noinspection PyUnresolvedReferences
         reactor.stop()
 
     def on_rmi_labels_host_user_toggled(self, rmi):
@@ -731,6 +732,7 @@ class EpoptesGui(object):
         self.mainwin.set_sensitive(False)
         # If the reactor is not running at this point it means that we were
         # closed normally.
+        # noinspection PyUnresolvedReferences
         if not reactor.running:
             return
         self.save_settings()
@@ -742,6 +744,7 @@ class EpoptesGui(object):
         dlg.set_title(_('Service connection error'))
         dlg.run()
         dlg.destroy()
+        # noinspection PyUnresolvedReferences
         reactor.stop()
 
     def amp_client_connected(self, handle):

@@ -44,6 +44,7 @@ def connection_failed(failure):
     dlg.set_title(_('Service connection error'))
     dlg.run()
     dlg.destroy()
+    # noinspection PyUnresolvedReferences
     reactor.stop()
 
 
@@ -86,9 +87,11 @@ def main():
         sys.exit(0)
 
     egui = gui.EpoptesGui()
+    # noinspection PyUnresolvedReferences
     dfr = ClientCreator(reactor, uiconnection.Daemon, egui)\
         .connectUNIX(config.system['DIR'] + "/epoptes.socket")
     dfr.addErrback(connection_failed)
+    # noinspection PyUnresolvedReferences
     reactor.run()
 
 

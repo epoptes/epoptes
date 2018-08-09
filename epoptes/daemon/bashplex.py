@@ -73,6 +73,7 @@ class DelimitedBashReceiver(protocol.Protocol):
     def ping(self):
         """Periodically ping the clients."""
         self.command('ping').addCallback(self.ping_response)
+        # noinspection PyUnresolvedReferences
         self.ping_timeout = reactor.callLater(
             self.factory.ping_timeout, self.ping_timed_out)
 
@@ -85,6 +86,7 @@ class DelimitedBashReceiver(protocol.Protocol):
             self.timed_out = False
         else:
             self.ping_timeout.cancel()
+        # noinspection PyUnresolvedReferences
         self.ping_timer = reactor.callLater(
             self.factory.ping_interval, self.ping)
 
@@ -99,6 +101,7 @@ class DelimitedBashReceiver(protocol.Protocol):
         def forward_connection(_result):
             """Callback for startup_commands."""
             exchange.client_connected(self.handle, self)
+            # noinspection PyUnresolvedReferences
             self.ping_timer = reactor.callLater(
                 self.factory.ping_interval, self.ping)
 
