@@ -34,23 +34,10 @@ from gi.repository import Gdk, GdkPixbuf, GLib, Gtk
 class EpoptesGui(object):
     """Epoptes GUI class."""
     def __init__(self):
+        # Initialization of general-purpose variables
         self.about = None
         self.benchmark = None
         self.client_information = None
-        self.daemon = None
-        self.exec_command = None
-        self.labels_order = (1, 0)
-        self.notify_queue = NotifyQueue(
-            'Epoptes',
-            '/usr/share/icons/hicolor/scalable/apps/epoptes.svg')
-        self.send_message = None
-        self.displayed_compatibility_warning = False
-        self.vncserver = None
-        self.vncviewer = None
-        self.scrWidth = 100
-        self.scrHeight = 75
-        self.showRealNames = False
-        self.currentScreenshots = dict()
         self.current_macs = subprocess.Popen(
             ['sh', '-c',
              r"""ip -oneline -family inet link show | """
@@ -58,76 +45,77 @@ class EpoptesGui(object):
              r"""{s//\1/;y/abcdef-/ABCDEF:/;p;}';"""
              r"""echo $LTSP_CLIENT_MAC"""],
             stdout=subprocess.PIPE).communicate()[0].split()
-        self.uid = os.getuid()
-        if config.settings.has_option('GUI', 'thumbnails_width'):
-            self.scrWidth = config.settings.getint('GUI', 'thumbnails_width')
-        self.offline = GdkPixbuf.Pixbuf.new_from_file('images/offline.svg')
-        self.thin = GdkPixbuf.Pixbuf.new_from_file('images/thin.svg')
-        self.fat = GdkPixbuf.Pixbuf.new_from_file('images/fat.svg')
-        self.standalone = GdkPixbuf.Pixbuf.new_from_file(
-            'images/standalone.svg')
+        self.current_thumbshots = dict()
+        self.daemon = None
+        self.displayed_compatibility_warning = False
+        self.exec_command = None
         self.imagetypes = {
-            'thin': self.thin, 'fat': self.fat,
-            'standalone': self.standalone, 'offline': self.offline}
+            'thin': GdkPixbuf.Pixbuf.new_from_file('images/thin.svg'),
+            'fat': GdkPixbuf.Pixbuf.new_from_file('images/fat.svg'),
+            'standalone': GdkPixbuf.Pixbuf.new_from_file(
+                'images/standalone.svg'),
+            'offline': GdkPixbuf.Pixbuf.new_from_file('images/offline.svg')}
+        self.labels_order = (1, 0)
+        self.notify_queue = NotifyQueue(
+            'Epoptes',
+            '/usr/share/icons/hicolor/scalable/apps/epoptes.svg')
+        self.send_message = None
+        self.show_real_names = config.settings.getboolean(
+            'GUI', 'show_real_names', fallback=False)
+        # Thumbshot width and height. Good width defaults are multiples of 16,
+        # so that the height is an integer in both 16/9 and 4/3 aspect ratios.
+        self.ts_width = config.settings.getint(
+            'GUI', 'thumbshots_width', fallback=128)
+        self.ts_height = int(self.ts_width/(4/3))
+        self.uid = os.getuid()
+        self.vncserver = None
+        self.vncserver_port = None
+        self.vncserver_pwd = None
+        self.vncviewer = None
+        self.vncviewer_port = None
 
-        self.wTree = Gtk.Builder()
-        self.wTree.add_from_file('epoptes.ui')
-
-        self.get = lambda obj: self.wTree.get_object(obj)
-
-        # Connect glade handlers with the callback functions
-        self.wTree.connect_signals(self)
-
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file('epoptes.ui')
+        self.get = self.builder.get_object
         # Hide the remote assistance menuitem if epoptes-client isn't installed
         if not os.path.isfile('/usr/share/epoptes-client/remote_assistance.py'):
             self.get('mi_remote_assistance').set_property('visible', False)
             self.get('smi_help_remote_support').set_property('visible', False)
-
         self.mnu_add_to_group = self.get('mnu_add_to_group')
         self.mni_add_to_group = self.get('mni_add_to_group')
-
         self.gstore = Gtk.ListStore(str, object, bool)
-
-        self.trv_groups = self.get("trv_groups")
+        self.trv_groups = self.get('trv_groups')
         self.trv_groups.set_model(self.gstore)
-        self.trv_groups.get_selection().connect(
-            "changed", self.on_group_selection_changed)
-
         self.mainwin = self.get('wnd_main')
-
         self.cstore = Gtk.ListStore(str, GdkPixbuf.Pixbuf, object, str)
         self.icv_clients = self.get('icv_clients')
         self.set_labels_order(1, 0, None)
-
         self.icv_clients.set_model(self.cstore)
         self.icv_clients.set_pixbuf_column(C_PIXBUF)
         self.icv_clients.set_text_column(C_LABEL)
-
         self.cstore.set_sort_column_id(C_LABEL, Gtk.SortType.ASCENDING)
         self.on_icv_clients_selection_changed(None)
-
         self.icv_clients.enable_model_drag_source(
             Gdk.ModifierType.BUTTON1_MASK,
             [Gtk.TargetEntry.new("add", Gtk.TargetFlags.SAME_APP, 0)],
             Gdk.DragAction.COPY)
         self.trv_groups.enable_model_drag_dest(
             [("add", Gtk.TargetFlags.SAME_APP, 0)], Gdk.DragAction.COPY)
-
         self.default_group = structs.Group(
             '<b>'+_('Detected clients')+'</b>', {})
         default_iter = self.gstore.append(
             [self.default_group.name, self.default_group, False])
-        self.default_group_ref = Gtk.TreeRowReference(
+        self.default_group_ref = Gtk.TreeRowReference.new(
             self.gstore, self.gstore.get_path(default_iter))
+        # Connect glade handlers with the callback functions
+        self.builder.connect_signals(self)
         self.trv_groups.get_selection().select_path(
             self.default_group_ref.get_path())
-
-        self.get('adj_icon_size').set_value(self.scrWidth)
+        self.get('adj_icon_size').set_value(self.ts_width)
         self.reload_imagetypes()
-
-        saved_clients, groups = config.read_groups(
+        _saved_clients, groups = config.read_groups(
             config.expand_filename('groups.json'))
-        if len(groups) > 0:
+        if groups:
             self.mni_add_to_group.set_sensitive(True)
         for group in groups:
             self.gstore.append([group.name, group, True])
@@ -137,19 +125,15 @@ class EpoptesGui(object):
             mitem.connect(
                 'activate', self.on_imi_clients_add_to_group_activate, group)
             self.mnu_add_to_group.append(mitem)
-
         self.fill_icon_view(self.get_selected_group()[1])
-        if config.settings.has_option('GUI', 'selected_group'):
-            path = config.settings.getint('GUI', 'selected_group')
-            self.trv_groups.get_selection().select_path(path)
-        if config.settings.has_option('GUI', 'label'):
-            mitem = self.get(config.settings.get('GUI', 'label'))
-            if not mitem:
-                mitem = self.get('rmi_labels_host_user')
-            mitem.set_active(True)
-        if config.settings.has_option('GUI', 'showRealNames'):
-            self.get('cmi_show_real_names').set_active(
-                config.settings.getboolean('GUI', 'showRealNames'))
+        self.trv_groups.get_selection().select_path(
+            config.settings.getint('GUI', 'selected_group', fallback=0))
+        mitem = self.get(config.settings.get(
+            'GUI', 'label', fallback='rmi_labels_host_user'))
+        if not mitem:
+            mitem = self.get('rmi_labels_host_user')
+        mitem.set_active(True)
+        self.get('cmi_show_real_names').set_active(self.show_real_names)
         self.mainwin.set_sensitive(False)
 
     def save_settings(self):
@@ -164,8 +148,8 @@ class EpoptesGui(object):
             settings.add_section('GUI')
 
         settings.set('GUI', 'selected_group', str(sel_group))
-        settings.set('GUI', 'showRealNames', str(self.showRealNames))
-        settings.set('GUI', 'thumbnails_width', str(self.scrWidth))
+        settings.set('GUI', 'show_real_names', str(self.show_real_names))
+        settings.set('GUI', 'thumbshots_width', str(self.ts_width))
         config.write_ini_file(config.expand_filename('settings'), settings)
 
     def on_imi_file_quit_activate(self, _widget):
@@ -204,14 +188,14 @@ class EpoptesGui(object):
 
     def on_cmi_show_real_names_toggled(self, widget):
         """Handle cmi_show_real_names.toggled event."""
-        self.showRealNames = widget.get_active()
+        self.show_real_names = widget.get_active()
         for row in self.cstore:
             self.set_label(row)
 
     def on_imi_session_boot_activate(self, _widget):
         """Handle imi_session_boot.activate event."""
         clients = self.get_selected_clients()
-        if len(clients) == 0:  # No client selected, send the command to all
+        if not clients:  # No client selected, send the command to all
             clients = self.cstore
         for client in clients:
             # Make sure that only offline computers will be sent to wol
@@ -240,40 +224,40 @@ class EpoptesGui(object):
     @staticmethod
     def find_unused_port():
         """Find an unused port."""
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.bind(('', 0))
-        s.listen(1)
-        port = s.getsockname()[1]
-        s.close()
+        sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sck.bind(('', 0))
+        sck.listen(1)
+        port = sck.getsockname()[1]
+        sck.close()
         return port
 
     def reverse_connection(self, cmd, *args):
         """Helper function for on_imi_broadcasts_*_activate."""
         # Open vncviewer in listen mode
         if self.vncviewer is None or self.vncviewer.poll() is not None:
-            self.vncviewerport = self.find_unused_port()
+            self.vncviewer_port = self.find_unused_port()
             # If the user installed ssvnc, prefer it over xvnc4viewer
             if os.path.isfile('/usr/bin/ssvncviewer'):
                 self.vncviewer = subprocess.Popen(
                     ['ssvncviewer', '-multilisten',
-                     str(self.vncviewerport-5500)])
+                     str(self.vncviewer_port-5500)])
             elif os.path.isfile('/usr/bin/xtigervncviewer'):
                 self.vncviewer = subprocess.Popen(
-                    ['xtigervncviewer', '-listen', str(self.vncviewerport)])
+                    ['xtigervncviewer', '-listen', str(self.vncviewer_port)])
             elif os.path.isfile('/usr/bin/xvnc4viewer'):
                 self.vncviewer = subprocess.Popen(
-                    ['xvnc4viewer', '-listen', str(self.vncviewerport)])
+                    ['xvnc4viewer', '-listen', str(self.vncviewer_port)])
             # Support tigervnc on rpm distributions (LP: #1501747)
             elif os.path.isfile('/usr/share/locale/de/LC_MESSAGES/tigervnc.mo'):
                 self.vncviewer = subprocess.Popen(
-                    ['vncviewer', '-listen', str(self.vncviewerport)])
+                    ['vncviewer', '-listen', str(self.vncviewer_port)])
             # The rest of the viewers, like tightvnc
             else:
                 self.vncviewer = subprocess.Popen(
-                    ['vncviewer', '-listen', str(self.vncviewerport-5500)])
+                    ['vncviewer', '-listen', str(self.vncviewer_port-5500)])
 
         # And, tell the clients to connect to the server
-        self.exec_on_selected_clients([cmd, self.vncviewerport] + list(args))
+        self.exec_on_selected_clients([cmd, self.vncviewer_port] + list(args))
 
     def on_imi_broadcasts_monitor_user_activate(self, _widget):
         """Handle imi_sbroadcasts_monitor_user.activate event."""
@@ -282,9 +266,7 @@ class EpoptesGui(object):
     def on_imi_broadcasts_assist_user_activate(self, _widget,
                                                _path=None, _view_column=None):
         """Handle imi_sbroadcasts_assist_user.activate event."""
-        if config.settings.has_option('GUI', 'grabkbdptr'):
-            grab = config.settings.getboolean('GUI', 'grabkbdptr')
-        if grab:
+        if config.settings.getboolean('GUI', 'grabkbdptr', fallback=False):
             self.reverse_connection('get_assisted', 'True')
         else:
             self.reverse_connection('get_assisted')
@@ -293,24 +275,25 @@ class EpoptesGui(object):
         """Helper function for on_imi_broadcasts_broadcast_screen*_activate."""
         if self.vncserver is None:
             pwdfile = config.expand_filename('vncpasswd')
-            pwd = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+            pwd = ''.join(random.sample(
+                string.ascii_letters + string.digits, 8))
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
-            f = open(pwdfile, 'rb')
-            pwd = f.read()
-            f.close()
-            self.pwd = ''.join('\\%o' % c for c in pwd)
-            self.vncserverport = self.find_unused_port()
+            file = open(pwdfile, 'rb')
+            pwd = file.read()
+            file.close()
+            self.vncserver_port = self.find_unused_port()
+            self.vncserver_pwd = ''.join('\\%o' % c for c in pwd)
             self.vncserver = subprocess.Popen(
                 ['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', '-shared',
                  '-forever', '-nolookup', '-24to32', '-threads', '-rfbport',
-                 str(self.vncserverport), '-rfbauth', pwdfile])
+                 str(self.vncserver_port), '-rfbauth', pwdfile])
         # Running `xdg-screensaver reset` as root doesn't reset the D.E.
         # screensaver, so send the reset command to both epoptes processes
         self.exec_on_selected_clients(
             ['reset_screensaver'], mode=EM_SYSTEM_AND_SESSION)
         self.exec_on_selected_clients(
-            ["receive_broadcast", self.vncserverport, self.pwd, fullscreen],
-            mode=EM_SYSTEM_OR_SESSION)
+            ["receive_broadcast", self.vncserver_port, self.vncserver_pwd,
+             fullscreen], mode=EM_SYSTEM_OR_SESSION)
 
     def on_imi_broadcasts_broadcast_screen_fullscreen_activate(self, _widget):
         """Handle imi_broadcasts_broadcast_screen_fullscreen.activate event."""
@@ -338,11 +321,11 @@ class EpoptesGui(object):
         if cmd == '':
             return
         if cmd.startswith("sudo "):
-            em = EM_SYSTEM
+            e_m = EM_SYSTEM
             cmd = cmd[5:]
         else:
-            em = EM_SESSION
-        self.exec_on_selected_clients(['execute', cmd], mode=em)
+            e_m = EM_SESSION
+        self.exec_on_selected_clients(['execute', cmd], mode=e_m)
 
     def on_imi_execute_send_message_activate(self, _widget):
         """Handle imi_execute_send_message.activate event."""
@@ -352,11 +335,11 @@ class EpoptesGui(object):
         if params:
             self.exec_on_selected_clients(['message'] + list(params))
 
-    def open_terminal(self, em):
+    def open_terminal(self, e_m):
         """Helper function for on_imi_open_terminal_*_activate."""
         clients = self.get_selected_clients()
         # If there is no client selected, send the command to all
-        if len(clients) == 0:
+        if not clients:
             clients = self.cstore
         for client in clients:
             inst = client[C_INSTANCE]
@@ -364,15 +347,15 @@ class EpoptesGui(object):
                 continue
             port = self.find_unused_port()
             user = '--'
-            if em == EM_SESSION and client[C_SESSION_HANDLE]:
+            if e_m == EM_SESSION and client[C_SESSION_HANDLE]:
                 user = inst.users[client[C_SESSION_HANDLE]]['uname']
-            elif em == EM_SYSTEM:
+            elif e_m == EM_SYSTEM:
                 user = 'root'
             title = '%s@%s' % (user, inst.get_name())
             subprocess.Popen(['xterm', '-T', title, '-e', 'socat',
                               'tcp-listen:%d,keepalive=1' % port,
                               'stdio,raw,echo=0'])
-            self.exec_on_clients(['remote_term', port], [client], mode=em)
+            self.exec_on_clients(['remote_term', port], [client], mode=e_m)
 
     def on_imi_open_terminal_user_locally_activate(self, _widget):
         """Handle imi_open_terminal_user_locally.activate event."""
@@ -481,11 +464,11 @@ class EpoptesGui(object):
             self.about = About(self.mainwin)
         self.about.run()
 
-    def on_trv_groups_drag_drop(self, _wid, context, x, y, time):
+    def on_trv_groups_drag_drop(self, _wid, context, drag_x, drag_y, time):
         """Handle trv_groups.drag_drop event."""
-        dest = self.trv_groups.get_dest_row_at_pos(x, y)
+        dest = self.trv_groups.get_dest_row_at_pos(drag_x, drag_y)
         if dest is not None:
-            path, pos = dest
+            path, _pos = dest
             group = self.gstore[path][G_INSTANCE]
             if group is not self.default_group:
                 for cln in self.get_selected_clients():
@@ -496,11 +479,11 @@ class EpoptesGui(object):
         context.finish(True, False, time)
         return True
 
-    def on_trv_groups_drag_motion(self, widget, context, x, y, etime):
+    def on_trv_groups_drag_motion(self, widget, context, drag_x, drag_y, time):
         """Handle trv_groups.drag_motion event."""
-        drag_info = widget.get_dest_row_at_pos(x, y)
-        # Don't allow dropping in the empty space of the treeview,
-        # or inside the 'Detected' group, or inside the currently selected group
+        drag_info = widget.get_dest_row_at_pos(drag_x, drag_y)
+        # Don't allow dropping in the empty space of the treeview, or inside
+        # the 'Detected' group, or inside the currently selected group
         selected_path = self.gstore.get_path(self.get_selected_group()[0])
         if (not drag_info or drag_info[0] == self.default_group_ref.get_path()
                 or drag_info[0] == selected_path):
@@ -515,7 +498,7 @@ class EpoptesGui(object):
                 widget.set_drag_dest_row(
                     path, Gtk.TreeViewDropPosition.INTO_OR_AFTER)
 
-        context.drag_status(context.suggested_action, etime)
+        context.drag_status(context.suggested_action, time)
         return True
 
     def on_crt_group_edited(self, _widget, path, new_name):
@@ -523,6 +506,27 @@ class EpoptesGui(object):
         self.gstore[path][G_LABEL] = new_name
         self.gstore[path][G_INSTANCE].name = new_name
         self.mnu_add_to_group.get_children()[int(path)-1].set_label(new_name)
+
+    def on_trs_groups_changed(self, _treeselection):
+        """Handle trs_groups.changed event."""
+        self.cstore.clear()
+        selected = self.get_selected_group()
+
+        if selected is not None:
+            self.fill_icon_view(selected[1])
+            path = self.gstore.get_path(selected[0])[0]
+            self.mnu_add_to_group.foreach(lambda w: w.set_sensitive(True))
+            menuitems = self.mnu_add_to_group.get_children()
+            if path != 0 and path-1 < len(menuitems):
+                menuitems[path-1].set_sensitive(False)
+        else:
+            if not self.default_group_ref.valid():
+                return
+            self.trv_groups.get_selection().select_path(
+                self.default_group_ref.get_path())
+        self.get('btn_group_remove').set_sensitive(
+            not self.is_default_group_selected())
+        self.set_move_group_sensitivity()
 
     def set_move_group_sensitivity(self):
         """Helper function for on_btn_group_*_clicked."""
@@ -540,7 +544,11 @@ class EpoptesGui(object):
         # Edit the name of the newly created group
         self.trv_groups.set_cursor(
             self.gstore.get_path(itr), self.get('tvc_group'), True)
-        self.append_to_groups_menu(new_group)
+        menuitem = Gtk.MenuItem(new_group.name)
+        menuitem.show()
+        menuitem.connect(
+            'activate', self.on_imi_clients_add_to_group_activate, new_group)
+        self.mnu_add_to_group.append(menuitem)
 
     def on_btn_group_remove_clicked(self, _widget):
         """Handle btn_group_remove.clicked event."""
@@ -583,7 +591,7 @@ class EpoptesGui(object):
         self.get('imi_clients_information').set_sensitive(single_client)
         self.get('tlb_clients_information').set_sensitive(single_client)
 
-        if len(selected) > 0:
+        if selected:
             self.get('mni_add_to_group').set_sensitive(True)
             self.get('imi_clients_remove_from_group').set_sensitive(
                 not self.is_default_group_selected())
@@ -610,33 +618,36 @@ class EpoptesGui(object):
                 selected = selection.get_selected_rows()[1]
                 if clicked:
                     clicked = clicked[0]
-
             if clicked:
                 if clicked not in selected:
                     selection.unselect_all()
                     selection.select_path(clicked)
             else:
                 selection.unselect_all()
-
             if widget is self.icv_clients:
                 menu = self.get('mni_clients').get_submenu()
-
-            menu.popup(None, None, None, None, event.button, event.time)
-            menu.show()
+                menu.popup(None, None, None, None, event.button, event.time)
+                menu.show()
             return True
+        return False
 
     def reload_imagetypes(self):
         """Helper function for on_btn_size_* and on_scl_icon_size_*.
         Improve the quality of previously resized svg icons, by reloading them.
         """
+        # TODO: I don't think SVG images need to be reloaded at all.
+        # Furthermore, resizing currently does have bad quality except for the
+        # first icon, until the group is changed!
         old_pixbufs = self.imagetypes.values()
-        loadSVG = lambda path: GdkPixbuf.Pixbuf.new_from_file_at_size(
-            path, self.scrWidth, self.scrHeight)
         self.imagetypes = {
-            'offline': loadSVG('images/offline.svg'),
-            'thin': loadSVG('images/thin.svg'),
-            'fat': loadSVG('images/fat.svg'),
-            'standalone': loadSVG('images/standalone.svg')
+            'offline': GdkPixbuf.Pixbuf.new_from_file_at_size(
+                'images/offline.svg', self.ts_width, self.ts_height),
+            'thin': GdkPixbuf.Pixbuf.new_from_file_at_size(
+                'images/thin.svg', self.ts_width, self.ts_height),
+            'fat': GdkPixbuf.Pixbuf.new_from_file_at_size(
+                'images/fat.svg', self.ts_width, self.ts_height),
+            'standalone': GdkPixbuf.Pixbuf.new_from_file_at_size(
+                'images/standalone.svg', self.ts_width, self.ts_height),
         }
 
         rows = [row for row in self.cstore if row[C_PIXBUF] in old_pixbufs]
@@ -662,25 +673,25 @@ class EpoptesGui(object):
             adj.set_value(width)
         else:
             width = adj.get_value()
-        self.scrWidth = int(width)
-        self.scrHeight = int(3*self.scrWidth/4)  # Κeep the 4:3 aspect ratio
+        self.ts_width = int(width)
+        self.ts_height = int(3*self.ts_width/4)  # Κeep the 4:3 aspect ratio
 
-        # Fast scale all the thumbnails to make the change quickly visible
+        # Fast scale all the thumbshots to make the change quickly visible
         old_pixbufs = self.imagetypes.values()
         for row in self.cstore:
             if row[C_PIXBUF] in old_pixbufs:
                 ctype = row[C_INSTANCE].type
                 cur_w = self.imagetypes[ctype].get_width()
                 cur_h = self.imagetypes[ctype].get_height()
-                if not (cur_w == self.scrWidth and cur_h == self.scrHeight):
+                if not (cur_w == self.ts_width and cur_h == self.ts_height):
                     new_thumb = row[C_PIXBUF].scale_simple(
-                        self.scrWidth, self.scrHeight,
+                        self.ts_width, self.ts_height,
                         GdkPixbuf.InterpType.NEAREST)
                     self.imagetypes[ctype] = new_thumb
                 row[C_PIXBUF] = self.imagetypes[ctype]
             else:
                 new_thumb = row[C_PIXBUF].scale_simple(
-                    self.scrWidth, self.scrHeight,
+                    self.ts_width, self.ts_height,
                     GdkPixbuf.InterpType.NEAREST)
                 row[C_PIXBUF] = new_thumb
 
@@ -693,9 +704,9 @@ class EpoptesGui(object):
         self.icv_clients.check_resize()
 
     def on_scl_icon_size_button_press_event(self, _widget, event):
-        """Make right click reset the thumbnail size."""
+        """Make right click reset the thumbshots size."""
         if event.button == 3:
-            self.on_scl_icon_size_value_changed(None, 120)
+            self.on_scl_icon_size_value_changed(None, 128)
             self.reload_imagetypes()
             return True
         return False
@@ -707,14 +718,16 @@ class EpoptesGui(object):
         # the user has decided the desired zoom level.
         self.reload_imagetypes()
 
-    # TODO: this is callback from uiconnection.py
+    # Daemon callbacks
     def connected(self, daemon):
+        """Called from uiconnection->Daemon->connectionMade."""
         self.mainwin.set_sensitive(True)
         self.daemon = daemon
-        daemon.enumerate_clients().addCallback(lambda h: self.amp_got_clients(h))
+        daemon.enumerate_clients().addCallback(self.amp_got_clients)
         self.fill_icon_view(self.get_selected_group()[1])
 
     def disconnected(self, _daemon):
+        """Called from uiconnection->Daemon->connectionLost."""
         self.mainwin.set_sensitive(False)
         # If the reactor is not running at this point it means that we were
         # closed normally.
@@ -731,20 +744,22 @@ class EpoptesGui(object):
         dlg.destroy()
         reactor.stop()
 
-    # AMP callbacks
     def amp_client_connected(self, handle):
+        """Called from uiconnection->Daemon->client_connected."""
         print("New connection from", handle)
-        d = self.daemon.command(handle, 'info')
-        d.addCallback(lambda r: self.add_client(handle, r.decode()))
-        d.addErrback(lambda err: self.print_errors(
+        dfr = self.daemon.command(handle, 'info')
+        dfr.addCallback(lambda r: self.add_client(handle, r.decode()))
+        dfr.addErrback(lambda err: self.print_errors(
             "when connecting client %s: %s" % (handle, err)))
 
     def amp_client_disconnected(self, handle):
-        print("Disconnect from", handle)
+        """Called from uiconnection->Daemon->client_disconnected."""
+        def determine_offline(client_):
+            """Helper function to call client.set_offline when appropriate."""
+            if client_.hsystem == '' and client_.users == {}:
+                client_.set_offline()
 
-        def determine_offline(client):
-            if client.hsystem == '' and client.users == {}:
-                client.set_offline()
+        print("Disconnect from", handle)
         client = None
         for client in structs.clients:
             if client.hsystem == handle:
@@ -755,7 +770,6 @@ class EpoptesGui(object):
                 client.hsystem = ''
                 determine_offline(client)
                 break
-
             elif handle in client.users:
                 if self.get_selected_group()[1].has_client(client) \
                         or self.is_default_group_selected():
@@ -769,7 +783,6 @@ class EpoptesGui(object):
                 break
             else:
                 client = None
-
         if client is not None:
             for row in self.cstore:
                 if row[C_INSTANCE] is client:
@@ -777,40 +790,21 @@ class EpoptesGui(object):
                     break
 
     def amp_got_clients(self, handles):
+        """Callback from self.connected=>daemon.enumerate_clients."""
         print("Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
-            d = self.daemon.command(handle, 'info')
-            d.addCallback(
+            dfr = self.daemon.command(handle, 'info')
+            dfr.addCallback(
                 lambda r, h=handle: self.add_client(h, r.decode(), True))
-            d.addErrback(lambda err: self.print_errors(
-                "when enumerating client %s: %s" % (handle, err)))
-
-    def on_group_selection_changed(self, _treeselection):
-        self.cstore.clear()
-        selected = self.get_selected_group()
-
-        if selected is not None:
-            self.fill_icon_view(selected[1])
-            path = self.gstore.get_path(selected[0])[0]
-            self.mnu_add_to_group.foreach(lambda w: w.set_sensitive(True))
-            menuitems = self.mnu_add_to_group.get_children()
-            if path != 0 and path-1 < len(menuitems):
-                menuitems[path-1].set_sensitive(False)
-        else:
-            if not self.default_group_ref.valid():
-                return
-            self.trv_groups.get_selection().select_path(
-                self.default_group_ref.get_path())
-        self.get('btn_group_remove').set_sensitive(
-            not self.is_default_group_selected())
-        self.set_move_group_sensitivity()
+            dfr.addErrback(lambda err, h=handle: self.print_errors(
+                "when enumerating client %s: %s" % (h, err)))
 
     def add_to_icon_view(self, client):
         """Properly add a Client class instance to the clients iconview."""
         # If there are one or more users on client, add a new iconview entry
         # for each one of them.
         label = 'uname'
-        if self.showRealNames:
+        if self.show_real_names:
             label = 'rname'
         if client.users:
             for hsession, user in client.users.items():
@@ -826,7 +820,10 @@ class EpoptesGui(object):
     def fill_icon_view(self, group, keep_selection=False):
         """Fill the clients iconview from a Group class instance."""
         if keep_selection:
-            selection = [row[C_INSTANCE] for row in self.get_selected_clients()]
+            selection = [row[C_INSTANCE] for row in
+                         self.get_selected_clients()]
+        else:
+            selection = None
         self.cstore.clear()
         if self.is_default_group_selected():
             clients_list = [client for client in structs.clients
@@ -836,7 +833,7 @@ class EpoptesGui(object):
         # Add the new clients to the iconview
         for client in clients_list:
             self.add_to_icon_view(client)
-        if keep_selection:
+        if selection:
             for row in self.cstore:
                 if row[C_INSTANCE] in selection:
                     self.icv_clients.select_path(row.path)
@@ -854,23 +851,24 @@ class EpoptesGui(object):
         itr = self.trv_groups.get_selection().get_selected()[1]
         if itr:
             return itr, self.gstore[itr][G_INSTANCE]
-        else:
-            return None
+        return None
 
-    def add_client(self, handle, r, already=False):
+    def add_client(self, handle, reply, already=False):
+        """Callback after running `info` on a client."""
         # already is True if the client was started before epoptes
         print("add_client's been called for", handle)
         try:
             info = {}
-            for line in r.strip().split('\n'):
+            for line in reply.strip().split('\n'):
                 key, value = line.split('=', 1)
                 info[key.strip()] = value.strip()
-            user, host, ip, mac, type, uid, version, name = \
+            user, host, _ip, mac, type_, uid, version, name = \
                 info['user'], info['hostname'], info['ip'], info['mac'], \
                 info['type'], int(info['uid']), info['version'], info['name']
-        except:
-            print("  Can't extract client information, won't add this client")
-            return
+        except (KeyError, ValueError) as exc:
+            print("  Can't extract client information, won't add this client",
+                  exc)
+            return False
 
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.
@@ -901,10 +899,11 @@ class EpoptesGui(object):
         if client is None:
             print('  New client: ', end='')
             client = structs.Client(mac=mac)
-        print('hostname=%s, type=%s, uid=%s, user=%s' % (host, type, uid, user))
+        print('hostname=%s, type=%s, uid=%s, user=%s' %
+              (host, type_, uid, user))
 
         # Update/fill the client information
-        client.type, client.hostname = type, host
+        client.type, client.hostname = type_, host
         if uid == 0:
             # This is a root epoptes-client
             client.hsystem = handle
@@ -916,15 +915,17 @@ class EpoptesGui(object):
                 self.notify_queue.enqueue(
                     _("Connected:"),
                     _("%(user)s on %(host)s") % {"user": user, "host": host})
-
         if sel_group.has_client(client) or self.is_default_group_selected():
             self.fill_icon_view(sel_group, True)
 
+        return True
+
     def set_label(self, row):
+        """Set the appropriate label for a client icon."""
         inst = row[C_INSTANCE]
         if row[C_SESSION_HANDLE]:
             label = 'uname'
-            if self.showRealNames:
+            if self.show_real_names:
                 label = 'rname'
             user = row[C_INSTANCE].users[row[C_SESSION_HANDLE]][label]
         else:
@@ -952,37 +953,36 @@ class EpoptesGui(object):
             return label
 
     def ask_thumbshot(self, handle, first_time=False):
+        """Ask a client for a thumbshot, every 5 seconds."""
         # Should always return False to prevent glib from calling us again
         if first_time:
-            if handle not in self.currentScreenshots:
+            if handle not in self.current_thumbshots:
                 # We started asking for thumbshots, but didn't yet get one
-                self.currentScreenshots[handle] = None
+                self.current_thumbshots[handle] = None
             else:
                 # Reuse the existing thumbshot
-                if not self.currentScreenshots[handle] is None:
+                if not self.current_thumbshots[handle] is None:
                     for i in self.cstore:
                         if handle == i[C_SESSION_HANDLE]:
                             self.cstore[i.path][C_PIXBUF] = \
-                                self.currentScreenshots[handle]
+                                self.current_thumbshots[handle]
                             break
                 return False
-        # TODO: Implement this using Gtk.TreeRowReferences instead
-        # of searching the whole model (Need to modify exec_on_clients)
+        # TODO: Implement this using Gtk.TreeRowReferences instead of
+        # searching the whole model (Need to modify exec_on_clients)
         for client in self.cstore:
             if handle == client[C_SESSION_HANDLE]:
-                # TODO: rename "thumbnail" and "screenshot" to "thumbshot"
                 self.exec_on_clients(
-                    ['thumbshot', self.scrWidth, self.scrHeight],
+                    ['thumbshot', self.ts_width, self.ts_height],
                     handles=[handle], reply=self.got_thumbshot)
                 return False
         # That handle is no longer in the cstore, remove it
-        try:
-            del self.currentScreenshots[handle]
-        except:
-            pass
+        if handle in self.current_thumbshots:
+            del self.current_thumbshots[handle]
         return False
 
     def got_thumbshot(self, handle, reply):
+        """Callback after running`thumbshot` on a client."""
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
                 # We want to ask for thumbshots every 5 sec after the last one.
@@ -994,53 +994,46 @@ class EpoptesGui(object):
                     return
                 try:
                     rowstride, size, pixels = reply.split(b'\n', 2)
-                except:
+                    rowstride = int(rowstride)
+                    width, height = [int(i) for i in size.split(b'x')]
+                except ValueError:
+                    print("Bad thumbshot header")
                     return
-                rowstride = int(rowstride)
-                width, height = size.split(b'x')
                 # TODO: see if there's any way to avoid casting to GLib.Bytes
                 pxb = GdkPixbuf.Pixbuf.new_from_bytes(
                     GLib.Bytes.new(pixels), GdkPixbuf.Colorspace.RGB, False, 8,
-                    int(width), int(height), rowstride)
-                self.currentScreenshots[handle] = pxb
+                    width, height, rowstride)
+                self.current_thumbshots[handle] = pxb
                 self.cstore[i.path][C_PIXBUF] = pxb
                 return
         # That handle is no longer in the cstore, remove it
-        try:
-            del self.currentScreenshots[handle]
-        except:
-            pass
+        if handle in self.current_thumbshots:
+            del self.current_thumbshots[handle]
 
     def get_selected_clients(self):
+        """Return a list of the clients selected in the iconview."""
         selected = self.icv_clients.get_selected_items()
         items = []
         for i in selected:
             items.append(self.cstore[i])
         return items
 
-    def append_to_groups_menu(self, group):
-        mitem = Gtk.MenuItem(group.name)
-        mitem.show()
-        mitem.connect(
-            'activate', self.on_imi_clients_add_to_group_activate, group)
-        self.mnu_add_to_group.append(mitem)
-
-    def remove_from_groups_menu(self, group):
-        mitem = Gtk.MenuItem(group.name)
-        mitem.show()
-        mitem.connect(
-            'activate', self.on_imi_clients_add_to_group_activate, group)
-        self.mnu_add_to_group.append(mitem)
-
     def exec_on_clients(
-            self, command, clients=[], reply=None, mode=EM_SESSION_OR_SYSTEM,
-            handles=[], warning='', params=None):
+            self, command, clients=None, reply=None, mode=EM_SESSION_OR_SYSTEM,
+            handles=None, warning='', params=None):
+        """Execute a command on all (or on the provided) clients."""
         # reply should be a method in which the result will be sent
+        if clients is None:
+            clients = []
+        if handles is None:
+            handles = []
         if params is None:
             params = []
+        # "if self.cstore" is wrong as it's a Gtk.ListStore, not a dict.
+        # pylint: disable=len-as-condition
         if len(self.cstore) == 0:
             # print('No clients')
-            return False
+            return
 
         if isinstance(command, list) and len(command) > 0:
             command = '%s %s' % (command[0], ' '.join(
@@ -1056,18 +1049,18 @@ class EpoptesGui(object):
                 if reply:
                     cmd.addCallback(
                         lambda r, h=handle, p=params: reply(h, r, *p))
-                    cmd.addErrback(lambda err: self.print_errors(
+                    cmd.addErrback(lambda err, h=handle: self.print_errors(
                         "when executing command %s on client %s: %s" %
-                        (command, handle, err)))
+                        (command, h, err)))
 
         for client in clients:
             sent = False
-            for em in mode:
-                if em == EM_SESSION_ONLY:
+            for e_m in mode:
+                if e_m == EM_SESSION_ONLY:
                     handle = client[C_SESSION_HANDLE]
-                elif em == EM_SYSTEM_ONLY:
+                elif e_m == EM_SYSTEM_ONLY:
                     handle = client[C_INSTANCE].hsystem
-                else:  # em == EM_EXIT_IF_SENT
+                else:  # e_m == EM_EXIT_IF_SENT
                     if sent:
                         break
                     else:
@@ -1086,14 +1079,16 @@ class EpoptesGui(object):
 
     def exec_on_selected_clients(
             self, command, reply=None, mode=EM_SESSION_OR_SYSTEM, warn=''):
+        """Execute a command on the selected clients."""
         clients = self.get_selected_clients()
-        if len(clients) == 0:  # No client selected, send the command to all
+        if not clients:  # No client selected, send the command to all
             clients = self.cstore
         else:  # Show the warning only when no clients are selected
             warn = ''
         self.exec_on_clients(command, clients, reply, mode, warning=warn)
 
     def confirmation_dialog(self, text):
+        """Show a Yes/No dialog, returning True/False accordingly."""
         dlg = Gtk.MessageDialog(
             self.mainwin, 0, Gtk.MessageType.WARNING, Gtk.ButtonsType.YES_NO,
             text, title=_('Confirm action'))
@@ -1102,6 +1097,7 @@ class EpoptesGui(object):
         return resp == Gtk.ResponseType.YES
 
     def warning_dialog(self, text):
+        """Show a warning dialog."""
         dlg = Gtk.MessageDialog(
             self.mainwin, 0, Gtk.MessageType.WARNING, Gtk.ButtonsType.CLOSE,
             text, title=_('Warning'))
@@ -1110,5 +1106,6 @@ class EpoptesGui(object):
 
     @staticmethod
     def print_errors(error):
+        """Helper function for twisted errbacks."""
         print('  **Twisted error:', error)
         return
