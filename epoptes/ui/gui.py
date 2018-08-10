@@ -18,8 +18,7 @@ import subprocess
 from epoptes.ui.reactor import reactor
 from epoptes.common.constants import *
 from epoptes.common import config
-from epoptes.core import structs
-from epoptes.core import wol
+from epoptes.core import logger, structs, wol
 from epoptes.ui.about import About
 from epoptes.ui.benchmark import Benchmark
 from epoptes.ui.client_information import ClientInformation
@@ -30,7 +29,7 @@ from epoptes.ui.send_message import SendMessage
 
 from gi.repository import Gdk, GdkPixbuf, GLib, Gtk
 
-# TODO: use logger
+LOG = logger.Logger(__file__)
 
 
 class EpoptesGui(object):
@@ -705,11 +704,11 @@ class EpoptesGui(object):
 
     def amp_client_connected(self, handle):
         """Called from uiconnection->Daemon->client_connected."""
-        print("New connection from", handle)
+        LOG.w("New connection from", handle)
         dfr = self.daemon.command(handle, 'info')
         dfr.addCallback(lambda r: self.add_client(handle, r.decode()))
-        dfr.addErrback(lambda err: self.print_errors(
-            "when connecting client %s: %s" % (handle, err)))
+        dfr.addErrback(lambda err: LOG.e(
+            "Error when connecting client %s: %s" % (handle, err)))
 
     def amp_client_disconnected(self, handle):
         """Called from uiconnection->Daemon->client_disconnected."""
@@ -718,7 +717,7 @@ class EpoptesGui(object):
             if client_.hsystem == '' and client_.users == {}:
                 client_.set_offline()
 
-        print("Disconnect from", handle)
+        LOG.w("Disconnect from", handle)
         client = None
         for client in structs.clients:
             if client.hsystem == handle:
@@ -750,13 +749,13 @@ class EpoptesGui(object):
 
     def amp_got_clients(self, handles):
         """Callback from self.connected=>daemon.enumerate_clients."""
-        print("Got clients:", ', '.join(handles) or 'None')
+        LOG.w("Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
             dfr = self.daemon.command(handle, 'info')
             dfr.addCallback(
                 lambda r, h=handle: self.add_client(h, r.decode(), True))
-            dfr.addErrback(lambda err, h=handle: self.print_errors(
-                "when enumerating client %s: %s" % (h, err)))
+            dfr.addErrback(lambda err, h=handle: LOG.e(
+                "Error when enumerating client %s: %s" % (h, err)))
 
     def add_to_icon_view(self, client):
         """Properly add a Client class instance to the clients iconview."""
@@ -815,7 +814,7 @@ class EpoptesGui(object):
     def add_client(self, handle, reply, already=False):
         """Callback after running `info` on a client."""
         # already is True if the client was started before epoptes
-        print("add_client's been called for", handle)
+        LOG.w("add_client's been called for", handle)
         try:
             info = {}
             for line in reply.strip().split('\n'):
@@ -825,14 +824,14 @@ class EpoptesGui(object):
                 info['user'], info['hostname'], info['ip'], info['mac'], \
                 info['type'], int(info['uid']), info['version'], info['name']
         except (KeyError, ValueError) as exc:
-            print("  Can't extract client information, won't add this client",
+            LOG.e("  Can't extract client information, won't add this client",
                   exc)
             return False
 
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.
         if (mac in self.current_macs) and ((uid == self.uid) or (uid == 0)):
-            print("  Won't add this client to my lists")
+            LOG.w("  Won't add this client to my lists")
             return False
 
         # Compatibility check
@@ -853,12 +852,12 @@ class EpoptesGui(object):
             # Find if the new handle is a known client
             if mac == inst.mac:
                 client = inst
-                print('  Old client: ', end='')
+                LOG.w('  Old client: ', end='')
                 break
         if client is None:
-            print('  New client: ', end='')
+            LOG.w('  New client: ', end='')
             client = structs.Client(mac=mac)
-        print('hostname=%s, type=%s, uid=%s, user=%s' %
+        LOG.w('hostname=%s, type=%s, uid=%s, user=%s' %
               (host, type_, uid, user))
 
         # Update/fill the client information
@@ -892,8 +891,8 @@ class EpoptesGui(object):
         row[C_LABEL] = self.calculate_label(inst, user)
 
     def calculate_label(self, client, username=''):
-        """Return the iconview label from a hostname/alias
-        and a username, according to the user options.
+        """Return the iconview label from a hostname/alias and a username,
+        according to the user options.
         """
         user_pos, name_pos = self.labels_order
 
@@ -948,7 +947,7 @@ class EpoptesGui(object):
                 # So if the client is too stressed and needs 7 secs to
                 # send a thumbshot, we'll ask for one every 12 secs.
                 GLib.timeout_add(5000, self.ask_thumbshot, handle)
-                # print("I got a thumbshot from %s." % handle)
+                LOG.d("I got a thumbshot from %s." % handle)
                 if not reply:
                     return
                 try:
@@ -956,7 +955,7 @@ class EpoptesGui(object):
                     rowstride = int(rowstride)
                     width, height = [int(i) for i in size.split(b'x')]
                 except ValueError:
-                    print("Bad thumbshot header")
+                    LOG.e("Bad thumbshot header")
                     return
                 # TODO: see if there's any way to avoid casting to GLib.Bytes
                 pxb = GdkPixbuf.Pixbuf.new_from_bytes(
@@ -991,7 +990,7 @@ class EpoptesGui(object):
         # "if self.cstore" is wrong as it's a Gtk.ListStore, not a dict.
         # pylint: disable=len-as-condition
         if len(self.cstore) == 0:
-            # print('No clients')
+            LOG.d('No clients')
             return
 
         if isinstance(command, list) and len(command) > 0:
@@ -1008,8 +1007,8 @@ class EpoptesGui(object):
                 if reply:
                     cmd.addCallback(
                         lambda r, h=handle, p=params: reply(h, r, *p))
-                    cmd.addErrback(lambda err, h=handle: self.print_errors(
-                        "when executing command %s on client %s: %s" %
+                    cmd.addErrback(lambda err, h=handle: LOG.e(
+                        "Error when executing command %s on client %s: %s" %
                         (command, h, err)))
 
         for client in clients:
@@ -1032,8 +1031,8 @@ class EpoptesGui(object):
                 if reply:
                     cmd.addCallback(
                         lambda r, h=handle, p=params: reply(h, r, *p))
-                    cmd.addErrback(lambda err: self.print_errors(
-                        "when executing command %s on client %s: %s" %
+                    cmd.addErrback(lambda err: LOG.e(
+                        "Error when executing command %s on client %s: %s" %
                         (command, handle, err)))
 
     def exec_on_selected_clients(
@@ -1062,9 +1061,3 @@ class EpoptesGui(object):
             text, title=_('Warning'))
         dlg.run()
         dlg.destroy()
-
-    @staticmethod
-    def print_errors(error):
-        """Helper function for twisted errbacks."""
-        print('  **Twisted error:', error)
-        return

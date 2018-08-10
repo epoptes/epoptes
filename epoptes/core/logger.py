@@ -26,11 +26,11 @@ class Logger:
         self.c = self.stderr
         self.file = file
 
-    def null(self, *_args):
+    def null(self, *_args, end='\n'):
         """The self.[cdeiw] variables point here when debugging is disabled."""
         pass
 
-    def stderr(self, *args):
+    def stderr(self, *args, end='\n'):
         """The self.[cdeiw] variables point here when debugging is enabled."""
         if self:
-            print(*args, file=self.file)
+            print(*args, end=end, file=self.file)
