@@ -482,26 +482,18 @@ class EpoptesGui(object):
 
     def on_trv_groups_drag_motion(self, widget, context, drag_x, drag_y, time):
         """Handle trv_groups.drag_motion event."""
-        drag_info = widget.get_dest_row_at_pos(drag_x, drag_y)
         # Don't allow dropping in the empty space of the treeview, or inside
-        # the 'Detected' group, or inside the currently selected group
-        selected_path = self.gstore.get_path(self.get_selected_group()[0])
-        if (not drag_info or drag_info[0] == self.default_group_ref.get_path()
-                or drag_info[0] == selected_path):
-            widget.set_drag_dest_row(None, Gtk.TreeViewDropPosition.AFTER)
-        else:
+        # the 'Detected clients' group, or inside the currently selected group
+        drag_info = widget.get_dest_row_at_pos(drag_x, drag_y)
+        act = 0
+        if drag_info:
             path, pos = drag_info
-            # Don't allow dropping between the groups treeview rows
-            if pos == Gtk.TreeViewDropPosition.BEFORE:
-                widget.set_drag_dest_row(
-                    path, Gtk.TreeViewDropPosition.INTO_OR_BEFORE)
-            elif pos == Gtk.TreeViewDropPosition.AFTER:
-                widget.set_drag_dest_row(
-                    path, Gtk.TreeViewDropPosition.INTO_OR_AFTER)
-        # TODO: AttributeError: 'X11DragContext' object has no attribute
-        # 'drag_status'
-        context.drag_status(context.suggested_action, time)
-        return False
+            if pos:
+                if path != self.gstore.get_path(self.get_selected_group()[0]) \
+                        and path != self.default_group_ref.get_path():
+                    act = context.get_suggested_action()
+        Gdk.drag_status(context, act, time)
+        return True
 
     def on_crt_group_edited(self, _widget, path, new_name):
         """Handle crt_group.edited event."""
