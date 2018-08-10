@@ -3,11 +3,11 @@
 <interface>
   <requires lib="gtk+" version="3.0"/>
   <object class="GtkAdjustment" id="adj_icon_size">
-    <property name="lower">50</property>
-    <property name="upper">250</property>
-    <property name="value">50</property>
-    <property name="step_increment">5</property>
-    <signal name="value-changed" handler="on_scl_icon_size_value_changed" swapped="no"/>
+    <property name="lower">48</property>
+    <property name="upper">256</property>
+    <property name="value">128</property>
+    <property name="step_increment">4</property>
+    <property name="page_increment">16</property>
   </object>
   <object class="GtkImage" id="img_broadcasts_assist_user">
     <property name="visible">True</property>
@@ -1330,7 +1330,6 @@
                     <property name="digits">0</property>
                     <property name="draw_value">False</property>
                     <signal name="button-press-event" handler="on_scl_icon_size_button_press_event" swapped="no"/>
-                    <signal name="button-release-event" handler="on_scl_icon_size_button_release_event" swapped="no"/>
                     <signal name="value-changed" handler="on_scl_icon_size_value_changed" swapped="no"/>
                   </object>
                   <packing>

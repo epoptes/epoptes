@@ -30,6 +30,8 @@ from epoptes.ui.send_message import SendMessage
 
 from gi.repository import Gdk, GdkPixbuf, GLib, Gtk
 
+# TODO: use logger
+
 
 class EpoptesGui(object):
     """Epoptes GUI class."""
@@ -112,7 +114,6 @@ class EpoptesGui(object):
         self.trv_groups.get_selection().select_path(
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
-        self.reload_imagetypes()
         _saved_clients, groups = config.read_groups(
             config.expand_filename('groups.json'))
         if groups:
@@ -121,7 +122,6 @@ class EpoptesGui(object):
             self.gstore.append([group.name, group, True])
             mitem = Gtk.MenuItem(label=group.name)
             mitem.show()
-            # TODO: shouldn't mitem be the first parameter there?
             mitem.connect(
                 'activate', self.on_imi_clients_add_to_group_activate, group)
             self.mnu_add_to_group.append(mitem)
@@ -498,9 +498,10 @@ class EpoptesGui(object):
             elif pos == Gtk.TreeViewDropPosition.AFTER:
                 widget.set_drag_dest_row(
                     path, Gtk.TreeViewDropPosition.INTO_OR_AFTER)
-
+        # TODO: AttributeError: 'X11DragContext' object has no attribute
+        # 'drag_status'
         context.drag_status(context.suggested_action, time)
-        return True
+        return False
 
     def on_crt_group_edited(self, _widget, path, new_name):
         """Handle crt_group.edited event."""
@@ -632,14 +633,23 @@ class EpoptesGui(object):
             return True
         return False
 
-    def reload_imagetypes(self):
-        """Helper function for on_btn_size_* and on_scl_icon_size_*.
-        Improve the quality of previously resized svg icons, by reloading them.
-        """
-        # TODO: I don't think SVG images need to be reloaded at all.
-        # Furthermore, resizing currently does have bad quality except for the
-        # first icon, until the group is changed!
-        old_pixbufs = self.imagetypes.values()
+    def on_btn_size_down_clicked(self, _widget):
+        """Handle btn_size_down.clicked event."""
+        adj = self.get('adj_icon_size')
+        adj.set_value(adj.get_value() - adj.props.page_increment)
+
+    def on_btn_size_up_clicked(self, _widget):
+        """Handle btn_size_up.clicked event."""
+        adj = self.get('adj_icon_size')
+        adj.set_value(adj.get_value() + adj.props.page_increment)
+
+    def on_scl_icon_size_value_changed(self, _widget):
+        """Handle scl_icon_size.value_changed event."""
+        self.ts_width = int(self.get('adj_icon_size').get_value())
+        self.ts_height = int(self.ts_width/(4/3))  # Κeep the 4:3 aspect ratio
+
+        # Fast scale all the thumbshots to make the change quickly visible
+        old_pixbufs = list(self.imagetypes.values())
         self.imagetypes = {
             'offline': GdkPixbuf.Pixbuf.new_from_file_at_size(
                 'images/offline.svg', self.ts_width, self.ts_height),
@@ -650,46 +660,9 @@ class EpoptesGui(object):
             'standalone': GdkPixbuf.Pixbuf.new_from_file_at_size(
                 'images/standalone.svg', self.ts_width, self.ts_height),
         }
-
-        rows = [row for row in self.cstore if row[C_PIXBUF] in old_pixbufs]
-        for row in rows:
-            row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
-
-    def on_btn_size_down_clicked(self, _widget):
-        """Handle btn_size_down.clicked event."""
-        adj = self.get('adj_icon_size')
-        adj.set_value(adj.get_value() - 15)
-        self.reload_imagetypes()
-
-    def on_btn_size_up_clicked(self, _widget):
-        """Handle btn_size_up.clicked event."""
-        adj = self.get('adj_icon_size')
-        adj.set_value(adj.get_value() + 15)
-        self.reload_imagetypes()
-
-    def on_scl_icon_size_value_changed(self, _widget, width=None):
-        """Handle scl_icon_size_value.changed event."""
-        adj = self.get('adj_icon_size')
-        if width:
-            adj.set_value(width)
-        else:
-            width = adj.get_value()
-        self.ts_width = int(width)
-        self.ts_height = int(3*self.ts_width/4)  # Κeep the 4:3 aspect ratio
-
-        # Fast scale all the thumbshots to make the change quickly visible
-        old_pixbufs = self.imagetypes.values()
         for row in self.cstore:
             if row[C_PIXBUF] in old_pixbufs:
-                ctype = row[C_INSTANCE].type
-                cur_w = self.imagetypes[ctype].get_width()
-                cur_h = self.imagetypes[ctype].get_height()
-                if not (cur_w == self.ts_width and cur_h == self.ts_height):
-                    new_thumb = row[C_PIXBUF].scale_simple(
-                        self.ts_width, self.ts_height,
-                        GdkPixbuf.InterpType.NEAREST)
-                    self.imagetypes[ctype] = new_thumb
-                row[C_PIXBUF] = self.imagetypes[ctype]
+                row[C_PIXBUF] = self.imagetypes[row[C_INSTANCE].type]
             else:
                 new_thumb = row[C_PIXBUF].scale_simple(
                     self.ts_width, self.ts_height,
@@ -697,27 +670,18 @@ class EpoptesGui(object):
                 row[C_PIXBUF] = new_thumb
 
         # Hack to remove the extra padding that remains after a 'zoom out'
-        self.icv_clients.set_resize_mode(Gtk.ResizeMode.IMMEDIATE)
         # TODO: Weird Gtk3 issue, they calculate excess width:
         # https://bugzilla.gnome.org/show_bug.cgi?id=680953
         # https://stackoverflow.com/questions/14090094/what-causes-the-different-display-behaviour-for-a-gtkiconview-between-different
-        self.icv_clients.get_cells()[0].set_fixed_size(width/4, -1)
+        self.icv_clients.get_cells()[0].set_fixed_size(self.ts_width/4, -1)
         self.icv_clients.check_resize()
 
     def on_scl_icon_size_button_press_event(self, _widget, event):
         """Make right click reset the thumbshots size."""
         if event.button == 3:
-            self.on_scl_icon_size_value_changed(None, 128)
-            self.reload_imagetypes()
+            self.get('adj_icon_size').set_value(128)
             return True
         return False
-
-    def on_scl_icon_size_button_release_event(self, _widget, _event):
-        """Handle scl_icon_size.button_release event."""
-        # Here we want to resize the SVG icons from imagetypes at a better
-        # quality than this of the quick pixbuf scale, since we assume that
-        # the user has decided the desired zoom level.
-        self.reload_imagetypes()
 
     # Daemon callbacks
     def connected(self, daemon):
@@ -1048,7 +1012,7 @@ class EpoptesGui(object):
         if clients == [] and handles != []:
             for handle in handles:
                 cmd = self.daemon.command(handle, str(command))
-                # TODO: do we need callbacks even when no reply?
+                # TODO: do we need errbacks even when no reply?
                 if reply:
                     cmd.addCallback(
                         lambda r, h=handle, p=params: reply(h, r, *p))
@@ -1072,7 +1036,7 @@ class EpoptesGui(object):
                     continue
                 sent = True
                 cmd = self.daemon.command(handle, str(command))
-                # TODO: do we need callbacks even when no reply?
+                # TODO: do we need errbacks even when no reply?
                 if reply:
                     cmd.addCallback(
                         lambda r, h=handle, p=params: reply(h, r, *p))
