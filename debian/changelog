@@ -1,8 +1,17 @@
-epoptes (18.06-1) UNRELEASED; urgency=medium
+epoptes (1.0.0-1) unstable; urgency=medium
 
-  * Debug release.
+  * New upstream version:
+    - Migrate to Python3/Gtk3.
+    - Restructure and optimize the code, while resolving a lot of outstanding
+      issues.
+    - Apply PEP 8, PEP 257, PEP 3101, DEP-5, Sphinx and SPDX guidelines to the
+      code base.
+    - Ensure that Epoptes runs properly in recent systemd-based distributions.
+  * Update packaging for Python3/Gtk3.
+  * Update epoptes and epoptes-clients versions from changelog while packaging.
+  * Switch from sysvinit to systemd.
 
- -- Alkis Georgopoulos <alkisg@gmail.com>  Mon, 21 May 2018 12:37:28 +0300
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Sat, 11 Aug 2018 11:53:04 +0300
 
 epoptes (0.5.10-2) unstable; urgency=medium
 
