@@ -112,6 +112,45 @@ fetch_certificate()
     fi
 }
 
+wait_for_dns() {
+    delay=60
+    while true; do
+        server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
+        test -n "$server_ip" && break
+        # If DNS is not up yet, retry, otherwise abort
+        server_ip=$(getent hosts "ntp.org" | awk '{ print $1; exit }')
+        if [ -z "$server_ip" ]; then
+            echo "Cannot resolve $SERVER, postponing for $delay seconds..."
+            sleep $delay
+            # Add a minute for each failure to minimize log spamming
+            delay=$(($delay+60))
+        else
+            echo "Cannot resolve $SERVER while DNS appears to work, aborting."
+            exit 1
+        fi
+    done
+}
+
+apply_wol() {
+    if [ "$UID" -eq 0 ] && [ -n "$WOL" ] && [ -x /sbin/ethtool ] &&
+        [ "$EPOPTES_CLIENT_APPLIED_WOL" != True ]
+    then
+        export EPOPTES_CLIENT_APPLIED_WOL=True
+        # Copied from client-functions, these map from server_ip to def_iface
+        read def_iface IP <<EOF
+$(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
+EOF
+        test "${def_iface:-lo}" != "lo" || read def_iface IP <<EOF
+$(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
+EOF
+        if [ "${def_iface:-lo}" != "lo" ]; then
+            # Only set WOL if def_iface is both != '' and != 'lo'.
+            echo "Setting WOL=$WOL for $def_iface"
+            ethtool -s "$def_iface" wol $WOL
+        fi
+    fi
+}
+
 
 # Main.
 version
@@ -172,13 +211,9 @@ else
     cd /usr/share/epoptes-client
 fi
 
-# Source lsb init functions for log_begin_msg, but only on Debian-based distros
-if [ -f /lib/lsb/init-functions ] && [ -f /etc/debian_version ]; then
-    . /lib/lsb/init-functions
-else
-    alias log_begin_msg="echo -n"
-fi
-log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
+wait_for_dns
+apply_wol
+printf "Epoptes-client connecting to $SERVER:$PORT..."
 
 # Call chain:
 #  * if-up.d executes /usr/sbin/epoptes-client

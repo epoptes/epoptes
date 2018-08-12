@@ -1,52 +1,41 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# Epoptesd.
-#
-# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
-# 2018, Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
+#!/usr/bin/python3
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Communicate with epoptes-clients on SSL 789
+and with GUIs on /run/epoptes/epoptes.socket.
+Communcation flow:
+  epoptesd.py imports bashplex.py <=SSL=> epoptes-client.
+  epoptesd.py imports guiplex.py <=UNIX=> uiconnection imported by gui.py.
+So, epoptesd, guiplex, bashplex and exchange run as root.
+"""
+import grp
 import os
-from zope.interface import implementer
 
+from OpenSSL import SSL
+from zope.interface import implementer
+from twisted.application import internet, service
+from twisted.application.service import IServiceMaker
+from twisted.internet import ssl
 from twisted.python import usage
 from twisted.plugin import IPlugin
-from twisted.application.service import IServiceMaker
-from twisted.application import internet, service
 
-from epoptes.daemon import bashplex, guiplex
 from epoptes.common import config
-import grp
-from OpenSSL import SSL
+from epoptes.daemon import bashplex, guiplex
 
 
 class Options(usage.Options):
+    """Define the epoptes service command line parameters."""
     optParameters = [
-        ("clientport", "p", 789, "Client Port"),
-        ('pingInterval', 'i', 10),
-        ('pingTimeout', 't', 10),
-      ]
+        ("client-port", "p", 789, "Client Port"),
+        ('ping-interval', 'i', 10),
+        ('ping-timeout', 't', 10)
+    ]
 
 
-class ServerContextFactory:
+class ServerContextFactory(ssl.ContextFactory):
+    """Provide the SSL context."""
     def getContext(self):
         ctx = SSL.Context(SSL.SSLv23_METHOD)
         ctx.use_certificate_file("/etc/epoptes/server.crt")
@@ -54,56 +43,60 @@ class ServerContextFactory:
         return ctx
 
 
+def filter_bash(script):
+    """Strip comments from client-functions, to save some bandwidth."""
+    file = open(script)
+    functions = file.readlines()
+    file.close()
+    result = ''
+    for line in functions:
+        if line.strip() != '' and line.strip()[0] == '#':
+            continue
+        result += line
+    return result
+
+
 @implementer(IServiceMaker, IPlugin)
 class ServiceMaker(object):
+    """Communicate with epoptes-clients on SSL 789
+    and with GUIs on /run/epoptes/epoptes.socket.
+    """
     tapname = "epoptes"
     description = "Epoptes Daemon"
     options = Options
 
     def makeService(self, options):
-        
+        """Override IServiceMaker.makeService."""
         factory = bashplex.DelimitedBashReceiverFactory()
-        factory.pingInterval=int(options['pingInterval'])
-        factory.pingTimeout=int(options['pingTimeout'])
-        factory.startupCommands = self.filterBash('/usr/share/epoptes/client-functions')
+        factory.ping_interval = int(options['ping-interval'])
+        factory.ping_timeout = int(options['ping-timeout'])
+        factory.startup_commands = filter_bash(
+            '/usr/share/epoptes/client-functions')
 
         if config.system['ENCRYPTION']:
-            clientService = internet.SSLServer(int(config.system['PORT']),
-                factory, ServerContextFactory())
+            client_service = internet.SSLServer(
+                int(config.system['PORT']), factory, ServerContextFactory())
         else:
-            clientService = internet.TCPServer(int(config.system['PORT']),
-                factory)
+            client_service = internet.TCPServer(
+                int(config.system['PORT']), factory)
 
         gid = grp.getgrnam(config.system['SOCKET_GROUP'])[2]
-        
+
         if not os.path.isdir(config.system['DIR']):
-            #TODO: for some reason this does 0750 instead
+            # TODO: for some reason this does 0750 instead
             os.makedirs(config.system['DIR'], 0o2770)
         os.chmod(config.system['DIR'], 0o2770)
         os.chown(config.system['DIR'], -1, gid)
 
-        guiService = internet.UNIXServer(
+        gui_service = internet.UNIXServer(
             "%s/epoptes.socket" % config.system['DIR'],
             guiplex.GUIFactory())
 
-        topService = service.MultiService()
-        topService.addService(clientService)
-        topService.addService(guiService)
+        top_service = service.MultiService()
+        top_service.addService(client_service)
+        top_service.addService(gui_service)
 
-        return topService
-    
-    def filterBash(self, script):
-        f = open(script)
-        functions = f.readlines()
-        f.close()
-        
-        result = ''
-        
-        for line in functions:
-            if line.strip() != '' and line.strip()[0] == '#':
-                continue
-            result += line
-        return result
+        return top_service
 
 
 serviceMaker = ServiceMaker()

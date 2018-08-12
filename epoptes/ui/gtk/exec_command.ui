@@ -2,28 +2,28 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
-  <object class="GtkDialog" id="execDialog">
+  <object class="GtkDialog" id="dlg_exec_command">
     <property name="can_focus">False</property>
     <property name="border_width">12</property>
     <property name="title" translatable="yes">Execute command</property>
     <property name="window_position">center</property>
-    <property name="type_hint">normal</property>
+    <property name="type_hint">dialog</property>
     <child>
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="cancel">
+              <object class="GtkButton" id="btn_cancel">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -37,7 +37,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="execute">
+              <object class="GtkButton" id="btn_execute">
                 <property name="label">gtk-execute</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
@@ -58,11 +58,11 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="pack_type">end</property>
-            <property name="position">0</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -73,16 +73,16 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="hbox1">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkImage" id="image1">
+              <object class="GtkImage" id="img_execute">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="stock">gtk-execute</property>
@@ -95,16 +95,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="combobox">
+              <object class="GtkComboBoxText" id="cbt_command">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="has_entry">True</property>
                 <child internal-child="entry">
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="ent_command">
                     <property name="can_focus">True</property>
                     <property name="activates_default">True</property>
+                    <signal name="changed" handler="on_ent_command_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
@@ -118,14 +119,14 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">cancel</action-widget>
-      <action-widget response="1">execute</action-widget>
+      <action-widget response="0">btn_cancel</action-widget>
+      <action-widget response="1">btn_execute</action-widget>
     </action-widgets>
   </object>
 </interface>

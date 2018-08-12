@@ -1,3 +1,4 @@
+#!/bin/sh
 ###########################################################################
 # Implements the client side of the epoptes communications protocol.
 # The daemon reads this file when it starts, and sends it to clients when they
@@ -162,7 +163,8 @@ background() {
     # The command is ran on a subshell with stdin and stdout redirected to
     # /dev/null, so that it doesn't interfere with the output of other commands.
     # stderr isn't changed, i.e. ~/.xsession-errors will be used.
-    ( "$@" 0</dev/null >/dev/null ) &
+    # See issue #58 for explanation of the following syntax.
+    ( exec 0</dev/null >/dev/null; "$@" ) &
 
     test -n "$print_pid" && echo $!
 }
@@ -286,14 +288,22 @@ unmute_sound() {
 
 # Start a network benchmark and print its pid.
 # Stop it automatically after a while.
+# Before starting, also stop any previous benchmarks that are still running.
 # Parameters:
-# $1 = seconds to run (optional).
+# $1 = seconds to run (default=10).
 start_benchmark() {
-    local pid
+    # benchmark_pid can't be unset in the background, but no harm done
+    benchmark_pid=$(background -p stop_start_benchmark "$@")
+    { sleep $((2*${1:-10}+5)); stop_benchmark "$benchmark_pid"; } &
+    echo "$benchmark_pid"
+}
 
-    pid=$(background -p iperf -c "$SERVER" -r ${1:+-t "$1"})
-    { sleep $((2*${1:-10}+5)); stop_benchmark "$pid"; } &
-    echo "$pid"
+# Helper function to avoid running stop_benchmark in foreground.
+# Parameters:
+# $1 = seconds to run.
+stop_start_benchmark() {
+    test -n "$benchmark_pid" && stop_benchmark "$benchmark_pid"
+    iperf -c "$SERVER" -r ${1:+-t "$1"}
 }
 
 # Manually stop a previously running benchmark.
@@ -302,12 +312,12 @@ start_benchmark() {
 stop_benchmark() {
     if [ -n "$1" ]; then
         kill "$1" || return 0
-        sleep 1
+        sleep 0.2
         # For some reason, iperf -c <unknown host> needs 2 kills!
         kill "$1" || return 0
-        sleep 1
+        sleep 0.2
         # If it's not killed by now, it's hanged
-        kill -9 "$1"
+        kill -9 "$1" && sleep 0.2
     fi 2>/dev/null
 }
 
@@ -446,15 +456,7 @@ if [ -z "$UID" ] || [ -z "$TYPE" ] || [ -z "$SERVER" ]; then
     die "Required environment variables are missing."
 fi
 
-# Source lsb init functions for log_end_msg, but only on Debian-based distros
-if [ -f /lib/lsb/init-functions ] && [ -f /etc/debian_version ]; then
-    ( # Use a subshell, we only need init-functions once
-    . /lib/lsb/init-functions
-    log_end_msg 0 >&5
-    )
-else
-    echo "[ OK ]" >&5
-fi
+echo "   ...done" >&5
 
 info
 

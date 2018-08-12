@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # This file is part of Epoptes, http://epoptes.org
 # Copyright 2012-2018 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
