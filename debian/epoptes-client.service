@@ -1,0 +1,18 @@
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+[Unit]
+Description=Epoptes client
+Documentation=man:epoptes-client(8)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/epoptes-client
+KillSignal=SIGQUIT
+# Don't put the unit in a failed state if it exits from SIGQUIT.
+# 131 comes from 128+3, because socat returns 128+SIGQUIT.
+SuccessExitStatus=131
+
+[Install]
+WantedBy=multi-user.target

@@ -1,38 +1,39 @@
 Source: epoptes
 Section: admin
-Priority: extra
+Priority: optional
 Maintainer: Epoptes Developers <epoptes@lists.launchpad.net>
 Uploaders: Vagrant Cascadian <vagrant@debian.org>, Alkis Georgopoulos <alkisg@gmail.com>, Fotis Tsamis <ftsamis@gmail.com>
 Build-Depends: debhelper (>= 9),
- python (>= 2.6.5), 
- python-distutils-extra (>= 2.4)
-Standards-Version: 3.9.8
+ dh-python,
+ python3-distutils-extra
+X-Python3-Version: >= 3.4
+Standards-Version: 4.1.4.1
 Vcs-Git: https://github.com/Epoptes/epoptes
 Vcs-Browser: https://github.com/Epoptes/epoptes
 Homepage: http://www.epoptes.org
 
 Package: epoptes
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends},
+Depends: ${python3:Depends}, ${misc:Depends},
  adduser,
  faketime,
+ gir1.2-gtk-3.0,
+ gir1.2-notify-0.7,
  iperf,
  iproute2 | iproute,
  librsvg2-common,
- lsb-base,
  notification-daemon | xfce4-notifyd,
  openssl,
- python-dbus,
- python-gtk2,
- python-netifaces,
- python-notify,
- python-openssl,
- python-pycha,
- python-twisted-core,
+ python3-dbus,
+ python3-gi,
+ python3-gi-cairo,
+ python3-netifaces,
+ python3-openssl,
+ python3-twisted,
  socat,
  x11vnc,
  xterm,
- tigervnc-viewer | xvnc4viewer | ssvnc | vnc-viewer,
+ xvnc4viewer | tigervnc-viewer | ssvnc | vnc-viewer,
 Recommends: epoptes-client
 Description: Computer lab management tool
  Epoptes is an open source computer lab management and monitoring tool. It
@@ -46,19 +47,23 @@ Description: Computer lab management tool
 
 Package: epoptes-client
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends},
+Depends: ${python3:Depends}, ${misc:Depends},
  bsdmainutils,
  iperf,
  iproute2 | iproute,
  librsvg2-common,
- lsb-base,
  procps,
- python-gtk2,
  screen,
  socat,
  x11vnc,
- tigervnc-viewer | xvnc4viewer | ssvnc | vnc-viewer,
-Recommends: openssl, xterm
+ xvnc4viewer | tigervnc-viewer | ssvnc | vnc-viewer,
+Recommends:
+ gir1.2-gtk-3.0,
+ openssl,
+ python3-gi,
+ x11-utils,
+ x11-xserver-utils,
+ xterm,
 Suggests: ethtool
 Description: Computer lab management tool (client)
  Epoptes is an open source computer lab management and monitoring tool. It
