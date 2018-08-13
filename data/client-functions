@@ -1,3 +1,4 @@
+#!/bin/sh
 ###########################################################################
 # Implements the client side of the epoptes communications protocol.
 # The daemon reads this file when it starts, and sends it to clients when they
@@ -162,7 +163,8 @@ background() {
     # The command is ran on a subshell with stdin and stdout redirected to
     # /dev/null, so that it doesn't interfere with the output of other commands.
     # stderr isn't changed, i.e. ~/.xsession-errors will be used.
-    ( "$@" 0</dev/null >/dev/null ) &
+    # See issue #58 for explanation of the following syntax.
+    ( exec 0</dev/null >/dev/null; "$@" ) &
 
     test -n "$print_pid" && echo $!
 }
@@ -216,14 +218,22 @@ shutdown() {
     ./endsession --shutdown
 }
 
-# Create a thumbnail of the user screen.
+# Create a thumbshot of the user screen.
 # Parameters:
-# $1 = thumbnail width.
-# $2 = thumbnail height.
-screenshot() {
-    if ! ./screenshot "$1" "$2"; then
-        BAD_SCREENSHOTS=$(($BAD_SCREENSHOTS+1))
-        echo "$BAD_SCREENSHOTS failed thumbnails so far!" >&5
+# $1 = thumbshot width.
+# $2 = thumbshot height.
+thumbshot() {
+    # TODO: remove compatibility fallback after a few versions
+    local executable
+
+    if [ -f "./thumbshot.py" ]; then
+        executable=./thumbshot.py
+    else
+        executable=./screenshot
+    fi
+    if ! $executable "$1" "$2"; then
+        BAD_THUMBSHOTS=$(($BAD_THUMBSHOTS+1))
+        echo "$BAD_THUMBSHOTS failed thumbshots so far!" >&5
     fi
 }
 
@@ -235,7 +245,12 @@ lock_screen() {
     local pid
 
     unlock_screen
-    pid=$(background -p ./lock-screen "$2")
+    # TODO: remove compatibility fallback after a few versions
+    if [ -f "./lock_screen.py" ]; then
+        pid=$(background -p ./lock_screen.py "$2")
+    else
+        pid=$(background -p ./lock-screen "$2")
+    fi
     xprop_set EPOPTES_LOCK_SCREEN_PID "$pid"
 }
 
@@ -273,14 +288,22 @@ unmute_sound() {
 
 # Start a network benchmark and print its pid.
 # Stop it automatically after a while.
+# Before starting, also stop any previous benchmarks that are still running.
 # Parameters:
-# $1 = seconds to run (optional).
+# $1 = seconds to run (default=10).
 start_benchmark() {
-    local pid
+    # benchmark_pid can't be unset in the background, but no harm done
+    benchmark_pid=$(background -p stop_start_benchmark "$@")
+    { sleep $((2*${1:-10}+5)); stop_benchmark "$benchmark_pid"; } &
+    echo "$benchmark_pid"
+}
 
-    pid=$(background -p iperf -c "$SERVER" -r ${1:+-t "$1"})
-    { sleep $((2*${1:-10}+5)); stop_benchmark "$pid"; } &
-    echo "$pid"
+# Helper function to avoid running stop_benchmark in foreground.
+# Parameters:
+# $1 = seconds to run.
+stop_start_benchmark() {
+    test -n "$benchmark_pid" && stop_benchmark "$benchmark_pid"
+    iperf -c "$SERVER" -r ${1:+-t "$1"}
 }
 
 # Manually stop a previously running benchmark.
@@ -289,12 +312,12 @@ start_benchmark() {
 stop_benchmark() {
     if [ -n "$1" ]; then
         kill "$1" || return 0
-        sleep 1
+        sleep 0.2
         # For some reason, iperf -c <unknown host> needs 2 kills!
         kill "$1" || return 0
-        sleep 1
+        sleep 0.2
         # If it's not killed by now, it's hanged
-        kill -9 "$1"
+        kill -9 "$1" && sleep 0.2
     fi 2>/dev/null
 }
 
@@ -303,8 +326,14 @@ stop_benchmark() {
 # $1 = text.
 # $2 = title.
 # $3 = True/False, whether the text contains pango markup.
+# $4 = icon name.
 message() {
-    background ./message "$1" "$2" "$3"
+    # TODO: remove compatibility fallback after a few versions
+    if [ -f "./message.py" ]; then
+        background ./message.py "$@"
+    else
+        background ./message "$@"
+    fi
 }
 
 # Connect to the server to be monitored.
@@ -357,7 +386,7 @@ receive_broadcast() {
                 ${3:+-fullscreen} "$SERVER:$1"
         elif [ "$VNCVIEWER" = "xvnc4viewer" ] || [ "$VNCVIEWER" = "xtigervncviewer" ]; then
             exec ${VNCVIEWER} -Shared -ViewOnly -passwd /dev/stdin \
-                ${3:+-FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
+                ${3:+-FullScreen -MenuKey F13} "$SERVER:$1"
         else
             exec vncviewer -shared -viewonly -passwd /dev/stdin \
                 ${3:+-fullscreen} "$SERVER:$1"
@@ -427,15 +456,7 @@ if [ -z "$UID" ] || [ -z "$TYPE" ] || [ -z "$SERVER" ]; then
     die "Required environment variables are missing."
 fi
 
-# Source lsb init functions for log_end_msg, but only on Debian-based distros
-if [ -f /lib/lsb/init-functions ] && [ -f /etc/debian_version ]; then
-    ( # Use a subshell, we only need init-functions once
-    . /lib/lsb/init-functions
-    log_end_msg 0 >&5
-    )
-else
-    echo "[ OK ]" >&5
-fi
+echo "   ...done" >&5
 
 info
 

@@ -1,82 +1,68 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# UI connection.
-#
-# Copyright (C) 2010 Fotis Tsamis <ftsamis@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+GUI-side part of the gui.py <=UNIX=> guiplex.py protocol.
+"""
 import os
 
-from twisted.internet import protocol
 from twisted.protocols import amp
 
-import commands
+from epoptes.daemon import commands
+
 
 class Daemon(amp.AMP):
-
+    """GUI-side part of the gui.py <=UNIX=> guiplex.py protocol."""
     def __init__(self, client):
+        super().__init__()
         self.client = client
 
-
     def connectionMade(self):
-        amp.AMP.connectionMade(self)
+        """Override BaseProtocol.connectionMade."""
+        super().connectionMade()
+        # We've connected the GUI to the Daemon.
+        # Call gui.py->EpoptesGui.connected to store a reference to daemon.
         self.client.connected(self)
 
-    
     def connectionLost(self, reason):
-        amp.AMP.connectionLost(self, reason)
+        """Override AMP.connectionLost."""
+        super().connectionLost(reason)
         self.client.disconnected(self)
-    
-    @commands.ClientConnected.responder
-    def clientConnected(self, handle):
-        self.client.amp_clientConnected(handle)
-        return {}
 
+    @commands.ClientConnected.responder
+    def client_connected(self, handle):
+        """Remotely called from guiplex.py->GUI.client_connected."""
+        # Call gui.py->EpoptesGui.amp_client_connected.
+        self.client.amp_client_connected(handle)
+        return {}
 
     @commands.ClientDisconnected.responder
-    def clientDisconnected(self, handle):
-        self.client.amp_clientDisconnected(handle)
+    def client_disconnected(self, handle):
+        """Remotely called from guiplex.py->GUI.client_disconnected."""
+        # Call gui.py->EpoptesGui.amp_client_disconnected.
+        self.client.amp_client_disconnected(handle)
         return {}
 
-
-    def enumerateClients(self):
-        d = self.callRemote(commands.EnumerateClients)
-        d.addCallback(lambda r: r['handles'])
-        return d
-        
+    def enumerate_clients(self):
+        """Remotely call guiplex.py->GUI.enumerate_clients."""
+        dfr = self.callRemote(commands.EnumerateClients)
+        dfr.addCallback(lambda r: r['handles'])
+        return dfr
 
     def command(self, handle, command):
-        d = self.callRemote(commands.ClientCommand,
-                            handle=handle,
-                            command=command)
+        """Remotely call guiplex.py->GUI.command."""
+        dfr = self.callRemote(commands.ClientCommand,
+                              handle=handle,
+                              command=command)
 
-        def gotResult(response):
+        def got_result(response):
+            """Callback for guiplex.py->GUI.command."""
             filename = response['filename']
             if filename:
                 result = open(filename, 'rb').read()
                 os.unlink(filename)
                 return result
-            else:
-                return response['result']
+            return response['result']
 
-        d.addCallback(gotResult)
-        return d
-
+        dfr.addCallback(got_result)
+        return dfr

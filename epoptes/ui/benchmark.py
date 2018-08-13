@@ -1,42 +1,20 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-###########################################################################
-# Network benchmark.
-#
-# Copyright (C) 2016 Fotis Tsamis <ftsamis@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FINESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL".
-###########################################################################
-
-import os
-import subprocess
-import fcntl
-import gtk
-import gtk.gdk as gdk
-import pygtk
-import gobject
-from twisted.internet import reactor
-
-from graph import Graph
-from epoptes.common.constants import *
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2016-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""
+Network benchmark.
+"""
+# TODO: either switch to iperf3, or reimplement it with python/twisted.
+# iperf2 doesn't work behind NAT and has several issues, for example:
+# https://sourceforge.net/p/iperf2/discussion/general/thread/db0fed22/
+from epoptes.common.constants import C_INSTANCE
+from epoptes.core import spawn_process
+from epoptes.ui.common import gettext as _, locate_resource
+from gi.repository import GLib, Gtk
 
 
 def humanize(value, decimal=1, unit=''):
+    """Convert bits to [KMGTPEZ]bits."""
     value = float(value)
     for prefix in ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z']:
         if abs(value) < 1000:
@@ -46,216 +24,154 @@ def humanize(value, decimal=1, unit=''):
     return "%.*f %s%s" % (decimal, value, 'Y', unit)
 
 
-def bits_to_mbits(value):
-    return float(value) / 1000 ** 2
-
-
-def read_nonblocking(f):
-        fd = f.fileno()
-        fl = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
-        try:
-            return f.read()
-        except:
-            return None
-
-
-class NetworkBenchmark:
-    def __init__(self, parent, clients, execute):
-        self.wTree = gtk.Builder()
-        self.wTree.add_from_file('netbenchmark.ui')
-        self.wTree.connect_signals(self)
-        self.get = self.wTree.get_object
-        self.parent = parent
-        self.execute = execute
-        self.clients_par = clients
+class Benchmark:
+    """Network benchmark."""
+    def __init__(self, parent, execute):
         self.clients = {}
+        self.countdown_event = None
+        self.execute = execute
         self.iperf = None
-        self.processes = {}
+        self.parent = parent
         self.results = {}
-        self.dlg = self.get('benchmark_dialog')
-        self.dlg.set_transient_for(self.parent)
-        self.table = self.get('results_treeview')
-        self.graph = None
-        self.measurements_n = 0
+        self.spawn_process = spawn_process.SpawnProcess(self.on_iperf_exit)
         self.timeleft = 0
-        self.timeout = 5
-        self.output_timeout = None
-        self.more_output = None
-
+        builder = Gtk.Builder()
+        builder.add_from_file(locate_resource('benchmark.ui'))
+        builder.connect_signals(self)
+        self.dlg_message = builder.get_object('dlg_message')
+        self.dlg_benchmark = builder.get_object('dlg_benchmark')
+        self.adj_seconds = builder.get_object('adj_seconds')
+        self.box_seconds = builder.get_object('box_seconds')
+        self.spb_seconds = builder.get_object('spb_seconds')
+        self.box_countdown = builder.get_object('box_countdown')
+        self.lbl_countdown = builder.get_object('lbl_countdown')
+        self.btn_start = builder.get_object('btn_start')
+        self.btn_stop = builder.get_object('btn_stop')
+        self.dlg_results = builder.get_object('dlg_results')
+        self.lss_results = builder.get_object('lss_results')
+        self.tvc_upload = builder.get_object('tvc_upload')
+        self.tvc_download = builder.get_object('tvc_download')
+        self.crt_upload = builder.get_object('crt_upload')
+        self.crt_download = builder.get_object('crt_download')
+        self.lbl_avg_down = builder.get_object('lbl_avg_down')
+        self.lbl_avg_up = builder.get_object('lbl_avg_up')
+        self.lbl_avg_down = builder.get_object('lbl_avg_down')
+        self.lbl_avg_up = builder.get_object('lbl_avg_up')
+        self.lbl_total_down = builder.get_object('lbl_total_down')
+        self.lbl_total_up = builder.get_object('lbl_total_up')
+        self.box_partial_results = builder.get_object('box_partial_results')
+        self.dlg_message.set_transient_for(self.parent)
+        self.dlg_benchmark.set_transient_for(self.parent)
+        self.dlg_results.set_transient_for(self.parent)
+        self.tvc_upload.set_cell_data_func(self.crt_upload, self.data_func, 1)
+        self.tvc_download.set_cell_data_func(
+            self.crt_download, self.data_func, 2)
 
     def warning_message(self, msg):
-        msgdlg = self.get('msgdlg')
-        msgdlg.set_property("message-type", gtk.MESSAGE_WARNING)
-        msgdlg.set_transient_for(self.dlg)
-        msgdlg.set_title(_("Warning"))
-        msgdlg.set_markup(msg)
-        msgdlg.show_all()
-
+        """Show a warning dialog."""
+        self.dlg_message.set_property("message-type", Gtk.MessageType.WARNING)
+        self.dlg_message.set_title(_("Warning"))
+        self.dlg_message.set_markup(msg)
+        self.dlg_message.run()
 
     def error_message(self, msg):
-        msgdlg = self.get('msgdlg')
-        msgdlg.set_property("message-type", gtk.MESSAGE_ERROR)
-        msgdlg.set_transient_for(self.dlg)
-        msgdlg.set_title(_("Error"))
-        msgdlg.set_markup(msg)
-        msgdlg.show_all()
+        """Show an error dialog."""
+        self.dlg_message.set_property("message-type", Gtk.MessageType.ERROR)
+        self.dlg_message.set_title(_("Error"))
+        self.dlg_message.set_markup(msg)
+        self.dlg_message.run()
 
+    def on_dlg_message_close(self, _widget, _event=None):
+        """Handle btn_close_message.clicked and dlg_message.delete_event."""
+        self.dlg_message.hide()
 
-    def on_message_dialog_close(self, widget):
-        self.get('msgdlg').hide()
+    def run(self, clients):
+        """Show the dialog, then hide it so that it may be reused."""
+        self.clients = {}
+        # This can happen on an empty group.
+        # Btw, "if not clients" is wrong as it's a Gtk.ListStore, not a dict.
+        # pylint: disable=len-as-condition
+        if len(clients) == 0:
+            self.warning_message(
+                _('There are no selected clients to run the benchmark on.'))
+            return
 
-
-    def store_pid(self, handle, pid):
-        """Store the PID of the iperf process running on each client
-        allowing us to kill it later.
-        """
-        self.processes[handle] = int(pid)
-
-
-    def create_graph(self, entries):
-        options = {
-            'axis': {
-                'x': {
-                    'ticks': [dict(v=i, label=l[0]) for i, l in enumerate(entries)],
-                    'rotate': 0,
-                    'label' : 'Computers'
-                },
-                'y': {
-                    #'tickCount': 15,
-                    'tickPrecision' : 0,
-                    #'range' : [20,1100],
-                    #'interval' : 10,
-                    'label' : 'MBits/s',
-                    'rotate': 0
-                }
-            },
-            'background': {
-                'chartColor': '#FBFBFB',
-                'baseColor': '#FBFBFB',
-                'lineColor': '#444446'
-            },
-            'colorScheme': {
-                'name': 'rainbow',
-                'args': {
-                    'initialColor': 'green',
-                },
-            },
-            'legend': {
-                'position': {
-                    'right': 20,
-                    'top' : 20
-                    }
-            },
-            'padding': {
-                'left': 2,
-                'right' : 20,
-                'top' : 2,
-                'bottom': 2
-            },
-            'title': _('Epoptes Network Benchmark Results')
-        }
-
-        dataSet = (
-            (_('Upload Rate'), [[i, l[1]] for i, l in enumerate(entries)]),
-            (_('Download Rate'), [[i, l[2]] for i, l in enumerate(entries)])
-        )
-
-        g = Graph()
-        g.set_options(options)
-        g.set_data(dataSet)
-        height = len(entries)*50+100
-        g.set_size_request(-1, height)
-        return g
-
-
-    def run(self):
-        if not self.clients_par:
-            self.warning_message(_('There are no selected clients to run the benchmark on.'))
-            return False
-
-        # Check if there are offline clients or clients with no root client in the selection
+        # Check if offline clients or clients with no root client are selected
         off = []
-        for client in self.clients_par:
+        for client in clients:
             inst = client[C_INSTANCE]
             if inst.hsystem:
-                self.clients[inst.hsystem.split(':')[0]] = (inst.hsystem, inst.get_name())
+                self.clients[inst.hsystem.split(':')[0]] =\
+                    (inst.hsystem, inst.get_name())
             else:
                 off.append(inst.get_name())
 
+        # Now self.clients is the list of clients that can run the benchmark
         if not self.clients:
-            self.warning_message(_('All of the selected clients are either offline, or do not have epoptes-client running as root.'))
-            return False
-        # Order matters here
-        self.dlg.show()
+            self.warning_message(
+                _('All of the selected clients are either offline,'
+                  ' or do not have epoptes-client running as root.'))
+            return
         if off:
-            self.warning_message(_('The following clients will be excluded from the benchmark because they are either offline, or do not have epoptes-client running as root.') + '\n\n' + ', '.join(off))
+            self.warning_message(
+                _('The following clients will be excluded from the benchmark'
+                  ' because they are either offline, or do not have'
+                  ' epoptes-client running as root.')
+                + '\n\n' + ', '.join(off))
 
+        self.box_seconds.set_visible(True)
+        self.box_countdown.set_visible(False)
+        self.btn_start.set_visible(True)
+        self.btn_stop.set_visible(False)
+        self.dlg_benchmark.run()
 
-    def start_benchmark(self, seconds):
-        self.iperf = subprocess.Popen('iperf -s -xS -yC'.split(), 
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        reactor.addSystemEventTrigger('before', 'shutdown', self.stop_benchmark)
+    def on_btn_start_clicked(self, _widget):
+        """Handle btn_start.clicked event."""
+        seconds = int(self.adj_seconds.get_value())
+        self.spawn_process.spawn('iperf -s -xS -yC'.split(),
+                                 timeout=(seconds + 3),
+                                 lines_max=2*len(self.clients))
         for client in self.clients:
             handle = self.clients[client][0]
-            d = self.execute(handle, 'start_benchmark %d' % seconds)
-            d.addCallback(lambda r, h=client : self.store_pid(h, r))
-
-
-    def stop_benchmark(self):
-        for client in self.clients:
-            break
-            if client in self.processes:
-                handle = self.clients[client][0]
-                pid = self.processes[client]
-                self.execute(handle, 'stop_benchmark %d' % pid)
-        if self.iperf and self.iperf.poll() is None:
-            self.iperf.kill()
-
-
-    def on_btn_startBenchmark_clicked(self, widget):
-        seconds = int(self.get('seconds_adjustment').get_value())
-        # Half time for upload speed and half for download
-        self.start_benchmark(seconds/2)
+            # Half time for upload speed and half for download
+            self.execute(handle, 'start_benchmark %d' % int(seconds/2))
         self.timeleft = seconds
-        self.get('seconds_spinbox').set_sensitive(False)
-        self.get('hbox_buttons').set_visible(False)
-        self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
-        self.countdown_event = gobject.timeout_add(1000, self.update_time_left)
-        self.get('hbox_status').set_visible(True)
+        self.box_seconds.set_visible(False)
+        self.box_countdown.set_visible(True)
+        self.btn_start.set_visible(False)
+        self.btn_stop.set_visible(True)
+        self.lbl_countdown.set_text(_("Benchmark finishing in %d seconds...")
+                                    % self.timeleft)
+        self.countdown_event = GLib.timeout_add(1000, self.update_countdown)
 
-
-    def update_time_left(self):
+    def update_countdown(self):
+        """Update the countdown label."""
         self.timeleft -= 1
-        # Check if the server has exited for some reason
-        if self.iperf.poll() is not None:
-            message = read_nonblocking(self.iperf.stderr)
-            self.error_message(_("Something went wrong with the iperf server process:\n\n%s") % message)
-            self.cancel_benchmark()
-            return False
-        
-        if self.timeleft == 0:
-            self.get('cancel_btn').set_visible(False)
-            self.get('time_left_label').set_text(_("Processing data..."))
-            self.get_results()
-            return False
-        self.get('time_left_label').set_text(_("Benchmark finishing in %d seconds...") % self.timeleft)
+        if self.timeleft >= 0:
+            self.lbl_countdown.set_text(
+                _("Benchmark finishing in %d seconds...") % self.timeleft)
+        else:
+            self.lbl_countdown.set_text(
+                _("Some clients didn't respond in time!") + "\n"
+                + _("Waiting for %d more seconds...") % (self.timeleft + 3))
+
+        # Always recall; the timeout will be cancelled in on_iperf_exit.
         return True
 
-
-    def parse_iperf_output(self, output):
-        """Parse 'output' as a string of single or multiple lines of CSV in the form of
-        timestamp,server_ip,port,client_ip,port,id,from-to,transfered(Bytes),bandwidth(bps)
-        and populate a dict of client_ip : [upload Mbps, download Mbps] pairs
-        storing it in self.results.
+    def parse_iperf_output(self, out_data):
+        """Parse 'output' as a string of single or multiple lines of CSV in the
+        form of [timestamp, server_ip, port, client_ip, port, id, from-to
+        transfered(Bytes), bandwidth(bps)] and populate a dict of client_ip:
+         [upload Mbps, download Mbps] pairs storing it in self.results.
         """
-        data = output.strip().split()
+        self.results = {}
+        data = out_data.strip().split()
         for line in data:
             values = line.split(',')
             if len(values) != 9:
                 continue
             client_ip = values[3]
-            client_port = values[4] # will be 5001 if the client is receiving
+            client_port = values[4]  # will be 5001 if the client is receiving
             bandwidth = int(values[8])
             if client_ip in self.clients:
                 if client_ip not in self.results:
@@ -264,118 +180,83 @@ class NetworkBenchmark:
                 if client_port == "5001":
                     # Download (bits/s)
                     self.results[client_ip][1] = int(bandwidth)
-                    self.measurements_n += 1
                 else:
                     # Upload (bits/s)
                     self.results[client_ip][0] = int(bandwidth)
-                    self.measurements_n += 1
 
-
-    def get_more_output(self):
-        output = read_nonblocking(self.iperf.stdout)
-        if output:
-            self.parse_iperf_output(output)
-        if self.measurements_n == len(self.clients)*2:
-            self.show_results()
-            return False
-        return True
-
-
-    def get_results(self):
-        self.more_output = gobject.timeout_add(200, self.get_more_output)
-        self.output_timeout = gobject.timeout_add(self.timeout*1000, self.show_results, True)
-        
-
-    def data_func(self, column, cell, model, iter, index):
-        bps = model[iter][index]
+    @staticmethod
+    def data_func(_column, cell, model, itr, index):
+        """Convert model's glong to text, to display humanized units."""
+        bps = model[itr][index]
         if bps <= 0:
             cell.set_property("text", "—")
         else:
             cell.set_property("text", humanize(bps, unit='bps'))
 
+    def on_iperf_exit(self, out_data, err_data, reason):
+        """The benchmark has finished, show the results dialog."""
+        GLib.source_remove(self.countdown_event)
+        self.box_seconds.set_visible(True)
+        self.box_countdown.set_visible(False)
+        self.btn_start.set_visible(True)
+        self.btn_stop.set_visible(False)
 
-    def show_results(self, timed_out=False):
-        # At this point we either have all our output or we give up waiting
-        self.stop_benchmark()
-        if self.output_timeout:
-            gobject.source_remove(self.output_timeout)
-        if self.more_output:
-            gobject.source_remove(self.more_output)
-        
-        upload_col = self.get('upload_column')
-        download_col = self.get('download_column')
-        upload_col.set_cell_data_func(self.get('cellrenderertext2'), self.data_func, 1)
-        download_col.set_cell_data_func(self.get('cellrenderertext3'), self.data_func, 2)
-        
-        results_n = len(self.results)
-        if results_n > 0:
-            graph_entries = []
-            total_up = 0
-            total_down = 0
-            # List all the clients regardless of if we received measurements
-            for client_ip in self.clients:
-                client_name = self.clients[client_ip][1]
-                if client_ip in self.results:
-                    up, down = self.results[client_ip]
-                else:
-                    up, down = (0,0)
-                graph_entries.append((client_name, bits_to_mbits(up), bits_to_mbits(down)))
-                self.get('results_store').append([client_name, up, down])
-                total_up += up
-                total_down += down
-            
-            self.graph = self.create_graph(graph_entries)
-            self.graph.set_visible(True)
-            self.dlg.set_visible(False)
-            results_dlg = self.get('results_dialog')
-            results_dlg.set_transient_for(self.parent)
-            results_dlg.show_all()
-            
-            clients_n = len(self.clients)
-            self.get('avg_client').set_text(humanize(total_up / clients_n, unit='bps'))
-            self.get('total_client').set_text(humanize(total_up, unit='bps'))
-            self.get('avg_server').set_text(humanize(total_down / clients_n, unit='bps'))
-            self.get('total_server').set_text(humanize(total_down, unit='bps'))
-            if timed_out:
-                self.get('warning_hbox').show()
+        if reason == "stopped":
+            self.btn_stop.set_sensitive(True)
+            return
+        elif reason == "closed":
+            return
+
+        self.dlg_benchmark.hide()
+        self.parse_iperf_output(out_data.decode("utf-8"))
+        if not self.results:
+            msg = _("Did not get measurements from any of the clients."
+                    " Check your network settings.")
+            if err_data:
+                msg += "\n\n" + err_data.decode("utf-8")
+            self.error_message(msg)
+            return
+
+        # At this point we do have some results, so show dlg_results
+        total_up = 0
+        total_down = 0
+        self.lss_results.clear()
+        # List all the clients regardless of if we received measurements
+        for client_ip in self.clients:
+            client_name = self.clients[client_ip][1]
+            if client_ip in self.results:
+                upload, download = self.results[client_ip]
             else:
-                self.get('warning_hbox').hide()
-        else:
-            self.error_message(_("Did not get measurements from any of the clients. Check your network settings."))
-            self.dlg.set_visible(False)
+                upload, download = (0, 0)
+            self.lss_results.append([client_name, upload, download])
+            total_up += upload
+            total_down += download
 
+        clients_n = len(self.clients)
+        self.lbl_avg_up.set_text(
+            humanize(total_up / clients_n, unit='bps'))
+        self.lbl_total_up.set_text(humanize(total_up, unit='bps'))
+        self.lbl_avg_down.set_text(
+            humanize(total_down / clients_n, unit='bps'))
+        self.lbl_total_down.set_text(humanize(total_down, unit='bps'))
 
-    def cancel_benchmark(self):
-        self.stop_benchmark()
-        gobject.source_remove(self.countdown_event)
-        self.get('hbox_status').set_visible(False)
-        self.get('seconds_spinbox').set_sensitive(True)
-        self.get('hbox_buttons').set_visible(True)
+        self.box_partial_results.set_visible(
+            self.spawn_process.lines_count != 2*len(self.clients))
+        self.dlg_results.run()
 
+    def on_btn_stop_clicked(self, _widget):
+        """Handle btn_stop.clicked event."""
+        self.btn_stop.set_sensitive(False)
+        self.spawn_process.stop('stopped')
 
-    def on_cancel_btn_clicked(self, widget):
-        self.cancel_benchmark()
+    def on_dlg_benchmark_close(self, _widget, _event=None):
+        """Handle btn_close_benchmark.clicked, dlg_benchmark.delete_event."""
+        # For simplicity, we assume that the user isn't fast enough
+        # to close the dialog and reopen it before on_exit is called.
+        if self.spawn_process.state == "running":
+            self.spawn_process.stop('stopped')
+        self.dlg_benchmark.hide()
 
-
-    def on_close_button_clicked(self, widget):
-        self.get('results_dialog').destroy()
-
-
-    def show_graph_toggled(self, widget):
-        viewport = self.get('viewport')
-        if viewport.get_child() == self.table:
-            if self.graph:
-                viewport.remove(self.table)
-                viewport.add(self.graph)
-        else:
-            viewport.remove(self.graph)
-            viewport.add(self.table)
-
-
-    def on_btn_close_clicked(self, widget):
-        self.dlg.destroy()
-
-
-    def on_window_destroy(self, widget, event):
-        self.dlg.destroy()
-
+    def on_dlg_results_close(self, _widget, _event=None):
+        """Handle btn_close_results.clicked and dlg_results.delete_event."""
+        self.dlg_results.hide()

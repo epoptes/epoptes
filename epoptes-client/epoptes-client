@@ -1,31 +1,22 @@
 #!/bin/sh
-
-###########################################################################
-# Connects to a remote server and offers it a local shell.
-# Usage: epoptes-client [-c|-h|-v] [SERVER] [PORT]
-#
-# Copyright (C) 2010-2015 Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL'.
-###########################################################################
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # epoptes-client is called either from if-up.d as root, to control the client,
 # or from /etc/xdg/autostart as a user, to control the user session.
 # Users can cancel that from their System > Preferences > Services gnome menu.
+
+usage() {
+    printf "Usage: $0 [-c|-h|-v] [SERVER] [PORT]\n%s" \
+'
+Connect to a remote server and offer it a local shell.
+'
+}
+
+version() {
+    export VERSION="1.0"  # Automatically updated while packaging
+}
 
 die() {
     echo "epoptes-client ERROR: $@" >&2
@@ -121,9 +112,48 @@ fetch_certificate()
     fi
 }
 
+wait_for_dns() {
+    delay=60
+    while true; do
+        server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
+        test -n "$server_ip" && break
+        # If DNS is not up yet, retry, otherwise abort
+        server_ip=$(getent hosts "ntp.org" | awk '{ print $1; exit }')
+        if [ -z "$server_ip" ]; then
+            echo "Cannot resolve $SERVER, postponing for $delay seconds..."
+            sleep $delay
+            # Add a minute for each failure to minimize log spamming
+            delay=$(($delay+60))
+        else
+            echo "Cannot resolve $SERVER while DNS appears to work, aborting."
+            exit 1
+        fi
+    done
+}
+
+apply_wol() {
+    if [ "$UID" -eq 0 ] && [ -n "$WOL" ] && [ -x /sbin/ethtool ] &&
+        [ "$EPOPTES_CLIENT_APPLIED_WOL" != True ]
+    then
+        export EPOPTES_CLIENT_APPLIED_WOL=True
+        # Copied from client-functions, these map from server_ip to def_iface
+        read def_iface IP <<EOF
+$(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
+EOF
+        test "${def_iface:-lo}" != "lo" || read def_iface IP <<EOF
+$(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
+EOF
+        if [ "${def_iface:-lo}" != "lo" ]; then
+            # Only set WOL if def_iface is both != '' and != 'lo'.
+            echo "Setting WOL=$WOL for $def_iface"
+            ethtool -s "$def_iface" wol $WOL
+        fi
+    fi
+}
+
 
 # Main.
-export VERSION="0.5.10" # Automatically updated by mkdst
+version
 
 # Check the first parameter as it may turn out we don't need to run at all
 case "$1" in
@@ -135,8 +165,8 @@ case "$1" in
         if [ -x /usr/bin/man ]; then
             exec man epoptes-client
         else
-            echo "Usage: $0 [-c|-h|-v] [SERVER] [PORT]"
-            exit 0
+            usage
+            exit
         fi
         ;;
     -c|--certificate)
@@ -181,13 +211,9 @@ else
     cd /usr/share/epoptes-client
 fi
 
-# Source lsb init functions for log_begin_msg, but only on Debian-based distros
-if [ -f /lib/lsb/init-functions ] && [ -f /etc/debian_version ]; then
-    . /lib/lsb/init-functions
-else
-    alias log_begin_msg="echo -n"
-fi
-log_begin_msg "Epoptes-client connecting to $SERVER:$PORT..."
+wait_for_dns
+apply_wol
+printf "Epoptes-client connecting to $SERVER:$PORT..."
 
 # Call chain:
 #  * if-up.d executes /usr/sbin/epoptes-client
@@ -213,7 +239,7 @@ cmdline='bash -c \"exec -a epoptes-client sh\"'
 # Offer an lts.conf (or environment) variable to disable cert verification.
 if my_boolean_is_true "${EPOPTES_CLIENT_VERIFY_CERTIFICATE:-True}"; then
     cert_param="cafile=/etc/epoptes/server.crt"
-    # Check if socat provides the commonname option and use it in order to 
+    # Check if socat provides the commonname option and use it in order to
     # support certificates which don't have a commonname set
     if socat -hhh | grep -q openssl-commonname; then
         cert_param="$cert_param,commonname=\"\""
