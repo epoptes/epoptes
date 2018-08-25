@@ -45,7 +45,7 @@ class EpoptesGui(object):
              r"""sed -n '/.*ether[[:space:]]*\([[:xdigit:]:]*\).*/"""
              r"""{s//\1/;y/abcdef-/ABCDEF:/;p;}';"""
              r"""echo $LTSP_CLIENT_MAC"""],
-            stdout=subprocess.PIPE).communicate()[0].split()
+            stdout=subprocess.PIPE).communicate()[0].decode().split()
         self.current_thumbshots = dict()
         self.daemon = None
         self.displayed_compatibility_warning = False
