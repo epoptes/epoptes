@@ -22,6 +22,7 @@ That last line "only" triggers pylint's "wrong-import-position" once.
 """
 import gettext
 import locale
+import os
 
 import gi
 
@@ -31,3 +32,6 @@ gi.require_version('Notify', '0.7')
 gettext.textdomain('epoptes')
 locale.textdomain('epoptes')
 gettext = gettext.gettext
+# Prevent dbus from getting autolaunched (issue #66)
+if not os.getenv('DBUS_SESSION_BUS_ADDRESS'):
+    os.environ['DBUS_SESSION_BUS_ADDRESS'] = "unix:path=/dev/null"
