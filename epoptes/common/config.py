@@ -34,6 +34,8 @@ def read_plain_file(filename):
     """Return the whole contents of a plain text file into a string list.
     If the file doesn't exist or isn't readable, return an empty list.
     """
+    if not os.path.isfile(filename):
+        return []
     try:
         file = open(filename, 'r')
         contents = [x.strip() for x in file.readlines()]
@@ -101,6 +103,8 @@ def read_groups(filename):
     """Parse a JSON file and create the appropriate group and client objects.
     Return a 2-tuple with a client instances list and a group instances list.
     """
+    if not os.path.isfile(filename):
+        return [], []
     try:
         file = open(filename)
         data = json.loads(file.read())
