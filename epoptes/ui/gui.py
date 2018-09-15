@@ -113,6 +113,7 @@ class EpoptesGui(object):
         self.trv_groups.get_selection().select_path(
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
+        self.on_scl_icon_size_value_changed(None)
         _saved_clients, groups = config.read_groups(
             config.expand_filename('groups.json'))
         if groups:
