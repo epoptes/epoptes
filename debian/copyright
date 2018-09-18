@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: epoptes
-Source: http://bazaar.launchpad.net/~epoptes/epoptes/trunk/files
+Source: https://github.com/Epoptes/epoptes
 
 Files: *
 Copyright: 2009-2016 Alkis Georgopoulos <alkisg@gmail.com>
