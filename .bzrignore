@@ -1,7 +1,0 @@
-dropin.cache
-*.pyc
-twistd.pid
-.project
-.pydevproject
-.settings
-.bzrignore

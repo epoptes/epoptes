@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy project-wide -->
-  <object class="GtkEntryCompletion" id="entrycompletion">
-    <property name="minimum_key_length">2</property>
-    <property name="text_column">0</property>
-    <property name="inline_completion">True</property>
-    <property name="popup_completion">False</property>
-    <property name="popup_single_match">False</property>
-    <property name="inline_selection">True</property>
-  </object>
-  <object class="GtkDialog" id="execDialog">
+  <requires lib="gtk+" version="3.0"/>
+  <object class="GtkDialog" id="dlg_exec_command">
     <property name="can_focus">False</property>
-    <property name="border_width">10</property>
+    <property name="border_width">12</property>
     <property name="title" translatable="yes">Execute command</property>
     <property name="window_position">center</property>
-    <property name="type_hint">normal</property>
+    <property name="type_hint">dialog</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="cancel">
+              <object class="GtkButton" id="btn_cancel">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -42,7 +37,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="execute">
+              <object class="GtkButton" id="btn_execute">
                 <property name="label">gtk-execute</property>
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
@@ -50,7 +45,6 @@
                 <property name="can_default">True</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -64,34 +58,35 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="pack_type">end</property>
-            <property name="position">0</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="xalign">0</property>
+            <property name="hexpand">True</property>
             <property name="label" translatable="yes">URL, file or command to execute on the selected clients:</property>
             <property name="wrap">True</property>
+            <property name="xalign">0</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
-          <object class="GtkHBox" id="hbox1">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkImage" id="image1">
+              <object class="GtkImage" id="img_execute">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="stock">gtk-execute</property>
-                <property name="icon-size">5</property>
+                <property name="icon_size">6</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -100,23 +95,22 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxEntry" id="combobox">
+              <object class="GtkComboBoxText" id="cbt_command">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="hexpand">True</property>
+                <property name="has_entry">True</property>
                 <child internal-child="entry">
-                  <object class="GtkEntry" id="comboboxentry-entry2">
-                    <property name="visible">True</property>
+                  <object class="GtkEntry" id="ent_command">
                     <property name="can_focus">True</property>
-                    <property name="has_focus">True</property>
-                    <property name="primary_icon_activatable">False</property>
-                    <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
+                    <property name="activates_default">True</property>
+                    <signal name="changed" handler="on_ent_command_changed" swapped="no"/>
                   </object>
                 </child>
               </object>
               <packing>
-                <property name="expand">True</property>
+                <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
@@ -125,14 +119,14 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">cancel</action-widget>
-      <action-widget response="1">execute</action-widget>
+      <action-widget response="0">btn_cancel</action-widget>
+      <action-widget response="1">btn_execute</action-widget>
     </action-widgets>
   </object>
 </interface>

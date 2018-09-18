@@ -1,0 +1,63 @@
+#!/bin/sh
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2017-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+usage() {
+    printf "Usage: $0\n%s" \
+'
+Receive remote shells over secure connections.
+The clients are supposed to use `share-terminal`.
+'
+}
+
+die() {
+    printf "%s\n" "$@" >&2
+    exit 1
+}
+
+# "phase2" is passed when socat receives a connection
+if [ "$1" = "phase2" ]; then
+    # Run this command on the client, and parse its output
+    printf '%s\n' ' printf "\n%s\n" "suggested-xterm-parameters $(hostname) $(stty size) "; clear' &
+    while read -r guard hostname lines columns junk; do
+        test "$guard" = "suggested-xterm-parameters" && break
+    done
+    # Allow the user to define custom XTERM_PARAMS in the environment
+    exec xterm $XTERM_PARAMS -T "Shared@${hostname}" -geometry "${columns}x${lines}" -e "socat fd:9 stdio,raw,echo=0" 9>&0
+elif [ "$#" -gt 0 ]; then
+    die "$(usage)"
+fi
+
+test -n "$DISPLAY" || die "Please run $0 from within Xorg."
+command -v socat >/dev/null 2>&1 || die "Please install socat."
+command -v xterm >/dev/null 2>&1  || die "Please install xterm."
+
+printf "Generating an openssl certificate to secure connections..."
+
+# Save some time by doing openssl and wget in parallel
+PEM=$(mktemp -t receive-terminals-XXXXX.pem)
+trap "rm -f $PEM" INT QUIT
+openssl req -batch -x509 -days 365 -nodes -newkey rsa:4096 -out "$PEM" -keyout "$PEM" 2>/dev/null &
+
+# Set your external IP in the environment if you don't want it auto-detected
+test -n "$IP" || IP=$(wget -T 5 -q http://alkisg.mysch.gr/ip/ -O - | sed -n "s/^IP='\(.*\)'/\\1/p")
+# Falling back to the internal IP
+test -n "$IP" || IP=$(ip route get 8.8.8.8 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\2/p')
+test -n "$IP" || IP="your-ip"
+
+# Wait for openssl to finish
+wait
+
+printf "%s" \
+" [OK]
+
+Accepting remote shell secure connections. Clients can connect by running:
+  /usr/share/epoptes-client/share-terminal $IP
+If they don't have epoptes-client installed, they can run this instead:
+  TERM=xterm COLUMNS=\$COLUMNS LINES=\$LINES socat SYSTEM:\"sleep 1; exec screen -xRR ra\",pty,stderr openssl-connect:$IP:5499,verify=0 & screen -l -S ra
+Press Ctrl+C to end.
+"
+
+# We don't want `exec socat` because we have a trap that removes the PEM
+socat openssl-listen:5499,cert="$PEM",reuseaddr,keepalive=1,fork,verify=0 EXEC:"$0 phase2"

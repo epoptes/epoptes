@@ -9,20 +9,22 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2012-12-30 06:57+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
+"PO-Revision-Date: 2016-08-29 22:31+0000\n"
+"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-03-18 05:55+0000\n"
-"X-Generator: Launchpad (build 17947)\n"
+"X-Launchpad-Export-Date: 2016-08-31 06:11+0000\n"
+"X-Generator: Launchpad (build 18179)\n"
 "Language: uk\n"
 
 #: ../epoptes/ui/about_dialog.py:43
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
+"  Vladyslav Dukhin https://launchpad.net/~primeare\n"
 "  Yuri Chornoivan https://launchpad.net/~yurchor-gmail\n"
 "  yurchor https://launchpad.net/~yurchor-deactivatedaccount"
 
@@ -225,7 +227,7 @@ msgstr "Встановити тло"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Add to group"
-msgstr ""
+msgstr "Додати до групи"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Remove from group"
@@ -233,7 +235,7 @@ msgstr "Вилучити з групи"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Тест мережевого з'єднання"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "_Help"
@@ -311,7 +313,7 @@ msgstr "Інформація"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:70
 msgid "Groups"
-msgstr ""
+msgstr "Групи"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:71
 msgid "Create a new group"
@@ -382,15 +384,15 @@ msgstr "Ви справді бажаєте вилучити групу «%s»?"
 
 #: ../epoptes/ui/gui.py:567
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Втрачений зв'язок зі службою epoptes."
 
 #: ../epoptes/ui/gui.py:568
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Переконайтеся, що служба запущена, а потім перезапустіть epoptes."
 
 #: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
 msgid "Service connection error"
-msgstr ""
+msgstr "Помилка з'єднання зі службою"
 
 #. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
@@ -409,7 +411,7 @@ msgstr ""
 #: ../epoptes/ui/gui.py:1036
 #, python-format
 msgid "%d clients selected"
-msgstr ""
+msgstr "%d клієнтів обрано"
 
 #: ../epoptes/ui/gtk/executeCommand.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
@@ -427,36 +429,41 @@ msgstr "Помилка"
 
 #: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
 msgid "Epoptes Network Benchmark Results"
-msgstr ""
+msgstr "Результат тесту мережевого з'єднання Epoptes"
 
 #: ../epoptes/ui/benchmark.py:160
 msgid "Upload Rate"
-msgstr ""
+msgstr "Швидкість віддачі"
 
 #: ../epoptes/ui/benchmark.py:161
 msgid "Download Rate"
-msgstr ""
+msgstr "Швидкість завантаження"
 
 #: ../epoptes/ui/benchmark.py:174
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Не обрано клієнтів для запуску тестування."
 
 #: ../epoptes/ui/benchmark.py:187
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Всі вибрані клієнти або не знаходяться в мережі, або не мають клієнту "
+"Epoptes, що запущений від імені суперкористувача."
 
 #: ../epoptes/ui/benchmark.py:192
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Наступні клієнти будуть виключені з тесту, тому що або не знаходяться в "
+"мережі, або не мають клієнту Epoptes, що запущений від імені "
+"суперкористувача."
 
 #: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Тест закінчиться через %d секунд..."
 
 #: ../epoptes/ui/benchmark.py:233
 #, python-format
@@ -465,16 +472,20 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Щось пішло не так з процесом сервера iperf:\n"
+"%s"
 
 #: ../epoptes/ui/benchmark.py:239
 msgid "Processing data..."
-msgstr ""
+msgstr "Обробка даних…"
 
 #: ../epoptes/ui/benchmark.py:344
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"Не отримано вимірювання від якого-небудь з клієнтів. Перевірте налаштування "
+"мережі."
 
 #: ../epoptes/common/config.py:220
 msgid "Message from administrator"
@@ -486,7 +497,7 @@ msgstr "Інструмент для адміністрування комп’ю
 
 #: ../bin/epoptes.py:59
 msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Сталася помилка під час спроби підключення до служби epoptes:"
 
 #: ../bin/epoptes.py:64
 #, python-format
@@ -496,83 +507,93 @@ msgstr ""
 
 #: ../bin/epoptes.py:68
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Переконайтеся, що служба epoptes працює."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:3
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Пропускна здатність каналу вивантаження"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:4
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Пропускна здатність каналу завантаження"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:5
 msgid "Show a graph instead of a table."
-msgstr ""
+msgstr "Показати графік замість таблиці."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:6
 msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Не вдалося отримати вимірювання від деяких клієнтів. Це вплине на "
+"статистичні дані."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:7
 msgid "Overall Bandwidth Statistics"
-msgstr ""
+msgstr "Загальна статистика пропускної здатності каналу"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:8
 msgid "The average server download bandwidth per client"
 msgstr ""
+"Середня пропускна здатність каналу завантаження від сервера до клієнта"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:9
 msgid "Average server download:"
-msgstr ""
+msgstr "Середнє завантаження з сервера:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:10
 msgid "The total server download bandwidth, for all clients, simultaneously"
 msgstr ""
+"Загальна пропускна здатність завантаження з сервера для всіх клієнтів "
+"одночасно"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:11
 msgid "Total server download:"
-msgstr ""
+msgstr "Загальне завантаження з сервера:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:12
 msgid "The average server upload bandwidth per client"
 msgstr ""
+"Середня пропускна здатність каналу вивантаження від сервера до клієнта"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:13
 msgid "Average server upload:"
-msgstr ""
+msgstr "Середнє вивантаження з сервера:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:14
 msgid "The total server upload bandwidth, for all clients, simultaneously"
 msgstr ""
+"Загальна пропускна здатність вивантаженя з сервера для всіх клієнтів "
+"одночасно"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:15
 msgid "Total server upload:"
-msgstr ""
+msgstr "Загальне вивантаження з сервера:"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:16
 msgid "Epoptes Network Benchmark"
-msgstr ""
+msgstr "Тест мережевого з'єднання Epoptes"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:17
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"Тест мережевого з'єднання буде тестувати ефективну пропускну\n"
+"здатність мережі, яка доступна для вашої лабораторії."
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:19
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Запустити тест для"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:20
 msgid "seconds"
-msgstr ""
+msgstr "секунд(и)"
 
 #: ../epoptes/ui/gtk/netbenchmark.ui.h:21
 msgid "Start"
-msgstr ""
+msgstr "Запустити"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Edit alias"
@@ -636,7 +657,7 @@ msgstr "Використовувати розмітку Pango"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:1
 msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2011-2016 The Epoptes Team"
 
 #: ../epoptes/ui/gtk/about_dialog.ui.h:2
 msgid "A computer lab management and monitoring tool."

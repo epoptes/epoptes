@@ -1,0 +1,38 @@
+#!/bin/sh
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2017-2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+usage() {
+    printf "Usage: $0 host[:port]\n%s" \
+'
+Share the current terminal with a remote person over a secure connection.
+'
+}
+
+die() {
+    printf "%s\n" "$@" >&2
+    exit 1
+}
+
+test -n "$1" || die "$(usage)"
+command -v socat >/dev/null 2>&1 || die "Please install socat."
+command -v screen >/dev/null 2>&1  || die "Please install screen."
+
+case "$1" in
+    *:*) host=$1 ;;
+    *) host=$1:5499 ;;
+esac
+printf "Connecting to $host..."
+
+read LINES COLUMNS <<EOF
+$(stty size)
+EOF
+export COLUMNS LINES TERM=xterm
+# Try to set the terminal title, to notify that the terminal is shared
+printf "\033]0;%s\a" "Shared@$1"
+
+# Connect to the remote person with socat. Then exec screen.
+# One second later, attach to screen from the socat process.
+socat SYSTEM:"sleep 1; exec screen -xRR ra",pty,stderr openssl-connect:"$host",verify=0 &
+exec screen -l -S ra
