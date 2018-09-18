@@ -56,7 +56,7 @@ epoptes (0.5.9-1) unstable; urgency=low
     - Major improvements and bug fixes to the network benchmark module.
     - Add an "Add to group" option to the Clients menu.
     - Remove the ubuntu_local property from epoptes.ui.
-    - Add a meaningful title to xterm when opening a remote terminal locally, 
+    - Add a meaningful title to xterm when opening a remote terminal locally,
       instead of 'socat' (LP: #1526740).
     - Use a more compatible syntax for pkill.
     - Set a reasonable PATH to execute commands or to relaunch epoptes-client.
@@ -82,7 +82,7 @@ epoptes (0.5.9-1) unstable; urgency=low
   * epoptes:
     - faketime doesn't work without /run/shm (#778462).
 
- -- Fotis Tsamis <ftsamis@gmail.com>  Thu, 28 Jan 2016 03:24:22 +0300 
+ -- Fotis Tsamis <ftsamis@gmail.com>  Thu, 28 Jan 2016 03:24:22 +0300
 
 epoptes (0.5.8-1) unstable; urgency=low
 
@@ -106,7 +106,7 @@ epoptes (0.5.8-1) unstable; urgency=low
     - Depend on iproute2 instead of only iproute (Closes: #753715).
     - Add iperf on dependencies.
   * debian/control:
-    - Update Standards-Version to 3.9.6, no changes necessary. 
+    - Update Standards-Version to 3.9.6, no changes necessary.
 
  -- Fotis Tsamis <ftsamis@gmail.com>  Tue, 06 Oct 2015 22:18:44 +0300
 
@@ -132,7 +132,7 @@ epoptes (0.5.7-1) unstable; urgency=low
   * epoptes-client:
     - Enable Wake On Lan when ethtool is installed. Add Suggests on ethtool.
   * debian/control:
-    - Update Standards-Version to 3.9.5, no changes necessary. 
+    - Update Standards-Version to 3.9.5, no changes necessary.
 
  -- Vagrant Cascadian <vagrant@debian.org>  Sun, 24 Nov 2013 16:58:37 -0800
 
@@ -162,7 +162,7 @@ epoptes (0.5.4-1) unstable; urgency=low
       is operating as a Fat client.
     - New translations: Arabic (ar), Catalan (ca), Czech (cs), Galician (gl),
       Lithuanian (lt), Turkish (tr), Chinese (Simplified) (zh_CN)
-    - Updated translations: Afrikaans (af), Hebrew (he), Malay (ms), 
+    - Updated translations: Afrikaans (af), Hebrew (he), Malay (ms),
       Norwegian Bokmal (nb), Dutch (nl), Portuguese (pt), Russian (ru)
 
  -- Vagrant Cascadian <vagrant@debian.org>  Sun, 10 Jun 2012 10:58:01 -0700
@@ -239,7 +239,7 @@ epoptes (0.4.4-1) unstable; urgency=low
     Many thanks to the translators!
 
   [ Vagrant Cascadian ]
-  * Update Standards-Version to 3.9.3, no changes necessary. 
+  * Update Standards-Version to 3.9.3, no changes necessary.
 
  -- Vagrant Cascadian <vagrant@debian.org>  Sun, 04 Mar 2012 13:58:00 -0800
 
