@@ -8,7 +8,6 @@ Build-Depends: debhelper (>= 11),
  dpkg-dev (>= 1.16.1),
  python3-distutils-extra,
  python3:any | python3-all:any | python3-dev:any | python3-all-dev:any,
-X-Python3-Version: >= 3.4
 Standards-Version: 4.1.4.1
 Vcs-Git: https://github.com/Epoptes/epoptes
 Vcs-Browser: https://github.com/Epoptes/epoptes
