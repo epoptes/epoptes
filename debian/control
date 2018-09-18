@@ -38,8 +38,8 @@ Depends: ${python3:Depends}, ${misc:Depends},
 Recommends: epoptes-client
 Description: Computer lab management tool
  Epoptes is an open source computer lab management and monitoring tool. It
- allows for screen broadcasting and monitoring, remote command execution, 
- message sending, imposing restrictions like screen locking or sound muting 
+ allows for screen broadcasting and monitoring, remote command execution,
+ message sending, imposing restrictions like screen locking or sound muting
  the clients and much more!
  .
  Contains the server daemon and a GUI for controlling client PCs.
@@ -68,8 +68,8 @@ Recommends:
 Suggests: ethtool
 Description: Computer lab management tool (client)
  Epoptes is an open source computer lab management and monitoring tool. It
- allows for screen broadcasting and monitoring, remote command execution, 
- message sending, imposing restrictions like screen locking or sound muting 
+ allows for screen broadcasting and monitoring, remote command execution,
+ message sending, imposing restrictions like screen locking or sound muting
  the clients and much more!
  .
  Contains the client daemon and some utilities for getting screenshots etc.
