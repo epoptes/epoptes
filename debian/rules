@@ -1,7 +1,8 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-DEBVERS := $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p')
+include /usr/share/dpkg/pkg-info.mk
+
 # Uncomment this to turn on verbose mode.
 # export DH_VERBOSE=1
 export PYBUILD_INTERPRETERS=python3
@@ -11,8 +12,8 @@ export PYBUILD_INTERPRETERS=python3
 
 override_dh_install:
 	dh_install
-	sed "s/\(__version__\).*/\1 = '$(DEBVERS)'/" -i "$(CURDIR)"/debian/epoptes/usr/lib/python*/dist-packages/epoptes/__init__.py
-	sed "s/\(VERSION=\).*/\1'$(DEBVERS)'/" -i "$(CURDIR)"/debian/epoptes-client/usr/sbin/epoptes-client
+	sed "s/\(__version__\).*/\1 = '$(DEB_VERSION)'/" -i "$(CURDIR)"/debian/epoptes/usr/lib/python*/dist-packages/epoptes/__init__.py
+	sed "s/\(VERSION=\).*/\1'$(DEB_VERSION)'/" -i "$(CURDIR)"/debian/epoptes-client/usr/sbin/epoptes-client
 
 override_dh_python3:
 	dh_python3 --no-guessing-deps

@@ -5,6 +5,7 @@ Maintainer: Epoptes Developers <epoptes@lists.launchpad.net>
 Uploaders: Vagrant Cascadian <vagrant@debian.org>, Alkis Georgopoulos <alkisg@gmail.com>, Fotis Tsamis <ftsamis@gmail.com>
 Build-Depends: debhelper (>= 11),
  dh-python,
+ dpkg-dev (>= 1.16.1),
  python3-distutils-extra
 X-Python3-Version: >= 3.4
 Standards-Version: 4.1.4.1
