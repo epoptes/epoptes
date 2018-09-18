@@ -1,7 +1,8 @@
 epoptes (1.0.0-1) unstable; urgency=medium
 
+  [ Alkis Georgopoulos ]
   * New upstream version:
-    - Migrate to Python3/Gtk3.
+    - Migrate to Python3/Gtk3 (Closes: #885278).
     - Restructure and optimize the code, while resolving a lot of outstanding
       issues.
     - Apply PEP 8, PEP 257, PEP 3101, DEP-5, Sphinx and SPDX guidelines to the
@@ -11,7 +12,20 @@ epoptes (1.0.0-1) unstable; urgency=medium
   * Update epoptes and epoptes-clients versions from changelog while packaging.
   * Switch from sysvinit to systemd.
 
- -- Alkis Georgopoulos <alkisg@gmail.com>  Sat, 11 Aug 2018 11:53:04 +0300
+  [ Vagrant Cascadian ]
+  * debian/control:
+    - Build-Depend on debhelper >= 11.
+    - Add python3 build dependencies.
+    - Remove X-Python3-Version, supported in all recent versions.
+    - Document that epoptes does not require root to build.
+    - Update Standards-Version to 4.2.1.
+  * debian/copyright:
+    - Use https url for copyright format.
+    - Update source location.
+    - Update years.
+  * debian/rules: Use dpkg pkg-info include file to get Debian version.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 18 Sep 2018 14:54:24 -0700
 
 epoptes (0.5.10-2) unstable; urgency=medium
 
