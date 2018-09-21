@@ -463,6 +463,9 @@ echo "   ...done" >&5
 
 info
 
+# Prevent dbus from getting autolaunched (issue #66)
+export "DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS:-unix:path=/dev/null}"
+
 for i in 0 15; do
     trap "on_signal $i" $i
 done
