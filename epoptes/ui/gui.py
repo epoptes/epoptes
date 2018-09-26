@@ -80,7 +80,7 @@ class EpoptesGui(object):
         self.get = self.builder.get_object
         # Hide the remote assistance menuitem if epoptes-client isn't installed
         if not os.path.isfile('/usr/share/epoptes-client/remote_assistance.py'):
-            self.get('mi_remote_assistance').set_property('visible', False)
+            self.get('imi_help_remote_support').set_property('visible', False)
             self.get('smi_help_remote_support').set_property('visible', False)
         self.mnu_add_to_group = self.get('mnu_add_to_group')
         self.mni_add_to_group = self.get('mni_add_to_group')
