@@ -14,6 +14,7 @@ override_dh_install:
 	dh_install
 	sed "s/\(__version__\).*/\1 = '$(DEB_VERSION)'/" -i "$(CURDIR)"/debian/epoptes/usr/lib/python*/dist-packages/epoptes/__init__.py
 	sed "s/\(VERSION=\).*/\1'$(DEB_VERSION)'/" -i "$(CURDIR)"/debian/epoptes-client/usr/sbin/epoptes-client
+	sed '/^#!\/bin\/sh/d' -i "$(CURDIR)"/debian/epoptes/usr/share/epoptes/client-functions
 
 override_dh_python3:
 	dh_python3 --no-guessing-deps
