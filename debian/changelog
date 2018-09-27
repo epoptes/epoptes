@@ -1,3 +1,25 @@
+epoptes (1.0.1-1) unstable; urgency=medium
+
+  [ Alkis Georgopoulos ]
+  * gui.py: don't show epoptes-client running on the epoptes pc
+    (issue #61).
+  * Prevent dbus autolaunching (issue #66).
+  * config.py: avoid warnings for missing config files (issue #69).
+  * gui.py: correct initial thumbshots size (issue #68).
+  * client-functions: pass UseLocalCursor=0 to xvnc4viewer.
+  * get-display: update for recent distributions.
+  * Remove debian/epoptes-client.if-up.
+  * Prevent dbus autolaunching (issue #66).
+  * Avoid error when epoptes-client isn't installed (issue #75).
+
+  [ Vagrant Cascadian ]
+  * debian/control: Fix Vcs-Git to specify to use the "debian" branch.
+  * debian/rules: Remove #!/bin/sh from client-functions, as it is only
+    sourced from other scripts.
+  * Sync Launchpad translations.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Thu, 27 Sep 2018 13:19:20 -0700
+
 epoptes (1.0.0-1) unstable; urgency=medium
 
   [ Alkis Georgopoulos ]
