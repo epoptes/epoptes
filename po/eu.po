@@ -7,359 +7,384 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2016-02-05 08:35+0000\n"
-"Last-Translator: Juan Ezeiza <jezeiza@axular.net>\n"
+"POT-Creation-Date: 2018-09-22 08:45+0300\n"
+"PO-Revision-Date: 2018-09-23 21:09+0000\n"
+"Last-Translator: Alexander Gabilondo <alexgabi@irakasle.net>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:14+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2018-09-24 05:41+0000\n"
+"X-Generator: Launchpad (build 18783)\n"
 
-#: ../epoptes/ui/about_dialog.py:43
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Alexander Gabilondo https://launchpad.net/~alexgabi\n"
-"  Juan Ezeiza https://launchpad.net/~jezeiza"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "Broadcast screen (fullscreen)"
-msgstr "Erakutsi pantaila (pantaila osoan)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Erakutsi zure pantaila aukeratutako ikasleei, pantaila osoa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "Broadcast screen (windowed)"
-msgstr "Erakutsi pantaila (leihoan)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
-msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Erakutsi zure pantaila aukeratutako ikasleei, leihoa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
-msgid "Confirm action"
-msgstr "Baieztatu ekintza"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
-msgid "_File"
-msgstr "_Fitxategia"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Labels"
-msgstr "Etiketak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Computer (user)"
-msgstr "Ordenagailua (erabiltzailea)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
-msgid "Computer"
-msgstr "Ordenagailua"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
-msgid "User (computer)"
-msgstr "Erabiltzailea (ordenagailua)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "User"
-msgstr "Erabiltzailea"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
-msgid "Show real names"
-msgstr "Erakutsi benetako izenak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
-msgid "_Clients"
-msgstr "_Bezeroak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Session"
-msgstr "Saioa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Boot"
-msgstr "Abiarazi"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Log out"
-msgstr "Amaitu saioa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
-msgid "Reboot"
-msgstr "Berrabiarazi"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
-msgid "Shutdown"
-msgstr "Itzali"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Broadcasts"
-msgstr "Emanaldiak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Monitor user"
-msgstr "Ikusi ikaslea"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
-msgid "Assist user"
-msgstr "Kontrolatu ikaslea"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
-msgid "Take control of the selected user's computer"
-msgstr "Kontrolatu aukeratutako ikaslearen ordenagailua"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
-msgid "Broadcast video"
-msgstr "Erakutsi bideoa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
-msgid "Broadcast screen"
-msgstr "Erakutsi pantaila"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
-msgid "Broadcast user"
-msgstr "Erakutsi erabiltzailea"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
-msgid "Stop broadcasts"
-msgstr "Gelditu emanaldiak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
-msgid "Stops all active broadcasts"
-msgstr "Gelditu emanaldi aktibo guztiak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Open broadcasts window"
-msgstr "Ireki emanaldien leihoa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
-msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Ireki saioko leihoa pantaila osoko agerrialdia eragozteko"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
-msgid "Execute"
-msgstr "Egikaritu"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
-msgid "Execute a command on the selected clients"
-msgstr "Egikaritu agindua aukeratutako ikasleei"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
-msgid "_Send message"
-msgstr "_Bidali mezua"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
-msgid "Send a message to the selected clients"
-msgstr "Bidali mezua aukeratutako ikasleei"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Open terminal"
-msgstr "Ireki terminala"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "User, locally"
-msgstr "Erabiltzailea, lokala"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Root, locally"
-msgstr "Root, lokala"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Root, remotely"
-msgstr "Root, urrunekoa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Restrictions"
-msgstr "Murrizketak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
-msgid "Lock screen"
-msgstr "Giltzatu pantaila"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Unlock screen"
-msgstr "Giltzapetik askatu pantaila"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Block Internet"
-msgstr "Blokeatu internet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Unblock Internet"
-msgstr "Desblokeatu internet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
-msgid "Mute sound"
-msgstr "Mututu soinua"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Unmute sound"
-msgstr "Gaitu soinua"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
-msgid "Background image"
-msgstr "Atzealdeko irudia"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "Lock background"
-msgstr "Giltzapetu atzealdeko irudia"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Set default background"
-msgstr "Ezarri atzealdeko irudi lehenetsia"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Set background"
-msgstr "Ezarri atzealdeko irudia"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Add to group"
-msgstr "Gehitu taldeari"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Remove from group"
-msgstr "Ezabatu taldetik"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "Network Benchmark"
-msgstr "Sarearen proba"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Report a bug"
-msgstr "Jakinarazi errorea"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Ask a question"
-msgstr "Zerbait galdetu"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Translate this application"
-msgstr "Itzuli aplikazio hau"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Live chat (IRC)"
-msgstr "Zuzeneko txata"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
-msgid "Remote support"
-msgstr "Urruneko laguntza"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "Boot selected clients (Wake On LAN)"
-msgstr "Abiarazi aukeratutako ikasleak (Wake on LAN)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Log out users connected on selected clients"
-msgstr "Amaitu aukeratu ikasleen saioak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "Reboot the selected clients"
-msgstr "Berrabiarazi aukeratutako ikasleak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "Shutdown the selected clients"
-msgstr "Itzali aukeratutako ikasleak"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "Broadcast your screen to the selected clients"
-msgstr "Erakutsi zure pantaila aukeratutako ikasleei"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "Stop all broadcasts on every client"
-msgstr "Gelditu emanaldiak ikasle guztiei"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Execute command"
 msgstr "Exekutatu komandoa"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+"Aukeratutako ikasleei egikaritu beharreko URLa, fitxategia edo agindua:"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "_File"
+msgstr "_Fitxategia"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
+msgid "Labels"
+msgstr "Etiketak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "Computer (user)"
+msgstr "Ordenagailua (erabiltzailea)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
+msgid "Computer"
+msgstr "Ordenagailua"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "User (computer)"
+msgstr "Erabiltzailea (ordenagailua)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "User"
+msgstr "Erabiltzailea"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "Show real names"
+msgstr "Erakutsi benetako izenak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "_Clients"
+msgstr "_Bezeroak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Session"
+msgstr "Saioa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Boot"
+msgstr "Abiarazi"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Log out"
+msgstr "Amaitu saioa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Reboot"
+msgstr "Berrabiarazi"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Shutdown"
+msgstr "Itzali"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Broadcasts"
+msgstr "Emanaldiak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Monitor user"
+msgstr "Ikusi ikaslea"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Assist user"
+msgstr "Kontrolatu ikaslea"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Take control of the selected user's computer"
+msgstr "Kontrolatu aukeratutako ikaslearen ordenagailua"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Broadcast video"
+msgstr "Erakutsi bideoa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Broadcast screen (fullscreen)"
+msgstr "Erakutsi pantaila (pantaila osoan)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "Erakutsi zure pantaila aukeratutako ikasleei, pantaila osoa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast screen (windowed)"
+msgstr "Erakutsi pantaila (leihoan)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "Erakutsi zure pantaila aukeratutako ikasleei, leihoa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast user"
+msgstr "Erakutsi erabiltzailea"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Stop broadcasts"
+msgstr "Gelditu emanaldiak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Stops all active broadcasts"
+msgstr "Gelditu emanaldi aktibo guztiak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Open broadcasts window"
+msgstr "Ireki emanaldien leihoa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "Ireki saioko leihoa pantaila osoko agerrialdia eragozteko"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Execute"
+msgstr "Egikaritu"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Execute a command on the selected clients"
+msgstr "Egikaritu agindua aukeratutako ikasleei"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "_Send message"
+msgstr "_Bidali mezua"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Send a message to the selected clients"
+msgstr "Bidali mezua aukeratutako ikasleei"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "Open terminal"
+msgstr "Ireki terminala"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "User, locally"
+msgstr "Erabiltzailea, lokala"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Root, locally"
+msgstr "Root, lokala"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "Root, remotely"
+msgstr "Root, urrunekoa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Restrictions"
+msgstr "Murrizketak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Lock screen"
+msgstr "Giltzatu pantaila"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Unlock screen"
+msgstr "Giltzapetik askatu pantaila"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
+msgid "Block Internet"
+msgstr "Blokeatu internet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Unblock Internet"
+msgstr "Desblokeatu internet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Mute sound"
+msgstr "Mututu soinua"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Unmute sound"
+msgstr "Gaitu soinua"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Add to group"
+msgstr "Gehitu taldeari"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Remove from group"
+msgstr "Ezabatu taldetik"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Network Benchmark"
+msgstr "Sarearen proba"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Report a bug"
+msgstr "Jakinarazi errorea"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Ask a question"
+msgstr "Zerbait galdetu"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Translate this application"
+msgstr "Itzuli aplikazio hau"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "Live chat (IRC)"
+msgstr "Zuzeneko txata"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Remote support"
+msgstr "Urruneko laguntza"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Abiarazi aukeratutako ikasleak (Wake on LAN)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Log out users connected on selected clients"
+msgstr "Amaitu aukeratu ikasleen saioak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Reboot the selected clients"
+msgstr "Berrabiarazi aukeratutako ikasleak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "Shutdown the selected clients"
+msgstr "Itzali aukeratutako ikasleak"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "Broadcast your screen to the selected clients"
+msgstr "Erakutsi zure pantaila aukeratutako ikasleei"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Broadcast screen"
+msgstr "Erakutsi pantaila"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Stop all broadcasts on every client"
+msgstr "Gelditu emanaldiak ikasle guztiei"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
 msgstr "Bidali mezua"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Lock screen of the selected clients"
 msgstr "Giltzapetu pantaila aukeratutako ikasleei"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Unlock the screen of the selected clients"
 msgstr "Giltzapetik askatu pantaila aukeratutako ikasleei"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Show information for the selected client"
 msgstr "Erakutsi aukeratutako ikaslearen informazioa"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
 msgid "Information"
 msgstr "Informazioa"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Groups"
 msgstr "Taldeak"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:71
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Create a new group"
 msgstr "Sortu talde berri bat"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:72
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Remove the selected group"
 msgstr "Ezabatu aukeratutako taldea"
 
-#: ../epoptes/ui/notifications.py:82
-msgid "Shut down:"
-msgstr "Itzali:"
+#: ../epoptes/ui/notifications.py:79
+msgid "Could not initialize notifications!"
+msgstr "Ezin izan dira jakinarazpenak abiarazi!"
 
-#: ../epoptes/ui/notifications.py:85
-msgid "Connected:"
-msgstr "Konektatuta:"
+#: ../epoptes/ui/gtk/send_message.ui.h:2
+msgid "_Send"
+msgstr "_Bidali"
 
-#: ../epoptes/ui/notifications.py:85
-#, python-format
-msgid "%(user)s on %(host)s"
-msgstr "%(user)s hemen %(host)s"
+#: ../epoptes/ui/gtk/send_message.ui.h:3
+msgid "Message title:"
+msgstr "Mezuaren izenburua:"
 
-#: ../epoptes/ui/notifications.py:88
-msgid "Disconnected:"
-msgstr "Deskonektatuta:"
+#: ../epoptes/ui/gtk/send_message.ui.h:4
+msgid "Message text:"
+msgstr "Mezuaren testua:"
 
-#: ../epoptes/ui/notifications.py:88
-#, python-format
-msgid "%(user)s from %(host)s"
-msgstr "%(user)s hemendik %(host)s"
+#: ../epoptes/ui/gtk/send_message.ui.h:5
+msgid "Use Pango markup"
+msgstr "Erabili Pango markup"
 
-#: ../epoptes/ui/client_information.py:65
-#, python-format
-msgid "Properties of %s"
-msgstr "%s-(r)en ezaugarriak"
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+msgid "Warning"
+msgstr "Abisua"
 
-#: ../epoptes/ui/gui.py:126
+#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
+msgid "Error"
+msgstr "Errorea"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Bezero mota:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Bezero alias:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Bezeroaren ostalari-izena"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "MAC helbidea:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP helbidea:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Erabiltzailea:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "Prozesagailua:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Tartel grafikoa:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Editatu aliasa"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Ezarri alias berria aukeratutako bezeroarentzat"
+
+#: ../epoptes/ui/gui.py:106
 msgid "Detected clients"
 msgstr "Atzemandako ikasleak"
 
-#: ../epoptes/ui/gui.py:249
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Ordenagailu guztiak itzali nahi dituzula ziur al zaude?"
-
-#: ../epoptes/ui/gui.py:254
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Ordenagailu guztiak berrabiarazi nahi dituzula ziur al zaude?"
-
-#: ../epoptes/ui/gui.py:260
+#: ../epoptes/ui/gui.py:211
 msgid "Are you sure you want to log off all the users?"
 msgstr "Erabiltzaile guztiak deskonektatu nahi dituzula ziur al zaude?"
 
-#: ../epoptes/ui/gui.py:414
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Ordenagailu guztiak berrabiarazi nahi dituzula ziur al zaude?"
+
+#: ../epoptes/ui/gui.py:223
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Ordenagailu guztiak itzali nahi dituzula ziur al zaude?"
+
+#: ../epoptes/ui/gui.py:375
 msgid "The screen is locked by a system administrator."
 msgstr "Irakasleak pantaila blokeatu du."
 
-#: ../epoptes/ui/gui.py:450
+#: ../epoptes/ui/gui.py:405
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -367,25 +392,46 @@ msgstr ""
 "Aukeratutako ikaslea(k) \"%s\" taldetik ezabatu nahi d(it)uzula ziur al "
 "zaude?"
 
-#: ../epoptes/ui/gui.py:488
+#: ../epoptes/ui/gui.py:536
+msgid "New group"
+msgstr "Talde berria"
+
+#: ../epoptes/ui/gui.py:553
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "\"%s\" taldea ezabatu nahi duzula ziur al zaude?"
 
-#: ../epoptes/ui/gui.py:567
+#: ../epoptes/ui/gui.py:598
+#, python-format
+msgid "%d clients selected"
+msgstr "%d ikasle aukeratu dira"
+
+#: ../epoptes/ui/gui.py:695
 msgid "Lost connection with the epoptes service."
 msgstr "Epoptes zerbitzuarekiko konexioa galdu da."
 
-#: ../epoptes/ui/gui.py:568
+#: ../epoptes/ui/gui.py:697
 msgid "Make sure the service is running and then restart epoptes."
 msgstr "Ziurtatu zerbitzua martxan dagoela eta berrabiarazi epoptes."
 
-#: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
+#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
 msgid "Service connection error"
 msgstr "Errorea zerbitzuaren konexioan"
 
-#. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
+msgid "Shut down:"
+msgstr "Itzali:"
+
+#: ../epoptes/ui/gui.py:736
+msgid "Disconnected:"
+msgstr "Deskonektatuta:"
+
+#: ../epoptes/ui/gui.py:737
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr "%(user)s hemendik %(host)s"
+
+#: ../epoptes/ui/gui.py:845
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -399,42 +445,42 @@ msgstr ""
 "Zure ikasleen ekipoetako epoptes-client  azken bertsiora eguneratu behar "
 "dituzu."
 
-#: ../epoptes/ui/gui.py:1036
+#: ../epoptes/ui/gui.py:875
+msgid "Connected:"
+msgstr "Konektatuta:"
+
+#: ../epoptes/ui/gui.py:876
 #, python-format
-msgid "%d clients selected"
-msgstr "%d ikasle aukeratu dira"
+msgid "%(user)s on %(host)s"
+msgstr "%(user)s hemen %(host)s"
 
-#: ../epoptes/ui/gtk/executeCommand.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
+#: ../epoptes/ui/gui.py:1053
+msgid "Confirm action"
+msgstr "Baieztatu ekintza"
+
+#: ../bin/epoptes.py:31
+msgid "An error occurred while trying to connect to the epoptes service:"
+msgstr "Epoptes zerbitzuarekin konexio-saiakeran errorea gertatu da:"
+
+#: ../bin/epoptes.py:36
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
 msgstr ""
-"Aukeratutako ikasleei egikaritu beharreko URLa, fitxategia edo agindua:"
+"Epoptes egikaritzeko %s erabiltzaileek %s taldeko kideak izan behar dute."
 
-#: ../epoptes/ui/benchmark.py:91 ../epoptes/ui/gtk/netbenchmark.ui.h:22
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Abisua"
+#: ../bin/epoptes.py:40
+msgid "Make sure the epoptes service is running."
+msgstr "Ziurtatu epoptes zerbitzua martxan dagoela."
 
-#: ../epoptes/ui/benchmark.py:100 ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "Error"
-msgstr "Errorea"
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Epoptes ordenagailu-laborategiaren kudeaketa-tresna"
 
-#: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
-msgid "Epoptes Network Benchmark Results"
-msgstr "Epoptes sarearen probaren emaitzak"
-
-#: ../epoptes/ui/benchmark.py:160
-msgid "Upload Rate"
-msgstr "Karga-tasa"
-
-#: ../epoptes/ui/benchmark.py:161
-msgid "Download Rate"
-msgstr "Deskarga-tasa"
-
-#: ../epoptes/ui/benchmark.py:174
+#: ../epoptes/ui/benchmark.py:96
 msgid "There are no selected clients to run the benchmark on."
 msgstr "Proba egiteko ikaslerik ez dago  hautatuta"
 
-#: ../epoptes/ui/benchmark.py:187
+#: ../epoptes/ui/benchmark.py:112
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
@@ -442,7 +488,7 @@ msgstr ""
 "Hautatutako ikasle guztiak lineaz kanpo daude edo ez daukate roor-moduan "
 "epoptes-client martxan."
 
-#: ../epoptes/ui/benchmark.py:192
+#: ../epoptes/ui/benchmark.py:117
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
@@ -450,117 +496,119 @@ msgstr ""
 "Hurrengo ikasleak probatik kanpo geratuko dira lineaz kanpo daudelako edo "
 "epoptes-client ez dutelako martxan root-moduan."
 
-#: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
 msgstr "Proba %d segundotan bukatuko da..."
 
-#: ../epoptes/ui/benchmark.py:233
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
+msgstr "Zenbait bezerok ez dute garaiz erantzun!"
+
+#: ../epoptes/ui/benchmark.py:156
 #, python-format
-msgid ""
-"Something went wrong with the iperf server process:\n"
-"\n"
-"%s"
-msgstr ""
-"Zerbait gaizki joan da iperf zerbitzari-prozesuarekin:\n"
-"\n"
-"%s"
+msgid "Waiting for %d more seconds..."
+msgstr "Itxaroten %d segundo..."
 
-#: ../epoptes/ui/benchmark.py:239
-msgid "Processing data..."
-msgstr "Datuak prozesatzen..."
-
-#: ../epoptes/ui/benchmark.py:344
+#: ../epoptes/ui/benchmark.py:213
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr "Ez da ezein bezeroren daturik jaso. Azter itzazu sareko ezarpenak."
 
-#: ../epoptes/common/config.py:220
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2011-2018 The Epoptes Team"
+msgstr "Copyright © 2011-2018 The Epoptes Team"
+
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Ikasgelako kontrol eta monitorizaziorako tresna"
+
+#: ../epoptes/ui/gtk/about.ui.h:3
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alexander Gabilondo https://launchpad.net/~alexgabi\n"
+"  Juan Ezeiza https://launchpad.net/~jezeiza"
+
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
+#, python-format
+msgid "Properties of %s"
+msgstr "%s-(r)en ezaugarriak"
+
+#: ../potfiles-workaround/remote_assistance.py:90
+#: ../potfiles-workaround/remote_assistance.py:122
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Konektatu gabe"
+
+#: ../potfiles-workaround/remote_assistance.py:114
+#, python-format
+msgid "Connecting to %s..."
+msgstr "%s(e)ra konektatzen..."
+
+#: ../potfiles-workaround/remote_assistance.py:119
+#, python-format
+msgid "Connected to %s"
+msgstr "%s(e)ra konektatuta"
+
+#: ../potfiles-workaround/remote_assistance.py:126
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Ezin izan da %s(e)ra konektatu"
+
+#: ../potfiles-workaround/remote_assistance.py:143
+#, python-format
+msgid "Retrying in %d..."
+msgstr "%d(e)n berriro saiatzen..."
+
+#: ../epoptes/common/config.py:194
 msgid "Message from administrator"
 msgstr "Kudeatzailearen mezua"
 
-#: ../data/epoptes.desktop.in.h:1
-msgid "Epoptes computer lab administration tool"
-msgstr "Epoptes ordenagailu-laborategiaren kudeaketa-tresna"
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Grafikoak (VNC)"
 
-#: ../bin/epoptes.py:59
-msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr "Epoptes zerbitzuarekin konexio-saiakeran errorea gertatu da:"
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Kontsola (pantaila)"
 
-#: ../bin/epoptes.py:64
-#, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
-"Epoptes egikaritzeko %s erabiltzaileek %s taldeko kideak izan behar dute."
-
-#: ../bin/epoptes.py:68
-msgid "Make sure the epoptes service is running."
-msgstr "Ziurtatu epoptes zerbitzua martxan dagoela."
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
-msgid "Upload bandwidth"
-msgstr "Kargarako banda zabalera"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
-msgid "Download bandwidth"
-msgstr "Deskargarako banda zabalera"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
-msgid "Show a graph instead of a table."
-msgstr "Taularen ordez grafikoa erakutsi"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+#: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
-msgstr ""
-"Bezero batzuen datuak ezin izan dira jaso. Horrek estatistiketan eragina "
-"izango du."
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "Sartu zure mahaigana partekatu nahi duzun kontaktuaren informazioa"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
-msgid "Overall Bandwidth Statistics"
-msgstr "Probaren estatistika orokorrak"
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Metodoa:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
-msgid "The average server download bandwidth per client"
-msgstr ""
-"Zerbitzaritiko ikasleentzako deskargaren banda zabaleraren  batez bestekoa"
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Ostalaria:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
-msgid "Average server download:"
-msgstr "Zerbitzaritiko batez besteko deskarga:"
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Konexioaren informazioa"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
-msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
-"Une bereko bezero guztientzako zerbitzaritiko deskargaren banda zabalera"
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Konektatu berriro"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
-msgid "Total server download:"
-msgstr "Zerbitzaritiko deskarga denetara:"
+#: ../potfiles-workaround/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Egoera"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
-msgid "The average server upload bandwidth per client"
-msgstr "Zerbitzarirako bezeroko kargaren banda zabaleraren  batez bestekoa"
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
+msgstr "Sareko erreferentzia"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
-msgid "Average server upload:"
-msgstr "Zerbitzarirako batez besteko karga:"
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
+msgstr "Hasi"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
-msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr "Une bereko bezero guztientzako zerbitzarako kargaren banda zabalera"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
-msgid "Total server upload:"
-msgstr "Zerbitzarirako karga denetara:"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
-msgid "Epoptes Network Benchmark"
-msgstr "Epoptes sarearen proba"
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:17
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
@@ -568,178 +616,110 @@ msgstr ""
 "Sarearen probak zure proba-bankuaren banda zabaleraren \n"
 "gaitasun erreala neurtuko du."
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
 msgstr "Abiatu proba honentzat"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
 msgstr "segundo"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:21
-msgid "Start"
-msgstr "Hasi"
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
+msgstr "Sareko erreferentzia-emaitzak"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Edit alias"
-msgstr "Editatu aliasa"
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
+msgstr "Kargarako banda zabalera"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Set a new alias for the selected client"
-msgstr "Ezarri alias berria aukeratutako bezeroarentzat"
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr "Deskargarako banda zabalera"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Graphics card:"
-msgstr "Tartel grafikoa:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "RAM:"
-msgstr "RAM:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "Processor:"
-msgstr "Prozesagailua:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr "Erabiltzailea:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "IP address:"
-msgstr "IP helbidea:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "MAC address:"
-msgstr "MAC helbidea:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Client hostname:"
-msgstr "Bezeroaren ostalari-izena"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Client type:"
-msgstr "Bezero mota:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Client alias:"
-msgstr "Bezero alias:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:2
-msgid "_Send"
-msgstr "_Bidali"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:3
-msgid "Message title:"
-msgstr "Mezuaren izenburua:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:4
-msgid "Message text:"
-msgstr "Mezuaren testua:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "Use Pango markup"
-msgstr "Erabili Pango markup"
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr "Copyright © 2011-2016 Epoptes Taldea"
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr "Ikasgelako kontrol eta monitorizaziorako tresna"
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
-"Epoptes is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, either version 3 of the License, or any later version. \n"
-"\n"
-"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. \n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"epoptes. If not, see <http://www.gnu.org/licenses/>."
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
 msgstr ""
-"Epoptes software askea da. Berriro banatu edo/eta alda dezakezu \"Free "
-"Software Foundation\" erakundeak argitaratutako \"GNU General Public "
-"License\"  lizentziaren terminoen arabera , lizentziaren 3. bertsioa edo "
-"ondorengoa izanik ere. \n"
-"\n"
-"Epoptes erabilgarria izateko asmoarekin banatzen da, baina INOLAKO BERMERIK "
-"GABE. Ikusi GNU General Public License xehetasun gehiagorako.\n"
-"\n"
-"Epoptes-ekin batera GNU  General Public License lizentziaren kopia jaso "
-"beharko zenukeen. Bestela, bisitatu <http://www.gnu.org/licenses/>."
+"Bezero batzuen datuak ezin izan dira jaso. Horrek estatistiketan eragina "
+"izango du."
 
-#: ../epoptes-client/remote-assistance.py:145
-#: ../epoptes-client/remote-assistance.py:190
-#: ../potfiles-workaround/remote-assistance.py:145
-#: ../potfiles-workaround/remote-assistance.py:190
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Not connected"
-msgstr "Konektatu gabe"
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr "Banda zabalerako estatistika orokorrak"
 
-#: ../epoptes-client/remote-assistance.py:178
-#: ../potfiles-workaround/remote-assistance.py:178
-#, python-format
-msgid "Connecting to %s..."
-msgstr "%s(e)ra konektatzen..."
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr ""
+"Zerbitzaritiko ikasleentzako deskargaren banda zabaleraren  batez bestekoa"
 
-#: ../epoptes-client/remote-assistance.py:187
-#: ../potfiles-workaround/remote-assistance.py:187
-#, python-format
-msgid "Connected to %s"
-msgstr "%s(e)ra konektatuta"
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr "Zerbitzaritiko batez besteko deskarga:"
 
-#: ../epoptes-client/remote-assistance.py:195
-#: ../potfiles-workaround/remote-assistance.py:195
-#, python-format
-msgid "Failed to connect to %s"
-msgstr "Ezin izan da %s(e)ra konektatu"
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr "Zerbitzarirako bezeroko kargaren banda zabaleraren  batez bestekoa"
 
-#: ../epoptes-client/remote-assistance.py:209
-#: ../potfiles-workaround/remote-assistance.py:209
-#, python-format
-msgid "Retrying in %d..."
-msgstr "%d(e)n berriro saiatzen..."
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr "Zerbitzarirako batez besteko karga:"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr "Sartu zure mahaigana partekatu nahi duzun kontaktuaren informazioa"
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr "Une bereko bezero guztientzako zerbitzarako kargaren banda zabalera"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Method:"
-msgstr "Metodoa:"
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr "Zerbitzarirako karga denetara:"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Host:"
-msgstr "Ostalaria:"
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
+"Une bereko bezero guztientzako zerbitzaritiko deskargaren banda zabalera"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid "Keep reconnecting"
-msgstr "Konektatu berriro"
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr "Zerbitzaritiko deskarga denetara:"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Connection information"
-msgstr "Konexioaren informazioa"
+#~ msgid "Lock background"
+#~ msgstr "Giltzapetu atzealdeko irudia"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Status"
-msgstr "Egoera"
+#~ msgid "Background image"
+#~ msgstr "Atzealdeko irudia"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Graphics (VNC)"
-msgstr "Grafikoak (VNC)"
+#~ msgid "Set default background"
+#~ msgstr "Ezarri atzealdeko irudi lehenetsia"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Console (screen)"
-msgstr "Kontsola (pantaila)"
+#~ msgid "Set background"
+#~ msgstr "Ezarri atzealdeko irudia"
 
 #~ msgid "Copyright © 2011-2012 Epoptes Team"
 #~ msgstr "Copyright © 2011-2012 Epoptes Taldea"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
+
+#~ msgid ""
+#~ "Epoptes is free software: you can redistribute it and/or modify it under the "
+#~ "terms of the GNU General Public License as published by the Free Software "
+#~ "Foundation, either version 3 of the License, or any later version. \n"
+#~ "\n"
+#~ "Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+#~ "details. \n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "epoptes. If not, see <http://www.gnu.org/licenses/>."
+#~ msgstr ""
+#~ "Epoptes software askea da. Berriro banatu edo/eta alda dezakezu \"Free "
+#~ "Software Foundation\" erakundeak argitaratutako \"GNU General Public "
+#~ "License\"  lizentziaren terminoen arabera , lizentziaren 3. bertsioa edo "
+#~ "ondorengoa izanik ere. \n"
+#~ "\n"
+#~ "Epoptes erabilgarria izateko asmoarekin banatzen da, baina INOLAKO BERMERIK "
+#~ "GABE. Ikusi GNU General Public License xehetasun gehiagorako.\n"
+#~ "\n"
+#~ "Epoptes-ekin batera GNU  General Public License lizentziaren kopia jaso "
+#~ "beharko zenukeen. Bestela, bisitatu <http://www.gnu.org/licenses/>."

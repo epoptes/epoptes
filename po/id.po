@@ -7,382 +7,428 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-28 03:26+0200\n"
-"PO-Revision-Date: 2013-01-10 10:07+0000\n"
-"Last-Translator: acepby <acepby@gmail.com>\n"
+"POT-Creation-Date: 2018-09-22 08:45+0300\n"
+"PO-Revision-Date: 2018-09-22 14:38+0000\n"
+"Last-Translator: Auriza Akbar <auriza.akbar@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:15+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
+"X-Generator: Launchpad (build 18783)\n"
 
-#: ../epoptes/ui/about_dialog.py:43
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  acepby https://launchpad.net/~acepby"
+#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "Execute command"
+msgstr "Jalankan perintah"
+
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr "URL, berkas, atau perintah yang akan dijalankan pada klien terpilih:"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "Broadcast screen (fullscreen)"
-msgstr ""
+msgid "_File"
+msgstr "_Berkas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr ""
+msgid "Labels"
+msgstr "Label"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "Broadcast screen (windowed)"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
-msgid "Broadcast your screen to the selected clients, in a window"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
-msgid "Confirm action"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
-msgid "_File"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Labels"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "Computer (user)"
 msgstr "Komputer (pengguna)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
+#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
 msgid "Computer"
-msgstr ""
+msgstr "Komputer"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "User (computer)"
-msgstr "Pengguna (Komputer)"
+msgstr "Pengguna (komputer)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "User"
-msgstr ""
+msgstr "Pengguna"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Show real names"
 msgstr "Tampilkan nama asli"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "_Clients"
-msgstr ""
+msgstr "_Klien"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Session"
+msgstr "Sesi"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Boot"
+msgstr "Hidupkan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Log out"
+msgstr "Log keluar"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Reboot"
+msgstr "Hidupkan ulang"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Shutdown"
+msgstr "Matikan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Session"
-msgstr ""
+msgid "Broadcasts"
+msgstr "Siarkan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Boot"
-msgstr ""
+msgid "Monitor user"
+msgstr "Awasi pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Log out"
-msgstr ""
+msgid "Assist user"
+msgstr "Bantu pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
-msgid "Reboot"
-msgstr ""
+msgid "Take control of the selected user's computer"
+msgstr "Ambil kendali komputer pengguna terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
-msgid "Shutdown"
-msgstr ""
+msgid "Broadcast video"
+msgstr "Siarkan video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Broadcasts"
-msgstr ""
+msgid "Broadcast screen (fullscreen)"
+msgstr "Siarkan layar (layar penuh)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Monitor user"
-msgstr ""
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "Siarkan layar ke klien terpilih (layar penuh)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
-msgid "Assist user"
-msgstr ""
+msgid "Broadcast screen (windowed)"
+msgstr "Siarkan layar (berjendela)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
-msgid "Take control of the selected user's computer"
-msgstr ""
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "Siarkan layar ke klien terpilih, dalam sebuah jendela"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
-msgid "Broadcast video"
-msgstr ""
+msgid "Broadcast user"
+msgstr "Siarkan pengguna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
-msgid "Broadcast screen"
-msgstr ""
+msgid "Stop broadcasts"
+msgstr "Stop siaran"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
-msgid "Broadcast user"
-msgstr ""
+msgid "Stops all active broadcasts"
+msgstr "Stop semua siaran aktif"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
-msgid "Stop broadcasts"
-msgstr ""
+msgid "Open broadcasts window"
+msgstr "Buka jendela siaran"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
-msgid "Stops all active broadcasts"
-msgstr ""
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "Buka sesi berjendela untuk menghindari siaran seluruh layar anda"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Open broadcasts window"
-msgstr ""
+msgid "Execute"
+msgstr "Jalankan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
-msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr ""
+msgid "Execute a command on the selected clients"
+msgstr "Jalankan perintah pada klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
-msgid "Execute"
-msgstr ""
+msgid "_Send message"
+msgstr "_Kirim pesan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
-msgid "Execute a command on the selected clients"
-msgstr ""
+msgid "Send a message to the selected clients"
+msgstr "Kirim pesan ke klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
-msgid "_Send message"
-msgstr ""
+msgid "Open terminal"
+msgstr "Buka terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
-msgid "Send a message to the selected clients"
-msgstr ""
+msgid "User, locally"
+msgstr "Pengguna (lokal)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Open terminal"
-msgstr ""
+msgid "Root, locally"
+msgstr "Root (lokal)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "User, locally"
-msgstr ""
+msgid "Root, remotely"
+msgstr "Root (remote)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Root, locally"
-msgstr ""
+msgid "Restrictions"
+msgstr "Batasan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Root, remotely"
-msgstr ""
+msgid "Lock screen"
+msgstr "Kunci layar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Restrictions"
-msgstr ""
+msgid "Unlock screen"
+msgstr "Buka kunci layar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
-msgid "Lock screen"
-msgstr ""
+msgid "Block Internet"
+msgstr "Blokir internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Unlock screen"
-msgstr ""
+msgid "Unblock Internet"
+msgstr "Buka blokir internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Block Internet"
-msgstr ""
+msgid "Mute sound"
+msgstr "Matikan suara"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Unblock Internet"
-msgstr ""
+msgid "Unmute sound"
+msgstr "Hidupkan suara"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
-msgid "Mute sound"
-msgstr ""
+msgid "Add to group"
+msgstr "Tambahkan ke grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Unmute sound"
-msgstr ""
+msgid "Remove from group"
+msgstr "Hapus dari grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
-msgid "Background image"
-msgstr ""
+msgid "Network Benchmark"
+msgstr "Uji Jaringan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "Lock background"
-msgstr ""
+msgid "_Help"
+msgstr "_Bantuan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Set default background"
-msgstr ""
+msgid "Report a bug"
+msgstr "Laporkan kutu"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Set background"
-msgstr ""
+msgid "Ask a question"
+msgstr "Ajukan pertanyaan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Add to group"
-msgstr ""
+msgid "Translate this application"
+msgstr "Terjemahkan aplikasi ini"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Remove from group"
-msgstr ""
+msgid "Live chat (IRC)"
+msgstr "Mengobrol langsung (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "Network Benchmark"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Remote support"
+msgstr "Dukungan jarak jauh"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "_Help"
-msgstr ""
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Hidupkan klien terpilih (Wake on LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Report a bug"
-msgstr ""
+msgid "Log out users connected on selected clients"
+msgstr "Log keluar pengguna pada klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Ask a question"
-msgstr ""
+msgid "Reboot the selected clients"
+msgstr "Hidupkan ulang klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Translate this application"
-msgstr ""
+msgid "Shutdown the selected clients"
+msgstr "Matikan klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Live chat (IRC)"
-msgstr ""
+msgid "Broadcast your screen to the selected clients"
+msgstr "Siarkan layar anda ke klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
-msgid "Remote support"
-msgstr ""
+msgid "Broadcast screen"
+msgstr "Siarkan layar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "Boot selected clients (Wake On LAN)"
-msgstr ""
+msgid "Stop all broadcasts on every client"
+msgstr "Stop semua siaran pada setiap klien"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Log out users connected on selected clients"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "Reboot the selected clients"
-msgstr ""
+#: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
+msgid "Send message"
+msgstr "Kirim pesan"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "Shutdown the selected clients"
-msgstr ""
+msgid "Lock screen of the selected clients"
+msgstr "Kunci layar klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "Broadcast your screen to the selected clients"
-msgstr ""
+msgid "Unlock the screen of the selected clients"
+msgstr "Buka kunci layar klien terpilih"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "Stop all broadcasts on every client"
-msgstr ""
+msgid "Show information for the selected client"
+msgstr "Tampilkan informasi klien terpilih"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/executeCommand.ui.h:1
-msgid "Execute command"
-msgstr ""
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
+msgid "Information"
+msgstr "Informasi"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:1
-msgid "Send message"
-msgstr ""
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
+msgid "Groups"
+msgstr "Grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
-msgid "Lock screen of the selected clients"
-msgstr ""
+msgid "Create a new group"
+msgstr "Buat grup baru"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
-msgid "Unlock the screen of the selected clients"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
-msgid "Show information for the selected client"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:69 ../epoptes/ui/gtk/sendMessage.ui.h:6
-msgid "Information"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
-msgid "Groups"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:71
-msgid "Create a new group"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:72
 msgid "Remove the selected group"
-msgstr ""
+msgstr "Hapus grup terpilih"
 
-#: ../epoptes/ui/notifications.py:82
-msgid "Shut down:"
-msgstr ""
+#: ../epoptes/ui/notifications.py:79
+msgid "Could not initialize notifications!"
+msgstr "Inisialisasi notifikasi gagal!"
 
-#: ../epoptes/ui/notifications.py:85
-msgid "Connected:"
-msgstr ""
+#: ../epoptes/ui/gtk/send_message.ui.h:2
+msgid "_Send"
+msgstr "_Kirim"
 
-#: ../epoptes/ui/notifications.py:85
-#, python-format
-msgid "%(user)s on %(host)s"
-msgstr ""
+#: ../epoptes/ui/gtk/send_message.ui.h:3
+msgid "Message title:"
+msgstr "Judul pesan:"
 
-#: ../epoptes/ui/notifications.py:88
-msgid "Disconnected:"
-msgstr ""
+#: ../epoptes/ui/gtk/send_message.ui.h:4
+msgid "Message text:"
+msgstr "Teks pesan:"
 
-#: ../epoptes/ui/notifications.py:88
-#, python-format
-msgid "%(user)s from %(host)s"
-msgstr ""
+#: ../epoptes/ui/gtk/send_message.ui.h:5
+msgid "Use Pango markup"
+msgstr "Gunakan markup Pango"
 
-#: ../epoptes/ui/client_information.py:65
-#, python-format
-msgid "Properties of %s"
-msgstr ""
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+msgid "Warning"
+msgstr "Peringatan"
 
-#: ../epoptes/ui/gui.py:126
+#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
+msgid "Error"
+msgstr "Kesalahan"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Jenis klien:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Alias klien:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Nama komputer klien:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "Alamat MAC:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "Alamat IP:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Pengguna:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "Prosesor:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Kartu grafis:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Edit alias"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Set alias baru untuk klien terpilih"
+
+#: ../epoptes/ui/gui.py:106
 msgid "Detected clients"
-msgstr ""
+msgstr "Klien terdeteksi"
 
-#: ../epoptes/ui/gui.py:249
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr ""
-
-#: ../epoptes/ui/gui.py:254
-msgid "Are you sure you want to reboot all the computers?"
-msgstr ""
-
-#: ../epoptes/ui/gui.py:260
+#: ../epoptes/ui/gui.py:211
 msgid "Are you sure you want to log off all the users?"
-msgstr ""
+msgstr "Anda yakin akan mengeluarkan semua pengguna?"
 
-#: ../epoptes/ui/gui.py:414
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Anda yakin akan menghidupkan ulang semua komputer?"
+
+#: ../epoptes/ui/gui.py:223
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Anda yakin akan mematikan semua komputer?"
+
+#: ../epoptes/ui/gui.py:375
 msgid "The screen is locked by a system administrator."
-msgstr ""
+msgstr "Layar dikunci oleh administrator sistem."
 
-#: ../epoptes/ui/gui.py:450
+#: ../epoptes/ui/gui.py:405
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr ""
+msgstr "Anda yakin akan menghapus klien terpilih dari grup \"%s\"?"
 
-#: ../epoptes/ui/gui.py:488
+#: ../epoptes/ui/gui.py:536
+msgid "New group"
+msgstr "Grup baru"
+
+#: ../epoptes/ui/gui.py:553
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr ""
+msgstr "Anda yakin akan menghapus grup \"%s\"?"
 
-#: ../epoptes/ui/gui.py:567
+#: ../epoptes/ui/gui.py:598
+#, python-format
+msgid "%d clients selected"
+msgstr "%d klien terpilih"
+
+#: ../epoptes/ui/gui.py:695
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Kehilangan koneksi dengan servis epoptes."
 
-#: ../epoptes/ui/gui.py:568
+#: ../epoptes/ui/gui.py:697
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Pastikan servis berjalan, lalu jalankan ulang epoptes."
 
-#: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
+#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
 msgid "Service connection error"
-msgstr ""
+msgstr "Kesalahan koneksi servis"
 
-#. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
+msgid "Shut down:"
+msgstr "Matikan:"
+
+#: ../epoptes/ui/gui.py:736
+msgid "Disconnected:"
+msgstr "Tak tersambung:"
+
+#: ../epoptes/ui/gui.py:737
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr "%(user)s dari %(host)s"
+
+#: ../epoptes/ui/gui.py:845
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -390,320 +436,287 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
+"Percobaan koneksi dilakukan oleh klien dengan versi %s yang tidak kompatibel "
+"dengan versi epoptes saat ini.\n"
+"\n"
+"Mutakhirkan klien ke versi epoptes-client terbaru."
 
-#: ../epoptes/ui/gui.py:1036
+#: ../epoptes/ui/gui.py:875
+msgid "Connected:"
+msgstr "Tersambung:"
+
+#: ../epoptes/ui/gui.py:876
 #, python-format
-msgid "%d clients selected"
-msgstr ""
+msgid "%(user)s on %(host)s"
+msgstr "%(user)s pada %(host)s"
 
-#: ../epoptes/ui/gtk/executeCommand.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
+#: ../epoptes/ui/gui.py:1053
+msgid "Confirm action"
+msgstr "Konfirmasi aksi"
 
-#: ../epoptes/ui/benchmark.py:91 ../epoptes/ui/gtk/netbenchmark.ui.h:22
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr ""
+#: ../bin/epoptes.py:31
+msgid "An error occurred while trying to connect to the epoptes service:"
+msgstr "Kesalahan terjadi saat mencoba menghubungi ke servis epoptes:"
 
-#: ../epoptes/ui/benchmark.py:100 ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "Error"
-msgstr ""
+#: ../bin/epoptes.py:36
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr "Pengguna %s harus sebagai anggota grup %s untuk menjalankan epoptes."
 
-#: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
-msgid "Epoptes Network Benchmark Results"
-msgstr ""
+#: ../bin/epoptes.py:40
+msgid "Make sure the epoptes service is running."
+msgstr "Pastikan servis epoptes berjalan."
 
-#: ../epoptes/ui/benchmark.py:160
-msgid "Upload Rate"
-msgstr ""
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Epoptes perangkat administrasi lab komputer"
 
-#: ../epoptes/ui/benchmark.py:161
-msgid "Download Rate"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:174
+#: ../epoptes/ui/benchmark.py:96
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Tidak ada klien yang dipilih untuk menjalankan pengujian."
 
-#: ../epoptes/ui/benchmark.py:187
+#: ../epoptes/ui/benchmark.py:112
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Semua klien yang dipilih mungkin terputus, atau tidak memiliki epoptes-"
+"client yang berjalan sebagai root."
 
-#: ../epoptes/ui/benchmark.py:192
+#: ../epoptes/ui/benchmark.py:117
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Klien berikut akan dikecualikan dari pengujian karena mereka mungkin "
+"terputus, atau tidak memiliki epoptes-client yang berjalan sebagai root."
 
-#: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Pengujian selesai dalam %d detik..."
 
-#: ../epoptes/ui/benchmark.py:233
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
+msgstr "Beberapa klien tidak membalas tepat waktu!"
+
+#: ../epoptes/ui/benchmark.py:156
 #, python-format
-msgid ""
-"Something went wrong with the iperf server process:\n"
-"\n"
-"%s"
-msgstr ""
+msgid "Waiting for %d more seconds..."
+msgstr "Menunggu %d detik lagi..."
 
-#: ../epoptes/ui/benchmark.py:239
-msgid "Processing data..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:344
+#: ../epoptes/ui/benchmark.py:213
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"Tidak mendapatkan pengukuran dari klien mana pun. Periksa pengaturan "
+"jaringan anda."
 
-#: ../epoptes/common/config.py:220
-msgid "Message from administrator"
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2011-2018 The Epoptes Team"
+msgstr "Hak cipta © 2011-2018 Tim Epoptes"
+
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Perangkat manajemen dan monitoring lab komputer."
+
+#: ../epoptes/ui/gtk/about.ui.h:3
+msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Auriza Akbar https://launchpad.net/~auriza.akbar\n"
+"  acepby https://launchpad.net/~acepby"
 
-#: ../data/epoptes.desktop.in.h:1
-msgid "Epoptes computer lab administration tool"
-msgstr ""
-
-#: ../bin/epoptes.py:59
-msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
-
-#: ../bin/epoptes.py:64
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
 #, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
+msgid "Properties of %s"
+msgstr "Properti dari %s"
 
-#: ../bin/epoptes.py:68
-msgid "Make sure the epoptes service is running."
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.py:90
+#: ../potfiles-workaround/remote_assistance.py:122
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Tak tersambung"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
-msgid "Upload bandwidth"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.py:114
+#, python-format
+msgid "Connecting to %s..."
+msgstr "Menyambungkan ke %s..."
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
-msgid "Download bandwidth"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.py:119
+#, python-format
+msgid "Connected to %s"
+msgstr "Tersambung ke %s"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
-msgid "Show a graph instead of a table."
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.py:126
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Gagal tersambung ke %s"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+#: ../potfiles-workaround/remote_assistance.py:143
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Mencoba ulang dalam %d..."
+
+#: ../epoptes/common/config.py:194
+msgid "Message from administrator"
+msgstr "Pesan dari administrator"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Grafis (VNC)"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Konsol (screen)"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
+"Enter the information of the contact you want to share your Desktop with"
 msgstr ""
+"Masukkan informasi kontak yang akan anda bagikan Desktop anda dengannya"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
-msgid "Overall Bandwidth Statistics"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Metode:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
-msgid "The average server download bandwidth per client"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Komputer:"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
-msgid "Average server download:"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Informasi koneksi"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
-msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Tetap sambungkan ulang"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
-msgid "Total server download:"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Status"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
-msgid "The average server upload bandwidth per client"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
+msgstr "Pengujian jaringan"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
-msgid "Average server upload:"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
+msgstr "Mulai"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
-msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
-msgid "Total server upload:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
-msgid "Epoptes Network Benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:17
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"Pengujian jaringan akan menguji kapasitas jaringan\n"
+"efektif yang tersedia pada lab anda."
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Jalankan pengujian untuk"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
-msgstr ""
+msgstr "detik"
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:21
-msgid "Start"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
+msgstr "Hasil pengujian jaringan"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Edit alias"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
+msgstr "Kapasitas unggah"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Set a new alias for the selected client"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr "Kapasitas unduh"
 
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Graphics card:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "RAM:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "Processor:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "IP address:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "MAC address:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Client hostname:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Client type:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Client alias:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:2
-msgid "_Send"
-msgstr ""
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:3
-msgid "Message title:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:4
-msgid "Message text:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "Use Pango markup"
-msgstr ""
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2016 The Epoptes Team"
-msgstr ""
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr ""
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
-"Epoptes is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, either version 3 of the License, or any later version. \n"
-"\n"
-"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. \n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"epoptes. If not, see <http://www.gnu.org/licenses/>."
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
 msgstr ""
+"Tidak bisa mendapatkan pengukuran dari beberapa klien. Hasil statistik akan "
+"terpengaruh."
 
-#: ../epoptes-client/remote-assistance.py:145
-#: ../epoptes-client/remote-assistance.py:190
-#: ../potfiles-workaround/remote-assistance.py:145
-#: ../potfiles-workaround/remote-assistance.py:190
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Not connected"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr "Statistik kapasitas keseluruhan"
 
-#: ../epoptes-client/remote-assistance.py:178
-#: ../potfiles-workaround/remote-assistance.py:178
-#, python-format
-msgid "Connecting to %s..."
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr "Rataan kapasitas unduh server per klien"
 
-#: ../epoptes-client/remote-assistance.py:187
-#: ../potfiles-workaround/remote-assistance.py:187
-#, python-format
-msgid "Connected to %s"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr "Rataan unduh server:"
 
-#: ../epoptes-client/remote-assistance.py:195
-#: ../potfiles-workaround/remote-assistance.py:195
-#, python-format
-msgid "Failed to connect to %s"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr "Rataan kapasitas unggah server per klien"
 
-#: ../epoptes-client/remote-assistance.py:209
-#: ../potfiles-workaround/remote-assistance.py:209
-#, python-format
-msgid "Retrying in %d..."
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr "Rataan unggah server:"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr "Total kapasitas unggah server, untuk semua klien, secara bersamaan."
 
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Method:"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr "Total unggah server:"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Host:"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr "Total kapasitas unduh server, untuk semua klien, secara bersamaan."
 
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid "Keep reconnecting"
-msgstr ""
-
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Connection information"
-msgstr ""
-
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Status"
-msgstr ""
-
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Graphics (VNC)"
-msgstr ""
-
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Console (screen)"
-msgstr ""
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr "Total unduh server:"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
+
+#~ msgid "Lock background"
+#~ msgstr "Kunci latar belakang"
+
+#~ msgid "Copyright © 2011-2012 Epoptes Team"
+#~ msgstr "Hak cipta © 2011-2012 Tim Epoptes"
+
+#~ msgid ""
+#~ "Epoptes is free software: you can redistribute it and/or modify it under the "
+#~ "terms of the GNU General Public License as published by the Free Software "
+#~ "Foundation, either version 3 of the License, or any later version. \n"
+#~ "\n"
+#~ "Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+#~ "details. \n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "epoptes. If not, see <http://www.gnu.org/licenses/>."
+#~ msgstr ""
+#~ "Epoptes adalah perangkat lunak bebas: anda dapat menyebarkan dan/atau "
+#~ "mengubahnya di bawah lisensi GNU General Public License yang dipublikasikan "
+#~ "oleh Free Software Foundation, versi 3 ataupun versi sesudahnya.\n"
+#~ "\n"
+#~ "Epoptes disebarkan dengan harapan dapat bermanfaat, namun TANPA JAMINAN "
+#~ "APAPUN; bahkan tanpa jaminan tersirat LAYAK DAGANG atau KESESUAIAN UNTUK "
+#~ "KEPENTINGAN TERTENTU. Lihat GNU General Public License untuk detail lebih "
+#~ "lanjut.\n"
+#~ "\n"
+#~ "Anda seharusnya telah menerima salinan GNU General Public License bersama "
+#~ "dengan Epoptes. Jika tidak, lihat <http://www.gnu.org/licenses/>."
+
+#~ msgid "Background image"
+#~ msgstr "Gambar latar belakang"
+
+#~ msgid "Set default background"
+#~ msgstr "Set latar belakang standar"
+
+#~ msgid "Set background"
+#~ msgstr "Set latar belakang"

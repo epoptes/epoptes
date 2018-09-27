@@ -45,7 +45,7 @@ class EpoptesGui(object):
              r"""sed -n '/.*ether[[:space:]]*\([[:xdigit:]:]*\).*/"""
              r"""{s//\1/;y/abcdef-/ABCDEF:/;p;}';"""
              r"""echo $LTSP_CLIENT_MAC"""],
-            stdout=subprocess.PIPE).communicate()[0].split()
+            stdout=subprocess.PIPE).communicate()[0].decode().split()
         self.current_thumbshots = dict()
         self.daemon = None
         self.displayed_compatibility_warning = False
@@ -80,7 +80,7 @@ class EpoptesGui(object):
         self.get = self.builder.get_object
         # Hide the remote assistance menuitem if epoptes-client isn't installed
         if not os.path.isfile('/usr/share/epoptes-client/remote_assistance.py'):
-            self.get('mi_remote_assistance').set_property('visible', False)
+            self.get('imi_help_remote_support').set_property('visible', False)
             self.get('smi_help_remote_support').set_property('visible', False)
         self.mnu_add_to_group = self.get('mnu_add_to_group')
         self.mni_add_to_group = self.get('mni_add_to_group')
@@ -113,6 +113,7 @@ class EpoptesGui(object):
         self.trv_groups.get_selection().select_path(
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
+        self.on_scl_icon_size_value_changed(None)
         _saved_clients, groups = config.read_groups(
             config.expand_filename('groups.json'))
         if groups:

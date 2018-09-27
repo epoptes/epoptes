@@ -7,17 +7,517 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-28 03:26+0200\n"
+"POT-Creation-Date: 2018-09-22 08:45+0300\n"
 "PO-Revision-Date: 2015-08-15 08:27+0000\n"
 "Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:15+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
+"X-Generator: Launchpad (build 18783)\n"
 
-#: ../epoptes/ui/about_dialog.py:43
+#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
+msgid "Execute command"
+msgstr "Suorita komento"
+
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+"URL-osoite, tiedosto tai käsky suoritettavaksi valituissa päätteissä:"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "_File"
+msgstr "_Tiedosto"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
+msgid "Labels"
+msgstr "Tunnisteet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "Computer (user)"
+msgstr "Tietokone (käyttäjä)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
+msgid "Computer"
+msgstr "Tietokone"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "User (computer)"
+msgstr "Käyttäjä (tietokone)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "User"
+msgstr "Käyttäjä"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "Show real names"
+msgstr "Näytä todelliset nimet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "_Clients"
+msgstr "_Päätteet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Session"
+msgstr "Istunto"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Boot"
+msgstr "Käynnistä"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Log out"
+msgstr "Kirjaudu ulos"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Reboot"
+msgstr "Käynnistä uudelleen"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Shutdown"
+msgstr "Sammuta"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Broadcasts"
+msgstr "Lähetykset"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Monitor user"
+msgstr "Seuraa käyttäjää"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Assist user"
+msgstr "Avusta käyttäjää"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Take control of the selected user's computer"
+msgstr "Ota hallintaan valittujen käyttäjien tietokoneet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Broadcast video"
+msgstr "Lähetä video"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Broadcast screen (fullscreen)"
+msgstr "Lähetä näyttö (koko näyttö)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "Lähetä näytösi valituille päätteille (kokoruutu)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast screen (windowed)"
+msgstr "Lähetä näyttö (ikkunoitu)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "Lähetä näyttösi valituille päätteille (ikkunoitu)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast user"
+msgstr "Lähetä käyttäjä"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Stop broadcasts"
+msgstr "Lopeta lähetykset"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Stops all active broadcasts"
+msgstr "Lopeta kaikki aktiiviset lähetykset"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Open broadcasts window"
+msgstr "Avaa lähetysten ikkuna"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "Avaa ikkunoitu istunto estääksesi koko näytön lähettämisen"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Execute"
+msgstr "Suorita"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Execute a command on the selected clients"
+msgstr "Suorita käsky valituille päätteille"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "_Send message"
+msgstr "_Lähetä viesti"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Send a message to the selected clients"
+msgstr "Lähetä viesti valituille päätteille"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "Open terminal"
+msgstr "Avaa pääteikkuna"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "User, locally"
+msgstr "Käyttäjä (paikallinen)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Root, locally"
+msgstr "Root (paikallinen)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "Root, remotely"
+msgstr "Root (etä)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Restrictions"
+msgstr "Rajoitukset"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Lock screen"
+msgstr "Lukitse näyttö"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Unlock screen"
+msgstr "Avaa näyttö"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
+msgid "Block Internet"
+msgstr "Estä Internet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Unblock Internet"
+msgstr "Avaa Internet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Mute sound"
+msgstr "Vaimenna ääni"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Unmute sound"
+msgstr "Palauta ääni"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Add to group"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Remove from group"
+msgstr "Poista ryhmästä"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "_Help"
+msgstr "_Ohje"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Report a bug"
+msgstr "Vikailmoitus"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Ask a question"
+msgstr "Tee kysymys"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Translate this application"
+msgstr "Kännä tämä ohjelma"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "Live chat (IRC)"
+msgstr "Keskustelu (IRC)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Remote support"
+msgstr "Etätuki"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Käynnistä valitut päätteet (Wake On Lan)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Log out users connected on selected clients"
+msgstr "Kirjaa valittujen päätteiden käyttäjät ulos"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Reboot the selected clients"
+msgstr "Käynnistä uudelleen valitut päätteet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "Shutdown the selected clients"
+msgstr "Sammuta valitut päätteet"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "Broadcast your screen to the selected clients"
+msgstr "Lähetä näyttösi valituille päätteille"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Broadcast screen"
+msgstr "Lähetä näytö"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Stop all broadcasts on every client"
+msgstr "Lopeta kaikki lähetykset kaikissa päätteissä"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
+msgid "Send message"
+msgstr "Lähetä viesti"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
+msgid "Lock screen of the selected clients"
+msgstr "Lukitse valittujen päätteiden näyttö"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
+msgid "Unlock the screen of the selected clients"
+msgstr "Avaa valittujen päätteiden näyttö"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
+msgid "Show information for the selected client"
+msgstr "Näytä valitun päätteen tiedot"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
+msgid "Information"
+msgstr "Tiedot"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
+msgid "Groups"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
+msgid "Create a new group"
+msgstr "Luo uusi ryhmä"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
+msgid "Remove the selected group"
+msgstr "Poista valittu ryhmä"
+
+#: ../epoptes/ui/notifications.py:79
+msgid "Could not initialize notifications!"
+msgstr ""
+
+#: ../epoptes/ui/gtk/send_message.ui.h:2
+msgid "_Send"
+msgstr "_Lähetä"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:3
+msgid "Message title:"
+msgstr "Viestin otsikko:"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:4
+msgid "Message text:"
+msgstr "Viestin sisältö:"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:5
+msgid "Use Pango markup"
+msgstr "Käytä Pango merkkausta"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+msgid "Warning"
+msgstr "Varoitus"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
+msgid "Error"
+msgstr "Virhe"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Päätteen tyyppi:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Päätteen peitenimi:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Päätteen isäntänimi:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "MAC-osoite:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP-osoite:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Käyttäjä:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "Suoritin:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "Muisti:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Näytönohjain:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Muokkaa peitenimeä:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Aseta uusi peitenimi valituille päätteille"
+
+#: ../epoptes/ui/gui.py:106
+msgid "Detected clients"
+msgstr "Havaitut päätteet"
+
+#: ../epoptes/ui/gui.py:211
+msgid "Are you sure you want to log off all the users?"
+msgstr "Oletko varma, että haluat kirjata ulos kaikki käyttäjät?"
+
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Oletko varma, että haluat käynnistää uudelleen kaikki tietokoneet?"
+
+#: ../epoptes/ui/gui.py:223
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Oletko varma, että haluat sammuttaa kaikki tietokoneet?"
+
+#: ../epoptes/ui/gui.py:375
+msgid "The screen is locked by a system administrator."
+msgstr "Näyttö on lukittu ylläpitäjän toimesta."
+
+#: ../epoptes/ui/gui.py:405
+#, python-format
+msgid ""
+"Are you sure you want to remove the selected client(s) from group \"%s\"?"
+msgstr "Oletko varma, että haluat poistaa valitut päätteet ryhmästä \"%s\"?"
+
+#: ../epoptes/ui/gui.py:536
+msgid "New group"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:553
+#, python-format
+msgid "Are you sure you want to remove group \"%s\"?"
+msgstr "Haluatko varmasti poistaa ryhmän \"%s\"?"
+
+#: ../epoptes/ui/gui.py:598
+#, python-format
+msgid "%d clients selected"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:695
+msgid "Lost connection with the epoptes service."
+msgstr ""
+
+#: ../epoptes/ui/gui.py:697
+msgid "Make sure the service is running and then restart epoptes."
+msgstr ""
+
+#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
+msgid "Service connection error"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:728
+msgid "Shut down:"
+msgstr "Sammuta:"
+
+#: ../epoptes/ui/gui.py:736
+msgid "Disconnected:"
+msgstr "Irtikytketyt:"
+
+#: ../epoptes/ui/gui.py:737
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr "%(user)s koneelta %(host)s"
+
+#: ../epoptes/ui/gui.py:845
+#, python-format
+msgid ""
+"A connection attempt was made by a client with version %s, which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You need to update your clients to the latest epoptes-client version."
+msgstr ""
+"A connection attempt was made by a client with version %s, which is "
+"incompatible with the current epoptes version.\n"
+"\n"
+"You need to update your clients to the latest epoptes-client version."
+
+#: ../epoptes/ui/gui.py:875
+msgid "Connected:"
+msgstr "Yhdistetty:"
+
+#: ../epoptes/ui/gui.py:876
+#, python-format
+msgid "%(user)s on %(host)s"
+msgstr "%(user)s koneella %(host)s"
+
+#: ../epoptes/ui/gui.py:1053
+msgid "Confirm action"
+msgstr "Vahvista toiminto"
+
+#: ../bin/epoptes.py:31
+msgid "An error occurred while trying to connect to the epoptes service:"
+msgstr ""
+
+#: ../bin/epoptes.py:36
+#, python-format
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr ""
+"Käyttäjän %s täytyy olla ryhmän %s jäsen voidakseen käyttää epoptes-ohjelmaa."
+
+#: ../bin/epoptes.py:40
+msgid "Make sure the epoptes service is running."
+msgstr ""
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Epoptes – tietokonehuoneen ylläpitotyökalu"
+
+#: ../epoptes/ui/benchmark.py:96
+msgid "There are no selected clients to run the benchmark on."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:112
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:117
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:156
+#, python-format
+msgid "Waiting for %d more seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:213
+msgid ""
+"Did not get measurements from any of the clients. Check your network "
+"settings."
+msgstr ""
+
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2011-2018 The Epoptes Team"
+msgstr ""
+
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Tietokonehuoneen hallinta- ja seurantaohjelma."
+
+#: ../epoptes/ui/gtk/about.ui.h:3
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -27,704 +527,187 @@ msgstr ""
 "  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
 "  mrl586 https://launchpad.net/~mrl586"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "Broadcast screen (fullscreen)"
-msgstr "Lähetä näyttö (koko näyttö)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Lähetä näytösi valituille päätteille (kokoruutu)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "Broadcast screen (windowed)"
-msgstr "Lähetä näyttö (ikkunoitu)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
-msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Lähetä näyttösi valituille päätteille (ikkunoitu)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
-msgid "Confirm action"
-msgstr "Vahvista toiminto"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
-msgid "_File"
-msgstr "_Tiedosto"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Labels"
-msgstr "Tunnisteet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Computer (user)"
-msgstr "Tietokone (käyttäjä)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
-msgid "Computer"
-msgstr "Tietokone"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
-msgid "User (computer)"
-msgstr "Käyttäjä (tietokone)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "User"
-msgstr "Käyttäjä"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
-msgid "Show real names"
-msgstr "Näytä todelliset nimet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
-msgid "_Clients"
-msgstr "_Päätteet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Session"
-msgstr "Istunto"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Boot"
-msgstr "Käynnistä"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Log out"
-msgstr "Kirjaudu ulos"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
-msgid "Reboot"
-msgstr "Käynnistä uudelleen"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
-msgid "Shutdown"
-msgstr "Sammuta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Broadcasts"
-msgstr "Lähetykset"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Monitor user"
-msgstr "Seuraa käyttäjää"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
-msgid "Assist user"
-msgstr "Avusta käyttäjää"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
-msgid "Take control of the selected user's computer"
-msgstr "Ota hallintaan valittujen käyttäjien tietokoneet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
-msgid "Broadcast video"
-msgstr "Lähetä video"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
-msgid "Broadcast screen"
-msgstr "Lähetä näytö"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
-msgid "Broadcast user"
-msgstr "Lähetä käyttäjä"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
-msgid "Stop broadcasts"
-msgstr "Lopeta lähetykset"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
-msgid "Stops all active broadcasts"
-msgstr "Lopeta kaikki aktiiviset lähetykset"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Open broadcasts window"
-msgstr "Avaa lähetysten ikkuna"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
-msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Avaa ikkunoitu istunto estääksesi koko näytön lähettämisen"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
-msgid "Execute"
-msgstr "Suorita"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
-msgid "Execute a command on the selected clients"
-msgstr "Suorita käsky valituille päätteille"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
-msgid "_Send message"
-msgstr "_Lähetä viesti"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
-msgid "Send a message to the selected clients"
-msgstr "Lähetä viesti valituille päätteille"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Open terminal"
-msgstr "Avaa pääteikkuna"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "User, locally"
-msgstr "Käyttäjä (paikallinen)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Root, locally"
-msgstr "Root (paikallinen)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Root, remotely"
-msgstr "Root (etä)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Restrictions"
-msgstr "Rajoitukset"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
-msgid "Lock screen"
-msgstr "Lukitse näyttö"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Unlock screen"
-msgstr "Avaa näyttö"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Block Internet"
-msgstr "Estä Internet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Unblock Internet"
-msgstr "Avaa Internet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
-msgid "Mute sound"
-msgstr "Vaimenna ääni"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Unmute sound"
-msgstr "Palauta ääni"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
-msgid "Background image"
-msgstr "Taustakuva"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "Lock background"
-msgstr "Lukitse tausta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Set default background"
-msgstr "Aseta oletustausta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Set background"
-msgstr "Aseta tausta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Add to group"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Remove from group"
-msgstr "Poista ryhmästä"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "Network Benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "_Help"
-msgstr "_Ohje"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Report a bug"
-msgstr "Vikailmoitus"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Ask a question"
-msgstr "Tee kysymys"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Translate this application"
-msgstr "Kännä tämä ohjelma"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Live chat (IRC)"
-msgstr "Keskustelu (IRC)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
-msgid "Remote support"
-msgstr "Etätuki"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "Boot selected clients (Wake On LAN)"
-msgstr "Käynnistä valitut päätteet (Wake On Lan)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Log out users connected on selected clients"
-msgstr "Kirjaa valittujen päätteiden käyttäjät ulos"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "Reboot the selected clients"
-msgstr "Käynnistä uudelleen valitut päätteet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "Shutdown the selected clients"
-msgstr "Sammuta valitut päätteet"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "Broadcast your screen to the selected clients"
-msgstr "Lähetä näyttösi valituille päätteille"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "Stop all broadcasts on every client"
-msgstr "Lopeta kaikki lähetykset kaikissa päätteissä"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/executeCommand.ui.h:1
-msgid "Execute command"
-msgstr "Suorita komento"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:1
-msgid "Send message"
-msgstr "Lähetä viesti"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
-msgid "Lock screen of the selected clients"
-msgstr "Lukitse valittujen päätteiden näyttö"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:67
-msgid "Unlock the screen of the selected clients"
-msgstr "Avaa valittujen päätteiden näyttö"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
-msgid "Show information for the selected client"
-msgstr "Näytä valitun päätteen tiedot"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:69 ../epoptes/ui/gtk/sendMessage.ui.h:6
-msgid "Information"
-msgstr "Tiedot"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
-msgid "Groups"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:71
-msgid "Create a new group"
-msgstr "Luo uusi ryhmä"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:72
-msgid "Remove the selected group"
-msgstr "Poista valittu ryhmä"
-
-#: ../epoptes/ui/notifications.py:82
-msgid "Shut down:"
-msgstr "Sammuta:"
-
-#: ../epoptes/ui/notifications.py:85
-msgid "Connected:"
-msgstr "Yhdistetty:"
-
-#: ../epoptes/ui/notifications.py:85
-#, python-format
-msgid "%(user)s on %(host)s"
-msgstr "%(user)s koneella %(host)s"
-
-#: ../epoptes/ui/notifications.py:88
-msgid "Disconnected:"
-msgstr "Irtikytketyt:"
-
-#: ../epoptes/ui/notifications.py:88
-#, python-format
-msgid "%(user)s from %(host)s"
-msgstr "%(user)s koneelta %(host)s"
-
-#: ../epoptes/ui/client_information.py:65
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
 #, python-format
 msgid "Properties of %s"
 msgstr "%s ominaisuudet"
 
-#: ../epoptes/ui/gui.py:126
-msgid "Detected clients"
-msgstr "Havaitut päätteet"
+#: ../potfiles-workaround/remote_assistance.py:90
+#: ../potfiles-workaround/remote_assistance.py:122
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Ei yhteyttä"
 
-#: ../epoptes/ui/gui.py:249
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Oletko varma, että haluat sammuttaa kaikki tietokoneet?"
-
-#: ../epoptes/ui/gui.py:254
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Oletko varma, että haluat käynnistää uudelleen kaikki tietokoneet?"
-
-#: ../epoptes/ui/gui.py:260
-msgid "Are you sure you want to log off all the users?"
-msgstr "Oletko varma, että haluat kirjata ulos kaikki käyttäjät?"
-
-#: ../epoptes/ui/gui.py:414
-msgid "The screen is locked by a system administrator."
-msgstr "Näyttö on lukittu ylläpitäjän toimesta."
-
-#: ../epoptes/ui/gui.py:450
+#: ../potfiles-workaround/remote_assistance.py:114
 #, python-format
-msgid ""
-"Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr "Oletko varma, että haluat poistaa valitut päätteet ryhmästä \"%s\"?"
+msgid "Connecting to %s..."
+msgstr "Yhdistetään kohteeseen %s..."
 
-#: ../epoptes/ui/gui.py:488
+#: ../potfiles-workaround/remote_assistance.py:119
 #, python-format
-msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Haluatko varmasti poistaa ryhmän \"%s\"?"
+msgid "Connected to %s"
+msgstr "Yhdistetty kohteeseen %s"
 
-#: ../epoptes/ui/gui.py:567
-msgid "Lost connection with the epoptes service."
-msgstr ""
-
-#: ../epoptes/ui/gui.py:568
-msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
-
-#: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
-msgid "Service connection error"
-msgstr ""
-
-#. Show different messages for LTSP clients and standalones.
-#: ../epoptes/ui/gui.py:728
+#: ../potfiles-workaround/remote_assistance.py:126
 #, python-format
-msgid ""
-"A connection attempt was made by a client with version %s, which is "
-"incompatible with the current epoptes version.\n"
-"\n"
-"You need to update your clients to the latest epoptes-client version."
-msgstr ""
-"A connection attempt was made by a client with version %s, which is "
-"incompatible with the current epoptes version.\n"
-"\n"
-"You need to update your clients to the latest epoptes-client version."
+msgid "Failed to connect to %s"
+msgstr "Yhteys kohteeseen %s epäonnistui"
 
-#: ../epoptes/ui/gui.py:1036
+#: ../potfiles-workaround/remote_assistance.py:143
 #, python-format
-msgid "%d clients selected"
-msgstr ""
+msgid "Retrying in %d..."
+msgstr "Yritetään uudelleen %d..."
 
-#: ../epoptes/ui/gtk/executeCommand.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
-msgstr ""
-"URL-osoite, tiedosto tai käsky suoritettavaksi valituissa päätteissä:"
-
-#: ../epoptes/ui/benchmark.py:91 ../epoptes/ui/gtk/netbenchmark.ui.h:22
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Varoitus"
-
-#: ../epoptes/ui/benchmark.py:100 ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "Error"
-msgstr "Virhe"
-
-#: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
-msgid "Epoptes Network Benchmark Results"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:160
-msgid "Upload Rate"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:161
-msgid "Download Rate"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:174
-msgid "There are no selected clients to run the benchmark on."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:187
-msgid ""
-"All of the selected clients are either offline, or do not have epoptes-"
-"client running as root."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:192
-msgid ""
-"The following clients will be excluded from the benchmark because they are "
-"either offline, or do not have epoptes-client running as root."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
-#, python-format
-msgid "Benchmark finishing in %d seconds..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:233
-#, python-format
-msgid ""
-"Something went wrong with the iperf server process:\n"
-"\n"
-"%s"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:239
-msgid "Processing data..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:344
-msgid ""
-"Did not get measurements from any of the clients. Check your network "
-"settings."
-msgstr ""
-
-#: ../epoptes/common/config.py:220
+#: ../epoptes/common/config.py:194
 msgid "Message from administrator"
 msgstr "Viesti ylläpitäjältä"
 
-#: ../data/epoptes.desktop.in.h:1
-msgid "Epoptes computer lab administration tool"
-msgstr "Epoptes – tietokonehuoneen ylläpitotyökalu"
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Graafinen (VNC)"
 
-#: ../bin/epoptes.py:59
-msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Konsoli (näyttö)"
 
-#: ../bin/epoptes.py:64
-#, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
-"Käyttäjän %s täytyy olla ryhmän %s jäsen voidakseen käyttää epoptes-ohjelmaa."
-
-#: ../bin/epoptes.py:68
-msgid "Make sure the epoptes service is running."
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
-msgid "Upload bandwidth"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
-msgid "Download bandwidth"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
-msgid "Show a graph instead of a table."
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+#: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "Lisää tietoa kontaktista, jonka haluat jakaa työpöytäsi kautta"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Menetelmä:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Isäntäpalvelin"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Yhteyden tiedot"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Pidä uudelleenyhdistettynä"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Tila"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
-msgid "Overall Bandwidth Statistics"
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
-msgid "The average server download bandwidth per client"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
-msgid "Average server download:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
-msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
-msgid "Total server download:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
-msgid "The average server upload bandwidth per client"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
-msgid "Average server upload:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
-msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
-msgid "Total server upload:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
-msgid "Epoptes Network Benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:17
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:21
-msgid "Start"
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
 msgstr ""
 
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Edit alias"
-msgstr "Muokkaa peitenimeä:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Set a new alias for the selected client"
-msgstr "Aseta uusi peitenimi valituille päätteille"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Graphics card:"
-msgstr "Näytönohjain:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "RAM:"
-msgstr "Muisti:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "Processor:"
-msgstr "Suoritin:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr "Käyttäjä:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "IP address:"
-msgstr "IP-osoite:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "MAC address:"
-msgstr "MAC-osoite:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Client hostname:"
-msgstr "Päätteen isäntänimi:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Client type:"
-msgstr "Päätteen tyyppi:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Client alias:"
-msgstr "Päätteen peitenimi:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:2
-msgid "_Send"
-msgstr "_Lähetä"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:3
-msgid "Message title:"
-msgstr "Viestin otsikko:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:4
-msgid "Message text:"
-msgstr "Viestin sisältö:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "Use Pango markup"
-msgstr "Käytä Pango merkkausta"
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2016 The Epoptes Team"
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
 msgstr ""
 
-#: ../epoptes/ui/gtk/about_dialog.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr "Tietokonehuoneen hallinta- ja seurantaohjelma."
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr ""
 
-#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
-"Epoptes is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, either version 3 of the License, or any later version. \n"
-"\n"
-"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. \n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"epoptes. If not, see <http://www.gnu.org/licenses/>."
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
 msgstr ""
-"Epoptes is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, either version 3 of the License, or any later version. \n"
-"\n"
-"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. \n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"epoptes. If not, see <http://www.gnu.org/licenses/>."
 
-#: ../epoptes-client/remote-assistance.py:145
-#: ../epoptes-client/remote-assistance.py:190
-#: ../potfiles-workaround/remote-assistance.py:145
-#: ../potfiles-workaround/remote-assistance.py:190
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Not connected"
-msgstr "Ei yhteyttä"
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:178
-#: ../potfiles-workaround/remote-assistance.py:178
-#, python-format
-msgid "Connecting to %s..."
-msgstr "Yhdistetään kohteeseen %s..."
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:187
-#: ../potfiles-workaround/remote-assistance.py:187
-#, python-format
-msgid "Connected to %s"
-msgstr "Yhdistetty kohteeseen %s"
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:195
-#: ../potfiles-workaround/remote-assistance.py:195
-#, python-format
-msgid "Failed to connect to %s"
-msgstr "Yhteys kohteeseen %s epäonnistui"
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:209
-#: ../potfiles-workaround/remote-assistance.py:209
-#, python-format
-msgid "Retrying in %d..."
-msgstr "Yritetään uudelleen %d..."
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr "Lisää tietoa kontaktista, jonka haluat jakaa työpöytäsi kautta"
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Method:"
-msgstr "Menetelmä:"
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Host:"
-msgstr "Isäntäpalvelin"
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid "Keep reconnecting"
-msgstr "Pidä uudelleenyhdistettynä"
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Connection information"
-msgstr "Yhteyden tiedot"
+#~ msgid "Background image"
+#~ msgstr "Taustakuva"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Status"
-msgstr "Tila"
+#~ msgid "Lock background"
+#~ msgstr "Lukitse tausta"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Graphics (VNC)"
-msgstr "Graafinen (VNC)"
+#~ msgid "Set default background"
+#~ msgstr "Aseta oletustausta"
 
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Console (screen)"
-msgstr "Konsoli (näyttö)"
+#~ msgid "Set background"
+#~ msgstr "Aseta tausta"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
+
+#~ msgid ""
+#~ "Epoptes is free software: you can redistribute it and/or modify it under the "
+#~ "terms of the GNU General Public License as published by the Free Software "
+#~ "Foundation, either version 3 of the License, or any later version. \n"
+#~ "\n"
+#~ "Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+#~ "details. \n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "epoptes. If not, see <http://www.gnu.org/licenses/>."
+#~ msgstr ""
+#~ "Epoptes is free software: you can redistribute it and/or modify it under the "
+#~ "terms of the GNU General Public License as published by the Free Software "
+#~ "Foundation, either version 3 of the License, or any later version. \n"
+#~ "\n"
+#~ "Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+#~ "details. \n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "epoptes. If not, see <http://www.gnu.org/licenses/>."

@@ -1,294 +1,294 @@
-# Arabic translation for epoptes
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the epoptes package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: epoptes\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: Epoptes\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-22 08:45+0300\n"
-"PO-Revision-Date: 2015-08-15 08:28+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2016-10-28 12:45+0000\n"
+"Last-Translator: Besnik <besnik@programeshqip.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
 "X-Generator: Launchpad (build 18783)\n"
+"Language: sq\n"
 
 #: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Execute command"
-msgstr "تنفيذ الأمر"
+msgstr "Urdhër për t’u kryer"
 
 #: ../epoptes/ui/gtk/exec_command.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "رابط، ملف أو أمر للتنفيذ على العملاء المحددين :"
+msgstr ""
+"URL, kartelë ose urdhër për t’u përmbushur te klientët e përzgjedhur:"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "_File"
-msgstr "_ملف"
+msgstr "_Kartelë"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:2
 msgid "Labels"
-msgstr "ملصقات"
+msgstr "Etiketa"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Computer (user)"
-msgstr "حاسوب (مستخدم)"
+msgstr "Kompjuter (përdorues)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
 msgid "Computer"
-msgstr "حاسوب"
+msgstr "Kompjuter"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "User (computer)"
-msgstr "مستخدم  (حاسوب)"
+msgstr "Përdorues (kompjuter)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "User"
-msgstr "المستخدم"
+msgstr "Përdorues"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Show real names"
-msgstr "أظهر الأسماء الحقيقية"
+msgstr "Shfaq emra të vërtetë"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "_Clients"
-msgstr "_عملاء"
+msgstr "_Klientë"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Session"
-msgstr "الجلسة"
+msgstr "Sesion"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Boot"
-msgstr "إقلاع"
+msgstr "Nise"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Log out"
-msgstr "تسجيل الخروج"
+msgstr "Dilni"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Reboot"
-msgstr "إعادة تشغيل الجهاز"
+msgstr "_Rinise"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Shutdown"
-msgstr "إيقاف التشغيل"
+msgstr "Fike"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Broadcasts"
-msgstr "البث"
+msgstr "Transmetime"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Monitor user"
-msgstr "مراقبة المستخدم"
+msgstr "Mbikëqyre përdoruesin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Assist user"
-msgstr "مساعدة المستخدم"
+msgstr "Ndihmoni përdoruesin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Take control of the selected user's computer"
-msgstr "أخذ السيطرة على جهاز المستخدم المختار"
+msgstr "Merr kontrollin e kompjuterit të përdoruesit të përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Broadcast video"
-msgstr "بث الفيديو"
+msgstr "Video transmetimi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Broadcast screen (fullscreen)"
-msgstr "بث الشاشة (شاشة كاملة)"
+msgstr "Skenë transmetimi (sa krejt ekrani)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "بث شاشتك إلى العملاء المحددين، شاشة كاملة"
+msgstr ""
+"Transmetojeni ekranin tuaj te klientët e përzgjedhur, sa krejt ekrani"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Broadcast screen (windowed)"
-msgstr "بث الشاشة (في إطارات)"
+msgstr "Transmeto ekranin (brenda një dritareje)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "بث شاشتك إلى العملاء المحددين، في نافذة"
+msgstr "Transmetojeni ekranin tuaj te klientët e përzgjedhur, në një dritare"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast user"
-msgstr "بث المستخدم"
+msgstr "Përdorues transmetimi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Stop broadcasts"
-msgstr "أوقف البث"
+msgstr "Ndali transmetimet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Stops all active broadcasts"
-msgstr "إيقاف كل بث ناشط"
+msgstr "Ndali krejt transmetimet aktive"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Open broadcasts window"
-msgstr "إفتح نافذة البث"
+msgstr "Hap dritare transmetimesh"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "فتح جلسة عمل في إطارات لمنع بث شاشتك بأكملها"
+msgstr ""
+"Hapni një sesion brenda dritareje, që të parandaloni transmetimin e krejt "
+"ekranit tuaj"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Execute"
-msgstr "تنفيذ"
+msgstr "Ekzekuto"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Execute a command on the selected clients"
-msgstr "تنفيذ أمر على العملاء المحددين"
+msgstr "Ekzekuton një urdhër te klientët e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "_Send message"
-msgstr "_أرسِل رسالة"
+msgstr "_Dërgoje mesazhin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Send a message to the selected clients"
-msgstr "إرسال رسالة إلى العملاء المختارين"
+msgstr "Dërgoni një mesazh te klientët e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Open terminal"
-msgstr "فتح مطراف"
+msgstr "Hap terminal"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "User, locally"
-msgstr "مستعمل، محلياً"
+msgstr "Përdorues, lokalisht"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Root, locally"
-msgstr "جذر، محلياً"
+msgstr "Rrënjë, lokalisht"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Root, remotely"
-msgstr "جذر، عن بعد"
+msgstr "Rrënjë, së largëti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Restrictions"
-msgstr "قيود"
+msgstr "Kufizime"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
 msgid "Lock screen"
-msgstr "أوصِد الشاشة"
+msgstr "Kyçe ekranin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
 msgid "Unlock screen"
-msgstr "إلغاء قفل الشاشة"
+msgstr "Shkyçe ekranin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
 msgid "Block Internet"
-msgstr "حظر الانترنت"
+msgstr "Bllokoje Internetin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unblock Internet"
-msgstr "إعادة الانترنت"
+msgstr "Zhbllokoje Internetin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Mute sound"
-msgstr "أصمت الصوت"
+msgstr "Ndale zërin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unmute sound"
-msgstr "إعادة الصوت"
+msgstr "Kthejeni zërin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Add to group"
-msgstr ""
+msgstr "Shtoje në grup"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Remove from group"
-msgstr "إزالة من مجموعة"
+msgstr "Hiqe prej grupi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Grup Testesh Për Rrjetin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "_Help"
-msgstr "_مساعدة"
+msgstr "_Ndihmë"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Report a bug"
-msgstr "بلّغ عن خلل"
+msgstr "Njoftoni një të metë"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
 msgid "Ask a question"
-msgstr "أطرح سؤالا"
+msgstr "Bëni një pyetje"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Translate this application"
-msgstr "ترجم هذه التطبيقه"
+msgstr "Përkthejeni këtë aplikacion"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Live chat (IRC)"
-msgstr "الدردشة المباشرة (IRC)"
+msgstr "Fjalosje e atypëratyshme (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:51
 #: ../potfiles-workaround/remote_assistance.ui.h:3
 msgid "Remote support"
-msgstr "مساعدة عن بعد"
+msgstr "Asistencë së largëti"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "تشغيل العملاء المحددين (ايقاظ على الشبكة المحلية)"
+msgstr "Bëj nisjen e klientëve të përzgjedhur (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Log out users connected on selected clients"
-msgstr "تسجيل خروج المستخدمين المتصلين على العملاء المحددي"
+msgstr "Bëj daljen e përdoruesve të lidhur te klientët e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Reboot the selected clients"
-msgstr "إعادة تشغيل العملاء المحددين"
+msgstr "Rinis klientët e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Shutdown the selected clients"
-msgstr "إيقاف تشغيل العملاء المحددين"
+msgstr "Fik klientët e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Broadcast your screen to the selected clients"
-msgstr "بث شاشتك إلى العملاء المحددين"
+msgstr "Transmetojeni ekranin tuaj te klientët e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Broadcast screen"
-msgstr "بث الشاشة"
+msgstr "Skenë transmetimi"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Stop all broadcasts on every client"
-msgstr "وقف جميع عمليات البث على كل عميل"
+msgstr "Ndal krejt transmetime në secilin klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
-msgstr "إرسال رسالة"
+msgstr "Dërgoje mesazhin"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Lock screen of the selected clients"
-msgstr "قفل الشاشة على العملاء المحددين"
+msgstr "Kyç ekranin e klientëve të përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Unlock the screen of the selected clients"
-msgstr "إلغاء قفل الشاشة للعملاء المحددين"
+msgstr "Shkyçni ekranin e klientëve të përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Show information for the selected client"
-msgstr "مزيد من المعلومات عن العميل المحدد"
+msgstr "Shfaq të dhëna për klientin e përzgjedhur"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
 msgid "Information"
-msgstr "معلومة"
+msgstr "Të dhëna"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Groups"
-msgstr "المجموعات"
+msgstr "Grupe"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Create a new group"
-msgstr "انشاء مجموعة جديدة"
+msgstr "Krijoni grup të ri"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Remove the selected group"
-msgstr "حذف المجموعة المختارة"
+msgstr "Hiq grupin e përzgjedhur"
 
 #: ../epoptes/ui/notifications.py:79
 msgid "Could not initialize notifications!"
@@ -296,99 +296,100 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/send_message.ui.h:2
 msgid "_Send"
-msgstr "_ارسل"
+msgstr "_Dërgoje"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:3
 msgid "Message title:"
-msgstr "عنوان الرسالة"
+msgstr "Titull mesazhi:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:4
 msgid "Message text:"
-msgstr "نص الرسالة:"
+msgstr "Tekst mesazhi:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:5
 msgid "Use Pango markup"
-msgstr "استخدام علامات بانغو"
+msgstr "Përdor markup Pango"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
 msgid "Warning"
-msgstr "تنبيه"
+msgstr "Kujdes"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
 msgid "Error"
-msgstr "خطأ"
+msgstr "Gabim"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client type:"
-msgstr "نوع العميل:"
+msgstr "Lloj klienti:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client alias:"
-msgstr "كنية العميل:"
+msgstr "Alias klienti:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client hostname:"
-msgstr "اسم مضيف العميل:"
+msgstr "Strehëemër klienti:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "MAC address:"
-msgstr "عنوان ماك"
+msgstr "Adresë MAC:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:5
 msgid "IP address:"
-msgstr "عنوان آي بي"
+msgstr "Adresë IP:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "User:"
-msgstr "المستخدم:"
+msgstr "Përdorues:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Processor:"
-msgstr "المعالج:"
+msgstr "Procesor:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "RAM:"
-msgstr "ذاكرة الوصول العشوائي"
+msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Graphics card:"
-msgstr "بطاقة الرسومات"
+msgstr "Kartë grafike:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:10
 msgid "Edit alias"
-msgstr "حرر الكنية"
+msgstr "Përpunoni alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
-msgstr "إختر كنية جديدة للعميل المحدد"
+msgstr "Caktoni një klient të ri për klientin e përzgjedhur"
 
 #: ../epoptes/ui/gui.py:106
 msgid "Detected clients"
-msgstr "العملاء المكتشفون"
+msgstr "Klientë të pikasur"
 
 #: ../epoptes/ui/gui.py:211
 msgid "Are you sure you want to log off all the users?"
-msgstr "هل أنت متأكد بأنك تريد إنهاء الجلسة لجميع المستخدمين؟"
+msgstr "Jeni i sigurt se doni të bëhet dalja e krejt përdoruesve?"
 
 #: ../epoptes/ui/gui.py:217
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "هل أنت متأكدٌ بأنك تريد إعادة تشغيل جميع الأجهزة؟"
+msgstr "Jeni i sigurt se doni të rinisni krejt kompjuterët?"
 
 #: ../epoptes/ui/gui.py:223
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "هل أنت متأكد من انك تريد إيقاف تشغيل جميع أجهزة الكمبيوتر؟"
+msgstr "Jeni i sigurt se doni të fiken krejt kompjuterat?"
 
 #: ../epoptes/ui/gui.py:375
 msgid "The screen is locked by a system administrator."
-msgstr "الشاشة مقفلة من قبل أحد مدراء النظام."
+msgstr "Ekrani është kyçur nga një përgjegjës sistemi."
 
 #: ../epoptes/ui/gui.py:405
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
-"هل أنت متأكد أنك تريد إزالة العميل (العملاء) المحدد(ين) من  المجموعة \"%s\"؟"
+"Jeni i sigurt se doni të hiqet(n) klienti(ët) e përzgjedhur prej grupit "
+"\"%s\"?"
 
 #: ../epoptes/ui/gui.py:536
 msgid "New group"
@@ -397,37 +398,37 @@ msgstr ""
 #: ../epoptes/ui/gui.py:553
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "هل أنت متأكدٌ بأنك تريد محو المجموعة المختارة \"%s\"؟"
+msgstr "Jeni i sigurt se doni të hiqet grupi \"%s\"?"
 
 #: ../epoptes/ui/gui.py:598
 #, python-format
 msgid "%d clients selected"
-msgstr "تم تحديد %d عميلا"
+msgstr "%d klientë të përzgjedhur"
 
 #: ../epoptes/ui/gui.py:695
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Humbi lidhja me shërbimin epoptes."
 
 #: ../epoptes/ui/gui.py:697
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Sigurohuni që shërbimi xhiron dhe mandej rinisni epoptes-in."
 
 #: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
 msgid "Service connection error"
-msgstr ""
+msgstr "Gabim lidhje shërbimi"
 
 #: ../epoptes/ui/gui.py:728
 msgid "Shut down:"
-msgstr "إيقاف التشغيل"
+msgstr "Fik:"
 
 #: ../epoptes/ui/gui.py:736
 msgid "Disconnected:"
-msgstr "إتصال مقطوع:"
+msgstr "Të shkëputur:"
 
 #: ../epoptes/ui/gui.py:737
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s from %(host)s"
+msgstr "%(user)s prej %(host)s"
 
 #: ../epoptes/ui/gui.py:845
 #, python-format
@@ -437,61 +438,66 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"وقعت  محاولة اتصال من قبل عميل يستخدم الإصدار %s الغير متوافق مع إصدار "
-"إبوبتس الحالي.\n"
+"Nga një klient me versionin %s u bë një përpjekje lidhjeje, çka është e "
+"papërputhshme me versionin e tanishëm të epoptes.\n"
 "\n"
-"تحتاج إلى تحديث عملائك إلى آخر إصدار من عميل إبوبتس."
+"Lypset të përditësoni klientët tuaj me versionin më të ri të epoptes-client."
 
 #: ../epoptes/ui/gui.py:875
 msgid "Connected:"
-msgstr "متصل :"
+msgstr "Të lidhur:"
 
 #: ../epoptes/ui/gui.py:876
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr "%(user)s on %(host)s"
+msgstr "%(user)s te %(host)s"
 
 #: ../epoptes/ui/gui.py:1053
 msgid "Confirm action"
-msgstr "أكد الإجراء"
+msgstr "Ripohoni veprimin"
 
 #: ../bin/epoptes.py:31
 msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
+msgstr "Ndodhi një gabim teksa provohej lidhja me shërbimin epoptes:"
 
 #: ../bin/epoptes.py:36
 #, python-format
 msgid "User %s must be a member of group %s to run epoptes."
-msgstr "المستخدم %s يجب أن يكون عضوا في مجموعة %s لتشغيل إبوبتس ."
+msgstr ""
+"Që të xhirojë epoptes-in, përdoruesi %s duhet të jetë anëtar i grupit %s."
 
 #: ../bin/epoptes.py:40
 msgid "Make sure the epoptes service is running."
-msgstr ""
+msgstr "Sigurohuni që shërbimi epoptes xhiron."
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes computer lab administration tool"
-msgstr "أداة إدارة مختبر حواسيب إبوبتس"
+msgstr "Mjeti Epoptes për administrim laboratori kompjuterash"
 
 #: ../epoptes/ui/benchmark.py:96
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "S’ka klientë të përzgjedhur në të cilët të xhirohet grupi i testeve."
 
 #: ../epoptes/ui/benchmark.py:112
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Krejt klientët e përzgjedhur ose s’janë në linjë, ose nuk e kanë  epoptes-"
+"client në xhirim si rrënjë."
 
 #: ../epoptes/ui/benchmark.py:117
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Klientë vijues do të përjashtohen prej testimit, ngaqë ose s’janë në linjë, "
+"ose epoptes-client nuk xhiron si rrënjë në ta."
 
 #: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Grupi i testeve përfundon për %d sekonda…"
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
@@ -507,6 +513,8 @@ msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"S’u morën dot matje prej ndonjë klienti. Kontrolloni rregullimet tuaja për "
+"rrjetin."
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2011-2018 The Epoptes Team"
@@ -514,87 +522,82 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "أداة لإدارة مختبر الحواسيب والرصد."
+msgstr "Një mjet për administrim dhe mbikëqyrje laboratori kompjuterik"
 
 #: ../epoptes/ui/gtk/about.ui.h:3
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Abdullah Al-Sabi https://launchpad.net/~abdullah-alsabi\n"
-"  Alqasim Alkhalili https://launchpad.net/~qkhalili\n"
-"  Charfi https://launchpad.net/~rezguicharfeddine\n"
-"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
-"  Zied ALAYA https://launchpad.net/~zied.alaya\n"
-"  zeine77 https://launchpad.net/~mohamed-eyil"
+"  Besnik https://launchpad.net/~besnik-programeshqip-org"
 
 #. TODO: consider new string formatting vs updating translations
 #: ../epoptes/ui/client_information.py:66
 #, python-format
 msgid "Properties of %s"
-msgstr "خاصيات %s"
+msgstr "Veti të %s"
 
 #: ../potfiles-workaround/remote_assistance.py:90
 #: ../potfiles-workaround/remote_assistance.py:122
 #: ../potfiles-workaround/remote_assistance.ui.h:9
 msgid "Not connected"
-msgstr "غير متّصل"
+msgstr "I palidhur"
 
 #: ../potfiles-workaround/remote_assistance.py:114
 #, python-format
 msgid "Connecting to %s..."
-msgstr "اتصال بـ %s..."
+msgstr "Po lidhet te %s…"
 
 #: ../potfiles-workaround/remote_assistance.py:119
 #, python-format
 msgid "Connected to %s"
-msgstr "متصل بـ %s"
+msgstr "I lidhur te %s"
 
 #: ../potfiles-workaround/remote_assistance.py:126
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "فشل في الاتصال ب-%s"
+msgstr "S’arriti të lidhej me %s"
 
 #: ../potfiles-workaround/remote_assistance.py:143
 #, python-format
 msgid "Retrying in %d..."
-msgstr "إعادة المحاولة بعد %d"
+msgstr "Po riprovohe për %d…"
 
 #: ../epoptes/common/config.py:194
 msgid "Message from administrator"
-msgstr "رسالة من المدير"
+msgstr "Mesazh nga përgjegjësi"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:1
 msgid "Graphics (VNC)"
-msgstr "رسوميات (VNC)"
+msgstr "Grafikë (VNC)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:2
 msgid "Console (screen)"
-msgstr "لوحة التحكم"
+msgstr "Konsolë (screen)"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:4
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
-msgstr "أدخل المعلومات  عن جهة الاتصال التي تريد مشاركتها سطح مكتبك"
+msgstr "Jepni të dhënat e kontaktit me të cilin doni të ndani Desktopin tuaj"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:5
 msgid "Method:"
-msgstr "طريقة:"
+msgstr "Metodë:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:6
 msgid "Host:"
-msgstr "المضيف:"
+msgstr "Strehë:"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:7
 msgid "Connection information"
-msgstr "معلومات عن الاتصال"
+msgstr "Të dhëna lidhjeje"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:8
 msgid "Keep reconnecting"
-msgstr "أبقِ إعادة الاتصال"
+msgstr "Vazhdo të rilidhesh"
 
 #: ../potfiles-workaround/remote_assistance.ui.h:10
 msgid "Status"
-msgstr "الحالة"
+msgstr "Gjendje"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
@@ -602,21 +605,23 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
-msgstr ""
+msgstr "Nise"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"Grupi i testeve për rrjetin do të testojë prurjen efektive\n"
+"të të dhënave që është e mundshme për laboratorin tuaj."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Xhiro grupin e testeve për"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
-msgstr ""
+msgstr "sekonda"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
@@ -624,17 +629,18 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:10
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Prurje të dhënash ngarkimesh"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:11
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Prurje të dhënash shkarkimesh"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"S’u morën dot matje prej disa klientëve. Kjo do të prekë statistikat."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
@@ -642,53 +648,51 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "Prurje mesatare të dhënash shkarkimesh nga shërbyesi për klient"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:15
 msgid "Average server download:"
-msgstr ""
+msgstr "Shkarkesë mesatare shërbyesi:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:16
 msgid "The average server upload bandwidth per client"
-msgstr ""
+msgstr "Prurje mesatare të dhënash ngarkimesh te shërbyesi për klient"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:17
 msgid "Average server upload:"
-msgstr ""
+msgstr "Ngarkesë mesatare shërbyesi:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:18
 msgid "The total server upload bandwidth, for all clients, simultaneously"
 msgstr ""
+"Prurje të dhënash gjithsej për ngarkime te shërbyesi, për krejt klientët, "
+"njëherazi"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:19
 msgid "Total server upload:"
-msgstr ""
+msgstr "Ngarkime te shërbyesi gjithsej:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:20
 msgid "The total server download bandwidth, for all clients, simultaneously"
 msgstr ""
+"Prurje të dhënash gjithsej për shkarkime nga shërbyesi, për krejt klientët, "
+"njëherazi"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:21
 msgid "Total server download:"
-msgstr ""
+msgstr "Shkarkime te shërbyesi gjithsej:"
 
 #~ msgid "Background image"
-#~ msgstr "صورة الخلفية"
-
-#~ msgid "Set background"
-#~ msgstr "ضبط الخلفية"
-
-#~ msgid "Epoptes"
-#~ msgstr "إبوبتس"
+#~ msgstr "Figurë ssfondi"
 
 #~ msgid "Lock background"
-#~ msgstr "إغلاق الخلفية"
+#~ msgstr "Kyçe sfondin"
 
 #~ msgid "Set default background"
-#~ msgstr "إختر الخلفية الافتراضية"
+#~ msgstr "Caktoni sfondin parazgjedhje"
 
-#~ msgid "Copyright © 2011-2012 Epoptes Team"
-#~ msgstr "حقوق النسخ © محفوظة لفريق إبوبتس 2011-2012"
+#~ msgid "Set background"
+#~ msgstr "Caktoni Sfond"
 
 #~ msgid ""
 #~ "Epoptes is free software: you can redistribute it and/or modify it under the "
@@ -703,13 +707,14 @@ msgstr ""
 #~ "You should have received a copy of the GNU General Public License along with "
 #~ "epoptes. If not, see <http://www.gnu.org/licenses/>."
 #~ msgstr ""
-#~ "إبوبتس  برنامج حر: يمكنك إعادة توزيعه و / أو تعديله تحت شروط رخصة جنو "
-#~ "العمومية العامة المنشورة من طرف مؤسسة البرمجيات الحرة، وفقا للإصدار 3 من "
-#~ "الرخصة، أو أي إصدار لاحق.\n"
+#~ "Epoptes është software i lirë: mund ta rishpërndani dhe/ose modifikoni sipas "
+#~ "kushteve të licencës GNU General Public License të botuar nga Free Software "
+#~ "Foundation, ose versioni 3 i licencës, ose çfarëdo version i mëvonshëm. \n"
 #~ "\n"
-#~ "يُوزع إبوبتس على أمل أن يكون مفيدا، ولكن من دون أي ضمانات؛ حتى دون ضمان "
-#~ "صلاحية التسويق أو الملاءمة لغرض معين. راجع رخصة جنو العمومية العامة لمزيد من "
-#~ "التفاصيل.\n"
+#~ "Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+#~ "details. \n"
 #~ "\n"
-#~ "يفترض أن تكون قد تلقيت نسخة من رخصة جنو العمومية العامة جنبا إلى جنب مع "
-#~ "إبوبتس. إن لم يكن، راجع <http://www.gnu.org/licenses/>."
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "epoptes. If not, see <http://www.gnu.org/licenses/>."

@@ -38,36 +38,42 @@ fi
 # Plan A: check if the variables are already set
 exit_if_found
 
-# Plan B: check if we can get the info from some running process
-for p in $(pgrep -x 'ldm|gdmgreeter|kdm_greet|lxdm-greeter-gt|dbus-daemon'); do
+# Plan B: check if we can get the info from some well-known process
+# Oneliner to discover suitable processes:
+# ps -o pid,user:13,comm,cmd $(grep -sl DISPLAY= /proc/[0-9]*/environ |
+#     cut -d/ -f3) | sort -n | less
+# Tests on Ubuntu 18.04 and some other distros:
+# LTSP greeter: ldm
+# Ubuntu greeter: dbus-daemon|pulseaudio (same in Fedora and CentOS)
+# Ubuntu session: dbus-daemon|pulseaudio (same when locked)
+# Ubuntu MATE greeter: lightdm-greeter
+# Ubuntu MATE session: dbus-daemon|pulseaudio (same when locked)
+# Kubuntu greeter: sddm-greeter|dbus-daemon|pulseaudio
+# Kubuntu session: dconf-service|dbus-daemon|pulseaudio (same when locked)
+# Lubuntu greeter: lightdm-greeter (same when locked)
+# Lubuntu session: dconf-service|pulseaudio (no dbus!)
+# Xubuntu greeter: lightdm-greeter (same when locked)
+# Xubuntu session: dconf-service|dbus-daemon|pulseaudio (no root process!)
+# Sylvia greeter: lightdm-greeter|dbus-daemon
+# Sylvia session: dbus-daemon|pulseaudio (same when locked)
+# Debian stretch MATE greeter: lightdm-gtk-gre|dbus-daemon
+# Debian stretch MATE session: dbus-daemon|dconf-service|pulseaudio
+for p in $(pgrep -x 'ldm|lightdm-greeter|dbus-daemon|dconf-service|pulseaudio' |
+    sort -rn)
+do
     # The first DISPLAY= is only there to prevent a possible syntax error
     export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
         egrep '^DISPLAY=|^XAUTHORITY=')
     exit_if_found
 done
 
-# Plan C: try ck-list-sessions
-while read var equals value; do
-    case "$var" in
-        Session*)
-            unset USER DISPLAY XAUTHORITY
-            ;;
-        unix-user)
-            value=${value%\'}
-            USER=${value#\'}
-            ;;
-        x11-display)
-            value=${value%\'}
-            DISPLAY=${value#\'}
-            if [ -n "$DISPLAY" ]; then
-                XAUTHORITY="$(getent passwd "$USER" | cut -d: -f6)/.Xauthority"
-                exit_if_found
-            fi
-            ;;
-    esac
-done <<EOF
-$(ck-list-sessions)
-EOF
+# Plan C: Try all processes!
+for p in $(pgrep '' | sort -rn); do
+    # The first DISPLAY= is only there to prevent a possible syntax error
+    export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
+        egrep '^DISPLAY=|^XAUTHORITY=')
+    exit_if_found
+done
 
 # Plan D: give up!
 echo "DISPLAY=

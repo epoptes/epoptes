@@ -3,7 +3,7 @@
 # Copyright 2010-2018 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-# epoptes-client is called either from if-up.d as root, to control the client,
+# epoptes-client is called either from systemd as root, to control the client,
 # or from /etc/xdg/autostart as a user, to control the user session.
 # Users can cancel that from their System > Preferences > Services gnome menu.
 
@@ -216,7 +216,7 @@ apply_wol
 printf "Epoptes-client connecting to $SERVER:$PORT..."
 
 # Call chain:
-#  * if-up.d executes /usr/sbin/epoptes-client
+#  * systemd executes /usr/sbin/epoptes-client
 #  * then socat is called
 #  * after a successful connection, socat exec's /bin/sh
 #  * and the daemon sends /usr/share/epoptes/client-functions to that shell

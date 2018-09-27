@@ -22,6 +22,7 @@ That last line "only" triggers pylint's "wrong-import-position" once.
 """
 import gettext
 import locale
+import os
 
 import gi
 

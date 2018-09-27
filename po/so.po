@@ -7,384 +7,429 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-28 03:26+0200\n"
+"POT-Creation-Date: 2018-09-22 08:45+0300\n"
 "PO-Revision-Date: 2015-08-15 08:25+0000\n"
 "Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
 "Language-Team: Somali <so@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-04-02 06:15+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
+"X-Generator: Launchpad (build 18783)\n"
 
-#: ../epoptes/ui/about_dialog.py:43
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Faisal Ali https://launchpad.net/~xashiish\n"
-"  Fotis Tsamis https://launchpad.net/~ftsamis"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:1
-msgid "Broadcast screen (fullscreen)"
-msgstr "Tebi shaashadda (daaqad buuxda)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:2
-msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "U tebi shaashaddaada macaamisha aad dooratay, shaashad-buuxda"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:3
-msgid "Broadcast screen (windowed)"
-msgstr "Tebi shaashadda (daaqad ahaan)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4
-msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "U tebi shaashaddaada macaamisha aad dooratay, daaqad-ahaan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:5
-msgid "Confirm action"
-msgstr "Hubi tallaabadan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:6
-msgid "_File"
-msgstr "_File"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:7
-msgid "Labels"
-msgstr "Astaamo"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:8
-msgid "Computer (user)"
-msgstr "Kombiyuutar (Isticmaale)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:9 ../epoptes/ui/gtk/netbenchmark.ui.h:2
-msgid "Computer"
-msgstr "Kombiyuutar"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:10
-msgid "User (computer)"
-msgstr "Isticmaale (Kombuyuutar)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:11
-msgid "User"
-msgstr "Isticmaale"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:12
-msgid "Show real names"
-msgstr "Tus magaca dhabta ah"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:13
-msgid "_Clients"
-msgstr "_Macmiil"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:14
-msgid "Session"
-msgstr "Fadhi"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:15
-msgid "Boot"
-msgstr "Kici"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:16
-msgid "Log out"
-msgstr "Ka bax"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:17
-msgid "Reboot"
-msgstr "Dib u istaadh"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:18
-msgid "Shutdown"
-msgstr "Dami/Bakhtii"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:19
-msgid "Broadcasts"
-msgstr "Tebbin"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:20
-msgid "Monitor user"
-msgstr "U fiirso isticmaalahan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:21
-msgid "Assist user"
-msgstr "Caawi isticmaalahan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:22
-msgid "Take control of the selected user's computer"
-msgstr "La wareeg isticmaalahan kombutuutarkiisa"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:23
-msgid "Broadcast video"
-msgstr "Tebi suuradda"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:24
-msgid "Broadcast screen"
-msgstr "Tebi shaashadda"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:25
-msgid "Broadcast user"
-msgstr "Tebi isticmaalahan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:26
-msgid "Stop broadcasts"
-msgstr "Jooji tebbinta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:27
-msgid "Stops all active broadcasts"
-msgstr "Jooji dhamaam tebbinta jirta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:28
-msgid "Open broadcasts window"
-msgstr "Fur daaqadda tebbinta"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
-msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Fur daaqad sugan si aanad u wada tebbin shaashadaada oo buuxda"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:30
-msgid "Execute"
-msgstr "Fuli"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:31
-msgid "Execute a command on the selected clients"
-msgstr "Ku fuli amar isticmaalahan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:32
-msgid "_Send message"
-msgstr "_Dir fariin"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:33
-msgid "Send a message to the selected clients"
-msgstr "U dir fariin isticmaalahan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Open terminal"
-msgstr "Fur terminalka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "User, locally"
-msgstr "isticmaale, Soke"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Root, locally"
-msgstr "Root, soke"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Root, remotely"
-msgstr "Root, shishe"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Restrictions"
-msgstr "Xanibaad"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:39
-msgid "Lock screen"
-msgstr "Xidh shaashadda"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Unlock screen"
-msgstr "Fur shaashadda"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Block Internet"
-msgstr "Xanib Internetka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Unblock Internet"
-msgstr "Ka qaad xanibaada Internetka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:43
-msgid "Mute sound"
-msgstr "Aamusi codka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Unmute sound"
-msgstr "Siidaa codka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:45
-msgid "Background image"
-msgstr "Sawirka backgroundka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "Lock background"
-msgstr "Xidh sawirka backgroundka"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Set default background"
-msgstr "Ka dhig sawirka backgroundka rasmi"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Set background"
-msgstr "Ka dhig background"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Add to group"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:50
-msgid "Remove from group"
-msgstr "Ka saar groupkan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-msgid "Network Benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
-msgid "_Help"
-msgstr "_Caawin"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
-msgid "Report a bug"
-msgstr "Cilladdan report-garee"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
-msgid "Ask a question"
-msgstr "Su'aal weydii"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
-msgid "Translate this application"
-msgstr "Turjun barnaamijkan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
-msgid "Live chat (IRC)"
-msgstr "Chat toos ah (IRC)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
-msgid "Remote support"
-msgstr "Caawin shishe"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
-msgid "Boot selected clients (Wake On LAN)"
-msgstr "Istaadh macmiisha (Wake On LAN)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Log out users connected on selected clients"
-msgstr "Ka saar isticmaaleyaasha ku jira macaamiishan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:60
-msgid "Reboot the selected clients"
-msgstr "Dib u istaadh macaamiishan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:61
-msgid "Shutdown the selected clients"
-msgstr "Dami macaamiishan"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:62
-msgid "Broadcast your screen to the selected clients"
-msgstr "U tebi shaashaddaada macaamiisha aad dooratay"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:63
-msgid "Stop all broadcasts on every client"
-msgstr "Jooji dhamaan wixii tebbin ah"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/executeCommand.ui.h:1
+#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Execute command"
 msgstr "Fuli amar"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:65 ../epoptes/ui/gtk/sendMessage.ui.h:1
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr "URL, file ama amarka lagu fulinayo macaamiishan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:1
+msgid "_File"
+msgstr "_File"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:2
+msgid "Labels"
+msgstr "Astaamo"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:3
+msgid "Computer (user)"
+msgstr "Kombiyuutar (Isticmaale)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
+msgid "Computer"
+msgstr "Kombiyuutar"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:5
+msgid "User (computer)"
+msgstr "Isticmaale (Kombuyuutar)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:6
+msgid "User"
+msgstr "Isticmaale"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:7
+msgid "Show real names"
+msgstr "Tus magaca dhabta ah"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:8
+msgid "_Clients"
+msgstr "_Macmiil"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:9
+msgid "Session"
+msgstr "Fadhi"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:10
+msgid "Boot"
+msgstr "Kici"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:11
+msgid "Log out"
+msgstr "Ka bax"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:12
+msgid "Reboot"
+msgstr "Dib u istaadh"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:13
+msgid "Shutdown"
+msgstr "Dami/Bakhtii"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:14
+msgid "Broadcasts"
+msgstr "Tebbin"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:15
+msgid "Monitor user"
+msgstr "U fiirso isticmaalahan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:16
+msgid "Assist user"
+msgstr "Caawi isticmaalahan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:17
+msgid "Take control of the selected user's computer"
+msgstr "La wareeg isticmaalahan kombutuutarkiisa"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:18
+msgid "Broadcast video"
+msgstr "Tebi suuradda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:19
+msgid "Broadcast screen (fullscreen)"
+msgstr "Tebi shaashadda (daaqad buuxda)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:20
+msgid "Broadcast your screen to the selected clients, fullscreen"
+msgstr "U tebi shaashaddaada macaamisha aad dooratay, shaashad-buuxda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:21
+msgid "Broadcast screen (windowed)"
+msgstr "Tebi shaashadda (daaqad ahaan)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:22
+msgid "Broadcast your screen to the selected clients, in a window"
+msgstr "U tebi shaashaddaada macaamisha aad dooratay, daaqad-ahaan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:23
+msgid "Broadcast user"
+msgstr "Tebi isticmaalahan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:24
+msgid "Stop broadcasts"
+msgstr "Jooji tebbinta"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:25
+msgid "Stops all active broadcasts"
+msgstr "Jooji dhamaam tebbinta jirta"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:26
+msgid "Open broadcasts window"
+msgstr "Fur daaqadda tebbinta"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:27
+msgid "Open a windowed session to prevent broadcasting your whole screen"
+msgstr "Fur daaqad sugan si aanad u wada tebbin shaashadaada oo buuxda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:28
+msgid "Execute"
+msgstr "Fuli"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:29
+msgid "Execute a command on the selected clients"
+msgstr "Ku fuli amar isticmaalahan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:30
+msgid "_Send message"
+msgstr "_Dir fariin"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:31
+msgid "Send a message to the selected clients"
+msgstr "U dir fariin isticmaalahan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:32
+msgid "Open terminal"
+msgstr "Fur terminalka"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:33
+msgid "User, locally"
+msgstr "isticmaale, Soke"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:34
+msgid "Root, locally"
+msgstr "Root, soke"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:35
+msgid "Root, remotely"
+msgstr "Root, shishe"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:36
+msgid "Restrictions"
+msgstr "Xanibaad"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:37
+msgid "Lock screen"
+msgstr "Xidh shaashadda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:38
+msgid "Unlock screen"
+msgstr "Fur shaashadda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:39
+msgid "Block Internet"
+msgstr "Xanib Internetka"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:40
+msgid "Unblock Internet"
+msgstr "Ka qaad xanibaada Internetka"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:41
+msgid "Mute sound"
+msgstr "Aamusi codka"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:42
+msgid "Unmute sound"
+msgstr "Siidaa codka"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:43
+msgid "Add to group"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:44
+msgid "Remove from group"
+msgstr "Ka saar groupkan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:45
+msgid "Network Benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:46
+msgid "_Help"
+msgstr "_Caawin"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:47
+msgid "Report a bug"
+msgstr "Cilladdan report-garee"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:48
+msgid "Ask a question"
+msgstr "Su'aal weydii"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:49
+msgid "Translate this application"
+msgstr "Turjun barnaamijkan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "Live chat (IRC)"
+msgstr "Chat toos ah (IRC)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../potfiles-workaround/remote_assistance.ui.h:3
+msgid "Remote support"
+msgstr "Caawin shishe"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:52
+msgid "Boot selected clients (Wake On LAN)"
+msgstr "Istaadh macmiisha (Wake On LAN)"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
+msgid "Log out users connected on selected clients"
+msgstr "Ka saar isticmaaleyaasha ku jira macaamiishan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
+msgid "Reboot the selected clients"
+msgstr "Dib u istaadh macaamiishan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
+msgid "Shutdown the selected clients"
+msgstr "Dami macaamiishan"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
+msgid "Broadcast your screen to the selected clients"
+msgstr "U tebi shaashaddaada macaamiisha aad dooratay"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
+msgid "Broadcast screen"
+msgstr "Tebi shaashadda"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
+msgid "Stop all broadcasts on every client"
+msgstr "Jooji dhamaan wixii tebbin ah"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
 msgstr "Dir fariin"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:66
+#: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Lock screen of the selected clients"
 msgstr "Xidh dhaashadda macmiishan"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:67
+#: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Unlock the screen of the selected clients"
 msgstr "Fur shaashadda macmiishan aad dooratay"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:68
+#: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Show information for the selected client"
 msgstr "I tus macluumaad ku saabsan macmiilkan"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:69 ../epoptes/ui/gtk/sendMessage.ui.h:6
+#: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
 msgid "Information"
 msgstr "Warbixin"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:70
+#: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Groups"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:71
+#: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Create a new group"
 msgstr "Samee group cusub"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:72
+#: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Remove the selected group"
 msgstr "Tir-tir groupkan aad dooratay"
 
-#: ../epoptes/ui/notifications.py:82
-msgid "Shut down:"
-msgstr "Dami"
-
-#: ../epoptes/ui/notifications.py:85
-msgid "Connected:"
-msgstr "Ku xidhiidhsan"
-
-#: ../epoptes/ui/notifications.py:85
-#, python-format
-msgid "%(user)s on %(host)s"
+#: ../epoptes/ui/notifications.py:79
+msgid "Could not initialize notifications!"
 msgstr ""
 
-#: ../epoptes/ui/notifications.py:88
-msgid "Disconnected:"
-msgstr "Kuma xidhiidhsana (Go'ay)"
+#: ../epoptes/ui/gtk/send_message.ui.h:2
+msgid "_Send"
+msgstr "_Dir"
 
-#: ../epoptes/ui/notifications.py:88
-#, python-format
-msgid "%(user)s from %(host)s"
-msgstr ""
+#: ../epoptes/ui/gtk/send_message.ui.h:3
+msgid "Message title:"
+msgstr "Fariinta cinwaankeeda:"
 
-#: ../epoptes/ui/client_information.py:65
-#, python-format
-msgid "Properties of %s"
-msgstr "Tafaasiisha %s"
+#: ../epoptes/ui/gtk/send_message.ui.h:4
+msgid "Message text:"
+msgstr "Fariinta:"
 
-#: ../epoptes/ui/gui.py:126
+#: ../epoptes/ui/gtk/send_message.ui.h:5
+msgid "Use Pango markup"
+msgstr "Isticmaal Pango markup"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+msgid "Warning"
+msgstr "Digniin"
+
+#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
+msgid "Error"
+msgstr "Khalad"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Nooca macmiisha:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Macmiisha naaneystiisa:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Magaca macmiisha:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "MAC address"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP address"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "isticmaale"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "processor"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "RAM"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Graphics card"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Bedel naaneysta"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "naaneys cusub u bixi macmiishan"
+
+#: ../epoptes/ui/gui.py:106
 msgid "Detected clients"
 msgstr "Macaamiisha laga war hayo"
 
-#: ../epoptes/ui/gui.py:249
-msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Ma hubtaa inaad rabto dhamaan kombuyuutarada in la damiyo?"
-
-#: ../epoptes/ui/gui.py:254
-msgid "Are you sure you want to reboot all the computers?"
-msgstr "Ma hubtaa inaad rabto dhamaan kombuyuutarada in dib loo istaadho?"
-
-#: ../epoptes/ui/gui.py:260
+#: ../epoptes/ui/gui.py:211
 msgid "Are you sure you want to log off all the users?"
 msgstr "Ma hubtaa inaad rabto dhamaan isticmaaleyaasha in laga saaro?"
 
-#: ../epoptes/ui/gui.py:414
+#: ../epoptes/ui/gui.py:217
+msgid "Are you sure you want to reboot all the computers?"
+msgstr "Ma hubtaa inaad rabto dhamaan kombuyuutarada in dib loo istaadho?"
+
+#: ../epoptes/ui/gui.py:223
+msgid "Are you sure you want to shutdown all the computers?"
+msgstr "Ma hubtaa inaad rabto dhamaan kombuyuutarada in la damiyo?"
+
+#: ../epoptes/ui/gui.py:375
 msgid "The screen is locked by a system administrator."
 msgstr "Shaashadda waxaa xidhay maamulaha"
 
-#: ../epoptes/ui/gui.py:450
+#: ../epoptes/ui/gui.py:405
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 "Ma hubtaa inaad rabto dhamaan isticmaaleyaashan in laga saaro groupka \"%s\"?"
 
-#: ../epoptes/ui/gui.py:488
+#: ../epoptes/ui/gui.py:536
+msgid "New group"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:553
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Ma hubtaa inaad rabto tirtiridda groupka \"%s\"?"
 
-#: ../epoptes/ui/gui.py:567
+#: ../epoptes/ui/gui.py:598
+#, python-format
+msgid "%d clients selected"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:695
 msgid "Lost connection with the epoptes service."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:568
+#: ../epoptes/ui/gui.py:697
 msgid "Make sure the service is running and then restart epoptes."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:571 ../bin/epoptes.py:71
+#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
 msgid "Service connection error"
 msgstr ""
 
-#. Show different messages for LTSP clients and standalones.
 #: ../epoptes/ui/gui.py:728
+msgid "Shut down:"
+msgstr "Dami"
+
+#: ../epoptes/ui/gui.py:736
+msgid "Disconnected:"
+msgstr "Kuma xidhiidhsana (Go'ay)"
+
+#: ../epoptes/ui/gui.py:737
+#, python-format
+msgid "%(user)s from %(host)s"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:845
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -397,330 +442,268 @@ msgstr ""
 "\n"
 "Waa inaad noocii ugu danbeeyey epoptes-client soo gishataa."
 
-#: ../epoptes/ui/gui.py:1036
+#: ../epoptes/ui/gui.py:875
+msgid "Connected:"
+msgstr "Ku xidhiidhsan"
+
+#: ../epoptes/ui/gui.py:876
 #, python-format
-msgid "%d clients selected"
+msgid "%(user)s on %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/gtk/executeCommand.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, file ama amarka lagu fulinayo macaamiishan"
+#: ../epoptes/ui/gui.py:1053
+msgid "Confirm action"
+msgstr "Hubi tallaabadan"
 
-#: ../epoptes/ui/benchmark.py:91 ../epoptes/ui/gtk/netbenchmark.ui.h:22
-#: ../epoptes/ui/gtk/sendMessage.ui.h:7
-msgid "Warning"
-msgstr "Digniin"
-
-#: ../epoptes/ui/benchmark.py:100 ../epoptes/ui/gtk/sendMessage.ui.h:8
-msgid "Error"
-msgstr "Khalad"
-
-#: ../epoptes/ui/benchmark.py:156 ../epoptes/ui/gtk/netbenchmark.ui.h:1
-msgid "Epoptes Network Benchmark Results"
+#: ../bin/epoptes.py:31
+msgid "An error occurred while trying to connect to the epoptes service:"
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:160
-msgid "Upload Rate"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:161
-msgid "Download Rate"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:174
-msgid "There are no selected clients to run the benchmark on."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:187
-msgid ""
-"All of the selected clients are either offline, or do not have epoptes-"
-"client running as root."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:192
-msgid ""
-"The following clients will be excluded from the benchmark because they are "
-"either offline, or do not have epoptes-client running as root."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:223 ../epoptes/ui/benchmark.py:242
+#: ../bin/epoptes.py:36
 #, python-format
-msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgid "User %s must be a member of group %s to run epoptes."
+msgstr "isticmaale %s waa inuu ku jiraa groupka %s si uu u furo epoptes"
 
-#: ../epoptes/ui/benchmark.py:233
-#, python-format
-msgid ""
-"Something went wrong with the iperf server process:\n"
-"\n"
-"%s"
+#: ../bin/epoptes.py:40
+msgid "Make sure the epoptes service is running."
 msgstr ""
-
-#: ../epoptes/ui/benchmark.py:239
-msgid "Processing data..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:344
-msgid ""
-"Did not get measurements from any of the clients. Check your network "
-"settings."
-msgstr ""
-
-#: ../epoptes/common/config.py:220
-msgid "Message from administrator"
-msgstr "Fariin ka timi maamulaha"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes computer lab administration tool"
 msgstr "Epoptes qalab lagu maamulo lab kombuyuutar"
 
-#: ../bin/epoptes.py:59
-msgid "An error occurred while trying to connect to the epoptes service:"
+#: ../epoptes/ui/benchmark.py:96
+msgid "There are no selected clients to run the benchmark on."
 msgstr ""
 
-#: ../bin/epoptes.py:64
-#, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr "isticmaale %s waa inuu ku jiraa groupka %s si uu u furo epoptes"
-
-#: ../bin/epoptes.py:68
-msgid "Make sure the epoptes service is running."
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:3
-msgid "Upload bandwidth"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:4
-msgid "Download bandwidth"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:5
-msgid "Show a graph instead of a table."
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:6
+#: ../epoptes/ui/benchmark.py:112
 msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:7
-msgid "Overall Bandwidth Statistics"
+#: ../epoptes/ui/benchmark.py:117
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:8
-msgid "The average server download bandwidth per client"
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:9
-msgid "Average server download:"
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:10
-msgid "The total server download bandwidth, for all clients, simultaneously"
+#: ../epoptes/ui/benchmark.py:156
+#, python-format
+msgid "Waiting for %d more seconds..."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:11
-msgid "Total server download:"
+#: ../epoptes/ui/benchmark.py:213
+msgid ""
+"Did not get measurements from any of the clients. Check your network "
+"settings."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:12
-msgid "The average server upload bandwidth per client"
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2011-2018 The Epoptes Team"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:13
-msgid "Average server upload:"
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Qalab lagu maamulo lab kombuyuutarada"
+
+#: ../epoptes/ui/gtk/about.ui.h:3
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Faisal Ali https://launchpad.net/~xashiish\n"
+"  Fotis Tsamis https://launchpad.net/~ftsamis"
+
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
+#, python-format
+msgid "Properties of %s"
+msgstr "Tafaasiisha %s"
+
+#: ../potfiles-workaround/remote_assistance.py:90
+#: ../potfiles-workaround/remote_assistance.py:122
+#: ../potfiles-workaround/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Kuma xidhiidhsana"
+
+#: ../potfiles-workaround/remote_assistance.py:114
+#, python-format
+msgid "Connecting to %s..."
+msgstr "Kugu xidhiidhinayaa %s..."
+
+#: ../potfiles-workaround/remote_assistance.py:119
+#, python-format
+msgid "Connected to %s"
+msgstr "Ku xidhiidhsanahay %s"
+
+#: ../potfiles-workaround/remote_assistance.py:126
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Waan ku xidhiidhin kari waayey %s"
+
+#: ../potfiles-workaround/remote_assistance.py:143
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Waan ku celinayaa haddana %d..."
+
+#: ../epoptes/common/config.py:194
+msgid "Message from administrator"
+msgstr "Fariin ka timi maamulaha"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Graphics (VNC)"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Console (screen)"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:4
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "Ku qor tafaasiisha cidda aad rabto inaad shaashaddaada la qadaagto"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Qaabka:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Sooraha:"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Tafaasiisha xidhiidhka"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Ku cel-celi xidhiidhinta"
+
+#: ../potfiles-workaround/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Xaaladda"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:14
-msgid "The total server upload bandwidth, for all clients, simultaneously"
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:15
-msgid "Total server upload:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:16
-msgid "Epoptes Network Benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:17
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:19
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:20
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
 msgstr ""
 
-#: ../epoptes/ui/gtk/netbenchmark.ui.h:21
-msgid "Start"
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
 msgstr ""
 
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Edit alias"
-msgstr "Bedel naaneysta"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Set a new alias for the selected client"
-msgstr "naaneys cusub u bixi macmiishan"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Graphics card:"
-msgstr "Graphics card"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "RAM:"
-msgstr "RAM"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "Processor:"
-msgstr "processor"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr "isticmaale"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "IP address:"
-msgstr "IP address"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "MAC address:"
-msgstr "MAC address"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Client hostname:"
-msgstr "Magaca macmiisha:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Client type:"
-msgstr "Nooca macmiisha:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Client alias:"
-msgstr "Macmiisha naaneystiisa:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:2
-msgid "_Send"
-msgstr "_Dir"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:3
-msgid "Message title:"
-msgstr "Fariinta cinwaankeeda:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:4
-msgid "Message text:"
-msgstr "Fariinta:"
-
-#: ../epoptes/ui/gtk/sendMessage.ui.h:5
-msgid "Use Pango markup"
-msgstr "Isticmaal Pango markup"
-
-#: ../epoptes/ui/gtk/about_dialog.ui.h:1
-msgid "Copyright © 2011-2016 The Epoptes Team"
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
 msgstr ""
 
-#: ../epoptes/ui/gtk/about_dialog.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr "Qalab lagu maamulo lab kombuyuutarada"
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr ""
 
-#: ../epoptes/ui/gtk/about_dialog.ui.h:3
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
-"Epoptes is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, either version 3 of the License, or any later version. \n"
-"\n"
-"Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details. \n"
-"\n"
-"You should have received a copy of the GNU General Public License along with "
-"epoptes. If not, see <http://www.gnu.org/licenses/>."
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
 msgstr ""
-"Epoptes waa bilaash: waa sii bixin kartaa waxna ka bedeli kartaa iayadoo oo "
-"hoos imanay xeerarka GNU General Public License as published by the Free "
-"Software Foundation, ama laantiisa 3aad ee sharcigan, ama laan ka danbeysa.\n"
-"\n"
-"Epoptes waxaa loo sameeyay si uu u noqdo wax tayo fiican leg, laakin WAX "
-"GARANTII AH MA LEH; wax ballanqaad ah oo aannu ku siineyno ma leh in wax "
-"waliba shaqeeyaan waxna aanay xumaan. Fadlan akhriso xeerarka GNU General "
-"Public License si tafaasiil dheeraad ah aad u hesho.\n"
-"\n"
-"Hadii aanu la socon Epoptes nuskhad xeerarka GNU General Public License ah, "
-"waxaad ka heli kartaa: <http://www.gnu.org/licenses/>."
 
-#: ../epoptes-client/remote-assistance.py:145
-#: ../epoptes-client/remote-assistance.py:190
-#: ../potfiles-workaround/remote-assistance.py:145
-#: ../potfiles-workaround/remote-assistance.py:190
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Not connected"
-msgstr "Kuma xidhiidhsana"
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:178
-#: ../potfiles-workaround/remote-assistance.py:178
-#, python-format
-msgid "Connecting to %s..."
-msgstr "Kugu xidhiidhinayaa %s..."
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:187
-#: ../potfiles-workaround/remote-assistance.py:187
-#, python-format
-msgid "Connected to %s"
-msgstr "Ku xidhiidhsanahay %s"
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:195
-#: ../potfiles-workaround/remote-assistance.py:195
-#, python-format
-msgid "Failed to connect to %s"
-msgstr "Waan ku xidhiidhin kari waayey %s"
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr ""
 
-#: ../epoptes-client/remote-assistance.py:209
-#: ../potfiles-workaround/remote-assistance.py:209
-#, python-format
-msgid "Retrying in %d..."
-msgstr "Waan ku celinayaa haddana %d..."
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr "Ku qor tafaasiisha cidda aad rabto inaad shaashaddaada la qadaagto"
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Method:"
-msgstr "Qaabka:"
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Host:"
-msgstr "Sooraha:"
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
 
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid "Keep reconnecting"
-msgstr "Ku cel-celi xidhiidhinta"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Connection information"
-msgstr "Tafaasiisha xidhiidhka"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Status"
-msgstr "Xaaladda"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Graphics (VNC)"
-msgstr "Graphics (VNC)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Console (screen)"
-msgstr "Console (screen)"
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr ""
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
+
+#~ msgid "Lock background"
+#~ msgstr "Xidh sawirka backgroundka"
+
+#~ msgid "Background image"
+#~ msgstr "Sawirka backgroundka"
+
+#~ msgid "Set default background"
+#~ msgstr "Ka dhig sawirka backgroundka rasmi"
+
+#~ msgid "Set background"
+#~ msgstr "Ka dhig background"
+
+#~ msgid ""
+#~ "Epoptes is free software: you can redistribute it and/or modify it under the "
+#~ "terms of the GNU General Public License as published by the Free Software "
+#~ "Foundation, either version 3 of the License, or any later version. \n"
+#~ "\n"
+#~ "Epoptes is distributed in the hope that it will be useful, but WITHOUT ANY "
+#~ "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+#~ "FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+#~ "details. \n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License along with "
+#~ "epoptes. If not, see <http://www.gnu.org/licenses/>."
+#~ msgstr ""
+#~ "Epoptes waa bilaash: waa sii bixin kartaa waxna ka bedeli kartaa iayadoo oo "
+#~ "hoos imanay xeerarka GNU General Public License as published by the Free "
+#~ "Software Foundation, ama laantiisa 3aad ee sharcigan, ama laan ka danbeysa.\n"
+#~ "\n"
+#~ "Epoptes waxaa loo sameeyay si uu u noqdo wax tayo fiican leg, laakin WAX "
+#~ "GARANTII AH MA LEH; wax ballanqaad ah oo aannu ku siineyno ma leh in wax "
+#~ "waliba shaqeeyaan waxna aanay xumaan. Fadlan akhriso xeerarka GNU General "
+#~ "Public License si tafaasiil dheeraad ah aad u hesho.\n"
+#~ "\n"
+#~ "Hadii aanu la socon Epoptes nuskhad xeerarka GNU General Public License ah, "
+#~ "waxaad ka heli kartaa: <http://www.gnu.org/licenses/>."
