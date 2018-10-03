@@ -7,8 +7,6 @@ set -e
 
 if [ "$1" = install ] || [ "$1" = upgrade ]; then
     update-rc.d -f epoptes-client remove
-    rm -f /etc/init.d/epoptes-client /etc/init/epoptes-client.conf
-    rm -f /etc/network/if-up.d/epoptes-client
 fi
 
 # dh_installdeb will replace this with shell code automatically
