@@ -1,3 +1,10 @@
+epoptes (1.0.1-2) unstable; urgency=medium
+
+  * Change Build-Depends to python3:any (Closes: #910095).
+  * Remove conffiles using dpkg-maintscript-helper (Closes: #910216).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 08 Oct 2018 12:14:26 -0700
+
 epoptes (1.0.1-1) unstable; urgency=medium
 
   [ Alkis Georgopoulos ]
