@@ -286,9 +286,8 @@ class EpoptesGui(object):
             pwd = ''.join(random.sample(
                 string.ascii_letters + string.digits, 8))
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
-            file = open(pwdfile, 'rb')
-            pwd = file.read()
-            file.close()
+            with open(pwdfile, 'rb') as file:
+                pwd = file.read()
             self.vncserver_port = self.find_unused_port()
             self.vncserver_pwd = ''.join('\\%o' % c for c in pwd)
             self.vncserver = subprocess.Popen(

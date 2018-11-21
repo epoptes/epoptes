@@ -45,9 +45,8 @@ class ServerContextFactory(ssl.ContextFactory):
 
 def filter_bash(script):
     """Strip comments from client-functions, to save some bandwidth."""
-    file = open(script)
-    functions = file.readlines()
-    file.close()
+    with open(script) as file:
+        functions = file.readlines()
     result = ''
     for line in functions:
         if line.strip() != '' and line.strip()[0] == '#':

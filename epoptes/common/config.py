@@ -37,9 +37,8 @@ def read_plain_file(filename):
     if not os.path.isfile(filename):
         return []
     try:
-        file = open(filename, 'r')
-        contents = [x.strip() for x in file.readlines()]
-        file.close()
+        with open(filename, 'r') as file:
+            contents = [x.strip() for x in file.readlines()]
         return contents
     except (IOError, OSError) as exc:
         LOG.e(exc)
@@ -50,8 +49,8 @@ def write_plain_file(filename, contents):
     """Write the contents string list to filename. Return True on success."""
     try:
         makedirs_for_file(filename)
-        file = open(filename, 'w')
-        file.write('\n'.join(contents))
+        with open(filename, 'w') as file:
+            file.write('\n'.join(contents))
         return True
     except (IOError, OSError) as exc:
         LOG.e(exc)
@@ -88,9 +87,8 @@ def read_shell_file(filename):
     if not os.path.isfile(filename):
         return {}
     try:
-        file = open(filename, 'r')
-        contents = file.read()
-        file.close()
+        with open(filename, 'r') as file:
+            contents = file.read()
         contents = shlex.split(contents, True)
         # TODO: maybe return at least all the valid pairs?
         return dict(v.split('=') for v in contents)
@@ -106,9 +104,8 @@ def read_groups(filename):
     if not os.path.isfile(filename):
         return [], []
     try:
-        file = open(filename)
-        data = json.loads(file.read())
-        file.close()
+        with open(filename) as file:
+            data = json.loads(file.read())
     except (IOError, OSError) as exc:
         LOG.e(exc)
         return [], []
@@ -164,9 +161,8 @@ def save_groups(filename, model):
     # Save the dict in JSON format
     try:
         makedirs_for_file(filename)
-        file = open(filename, 'w')
-        file.write(json.dumps(data, indent=2))
-        file.close()
+        with open(filename, 'w') as file:
+            file.write(json.dumps(data, indent=2))
     except (IOError, OSError) as exc:
         LOG.e(exc)
 
