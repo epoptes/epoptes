@@ -114,8 +114,15 @@ class EpoptesGui(object):
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
         self.on_scl_icon_size_value_changed(None)
-        _saved_clients, groups = config.read_groups(
-            config.expand_filename('groups.json'))
+        try:
+            _saved_clients, groups = config.read_groups(
+                config.expand_filename('groups.json'))
+        except ValueError as exc:
+            self.warning_dialog(
+                _('Failed to read ~/.config/epoptes/groups.json.') + '\n'
+                + _('You may need to restore your groups from a backup!')
+                + '\n\n' + str(exc))
+            _saved_clients, groups = [], []
         if groups:
             self.mni_add_to_group.set_sensitive(True)
         for group in groups:
