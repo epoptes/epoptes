@@ -114,15 +114,28 @@ class EpoptesGui(object):
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
         self.on_scl_icon_size_value_changed(None)
+        # Support a global groups.json, writable only by the "administrator"
+        self.groups_file = '/etc/epoptes/groups.json'
+        if not os.access(self.groups_file, os.R_OK):
+            self.groups_file = config.expand_filename('groups.json')
+        self.global_groups = not os.access(self.groups_file, os.W_OK)
         try:
-            _saved_clients, groups = config.read_groups(
-                config.expand_filename('groups.json'))
+            _saved_clients, groups = config.read_groups(self.groups_file)
         except ValueError as exc:
             self.warning_dialog(
-                _('Failed to read ~/.config/epoptes/groups.json.') + '\n'
+                _('Failed to read the groups file:') + '\n'
+                + self.groups_file + '\n'
                 + _('You may need to restore your groups from a backup!')
                 + '\n\n' + str(exc))
             _saved_clients, groups = [], []
+        # In global groups mode, groups that start with X- are hidden
+        self.x_groups = {}
+        if self.global_groups:
+            for group in groups:
+                if group.name.upper() == 'X-HIDDEN':
+                    self.x_groups['X-HIDDEN'] = [m.mac for m in group.members]
+                if group.name.upper().startswith('X-'):
+                    groups.remove(group)
         if groups:
             self.mni_add_to_group.set_sensitive(True)
         for group in groups:
@@ -148,8 +161,7 @@ class EpoptesGui(object):
         sel_group = self.gstore.get_path(self.get_selected_group()[0])[0]
         self.gstore.remove(self.gstore.get_iter(
             self.default_group_ref.get_path()))
-        config.save_groups(config.expand_filename('groups.json'),
-                           self.gstore)
+        config.save_groups(self.groups_file, self.gstore)
         settings = config.settings
         if not settings.has_section('GUI'):
             settings.add_section('GUI')
@@ -835,10 +847,16 @@ class EpoptesGui(object):
                   exc)
             return False
 
+        # Support hiding clients in an X-Hidden group
+        if self.global_groups and 'X-HIDDEN' in self.x_groups:
+            if mac in self.x_groups['X-HIDDEN']:
+                LOG.w("  X-HIDDEN: Won't add this client to my lists")
+                return False
+
         # Check if the incoming client is the same with the computer in which
         # epoptes is running, so we don't add it to the list.
         if (mac in self.current_macs) and ((uid == self.uid) or (uid == 0)):
-            LOG.w("  Won't add this client to my lists")
+            LOG.w("  SAME-PC: Won't add this client to my lists")
             return False
 
         # Compatibility check
