@@ -131,9 +131,13 @@ class EpoptesGui(object):
         # In global groups mode, groups that start with X- are hidden
         self.x_groups = {}
         if self.global_groups:
-            for group in groups:
-                if group.name.upper() == 'X-HIDDEN':
-                    self.x_groups['X-HIDDEN'] = [m.mac for m in group.members]
+            for group in list(groups):
+                if group.name.upper().startswith('X-HIDDEN'):
+                    if 'X-HIDDEN' not in self.x_groups:
+                        self.x_groups['X-HIDDEN'] = []
+                    self.x_groups['X-HIDDEN'] = list(set(
+                        self.x_groups['X-HIDDEN']
+                        + [m.mac for m in group.members]))
                 if group.name.upper().startswith('X-'):
                     groups.remove(group)
         if groups:
@@ -161,7 +165,8 @@ class EpoptesGui(object):
         sel_group = self.gstore.get_path(self.get_selected_group()[0])[0]
         self.gstore.remove(self.gstore.get_iter(
             self.default_group_ref.get_path()))
-        config.save_groups(self.groups_file, self.gstore)
+        if not self.global_groups:
+            config.save_groups(self.groups_file, self.gstore)
         settings = config.settings
         if not settings.has_section('GUI'):
             settings.add_section('GUI')
