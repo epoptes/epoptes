@@ -63,9 +63,11 @@ Notes for current server implementations (get_server_info, get_server_caps):
 """
 import time
 
+from epoptes.core import logger
 from epoptes.ui.common import gettext as _
-from gi.repository import Notify
+from gi.repository import GLib, Notify
 
+LOG = logger.Logger(__file__)
 
 class NotifyQueue:
     """A special queue that keeps at most 10 lines of headings and messages."""
@@ -84,6 +86,7 @@ class NotifyQueue:
         self.last_heading = ''
         self.last_time = time.time()
         self.notification = None
+        self.shown_error = False
 
     def enqueue(self, heading, msg):
         """Add a new message to the queue, and show it."""
@@ -132,7 +135,15 @@ class NotifyQueue:
                 self.summary, self.to_string(), self.icon):
             self.notification = self.new_notification(
                 self.summary, self.to_string(), self.icon)
-        self.notification.show()
+        try:
+            self.notification.show()
+        # pylint: disable=catching-non-exception
+        except GLib.Error as exc:
+            # If a notification daemon isn't running, show an error once
+            if not self.shown_error:
+                self.shown_error = True
+                LOG.e("Error while showing notification, is a daemon running?",
+                      "\n", str(exc))
 
 
 def main():
