@@ -116,9 +116,12 @@ class EpoptesGui(object):
         self.on_scl_icon_size_value_changed(None)
         # Support a global groups.json, writable only by the "administrator"
         self.groups_file = '/etc/epoptes/groups.json'
-        if not os.access(self.groups_file, os.R_OK):
+        if os.access(self.groups_file, os.R_OK):
+            # Don't use global groups for the "administrator"
+            self.global_groups = not os.access(self.groups_file, os.W_OK)
+        else:
             self.groups_file = config.expand_filename('groups.json')
-        self.global_groups = not os.access(self.groups_file, os.W_OK)
+            self.global_groups = False
         try:
             _saved_clients, groups = config.read_groups(self.groups_file)
         except ValueError as exc:
