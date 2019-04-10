@@ -113,6 +113,11 @@ fetch_certificate()
 }
 
 wait_for_dns() {
+    # Don't wait for DNS if SERVER is an IP
+    if [ -z "$(echo "$SERVER" | tr -d '[0-9.]')" ]; then
+        server_ip=$SERVER
+        return
+    fi
     delay=60
     while true; do
         server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
