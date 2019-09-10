@@ -12,7 +12,7 @@ class Client:
     def __init__(self, type_='', mac='', hostname='', alias='', users=None,
                  hsystem=''):
         self.type = type_
-        self.mac = mac.upper()
+        self.mac = mac.lower()
         self.hostname = hostname
         self.alias = alias
         if users is None:

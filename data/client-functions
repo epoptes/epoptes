@@ -117,10 +117,10 @@ EOF
             test "${def_iface:-lo}" != "lo" || die "Empty def_iface"
             test -n "$IP" || die "Empty IP"
             MAC=$(ip link show dev "$def_iface" |
-                awk '/ether/ { print toupper($2) }')
+                awk '/ether/ { print tolower($2) }')
             # Some interfaces might not have a MAC (e.g. tun), use a fallback
             test -n "$MAC" || MAC=$(ip link show |
-                awk '/ether/ { print toupper($2); exit }')
+                awk '/ether/ { print tolower($2); exit }')
             test -n "$MAC" || die "Empty MAC"
         fi
         CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
