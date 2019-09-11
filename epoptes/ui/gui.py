@@ -42,8 +42,7 @@ class EpoptesGui(object):
         self.current_macs = subprocess.Popen(
             ['sh', '-c',
              r"""ip -oneline -family inet link show | """
-             r"""sed -n '/.*ether[[:space:]]*\([[:xdigit:]:]*\).*/"""
-             r"""{s//\1/;y/abcdef-/ABCDEF:/;p;}';"""
+             r"""sed -n 's/.*ether[[:space:]]*\([[:xdigit:]:]*\).*/\1/p';"""
              r"""echo $LTSP_CLIENT_MAC"""],
             stdout=subprocess.PIPE).communicate()[0].decode().split()
         self.current_thumbshots = dict()
