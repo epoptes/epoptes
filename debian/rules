@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/dpkg/pkg-info.mk
+
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+export PYBUILD_INTERPRETERS=python3
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_install:
+	dh_install
+	sed "s/\(__version__\).*/\1 = '$(DEB_VERSION)'/" -i "$(CURDIR)"/debian/epoptes/usr/lib/python*/dist-packages/epoptes/__init__.py
+	sed "s/\(VERSION=\).*/\1'$(DEB_VERSION)'/" -i "$(CURDIR)"/debian/epoptes-client/usr/sbin/epoptes-client
+	sed '/^#!\/bin\/sh/d' -i "$(CURDIR)"/debian/epoptes/usr/share/epoptes/client-functions
+
+override_dh_python3:
+	dh_python3 --no-guessing-deps

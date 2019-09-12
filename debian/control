@@ -1,0 +1,75 @@
+Source: epoptes
+Section: admin
+Priority: optional
+Maintainer: Epoptes Developers <epoptes@lists.launchpad.net>
+Uploaders: Vagrant Cascadian <vagrant@debian.org>, Alkis Georgopoulos <alkisg@gmail.com>, Fotis Tsamis <ftsamis@gmail.com>
+Build-Depends: debhelper (>= 9),
+ dh-python,
+ dpkg-dev (>= 1.16.1),
+ python3-distutils-extra,
+ python3:any,
+Standards-Version: 4.2.1
+Vcs-Git: https://github.com/Epoptes/epoptes -b debian
+Vcs-Browser: https://github.com/Epoptes/epoptes
+Homepage: http://www.epoptes.org
+
+Package: epoptes
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends},
+ adduser,
+ faketime,
+ gir1.2-gtk-3.0,
+ gir1.2-notify-0.7,
+ iperf,
+ iproute2 | iproute,
+ librsvg2-common,
+ notification-daemon | xfce4-notifyd,
+ openssl,
+ python3-dbus,
+ python3-gi,
+ python3-gi-cairo,
+ python3-netifaces,
+ python3-openssl,
+ python3-twisted,
+ socat,
+ x11vnc,
+ xterm,
+ xvnc4viewer | tigervnc-viewer | ssvnc | vnc-viewer,
+Recommends: epoptes-client
+Description: Computer lab management tool
+ Epoptes is an open source computer lab management and monitoring tool. It
+ allows for screen broadcasting and monitoring, remote command execution,
+ message sending, imposing restrictions like screen locking or sound muting
+ the clients and much more!
+ .
+ Contains the server daemon and a GUI for controlling client PCs.
+ .
+ It supports LTSP installations, but it also works without LTSP.
+
+Package: epoptes-client
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends},
+ bsdmainutils,
+ iperf,
+ iproute2 | iproute,
+ librsvg2-common,
+ procps,
+ screen,
+ socat,
+ x11vnc,
+ xvnc4viewer | tigervnc-viewer | ssvnc | vnc-viewer,
+Recommends:
+ gir1.2-gtk-3.0,
+ openssl,
+ python3-gi,
+ x11-utils,
+ x11-xserver-utils,
+ xterm,
+Suggests: ethtool
+Description: Computer lab management tool (client)
+ Epoptes is an open source computer lab management and monitoring tool. It
+ allows for screen broadcasting and monitoring, remote command execution,
+ message sending, imposing restrictions like screen locking or sound muting
+ the clients and much more!
+ .
+ Contains the client daemon and some utilities for getting screenshots etc.

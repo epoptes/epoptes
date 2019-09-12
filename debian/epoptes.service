@@ -1,0 +1,15 @@
+# This file is part of Epoptes, http://epoptes.org
+# Copyright 2018 the Epoptes team, see AUTHORS.
+# SPDX-License-Identifier: GPL-3.0-or-later
+[Unit]
+Description=Epoptes
+Documentation=man:epoptes(8)
+After=network.target
+
+[Service]
+# See https://twistedmatrix.com/documents/current/core/howto/systemd.html
+# TODO: prevent twistd from logging the time, as systemd already logs it
+ExecStart=/usr/bin/twistd3 --nodaemon --pidfile= epoptes
+
+[Install]
+WantedBy=multi-user.target
