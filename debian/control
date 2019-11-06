@@ -9,9 +9,9 @@ Build-Depends: debhelper (>= 9),
  python3-distutils-extra,
  python3:any,
 Standards-Version: 4.2.1
-Vcs-Git: https://github.com/Epoptes/epoptes -b debian
-Vcs-Browser: https://github.com/Epoptes/epoptes
-Homepage: http://www.epoptes.org
+Vcs-Git: https://github.com/epoptes/epoptes
+Vcs-Browser: https://github.com/epoptes/epoptes
+Homepage: https://epoptes.org
 
 Package: epoptes
 Architecture: all

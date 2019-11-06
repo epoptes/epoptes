@@ -1,4 +1,4 @@
-# This file is part of Epoptes, http://epoptes.org
+# This file is part of Epoptes, https://epoptes.org
 # Copyright 2018 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """

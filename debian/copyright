@@ -1,16 +1,16 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: epoptes
-Source: https://github.com/Epoptes/epoptes
+Source: https://github.com/epoptes/epoptes
 
 Files: *
-Copyright: 2009-2018 Alkis Georgopoulos <alkisg@gmail.com>
+Copyright: 2009-2019 Alkis Georgopoulos <alkisg@gmail.com>
  2009-2017 Fotis Tsamis <ftsamis@gmail.com>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2009-2018 Alkis Georgopoulos <alkisg@gmail.com>
+Copyright: 2009-2019 Alkis Georgopoulos <alkisg@gmail.com>
  2009-2016 Fotis Tsamis <ftsamis@gmail.com>
- 2011-2018 Vagrant Cascadian <vagrant@debian.org>
+ 2011-2019 Vagrant Cascadian <vagrant@debian.org>
 License: GPL-3.0+
 
 License: GPL-3.0+

@@ -1,5 +1,5 @@
 version=4
 # hack to treat tags with a debian revision as version 0
 opts="uversionmangle=s/.*-.*/0/g" \
-https://github.com/Epoptes/epoptes/releases \
-.*/archive/@ANY_VERSION@@ARCHIVE_EXT@ 
+https://github.com/epoptes/epoptes/releases \
+.*/archive/@ANY_VERSION@@ARCHIVE_EXT@

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This file is part of Epoptes, http://epoptes.org
+# This file is part of Epoptes, https://epoptes.org
 # Copyright 2010-2018 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
@@ -456,7 +456,7 @@ class EpoptesGui(object):
 
     def on_imi_help_home_activate(self, _widget):
         """Handle imi_help_home.activate event."""
-        self.open_url("http://www.epoptes.org")
+        self.open_url("https://epoptes.org")
 
     def on_imi_help_report_bug_activate(self, _widget):
         """Handle imi_help_report_bug.activate event."""
@@ -468,7 +468,7 @@ class EpoptesGui(object):
 
     def on_imi_help_translate_application_activate(self, _widget):
         """Handle imi_help_translate_application.activate event."""
-        self.open_url("http://www.epoptes.org/translations")
+        self.open_url("https://epoptes.org/translations")
 
     def on_imi_help_live_chat_irc_activate(self, _widget):
         """Handle imi_help_live_chat_irc.activate event."""

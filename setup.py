@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This file is part of Epoptes, http://epoptes.org
+# This file is part of Epoptes, https://epoptes.org
 # Copyright 2010-2018 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
@@ -51,7 +51,7 @@ def main():
         name='epoptes',
         version=changelog_version(),
         description='Computer lab administration and monitoring tool',
-        url='http://www.epoptes.org',
+        url='https://epoptes.org',
         license='GNU GPL v3',
         author='Fotis Tsamis',
         author_email='ftsamis@gmail.com',

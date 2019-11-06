@@ -9,8 +9,8 @@
     <property name="version">1.0</property>
     <property name="copyright" translatable="yes">Copyright © 2011-2018 The Epoptes Team</property>
     <property name="comments" translatable="yes">A computer lab management and monitoring tool.</property>
-    <property name="website">http://www.epoptes.org</property>
-    <property name="website_label">http://www.epoptes.org</property>
+    <property name="website">https://epoptes.org</property>
+    <property name="website_label">https://epoptes.org</property>
     <property name="authors">Alkis Georgopoulos &lt;alkisg@gmail.com&gt;
 Fotis Tsamis &lt;ftsamis@gmail.com&gt;</property>
     <property name="translator_credits" translatable="yes">translator-credits</property>
