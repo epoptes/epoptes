@@ -9,6 +9,8 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/sbin/epoptes-client
+GuessMainPID=no
+RemainAfterExit=yes
 KillSignal=SIGQUIT
 # Don't put the unit in a failed state if it exits from SIGQUIT.
 # 131 comes from 128+3, because socat returns 128+SIGQUIT.
