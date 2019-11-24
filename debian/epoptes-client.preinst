@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 set -e
 
 # It seems that dh_installinit doesn't remove the sysvinit/upstart symlinks :(
