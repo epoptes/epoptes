@@ -103,7 +103,7 @@ info() {
         fi
         if [ -n "$LTSP_CLIENT" ] && [ -n "$LTSP_CLIENT_MAC" ]; then
             # LTSP exports those vars, use them if available.
-            MAC="$LTSP_CLIENT_MAC"
+            MAC=$(echo "$LTSP_CLIENT_MAC" | awk '{ print tolower($1) }')
             IP="$LTSP_CLIENT"
         else
             server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
