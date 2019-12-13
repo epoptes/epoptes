@@ -51,21 +51,22 @@ Package: epoptes-client
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends},
  bsdmainutils,
- iperf,
  iproute2 | iproute,
- librsvg2-common,
  procps,
  screen,
  socat,
- x11vnc,
- xvnc4viewer | tigervnc-viewer | ssvnc | vnc-viewer,
 Recommends:
  gir1.2-gtk-3.0,
+ iperf,
+ librsvg2-common,
  openssl,
  python3-gi,
+ python3-gi-cairo,
  x11-utils,
  x11-xserver-utils,
+ x11vnc,
  xterm,
+ xvnc4viewer | tigervnc-viewer | ssvnc | vnc-viewer,
 Suggests: ethtool
 Description: Computer lab management tool (client)
  Epoptes is an open source computer lab management and monitoring tool. It
