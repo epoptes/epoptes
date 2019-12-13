@@ -160,11 +160,11 @@ background() {
         print_pid=true
         shift
     fi
-    # The command is ran on a subshell with stdin and stdout redirected to
+    # The command is run on a subshell with stdin and stdout redirected to
     # /dev/null, so that it doesn't interfere with the output of other commands.
     # stderr isn't changed, i.e. ~/.xsession-errors will be used.
-    # See issue #58 for explanation of the following syntax.
-    ( exec 0</dev/null >/dev/null; "$@" ) &
+    # See issues #58 and #103 for explanation of the following syntax.
+    ( unset DESKTOP_AUTOSTART_ID; exec 0</dev/null >/dev/null; "$@" ) &
 
     test -n "$print_pid" && echo $!
 }
