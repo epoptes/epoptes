@@ -125,7 +125,7 @@ EOF
         fi
         CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
         RAM=$(awk '/^MemTotal:/ { print int($2/1024) }' /proc/meminfo)
-        VGA=$(lspci -nn -m | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
+        VGA=$(lspci -nn -m 2>/dev/null | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
         OS=$(uname -o)
 
         export VERSION USER NAME HOME HOSTNAME IP MAC CPU RAM VGA OS
