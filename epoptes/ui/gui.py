@@ -989,10 +989,11 @@ class EpoptesGui(object):
                 except ValueError:
                     LOG.e("Bad thumbshot header")
                     return
-                # TODO: see if there's any way to avoid casting to GLib.Bytes
+                # GLib.Bytes.new and .copy() avoid memory leak and crash (#110)
                 pxb = GdkPixbuf.Pixbuf.new_from_bytes(
                     GLib.Bytes.new(pixels), GdkPixbuf.Colorspace.RGB, False, 8,
                     width, height, rowstride)
+                pxb = pxb.copy()
                 self.current_thumbshots[handle] = pxb
                 self.cstore[i.path][C_PIXBUF] = pxb
                 return
