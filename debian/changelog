@@ -1,3 +1,26 @@
+epoptes (20.01-1) unstable; urgency=medium
+
+  * Switch to calver versioning
+  * Avoid gdk-pixbuf memory leak (#110)
+  * Optimize epoptes-client dependencies (#108)
+  * Hide lspci not found warnings (#109)
+  * Unset DESKTOP_AUTOSTART_ID on execute (#103)
+  * Prevent systemd from killing epoptes-client
+  * Switch to debhelper 10 (#107)
+  * Switch URLs to https
+  * Make a proper README.md (#28)
+  * Merge branch 'debian'
+  * Use lowercase in MAC addresses (#102)
+  * Don't wait for DNS if SERVER is an IP (#91)
+  * Save groups even when groups.json doesn't exist (#90)
+  * Cope with no notification-daemon running
+  * Set default button in edit alias dialog (#88)
+  * Support a global groups.json file (#84)
+  * Use "with" when opening files (#83)
+  * Cope with invalid groups.json (#82)
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Thu, 09 Jan 2020 08:52:12 +0200
+
 epoptes (1.0.1-2) unstable; urgency=medium
 
   * Change Build-Depends to python3:any (Closes: #910095).
