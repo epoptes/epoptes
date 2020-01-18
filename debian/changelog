@@ -1,5 +1,6 @@
 epoptes (20.01-1) unstable; urgency=medium
 
+  [ Alkis Georgopoulos ]
   * Switch to calver versioning
   * Avoid gdk-pixbuf memory leak (#110)
   * Optimize epoptes-client dependencies (#108)
@@ -19,7 +20,10 @@ epoptes (20.01-1) unstable; urgency=medium
   * Use "with" when opening files (#83)
   * Cope with invalid groups.json (#82)
 
- -- Alkis Georgopoulos <alkisg@gmail.com>  Thu, 09 Jan 2020 08:52:12 +0200
+  [ Vagrant Cascadian ]
+  * debian/watch: Update to use new version format.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Fri, 17 Jan 2020 16:39:42 -0800
 
 epoptes (1.0.1-2) unstable; urgency=medium
 
