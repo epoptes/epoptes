@@ -1,0 +1,40 @@
+[encoding: UTF-8]
+epoptes-client/_common.py
+epoptes-client/lock_screen.py
+epoptes-client/message.py
+epoptes-client/remote_assistance.py
+[type: gettext/glade]epoptes-client/remote_assistance.ui
+epoptes-client/thumbshot.py
+epoptes/common/config.py
+epoptes/common/constants.py
+epoptes/common/__init__.py
+epoptes/core/__init__.py
+epoptes/core/logger.py
+epoptes/core/spawn_process.py
+epoptes/core/structs.py
+epoptes/core/wol.py
+epoptes/daemon/bashplex.py
+epoptes/daemon/commands.py
+epoptes/daemon/exchange.py
+epoptes/daemon/guiplex.py
+epoptes/daemon/__init__.py
+epoptes/daemon/uiconnection.py
+epoptes/__init__.py
+epoptes/ui/about.py
+epoptes/ui/benchmark.py
+epoptes/ui/client_information.py
+epoptes/ui/common.py
+epoptes/ui/exec_command.py
+[type: gettext/glade]epoptes/ui/gtk/about.ui
+[type: gettext/glade]epoptes/ui/gtk/benchmark.ui
+[type: gettext/glade]epoptes/ui/gtk/client_information.ui
+[type: gettext/glade]epoptes/ui/gtk/epoptes.ui
+[type: gettext/glade]epoptes/ui/gtk/exec_command.ui
+[type: gettext/glade]epoptes/ui/gtk/send_message.ui
+epoptes/ui/gui.py
+epoptes/ui/__init__.py
+epoptes/ui/notifications.py
+epoptes/ui/reactor.py
+epoptes/ui/send_message.py
+setup.py
+twisted/plugins/epoptesd.py

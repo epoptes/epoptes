@@ -1,4 +1,0 @@
-For some reason, previous distutilsextra versions (like the one in Lucid) don't
-include epoptes-client/* files into POTFILES.in. For now we do an ugly
-workaround and put symlinks of them in this folder.
-Remove the folder once a proper solution is found.
