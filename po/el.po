@@ -7,25 +7,301 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2018-09-22 08:45+0300\n"
-"PO-Revision-Date: 2018-09-22 06:20+0000\n"
+"POT-Creation-Date: 2020-01-23 12:15+0200\n"
+"PO-Revision-Date: 2020-01-23 10:36+0000\n"
 "Last-Translator: Alkis Georgopoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
-"X-Generator: Launchpad (build 18783)\n"
+"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
+"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
 
-#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Execute command"
-msgstr "Εκτέλεση εντολής"
+#: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
+msgid "The screen is locked by a system administrator."
+msgstr "Η οθόνη έχει κλειδωθεί από τον διαχειριστή του συστήματος."
 
-#: ../epoptes/ui/gtk/exec_command.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
+#: ../epoptes-client/message.py:53
+msgid "Usage: {} text [title] [markup] [icon_name]"
+msgstr "Χρήση: {} κείμενο [τίτλος] [markup] [όνομα_εικονιδίου]"
+
+#: ../epoptes-client/remote_assistance.py:90
+#: ../epoptes-client/remote_assistance.py:122
+#: ../epoptes-client/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Αποσυνδεμένο"
+
+#: ../epoptes-client/remote_assistance.py:114
+#, python-format
+msgid "Connecting to %s..."
+msgstr "Γίνεται σύνδεση στο %s..."
+
+#: ../epoptes-client/remote_assistance.py:119
+#, python-format
+msgid "Connected to %s"
+msgstr "Συνδέθηκε στο %s"
+
+#: ../epoptes-client/remote_assistance.py:126
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Αποτυχία σύνδεσης στο %s"
+
+#: ../epoptes-client/remote_assistance.py:143
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Επανάληψη προσπάθειας σε %d..."
+
+#: ../epoptes-client/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Γραφικά (VNC)"
+
+#: ../epoptes-client/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Κονσόλα (screen)"
+
+#: ../epoptes-client/remote_assistance.ui.h:3 ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Remote support"
+msgstr "Απομακρυσμένη βοήθεια"
+
+#: ../epoptes-client/remote_assistance.ui.h:4
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
 msgstr ""
-"Διεύθυνση Διαδικτύου, αρχείο ή εντολή προς εκτέλεση στους επιλεγμένους "
-"υπολογιστές:"
+"Εισάγετε τις πληροφορίες της επαφής για διαμοιρασμό της επιφάνειας εργασίας "
+"σας"
+
+#: ../epoptes-client/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Μέθοδος:"
+
+#: ../epoptes-client/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Υπολογιστής:"
+
+#: ../epoptes-client/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Πληροφορίες σύνδεσης"
+
+#: ../epoptes-client/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Συνεχείς επανασυνδέσεις"
+
+#: ../epoptes-client/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: ../epoptes-client/thumbshot.py:48
+msgid "Usage: {} width height"
+msgstr "Χρήση: {} πλάτος ύψος"
+
+#: ../epoptes/common/config.py:190
+msgid "Message from administrator"
+msgstr "Μήνυμα από τον διαχειριστή"
+
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/send_message.ui.h:8
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: ../epoptes/ui/benchmark.py:96
+msgid "There are no selected clients to run the benchmark on."
+msgstr ""
+"Δεν υπάρχουν επιλεγμένοι υπολογιστές για να πραγματοποιηθεί η μέτρηση."
+
+#: ../epoptes/ui/benchmark.py:112
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+"Όλοι οι επιλεγμένοι υπολογιστές είτε είναι κλειστοί, ή δεν εκτελείται σε "
+"αυτούς ο epoptes-client ως root."
+
+#: ../epoptes/ui/benchmark.py:117
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+"Οι ακόλουθοι υπολογιστές θα εξαιρεθούν από την μέτρηση επειδή είτε είναι "
+"κλειστοί, ή δεν εκτελείται σε αυτούς ο epoptes-client ως root."
+
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr "Η μέτρηση τελειώνει σε %d δευτερόλεπτα..."
+
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
+msgstr "Κάποιοι υπολογιστές δεν ανταποκρίθηκαν έγκαιρα!"
+
+#: ../epoptes/ui/benchmark.py:156
+#, python-format
+msgid "Waiting for %d more seconds..."
+msgstr "Αναμονή για %d ακόμα δευτερόλεπτα..."
+
+#: ../epoptes/ui/benchmark.py:213
+msgid ""
+"Did not get measurements from any of the clients. Check your network "
+"settings."
+msgstr ""
+"Δεν λήφθηκαν μετρήσεις από κανέναν υπολογιστή. Ελέγξτε τις ρυθμίσεις δικτύου "
+"σας."
+
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
+#, python-format
+msgid "Properties of %s"
+msgstr "Ιδιότητες του %s"
+
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2010+ The Epoptes Team"
+msgstr "Copyright © 2010+ Η ομάδα του Επόπτη"
+
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Εργαλείο διαχείρισης και εποπτείας εργαστηρίου υπολογιστών."
+
+#: ../epoptes/ui/gtk/about.ui.h:3
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alkis Georgopoulos https://launchpad.net/~alkisg\n"
+"  Fotis Tsamis https://launchpad.net/~ftsamis"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
+msgstr "Μέτρηση ταχύτητας δικτύου"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
+msgstr "Έναρξη"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
+msgid ""
+"The network benchmark will test the effective network\n"
+"bandwidth that is available for your lab."
+msgstr ""
+"Η μέτρηση ταχύτητας δικτύου θα μετρήσει την πραγματική\n"
+"ταχύτητα που είναι διαθέσιμη στο εργαστήριό σας."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
+msgid "Run the benchmark for"
+msgstr "Εκτέλεση της μέτρησης για"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
+msgstr "Αποτελέσματα μέτρησης ταχύτητας δικτύου"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Computer"
+msgstr "Υπολογιστής"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
+msgstr "Ταχύτητα αποστολής"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr "Ταχύτητα λήψης"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
+msgid ""
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
+msgstr ""
+"Δεν λήφθηκαν μετρήσεις για μερικούς από τους υπολογιστές. Τα στατιστικά "
+"έχουν επηρεαστεί."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr "Συνολικά στατιστικά ταχύτητας"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr "Η μέση ταχύτητα λήψης του εξυπηρετητή ανά υπολογιστή"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr "Μέση ταχύτητα λήψης εξυπηρετητή:"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr "Η μέση ταχύτητα αποστολής του εξυπηρετητή ανά υπολογιστή"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr "Μέση ταχύτητα αποστολής εξυπηρετητή:"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
+"Η συνολική ταχύτητα αποστολής του εξυπηρετητή, για όλους τους υπολογιστές, "
+"ταυτόχρονα"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr "Συνολική ταχύτητα αποστολής του εξυπηρετητή:"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
+"Η συνολική ταχύτητα λήψης του εξυπηρετητή, για όλους τους υπολογιστές, "
+"ταυτόχρονα"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr "Συνολική ταχύτητα λήψης εξυπηρετητή:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Τύπος υπολογιστή:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Ψευδώνυμο υπολογιστή:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Όνομα υπολογιστή:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "Διεύθυνση MAC:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "Διεύθυνση IP:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Χρήστης:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "Επεξεργαστής:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Κάρτα γραφικών:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Τροποποίηση ψευδωνύμου"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Ανάθεση νέου ψευδωνύμου για τον επιλεγμένο υπολογιστή"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "_File"
@@ -38,10 +314,6 @@ msgstr "Ετικέτες"
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Computer (user)"
 msgstr "Υπολογιστής (χρήστης)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
-msgid "Computer"
-msgstr "Υπολογιστής"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "User (computer)"
@@ -229,11 +501,6 @@ msgstr "Μετάφραση εφαρμογής"
 msgid "Live chat (IRC)"
 msgstr "Ζωντανή συνομιλία (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Remote support"
-msgstr "Απομακρυσμένη βοήθεια"
-
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Εκκίνηση επιλεγμένων σταθμών εργασίας (Wake On LAN)"
@@ -263,6 +530,10 @@ msgstr "Εκπομπή οθόνης"
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Stop all broadcasts on every client"
 msgstr "Τερματισμός εκπομπών σε όλους τους υπολογιστές"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59 ../epoptes/ui/gtk/exec_command.ui.h:1
+msgid "Execute command"
+msgstr "Εκτέλεση εντολής"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
@@ -296,9 +567,11 @@ msgstr "Δημιουργία νέας ομάδας"
 msgid "Remove the selected group"
 msgstr "Διαγραφή της επιλεγμένης ομάδας"
 
-#: ../epoptes/ui/notifications.py:79
-msgid "Could not initialize notifications!"
-msgstr "Δεν ήταν δυνατή η αρχικοποίηση των ειδοποιήσεων!"
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr ""
+"Διεύθυνση Διαδικτύου, αρχείο ή εντολή προς εκτέλεση στους επιλεγμένους "
+"υπολογιστές:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:2
 msgid "_Send"
@@ -316,80 +589,33 @@ msgstr "Κείμενο μηνύματος:"
 msgid "Use Pango markup"
 msgstr "Χρήση Pango markup"
 
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
-#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-msgid "Warning"
-msgstr "Προειδοποίηση"
-
-#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
-msgid "Error"
-msgstr "Σφάλμα"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Client type:"
-msgstr "Τύπος υπολογιστή:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Client alias:"
-msgstr "Ψευδώνυμο υπολογιστή:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Client hostname:"
-msgstr "Όνομα υπολογιστή:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "MAC address:"
-msgstr "Διεύθυνση MAC:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "IP address:"
-msgstr "Διεύθυνση IP:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr "Χρήστης:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "Processor:"
-msgstr "Επεξεργαστής:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "RAM:"
-msgstr "RAM:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Graphics card:"
-msgstr "Κάρτα γραφικών:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Edit alias"
-msgstr "Τροποποίηση ψευδωνύμου"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Set a new alias for the selected client"
-msgstr "Ανάθεση νέου ψευδωνύμου για τον επιλεγμένο υπολογιστή"
-
-#: ../epoptes/ui/gui.py:106
+#: ../epoptes/ui/gui.py:105
 msgid "Detected clients"
 msgstr "Εντοπίστηκαν"
 
-#: ../epoptes/ui/gui.py:211
+#: ../epoptes/ui/gui.py:128
+msgid "Failed to read the groups file:"
+msgstr "Αποτυχία κατά την ανάγνωση του αρχείου groups:"
+
+#: ../epoptes/ui/gui.py:130
+msgid "You may need to restore your groups from a backup!"
+msgstr ""
+"Πιθανώς να χρειαστεί να επαναφέρετε το αρχείο groups από κάποιο αντίγραφο "
+"ασφαλείας!"
+
+#: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
 msgstr "Θέλετε σίγουρα να αποσυνδέσετε όλους τους χρήστες;"
 
-#: ../epoptes/ui/gui.py:217
+#: ../epoptes/ui/gui.py:243
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Θέλετε σίγουρα να επανεκκινήσετε όλους τους υπολογιστές;"
 
-#: ../epoptes/ui/gui.py:223
+#: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Θέλετε σίγουρα να τερματίσετε όλους τους υπολογιστές;"
 
-#: ../epoptes/ui/gui.py:375
-msgid "The screen is locked by a system administrator."
-msgstr "Η οθόνη έχει κλειδωθεί από τον διαχειριστή του συστήματος."
-
-#: ../epoptes/ui/gui.py:405
+#: ../epoptes/ui/gui.py:430
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -397,46 +623,46 @@ msgstr ""
 "Θέλετε σίγουρα να αφαιρέσετε τους επιλεγμένους υπολογιστές από το group "
 "\"%s\";"
 
-#: ../epoptes/ui/gui.py:536
+#: ../epoptes/ui/gui.py:561
 msgid "New group"
 msgstr "Νέα ομάδα"
 
-#: ../epoptes/ui/gui.py:553
+#: ../epoptes/ui/gui.py:578
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Θέλετε σίγουρα να αφαιρέσετε το group \"%s\";"
 
-#: ../epoptes/ui/gui.py:598
+#: ../epoptes/ui/gui.py:623
 #, python-format
 msgid "%d clients selected"
 msgstr "Επιλέχθηκαν %d υπολογιστές"
 
-#: ../epoptes/ui/gui.py:695
+#: ../epoptes/ui/gui.py:720
 msgid "Lost connection with the epoptes service."
 msgstr "Χάθηκε η σύνδεση με την υπηρεσία epoptes"
 
-#: ../epoptes/ui/gui.py:697
+#: ../epoptes/ui/gui.py:722
 msgid "Make sure the service is running and then restart epoptes."
 msgstr "Βεβαιωθείτε πως η υπηρεσία εκτελείται και επανεκκινήστε τον Επόπτη."
 
-#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
+#: ../epoptes/ui/gui.py:725
 msgid "Service connection error"
 msgstr "Σφάλμα σύνδεσης με την υπηρεσία"
 
-#: ../epoptes/ui/gui.py:728
+#: ../epoptes/ui/gui.py:753
 msgid "Shut down:"
 msgstr "Τερματίστηκαν:"
 
-#: ../epoptes/ui/gui.py:736
+#: ../epoptes/ui/gui.py:761
 msgid "Disconnected:"
 msgstr "Αποσυνδέθηκαν:"
 
-#: ../epoptes/ui/gui.py:737
+#: ../epoptes/ui/gui.py:762
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s από %(host)s"
 
-#: ../epoptes/ui/gui.py:845
+#: ../epoptes/ui/gui.py:876
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -450,250 +676,22 @@ msgstr ""
 "Χρειάζεται να ενημερώσετε τους υπολογιστές σας με την τελευταία έκδοση του "
 "πακέτου epoptes-client."
 
-#: ../epoptes/ui/gui.py:875
+#: ../epoptes/ui/gui.py:906
 msgid "Connected:"
 msgstr "Συνδέθηκαν:"
 
-#: ../epoptes/ui/gui.py:876
+#: ../epoptes/ui/gui.py:907
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s σε %(host)s"
 
-#: ../epoptes/ui/gui.py:1053
+#: ../epoptes/ui/gui.py:1085
 msgid "Confirm action"
 msgstr "Επιβεβαίωση ενέργειας"
 
-#: ../bin/epoptes.py:31
-msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr "Προέκυψε ένα σφάλμα κατά τη σύνδεση με την υπηρεσία epoptes:"
-
-#: ../bin/epoptes.py:36
-#, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
-"Ο χρήστης %s πρέπει να είναι μέλος της ομάδας %s για να εκτελέσει τον "
-"epoptes."
-
-#: ../bin/epoptes.py:40
-msgid "Make sure the epoptes service is running."
-msgstr "Βεβαιωθείτε πως η υπηρεσία epoptes εκτελείται."
-
-#: ../data/epoptes.desktop.in.h:1
-msgid "Epoptes computer lab administration tool"
-msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
-
-#: ../epoptes/ui/benchmark.py:96
-msgid "There are no selected clients to run the benchmark on."
-msgstr ""
-"Δεν υπάρχουν επιλεγμένοι υπολογιστές για να πραγματοποιηθεί η μέτρηση."
-
-#: ../epoptes/ui/benchmark.py:112
-msgid ""
-"All of the selected clients are either offline, or do not have epoptes-"
-"client running as root."
-msgstr ""
-"Όλοι οι επιλεγμένοι υπολογιστές είτε είναι κλειστοί, ή δεν εκτελείται σε "
-"αυτούς ο epoptes-client ως root."
-
-#: ../epoptes/ui/benchmark.py:117
-msgid ""
-"The following clients will be excluded from the benchmark because they are "
-"either offline, or do not have epoptes-client running as root."
-msgstr ""
-"Οι ακόλουθοι υπολογιστές θα εξαιρεθούν από την μέτρηση επειδή είτε είναι "
-"κλειστοί, ή δεν εκτελείται σε αυτούς ο epoptes-client ως root."
-
-#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
-#, python-format
-msgid "Benchmark finishing in %d seconds..."
-msgstr "Η μέτρηση τελειώνει σε %d δευτερόλεπτα..."
-
-#: ../epoptes/ui/benchmark.py:155
-msgid "Some clients didn't respond in time!"
-msgstr "Κάποιοι υπολογιστές δεν ανταποκρίθηκαν έγκαιρα!"
-
-#: ../epoptes/ui/benchmark.py:156
-#, python-format
-msgid "Waiting for %d more seconds..."
-msgstr "Αναμονή για %d ακόμα δευτερόλεπτα..."
-
-#: ../epoptes/ui/benchmark.py:213
-msgid ""
-"Did not get measurements from any of the clients. Check your network "
-"settings."
-msgstr ""
-"Δεν λήφθηκαν μετρήσεις από κανέναν υπολογιστή. Ελέγξτε τις ρυθμίσεις δικτύου "
-"σας."
-
-#: ../epoptes/ui/gtk/about.ui.h:1
-msgid "Copyright © 2011-2018 The Epoptes Team"
-msgstr "Πνευματικά δικαιώματα © 2011-2018 Η ομάδα του Επόπτη"
-
-#: ../epoptes/ui/gtk/about.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr "Εργαλείο διαχείρισης και εποπτείας εργαστηρίου υπολογιστών."
-
-#: ../epoptes/ui/gtk/about.ui.h:3
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Alkis Georgopoulos https://launchpad.net/~alkisg\n"
-"  Fotis Tsamis https://launchpad.net/~ftsamis"
-
-#. TODO: consider new string formatting vs updating translations
-#: ../epoptes/ui/client_information.py:66
-#, python-format
-msgid "Properties of %s"
-msgstr "Ιδιότητες του %s"
-
-#: ../potfiles-workaround/remote_assistance.py:90
-#: ../potfiles-workaround/remote_assistance.py:122
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Not connected"
-msgstr "Αποσυνδεμένο"
-
-#: ../potfiles-workaround/remote_assistance.py:114
-#, python-format
-msgid "Connecting to %s..."
-msgstr "Γίνεται σύνδεση στο %s..."
-
-#: ../potfiles-workaround/remote_assistance.py:119
-#, python-format
-msgid "Connected to %s"
-msgstr "Συνδέθηκε στο %s"
-
-#: ../potfiles-workaround/remote_assistance.py:126
-#, python-format
-msgid "Failed to connect to %s"
-msgstr "Αποτυχία σύνδεσης στο %s"
-
-#: ../potfiles-workaround/remote_assistance.py:143
-#, python-format
-msgid "Retrying in %d..."
-msgstr "Επανάληψη προσπάθειας σε %d..."
-
-#: ../epoptes/common/config.py:194
-msgid "Message from administrator"
-msgstr "Μήνυμα από τον διαχειριστή"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid "Graphics (VNC)"
-msgstr "Γραφικά (VNC)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Console (screen)"
-msgstr "Κονσόλα (screen)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-"Εισάγετε τις πληροφορίες της επαφής για διαμοιρασμό της επιφάνειας εργασίας "
-"σας"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Method:"
-msgstr "Μέθοδος:"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Host:"
-msgstr "Υπολογιστής:"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Connection information"
-msgstr "Πληροφορίες σύνδεσης"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Keep reconnecting"
-msgstr "Συνεχείς επανασυνδέσεις"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:10
-msgid "Status"
-msgstr "Κατάσταση"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:2
-msgid "Network benchmark"
-msgstr "Μέτρηση ταχύτητας δικτύου"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:3
-msgid "Start"
-msgstr "Έναρξη"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:4
-msgid ""
-"The network benchmark will test the effective network\n"
-"bandwidth that is available for your lab."
-msgstr ""
-"Η μέτρηση ταχύτητας δικτύου θα μετρήσει την πραγματική\n"
-"ταχύτητα που είναι διαθέσιμη στο εργαστήριό σας."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:6
-msgid "Run the benchmark for"
-msgstr "Εκτέλεση της μέτρησης για"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:7
-msgid "seconds"
-msgstr "δευτερόλεπτα"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:8
-msgid "Network benchmark results"
-msgstr "Αποτελέσματα μέτρησης ταχύτητας δικτύου"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:10
-msgid "Upload bandwidth"
-msgstr "Ταχύτητα αποστολής"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:11
-msgid "Download bandwidth"
-msgstr "Ταχύτητα λήψης"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:12
-msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
-msgstr ""
-"Δεν λήφθηκαν μετρήσεις για μερικούς από τους υπολογιστές. Τα στατιστικά "
-"έχουν επηρεαστεί."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:13
-msgid "Overall bandwidth statistics"
-msgstr "Συνολικά στατιστικά ταχύτητας"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:14
-msgid "The average server download bandwidth per client"
-msgstr "Η μέση ταχύτητα λήψης του εξυπηρετητή ανά υπολογιστή"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:15
-msgid "Average server download:"
-msgstr "Μέση ταχύτητα λήψης εξυπηρετητή:"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:16
-msgid "The average server upload bandwidth per client"
-msgstr "Η μέση ταχύτητα αποστολής του εξυπηρετητή ανά υπολογιστή"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:17
-msgid "Average server upload:"
-msgstr "Μέση ταχύτητα αποστολής εξυπηρετητή:"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:18
-msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
-"Η συνολική ταχύτητα αποστολής του εξυπηρετητή, για όλους τους υπολογιστές, "
-"ταυτόχρονα"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:19
-msgid "Total server upload:"
-msgstr "Συνολική ταχύτητα αποστολής του εξυπηρετητή:"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:20
-msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
-"Η συνολική ταχύτητα λήψης του εξυπηρετητή, για όλους τους υπολογιστές, "
-"ταυτόχρονα"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:21
-msgid "Total server download:"
-msgstr "Συνολική ταχύτητα λήψης εξυπηρετητή:"
+#: ../epoptes/ui/notifications.py:81
+msgid "Could not initialize notifications!"
+msgstr "Δεν ήταν δυνατή η αρχικοποίηση των ειδοποιήσεων!"
 
 #~ msgid ""
 #~ "Epoptes is free software: you can redistribute it and/or modify it under the "
@@ -731,8 +729,17 @@ msgstr "Συνολική ταχύτητα λήψης εξυπηρετητή:"
 #~ msgid "Set background"
 #~ msgstr "Ορισμός παρασκηνίου"
 
+#~ msgid "Epoptes computer lab administration tool"
+#~ msgstr "Λογισμικό διαχείρισης και εποπτείας εργαστηρίου υπολογιστών"
+
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
 
 #~ msgid "Background image"
 #~ msgstr "Εικόνα παρασκηνίου"
+
+#, python-format
+#~ msgid "User %s must be a member of group %s to run epoptes."
+#~ msgstr ""
+#~ "Ο χρήστης %s πρέπει να είναι μέλος της ομάδας %s για να εκτελέσει τον "
+#~ "epoptes."

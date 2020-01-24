@@ -7,24 +7,293 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2018-09-22 08:45+0300\n"
-"PO-Revision-Date: 2017-07-02 11:26+0000\n"
+"POT-Creation-Date: 2020-01-23 12:15+0200\n"
+"PO-Revision-Date: 2019-04-17 08:07+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
-"X-Generator: Launchpad (build 18783)\n"
+"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
+"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
 
-#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Execute command"
-msgstr "Vykonat příkaz"
+#: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
+msgid "The screen is locked by a system administrator."
+msgstr "Obrazovka je uzamčena správcem systému"
 
-#: ../epoptes/ui/gtk/exec_command.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
+#: ../epoptes-client/message.py:53
+msgid "Usage: {} text [title] [markup] [icon_name]"
 msgstr ""
-"URL adresa, soubor, nebo příkaz, který má být vykonán na vybraných klientech:"
+
+#: ../epoptes-client/remote_assistance.py:90
+#: ../epoptes-client/remote_assistance.py:122
+#: ../epoptes-client/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Nepřipojeno"
+
+#: ../epoptes-client/remote_assistance.py:114
+#, python-format
+msgid "Connecting to %s..."
+msgstr "Připojování k %s…"
+
+#: ../epoptes-client/remote_assistance.py:119
+#, python-format
+msgid "Connected to %s"
+msgstr "Připojeno k %s"
+
+#: ../epoptes-client/remote_assistance.py:126
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Nepodařilo se připojit k %s"
+
+#: ../epoptes-client/remote_assistance.py:143
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Opakování za %d…"
+
+#: ../epoptes-client/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Grafická verze (VNC)"
+
+#: ../epoptes-client/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Konzole (screen)"
+
+#: ../epoptes-client/remote_assistance.ui.h:3 ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Remote support"
+msgstr "Vzdálená podpora"
+
+#: ../epoptes-client/remote_assistance.ui.h:4
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr "Zadejte informaci o kontaktu, se kterým chcete sdílet Vaší plochu"
+
+#: ../epoptes-client/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Metoda:"
+
+#: ../epoptes-client/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Stroj:"
+
+#: ../epoptes-client/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Informace o spojení"
+
+#: ../epoptes-client/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Pokračovat v pokusech o připojení"
+
+#: ../epoptes-client/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Stav"
+
+#: ../epoptes-client/thumbshot.py:48
+msgid "Usage: {} width height"
+msgstr ""
+
+#: ../epoptes/common/config.py:190
+msgid "Message from administrator"
+msgstr "Zpráva od správce"
+
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+msgid "Warning"
+msgstr "Varování"
+
+#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/send_message.ui.h:8
+msgid "Error"
+msgstr "Chyba"
+
+#: ../epoptes/ui/benchmark.py:96
+msgid "There are no selected clients to run the benchmark on."
+msgstr "Nevybrali jste žádné klienty pro spuštění vykonnostního testu."
+
+#: ../epoptes/ui/benchmark.py:112
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+"Všechny označené počítače jsou buď vypnuté nebo na nich epoptes-klient není "
+"spuštěný s právy správce systému."
+
+#: ../epoptes/ui/benchmark.py:117
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+"Následující počítače budou vynechány z výkonnostního testu – jsou buď "
+"vypnuté nebo na nich epoptes-klient není spuštěný s právy správce systému."
+
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr "Výkonnostní test bude dokončen za %d sekund…"
+
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
+msgstr "Někteří klienti neodpověděli v časovém limitu!"
+
+#: ../epoptes/ui/benchmark.py:156
+#, python-format
+msgid "Waiting for %d more seconds..."
+msgstr "Čeká se dalších %d sekund…"
+
+#: ../epoptes/ui/benchmark.py:213
+msgid ""
+"Did not get measurements from any of the clients. Check your network "
+"settings."
+msgstr "Neobdržena žádná měření z klientů. Zkontrolujte nastavení sítě."
+
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
+#, python-format
+msgid "Properties of %s"
+msgstr "Vlastnosti %s"
+
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2010+ The Epoptes Team"
+msgstr ""
+
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Nástroj pro správu a sledování počítačové učebny."
+
+#: ../epoptes/ui/gtk/about.ui.h:3
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Danielsnojack https://launchpad.net/~krhanek\n"
+"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
+"  Pavel Borecki https://launchpad.net/~pavel-borecki"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
+msgstr "Test propustnosti sítě"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
+msgstr "Spustit"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
+msgid ""
+"The network benchmark will test the effective network\n"
+"bandwidth that is available for your lab."
+msgstr ""
+"Výkonnostní test sítě vyzkouší skutečnou rychlost sítě,\n"
+"která je dostupná ve vaší laboratoři."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
+msgid "Run the benchmark for"
+msgstr "Spustit výkonnostní test po dobu"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
+msgid "seconds"
+msgstr "sekund"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
+msgstr "Výsledku testu propustnosti sítě"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Computer"
+msgstr "Počítač"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
+msgstr "Rychlost odesílání"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr "Rychlost stahování"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
+msgid ""
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
+msgstr ""
+"Od některých klientů se nepodařilo získat výsledky měření. Statistiky tím "
+"budou dotčeny."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr "Celkové statistiky rychlosti"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr "Průměrná rychlost stahování ze serveru z jednotlivých počítačů."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr "Průměrné stahování ze serveru:"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr "Průměrná rychlost nahrávání na server z jednotlivých počítačů."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr "Průměrné nahrávání ze serveru:"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr "Celková rychlost nahrávání na server, pro všechny klienty naráz"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr "Celková rychlost nahrávní na server:"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr "Celková rychlost stahování ze serveru, pro všechny klienty naráz."
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr "Celkové stahování serveru:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Typ klienta:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Alternativní název klienta:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Název počítače:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "MAC adresa:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP adresa:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Uživatel:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "Procesor:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "Operační paměť:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Grafický čip:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Upravit alternativní název"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Označeným klientům nastavit nový alternativní název"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "_File"
@@ -37,10 +306,6 @@ msgstr "Popisky"
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Computer (user)"
 msgstr "Počítač (uživatel)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
-msgid "Computer"
-msgstr "Počítač"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "User (computer)"
@@ -226,11 +491,6 @@ msgstr "Přeložit tuto aplikaci"
 msgid "Live chat (IRC)"
 msgstr "spustit chat (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Remote support"
-msgstr "Vzdálená podpora"
-
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Spustit vybrané počítače (Wake On LAN)"
@@ -258,6 +518,10 @@ msgstr "Vysílat obrazovku"
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Stop all broadcasts on every client"
 msgstr "Zastavit všechna vysílání"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59 ../epoptes/ui/gtk/exec_command.ui.h:1
+msgid "Execute command"
+msgstr "Vykonat příkaz"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
@@ -291,9 +555,10 @@ msgstr "Vytvořit novou skupinu"
 msgid "Remove the selected group"
 msgstr "Odstranit vybranou skupinu"
 
-#: ../epoptes/ui/notifications.py:79
-msgid "Could not initialize notifications!"
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
 msgstr ""
+"URL adresa, soubor, nebo příkaz, který má být vykonán na vybraných klientech:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:2
 msgid "_Send"
@@ -311,125 +576,76 @@ msgstr "Text zprávy:"
 msgid "Use Pango markup"
 msgstr "Použít značkovací jazyk Pango"
 
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
-#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-msgid "Warning"
-msgstr "Varování"
-
-#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
-msgid "Error"
-msgstr "Chyba"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Client type:"
-msgstr "Typ klienta:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Client alias:"
-msgstr "Alternativní název klienta:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Client hostname:"
-msgstr "Název počítače:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "MAC address:"
-msgstr "MAC adresa:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "IP address:"
-msgstr "IP adresa:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr "Uživatel:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "Processor:"
-msgstr "Procesor:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "RAM:"
-msgstr "Operační paměť:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Graphics card:"
-msgstr "Grafický čip:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Edit alias"
-msgstr "Upravit alternativní název"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Set a new alias for the selected client"
-msgstr "Označeným klientům nastavit nový alternativní název"
-
-#: ../epoptes/ui/gui.py:106
+#: ../epoptes/ui/gui.py:105
 msgid "Detected clients"
 msgstr "Zjištění klienti"
 
-#: ../epoptes/ui/gui.py:211
+#: ../epoptes/ui/gui.py:128
+msgid "Failed to read the groups file:"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:130
+msgid "You may need to restore your groups from a backup!"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
 msgstr "Opravdu chcete odhlásit všechny uživatele?"
 
-#: ../epoptes/ui/gui.py:217
+#: ../epoptes/ui/gui.py:243
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Opravdu chcete restartovat všechny počítače?"
 
-#: ../epoptes/ui/gui.py:223
+#: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Opravdu chcete vypnout všechny počítače?"
 
-#: ../epoptes/ui/gui.py:375
-msgid "The screen is locked by a system administrator."
-msgstr "Obrazovka je uzamčena správcem systému"
-
-#: ../epoptes/ui/gui.py:405
+#: ../epoptes/ui/gui.py:430
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr "Opravdu chcete odebrat vybrané počítače ze skupiny „%s“?"
 
-#: ../epoptes/ui/gui.py:536
+#: ../epoptes/ui/gui.py:561
 msgid "New group"
-msgstr ""
+msgstr "Nová skupina"
 
-#: ../epoptes/ui/gui.py:553
+#: ../epoptes/ui/gui.py:578
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Opravdu chcete odebrat skupinu „%s“?"
 
-#: ../epoptes/ui/gui.py:598
+#: ../epoptes/ui/gui.py:623
 #, python-format
 msgid "%d clients selected"
 msgstr "Vybráno %d klientů"
 
-#: ../epoptes/ui/gui.py:695
+#: ../epoptes/ui/gui.py:720
 msgid "Lost connection with the epoptes service."
 msgstr "Ztraceno spojení se službou epoptes."
 
-#: ../epoptes/ui/gui.py:697
+#: ../epoptes/ui/gui.py:722
 msgid "Make sure the service is running and then restart epoptes."
 msgstr "Ověřte že je služba spuštěná a pak epoptes restartujte."
 
-#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
+#: ../epoptes/ui/gui.py:725
 msgid "Service connection error"
 msgstr "Chyba připojení ke službě"
 
-#: ../epoptes/ui/gui.py:728
+#: ../epoptes/ui/gui.py:753
 msgid "Shut down:"
 msgstr "Vypnout:"
 
-#: ../epoptes/ui/gui.py:736
+#: ../epoptes/ui/gui.py:761
 msgid "Disconnected:"
 msgstr "Odpojeno:"
 
-#: ../epoptes/ui/gui.py:737
+#: ../epoptes/ui/gui.py:762
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s z %(host)s"
 
-#: ../epoptes/ui/gui.py:845
+#: ../epoptes/ui/gui.py:876
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -441,241 +657,22 @@ msgstr ""
 "nekompatibilní s aktuální verzí epoptes.\n"
 "Je třeba aktualizovat klienty na nejnovější verzi epoptes-client."
 
-#: ../epoptes/ui/gui.py:875
+#: ../epoptes/ui/gui.py:906
 msgid "Connected:"
 msgstr "Připojeno:"
 
-#: ../epoptes/ui/gui.py:876
+#: ../epoptes/ui/gui.py:907
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s na %(host)s"
 
-#: ../epoptes/ui/gui.py:1053
+#: ../epoptes/ui/gui.py:1085
 msgid "Confirm action"
 msgstr "Potvrdit akci"
 
-#: ../bin/epoptes.py:31
-msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr "Došlo k chybě při pokusu o připojení ke službě epoptes:"
-
-#: ../bin/epoptes.py:36
-#, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
-"Pro spouštění epoptes je třeba, aby uživatel %s byl členem skupiny %s."
-
-#: ../bin/epoptes.py:40
-msgid "Make sure the epoptes service is running."
-msgstr "Ověřte že je spuštěná služba epoptes."
-
-#: ../data/epoptes.desktop.in.h:1
-msgid "Epoptes computer lab administration tool"
-msgstr "Nástroj pro správu počítačových laboratoří Epoptes"
-
-#: ../epoptes/ui/benchmark.py:96
-msgid "There are no selected clients to run the benchmark on."
-msgstr "Nevybrali jste žádné klienty pro spuštění vykonnostního testu."
-
-#: ../epoptes/ui/benchmark.py:112
-msgid ""
-"All of the selected clients are either offline, or do not have epoptes-"
-"client running as root."
-msgstr ""
-"Všechny označené počítače jsou buď vypnuté nebo na nich epoptes-klient není "
-"spuštěný s právy správce systému."
-
-#: ../epoptes/ui/benchmark.py:117
-msgid ""
-"The following clients will be excluded from the benchmark because they are "
-"either offline, or do not have epoptes-client running as root."
-msgstr ""
-"Následující počítače budou vynechány z výkonnostního testu – jsou buď "
-"vypnuté nebo na nich epoptes-klient není spuštěný s právy správce systému."
-
-#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
-#, python-format
-msgid "Benchmark finishing in %d seconds..."
-msgstr "Výkonnostní test bude dokončen za %d sekund…"
-
-#: ../epoptes/ui/benchmark.py:155
-msgid "Some clients didn't respond in time!"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:156
-#, python-format
-msgid "Waiting for %d more seconds..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:213
-msgid ""
-"Did not get measurements from any of the clients. Check your network "
-"settings."
-msgstr "Neobdržena žádná měření z klientů. Zkontrolujte nastavení sítě."
-
-#: ../epoptes/ui/gtk/about.ui.h:1
-msgid "Copyright © 2011-2018 The Epoptes Team"
-msgstr ""
-
-#: ../epoptes/ui/gtk/about.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr "Nástroj pro správu a sledování počítačové učebny."
-
-#: ../epoptes/ui/gtk/about.ui.h:3
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Danielsnojack https://launchpad.net/~krhanek\n"
-"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
-"  Pavel Borecki https://launchpad.net/~pavel-borecki"
-
-#. TODO: consider new string formatting vs updating translations
-#: ../epoptes/ui/client_information.py:66
-#, python-format
-msgid "Properties of %s"
-msgstr "Vlastnosti %s"
-
-#: ../potfiles-workaround/remote_assistance.py:90
-#: ../potfiles-workaround/remote_assistance.py:122
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Not connected"
-msgstr "Nepřipojeno"
-
-#: ../potfiles-workaround/remote_assistance.py:114
-#, python-format
-msgid "Connecting to %s..."
-msgstr "Připojování k %s…"
-
-#: ../potfiles-workaround/remote_assistance.py:119
-#, python-format
-msgid "Connected to %s"
-msgstr "Připojeno k %s"
-
-#: ../potfiles-workaround/remote_assistance.py:126
-#, python-format
-msgid "Failed to connect to %s"
-msgstr "Nepodařilo se připojit k %s"
-
-#: ../potfiles-workaround/remote_assistance.py:143
-#, python-format
-msgid "Retrying in %d..."
-msgstr "Opakování za %d…"
-
-#: ../epoptes/common/config.py:194
-msgid "Message from administrator"
-msgstr "Zpráva od správce"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid "Graphics (VNC)"
-msgstr "Grafická verze (VNC)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Console (screen)"
-msgstr "Konzole (screen)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr "Zadejte informaci o kontaktu, se kterým chcete sdílet Vaší plochu"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Method:"
-msgstr "Metoda:"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Host:"
-msgstr "Stroj:"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Connection information"
-msgstr "Informace o spojení"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Keep reconnecting"
-msgstr "Pokračovat v pokusech o připojení"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:10
-msgid "Status"
-msgstr "Stav"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:2
-msgid "Network benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:3
-msgid "Start"
-msgstr "Spustit"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:4
-msgid ""
-"The network benchmark will test the effective network\n"
-"bandwidth that is available for your lab."
-msgstr ""
-"Výkonnostní test sítě vyzkouší skutečnou rychlost sítě,\n"
-"která je dostupná ve vaší laboratoři."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:6
-msgid "Run the benchmark for"
-msgstr "Spustit výkonnostní test po dobu"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:7
-msgid "seconds"
-msgstr "sekund"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:8
-msgid "Network benchmark results"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:10
-msgid "Upload bandwidth"
-msgstr "Rychlost odesílání"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:11
-msgid "Download bandwidth"
-msgstr "Rychlost stahování"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:12
-msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
-msgstr ""
-"Od některých klientů se nepodařilo získat výsledky měření. Statistiky tím "
-"budou dotčeny."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:13
-msgid "Overall bandwidth statistics"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:14
-msgid "The average server download bandwidth per client"
-msgstr "Průměrná rychlost stahování ze serveru z jednotlivých počítačů."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:15
-msgid "Average server download:"
-msgstr "Průměrné stahování ze serveru:"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:16
-msgid "The average server upload bandwidth per client"
-msgstr "Průměrná rychlost nahrávání na server z jednotlivých počítačů."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:17
-msgid "Average server upload:"
-msgstr "Průměrné nahrávání ze serveru:"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:18
-msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr "Celková rychlost nahrávání na server, pro všechny klienty naráz"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:19
-msgid "Total server upload:"
-msgstr "Celková rychlost nahrávní na server:"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:20
-msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr "Celková rychlost stahování ze serveru, pro všechny klienty naráz."
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:21
-msgid "Total server download:"
-msgstr "Celkové stahování serveru:"
+#: ../epoptes/ui/notifications.py:81
+msgid "Could not initialize notifications!"
+msgstr "Nedaří se inicializovat oznamování!"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
@@ -688,6 +685,14 @@ msgstr "Celkové stahování serveru:"
 
 #~ msgid "Set background"
 #~ msgstr "Nastavit pozadí"
+
+#~ msgid "Epoptes computer lab administration tool"
+#~ msgstr "Nástroj pro správu počítačových laboratoří Epoptes"
+
+#, python-format
+#~ msgid "User %s must be a member of group %s to run epoptes."
+#~ msgstr ""
+#~ "Pro spouštění epoptes je třeba, aby uživatel %s byl členem skupiny %s."
 
 #~ msgid "Lock background"
 #~ msgstr "Zamknout změnu obrázku na pozadí"

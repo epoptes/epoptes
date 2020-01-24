@@ -7,23 +7,287 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2018-09-22 08:45+0300\n"
+"POT-Creation-Date: 2020-01-23 12:15+0200\n"
 "PO-Revision-Date: 2015-08-15 08:28+0000\n"
 "Last-Translator: Meggyesházi János <janos.meggyeshazi@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2018-09-23 05:37+0000\n"
-"X-Generator: Launchpad (build 18783)\n"
+"X-Launchpad-Export-Date: 2020-01-24 05:51+0000\n"
+"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
 
-#: ../epoptes/ui/gtk/exec_command.ui.h:1 ../epoptes/ui/gtk/epoptes.ui.h:59
-msgid "Execute command"
-msgstr "Parancs végrehajtása"
+#: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
+msgid "The screen is locked by a system administrator."
+msgstr "A képernyőt zárolta egy rendszergazda."
 
-#: ../epoptes/ui/gtk/exec_command.ui.h:2
-msgid "URL, file or command to execute on the selected clients:"
-msgstr "A kiválasztott klienseken végrehajtandó URL, fájl vagy parancs:"
+#: ../epoptes-client/message.py:53
+msgid "Usage: {} text [title] [markup] [icon_name]"
+msgstr ""
+
+#: ../epoptes-client/remote_assistance.py:90
+#: ../epoptes-client/remote_assistance.py:122
+#: ../epoptes-client/remote_assistance.ui.h:9
+msgid "Not connected"
+msgstr "Nincs kapcsolódva"
+
+#: ../epoptes-client/remote_assistance.py:114
+#, python-format
+msgid "Connecting to %s..."
+msgstr "Kapcsolódás ehhez: %s…"
+
+#: ../epoptes-client/remote_assistance.py:119
+#, python-format
+msgid "Connected to %s"
+msgstr "Kapcsolódva %s-hez"
+
+#: ../epoptes-client/remote_assistance.py:126
+#, python-format
+msgid "Failed to connect to %s"
+msgstr "Nem sikerült kapcsolódni ehhez: %s"
+
+#: ../epoptes-client/remote_assistance.py:143
+#, python-format
+msgid "Retrying in %d..."
+msgstr "Újrapróbálkozás: %d…"
+
+#: ../epoptes-client/remote_assistance.ui.h:1
+msgid "Graphics (VNC)"
+msgstr "Grafikus (VNC)"
+
+#: ../epoptes-client/remote_assistance.ui.h:2
+msgid "Console (screen)"
+msgstr "Konzol (screen)"
+
+#: ../epoptes-client/remote_assistance.ui.h:3 ../epoptes/ui/gtk/epoptes.ui.h:51
+msgid "Remote support"
+msgstr "Távsegítség"
+
+#: ../epoptes-client/remote_assistance.ui.h:4
+msgid ""
+"Enter the information of the contact you want to share your Desktop with"
+msgstr ""
+"Adja meg azon személy információit, akivel meg szeretné osztani asztalát"
+
+#: ../epoptes-client/remote_assistance.ui.h:5
+msgid "Method:"
+msgstr "Mód:"
+
+#: ../epoptes-client/remote_assistance.ui.h:6
+msgid "Host:"
+msgstr "Gép:"
+
+#: ../epoptes-client/remote_assistance.ui.h:7
+msgid "Connection information"
+msgstr "Kapcsolatinformációk"
+
+#: ../epoptes-client/remote_assistance.ui.h:8
+msgid "Keep reconnecting"
+msgstr "Újracsatlakozás folyamatosan"
+
+#: ../epoptes-client/remote_assistance.ui.h:10
+msgid "Status"
+msgstr "Állapot"
+
+#: ../epoptes-client/thumbshot.py:48
+msgid "Usage: {} width height"
+msgstr ""
+
+#: ../epoptes/common/config.py:190
+msgid "Message from administrator"
+msgstr "Üzenet a rendszergazdától"
+
+#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/send_message.ui.h:8
+msgid "Error"
+msgstr "Hiba"
+
+#: ../epoptes/ui/benchmark.py:96
+msgid "There are no selected clients to run the benchmark on."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:112
+msgid ""
+"All of the selected clients are either offline, or do not have epoptes-"
+"client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:117
+msgid ""
+"The following clients will be excluded from the benchmark because they are "
+"either offline, or do not have epoptes-client running as root."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
+#, python-format
+msgid "Benchmark finishing in %d seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:155
+msgid "Some clients didn't respond in time!"
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:156
+#, python-format
+msgid "Waiting for %d more seconds..."
+msgstr ""
+
+#: ../epoptes/ui/benchmark.py:213
+msgid ""
+"Did not get measurements from any of the clients. Check your network "
+"settings."
+msgstr ""
+
+#. TODO: consider new string formatting vs updating translations
+#: ../epoptes/ui/client_information.py:66
+#, python-format
+msgid "Properties of %s"
+msgstr "%s tulajdonságai"
+
+#: ../epoptes/ui/gtk/about.ui.h:1
+msgid "Copyright © 2010+ The Epoptes Team"
+msgstr ""
+
+#: ../epoptes/ui/gtk/about.ui.h:2
+msgid "A computer lab management and monitoring tool."
+msgstr "Számítógéplabor-kezelő és -megfigyelő eszköz."
+
+#: ../epoptes/ui/gtk/about.ui.h:3
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
+"  Gabor Kelemen https://launchpad.net/~kelemeng\n"
+"  Geza Gemes https://launchpad.net/~geza-gemes\n"
+"  Meggyesházi János https://launchpad.net/~janos-meggyeshazi"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:2
+msgid "Network benchmark"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:3
+msgid "Start"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:4
+msgid ""
+"The network benchmark will test the effective network\n"
+"bandwidth that is available for your lab."
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:6
+msgid "Run the benchmark for"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:7
+msgid "seconds"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:8
+msgid "Network benchmark results"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
+msgid "Computer"
+msgstr "Számítógép"
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:10
+msgid "Upload bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:11
+msgid "Download bandwidth"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:12
+msgid ""
+"Could not get measurements from some of the clients. The statistics will be "
+"affected."
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:13
+msgid "Overall bandwidth statistics"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:14
+msgid "The average server download bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:15
+msgid "Average server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:16
+msgid "The average server upload bandwidth per client"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:17
+msgid "Average server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:18
+msgid "The total server upload bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:19
+msgid "Total server upload:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:20
+msgid "The total server download bandwidth, for all clients, simultaneously"
+msgstr ""
+
+#: ../epoptes/ui/gtk/benchmark.ui.h:21
+msgid "Total server download:"
+msgstr ""
+
+#: ../epoptes/ui/gtk/client_information.ui.h:1
+msgid "Client type:"
+msgstr "Kliens típusa:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:2
+msgid "Client alias:"
+msgstr "Kliens álneve:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:3
+msgid "Client hostname:"
+msgstr "Kliens gépneve:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:4
+msgid "MAC address:"
+msgstr "MAC-cím:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:5
+msgid "IP address:"
+msgstr "IP-cím:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:6
+msgid "User:"
+msgstr "Felhasználó:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:7
+msgid "Processor:"
+msgstr "Processzor:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:8
+msgid "RAM:"
+msgstr "RAM:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:9
+msgid "Graphics card:"
+msgstr "Videokártya:"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:10
+msgid "Edit alias"
+msgstr "Álnév szerkesztése"
+
+#: ../epoptes/ui/gtk/client_information.ui.h:11
+msgid "Set a new alias for the selected client"
+msgstr "Új álnév beállítása a kijelölt kliensnek"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "_File"
@@ -36,10 +300,6 @@ msgstr "Címkék"
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Computer (user)"
 msgstr "Számítógép (felhasználó)"
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:4 ../epoptes/ui/gtk/benchmark.ui.h:9
-msgid "Computer"
-msgstr "Számítógép"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "User (computer)"
@@ -227,11 +487,6 @@ msgstr "Alkalmazás lefordítása"
 msgid "Live chat (IRC)"
 msgstr "Csevegés (IRC)"
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:51
-#: ../potfiles-workaround/remote_assistance.ui.h:3
-msgid "Remote support"
-msgstr "Távsegítség"
-
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Boot selected clients (Wake On LAN)"
 msgstr "Kiválasztott kliensek bekapcsolása (Wake On LAN)"
@@ -259,6 +514,10 @@ msgstr "Képernyő-bemutató"
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Stop all broadcasts on every client"
 msgstr "Bemutató befejezése minden kliensen"
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:59 ../epoptes/ui/gtk/exec_command.ui.h:1
+msgid "Execute command"
+msgstr "Parancs végrehajtása"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
@@ -292,9 +551,9 @@ msgstr "Új csoport létrehozása"
 msgid "Remove the selected group"
 msgstr "Kiválasztott csoport törlése"
 
-#: ../epoptes/ui/notifications.py:79
-msgid "Could not initialize notifications!"
-msgstr ""
+#: ../epoptes/ui/gtk/exec_command.ui.h:2
+msgid "URL, file or command to execute on the selected clients:"
+msgstr "A kiválasztott klienseken végrehajtandó URL, fájl vagy parancs:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:2
 msgid "_Send"
@@ -312,80 +571,31 @@ msgstr "Üzenet szövege:"
 msgid "Use Pango markup"
 msgstr "Pango kód használata"
 
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1062
-#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-msgid "Warning"
-msgstr "Figyelmeztetés"
-
-#: ../epoptes/ui/gtk/send_message.ui.h:8 ../epoptes/ui/benchmark.py:80
-msgid "Error"
-msgstr "Hiba"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:1
-msgid "Client type:"
-msgstr "Kliens típusa:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:2
-msgid "Client alias:"
-msgstr "Kliens álneve:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:3
-msgid "Client hostname:"
-msgstr "Kliens gépneve:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:4
-msgid "MAC address:"
-msgstr "MAC-cím:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:5
-msgid "IP address:"
-msgstr "IP-cím:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:6
-msgid "User:"
-msgstr "Felhasználó:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:7
-msgid "Processor:"
-msgstr "Processzor:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:8
-msgid "RAM:"
-msgstr "RAM:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:9
-msgid "Graphics card:"
-msgstr "Videokártya:"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:10
-msgid "Edit alias"
-msgstr "Álnév szerkesztése"
-
-#: ../epoptes/ui/gtk/client_information.ui.h:11
-msgid "Set a new alias for the selected client"
-msgstr "Új álnév beállítása a kijelölt kliensnek"
-
-#: ../epoptes/ui/gui.py:106
+#: ../epoptes/ui/gui.py:105
 msgid "Detected clients"
 msgstr "Érzékelt kliensek"
 
-#: ../epoptes/ui/gui.py:211
+#: ../epoptes/ui/gui.py:128
+msgid "Failed to read the groups file:"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:130
+msgid "You may need to restore your groups from a backup!"
+msgstr ""
+
+#: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
 msgstr "Biztos benne, hogy ki akarja jelentkeztetni az összes felhasználót?"
 
-#: ../epoptes/ui/gui.py:217
+#: ../epoptes/ui/gui.py:243
 msgid "Are you sure you want to reboot all the computers?"
 msgstr "Biztos benne, hogy újra akarja indítani az összes számítógépet?"
 
-#: ../epoptes/ui/gui.py:223
+#: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr "Biztos benne, hogy ki akarja kapcsolni az összes számítógépet?"
 
-#: ../epoptes/ui/gui.py:375
-msgid "The screen is locked by a system administrator."
-msgstr "A képernyőt zárolta egy rendszergazda."
-
-#: ../epoptes/ui/gui.py:405
+#: ../epoptes/ui/gui.py:430
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
@@ -393,46 +603,46 @@ msgstr ""
 "Biztos benne, hogy törölni szeretné a kiválasztott klienseket a(z) „%s” "
 "csoportból?"
 
-#: ../epoptes/ui/gui.py:536
+#: ../epoptes/ui/gui.py:561
 msgid "New group"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:553
+#: ../epoptes/ui/gui.py:578
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr "Biztos benne, hogy törölni szeretné a(z) „%s” csoportot?"
 
-#: ../epoptes/ui/gui.py:598
+#: ../epoptes/ui/gui.py:623
 #, python-format
 msgid "%d clients selected"
 msgstr "%d kliens kiválasztva"
 
-#: ../epoptes/ui/gui.py:695
+#: ../epoptes/ui/gui.py:720
 msgid "Lost connection with the epoptes service."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:697
+#: ../epoptes/ui/gui.py:722
 msgid "Make sure the service is running and then restart epoptes."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:700 ../bin/epoptes.py:44
+#: ../epoptes/ui/gui.py:725
 msgid "Service connection error"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:728
+#: ../epoptes/ui/gui.py:753
 msgid "Shut down:"
 msgstr "Kikapcsolás:"
 
-#: ../epoptes/ui/gui.py:736
+#: ../epoptes/ui/gui.py:761
 msgid "Disconnected:"
 msgstr "Leválasztva:"
 
-#: ../epoptes/ui/gui.py:737
+#: ../epoptes/ui/gui.py:762
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr "%(user)s erről: %(host)s"
 
-#: ../epoptes/ui/gui.py:845
+#: ../epoptes/ui/gui.py:876
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -445,235 +655,21 @@ msgstr ""
 "\n"
 "Frissítse a klienseket az epoptes-client legújabb verziójára."
 
-#: ../epoptes/ui/gui.py:875
+#: ../epoptes/ui/gui.py:906
 msgid "Connected:"
 msgstr "Kapcsolódva:"
 
-#: ../epoptes/ui/gui.py:876
+#: ../epoptes/ui/gui.py:907
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s ezen: %(host)s"
 
-#: ../epoptes/ui/gui.py:1053
+#: ../epoptes/ui/gui.py:1085
 msgid "Confirm action"
 msgstr "Erősítse meg a műveletet"
 
-#: ../bin/epoptes.py:31
-msgid "An error occurred while trying to connect to the epoptes service:"
-msgstr ""
-
-#: ../bin/epoptes.py:36
-#, python-format
-msgid "User %s must be a member of group %s to run epoptes."
-msgstr ""
-"A(z) %s felhasználónak a(z) %s csoport tagjának kell lennie az epoptes "
-"használatához"
-
-#: ../bin/epoptes.py:40
-msgid "Make sure the epoptes service is running."
-msgstr ""
-
-#: ../data/epoptes.desktop.in.h:1
-msgid "Epoptes computer lab administration tool"
-msgstr "Epoptes számítógéplabor-adminisztrációs eszköz"
-
-#: ../epoptes/ui/benchmark.py:96
-msgid "There are no selected clients to run the benchmark on."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:112
-msgid ""
-"All of the selected clients are either offline, or do not have epoptes-"
-"client running as root."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:117
-msgid ""
-"The following clients will be excluded from the benchmark because they are "
-"either offline, or do not have epoptes-client running as root."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
-#, python-format
-msgid "Benchmark finishing in %d seconds..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:155
-msgid "Some clients didn't respond in time!"
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:156
-#, python-format
-msgid "Waiting for %d more seconds..."
-msgstr ""
-
-#: ../epoptes/ui/benchmark.py:213
-msgid ""
-"Did not get measurements from any of the clients. Check your network "
-"settings."
-msgstr ""
-
-#: ../epoptes/ui/gtk/about.ui.h:1
-msgid "Copyright © 2011-2018 The Epoptes Team"
-msgstr ""
-
-#: ../epoptes/ui/gtk/about.ui.h:2
-msgid "A computer lab management and monitoring tool."
-msgstr "Számítógéplabor-kezelő és -megfigyelő eszköz."
-
-#: ../epoptes/ui/gtk/about.ui.h:3
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Fotis Tsamis https://launchpad.net/~ftsamis\n"
-"  Gabor Kelemen https://launchpad.net/~kelemeng\n"
-"  Geza Gemes https://launchpad.net/~geza-gemes\n"
-"  Meggyesházi János https://launchpad.net/~janos-meggyeshazi"
-
-#. TODO: consider new string formatting vs updating translations
-#: ../epoptes/ui/client_information.py:66
-#, python-format
-msgid "Properties of %s"
-msgstr "%s tulajdonságai"
-
-#: ../potfiles-workaround/remote_assistance.py:90
-#: ../potfiles-workaround/remote_assistance.py:122
-#: ../potfiles-workaround/remote_assistance.ui.h:9
-msgid "Not connected"
-msgstr "Nincs kapcsolódva"
-
-#: ../potfiles-workaround/remote_assistance.py:114
-#, python-format
-msgid "Connecting to %s..."
-msgstr "Kapcsolódás ehhez: %s…"
-
-#: ../potfiles-workaround/remote_assistance.py:119
-#, python-format
-msgid "Connected to %s"
-msgstr "Kapcsolódva %s-hez"
-
-#: ../potfiles-workaround/remote_assistance.py:126
-#, python-format
-msgid "Failed to connect to %s"
-msgstr "Nem sikerült kapcsolódni ehhez: %s"
-
-#: ../potfiles-workaround/remote_assistance.py:143
-#, python-format
-msgid "Retrying in %d..."
-msgstr "Újrapróbálkozás: %d…"
-
-#: ../epoptes/common/config.py:194
-msgid "Message from administrator"
-msgstr "Üzenet a rendszergazdától"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:1
-msgid "Graphics (VNC)"
-msgstr "Grafikus (VNC)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:2
-msgid "Console (screen)"
-msgstr "Konzol (screen)"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:4
-msgid ""
-"Enter the information of the contact you want to share your Desktop with"
-msgstr ""
-"Adja meg azon személy információit, akivel meg szeretné osztani asztalát"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:5
-msgid "Method:"
-msgstr "Mód:"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:6
-msgid "Host:"
-msgstr "Gép:"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:7
-msgid "Connection information"
-msgstr "Kapcsolatinformációk"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:8
-msgid "Keep reconnecting"
-msgstr "Újracsatlakozás folyamatosan"
-
-#: ../potfiles-workaround/remote_assistance.ui.h:10
-msgid "Status"
-msgstr "Állapot"
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:2
-msgid "Network benchmark"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:3
-msgid "Start"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:4
-msgid ""
-"The network benchmark will test the effective network\n"
-"bandwidth that is available for your lab."
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:6
-msgid "Run the benchmark for"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:7
-msgid "seconds"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:8
-msgid "Network benchmark results"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:10
-msgid "Upload bandwidth"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:11
-msgid "Download bandwidth"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:12
-msgid ""
-"Could not get measurements from some of the clients. The statistics will be "
-"affected."
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:13
-msgid "Overall bandwidth statistics"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:14
-msgid "The average server download bandwidth per client"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:15
-msgid "Average server download:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:16
-msgid "The average server upload bandwidth per client"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:17
-msgid "Average server upload:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:18
-msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:19
-msgid "Total server upload:"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:20
-msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
-
-#: ../epoptes/ui/gtk/benchmark.ui.h:21
-msgid "Total server download:"
+#: ../epoptes/ui/notifications.py:81
+msgid "Could not initialize notifications!"
 msgstr ""
 
 #~ msgid "Background image"
@@ -690,6 +686,15 @@ msgstr ""
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
+
+#, python-format
+#~ msgid "User %s must be a member of group %s to run epoptes."
+#~ msgstr ""
+#~ "A(z) %s felhasználónak a(z) %s csoport tagjának kell lennie az epoptes "
+#~ "használatához"
+
+#~ msgid "Epoptes computer lab administration tool"
+#~ msgstr "Epoptes számítógéplabor-adminisztrációs eszköz"
 
 #~ msgid ""
 #~ "Epoptes is free software: you can redistribute it and/or modify it under the "

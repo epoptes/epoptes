@@ -23,4 +23,11 @@ So when new strings are added in the source code, we should regenerate the .pot 
     intltool-update -p -g epoptes
 ```
 
-Note that we shouldn't regenerate or merge the .po files as they're handled by https://translations.launchpad.net/epoptes. We should only download them from launchpad periodically.
+Note that we shouldn't regenerate or merge the .po files as they're handled by https://translations.launchpad.net/epoptes. We should only download them from launchpad periodically. The following commands may be used for that:
+
+```shell
+bzr branch lp:~epoptes/epoptes/exported-translations
+cd exported-translations
+bzr pull
+cp -a po/*.po ../epoptes/po/
+```
