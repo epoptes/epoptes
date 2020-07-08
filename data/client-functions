@@ -1,27 +1,11 @@
 #!/bin/sh
-###########################################################################
+# This file is part of Epoptes, https://epoptes.org
+# Copyright (C) 2010-2020 the Epoptes team, see AUTHORS
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 # Implements the client side of the epoptes communications protocol.
 # The daemon reads this file when it starts, and sends it to clients when they
 # connect. The clients actually source it and then wait for further commands.
-#
-# Copyright (C) 2010-2015 Alkis Georgopoulos <alkisg@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# On Debian GNU/Linux systems, the complete text of the GNU General
-# Public License can be found in `/usr/share/common-licenses/GPL'.
-###########################################################################
 
 # Dash handles signals a bit differently from bash.
 # We need to trap both 0 and 15 otherwise the trap function isn't called at all.
@@ -53,7 +37,7 @@ on_signal() {
 # Parameters:
 # $1..$N = The message.
 die() {
-    echo "epoptes-client ERROR: $@" >&5
+    echo "epoptes-client ERROR: $*" >&5
     trap - 0 15
     exit 1
 }
@@ -108,10 +92,10 @@ info() {
         else
             server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
             server_ip=${server_ip:-$SERVER}
-            read def_iface IP <<EOF
+            read -r def_iface IP <<EOF
 $(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
-            test "${def_iface:-lo}" != "lo" || read def_iface IP <<EOF
+            test "${def_iface:-lo}" != "lo" || read -r def_iface IP <<EOF
 $(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
             test "${def_iface:-lo}" != "lo" || die "Empty def_iface"
@@ -190,7 +174,7 @@ execute() {
             launcher="xdg-open"
             ;;
         *)
-            if [ -e "$1" ] && ( [ ! -x "$1" ] || [ -d "$1" ] ); then
+            if [ -e "$1" ] && { [ ! -x "$1" ] || [ -d "$1" ] ;}; then
                 launcher="xdg-open"
             elif which -- "$1" >/dev/null; then
                 # Don't waste RAM for sh if it's just an executable.
@@ -232,7 +216,7 @@ thumbshot() {
         executable=./screenshot
     fi
     if ! $executable "$1" "$2"; then
-        BAD_THUMBSHOTS=$(($BAD_THUMBSHOTS+1))
+        BAD_THUMBSHOTS=$((BAD_THUMBSHOTS+1))
         echo "$BAD_THUMBSHOTS failed thumbshots so far!" >&5
     fi
 }
@@ -380,7 +364,7 @@ receive_broadcast() {
         fi
     fi
     printf "$2" | {
-        sleep 0.$(($(hexdump -e \"%d\" -n 2 /dev/urandom) % 50 + 50))
+        sleep 0.$(($(od -An -N2 -tu2 /dev/urandom) % 50 + 50))
         if [ "$VNCVIEWER" = "ssvncviewer" ]; then
             exec ssvncviewer -shared -viewonly -passwd /dev/stdin \
                 ${3:+-fullscreen} "$SERVER:$1"
