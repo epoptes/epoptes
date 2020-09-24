@@ -408,7 +408,7 @@ class EpoptesGui(object):
     def on_imi_restrictions_mute_sound_activate(self, _widget):
         """Handle imi_restrictions_mute_sound.activate event."""
         self.exec_on_selected_clients(
-            ['mute_sound', 0], mode=EM_SYSTEM_OR_SESSION)
+            ['mute_sound', 0], mode=EM_SYSTEM_AND_SESSION)
 
     def on_imi_restrictions_unmute_sound_activate(self, _widget):
         """Handle imi_restrictions_unmute_sound.activate event."""
