@@ -1,5 +1,5 @@
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# Copyright 2010-2020 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Configuration file parser and other default configuration variables.
@@ -173,6 +173,7 @@ system = read_shell_file('/etc/default/epoptes')
 system.setdefault('PORT', 789)
 system.setdefault('SOCKET_GROUP', 'epoptes')
 system.setdefault('DIR', '/run/epoptes')
+system.setdefault('THUMBSHOT_MS', 5000)
 # Allow running unencrypted, for clients with very low RAM.
 try:
     if os.path.getsize('/etc/epoptes/server.crt') == 0:

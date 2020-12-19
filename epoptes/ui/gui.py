@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# Copyright 2010-2020 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Epoptes GUI class.
@@ -975,10 +975,11 @@ class EpoptesGui(object):
         """Callback after running`thumbshot` on a client."""
         for i in self.cstore:
             if handle == i[C_SESSION_HANDLE]:
-                # We want to ask for thumbshots every 5 sec after the last one.
-                # So if the client is too stressed and needs 7 secs to
+                # Ask for a new thumbshot THUMBSHOT_MS msec after the last one.
+                # So if the client is too stressed and needs e.g. 7 secs to
                 # send a thumbshot, we'll ask for one every 12 secs.
-                GLib.timeout_add(5000, self.ask_thumbshot, handle)
+                GLib.timeout_add(int(config.system['THUMBSHOT_MS']),
+                    self.ask_thumbshot, handle)
                 LOG.d("I got a thumbshot from %s." % handle)
                 if not reply:
                     return
