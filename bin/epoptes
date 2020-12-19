@@ -86,6 +86,13 @@ def main():
     if need_sg_relaunch():
         sys.exit(0)
 
+    path = os.path.expanduser('~/.config')
+    if not os.path.isdir(path):
+        os.mkdir(path, 0x700)
+    path = os.path.expanduser('~/.config/epoptes')
+    if not os.path.isdir(path):
+        os.mkdir(path)
+
     egui = gui.EpoptesGui()
     # noinspection PyUnresolvedReferences
     dfr = ClientCreator(reactor, uiconnection.Daemon, egui)\
