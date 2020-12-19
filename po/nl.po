@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2016-02-26 09:09+0000\n"
+"PO-Revision-Date: 2020-05-20 17:38+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2020-05-21 06:16+0000\n"
+"X-Generator: Launchpad (build 1f7bc749b40714a4cc10f5e4d787118a78037035)\n"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -18,7 +18,7 @@ msgstr "Het scherm is vergrendeld door een systeembeheerder."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Gebruik: {} tekst [titel] [tekstmarkeertaal] [pictogram_naam]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -86,7 +86,7 @@ msgstr "Status"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Gebruik: {} breedte hoogte"
 
 #: ../epoptes/common/config.py:190
 msgid "Message from administrator"
@@ -128,20 +128,20 @@ msgstr "Bandbreedtetest eindigt over %d seconden..."
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Sommige clienten hebben niet op tijd gereageerd!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
 msgid "Waiting for %d more seconds..."
-msgstr ""
+msgstr "Er wordt nog %d seconden langer gewacht..."
 
 #: ../epoptes/ui/benchmark.py:213
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
-"Geen metingen ontvangen van geen enkele cliënt. Controleer je netwerk "
-"instellingen."
+"Geen metingen ontvangen van geen enkele client. Controleer uw "
+"netwerkinstellingen."
 
 #. TODO: consider new string formatting vs updating translations
 #: ../epoptes/ui/client_information.py:66
@@ -151,11 +151,11 @@ msgstr "Eigenschappen van %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2010+ Het Epoptes Team"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "Hulpmiddel om een computerlokaal te beheren en monitoren"
+msgstr "Hulpmiddel om een computerlokaal te beheren en toezicht te houden."
 
 #: ../epoptes/ui/gtk/about.ui.h:3
 msgid "translator-credits"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr ""
+msgstr "Netwerktest"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
@@ -196,7 +196,7 @@ msgstr "seconden"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
-msgstr ""
+msgstr "Netwerktestresultaten"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Computer"
@@ -220,7 +220,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Algehele bandbreedtestatistieken"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
@@ -352,7 +352,7 @@ msgstr "Uitzenden"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Monitor user"
-msgstr "Gebruiker monitoren"
+msgstr "Toezicht houden op gebruiker"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Assist user"
@@ -586,11 +586,11 @@ msgstr "Gedetecteerde clienten"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Kon het groepsbestand niet lezen:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Mogelijk dient u uw groepen te herstellen vanuit een back-up!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
@@ -614,7 +614,7 @@ msgstr ""
 
 #: ../epoptes/ui/gui.py:561
 msgid "New group"
-msgstr ""
+msgstr "Nieuwe groep"
 
 #: ../epoptes/ui/gui.py:578
 #, python-format
@@ -679,7 +679,7 @@ msgstr "Actie bevestigen"
 
 #: ../epoptes/ui/notifications.py:81
 msgid "Could not initialize notifications!"
-msgstr ""
+msgstr "Kon de notificaties niet initialiseren!"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2019-04-17 08:07+0000\n"
+"PO-Revision-Date: 2020-01-30 17:13+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2020-01-31 05:57+0000\n"
+"X-Generator: Launchpad (build 0a62c17273454a1313f81a74a2198ec30b44c7b6)\n"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -23,7 +23,7 @@ msgstr "Obrazovka je uzamčena správcem systému"
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Použití: {} text [title] [markup] [icon_name!"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -90,7 +90,7 @@ msgstr "Stav"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Použití: {} výška šířka"
 
 #: ../epoptes/common/config.py:190
 msgid "Message from administrator"
@@ -153,7 +153,7 @@ msgstr "Vlastnosti %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Autorská práva © 2010 a později tým Epoptes"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -582,11 +582,11 @@ msgstr "Zjištění klienti"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Nepodařilo se načíst soubor se skupinami:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Možná bude třeba obnovit vaše skupiny ze zálohy!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"

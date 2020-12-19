@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2016-09-01 23:24+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"PO-Revision-Date: 2020-03-23 03:39+0000\n"
+"Last-Translator: Nicolae Crefelean <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:51+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2020-03-24 06:26+0000\n"
+"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -23,7 +23,7 @@ msgstr "Ecranul este blocat de un administrator."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Utilizare: {} text [titlu] [markup] [nume_iconiță]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -92,7 +92,7 @@ msgstr "Stare"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Utilizare: {} lățime înălțime"
 
 #: ../epoptes/common/config.py:190
 msgid "Message from administrator"
@@ -134,12 +134,12 @@ msgstr "Testare finalizată în %d secunde..."
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Câțiva clienți n-au răspuns la timp!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
 msgid "Waiting for %d more seconds..."
-msgstr ""
+msgstr "Se așteaptă încă %d secunde..."
 
 #: ../epoptes/ui/benchmark.py:213
 msgid ""
@@ -156,7 +156,7 @@ msgstr "Properietățile %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2010+ Echipa Epoptes"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -171,7 +171,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr ""
+msgstr "Test de performanță rețea"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
@@ -195,7 +195,7 @@ msgstr "secunde"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
-msgstr ""
+msgstr "Rezultate test de performanță rețea"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Computer"
@@ -218,7 +218,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Statistici generale pentru lățimea de bandă"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
@@ -583,11 +583,11 @@ msgstr "Clienți detectați"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Nu s-a putut citi fișierul grupurilor:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Poate trebuie să restaurezi grupurile dintr-o copie de siguranță!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
@@ -609,7 +609,7 @@ msgstr "Sigur doriți ștergerea selecției din grupul „%s”?"
 
 #: ../epoptes/ui/gui.py:561
 msgid "New group"
-msgstr ""
+msgstr "Grup nou"
 
 #: ../epoptes/ui/gui.py:578
 #, python-format
@@ -644,7 +644,7 @@ msgstr "Deconectat:"
 #: ../epoptes/ui/gui.py:762
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr ""
+msgstr "%(user)s de pe %(host)s"
 
 #: ../epoptes/ui/gui.py:876
 #, python-format
@@ -666,7 +666,7 @@ msgstr "Conectat:"
 #: ../epoptes/ui/gui.py:907
 #, python-format
 msgid "%(user)s on %(host)s"
-msgstr ""
+msgstr "%(user)s pe %(host)s"
 
 #: ../epoptes/ui/gui.py:1085
 msgid "Confirm action"
@@ -674,7 +674,7 @@ msgstr "Confirmă acțiunea"
 
 #: ../epoptes/ui/notifications.py:81
 msgid "Could not initialize notifications!"
-msgstr ""
+msgstr "Nu s-au putut inițializa notificările!"
 
 #~ msgid "Lock background"
 #~ msgstr "Blocare fundal"

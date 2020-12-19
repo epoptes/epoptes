@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2015-08-15 08:25+0000\n"
-"Last-Translator: srekkas <srekkas.as@gmail.com>\n"
+"PO-Revision-Date: 2020-04-29 10:10+0000\n"
+"Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:51+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2020-04-30 05:56+0000\n"
+"X-Generator: Launchpad (build fbdff7602bd10fb883bf7e2ddcc7fd5a16f60398)\n"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -124,16 +124,16 @@ msgstr ""
 #: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Spartos testas baigsis po %d sek..."
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Keletas kompiuterių neatsakė per numatytą laiką!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
 msgid "Waiting for %d more seconds..."
-msgstr ""
+msgstr "Palaukite dar %d sek..."
 
 #: ../epoptes/ui/benchmark.py:213
 msgid ""
@@ -149,7 +149,7 @@ msgstr "%s savybės"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Autorių teisės © 2010+ The Epoptes Team"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -161,15 +161,16 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Danute https://launchpad.net/~d-informatika\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
+"  Mantas Kriaučiūnas https://launchpad.net/~mantas\n"
 "  srekkas https://launchpad.net/~srekkas-as"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr ""
+msgstr "Tinklo spartos testavimas"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
-msgstr ""
+msgstr "Pradėti"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
@@ -183,11 +184,11 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
-msgstr ""
+msgstr "sek."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
-msgstr ""
+msgstr "Tinklo spartos rezultatai"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Computer"
@@ -265,7 +266,7 @@ msgstr "IP adresas:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:6
 msgid "User:"
-msgstr "Vartotojas:"
+msgstr "Naudotojas:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:7
 msgid "Processor:"
@@ -297,15 +298,15 @@ msgstr "Etiketės"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:3
 msgid "Computer (user)"
-msgstr "Kompiuteris (vartotojas)"
+msgstr "Kompiuteris (naudotojas)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:5
 msgid "User (computer)"
-msgstr "Vartotojas (kompiuteris)"
+msgstr "Naudotojas (kompiuteris)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:6
 msgid "User"
-msgstr "Vartotojas"
+msgstr "Naudotojas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Show real names"
@@ -341,15 +342,15 @@ msgstr "Transliacijos"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Monitor user"
-msgstr "Stebėti vartotoją"
+msgstr "Stebėti naudotoją"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Assist user"
-msgstr "Asistuoti vartotojui"
+msgstr "Padėti naudotojui"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Take control of the selected user's computer"
-msgstr "Valdyti pasirinkto vartotojo kompiuterį"
+msgstr "Valdyti pasirinkto naudotojo kompiuterį"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Broadcast video"
@@ -414,7 +415,7 @@ msgstr "Atverti terminalą"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "User, locally"
-msgstr "Vartotojas, lokaliai"
+msgstr "Naudotojas, lokaliai"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Root, locally"
@@ -454,7 +455,7 @@ msgstr "Įjungti garsą"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Add to group"
-msgstr ""
+msgstr "Pridėti prie grupės"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Remove from group"
@@ -462,11 +463,11 @@ msgstr "Pašalinti iš grupės"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Tinklo spartos testavimas"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "_Help"
-msgstr "_Žinynas"
+msgstr "_Pagalba"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
 msgid "Report a bug"
@@ -490,7 +491,7 @@ msgstr "Įjungti pasirinktus kompiuterius (Wake On Lan)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Log out users connected on selected clients"
-msgstr "Atjungti pasirinktų kompiuterių prisijungusius vartotojus"
+msgstr "Atjungti pasirinktų kompiuterių prisijungusius naudotojus"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Reboot the selected clients"
@@ -574,7 +575,7 @@ msgstr "Aptikti kompiuteriai"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Nepavyko nuskaityti grupių failo:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
@@ -582,7 +583,7 @@ msgstr ""
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
-msgstr "Ar tikrai norite atjungti visus vartotojus?"
+msgstr "Ar tikrai norite atjungti visus naudotojus?"
 
 #: ../epoptes/ui/gui.py:243
 msgid "Are you sure you want to reboot all the computers?"
@@ -600,7 +601,7 @@ msgstr "Ar tikrai norite pašalinti pasirinktą klientą (-us) iš „%s“ grup
 
 #: ../epoptes/ui/gui.py:561
 msgid "New group"
-msgstr ""
+msgstr "Nauja grupė"
 
 #: ../epoptes/ui/gui.py:578
 #, python-format
@@ -614,11 +615,13 @@ msgstr "%d klientai pažymėti"
 
 #: ../epoptes/ui/gui.py:720
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Prarastas ryšys su epoptes paslauga (service)."
 
 #: ../epoptes/ui/gui.py:722
 msgid "Make sure the service is running and then restart epoptes."
 msgstr ""
+"Įsitikinkite, kad epoptes servisas veikia ir tada perleiskite epoptes "
+"programą."
 
 #: ../epoptes/ui/gui.py:725
 msgid "Service connection error"

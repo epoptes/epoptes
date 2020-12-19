@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Epoptes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2016-10-28 12:45+0000\n"
+"PO-Revision-Date: 2020-06-12 13:33+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2020-06-13 06:05+0000\n"
+"X-Generator: Launchpad (build b190cebbf563f89e480a8b57f641753c8196bda0)\n"
 "Language: sq\n"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
@@ -19,7 +19,7 @@ msgstr "Ekrani është kyçur nga një përgjegjës sistemi."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Përdorim: {} tekst [title] [markup] [icon_name]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -40,12 +40,12 @@ msgstr "I lidhur te %s"
 #: ../epoptes-client/remote_assistance.py:126
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "S’arriti të lidhej me %s"
+msgstr "S’u arrit të lidhej me %s"
 
 #: ../epoptes-client/remote_assistance.py:143
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Po riprovohe për %d…"
+msgstr "Po riprovohet për %d…"
 
 #: ../epoptes-client/remote_assistance.ui.h:1
 msgid "Graphics (VNC)"
@@ -86,7 +86,7 @@ msgstr "Gjendje"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Përdorim: {} gjerësi lartësi"
 
 #: ../epoptes/common/config.py:190
 msgid "Message from administrator"
@@ -128,12 +128,12 @@ msgstr "Grupi i testeve përfundon për %d sekonda…"
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Disa klientë s’u përgjigjën në kohë!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
 msgid "Waiting for %d more seconds..."
-msgstr ""
+msgstr "Po pritet edhe për %d sekonda të tjera…"
 
 #: ../epoptes/ui/benchmark.py:213
 msgid ""
@@ -151,11 +151,11 @@ msgstr "Veti të %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Të drejta kopjimi © 2010+ Ekipi i Epoptes"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "Një mjet për administrim dhe mbikëqyrje laboratori kompjuterik"
+msgstr "Një mjet për administrim dhe mbikëqyrje laboratori kompjuterik."
 
 #: ../epoptes/ui/gtk/about.ui.h:3
 msgid "translator-credits"
@@ -165,7 +165,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr ""
+msgstr "Grup testes për rrjetin"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
@@ -189,7 +189,7 @@ msgstr "sekonda"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
-msgstr ""
+msgstr "Përfundime grupi testes për rrjetin"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Computer"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Stastistika prurjesh të dhënash në përgjithësi"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
@@ -584,11 +584,11 @@ msgstr "Klientë të pikasur"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "S’u arrit të lexohej kartelë grupesh:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Mund t’ju duhet të riktheni grupet tuaj prej një kopjeruajtjeje!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
@@ -612,7 +612,7 @@ msgstr ""
 
 #: ../epoptes/ui/gui.py:561
 msgid "New group"
-msgstr ""
+msgstr "Grup i ri"
 
 #: ../epoptes/ui/gui.py:578
 #, python-format
@@ -677,7 +677,7 @@ msgstr "Ripohoni veprimin"
 
 #: ../epoptes/ui/notifications.py:81
 msgid "Could not initialize notifications!"
-msgstr ""
+msgstr "S’u gatitën dot njoftimet!"
 
 #~ msgid "Background image"
 #~ msgstr "Figurë ssfondi"

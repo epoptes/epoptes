@@ -8,48 +8,48 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2015-08-15 08:27+0000\n"
-"Last-Translator: Fotis Tsamis <ftsamis@gmail.com>\n"
+"PO-Revision-Date: 2020-06-09 13:24+0000\n"
+"Last-Translator: Bernard Stafford <Unknown>\n"
 "Language-Team: Afrikaans <af@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2020-06-10 05:59+0000\n"
+"X-Generator: Launchpad (build ef9fc486e875d54078fa61cf91e898b895125d89)\n"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
-msgstr "Hierdie skerm is gesluit deur 'n sisteem administrator."
+msgstr "Hierdie skerm is -gesluit deur 'n sisteem administrator."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Gebruik: {} teks [titel] [merkup] [ikoon_naam]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
 #: ../epoptes-client/remote_assistance.ui.h:9
 msgid "Not connected"
-msgstr "Nie gekoppel nie"
+msgstr "Nie gekonnekteer"
 
 #: ../epoptes-client/remote_assistance.py:114
 #, python-format
 msgid "Connecting to %s..."
-msgstr "Gekoppel aan %s..."
+msgstr "Koppel tans om %s..."
 
 #: ../epoptes-client/remote_assistance.py:119
 #, python-format
 msgid "Connected to %s"
-msgstr "Verbind aan %s"
+msgstr "Gekoppel om %s"
 
 #: ../epoptes-client/remote_assistance.py:126
 #, python-format
 msgid "Failed to connect to %s"
-msgstr "Kon nie koppel aan %s nie"
+msgstr "Mislukte om konnekteer te %s"
 
 #: ../epoptes-client/remote_assistance.py:143
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Herprobeer in %d..."
+msgstr "Herprobeer tans in %d..."
 
 #: ../epoptes-client/remote_assistance.ui.h:1
 msgid "Graphics (VNC)"
@@ -67,7 +67,7 @@ msgstr "Afgelëe ondersteuning"
 msgid ""
 "Enter the information of the contact you want to share your Desktop with"
 msgstr ""
-"Voeg die inligting in vir die kontak wat jy jou Tafelblad mee wil deel"
+"Betree die inligting van die kontak wat jy wil deel jou Bureaublad met"
 
 #: ../epoptes-client/remote_assistance.ui.h:5
 msgid "Method:"
@@ -75,7 +75,7 @@ msgstr "Metode:"
 
 #: ../epoptes-client/remote_assistance.ui.h:6
 msgid "Host:"
-msgstr "Rekenaarnaam:"
+msgstr "Gasheer:"
 
 #: ../epoptes-client/remote_assistance.ui.h:7
 msgid "Connection information"
@@ -83,7 +83,7 @@ msgstr "Konneksie informasie"
 
 #: ../epoptes-client/remote_assistance.ui.h:8
 msgid "Keep reconnecting"
-msgstr "Herprobeer koppeling"
+msgstr "Hou herkoppel tans"
 
 #: ../epoptes-client/remote_assistance.ui.h:10
 msgid "Status"
@@ -91,11 +91,11 @@ msgstr "Status"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Gebruik: {} breedte hoogte"
 
 #: ../epoptes/common/config.py:190
 msgid "Message from administrator"
-msgstr "Boodskap van administrator"
+msgstr "Boodskap vanaf administrateur"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
 #: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
@@ -104,43 +104,49 @@ msgstr "Waarskuwing"
 
 #: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/send_message.ui.h:8
 msgid "Error"
-msgstr "Probleem"
+msgstr "Fout"
 
 #: ../epoptes/ui/benchmark.py:96
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Daar is geen geselekteerde klient om hardloop die maatstaf op."
 
 #: ../epoptes/ui/benchmark.py:112
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
+"Alle die geselekteerde klient is óf aflyn, of het nie epoptes-klient "
+"hardlooping as wortel."
 
 #: ../epoptes/ui/benchmark.py:117
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
+"Die volgende kliente sal wees uitgesluit van die maatstaww omdat hulle is óf "
+"vanlyn, of het nie epoptes-klient hardlooping as wortel."
 
 #: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Maatstaww afwerkeing in %d sekondes..."
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Sommige kliente het nie reageer in die tyd!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
 msgid "Waiting for %d more seconds..."
-msgstr ""
+msgstr "Wag vir %d meer sekondes..."
 
 #: ../epoptes/ui/benchmark.py:213
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
+"Het gedoen nie get metings vanaf enige van die kliente. Tjek jou netwerk "
+"instellings."
 
 #. TODO: consider new string formatting vs updating translations
 #: ../epoptes/ui/client_information.py:66
@@ -150,45 +156,48 @@ msgstr "Eienskappe van %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Kopiereg © 2010+ Die Epoptes Span"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
-msgstr "'n Rekenaar kamer bestuur in monitering program."
+msgstr "'N rekenaar lab bestuur en monitering hulpmiddel."
 
 #: ../epoptes/ui/gtk/about.ui.h:3
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Bernard Stafford https://launchpad.net/~bernard010\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Jonathan Carter https://launchpad.net/~jonathan\n"
 "  Marius Loots https://launchpad.net/~mloots"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr ""
+msgstr "Netwerk maatstaf"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
-msgstr ""
+msgstr "Begin"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:4
 msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
+"Die netwerk maatstaf sal toets die effektiewe netwerk\n"
+"bandwydte wat beskikbaar is vir jou lab."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Hardloop die maatstaf vir"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
-msgstr ""
+msgstr "sekondes"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
-msgstr ""
+msgstr "Netwerk maatstaf resultate"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Computer"
@@ -196,65 +205,67 @@ msgstr "Rekenaar"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:10
 msgid "Upload bandwidth"
-msgstr ""
+msgstr "Oplaai bandwydte"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:11
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Aflaai bandwydte"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Kon nie metings kry van sommige van die kliente. Die statistieke sal wees "
+"aangetas."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Algehele bandwydte statistieke"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "Die gemiddelde bediener aflaai bandwydte per klient"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:15
 msgid "Average server download:"
-msgstr ""
+msgstr "Gemiddelde bedieneraflaai:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:16
 msgid "The average server upload bandwidth per client"
-msgstr ""
+msgstr "Die gemiddelde bediener oplaai bandwydte per klient"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:17
 msgid "Average server upload:"
-msgstr ""
+msgstr "Gemiddelde oplaai van bedieners:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:18
 msgid "The total server upload bandwidth, for all clients, simultaneously"
-msgstr ""
+msgstr "Die totale bediener oplaai bandwydte, vir alle kliente, tegelyk"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:19
 msgid "Total server upload:"
-msgstr ""
+msgstr "Totale bediener oplaai:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:20
 msgid "The total server download bandwidth, for all clients, simultaneously"
-msgstr ""
+msgstr "Die totale bediener aflaai bandwydte, vir alle klient, tegelyk"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:21
 msgid "Total server download:"
-msgstr ""
+msgstr "Totale bediener aflaai:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client type:"
-msgstr "Tipe kliënt:"
+msgstr "Tipe klient"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:2
 msgid "Client alias:"
-msgstr "Huidige alias:"
+msgstr "Klient alias:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client hostname:"
-msgstr "Kliënt rekenaarnaam:"
+msgstr "Klient gasheernaam:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "MAC address:"
@@ -274,7 +285,7 @@ msgstr "Verwerker:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:8
 msgid "RAM:"
-msgstr "RAM (geheue):"
+msgstr "RAM:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:9
 msgid "Graphics card:"
@@ -286,7 +297,7 @@ msgstr "Wysig alias"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:11
 msgid "Set a new alias for the selected client"
-msgstr "Wys 'n nuwe alias vir die verkooste kliënt"
+msgstr "Stel 'n nuwe alias vir die gekose klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:1
 msgid "_File"
@@ -314,7 +325,7 @@ msgstr "Wys regte name"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "_Clients"
-msgstr "_Kliënte"
+msgstr "_Klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:9
 msgid "Session"
@@ -322,23 +333,23 @@ msgstr "Sessie"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:10
 msgid "Boot"
-msgstr "Skakel Aan"
+msgstr "Stewel"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:11
 msgid "Log out"
-msgstr "Meld af"
+msgstr "Meld uit"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:12
 msgid "Reboot"
-msgstr "Herlaai"
+msgstr "Herselflaai"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:13
 msgid "Shutdown"
-msgstr "Skakel af"
+msgstr "Afskakeling"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Broadcasts"
-msgstr "Saai uit"
+msgstr "Uitsendings"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Monitor user"
@@ -346,31 +357,33 @@ msgstr "Monitor gebruiker"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:16
 msgid "Assist user"
-msgstr "Help gebruiker"
+msgstr "Bystaan user"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Take control of the selected user's computer"
-msgstr "Neem beheer van die gebruiker se rekenaar"
+msgstr "Neem beheer van die geselekteerde gebruiker se rekenaar"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Broadcast video"
-msgstr "Saai video uit"
+msgstr "Uitgesaai video"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Broadcast screen (fullscreen)"
-msgstr "Saai skerm uit (volskerm)"
+msgstr "Uitgesaai skerm (volskerm)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Saai jou skerm uit na gekiesde kliënte, volskerm"
+msgstr ""
+"Jy kan jou skerm op die volskerm uitsaai na die geselekteerde kliente, "
+"volskerm"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Broadcast screen (windowed)"
-msgstr "Saai skerm uit (in venster)"
+msgstr "Uitsaai skerm (venster)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Saai jou skerm uit na die geskiesde kliënte, in 'n venster"
+msgstr "Uitgesaai jou skerm aan die geselekteerde kliente, in 'n venster"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast user"
@@ -378,7 +391,7 @@ msgstr "Saai gebruiker uit"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Stop broadcasts"
-msgstr "Stop uitsaai aksies"
+msgstr "Stop uitsendings"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Stops all active broadcasts"
@@ -386,19 +399,20 @@ msgstr "Stop alle aktieve uitsendings"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Open broadcasts window"
-msgstr "Maak uitsaai venster oop"
+msgstr "Maak uitsendings venster oop"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Maak 'n sessie oop in 'n venster vir uitsending"
+msgstr ""
+"Maak 'n venster oop sessie om te voorkom uitsaai tans jou geheel skerm"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Execute"
-msgstr "Voer uit"
+msgstr "Teregstel"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:29
 msgid "Execute a command on the selected clients"
-msgstr "Voer 'n bevel uit op gekooste kliënte"
+msgstr "Teregstel 'n bevel op die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
 msgid "_Send message"
@@ -406,11 +420,11 @@ msgstr "_Stuur boodskap"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
 msgid "Send a message to the selected clients"
-msgstr "Stuur 'n boodskap na die gekooste kliënte"
+msgstr "Stuur 'n boodskap na die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
 msgid "Open terminal"
-msgstr "Maak 'n terminaal oop"
+msgstr "Maak terminaal oop"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
 msgid "User, locally"
@@ -418,11 +432,11 @@ msgstr "Gebruiker, plaaslik"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
 msgid "Root, locally"
-msgstr "Root, plaaslik"
+msgstr "Wortel, plaaslik"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
 msgid "Root, remotely"
-msgstr "Root, afgelëe"
+msgstr "Wortel, afgeleë"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
 msgid "Restrictions"
@@ -442,19 +456,19 @@ msgstr "Blok Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
 msgid "Unblock Internet"
-msgstr "Onblok Internet"
+msgstr "Deblokkeer Internet"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
 msgid "Mute sound"
-msgstr "Bedoof klank"
+msgstr "Demp klank"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
 msgid "Unmute sound"
-msgstr "Onbedoof klank"
+msgstr "Ontdemp klank"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
 msgid "Add to group"
-msgstr ""
+msgstr "Voeg by groep"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
 msgid "Remove from group"
@@ -462,7 +476,7 @@ msgstr "Verwyder van groep"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
 msgid "Network Benchmark"
-msgstr ""
+msgstr "Netwerk Maatstaf"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
 msgid "_Help"
@@ -478,43 +492,43 @@ msgstr "Vra 'n vraag"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
 msgid "Translate this application"
-msgstr "Vertaal hierdie program"
+msgstr "Vertaal hierdie aansoek"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
 msgid "Live chat (IRC)"
-msgstr "Praat regstreeks (IRC)"
+msgstr "Leef gesels (IRC)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Boot selected clients (Wake On LAN)"
-msgstr "Skakel aan gekooste kliënte (\"Wake on LAN\")"
+msgstr "Stewel geselekteerde kliente (Wake Op LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Log out users connected on selected clients"
-msgstr "Meld af gebruikers op gekooste kliënte"
+msgstr "Meld uit gebruikers op geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Reboot the selected clients"
-msgstr "Herlaai gekooste rekenaars"
+msgstr "Herselflaai die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Shutdown the selected clients"
-msgstr "Skakel af die gekooste rekenaars"
+msgstr "Afskakeling die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Broadcast your screen to the selected clients"
-msgstr "Saai uit jou skerm na die gekooste rekenaars"
+msgstr "Uitsending jou skerm na die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Broadcast screen"
-msgstr "Saai skerm uit"
+msgstr "Uitsending skerm"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Stop all broadcasts on every client"
-msgstr "Stop alle uitsendings op elke rekenaar"
+msgstr "Stop alle uitsendings op elke klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59 ../epoptes/ui/gtk/exec_command.ui.h:1
 msgid "Execute command"
-msgstr "Voeg bevel uit"
+msgstr "Uit te voer beveel"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
 msgid "Send message"
@@ -522,23 +536,23 @@ msgstr "Stuur boodskap"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:61
 msgid "Lock screen of the selected clients"
-msgstr "Sluit skerm op die gekooste rekenaars"
+msgstr "Slot skerm van die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:62
 msgid "Unlock the screen of the selected clients"
-msgstr "Sluit oop die skerms op die gekooste rekenaars"
+msgstr "Ontslot skerm van die geselekteerde kliente"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Show information for the selected client"
-msgstr "Wys informasie vir die gekooste rekenaar"
+msgstr "Wys inligting vir die geselekteerde klient"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
 msgid "Information"
-msgstr "Informasie"
+msgstr "Inligting"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:65
 msgid "Groups"
-msgstr ""
+msgstr "Groepe"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:66
 msgid "Create a new group"
@@ -546,11 +560,11 @@ msgstr "Skep 'n nuwe groep"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:67
 msgid "Remove the selected group"
-msgstr "Verwyder die gekooste groep"
+msgstr "Verwyder die geselekteerde groep"
 
 #: ../epoptes/ui/gtk/exec_command.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, lêer of bevel om uit te voer op gekooste kliënte."
+msgstr "URL, lêer of bevel om uit te voer op die geselekteerde kliente:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:2
 msgid "_Send"
@@ -558,7 +572,7 @@ msgstr "_Stuur"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:3
 msgid "Message title:"
-msgstr "Boodskap titel"
+msgstr "Boodskap titel:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:4
 msgid "Message text:"
@@ -566,77 +580,78 @@ msgstr "Boodskap teks:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:5
 msgid "Use Pango markup"
-msgstr "Gebruik Pango markering"
+msgstr "Gebruik Pango merkop"
 
 #: ../epoptes/ui/gui.py:105
 msgid "Detected clients"
-msgstr "Bevinde rekenaars"
+msgstr "Bespeur kliente"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Mislukte om die groepe lêer te lees:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Jy mag behoefte om restore jou groepe vanaf 'n rugsteun!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
-msgstr "Is jy seker jy wil alle gebruikers af meld?"
+msgstr "Is jy seker jy wil om meld af alle die gebruikers?"
 
 #: ../epoptes/ui/gui.py:243
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Is jy seker jy wil alle rekenaars herlaai?"
+msgstr "Is jy seker jy wil om herselflaai alle die rekenaars?"
 
 #: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Is jy seker jy wil alle rekenaars afskakel?"
+msgstr "Is jy seker jy wil om afskakeling alle die rekenaars?"
 
 #: ../epoptes/ui/gui.py:430
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
-"Is jy seker jy wil alle verkose rekenaar(s) verwyder van groep \"%s\"?"
+"Is jy seker jy wil om verwyder die geselekteerde klient(s) vanaf groep "
+"\"%s\"?"
 
 #: ../epoptes/ui/gui.py:561
 msgid "New group"
-msgstr ""
+msgstr "Nuwe groep"
 
 #: ../epoptes/ui/gui.py:578
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Is jy seker jy wil groep \"%s\" verwyder?"
+msgstr "Is jy seker jy wil om verwyder groep \"%s\"?"
 
 #: ../epoptes/ui/gui.py:623
 #, python-format
 msgid "%d clients selected"
-msgstr ""
+msgstr "%d kliente geselekteerde"
 
 #: ../epoptes/ui/gui.py:720
 msgid "Lost connection with the epoptes service."
-msgstr ""
+msgstr "Konneksie verloor met die epoptes diens."
 
 #: ../epoptes/ui/gui.py:722
 msgid "Make sure the service is running and then restart epoptes."
-msgstr ""
+msgstr "Maak seker dat die diens is hardlooping en dan herbegin epoptes."
 
 #: ../epoptes/ui/gui.py:725
 msgid "Service connection error"
-msgstr ""
+msgstr "Diens konneksie fout"
 
 #: ../epoptes/ui/gui.py:753
 msgid "Shut down:"
-msgstr "Skakel af:"
+msgstr "Afskakeling:"
 
 #: ../epoptes/ui/gui.py:761
 msgid "Disconnected:"
-msgstr "Ongekoppeld:"
+msgstr "Gediskonnekteer:"
 
 #: ../epoptes/ui/gui.py:762
 #, python-format
 msgid "%(user)s from %(host)s"
-msgstr "%(user)s van %(host)s"
+msgstr "%(user)s vanaf %(host)s"
 
 #: ../epoptes/ui/gui.py:876
 #, python-format
@@ -646,12 +661,14 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"A konneksie poging is gemaak deur 'n kliënt met weergawe %s, wat nie "
-"versonbaar is met die huidige Epoptes weergawe nie"
+"'N verbinding -poging was gemaak deur 'n klient met weergawe %s, watter is "
+"onversoenbare met die huidige epoptes weergawe.\n"
+"\n"
+"Jy behoefte om opdateer jou kliente aan die jongste epoptes-klient weergawe."
 
 #: ../epoptes/ui/gui.py:906
 msgid "Connected:"
-msgstr "Gekoppel:"
+msgstr "Gekonnekteer"
 
 #: ../epoptes/ui/gui.py:907
 #, python-format
@@ -664,7 +681,7 @@ msgstr "Bevestig aksie"
 
 #: ../epoptes/ui/notifications.py:81
 msgid "Could not initialize notifications!"
-msgstr ""
+msgstr "Kon nie initialiseer kennisgewings!"
 
 #~ msgid "Epoptes"
 #~ msgstr "Epoptes"
