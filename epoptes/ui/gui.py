@@ -44,7 +44,7 @@ class EpoptesGui(object):
              r"""ip -oneline -family inet link show | """
              r"""sed -n 's/.*ether[[:space:]]*\([[:xdigit:]:]*\).*/\1/p';"""
              r"""echo $LTSP_CLIENT_MAC"""],
-            stdout=subprocess.PIPE).communicate()[0].decode().split()
+            stdout=subprocess.PIPE).communicate()[0].decode().lower().split()
         self.current_thumbshots = dict()
         self.daemon = None
         self.displayed_compatibility_warning = False
