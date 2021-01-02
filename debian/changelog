@@ -1,3 +1,16 @@
+epoptes (21.01-1) unstable; urgency=medium
+
+  * Allow specifying thumbshot interval
+  * Create .config/epoptes when launching epoptes (#116)
+  * Lowercase LTSP5 MAC addresses (#123)
+  * Import translations from launchpad
+  * Don't focus remote assistance connect button (#120)
+  * Call mute_sound for SESSION pulseaudio (#119)
+  * Remove bsdmainutils dependency (debian #964526)
+  * Introduce POTFILES.in
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Sat, 02 Jan 2021 08:45:08 +0200
+
 epoptes (20.01-1) unstable; urgency=medium
 
   [ Alkis Georgopoulos ]
