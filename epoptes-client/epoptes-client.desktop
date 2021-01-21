@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Epoptes client service
 Name[el]=Υπηρεσία πελάτη του Epoptes
-Comment=Epoptes computer lab administation tool client service
+Comment=Epoptes computer lab administration tool client service
 Comment[el]=Υπηρεσία πελάτη του λογισμικού διαχείρισης εργαστηρίων Epoptes
 Exec=/usr/sbin/epoptes-client
 Icon=epoptes

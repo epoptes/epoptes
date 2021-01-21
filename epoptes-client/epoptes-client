@@ -67,7 +67,7 @@ basic_info() {
             echo "LTSP_CLIENT=$LTSP_CLIENT"
             echo "LTSP_FATCLIENT=$LTSP_FATCLIENT"
             echo "EPOPTES_CLIENT_VERIFY_CERTIFICATE=$EPOPTES_CLIENT_VERIFY_CERTIFICATE")
-        # LTSP_CLIENT may not be available in system sesssions, if so fake it
+        # LTSP_CLIENT may not be available in system sessions, if so fake it
         LTSP_CLIENT=${LTSP_CLIENT:-127.0.0.1}
     fi
 
