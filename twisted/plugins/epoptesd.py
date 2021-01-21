@@ -5,7 +5,7 @@
 """
 Communicate with epoptes-clients on SSL 789
 and with GUIs on /run/epoptes/epoptes.socket.
-Communcation flow:
+Communication flow:
   epoptesd.py imports bashplex.py <=SSL=> epoptes-client.
   epoptesd.py imports guiplex.py <=UNIX=> uiconnection imported by gui.py.
 So, epoptesd, guiplex, bashplex and exchange run as root.
