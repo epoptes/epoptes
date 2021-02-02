@@ -249,6 +249,11 @@ if my_boolean_is_true "${EPOPTES_CLIENT_VERIFY_CERTIFICATE:-True}"; then
     if socat -hhh | grep -q openssl-commonname; then
         cert_param="$cert_param,commonname=\"\""
     fi
+    # Disable SNI if socat supports it, as epoptes does not use SNI.
+    # https://github.com/epoptes/epoptes/issues/127
+    if socat -hhh | grep -q openssl-no-sni; then
+        cert_param="$cert_param,no-sni=1"
+    fi
 else
     cert_param="verify=0"
 fi
