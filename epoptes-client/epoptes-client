@@ -1,6 +1,6 @@
 #!/bin/sh
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# Copyright 2010-2021 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # epoptes-client is called either from systemd as root, to control the client,
@@ -19,7 +19,7 @@ version() {
 }
 
 die() {
-    echo "epoptes-client ERROR: $@" >&2
+    echo "epoptes-client ERROR: $*" >&2
     exit 1
 }
 
@@ -60,7 +60,7 @@ basic_info() {
     # not in our environment, and we need to source ltsp_config.
     # But we don't want to pollute the environment with any of its other vars.
     if [ "$UID" -eq 0 ] && [ -f /usr/share/ltsp/ltsp_config ] && ! chrooted &&
-        egrep -qs 'ltsp|nfs|nbd' /proc/cmdline
+        grep -Eqs 'ltsp|nfs|nbd' /proc/cmdline
     then
         export $(
             . /usr/share/ltsp/ltsp_config >/dev/null
@@ -74,7 +74,7 @@ basic_info() {
     # LTSP_FATCLIENT may not be available in user sessions, autodetect it
     if [ -n "$LTSP_CLIENT" ] && [ -z "$LTSP_FATCLIENT" ] &&
         [ "$UID" -gt 0 ] && [ -x /usr/bin/getltscfg ] &&
-        egrep -qs 'ltsp|nfs|nbd' /proc/cmdline
+        grep -Eqs 'ltsp|nfs|nbd' /proc/cmdline
     then
         LTSP_FATCLIENT=True
     fi
@@ -87,7 +87,7 @@ basic_info() {
         TYPE="standalone"
     fi
 
-    if ( [ "$TYPE" = "thin" ] && [ "$UID" -gt 0 ] ) || chrooted; then
+    if { [ "$TYPE" = "thin" ] && [ "$UID" -gt 0 ]; } || chrooted; then
         SERVER=localhost
     else
         SERVER=server
@@ -112,9 +112,13 @@ fetch_certificate()
     fi
 }
 
+re() {
+    "$@" || echo die "Command failed: $*"
+}
+
 wait_for_dns() {
     # Don't wait for DNS if SERVER is an IP
-    if [ -z "$(echo "$SERVER" | tr -d '[0-9.]')" ]; then
+    if [ -z "$(echo "$SERVER" | tr -d '0-9.')" ]; then
         server_ip=$SERVER
         return
     fi
@@ -128,7 +132,7 @@ wait_for_dns() {
             echo "Cannot resolve $SERVER, postponing for $delay seconds..."
             sleep $delay
             # Add a minute for each failure to minimize log spamming
-            delay=$(($delay+60))
+            delay=$((delay+60))
         else
             echo "Cannot resolve $SERVER while DNS appears to work, aborting."
             exit 1
@@ -142,10 +146,10 @@ apply_wol() {
     then
         export EPOPTES_CLIENT_APPLIED_WOL=True
         # Copied from client-functions, these map from server_ip to def_iface
-        read def_iface IP <<EOF
+        read -r def_iface IP <<EOF
 $(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
-        test "${def_iface:-lo}" != "lo" || read def_iface IP <<EOF
+        test "${def_iface:-lo}" != "lo" || read -r def_iface IP <<EOF
 $(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
         if [ "${def_iface:-lo}" != "lo" ]; then
@@ -155,7 +159,6 @@ EOF
         fi
     fi
 }
-
 
 # Main.
 version
@@ -202,23 +205,23 @@ export PORT=${2:-$PORT}
 test -n "$need_certificate" && fetch_certificate
 
 # We don't want the epoptes-client system service running on the epoptes server
-if ( [ $UID -eq 0 ] && [ $TYPE = "standalone" ] && [ -x /usr/bin/epoptes ] ) ||
+if { [ "$UID" -eq 0 ] && [ $TYPE = "standalone" ] && [ -x /usr/bin/epoptes ]; } ||
     chrooted
 then
     exit 0
 fi
 
 # Go to the scripts directory, so that we can run them with ./xxx
-cd $(dirname "$0")
+re cd "$(dirname "$0")"
 if [ -d ../epoptes-client ]; then
-    cd ../epoptes-client
+    re cd ../epoptes-client
 else
-    cd /usr/share/epoptes-client
+    re cd /usr/share/epoptes-client
 fi
 
 wait_for_dns
 apply_wol
-printf "Epoptes-client connecting to $SERVER:$PORT..."
+printf "Epoptes-client connecting to %s:%s..." "$SERVER" "$PORT"
 
 # Call chain:
 #  * systemd executes /usr/sbin/epoptes-client
@@ -256,9 +259,9 @@ fi
 # Connect to the server, or keep retrying until the server gets online
 # (for standalone workstations booted before the server).
 if [ -s /etc/epoptes/server.crt ] || [ "$cert_param" = "verify=0" ]; then
-    exec socat -T 60 openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever EXEC:"$cmdline"
+    exec socat -T 60 "openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever" "EXEC:$cmdline"
 elif [ -f /etc/epoptes/server.crt ]; then
-   exec socat tcp:$SERVER:$PORT,interval=60,forever EXEC:"$cmdline",nofork
+   exec socat "tcp:$SERVER:$PORT,interval=60,forever" "EXEC:$cmdline,nofork"
 else
     die "
 The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
