@@ -5,8 +5,9 @@ epoptes (21.02-1) unstable; urgency=medium
 
   [ Vagrant Cascadian ]
   * Pass openssl-no-sni to socat (#127)
+    (Closes: #981612)
 
- -- Alkis Georgopoulos <alkisg@gmail.com>  Tue, 02 Feb 2021 10:17:12 +0200
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 02 Feb 2021 15:14:24 -0800
 
 epoptes (21.01-1) unstable; urgency=medium
 
