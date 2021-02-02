@@ -1,3 +1,13 @@
+epoptes (21.02-1) unstable; urgency=medium
+
+  [ Alkis Georgopoulos ]
+  * Reduce shellcheck warnings
+
+  [ Vagrant Cascadian ]
+  * Pass openssl-no-sni to socat (#127)
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Tue, 02 Feb 2021 10:17:12 +0200
+
 epoptes (21.01-1) unstable; urgency=medium
 
   [ Alkis Georgopoulos ]
