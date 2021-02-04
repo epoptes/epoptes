@@ -2,6 +2,7 @@
 Name=Epoptes
 Name[el]=Επόπτης
 _Comment=Epoptes computer lab administration tool
+Comment[de]=Verwaltungsprogramm für Computerräume
 TryExec=/usr/bin/epoptes
 Exec=/usr/bin/epoptes
 Icon=epoptes
