@@ -7,7 +7,7 @@ When new translatable files are added in the source code, POTFILES.in should be 
     test -f "po/POTFILES.in" || exit 1
     (
         echo '[encoding: UTF-8]'
-        find * -name '*.py' -o -name '*.ui' | sort | sed 's|.*.ui$|\[type: gettext/glade\]&|'
+        find * -name '*.py' -o -name '*.ui' -o -name '[a-z.]*.in'| sort | sed 's|.*.ui$|\[type: gettext/glade\]&|'
     ) >po/POTFILES.in
 ```
 

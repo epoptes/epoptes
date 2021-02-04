@@ -1,4 +1,5 @@
 [encoding: UTF-8]
+data/epoptes.desktop.in
 epoptes-client/_common.py
 epoptes-client/lock_screen.py
 epoptes-client/message.py
