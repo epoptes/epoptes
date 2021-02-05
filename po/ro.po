@@ -7,15 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-01-23 12:15+0200\n"
+"POT-Creation-Date: 2021-02-04 18:35+0200\n"
 "PO-Revision-Date: 2020-03-23 03:39+0000\n"
 "Last-Translator: Nicolae Crefelean <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-03-24 06:26+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
+"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Utilitar pentru administrarea laboratorului de informatică"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -94,12 +98,12 @@ msgstr "Stare"
 msgid "Usage: {} width height"
 msgstr "Utilizare: {} lățime înălțime"
 
-#: ../epoptes/common/config.py:190
+#: ../epoptes/common/config.py:191
 msgid "Message from administrator"
 msgstr "Mesaj de la administrator"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
 msgid "Warning"
 msgstr "Atenție"
 
@@ -668,7 +672,7 @@ msgstr "Conectat:"
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s pe %(host)s"
 
-#: ../epoptes/ui/gui.py:1085
+#: ../epoptes/ui/gui.py:1086
 msgid "Confirm action"
 msgstr "Confirmă acțiunea"
 
@@ -693,9 +697,6 @@ msgstr "Nu s-au putut inițializa notificările!"
 #~ msgstr ""
 #~ "Utilizatorul %s trebuie să fie un membru al grupului %s pentru rularea "
 #~ "epoptes."
-
-#~ msgid "Epoptes computer lab administration tool"
-#~ msgstr "Utilitar pentru administrarea laboratorului de informatică"
 
 #~ msgid ""
 #~ "Epoptes is free software: you can redistribute it and/or modify it under the "

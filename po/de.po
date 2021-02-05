@@ -7,15 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2018-12-09 21:21+0000\n"
-"Last-Translator: Frank Zimper <Unknown>\n"
+"POT-Creation-Date: 2021-02-04 18:35+0200\n"
+"PO-Revision-Date: 2021-01-21 13:43+0000\n"
+"Last-Translator: fred <fredfire11@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:50+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
+"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Admin-Werkzeug für Epoptes-basiertes PC-Labor"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -94,12 +98,12 @@ msgstr "Status"
 msgid "Usage: {} width height"
 msgstr ""
 
-#: ../epoptes/common/config.py:190
+#: ../epoptes/common/config.py:191
 msgid "Message from administrator"
 msgstr "Nachricht vom Systemverwalter"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
 msgid "Warning"
 msgstr "Warnung!"
 
@@ -135,7 +139,7 @@ msgstr "Benchmark ist in %d Sekunden fertig..."
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Einige Clients antworteten nicht rechtzeitig!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
@@ -177,6 +181,7 @@ msgstr ""
 "  Frank Zimper https://launchpad.net/~frank-frankoli\n"
 "  Hendrik Knackstedt https://launchpad.net/~hennekn\n"
 "  Mike Gabriel https://launchpad.net/~sunweaver\n"
+"  fred https://launchpad.net/~fredfire11\n"
 "  karakal https://launchpad.net/~hans-peter-lackner\n"
 "  zefanja https://launchpad.net/~zefanja"
 
@@ -230,7 +235,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Gesamtbandbreitenstatistik"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
@@ -597,11 +602,12 @@ msgstr "Gefundene Clients"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Fehler beim Lesen der Gruppendatei:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
 msgstr ""
+"Möglicherweise müssen Sie Ihre Gruppen aus einem Backup wiederherstellen!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
@@ -685,13 +691,13 @@ msgstr "Verbunden:"
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s auf %(host)s"
 
-#: ../epoptes/ui/gui.py:1085
+#: ../epoptes/ui/gui.py:1086
 msgid "Confirm action"
 msgstr "Aktion bestätigen"
 
 #: ../epoptes/ui/notifications.py:81
 msgid "Could not initialize notifications!"
-msgstr ""
+msgstr "Benachrichtigungen konnten nicht initialisiert werden!"
 
 #~ msgid "Background image"
 #~ msgstr "Hintergrundbild"
@@ -737,6 +743,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Benutzer %s muss ein Mitglied der Gruppe %s sein um Epoptes ausführen zu "
 #~ "können."
-
-#~ msgid "Epoptes computer lab administration tool"
-#~ msgstr "Admin-Werkzeug für Epoptes-basiertes PC-Labor"

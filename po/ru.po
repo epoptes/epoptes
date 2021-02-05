@@ -7,17 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-01-23 12:15+0200\n"
+"POT-Creation-Date: 2021-02-04 18:35+0200\n"
 "PO-Revision-Date: 2019-11-06 10:27+0000\n"
 "Last-Translator: A.K. <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:51+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
+"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Инструмент администрирования компьютерного класса Epoptes"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -94,12 +98,12 @@ msgstr "Статус"
 msgid "Usage: {} width height"
 msgstr ""
 
-#: ../epoptes/common/config.py:190
+#: ../epoptes/common/config.py:191
 msgid "Message from administrator"
 msgstr "Сообщение от администратора"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
 msgid "Warning"
 msgstr "Предупреждение"
 
@@ -168,7 +172,6 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  A.K. https://launchpad.net/~joshua1955\n"
 "  Aleksey Kabanov https://launchpad.net/~ak099\n"
-"  Alkis Georgopoulos https://launchpad.net/~alkisg\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  HsH https://launchpad.net/~hsh\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
@@ -675,7 +678,7 @@ msgstr "Подключено:"
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s на %(host)s"
 
-#: ../epoptes/ui/gui.py:1085
+#: ../epoptes/ui/gui.py:1086
 msgid "Confirm action"
 msgstr "Подтвердить действие"
 
@@ -727,9 +730,6 @@ msgstr ""
 #~ "Вы должны были получить копию лицензии GNU General Public License вместе с "
 #~ "Epoptes. Если вы не получили лицензию, её можно найти на "
 #~ "<http://www.gnu.org/licenses/>."
-
-#~ msgid "Epoptes computer lab administration tool"
-#~ msgstr "Инструмент администрирования компьютерного класса Epoptes"
 
 #~ msgid "Copyright © 2011-2012 Epoptes Team"
 #~ msgstr "Copyright © 2011-2012 Epoptes Team"

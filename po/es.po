@@ -7,15 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-01-23 12:15+0200\n"
+"POT-Creation-Date: 2021-02-04 18:35+0200\n"
 "PO-Revision-Date: 2019-04-20 16:04+0000\n"
 "Last-Translator: Pompilos <ciordia@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:51+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
+"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Herramienta de administración del aula de ordenadores"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -94,12 +98,12 @@ msgstr "Estado"
 msgid "Usage: {} width height"
 msgstr ""
 
-#: ../epoptes/common/config.py:190
+#: ../epoptes/common/config.py:191
 msgid "Message from administrator"
 msgstr "Mensaje desde el tutor"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
 msgid "Warning"
 msgstr "Atención"
 
@@ -683,7 +687,7 @@ msgstr "Conectado:"
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s en %(host)s"
 
-#: ../epoptes/ui/gui.py:1085
+#: ../epoptes/ui/gui.py:1086
 msgid "Confirm action"
 msgstr "Confirme la acción"
 
@@ -735,9 +739,6 @@ msgstr "¡No se pueden iniciar las notificaciones!"
 
 #~ msgid "Set default background"
 #~ msgstr "Establecer fondo por defecto"
-
-#~ msgid "Epoptes computer lab administration tool"
-#~ msgstr "Herramienta de administración del aula de ordenadores"
 
 #~ msgid "Copyright © 2011-2012 Epoptes Team"
 #~ msgstr "Derechos reservados © 2011-2012 Equipo Epoptes"

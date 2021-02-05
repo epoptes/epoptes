@@ -7,15 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-01-23 12:15+0200\n"
+"POT-Creation-Date: 2021-02-04 18:35+0200\n"
 "PO-Revision-Date: 2020-01-24 00:55+0000\n"
 "Last-Translator: Julian Bennison <yogsy64@gmail.com>\n"
 "Language-Team: English (Australia) <en_AU@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-25 05:51+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
+"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Epoptes computer lab administration tool"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -93,12 +97,12 @@ msgstr "Status"
 msgid "Usage: {} width height"
 msgstr ""
 
-#: ../epoptes/common/config.py:190
+#: ../epoptes/common/config.py:191
 msgid "Message from administrator"
 msgstr "Message from administrator"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
 msgid "Warning"
 msgstr "Warning"
 
@@ -659,7 +663,7 @@ msgstr "Connected:"
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s on %(host)s"
 
-#: ../epoptes/ui/gui.py:1085
+#: ../epoptes/ui/gui.py:1086
 msgid "Confirm action"
 msgstr "Confirm action"
 
@@ -681,9 +685,6 @@ msgstr ""
 
 #~ msgid "Set background"
 #~ msgstr "Set background"
-
-#~ msgid "Epoptes computer lab administration tool"
-#~ msgstr "Epoptes computer lab administration tool"
 
 #, python-format
 #~ msgid "User %s must be a member of group %s to run epoptes."

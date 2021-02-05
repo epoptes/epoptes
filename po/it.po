@@ -7,15 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-01-23 12:15+0200\n"
-"PO-Revision-Date: 2019-02-06 17:23+0000\n"
+"POT-Creation-Date: 2021-02-04 18:35+0200\n"
+"PO-Revision-Date: 2021-01-18 20:08+0000\n"
 "Last-Translator: Marco Menardi <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-01-24 05:51+0000\n"
-"X-Generator: Launchpad (build b8d1327fd820d6bf500589d6da587d5037c7d88e)\n"
+"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
+"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+
+#: ../data/epoptes.desktop.in.h:1
+msgid "Epoptes computer lab administration tool"
+msgstr "Epoptes strumento di amministrazione di un laboratorio di computer"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
@@ -23,7 +27,7 @@ msgstr "Lo schermo è bloccato da un amministratore di sistema."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Uso: {} testo [titolo] [markup] [nome_icona]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -92,14 +96,14 @@ msgstr "Stato"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Uso: {} larghezza altezza"
 
-#: ../epoptes/common/config.py:190
+#: ../epoptes/common/config.py:191
 msgid "Message from administrator"
 msgstr "Messaggio dall'amministratore"
 
 #: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1094
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
 msgid "Warning"
 msgstr "Avviso"
 
@@ -168,7 +172,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Alkis Georgopoulos https://launchpad.net/~alkisg\n"
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  Marco Menardi https://launchpad.net/~mmenaz"
 
@@ -589,11 +592,11 @@ msgstr "Client individuati"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Fallita lettura del file groups:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Devi probabilmente ripristinare il file groups da un backup!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
@@ -674,7 +677,7 @@ msgstr "Connessi:"
 msgid "%(user)s on %(host)s"
 msgstr "%(user)s in %(host)s"
 
-#: ../epoptes/ui/gui.py:1085
+#: ../epoptes/ui/gui.py:1086
 msgid "Confirm action"
 msgstr "Conferma azione"
 
@@ -690,9 +693,6 @@ msgstr "Inizializzazione notifiche fallita!"
 
 #~ msgid "Set background"
 #~ msgstr "Imposta sfondo"
-
-#~ msgid "Epoptes computer lab administration tool"
-#~ msgstr "Epoptes strumento di amministrazione di un laboratorio di computer"
 
 #~ msgid "Set default background"
 #~ msgstr "Imposta lo sfondo di default"
