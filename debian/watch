@@ -1,3 +1,4 @@
 version=4
-https://github.com/epoptes/epoptes/releases \
-.*/archive/v@ANY_VERSION@@ARCHIVE_EXT@
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%@PACKAGE@-$1.tar.gz%" \
+    https://github.com/@PACKAGE@/@PACKAGE@/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
