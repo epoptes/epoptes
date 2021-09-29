@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# Copyright 2010-2021 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 This setup script needs python-distutils-extra, an extension to the standard
@@ -55,6 +55,7 @@ def main():
         license='GNU GPL v3',
         author='Fotis Tsamis',
         author_email='ftsamis@gmail.com',
+        requires='',
         py_modules=['twisted.plugins.epoptesd'],
         data_files=client_special_files + client_usr_share_files +
         server_special_files)
