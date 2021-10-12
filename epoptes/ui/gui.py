@@ -34,6 +34,7 @@ LOG = logger.Logger(__file__)
 
 class EpoptesGui(object):
     """Epoptes GUI class."""
+
     def __init__(self):
         # Initialization of general-purpose variables
         self.about = None
@@ -263,25 +264,32 @@ class EpoptesGui(object):
         # Open vncviewer in listen mode
         if self.vncviewer is None or self.vncviewer.poll() is not None:
             self.vncviewer_port = self.find_unused_port()
-            # If the user installed ssvnc, prefer it over xvnc4viewer
-            if os.path.isfile('/usr/bin/ssvncviewer'):
-                self.vncviewer = subprocess.Popen(
-                    ['ssvncviewer', '-multilisten',
-                     str(self.vncviewer_port-5500)])
-            elif os.path.isfile('/usr/bin/xtigervncviewer'):
-                self.vncviewer = subprocess.Popen(
-                    ['xtigervncviewer', '-listen', str(self.vncviewer_port)])
-            elif os.path.isfile('/usr/bin/xvnc4viewer'):
-                self.vncviewer = subprocess.Popen(
-                    ['xvnc4viewer', '-listen', str(self.vncviewer_port)])
-            # Support tigervnc on rpm distributions (LP: #1501747)
-            elif os.path.isfile('/usr/share/locale/de/LC_MESSAGES/tigervnc.mo'):
-                self.vncviewer = subprocess.Popen(
-                    ['vncviewer', '-listen', str(self.vncviewer_port)])
-            # The rest of the viewers, like tightvnc
+            if os.path.isfile('/usr/share/applications/realvnc-vncviewer.desktop'):
+                viewer = 'realvnc-vnc-viewer'
+            elif os.path.isfile('/usr/bin/ssvncviewer'):
+                viewer = 'ssvncviewer'
             else:
-                self.vncviewer = subprocess.Popen(
-                    ['vncviewer', '-listen', str(self.vncviewer_port-5500)])
+                viewer = os.path.realpath('/usr/bin/vncviewer')
+                viewer = os.path.basename(viewer)
+            if viewer == 'realvnc-vnc-viewer':
+                cmd = ['vncviewer', '-uselocalcursor=0', '-enabletoolbar=0',
+                       '-securitynotificationtimeout=0', '-warnunencrypted=0',
+                       '-listen', str(self.vncviewer_port)]
+            elif viewer == 'ssvncviewer':
+                cmd = ['ssvncviewer', '-scale', 'auto', '-multilisten',
+                       str(self.vncviewer_port-5500)]
+            elif viewer == 'xtigervncviewer':
+                cmd = ['xtigervncviewer', '-listen', str(self.vncviewer_port)]
+            elif viewer == 'xtightvncviewer':
+                cmd = ['xtightvncviewer', '-listen',
+                       str(self.vncviewer_port-5500)]
+            elif viewer == 'xvnc4viewer':
+                cmd = ['xvnc4viewer',  '-uselocalcursor=0', '-listen',
+                       str(self.vncviewer_port)]
+            else:
+                # A generic vncviewer, e.g. tigervnc on Arch/Fedora/SUSE
+                cmd = ['vncviewer', '-listen', str(self.vncviewer_port)]
+            self.vncviewer = subprocess.Popen(cmd)
 
         # And, tell the clients to connect to the server
         self.exec_on_selected_clients([cmd, self.vncviewer_port] + list(args))
@@ -979,7 +987,7 @@ class EpoptesGui(object):
                 # So if the client is too stressed and needs e.g. 7 secs to
                 # send a thumbshot, we'll ask for one every 12 secs.
                 GLib.timeout_add(int(config.system['THUMBSHOT_MS']),
-                    self.ask_thumbshot, handle)
+                                 self.ask_thumbshot, handle)
                 LOG.d("I got a thumbshot from %s." % handle)
                 if not reply:
                     return

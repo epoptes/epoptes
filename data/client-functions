@@ -1,6 +1,6 @@
 #!/bin/sh
 # This file is part of Epoptes, https://epoptes.org
-# Copyright (C) 2010-2020 the Epoptes team, see AUTHORS
+# Copyright (C) 2010-2021 the Epoptes team, see AUTHORS
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Implements the client side of the epoptes communications protocol.
@@ -21,14 +21,17 @@ on_signal() {
     code="$?"
     trap - 0 15
     # Don't relaunch if the system is shutting down
-    if [ "$UID" -eq 0 ] && [ -d /run/systemd/system ] && [ -x /bin/systemctl ] \
-        && systemctl list-jobs | grep -q 'shutdown.target[[:space:]]*start'
-    then
+    if [ "$UID" -eq 0 ] && [ -d /run/systemd/system ] && [ -x /bin/systemctl ] &&
+        systemctl list-jobs | grep -q 'shutdown.target[[:space:]]*start'; then
         echo "epoptes-client got signal: $1, but system is shutting down" >&5
     else
         echo "epoptes-client got signal: $1, relaunching..." >&5
         # Restore the stdio descriptors to the previously saved 5
-        ( sleep 10; ping; exec epoptes-client $SERVER $PORT >&5 2>&1; ) &
+        (
+            sleep 10
+            ping
+            exec epoptes-client $SERVER $PORT >&5 2>&1
+        ) &
     fi
     exit "$code"
 }
@@ -148,7 +151,11 @@ background() {
     # /dev/null, so that it doesn't interfere with the output of other commands.
     # stderr isn't changed, i.e. ~/.xsession-errors will be used.
     # See issues #58 and #103 for explanation of the following syntax.
-    ( unset DESKTOP_AUTOSTART_ID; exec 0</dev/null >/dev/null; "$@" ) &
+    (
+        unset DESKTOP_AUTOSTART_ID
+        exec 0</dev/null >/dev/null
+        "$@"
+    ) &
 
     test -n "$print_pid" && echo $!
 }
@@ -163,29 +170,29 @@ execute() {
     echo "$(LANG=C date '+%c'), epoptes-client executing: $1" >&5
 
     case "$1" in
-        '')
-            echo "Can't execute an empty command." >&5
-            ;;
-        www.*)
-            set "http://$1"
+    '')
+        echo "Can't execute an empty command." >&5
+        ;;
+    www.*)
+        set "http://$1"
+        launcher="xdg-open"
+        ;;
+    http:* | https:* | ftp:* | file:* | mailto:*)
+        launcher="xdg-open"
+        ;;
+    *)
+        if [ -e "$1" ] && { [ ! -x "$1" ] || [ -d "$1" ]; }; then
             launcher="xdg-open"
-            ;;
-        http:*|https:*|ftp:*|file:*|mailto:*)
-            launcher="xdg-open"
-            ;;
-        *)
-            if [ -e "$1" ] && { [ ! -x "$1" ] || [ -d "$1" ] ;}; then
-                launcher="xdg-open"
-            elif which -- "$1" >/dev/null; then
-                # Don't waste RAM for sh if it's just an executable.
-                launcher=""
-            fi
+        elif which -- "$1" >/dev/null; then
+            # Don't waste RAM for sh if it's just an executable.
+            launcher=""
+        fi
+        ;;
     esac
     # In all unhandled cases, run the command with sh -c.
     launcher=${launcher-sh -c}
     background $launcher "$1"
 }
-
 
 # Log out the connected user.
 logout() {
@@ -216,7 +223,7 @@ thumbshot() {
         executable=./screenshot
     fi
     if ! $executable "$1" "$2"; then
-        BAD_THUMBSHOTS=$((BAD_THUMBSHOTS+1))
+        BAD_THUMBSHOTS=$((BAD_THUMBSHOTS + 1))
         echo "$BAD_THUMBSHOTS failed thumbshots so far!" >&5
     fi
 }
@@ -278,7 +285,10 @@ unmute_sound() {
 start_benchmark() {
     # benchmark_pid can't be unset in the background, but no harm done
     benchmark_pid=$(background -p stop_start_benchmark "$@")
-    { sleep $((2*${1:-10}+5)); stop_benchmark "$benchmark_pid"; } &
+    {
+        sleep $((2 * ${1:-10} + 5))
+        stop_benchmark "$benchmark_pid"
+    } &
     echo "$benchmark_pid"
 }
 
@@ -353,31 +363,53 @@ receive_broadcast() {
     receiving_broadcast=true
     stop_receptions
     reset_screensaver
+    # See https://epoptes.org/documentation/vnc/
     if [ -z "$VNCVIEWER" ]; then
-        # If the user installed ssvnc, prefer it over xvnc4viewer
-        if [ -x /usr/bin/ssvncviewer ]; then
+        if [ -f /usr/share/applications/realvnc-vncviewer.desktop ]; then
+            VNCVIEWER=realvnc-vnc-viewer
+        elif [ -x /usr/bin/ssvncviewer ]; then
             VNCVIEWER=ssvncviewer
-        elif [ -x /usr/bin/xtigervncviewer ]; then
-            VNCVIEWER=xtigervncviewer
-        elif [ -x /usr/bin/xvnc4viewer ]; then
-            VNCVIEWER=xvnc4viewer
+        else
+            VNCVIEWER=$(readlink -f /usr/bin/vncviewer)
+            VNCVIEWER=${VNCVIEWER##*/}
         fi
     fi
     printf "$2" | {
         sleep 0.$(($(od -An -N2 -tu2 /dev/urandom) % 50 + 50))
-        if [ "$VNCVIEWER" = "ssvncviewer" ]; then
-            exec ssvncviewer -shared -viewonly -passwd /dev/stdin \
-                ${3:+-fullscreen} "$SERVER:$1"
-        elif [ "$VNCVIEWER" = "xvnc4viewer" ]; then
-            exec ${VNCVIEWER} -Shared -ViewOnly -passwd /dev/stdin \
-                ${3:+-FullScreen -UseLocalCursor=0 -MenuKey F13} "$SERVER:$1"
-        elif [ "$VNCVIEWER" = "xtigervncviewer" ]; then
-            exec ${VNCVIEWER} -Shared -ViewOnly -passwd /dev/stdin \
-                ${3:+-FullScreen -MenuKey F13} "$SERVER:$1"
-        else
-            exec vncviewer -shared -viewonly -passwd /dev/stdin \
-                ${3:+-fullscreen} "$SERVER:$1"
-        fi
+        case "$VNCVIEWER" in
+        realvnc-vnc-viewer)
+            if [ -f "/etc/epoptes/vncviewer" ] &&
+                [ ! -f "$HOME/.vnc/config.d/vncviewer" ]; then
+                mkdir -pm 700 "$HOME/.vnc"
+                mkdir -pm 700 "$HOME/.vnc/config.d"
+                cp /etc/epoptes/vncviewer "$HOME/.vnc/config.d/vncviewer"
+            fi
+            exec vncviewer -shared -viewonly -securitynotificationtimeout=0 \
+                -uselocalcursor=0 -enabletoolbar=0 -warnunencrypted=0 \
+                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
+            ;;
+        ssvncviewer)
+            exec ssvncviewer -shared -viewonly -scale auto -escape never \
+                -passwd /dev/stdin ${3:+-fullscreen} "$SERVER:$1"
+            ;;
+        xtigervncviewer)
+            exec xtigervncviewer -shared -viewonly \
+                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
+            ;;
+        xtightvncviewer)
+            exec xtightvncviewer -shared -viewonly \
+                -passwd /dev/stdin ${3:+-fullscreen} "$SERVER:$1"
+            ;;
+        xvnc4viewer)
+            exec xvnc4viewer -shared -viewonly -uselocalcursor=0 \
+                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
+            ;;
+        *)
+            # A generic vncviewer, e.g. tigervnc on Arch/Fedora/SUSE
+            exec "$VNCVIEWER" -shared -viewonly \
+                -passwd /dev/stdin ${3:+-fullscreen} "$SERVER:$1"
+            ;;
+        esac
     } >/dev/null 2>&1 &
     xprop_set EPOPTES_VNCVIEWER_PID "$!"
 }
