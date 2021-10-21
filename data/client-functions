@@ -385,7 +385,8 @@ receive_broadcast() {
                 cp /etc/epoptes/vncviewer "$HOME/.vnc/config.d/vncviewer"
             fi
             exec vncviewer -shared -viewonly -securitynotificationtimeout=0 \
-                -uselocalcursor=0 -enabletoolbar=0 -warnunencrypted=0 \
+                -scaling=aspectfit -uselocalcursor=0 \
+                -enabletoolbar=0 -warnunencrypted=0 \
                 -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
             ;;
         ssvncviewer)

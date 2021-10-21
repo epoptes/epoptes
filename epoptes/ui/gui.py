@@ -272,9 +272,9 @@ class EpoptesGui(object):
                 viewer = os.path.realpath('/usr/bin/vncviewer')
                 viewer = os.path.basename(viewer)
             if viewer == 'realvnc-vnc-viewer':
-                cmd = ['vncviewer', '-uselocalcursor=0', '-enabletoolbar=0',
+                cmd = ['vncviewer', '-uselocalcursor=0', '-scaling=aspectfit',
                        '-securitynotificationtimeout=0', '-warnunencrypted=0',
-                       '-listen', str(self.vncviewer_port)]
+                       '-enabletoolbar=0', '-listen', str(self.vncviewer_port)]
             elif viewer == 'ssvncviewer':
                 cmd = ['ssvncviewer', '-scale', 'auto', '-multilisten',
                        str(self.vncviewer_port-5500)]
