@@ -272,24 +272,24 @@ class EpoptesGui(object):
                 viewer = os.path.realpath('/usr/bin/vncviewer')
                 viewer = os.path.basename(viewer)
             if viewer == 'realvnc-vnc-viewer':
-                cmd = ['vncviewer', '-uselocalcursor=0', '-scaling=aspectfit',
+                scmd = ['vncviewer', '-uselocalcursor=0', '-scaling=aspectfit',
                        '-securitynotificationtimeout=0', '-warnunencrypted=0',
                        '-enabletoolbar=0', '-listen', str(self.vncviewer_port)]
             elif viewer == 'ssvncviewer':
-                cmd = ['ssvncviewer', '-scale', 'auto', '-multilisten',
+                scmd = ['ssvncviewer', '-scale', 'auto', '-multilisten',
                        str(self.vncviewer_port-5500)]
             elif viewer == 'xtigervncviewer':
-                cmd = ['xtigervncviewer', '-listen', str(self.vncviewer_port)]
+                scmd = ['xtigervncviewer', '-listen', str(self.vncviewer_port)]
             elif viewer == 'xtightvncviewer':
-                cmd = ['xtightvncviewer', '-listen',
+                scmd = ['xtightvncviewer', '-listen',
                        str(self.vncviewer_port-5500)]
             elif viewer == 'xvnc4viewer':
-                cmd = ['xvnc4viewer',  '-uselocalcursor=0', '-listen',
+                scmd = ['xvnc4viewer',  '-uselocalcursor=0', '-listen',
                        str(self.vncviewer_port)]
             else:
                 # A generic vncviewer, e.g. tigervnc on Arch/Fedora/SUSE
-                cmd = ['vncviewer', '-listen', str(self.vncviewer_port)]
-            self.vncviewer = subprocess.Popen(cmd)
+                scmd = ['vncviewer', '-listen', str(self.vncviewer_port)]
+            self.vncviewer = subprocess.Popen(scmd)
 
         # And, tell the clients to connect to the server
         self.exec_on_selected_clients([cmd, self.vncviewer_port] + list(args))
