@@ -18,6 +18,3 @@ override_dh_install:
 
 override_dh_python3:
 	dh_python3 --no-guessing-deps
-
-override_dh_installinit:
-	# epoptes does not currently ship any init scripts
