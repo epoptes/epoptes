@@ -318,9 +318,10 @@ class EpoptesGui(object):
             self.vncserver_port = self.find_unused_port()
             self.vncserver_pwd = ''.join('\\%o' % c for c in pwd)
             self.vncserver = subprocess.Popen(
-                ['x11vnc', '-noshm', '-nopw', '-quiet', '-viewonly', '-shared',
-                 '-forever', '-nolookup', '-24to32', '-threads', '-rfbport',
-                 str(self.vncserver_port), '-rfbauth', pwdfile])
+                ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
+                '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
+                '-rfbport', str(self.vncserver_port), '-shared', '-threads',
+                '-viewonly'])
         # Running `xdg-screensaver reset` as root doesn't reset the D.E.
         # screensaver, so send the reset command to both epoptes processes
         self.exec_on_selected_clients(
