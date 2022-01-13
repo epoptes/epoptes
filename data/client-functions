@@ -1,6 +1,6 @@
 #!/bin/sh
 # This file is part of Epoptes, https://epoptes.org
-# Copyright (C) 2010-2021 the Epoptes team, see AUTHORS
+# Copyright (C) 2010-2022 the Epoptes team, see AUTHORS
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Implements the client side of the epoptes communications protocol.
@@ -374,6 +374,7 @@ receive_broadcast() {
             VNCVIEWER=${VNCVIEWER##*/}
         fi
     fi
+    # shellcheck disable=SC2059  # $2 is octal-escaped
     printf "$2" | {
         sleep 0.$(($(od -An -N2 -tu2 /dev/urandom) % 50 + 50))
         case "$VNCVIEWER" in
@@ -387,6 +388,7 @@ receive_broadcast() {
             exec vncviewer -shared -viewonly -securitynotificationtimeout=0 \
                 -scaling=aspectfit -uselocalcursor=0 \
                 -enabletoolbar=0 -warnunencrypted=0 \
+                -hideclosealert=true -autoreconnect=false \
                 -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
             ;;
         ssvncviewer)
