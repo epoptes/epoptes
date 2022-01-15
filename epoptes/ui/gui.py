@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2020 the Epoptes team, see AUTHORS.
+# Copyright 2010-2022 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Epoptes GUI class.
 """
 from distutils.version import LooseVersion
-import getpass
-import locale
 import os
 import pipes
 import random
@@ -469,11 +467,11 @@ class EpoptesGui(object):
 
     def on_imi_help_report_bug_activate(self, _widget):
         """Handle imi_help_report_bug.activate event."""
-        self.open_url("https://bugs.launchpad.net/epoptes")
+        self.open_url("https://github.com/epoptes/epoptes/issues")
 
     def on_imi_help_ask_question_activate(self, _widget):
         """Handle imi_help_ask_question.activate event."""
-        self.open_url("https://answers.launchpad.net/epoptes")
+        self.open_url("https://github.com/epoptes/epoptes/discussions")
 
     def on_imi_help_translate_application_activate(self, _widget):
         """Handle imi_help_translate_application.activate event."""
@@ -481,11 +479,7 @@ class EpoptesGui(object):
 
     def on_imi_help_live_chat_irc_activate(self, _widget):
         """Handle imi_help_live_chat_irc.activate event."""
-        host = socket.gethostname()
-        user = getpass.getuser()
-        lang = locale.getlocale()[0]
-        self.open_url("http://ts.sch.gr/repo/irc?user=%s&host=%s&lang=%s" %
-                      (user, host, lang))
+        self.open_url("https://ltsp.org/advanced/chat-room")
 
     @staticmethod
     def on_imi_help_remote_support_activate(_widget):
