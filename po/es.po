@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-02-04 18:35+0200\n"
-"PO-Revision-Date: 2019-04-20 16:04+0000\n"
+"PO-Revision-Date: 2021-04-27 20:58+0000\n"
 "Last-Translator: Pompilos <ciordia@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
-"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+"X-Launchpad-Export-Date: 2021-04-28 07:13+0000\n"
+"X-Generator: Launchpad (build f9f562f07f129de414c16be22a405ff0964e0018)\n"
 
 #: ../data/epoptes.desktop.in.h:1
 msgid "Epoptes computer lab administration tool"
@@ -27,7 +27,7 @@ msgstr "La pantalla está bloqueada por el tutor."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Uso: {} texto [título] [marca] [nombre_icono]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -96,7 +96,7 @@ msgstr "Estado"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Uso: {} ancho alto"
 
 #: ../epoptes/common/config.py:191
 msgid "Message from administrator"
@@ -162,7 +162,7 @@ msgstr "Propiedades de %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2010+ El equipo Epoptes"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -599,11 +599,11 @@ msgstr "Alumnos detectados"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "No se ha podido leer el archivo de grupos:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "¡Tal vez debas restaurar los grupos desde una copia de seguridad!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
