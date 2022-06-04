@@ -67,6 +67,12 @@ class EpoptesGui(object):
             'GUI', 'thumbshots_width', fallback=128)
         self.ts_height = int(self.ts_width/(4/3))
         self.uid = os.getuid()
+        # A comma separated list of Linux groups that this user may control
+        self.controls_groups = os.getenv('CONTROLS_GROUPS')
+        if self.controls_groups:
+            self.controls_groups = self.controls_groups.split(',')
+        else:
+            self.controls_groups = []
         self.vncserver = None
         self.vncserver_port = None
         self.vncserver_pwd = None
@@ -849,6 +855,7 @@ class EpoptesGui(object):
             for line in reply.strip().split('\n'):
                 key, value = line.split('=', 1)
                 info[key.strip()] = value.strip()
+            info['memberof'] = info['memberof'].split(',')
             user, host, _ip, mac, type_, uid, version, name = \
                 info['user'], info['hostname'], info['ip'], info['mac'], \
                 info['type'], int(info['uid']), info['version'], info['name']
@@ -856,6 +863,14 @@ class EpoptesGui(object):
             LOG.e("  Can't extract client information, won't add this client",
                   exc)
             return False
+
+        # Support filtering user connections based on group membership
+        if len(self.controls_groups) > 0:
+            intersection = [x for x in info['memberof']
+                            if x in self.controls_groups]
+            if len(intersection) <= 0:
+                LOG.w("  CONTROLS_GROUPS: Won't add this client to my lists")
+                return False
 
         # Support hiding clients in an X-Hidden group
         if self.global_groups and 'X-HIDDEN' in self.x_groups:
