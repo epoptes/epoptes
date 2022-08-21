@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2018 the Epoptes team, see AUTHORS.
+# Copyright 2018-2022 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Spawn a process asynchronously and get its output in a callback.
@@ -108,9 +108,15 @@ class SpawnProcess(protocol.ProcessProtocol):
         self.lines_count += data.count(b'\n')
         LOG.d("outReceived, lines_count = %s:" % self.lines_count, data)
         self.out_data += data
-        # If this is the first time lines_max is exceeded, call stop
+        # If this is the first time lines_max is exceeded, stop
         if self.lines_count >= self.lines_max > old_lines_count:
-            self.stop("lines_max")
+            # Omit statistics spawned by broken iperf versions
+            lines = self.out_data.split(b'\n')
+            lines = [x for x in lines if len(x.split(b',')) == 9]
+            self.lines_count = len(lines)
+            self.out_data = b'\n'.join(lines) + b'\n'
+            if self.lines_count >= self.lines_max > old_lines_count:
+                self.stop("lines_max")
 
     def processExited(self, reason):
         """Override ProcessProtocol.processExited."""

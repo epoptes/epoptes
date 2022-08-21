@@ -1,12 +1,16 @@
+#!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2016-2018 the Epoptes team, see AUTHORS.
+# Copyright 2016-2022 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Network benchmark.
 """
-# TODO: either switch to iperf3, or reimplement it with python/twisted.
-# iperf2 doesn't work behind NAT and has several issues, for example:
+# TODO: reimplement it with python/twisted.
+# iperf2 doesn't work behind NAT and has some issues, for example:
 # https://sourceforge.net/p/iperf2/discussion/general/thread/db0fed22/
+# https://sourceforge.net/p/iperf2/discussion/general/thread/aa6f0646ad/
+import subprocess
+
 from epoptes.common.constants import C_INSTANCE
 from epoptes.core import spawn_process
 from epoptes.ui.common import gettext as _, locate_resource
@@ -26,6 +30,7 @@ def humanize(value, decimal=1, unit=''):
 
 class Benchmark:
     """Network benchmark."""
+
     def __init__(self, parent, execute):
         self.clients = {}
         self.countdown_event = None
@@ -164,6 +169,9 @@ class Benchmark:
         transfered(Bytes), bandwidth(bps)] and populate a dict of client_ip:
          [upload Mbps, download Mbps] pairs storing it in self.results.
         """
+        server_ips = subprocess.Popen(
+            ['hostname', '-I'],
+            stdout=subprocess.PIPE).communicate()[0].decode().split()
         self.results = {}
         data = out_data.strip().split()
         for line in data:
@@ -172,6 +180,10 @@ class Benchmark:
                 continue
             client_ip = values[3]
             client_port = values[4]  # will be 5001 if the client is receiving
+            if client_ip in server_ips:
+                # New iperf versions use changed positions for the reverse test
+                client_ip = values[1]
+                client_port = values[2]
             bandwidth = int(values[8])
             if client_ip in self.clients:
                 if client_ip not in self.results:
@@ -179,10 +191,10 @@ class Benchmark:
 
                 if client_port == "5001":
                     # Download (bits/s)
-                    self.results[client_ip][1] = int(bandwidth)
+                    self.results[client_ip][1] = bandwidth
                 else:
                     # Upload (bits/s)
-                    self.results[client_ip][0] = int(bandwidth)
+                    self.results[client_ip][0] = bandwidth
 
     @staticmethod
     def data_func(_column, cell, model, itr, index):
