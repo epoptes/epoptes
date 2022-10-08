@@ -1,6 +1,6 @@
 #!/bin/sh
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2021 the Epoptes team, see AUTHORS.
+# Copyright 2010-2022 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # epoptes-client is called either from systemd as root, to control the client,
@@ -126,8 +126,11 @@ wait_for_dns() {
     while true; do
         server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
         test -n "$server_ip" && break
-        # If DNS is not up yet, retry, otherwise abort
-        server_ip=$(getent hosts "ntp.org" | awk '{ print $1; exit }')
+        # If SERVER is not an MDNS name
+        if [ "${SERVER%.local}" = "${SERVER}" ]; then
+            # If DNS is not up yet, retry, otherwise abort
+            server_ip=$(getent hosts "ntp.org" | awk '{ print $1; exit }')
+        fi
         if [ -z "$server_ip" ]; then
             echo "Cannot resolve $SERVER, postponing for $delay seconds..."
             sleep $delay
