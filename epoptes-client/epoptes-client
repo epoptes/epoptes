@@ -206,9 +206,18 @@ export "PORT=${2:-$PORT}"
 # Provide an easy way to fetch the server certificate
 test -n "$need_certificate" && fetch_certificate
 
-# We don't want the epoptes-client system service running on the epoptes server
-if { [ "$UID" -eq 0 ] && [ $TYPE = "standalone" ] && [ -x /usr/bin/epoptes ]; } ||
-    chrooted; then
+servercrt=/etc/epoptes/server.crt
+# Don't launch as root on epoptes servers, unless there's a main server
+if [ "$UID" -eq 0 ] && [ $TYPE = "standalone" ] && [ -x /usr/bin/epoptes ]; then
+    if [ -s /etc/epoptes/main-server.crt ]; then
+        servercrt=/etc/epoptes/main-server.crt
+        SERVER=${MAIN_SERVER:-main-server}
+    else
+        exit 0
+    fi
+fi
+# Don't launch inside chroots
+if chrooted; then
     exit 0
 fi
 
@@ -247,7 +256,7 @@ cmdline='bash -c \"exec -a epoptes-client sh\"'
 
 # Offer an lts.conf (or environment) variable to disable cert verification.
 if my_boolean_is_true "${EPOPTES_CLIENT_VERIFY_CERTIFICATE:-True}"; then
-    cert_param="cafile=/etc/epoptes/server.crt"
+    cert_param="cafile=$servercrt"
     # Support certificates without or with changed hostname
     if socat -hhh | grep -qw openssl-no-sni; then
         cert_param="$cert_param,openssl-no-sni"
@@ -261,13 +270,13 @@ fi
 
 # Connect to the server, or keep retrying until the server gets online
 # (for standalone workstations booted before the server).
-if [ -s /etc/epoptes/server.crt ] || [ "$cert_param" = "verify=0" ]; then
+if [ -s "$servercrt" ] || [ "$cert_param" = "verify=0" ]; then
     exec socat -T 60 "openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever" "EXEC:$cmdline"
-elif [ -f /etc/epoptes/server.crt ]; then
+elif [ -f "servercrt" ]; then
     exec socat "tcp:$SERVER:$PORT,interval=60,forever" "EXEC:$cmdline,nofork"
 else
     die "
-The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
+The epoptes certificate file, $servercrt, doesn't exist.
 You can fetch the server certificate by running:
 $0 -c"
 fi
