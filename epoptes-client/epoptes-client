@@ -8,14 +8,14 @@
 # Users can cancel that from their System > Preferences > Services gnome menu.
 
 usage() {
-    printf "Usage: $0 [-c|-h|-v] [SERVER] [PORT]\n%s" \
-'
+    cat <<EOF
+Usage: $0 [-c|-h|-v] [SERVER] [PORT]
 Connect to a remote server and offer it a local shell.
-'
+EOF
 }
 
 version() {
-    export VERSION="1.0"  # Automatically updated while packaging
+    export VERSION="1.0" # Automatically updated while packaging
 }
 
 die() {
@@ -27,9 +27,9 @@ die() {
 # from sourcing ltsp_common_functions. So we're using a different name.
 my_boolean_is_true() {
     case "$1" in
-       # match all cases of true|y|yes
-       [Tt][Rr][Uu][Ee]|[Yy]|[Yy][Ee][Ss]) return 0 ;;
-       *) return 1 ;;
+    # match all cases of true|y|yes
+    [Tt][Rr][Uu][Ee] | [Yy] | [Yy][Ee][Ss]) return 0 ;;
+    *) return 1 ;;
     esac
 }
 
@@ -40,8 +40,7 @@ chrooted() {
     test -n "$UID" || UID=$(id -u)
     if [ "$UID" -gt 0 ]; then
         chrooted=1
-    elif [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ]
-    then
+    elif [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ]; then
         # the devicenumber/inode pair of / is the same as that of /sbin/init's
         # root, so we're *not* in a chroot and hence return false.
         chrooted=1
@@ -60,13 +59,14 @@ basic_info() {
     # not in our environment, and we need to source ltsp_config.
     # But we don't want to pollute the environment with any of its other vars.
     if [ "$UID" -eq 0 ] && [ -f /usr/share/ltsp/ltsp_config ] && ! chrooted &&
-        grep -Eqs 'ltsp|nfs|nbd' /proc/cmdline
-    then
+        grep -Eqs 'ltsp|nfs|nbd' /proc/cmdline; then
+        # shellcheck disable=SC2046
         export $(
             . /usr/share/ltsp/ltsp_config >/dev/null
             echo "LTSP_CLIENT=$LTSP_CLIENT"
             echo "LTSP_FATCLIENT=$LTSP_FATCLIENT"
-            echo "EPOPTES_CLIENT_VERIFY_CERTIFICATE=$EPOPTES_CLIENT_VERIFY_CERTIFICATE")
+            echo "EPOPTES_CLIENT_VERIFY_CERTIFICATE=$EPOPTES_CLIENT_VERIFY_CERTIFICATE"
+        )
         # LTSP_CLIENT may not be available in system sessions, if so fake it
         LTSP_CLIENT=${LTSP_CLIENT:-127.0.0.1}
     fi
@@ -74,8 +74,7 @@ basic_info() {
     # LTSP_FATCLIENT may not be available in user sessions, autodetect it
     if [ -n "$LTSP_CLIENT" ] && [ -z "$LTSP_FATCLIENT" ] &&
         [ "$UID" -gt 0 ] && [ -x /usr/bin/getltscfg ] &&
-        grep -Eqs 'ltsp|nfs|nbd' /proc/cmdline
-    then
+        grep -Eqs 'ltsp|nfs|nbd' /proc/cmdline; then
         LTSP_FATCLIENT=True
     fi
 
@@ -97,13 +96,12 @@ basic_info() {
     export UID TYPE SERVER PORT
 }
 
-fetch_certificate()
-{
+fetch_certificate() {
     test "$UID" -eq 0 || die "Need to be root to fetch the certificate"
     mkdir -p /etc/epoptes
-    openssl s_client -connect $SERVER:$PORT < /dev/null \
-        | sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d' \
-        > /etc/epoptes/server.crt
+    openssl s_client -connect $SERVER:$PORT </dev/null |
+        sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d' \
+            >/etc/epoptes/server.crt
     if [ -s /etc/epoptes/server.crt ]; then
         echo "Successfully fetched certificate from $SERVER:$PORT"
         exit 0
@@ -135,7 +133,7 @@ wait_for_dns() {
             echo "Cannot resolve $SERVER, postponing for $delay seconds..."
             sleep $delay
             # Add a minute for each failure to minimize log spamming
-            delay=$((delay+60))
+            delay=$((delay + 60))
         else
             echo "Cannot resolve $SERVER while DNS appears to work, aborting."
             exit 1
@@ -144,21 +142,22 @@ wait_for_dns() {
 }
 
 apply_wol() {
+    local def_iface _ip
+
     if [ "$UID" -eq 0 ] && [ -n "$WOL" ] && [ -x /sbin/ethtool ] &&
-        [ "$EPOPTES_CLIENT_APPLIED_WOL" != True ]
-    then
+        [ "$EPOPTES_CLIENT_APPLIED_WOL" != True ]; then
         export EPOPTES_CLIENT_APPLIED_WOL=True
         # Copied from client-functions, these map from server_ip to def_iface
-        read -r def_iface IP <<EOF
+        read -r def_iface _ip <<EOF
 $(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
-        test "${def_iface:-lo}" != "lo" || read -r def_iface IP <<EOF
+        test "${def_iface:-lo}" != "lo" || read -r def_iface _ip <<EOF
 $(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
 EOF
         if [ "${def_iface:-lo}" != "lo" ]; then
             # Only set WOL if def_iface is both != '' and != 'lo'.
             echo "Setting WOL=$WOL for $def_iface"
-            ethtool -s "$def_iface" wol $WOL
+            ethtool -s "$def_iface" wol "$WOL"
         fi
     fi
 }
@@ -168,22 +167,22 @@ version
 
 # Check the first parameter as it may turn out we don't need to run at all
 case "$1" in
-    -v|--version)
-        echo "$VERSION"
+-v | --version)
+    echo "$VERSION"
+    exit
+    ;;
+-h | --help)
+    if [ -x /usr/bin/man ]; then
+        exec man epoptes-client
+    else
+        usage
         exit
-        ;;
-    -h|--help)
-        if [ -x /usr/bin/man ]; then
-            exec man epoptes-client
-        else
-            usage
-            exit
-        fi
-        ;;
-    -c|--certificate)
-        need_certificate=true
-        shift
-        ;;
+    fi
+    ;;
+-c | --certificate)
+    need_certificate=true
+    shift
+    ;;
 esac
 
 # Set a reasonable PATH to execute commands or to relaunch epoptes-client.
@@ -201,16 +200,15 @@ if [ -f /etc/default/epoptes-client ]; then
     . /etc/default/epoptes-client
 fi
 # And the command line parameters override the configuration file
-export SERVER=${1:-$SERVER}
-export PORT=${2:-$PORT}
+export "SERVER=${1:-$SERVER}"
+export "PORT=${2:-$PORT}"
 
 # Provide an easy way to fetch the server certificate
 test -n "$need_certificate" && fetch_certificate
 
 # We don't want the epoptes-client system service running on the epoptes server
 if { [ "$UID" -eq 0 ] && [ $TYPE = "standalone" ] && [ -x /usr/bin/epoptes ]; } ||
-    chrooted
-then
+    chrooted; then
     exit 0
 fi
 
@@ -266,7 +264,7 @@ fi
 if [ -s /etc/epoptes/server.crt ] || [ "$cert_param" = "verify=0" ]; then
     exec socat -T 60 "openssl-connect:$SERVER:$PORT,$cert_param,interval=60,forever" "EXEC:$cmdline"
 elif [ -f /etc/epoptes/server.crt ]; then
-   exec socat "tcp:$SERVER:$PORT,interval=60,forever" "EXEC:$cmdline,nofork"
+    exec socat "tcp:$SERVER:$PORT,interval=60,forever" "EXEC:$cmdline,nofork"
 else
     die "
 The epoptes certificate file, /etc/epoptes/server.crt, doesn't exist.
