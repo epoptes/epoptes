@@ -73,6 +73,50 @@ xprop_unset() {
     xprop -root -remove "$1"
 }
 
+# Get the main MAC address, avoiding bonds, MAC randomization etc (#178).
+main_mac() {
+    local resi resm resp line iface priority
+
+    # Result interface, mac and priority
+    unset resi resm
+    resp=0
+    while read -r line; do
+        set -o noglob
+        # shellcheck disable=SC2086
+        set -- $line
+        set +o noglob
+        iface=${2%:}
+        shift 2
+        case "$iface" in
+        # "Child" interfaces like enp3s0.5@enp3s0
+        *[.@]*) priority=1 ;;
+        # Possibly ethernet
+        e*) priority=4 ;;
+        # Possibly wireless
+        w*) priority=3 ;;
+        # Anything else, bond, tap, vmbr, fwbr
+        *) priority=2 ;;
+        esac
+        unset mac
+        while [ $# -gt 1 ]; do
+            case "$1" in
+            link/ether) mac=$2 ;;
+            # Bonds, MAC randomization and in general "Cloned MAC"
+            permaddr) mac=$2 ;;
+            esac
+            shift
+        done
+        if [ -n "$mac" ] && [ "$priority" -gt "$resp" ]; then
+            resi=$iface
+            resm=$mac
+            resp=$priority
+        fi
+    done <<EOF
+$(ip -oneline -family inet link show | LANG=C sort -k 2,2)
+EOF
+    echo "$resm $resi"
+}
+
 # Calculate, export and return a collection of useful variables.
 info() {
     local server_ip def_iface
@@ -103,11 +147,8 @@ $(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2
 EOF
             test "${def_iface:-lo}" != "lo" || die "Empty def_iface"
             test -n "$IP" || die "Empty IP"
-            MAC=$(ip link show dev "$def_iface" |
-                awk '/ether/ { print tolower($2) }')
-            # Some interfaces might not have a MAC (e.g. tun), use a fallback
-            test -n "$MAC" || MAC=$(ip link show |
-                awk '/ether/ { print tolower($2); exit }')
+            MAC=$(main_mac)
+            MAC=${MAC%% *}
             test -n "$MAC" || die "Empty MAC"
         fi
         CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
