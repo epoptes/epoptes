@@ -115,28 +115,30 @@ re() {
 }
 
 wait_for_dns() {
+    local server_ip delay
+
     # Don't wait for DNS if SERVER is an IP
     if [ -z "$(echo "$SERVER" | tr -d '0-9.')" ]; then
         server_ip=$SERVER
         return
     fi
-    delay=60
+    delay=5
     while true; do
         server_ip=$(getent hosts "$SERVER" | awk '{ print $1; exit }')
         test -n "$server_ip" && break
-        # If SERVER is not an MDNS name
-        if [ "${SERVER%.local}" = "${SERVER}" ]; then
-            # If DNS is not up yet, retry, otherwise abort
-            server_ip=$(getent hosts "ntp.org" | awk '{ print $1; exit }')
-        fi
-        if [ -z "$server_ip" ]; then
-            echo "Cannot resolve $SERVER, postponing for $delay seconds..."
-            sleep $delay
-            # Add a minute for each failure to minimize log spamming
-            delay=$((delay + 60))
-        else
+        # If DNS is up and SERVER is not an MDNS name, abort
+        if [ "${SERVER%.local}" = "${SERVER}" ] &&
+            [ -n "$(getent hosts "ntp.org" | awk '{ print $1; exit }')" ]; then
             echo "Cannot resolve $SERVER while DNS appears to work, aborting."
             exit 1
+        fi
+        if [ "$delay" -eq 5 ]; then
+            echo "Cannot resolve $SERVER, will keep retrying."
+        fi
+        sleep $delay
+        # Increase delay up to a minute
+        if [ "$delay" -lt 60 ]; then
+            delay=$((delay + 1))
         fi
     done
 }
