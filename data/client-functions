@@ -1,4 +1,4 @@
-#!/bin/sh
+# /bin/sh -n
 # This file is part of Epoptes, https://epoptes.org
 # Copyright (C) 2010-2022 the Epoptes team, see AUTHORS
 # SPDX-License-Identifier: GPL-3.0-or-later

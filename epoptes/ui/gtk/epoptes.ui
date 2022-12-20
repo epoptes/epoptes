@@ -509,7 +509,7 @@
                             <property name="can_focus">False</property>
                             <child>
                               <object class="GtkImageMenuItem" id="imi_execute_execute_command">
-                                <property name="label">Execute command</property>
+                                <property name="label" translatable="yes">Execute command</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Execute a command on the selected clients</property>
