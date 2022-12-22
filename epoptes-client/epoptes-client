@@ -115,7 +115,7 @@ re() {
 }
 
 wait_for_dns() {
-    local server_ip delay
+    local delay
 
     # Don't wait for DNS if SERVER is an IP
     if [ -z "$(echo "$SERVER" | tr -d '0-9.')" ]; then
