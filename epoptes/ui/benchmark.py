@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2016-2022 the Epoptes team, see AUTHORS.
+# Copyright 2016-2023 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Network benchmark.
@@ -139,7 +139,7 @@ class Benchmark:
         for client in self.clients:
             handle = self.clients[client][0]
             # Half time for upload speed and half for download
-            self.execute(handle, 'start_benchmark %d' % int(seconds/2))
+            self.execute(handle, 'start_benchmark "${GUI_IP}" %d' % int(seconds/2))
         self.timeleft = seconds
         self.box_seconds.set_visible(False)
         self.box_countdown.set_visible(True)

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2022 the Epoptes team, see AUTHORS.
+# Copyright 2010-2023 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Epoptes GUI class.
@@ -35,6 +35,7 @@ class EpoptesGui(object):
 
     def __init__(self):
         # Initialization of general-purpose variables
+        self.ssh = None
         self.about = None
         self.benchmark = None
         self.client_information = None
@@ -253,6 +254,16 @@ class EpoptesGui(object):
             ["shutdown"],
             warn=_('Are you sure you want to shutdown all the computers?'))
 
+    def daemon_command(self, handle, command):
+        """Wrapper for daemon.command() that substitutes ${GUI_IP}."""
+        if '${GUI_IP}' in command:
+            if self.ssh:
+                command = command.replace('${GUI_IP}', self.ssh.gui_ip)
+            else:
+                command = command.replace('${GUI_IP}', '${SERVER}')
+        LOG.d('Running: ' + command)
+        return self.daemon.command(handle, command)
+
     @staticmethod
     def find_unused_port():
         """Find an unused port."""
@@ -296,7 +307,7 @@ class EpoptesGui(object):
             self.vncviewer = subprocess.Popen(scmd)
 
         # And, tell the clients to connect to the server
-        self.exec_on_selected_clients([cmd, self.vncviewer_port] + list(args))
+        self.exec_on_selected_clients(' '.join([cmd, '"${GUI_IP}:%d"' % self.vncviewer_port] + list(args)))
 
     def on_imi_broadcasts_monitor_user_activate(self, _widget):
         """Handle imi_sbroadcasts_monitor_user.activate event."""
@@ -331,8 +342,8 @@ class EpoptesGui(object):
         self.exec_on_selected_clients(
             ['reset_screensaver'], mode=EM_SYSTEM_AND_SESSION)
         self.exec_on_selected_clients(
-            ["receive_broadcast", self.vncserver_port, self.vncserver_pwd,
-             fullscreen], mode=EM_SYSTEM_OR_SESSION)
+            'receive_broadcast "${GUI_IP}:%d" "%s" %s' % (self.vncserver_port,
+            self.vncserver_pwd, fullscreen), mode=EM_SYSTEM_OR_SESSION)
 
     def on_imi_broadcasts_broadcast_screen_fullscreen_activate(self, _widget):
         """Handle imi_broadcasts_broadcast_screen_fullscreen.activate event."""
@@ -394,7 +405,7 @@ class EpoptesGui(object):
             subprocess.Popen(['xterm', '-T', title, '-e', 'socat',
                               'tcp-listen:%d,keepalive=1' % port,
                               'stdio,raw,echo=0'])
-            self.exec_on_clients(['remote_term', port], [client], mode=e_m)
+            self.exec_on_clients('remote_term "${GUI_IP}:%d"' % port, [client], mode=e_m)
 
     def on_imi_open_terminal_user_locally_activate(self, _widget):
         """Handle imi_open_terminal_user_locally.activate event."""
@@ -449,7 +460,7 @@ class EpoptesGui(object):
     def on_imi_clients_network_benchmark_activate(self, _widget):
         """Handle imi_clients_network_benchmark.activate event."""
         if not self.benchmark:
-            self.benchmark = Benchmark(self.mainwin, self.daemon.command)
+            self.benchmark = Benchmark(self.mainwin, self.daemon_command)
         self.benchmark.run(self.get_selected_clients() or self.cstore)
 
     def on_imi_clients_information_activate(self, _widget):
@@ -459,7 +470,7 @@ class EpoptesGui(object):
         self.client_information.btn_edit_alias.set_sensitive(
             not self.is_default_group_selected())
         self.client_information.run(
-            self.get_selected_clients()[0], self.daemon.command)
+            self.get_selected_clients()[0], self.daemon_command)
         self.set_label(self.get_selected_clients()[0])
 
     @staticmethod
@@ -740,7 +751,7 @@ class EpoptesGui(object):
     def amp_client_connected(self, handle):
         """Called from uiconnection->Daemon->client_connected."""
         LOG.w("New connection from", handle)
-        dfr = self.daemon.command(handle, 'info')
+        dfr = self.daemon_command(handle, 'info')
         dfr.addCallback(lambda r: self.add_client(handle, r.decode()))
         dfr.addErrback(lambda err: LOG.e(
             "Error when connecting client %s: %s" % (handle, err)))
@@ -786,7 +797,7 @@ class EpoptesGui(object):
         """Callback from self.connected=>daemon.enumerate_clients."""
         LOG.w("Got clients:", ', '.join(handles) or 'None')
         for handle in handles:
-            dfr = self.daemon.command(handle, 'info')
+            dfr = self.daemon_command(handle, 'info')
             dfr.addCallback(
                 lambda r, h=handle: self.add_client(h, r.decode(), True))
             dfr.addErrback(lambda err, h=handle: LOG.e(
@@ -886,7 +897,7 @@ class EpoptesGui(object):
 
         # Compatibility check
         if LooseVersion(version) < LooseVersion(COMPATIBILITY_VERSION):
-            self.daemon.command(
+            self.daemon_command(
                 handle, "die 'Incompatible Epoptes server version!'")
             if not self.displayed_compatibility_warning:
                 self.displayed_compatibility_warning = True
@@ -1045,6 +1056,7 @@ class EpoptesGui(object):
             LOG.d('No clients')
             return
 
+        # ${GUI_PY} must be unquoted, don't pass it as list
         if isinstance(command, list) and len(command) > 0:
             command = '%s %s' % (command[0], ' '.join(
                 [pipes.quote(str(x)) for x in command[1:]]))
@@ -1054,7 +1066,7 @@ class EpoptesGui(object):
                 return
         if clients == [] and handles != []:
             for handle in handles:
-                cmd = self.daemon.command(handle, str(command))
+                cmd = self.daemon_command(handle, str(command))
                 # TODO: do we need errbacks even when no reply?
                 if reply:
                     cmd.addCallback(
@@ -1078,7 +1090,7 @@ class EpoptesGui(object):
                 if handle == '':
                     continue
                 sent = True
-                cmd = self.daemon.command(handle, str(command))
+                cmd = self.daemon_command(handle, str(command))
                 # TODO: do we need errbacks even when no reply?
                 if reply:
                     cmd.addCallback(

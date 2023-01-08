@@ -1,6 +1,6 @@
 # /bin/sh -n
 # This file is part of Epoptes, https://epoptes.org
-# Copyright (C) 2010-2022 the Epoptes team, see AUTHORS
+# Copyright (C) 2010-2023 the Epoptes team, see AUTHORS
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Implements the client side of the epoptes communications protocol.
@@ -326,7 +326,8 @@ unmute_sound() {
 # Stop it automatically after a while.
 # Before starting, also stop any previous benchmarks that are still running.
 # Parameters:
-# $1 = seconds to run (default=10).
+# $1 = host
+# $2 = seconds to run (default=10).
 start_benchmark() {
     # benchmark_pid can't be unset in the background, but no harm done
     benchmark_pid=$(background -p stop_start_benchmark "$@")
@@ -339,10 +340,11 @@ start_benchmark() {
 
 # Helper function to avoid running stop_benchmark in foreground.
 # Parameters:
-# $1 = seconds to run.
+# $1 = host
+# $2 = seconds to run.
 stop_start_benchmark() {
     test -n "$benchmark_pid" && stop_benchmark "$benchmark_pid"
-    iperf -c "$SERVER" -r ${1:+-t "$1"}
+    iperf -c "$1" -r ${1:+-t "$2"}
 }
 
 # Manually stop a previously running benchmark.
@@ -377,17 +379,17 @@ message() {
 
 # Connect to the server to be monitored.
 # Parameters:
-# $1 = port.
+# $1 = host:port.
 get_monitored() {
-    background x11vnc -q -nopw -noshm -24to32 -viewonly -connect_or_exit "$SERVER:$1"
+    background x11vnc -q -nopw -noshm -24to32 -viewonly -connect_or_exit "$1"
 }
 
 # Connect to the server to get assistance.
 # Parameters:
-# $1 = port.
+# $1 = host:port.
 # $2 = grab keyboard and mouse.
 get_assisted() {
-    background x11vnc -q -nopw -noshm -24to32 ${2:+-grabptr -grabkbd} -connect_or_exit "$SERVER:$1"
+    background x11vnc -q -nopw -noshm -24to32 ${2:+-grabptr -grabkbd} -connect_or_exit "$1"
 }
 
 # Deactivate the screensaver, in order for the users to watch a broadcast.
@@ -401,7 +403,7 @@ reset_screensaver() {
 
 # Receive a broadcasted screen from the server.
 # Parameters:
-# $1 = port.
+# $1 = host:port.
 # $2 = password (encrypted as in ~/.vnc/passwd and octal-escaped).
 # $3 = fullscreen.
 receive_broadcast() {
@@ -434,28 +436,28 @@ receive_broadcast() {
                 -scaling=aspectfit -uselocalcursor=0 \
                 -enabletoolbar=0 -warnunencrypted=0 \
                 -hideclosealert=true -autoreconnect=false \
-                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
+                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$1"
             ;;
         ssvncviewer)
             exec ssvncviewer -shared -viewonly -scale auto -escape never \
-                -passwd /dev/stdin ${3:+-fullscreen} "$SERVER:$1"
+                -passwd /dev/stdin ${3:+-fullscreen} "$1"
             ;;
         xtigervncviewer)
             exec xtigervncviewer -shared -viewonly \
-                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
+                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$1"
             ;;
         xtightvncviewer)
             exec xtightvncviewer -shared -viewonly \
-                -passwd /dev/stdin ${3:+-fullscreen} "$SERVER:$1"
+                -passwd /dev/stdin ${3:+-fullscreen} "$1"
             ;;
         xvnc4viewer)
             exec xvnc4viewer -shared -viewonly -uselocalcursor=0 \
-                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$SERVER:$1"
+                -passwd /dev/stdin ${3:+-fullscreen -menukey=} "$1"
             ;;
         *)
             # A generic vncviewer, e.g. tigervnc on Arch/Fedora/SUSE
             exec "$VNCVIEWER" -shared -viewonly \
-                -passwd /dev/stdin ${3:+-fullscreen} "$SERVER:$1"
+                -passwd /dev/stdin ${3:+-fullscreen} "$1"
             ;;
         esac
     } >/dev/null 2>&1 &
@@ -481,9 +483,9 @@ root_term() {
     background xterm -e bash -l
 }
 
-# Send a screen session to the server using socat.
+# Send a screen session to a host using socat.
 # Parameters:
-# $1 = port.
+# $1 = host:port.
 remote_term() {
     local screen_params
 
@@ -495,7 +497,7 @@ remote_term() {
     background sh -c "
 cd
 sleep 1
-TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$SERVER:$1"
+TERM=xterm exec socat EXEC:'screen $screen_params',pty,stderr tcp:$1"
 }
 
 # Ping is called every few seconds just to make sure the connection is alive.

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2018 the Epoptes team, see AUTHORS.
+# Copyright 2010-2023 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Launch the epoptes UI.
@@ -9,6 +9,7 @@ import getpass
 import grp
 import os
 import os.path
+import socket
 import subprocess
 import sys
 
@@ -34,7 +35,7 @@ def connection_failed(failure):
     # Permission denied error
     if failure.value.osError == 13:
         msg += _("User %s must be a member of group %s to run epoptes.") % \
-              (getpass.getuser(), config.system['SOCKET_GROUP'])
+            (getpass.getuser(), config.system['SOCKET_GROUP'])
     # No such file error
     elif failure.value.osError == 2:
         msg += _("Make sure the epoptes service is running.")
@@ -52,6 +53,8 @@ def need_sg_relaunch():
     """After fresh installation, we need to relaunch with `sg`."""
     # If we've already used sg once, don't retry it.
     if os.getenv('EPOPTES_SG'):
+        return False
+    if not os.path.isdir(config.system['DIR']):
         return False
     if not os.path.isfile('/usr/bin/sg'):
         return False
@@ -72,6 +75,62 @@ def need_sg_relaunch():
     return True
 
 
+def gui_ip():
+    """Return the IP that the GUI uses to contact epoptes server.
+    It's constant as SSH will stay up for socket forwarding to work.
+    That IP is then used as the destination for some client commands."""
+    try:
+        server_ip = socket.gethostbyname(config.system['SERVER'])
+    except:
+        server_ip = '192.168.67.2'
+    out = subprocess.Popen(['ip', '-o', 'r', 'get', server_ip],
+        stdout=subprocess.PIPE).communicate()[0].decode().split()
+    # If src doesn't exist in out, return the string $SERVER
+    out += ['src', '$SERVER']
+    return out[out.index('src') + 1]
+
+
+def epoptes_socket(egui):
+    """Connect to epoptes.socket locally or via ssh."""
+    result = os.getenv('EPOPTES_SOCKET')
+    if not result:
+        result = config.system['DIR'] + "/epoptes.socket"
+    if os.path.exists(result):
+        return result
+    # Check if `ssh` or `ltsp remoteapps` can be used
+    ak = os.path.expanduser("~/.ssh/authorized_keys")
+    if not os.path.exists(ak) and os.path.isdir('/run/ltsp/client') \
+            and os.path.isdir('/usr/share/ltsp/client/remoteapps'):
+        LOG.w("Running `ltsp remoteapps :` to create {}".format(ak))
+        subprocess.run(['ltsp', 'remoteapps', ':'])
+    if not os.path.exists(ak) or not os.path.exists('/usr/bin/ssh'):
+        return result
+    result = '/run/user/{}/epoptes'.format(os.getuid())
+    if not os.path.isdir(result):
+        os.mkdir(result)
+    # Each GUI instance forwards its own socket instance
+    result = '{}/epoptes-{}.socket'.format(result, os.getpid())
+    cmd = ['ssh', '-NL', result + ':/run/epoptes/epoptes.socket',
+           '-o', 'ExitOnForwardFailure=yes',
+           '-o', 'ServerAliveInterval=20',
+           '-o', 'ServerAliveCountMax=6',
+           '-o', 'ConnectTimeout=20',
+           '-o', 'PermitLocalCommand=yes',
+           '-o', 'LocalCommand=echo SOCKET_CONNECTED',
+           config.system['SERVER']
+           ]
+    LOG.w("Forwarding SSH socket by running: " + ' '.join(cmd))
+    # Pass stdin to allow ssh to prompt for unknown hosts
+    egui.ssh = subprocess.Popen(cmd, stdin=sys.stdin, stdout=subprocess.PIPE)
+    egui.ssh.epoptes_socket = result
+    for line in egui.ssh.stdout:
+        if line.strip() == b"SOCKET_CONNECTED":
+            egui.ssh.gui_ip = gui_ip()
+            LOG.d('${GUI_IP} = %s' % egui.ssh.gui_ip)
+            return result
+    sys.exit("Couldn't connect to the epoptes socket locally or via ssh")
+
+
 def main():
     """Usage: epoptes [--version]."""
     if len(sys.argv) > 1:
@@ -88,7 +147,7 @@ def main():
 
     path = os.path.expanduser('~/.config')
     if not os.path.isdir(path):
-        os.mkdir(path, 0x700)
+        os.mkdir(path, 0o700)
     path = os.path.expanduser('~/.config/epoptes')
     if not os.path.isdir(path):
         os.mkdir(path)
@@ -96,10 +155,17 @@ def main():
     egui = gui.EpoptesGui()
     # noinspection PyUnresolvedReferences
     dfr = ClientCreator(reactor, uiconnection.Daemon, egui)\
-        .connectUNIX(config.system['DIR'] + "/epoptes.socket")
+        .connectUNIX(epoptes_socket(egui))
     dfr.addErrback(connection_failed)
-    # noinspection PyUnresolvedReferences
-    reactor.run()
+    try:
+        # noinspection PyUnresolvedReferences
+        reactor.run()
+    finally:
+        if egui.ssh:
+            print("Terminating the ssh process")
+            egui.ssh.terminate()
+            os.remove(egui.ssh.epoptes_socket)
+            egui.ssh = None
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 #!/bin/sh
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2022 the Epoptes team, see AUTHORS.
+# Copyright 2010-2023 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # epoptes-client is called either from systemd as root, to control the client,
@@ -78,7 +78,7 @@ basic_info() {
         LTSP_FATCLIENT=True
     fi
 
-    if my_boolean_is_true "$LTSP_FATCLIENT"; then
+    if my_boolean_is_true "$LTSP_FATCLIENT" || [ -d /run/ltsp/client ]; then
         TYPE="fat"
     elif [ -n "$LTSP_CLIENT" ]; then
         TYPE="thin"
