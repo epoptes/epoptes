@@ -116,9 +116,11 @@ def epoptes_socket(egui):
            '-o', 'ServerAliveCountMax=6',
            '-o', 'ConnectTimeout=20',
            '-o', 'PermitLocalCommand=yes',
-           '-o', 'LocalCommand=echo SOCKET_CONNECTED',
-           config.system['SERVER']
-           ]
+           '-o', 'LocalCommand=echo SOCKET_CONNECTED']
+    # Try to avoid SSH known hosts prompts in typical LTSP installations
+    if os.path.isfile('/etc/ltsp/ssh_known_hosts'):
+        cmd += ['-o', 'GlobalKnownHostsFile=/etc/ssh/ssh_known_hosts /etc/ssh/ssh_known_hosts2 /etc/ltsp/ssh_known_hosts']
+    cmd += [config.system['SERVER']]
     LOG.w("Forwarding SSH socket by running: " + ' '.join(cmd))
     # Pass stdin to allow ssh to prompt for unknown hosts
     egui.ssh = subprocess.Popen(cmd, stdin=sys.stdin, stdout=subprocess.PIPE)
