@@ -1,22 +1,24 @@
 # Russian translation for epoptes
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the epoptes package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# Sergey Kazorin <translation-team@basealt.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: epoptes\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-02-04 18:35+0200\n"
-"PO-Revision-Date: 2019-11-06 10:27+0000\n"
-"Last-Translator: A.K. <Unknown>\n"
+"PO-Revision-Date: 2022-12-21 13:06+0000\n"
+"Last-Translator: Olesya Gerasimenko <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-02-05 04:43+0000\n"
-"X-Generator: Launchpad (build 3d7abcb776ec05aa0a89112accc21bf8b41dfc24)\n"
+"X-Launchpad-Export-Date: 2022-12-22 04:41+0000\n"
+"X-Generator: Launchpad (build 31c78762a8046acf7ab47372e5d588ebb3759d2e)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
+"Language: ru\n"
 "X-Poedit-Language: Russian\n"
 
 #: ../data/epoptes.desktop.in.h:1
@@ -29,7 +31,7 @@ msgstr "Экран заблокирован системным админист�
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
-msgstr ""
+msgstr "Использование: {} текст [заголовок] [разметка] [имя_значка]"
 
 #: ../epoptes-client/remote_assistance.py:90
 #: ../epoptes-client/remote_assistance.py:122
@@ -40,7 +42,7 @@ msgstr "Не подсоединён"
 #: ../epoptes-client/remote_assistance.py:114
 #, python-format
 msgid "Connecting to %s..."
-msgstr "Устанавливается соединение с %s..."
+msgstr "Устанавливается соединение с %s…"
 
 #: ../epoptes-client/remote_assistance.py:119
 #, python-format
@@ -55,7 +57,7 @@ msgstr "Не удалось подключиться к %s"
 #: ../epoptes-client/remote_assistance.py:143
 #, python-format
 msgid "Retrying in %d..."
-msgstr "Повтор через %d..."
+msgstr "Повтор через %d…"
 
 #: ../epoptes-client/remote_assistance.ui.h:1
 msgid "Graphics (VNC)"
@@ -88,7 +90,7 @@ msgstr "Информация о соединении"
 
 #: ../epoptes-client/remote_assistance.ui.h:8
 msgid "Keep reconnecting"
-msgstr "Продолжать соединяться"
+msgstr "Продолжать попытки повторного соединения"
 
 #: ../epoptes-client/remote_assistance.ui.h:10
 msgid "Status"
@@ -96,7 +98,7 @@ msgstr "Статус"
 
 #: ../epoptes-client/thumbshot.py:48
 msgid "Usage: {} width height"
-msgstr ""
+msgstr "Использование: {} ширина высота"
 
 #: ../epoptes/common/config.py:191
 msgid "Message from administrator"
@@ -134,7 +136,7 @@ msgstr ""
 #: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr "Тест завершится через %d сек..."
+msgstr "Тест завершится через %d сек…"
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
@@ -143,14 +145,14 @@ msgstr "Некоторые клиенты не ответили вовремя!"
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
 msgid "Waiting for %d more seconds..."
-msgstr "Подождите еще %d секунд..."
+msgstr "Подождите еще %d секунд…"
 
 #: ../epoptes/ui/benchmark.py:213
 msgid ""
 "Did not get measurements from any of the clients. Check your network "
 "settings."
 msgstr ""
-"Не было получено данных от клиентов. Проверьте свои сетевые настройки."
+"Не были получены данные измерений от клиентов. Проверьте сетевые настройки."
 
 #. TODO: consider new string formatting vs updating translations
 #: ../epoptes/ui/client_information.py:66
@@ -160,7 +162,7 @@ msgstr "Свойства %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Авторские права: «The Epoptes Team», 2010+"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
@@ -175,6 +177,7 @@ msgstr ""
 "  Fotis Tsamis https://launchpad.net/~ftsamis\n"
 "  HsH https://launchpad.net/~hsh\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
+"  Olesya Gerasimenko https://launchpad.net/~translation-team-w\n"
 "  Sergey Krylov https://launchpad.net/~d-kr\n"
 "  Vladyslav Dukhin https://launchpad.net/~primeare\n"
 "  Voldemar https://launchpad.net/~komyshnyi\n"
@@ -182,7 +185,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr "Сетевой тест."
+msgstr "Сетевой тест"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
@@ -193,8 +196,8 @@ msgid ""
 "The network benchmark will test the effective network\n"
 "bandwidth that is available for your lab."
 msgstr ""
-"Сетевой тест протестирует эффективную\n"
-"пропускная способность сети, доступную для вашей лаборатории."
+"Сетевой тест поможет определить эффективную\n"
+"пропускную способность сети компьютерного класса."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
@@ -214,53 +217,59 @@ msgstr "Компьютер"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:10
 msgid "Upload bandwidth"
-msgstr "Пропускная способность при загрузке"
+msgstr "Пропускная способность при загрузке на сервер"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:11
 msgid "Download bandwidth"
-msgstr ""
+msgstr "Пропускная способность при загрузке с сервера"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:12
 msgid ""
 "Could not get measurements from some of the clients. The statistics will be "
 "affected."
 msgstr ""
+"Не удалось получить данные измерений от некоторых клиентов. При вычислении "
+"статистики этот фактор будет учитываться."
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Общая статистика пропускной способности"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
-msgstr ""
+msgstr "Средняя пропускная способность загрузки с сервера на одного клиента"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:15
 msgid "Average server download:"
-msgstr ""
+msgstr "Средняя скорость загрузки с сервера:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:16
 msgid "The average server upload bandwidth per client"
-msgstr "Средняя пропускная способность загрузки клиентом на сервер"
+msgstr "Средняя пропускная способность загрузки на сервер на одного клиента"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:17
 msgid "Average server upload:"
-msgstr ""
+msgstr "Средняя скорость загрузки на сервер:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:18
 msgid "The total server upload bandwidth, for all clients, simultaneously"
 msgstr ""
+"Общая пропускная способность загрузки на сервер для всех клиентов "
+"одновременно"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:19
 msgid "Total server upload:"
-msgstr ""
+msgstr "Общая скорость загрузки на сервер:"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:20
 msgid "The total server download bandwidth, for all clients, simultaneously"
 msgstr ""
+"Общая пропускная способность загрузки с сервера для всех клиентов "
+"одновременно"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:21
 msgid "Total server download:"
-msgstr ""
+msgstr "Общая скорость загрузки с сервера:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:1
 msgid "Client type:"
@@ -272,7 +281,7 @@ msgstr "Псевдоним клиента:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:3
 msgid "Client hostname:"
-msgstr "Имя хоста клиента:"
+msgstr "Имя узла клиента:"
 
 #: ../epoptes/ui/gtk/client_information.ui.h:4
 msgid "MAC address:"
@@ -328,7 +337,7 @@ msgstr "Пользователь"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:7
 msgid "Show real names"
-msgstr "Показать действительные имена"
+msgstr "Показать настоящие имена"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:8
 msgid "_Clients"
@@ -356,7 +365,7 @@ msgstr "Выключить"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:14
 msgid "Broadcasts"
-msgstr "Вещание"
+msgstr "Трансляции"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:15
 msgid "Monitor user"
@@ -368,47 +377,48 @@ msgstr "Помочь пользователю"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:17
 msgid "Take control of the selected user's computer"
-msgstr "Контролировать компьютер выбранного пользователя"
+msgstr "Получить управление компьютером выбранного пользователя"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:18
 msgid "Broadcast video"
-msgstr "Передача видео"
+msgstr "Трансляция видео"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:19
 msgid "Broadcast screen (fullscreen)"
-msgstr "Экран передачи (На весь экран)"
+msgstr "Трансляция экрана (весь экран)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:20
 msgid "Broadcast your screen to the selected clients, fullscreen"
-msgstr "Вещание с вашего экрана выбранным клиентам (во весь экран)"
+msgstr "Трансляция данного экрана выбранным клиентам (весь экран)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:21
 msgid "Broadcast screen (windowed)"
-msgstr "Вещание с экрана (в окне)"
+msgstr "Трансляция экрана (в окне)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:22
 msgid "Broadcast your screen to the selected clients, in a window"
-msgstr "Вещание с вашего экрана выбранным клиентам (в окне)"
+msgstr "Трансляция данного экрана выбранным клиентам (в окне)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:23
 msgid "Broadcast user"
-msgstr "Передача пользователя"
+msgstr "Трансляция пользователя"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:24
 msgid "Stop broadcasts"
-msgstr "Остановить вещания"
+msgstr "Остановить трансляции"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:25
 msgid "Stops all active broadcasts"
-msgstr "Остановить все активные вещания"
+msgstr "Остановить все активные трансляции"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:26
 msgid "Open broadcasts window"
-msgstr "Открыть окно передачи"
+msgstr "Открыть окно трансляций"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:27
 msgid "Open a windowed session to prevent broadcasting your whole screen"
-msgstr "Открыть окно сессии для предотвращения блокировки вашего экрана"
+msgstr ""
+"Открыть оконный сеанс для предотвращения трансляции всего экрана целиком"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:28
 msgid "Execute"
@@ -508,7 +518,7 @@ msgstr "Загрузить выбранные клиенты (Wake On LAN)"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Log out users connected on selected clients"
-msgstr "Завершить сеансы пользователей, подключенных к выбранным клиентам"
+msgstr "Завершить сеансы пользователей, подключенных на выбранных клиентах"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Reboot the selected clients"
@@ -520,15 +530,15 @@ msgstr "Выключить выбранные клиенты"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Broadcast your screen to the selected clients"
-msgstr "Вещание с вашего экрана выбранным клиентам"
+msgstr "Трансляция данного экрана выбранным клиентам"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Broadcast screen"
-msgstr "Вещание с экрана"
+msgstr "Трансляция экрана"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Stop all broadcasts on every client"
-msgstr "Остановить все вещания всем клиентам"
+msgstr "Остановить все трансляции на каждом клиенте"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:59 ../epoptes/ui/gtk/exec_command.ui.h:1
 msgid "Execute command"
@@ -548,7 +558,7 @@ msgstr "Разблокировать экраны выбранных клиен�
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:63
 msgid "Show information for the selected client"
-msgstr "Показать информацию для выделенного клиента"
+msgstr "Показать информацию для выбранного клиента"
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:64 ../epoptes/ui/gtk/send_message.ui.h:6
 msgid "Information"
@@ -568,7 +578,9 @@ msgstr "Удалить выбранную группу"
 
 #: ../epoptes/ui/gtk/exec_command.ui.h:2
 msgid "URL, file or command to execute on the selected clients:"
-msgstr "URL, файл или команда для выполнения на выбранных клиентах:"
+msgstr ""
+"URL-адрес, файл или команда, предназначенные для выполнения на выбранных "
+"клиентах:"
 
 #: ../epoptes/ui/gtk/send_message.ui.h:2
 msgid "_Send"
@@ -592,29 +604,29 @@ msgstr "Обнаруженные клиенты"
 
 #: ../epoptes/ui/gui.py:128
 msgid "Failed to read the groups file:"
-msgstr ""
+msgstr "Не удалось прочитать файл групп:"
 
 #: ../epoptes/ui/gui.py:130
 msgid "You may need to restore your groups from a backup!"
-msgstr ""
+msgstr "Может потребоваться восстановление групп из резервной копии!"
 
 #: ../epoptes/ui/gui.py:237
 msgid "Are you sure you want to log off all the users?"
-msgstr "Вы действительно хотите завершить сеансы всех пользователей?"
+msgstr "Завершить сеансы всех пользователей?"
 
 #: ../epoptes/ui/gui.py:243
 msgid "Are you sure you want to reboot all the computers?"
-msgstr "Вы действительно хотите перезагрузить все компьютеры?"
+msgstr "Перезагрузить все компьютеры?"
 
 #: ../epoptes/ui/gui.py:249
 msgid "Are you sure you want to shutdown all the computers?"
-msgstr "Вы действительно хотите выключить все компьютеры?"
+msgstr "Выключить все компьютеры?"
 
 #: ../epoptes/ui/gui.py:430
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
-msgstr "Вы действительно хотите удалить выделенные клиенты из группы «%s»?"
+msgstr "Удалить выделенных клиентов из группы «%s»?"
 
 #: ../epoptes/ui/gui.py:561
 msgid "New group"
@@ -623,12 +635,12 @@ msgstr "Создать группу"
 #: ../epoptes/ui/gui.py:578
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
-msgstr "Вы действительно хотите удалить группу «%s»?"
+msgstr "Удалить группу «%s»?"
 
 #: ../epoptes/ui/gui.py:623
 #, python-format
 msgid "%d clients selected"
-msgstr "%d клиентов выбрано"
+msgstr "выбрано клиентов: %d"
 
 #: ../epoptes/ui/gui.py:720
 msgid "Lost connection with the epoptes service."
@@ -640,11 +652,11 @@ msgstr "Убедитесь, что сервис работает, затем п�
 
 #: ../epoptes/ui/gui.py:725
 msgid "Service connection error"
-msgstr "Ошибка подключения к сервису"
+msgstr "Ошибка подключения к службе"
 
 #: ../epoptes/ui/gui.py:753
 msgid "Shut down:"
-msgstr "Отключить:"
+msgstr "Выключено:"
 
 #: ../epoptes/ui/gui.py:761
 msgid "Disconnected:"
@@ -663,11 +675,11 @@ msgid ""
 "\n"
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
-"Имела место попытка соединения клиентом, использующим версию %s, которая "
-"несовместима с текущей версией epoptes.\n"
+"Выполнена попытка соединения клиента с версией %s, которая несовместима с "
+"текущей версией epoptes.\n"
 "\n"
-"Требуется обновить пакет epoptes-client на клиентских машинах до последней "
-"версии ."
+"Необходимо обновить пакет epoptes-client на клиентских машинах до последней "
+"версии."
 
 #: ../epoptes/ui/gui.py:906
 msgid "Connected:"
@@ -684,7 +696,7 @@ msgstr "Подтвердить действие"
 
 #: ../epoptes/ui/notifications.py:81
 msgid "Could not initialize notifications!"
-msgstr ""
+msgstr "Не удалось инициализировать вывод уведомлений!"
 
 #~ msgid "Background image"
 #~ msgstr "Фоновое изображение"
