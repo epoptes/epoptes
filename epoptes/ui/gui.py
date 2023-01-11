@@ -496,7 +496,7 @@ class EpoptesGui(object):
 
     def on_imi_help_live_chat_irc_activate(self, _widget):
         """Handle imi_help_live_chat_irc.activate event."""
-        self.open_url("https://ltsp.org/advanced/chat-room")
+        self.open_url("https://ltsp.org/guides/chat-room")
 
     @staticmethod
     def on_imi_help_remote_support_activate(_widget):
