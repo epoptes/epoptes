@@ -5,12 +5,6 @@
 """
 Network benchmark.
 """
-# TODO: reimplement it with python/twisted.
-# iperf2 doesn't work behind NAT and has some issues, for example:
-# https://sourceforge.net/p/iperf2/discussion/general/thread/db0fed22/
-# https://sourceforge.net/p/iperf2/discussion/general/thread/aa6f0646ad/
-import subprocess
-
 from epoptes.common.constants import C_INSTANCE
 from epoptes.core import spawn_process
 from epoptes.ui.common import gettext as _, locate_resource
@@ -139,7 +133,7 @@ class Benchmark:
         for client in self.clients:
             handle = self.clients[client][0]
             # Half time for upload speed and half for download
-            self.execute(handle, 'start_benchmark "${GUI_IP}" %d' % int(seconds/2))
+            self.execute(handle, 'start_benchmark "${GUI_IP}" %d' % seconds)
         self.timeleft = seconds
         self.box_seconds.set_visible(False)
         self.box_countdown.set_visible(True)
@@ -164,37 +158,31 @@ class Benchmark:
         return True
 
     def parse_iperf_output(self, out_data):
-        """Parse 'output' as a string of single or multiple lines of CSV in the
-        form of [timestamp, server_ip, port, client_ip, port, id, from-to
-        transfered(Bytes), bandwidth(bps)] and populate a dict of client_ip:
-         [upload Mbps, download Mbps] pairs storing it in self.results.
+        """Parse iperf CSV output and return a dict in the following form:
+        result[client_ip] = [upload bps, download bps]
         """
-        server_ips = subprocess.Popen(
-            ['hostname', '-I'],
-            stdout=subprocess.PIPE).communicate()[0].decode().split()
-        self.results = {}
+        result = {}
         data = out_data.strip().split()
         for line in data:
             values = line.split(',')
             if len(values) != 9:
                 continue
-            client_ip = values[3]
-            client_port = values[4]  # will be 5001 if the client is receiving
-            if client_ip in server_ips:
-                # New iperf versions use changed positions for the reverse test
-                client_ip = values[1]
-                client_port = values[2]
-            bandwidth = int(values[8])
+            _timestamp, src_ip, sport, dst_ip, _dport, _id, _interval, _tbytes, bbps = values
+            bbps = int(bbps)
+            if sport == '5001':
+                client_ip = dst_ip
+            else:
+                client_ip = src_ip
             if client_ip in self.clients:
-                if client_ip not in self.results:
-                    self.results[client_ip] = [0, 0]
-
-                if client_port == "5001":
-                    # Download (bits/s)
-                    self.results[client_ip][1] = bandwidth
+                if client_ip not in result:
+                    result[client_ip] = [0, 0]
+                if sport == "5001":
+                    # upload bps (client to server)
+                    result[client_ip][0] = bbps
                 else:
-                    # Upload (bits/s)
-                    self.results[client_ip][0] = bandwidth
+                    # download bps (server to client)
+                    result[client_ip][1] = bbps
+        return result
 
     @staticmethod
     def data_func(_column, cell, model, itr, index):
@@ -220,7 +208,7 @@ class Benchmark:
             return
 
         self.dlg_benchmark.hide()
-        self.parse_iperf_output(out_data.decode("utf-8"))
+        self.results = self.parse_iperf_output(out_data.decode("utf-8"))
         if not self.results:
             msg = _("Did not get measurements from any of the clients."
                     " Check your network settings.")

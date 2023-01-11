@@ -332,7 +332,7 @@ start_benchmark() {
     # benchmark_pid can't be unset in the background, but no harm done
     benchmark_pid=$(background -p stop_start_benchmark "$@")
     {
-        sleep $((2 * ${1:-10} + 5))
+        sleep $((2 * ${2:-10} + 5))
         stop_benchmark "$benchmark_pid"
     } &
     echo "$benchmark_pid"
@@ -344,7 +344,7 @@ start_benchmark() {
 # $2 = seconds to run.
 stop_start_benchmark() {
     test -n "$benchmark_pid" && stop_benchmark "$benchmark_pid"
-    iperf -c "$1" -r ${1:+-t "$2"}
+    iperf -c "$1" --full-duplex ${1:+-t "$2"}
 }
 
 # Manually stop a previously running benchmark.
