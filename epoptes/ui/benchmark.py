@@ -128,7 +128,7 @@ class Benchmark:
         """Handle btn_start.clicked event."""
         seconds = int(self.adj_seconds.get_value())
         self.spawn_process.spawn('iperf -s -xS -yC'.split(),
-                                 timeout=(seconds + 3),
+                                 timeout=(seconds + 5),
                                  lines_max=2*len(self.clients))
         for client in self.clients:
             handle = self.clients[client][0]
@@ -152,7 +152,7 @@ class Benchmark:
         else:
             self.lbl_countdown.set_text(
                 _("Some clients didn't respond in time!") + "\n"
-                + _("Waiting for %d more seconds...") % (self.timeleft + 3))
+                + _("Waiting for %d more seconds...") % (self.timeleft + 5))
 
         # Always recall; the timeout will be cancelled in on_iperf_exit.
         return True
