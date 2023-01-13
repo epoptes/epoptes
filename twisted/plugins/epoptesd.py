@@ -82,11 +82,9 @@ class ServiceMaker(object):
         gid = grp.getgrnam(config.system['SOCKET_GROUP'])[2]
 
         if not os.path.isdir(config.system['DIR']):
-            umask = os.umask(0)
+            # `man 2 mkdir` cannot set the sticky bit, a chmod is needed
             os.makedirs(config.system['DIR'], 0o2770)
-            os.umask(umask)
-        else:
-            os.chmod(config.system['DIR'], 0o2770)
+        os.chmod(config.system['DIR'], 0o2770)
         os.chown(config.system['DIR'], -1, gid)
 
         gui_service = internet.UNIXServer(
