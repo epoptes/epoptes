@@ -262,6 +262,7 @@ thumbshot() {
     # TODO: remove compatibility fallback after a few versions
     local executable
 
+    test -z "$WAYLAND_DISPLAY" || return 0
     if [ -f "./thumbshot.py" ]; then
         executable=./thumbshot.py
     else
