@@ -1,3 +1,25 @@
+epoptes (23.01-1) unstable; urgency=medium
+
+  * Avoid thumbshot.py crashes on wayland (#184)
+  * Bump benchmark timeout from 3 to 5 sec
+  * Remove constraints unnecessary since buster (#152)
+  * Import translations from launchpad
+  * Use iperf --full-duplex for benchmark (#183)
+  * Update chat room URL (#168)
+  * Run epoptes over SSH socket forwarding (#182)
+  * Make "Execute command" translatable (#181)
+  * Optimize wait_for_dns (#179)
+  * Support a main epoptes server
+  * Silence x11vnc
+  * Use the main mac address (#178)
+  * Avoid xwininfo hangs (#177)
+  * If SERVER is an MDNS name, retry indefinitely (#162)
+  * Work around broken output in recent iperf versions (#164)
+  * Allow controlling specific groups (#159)
+  * Use relative Exec=epoptes path (#158)
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Sun, 15 Jan 2023 18:53:17 +0200
+
 epoptes (22.01-1) unstable; urgency=medium
 
   * Update help menu URLs (#150)
