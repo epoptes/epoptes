@@ -5,12 +5,14 @@ Source: https://github.com/epoptes/epoptes
 Files: *
 Copyright: 2009-2020 Alkis Georgopoulos <alkisg@gmail.com>
  2009-2017 Fotis Tsamis <ftsamis@gmail.com>
+ 2010-2023 the Epoptes team
+ 2011-2019 Rosetta Contributors and Canonical Ltd
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2009-2020 Alkis Georgopoulos <alkisg@gmail.com>
+Copyright: 2009-2023 Alkis Georgopoulos <alkisg@gmail.com>
  2009-2016 Fotis Tsamis <ftsamis@gmail.com>
- 2011-2020 Vagrant Cascadian <vagrant@debian.org>
+ 2011-2023 Vagrant Cascadian <vagrant@debian.org>
 License: GPL-3.0+
 
 License: GPL-3.0+
