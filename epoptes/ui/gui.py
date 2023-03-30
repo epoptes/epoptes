@@ -324,19 +324,31 @@ class EpoptesGui(object):
     def broadcast_screen(self, fullscreen=''):
         """Helper function for on_imi_broadcasts_broadcast_screen*_activate."""
         if self.vncserver is None:
-            pwdfile = config.expand_filename('vncpasswd')
+            # wayland, x11, tty
+            xst=os.getenv('XDG_SESSION_TYPE', '')
+            # ubuntu:GNOME
+            xcd=os.getenv('XDG_CURRENT_DESKTOP', '')
+            # https://tigervnc.org/doc/vncpasswd.html
+            # ...only the first eight characters are significant
             pwd = ''.join(random.sample(
                 string.ascii_letters + string.digits, 8))
+            pwdfile = config.expand_filename('vncpasswd')
+            # DES-encrypted: https://github.com/trinitronx/vncpasswd.py
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
             with open(pwdfile, 'rb') as file:
-                pwd = file.read()
-            self.vncserver_port = self.find_unused_port()
-            self.vncserver_pwd = ''.join('\\%o' % c for c in pwd)
-            self.vncserver = subprocess.Popen(
-                ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
-                '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
-                '-rfbport', str(self.vncserver_port), '-shared', '-threads',
-                '-viewonly'])
+                pwdcrypted = file.read()
+            # Octal-escaped crypted password, needed by VNC clients
+            self.vncserver_pwd = ''.join('\\%o' % c for c in pwdcrypted)
+            if xst == 'wayland':
+                self.vncserver_port = 5900
+                self.vncserver = subprocess.Popen(['./vnc-wayland', pwd])
+            else:
+                self.vncserver_port = self.find_unused_port()
+                self.vncserver = subprocess.Popen(
+                    ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
+                    '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
+                    '-rfbport', str(self.vncserver_port), '-shared', '-threads',
+                    '-viewonly'])
         # Running `xdg-screensaver reset` as root doesn't reset the D.E.
         # screensaver, so send the reset command to both epoptes processes
         self.exec_on_selected_clients(
