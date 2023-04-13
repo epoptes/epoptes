@@ -197,10 +197,27 @@ if [ -z "$LANG" ] && [ -r /etc/default/locale ]; then
 fi
 
 basic_info
-# The configuration file overrides the default values
+
+# Configuration files can be placed into /etc/default/epoptes-client.d/ and
+# /etc/default/epoptes-client to override hard-coded defaults.
+#
+# /etc/default/epoptes-client.d/ is meant to be used by package maintainers
+# whereas /etc/default/epopte-client is supposed to be controlled by the site
+# admin.
+#
+# /etc/default/epoptes-client.d/ can be used by package maintainers for dropping
+# in files that are to influence the defaults of epoptes-client. Note that settings
+# set via /etc/default/epoptes-client have precedence over files in
+# /etc/default/epoptes-client.d/.
+
+if [ -d /etc/default/epoptes-client.d/ ]; then
+    eval $( run-parts --list /etc/default/epoptes-client.d | while read file; do echo . "$file;"; done )
+fi
+
 if [ -f /etc/default/epoptes-client ]; then
     . /etc/default/epoptes-client
 fi
+
 # And the command line parameters override the configuration file
 export "SERVER=${1:-$SERVER}"
 export "PORT=${2:-$PORT}"
