@@ -1,9 +1,50 @@
-# Epoptes
+# GSoC 2023 - Epoptes improvements
 
-Epoptes ([Επόπτης](https://github.com/epoptes/epoptes.org/blob/main/epoptes.mp3?raw=true) - a Greek word for overseer) is an [open source](https://gplv3.fsf.org) computer lab management and monitoring tool. It allows for screen broadcasting and monitoring, remote command execution, message sending, imposing restrictions like screen locking or sound muting the clients and much more!
+This repository is a [fork](https://github.com/epoptes/epoptes/pull/191) of [Epoptes](https://epoptes.org), an [open source](https://gplv3.fsf.org) computer lab management and monitoring tool.
 
-It can be installed in [Ubuntu](https://packages.ubuntu.com/epoptes), [Debian](https://packages.debian.org/epoptes) and [openSUSE](https://software.opensuse.org/package/epoptes) based labs that may contain any combination of the following: [LTSP](https://ltsp.org) servers, thin and fat clients, standalone (non-LTSP) servers or workstations, [FreeRDP](https://www.freerdp.com/) or [X2Go](https://wiki.x2go.org) clients etc. It has been translated into more than [40 languages](https://translations.launchpad.net/epoptes) and it's being used in many installations all around the world.
+During Google Summer of Code 2023, [Epoptes
+Improvements](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2023_proposed_ideas#Epoptes_improvements)
+was accepted as one of the project ideas of the the [Open Technologies Alliance
+(GFOSS)](https://summerofcode.withgoogle.com/programs/2023/organizations/open-technologies-alliance-gfoss)
+organization. Many thanks to both Google and GSoC for supporting open source
+development!
 
-Epoptes website: [https://epoptes.org](https://epoptes.org)
+The project goals are:
 
-![Main window](https://github.com/epoptes/epoptes.org/blob/main/epoptes.png?raw=true)
+- Make Epoptes available on more Linux distributions.
+- Support screen sharing on Wayland.
+- Drop the session service and keep only the system epoptes-client service.
+- Use systemd socket activation and autorestart.
+- Improve its firewall compatibility.
+
+The current page tracks the development progress.
+
+## Preliminary work
+
+As part of the GSoC proposal, I submitted the following pull request on github:
+
+- [Support screen broadcasting on Wayland/GNOME (PR #191)](https://github.com/epoptes/epoptes/pull/191)
+
+The Linux desktop environments are migrating from X11 to Wayland, but most of
+the existing screen sharing applications don’t work on Wayland yet; that
+includes x11vnc, the tool that Epoptes is currently using. On Wayland/GNOME,
+gnome-remote-desktop should be utilized instead, but in an automated manner. A
+`vnc-wayland` shell script was developed that uses the
+[grdctl](https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/blob/master/man/grdctl.txt)
+gnome- remote-desktop control utility to facilitate screen broadcasting from
+the Epoptes gui.py interface. The appropriate gui.py modifications were also
+submitted as part of the pull request. The end result is that the screen
+broadcasting button now functions the same way under Wayland/GNOME as it does
+under Xorg.
+
+## First coding period (May 29 - July 10)
+
+The goals of the first coding period are:
+
+- Make Epoptes available on more Linux distributions.
+- Support screen sharing on Wayland.
+
+### 2023-05-29
+
+- Create the development progress page.
+- Study the [existing Debian packaging](https://github.com/epoptes/epoptes/tree/main/debian).
