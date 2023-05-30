@@ -48,3 +48,7 @@ The goals of the first coding period are:
 
 - Create the development progress page.
 - Study the [existing Debian packaging](https://github.com/epoptes/epoptes/tree/main/debian).
+
+### 2023-05-30
+
+- Study the [RPM Packaging Guide](https://rpm-packaging-guide.github.io/).
