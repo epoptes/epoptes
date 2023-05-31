@@ -1,6 +1,8 @@
 # GSoC 2023 - Epoptes improvements
 
-This repository is a [fork](https://github.com/epoptes/epoptes/pull/191) of [Epoptes](https://epoptes.org), an [open source](https://gplv3.fsf.org) computer lab management and monitoring tool.
+This repository is a [fork](https://github.com/epoptes/epoptes/pull/191) of
+[Epoptes](https://epoptes.org), an [open source](https://gplv3.fsf.org)
+computer lab management and monitoring tool.
 
 During Google Summer of Code 2023, [Epoptes
 Improvements](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2023_proposed_ideas#Epoptes_improvements)
@@ -23,7 +25,8 @@ The current page tracks the development progress.
 
 As part of the GSoC proposal, I submitted the following pull request on github:
 
-- [Support screen broadcasting on Wayland/GNOME (PR #191)](https://github.com/epoptes/epoptes/pull/191)
+- [Support screen broadcasting on Wayland/GNOME (PR
+  #191)](https://github.com/epoptes/epoptes/pull/191)
 
 The Linux desktop environments are migrating from X11 to Wayland, but most of
 the existing screen sharing applications don’t work on Wayland yet; that
@@ -47,8 +50,25 @@ The goals of the first coding period are:
 ### 2023-05-29
 
 - Create the development progress page.
-- Study the [existing Debian packaging](https://github.com/epoptes/epoptes/tree/main/debian).
+- Study the [existing Debian
+  packaging](https://github.com/epoptes/epoptes/tree/main/debian).
 
 ### 2023-05-30
 
-- Study the [RPM Packaging Guide](https://rpm-packaging-guide.github.io/).
+Study the [RPM Packaging Guide](https://rpm-packaging-guide.github.io/).
+
+### 2023-05-31
+
+Explore obsolete epoptes.spec and rpm versions from
+  [repology](https://repology.org/project/epoptes/versions):
+
+- [ALT Sisyphus](https://packages.altlinux.org/en/sisyphus/srpms/epoptes/) has
+  a somewhat maintained 22.01 version, but the resulting .rpm isn't installable
+  in Fedora 38 due to radically different dependencies.
+- [openSUSE](https://build.opensuse.org/package/show/Education/epoptes) offers
+  an ancient 0.5.9_bzr0.545.
+- rpmsphere claims to have a [21.02
+  version](https://github.com/rpmsphere/source/raw/master/e/epoptes-21.02-1.src.rpm).
+  But it's actually an unmaintained 0.5.x version that depends on the
+  deprecated and unavailable tightvnc and python2.7 packages, so it fails when
+  trying to install it.
