@@ -72,3 +72,7 @@ Explore obsolete epoptes.spec and rpm versions from
   But it's actually an unmaintained 0.5.x version that depends on the
   deprecated and unavailable tightvnc and python2.7 packages, so it fails when
   trying to install it.
+
+### 2023-06-01
+
+Study the [Python Packaging User Guide](https://packaging.python.org/en/latest/).
