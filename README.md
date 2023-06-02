@@ -73,6 +73,6 @@ Explore obsolete epoptes.spec and rpm versions from
   deprecated and unavailable tightvnc and python2.7 packages, so it fails when
   trying to install it.
 
-### 2023-06-01
+### 2023-06-01 / 2023-06-02
 
 Study the [Python Packaging User Guide](https://packaging.python.org/en/latest/).
