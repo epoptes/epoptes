@@ -76,3 +76,7 @@ Explore obsolete epoptes.spec and rpm versions from
 ### 2023-06-01 / 2023-06-02
 
 Study the [Python Packaging User Guide](https://packaging.python.org/en/latest/).
+
+### 2023-06-05
+
+First attempt at an epoptes.spec.
