@@ -6,6 +6,7 @@ Configuration file parser and other default configuration variables.
 TODO: change settings into a class.
 """
 import configparser
+import glob
 import json
 import os
 import shlex
@@ -167,8 +168,12 @@ def save_groups(filename, model):
         LOG.e(exc)
 
 
+system = {}
 # The system settings are shared with epoptes-client, that's why the caps.
-system = read_shell_file('/etc/default/epoptes')
+for fname in glob.glob('/etc/default/epoptes') + \
+        glob.glob('/etc/epoptes/common/*.conf') + \
+        glob.glob('/etc/epoptes/server/*.conf'):
+    system.update(read_shell_file(fname))
 # TODO: check if the types, e.g. PORT=int, may cause problems.
 system.setdefault('PORT', 789)
 system.setdefault('SOCKET_GROUP', 'epoptes')

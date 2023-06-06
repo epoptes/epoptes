@@ -80,3 +80,9 @@ Study the [Python Packaging User Guide](https://packaging.python.org/en/latest/)
 ### 2023-06-05
 
 First attempt at an epoptes.spec.
+
+### 2023-06-06
+
+Migrate configuration from the Debian-specific `/etc/default/epoptes-*` paths
+to the distro-agnostic `/etc/epoptes/common/*.conf`,
+`/etc/epoptes/server/*.conf` and `/etc/epoptes/client/*.conf` paths.

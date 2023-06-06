@@ -191,16 +191,22 @@ esac
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # When launched as a service, LANG might not be set.
-if [ -z "$LANG" ] && [ -r /etc/default/locale ]; then
-    . /etc/default/locale
-    export LANG
-fi
+for conf in /etc/default/locale /etc/locale.conf; do
+    if [ -z "$LANG" ] && [ -f "$conf" ]; then
+        . "$conf"
+        export LANG
+    fi
+done
 
 basic_info
-# The configuration file overrides the default values
-if [ -f /etc/default/epoptes-client ]; then
-    . /etc/default/epoptes-client
-fi
+# The configuration files override the default values
+for conf in /etc/default/epoptes-client \
+    /etc/epoptes/common/*.conf \
+    /etc/epoptes/client/*.conf; do
+    if [ -f "$conf" ]; then
+        . "$conf" || true
+    fi
+done
 # And the command line parameters override the configuration file
 export "SERVER=${1:-$SERVER}"
 export "PORT=${2:-$PORT}"

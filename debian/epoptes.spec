@@ -25,11 +25,11 @@ BuildRequires: intltool
 
 BuildArch:     noarch
 
-Requires: python3-module-pygobject3-pygtkcompat
-Requires: twisted-core-tools
-Requires: cert-sh-functions
-Requires: python3-module-service_identity
-Requires: python3-module-hamcrest
+Requires:      python3-module-pygobject3-pygtkcompat
+Requires:      twisted-core-tools
+Requires:      cert-sh-functions
+Requires:      python3-module-service_identity
+Requires:      python3-module-hamcrest
 
 %description
 Epoptes is an open source computer lab management and monitoring tool.
