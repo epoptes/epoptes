@@ -86,3 +86,20 @@ First attempt at an epoptes.spec.
 Migrate configuration from the Debian-specific `/etc/default/epoptes-*` paths
 to the distro-agnostic `/etc/epoptes/common/*.conf`,
 `/etc/epoptes/server/*.conf` and `/etc/epoptes/client/*.conf` paths.
+
+### 2023-06-07
+
+Generate initial rpm (non-working yet) on Fedora 38 by following some [online
+documentation](https://rogerwelin.github.io/rpm/rpmbuild/2015/04/04/rpmbuild-tutorial-part-1.html).
+Useful commands:
+
+    # Set up a development tree
+    rpmdev-setuptree
+    # Evaluate macros
+    rpm --eval %{_localstatedir}
+    # Show all definitions and marcos
+    rpm --showrc
+    # Download the sources of a spec file
+    spectool -gR rpmbuild/SPECS/epoptes.spec
+    # Build a binary package
+    rpmbuild -bb rpmbuild/SPECS/epoptes.spec
