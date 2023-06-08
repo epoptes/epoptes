@@ -93,6 +93,8 @@ Generate initial rpm (non-working yet) on Fedora 38 by following some [online
 documentation](https://rogerwelin.github.io/rpm/rpmbuild/2015/04/04/rpmbuild-tutorial-part-1.html).
 Useful commands:
 
+    # Install development packages
+    sudo yum install -y rpmdevtools rpmlint
     # Set up a development tree
     rpmdev-setuptree
     # Evaluate macros
@@ -100,6 +102,28 @@ Useful commands:
     # Show all definitions and marcos
     rpm --showrc
     # Download the sources of a spec file
-    spectool -gR rpmbuild/SPECS/epoptes.spec
-    # Build a binary package
-    rpmbuild -bb rpmbuild/SPECS/epoptes.spec
+    spectool -gR ~/rpmbuild/SPECS/epoptes.spec
+    # Download build dependencies
+    sudo yum builddep ~/rpmbuild/SPECS/epoptes.spec
+    # Build binary packages
+    rpmbuild -bb ~/rpmbuild/SPECS/epoptes.spec
+
+### 2023-06-08
+
+Make the epoptes-client rpm package function properly. Useful commands for
+comparison with the deb package:
+
+    # List files in an rpm package
+    rpm -qlp ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
+    # Install a local rpm package
+    sudo yum localinstall ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
+
+Fedora controls which services are automatically enabled by system-preset
+files. For epoptes-client.service, this isn't a problem; it will be enabled
+when the sysadmin runs `epoptes-client -c`. But for epoptes.service, we'll
+either need to document `systemctl enable epoptes`, or ship a systemd-preset
+file. Links for handling systemd services in .spec files:
+
+- https://fedoraproject.org/wiki/Packaging:Systemd#Filesystem_locations
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/Scriptlets/#_systemd
+- https://docs.fedoraproject.org/en-US/packaging-guidelines/DefaultServices/#_how_to_enable_a_service_by_default
