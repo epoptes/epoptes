@@ -38,6 +38,7 @@ install() {
     fi
 
     if ! [ -f /etc/epoptes/server.key ] || ! [ -f /etc/epoptes/server.crt ]; then
+        mkdir -p /etc/epoptes
         # openssl leaves an .rnd file causing a lintian warning (bug #750099).
         tmphome=$(mktemp -d)
         # Generate a certificate that is valid since the Epoch,

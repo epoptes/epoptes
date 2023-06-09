@@ -127,3 +127,18 @@ file. Links for handling systemd services in .spec files:
 - https://fedoraproject.org/wiki/Packaging:Systemd#Filesystem_locations
 - https://docs.fedoraproject.org/en-US/packaging-guidelines/Scriptlets/#_systemd
 - https://docs.fedoraproject.org/en-US/packaging-guidelines/DefaultServices/#_how_to_enable_a_service_by_default
+
+### 2023-06-09
+
+First barely-working epoptes.rpm. Some pending issues:
+
+- Allow 789 port in firewall.
+- Properly call `epoptes.postinst configure` on `%post`.
+- `Execute > Open terminal > Root, locally` doesn't work; while `User, locally` works.
+
+Commands that need to be manually run:
+
+    sudo systemctl stop firewalld
+    sudo systemctl enable epoptes
+    sudo systemctl start epoptes
+    sudo gpasswd -a administrator epoptes

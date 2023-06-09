@@ -15,11 +15,19 @@ BuildRequires: python3-distutils-extra
 BuildRequires: systemd
 BuildRequires: systemd-rpm-macros
 Requires:      libfaketime
+Requires:      openssl
 Requires:      python3-twisted
 Requires:      socat
 Recommends:    epoptes-client
+Recommends:    iperf
 Recommends:    python3-gobject-base-noarch
+Recommends:    python3-netifaces
+Recommends:    screen
+Recommends:    tigervnc
 Recommends:    x11vnc
+Recommends:    xset
+Recommends:    xterm
+Recommends:    xwininfo
 BuildArch:     noarch
 
 %description
@@ -84,13 +92,15 @@ Contains the client daemon and some utilities for getting screenshots etc.
 %__python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
 %find_lang %{name}
 
-install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}.service  %{buildroot}%{_unitdir}/%{name}.service
+install -pD -m755 %{_builddir}/%{name}-%{version}/debian/%{name}.postinst %{buildroot}%{_datadir}/%{name}/%{name}.postinst
+install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+sed 's/twistd3/twistd-3/' -i %{buildroot}%{_unitdir}/%{name}.service
 install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}-client.service  %{buildroot}%{_unitdir}/%{name}-client.service
 rm -f %{buildroot}/%{_docdir}/%{name}/README.md
 
 %post
-getent group epoptes >/dev/null || groupadd -f -r epoptes
 %systemd_post %{name}.service
+/usr/share/epoptes/epoptes.postinst configure
 
 %preun
 %systemd_preun %{name}.service
