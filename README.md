@@ -102,7 +102,7 @@ Useful commands:
     # Show all definitions and marcos
     rpm --showrc
     # Download the sources of a spec file
-    spectool -gR ~/rpmbuild/SPECS/epoptes.spec
+    spectool -g -R ~/rpmbuild/SPECS/epoptes.spec
     # Download build dependencies
     sudo yum builddep ~/rpmbuild/SPECS/epoptes.spec
     # Build binary packages
@@ -117,6 +117,8 @@ comparison with the deb package:
     rpm -qlp ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
     # Install a local rpm package
     sudo yum localinstall ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
+    # For servers/console installations, use:
+    sudo yum localinstall --setopt=install_weak_deps=False ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
 
 Fedora controls which services are automatically enabled by system-preset
 files. For epoptes-client.service, this isn't a problem; it will be enabled
@@ -142,3 +144,7 @@ Commands that need to be manually run:
     sudo systemctl enable epoptes
     sudo systemctl start epoptes
     sudo gpasswd -a administrator epoptes
+
+### 2023-06-12
+
+Download CentOS Linux, install it in VirtualBox and test epoptes-client there.
