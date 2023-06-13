@@ -55,10 +55,10 @@ It supports LTSP installations, but it also works without LTSP.
 Summary:       Computer lab management tool (client)
 Summary(el_GR.UTF-8): Λογισμικό διαχείρισης εργαστηρίου υπολογιστών (πελάτης)
 Group:         Networking/Remote access
+Requires:      iperf
 Requires:      openssl
+Requires:      screen
 Requires:      socat
-Recommends:    iperf
-Recommends:    screen
 Recommends:    tigervnc
 Recommends:    x11vnc
 Recommends:    xset

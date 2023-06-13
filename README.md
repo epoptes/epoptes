@@ -147,4 +147,13 @@ Commands that need to be manually run:
 
 ### 2023-06-12
 
-Download CentOS Linux, install it in VirtualBox and test epoptes-client there.
+Download CentOS Linux, install it in VirtualBox and test epoptes-client.rpm.
+
+### 2023-06-13
+
+Download CentOS Stream, install it in VirtualBox and test epoptes-client.rpm.
+Update weak dependencies for server installations. For `screen` and `iperf` to
+be available, CentOS also needs the [EPEL
+repository](https://docs.fedoraproject.org/en-US/epel/):
+
+    sudo yum install -y epel-release
