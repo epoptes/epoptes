@@ -114,11 +114,11 @@ Make the epoptes-client rpm package function properly. Useful commands for
 comparison with the deb package:
 
     # List files in an rpm package
-    rpm -qlp ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
+    rpm -qlp epoptes-client-*.noarch.rpm
     # Install a local rpm package
-    sudo yum localinstall ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
+    sudo yum localinstall epoptes-client-*.noarch.rpm
     # For servers/console installations, use:
-    sudo yum localinstall --setopt=install_weak_deps=False ~/rpmbuild/RPMS/noarch/epoptes-client-main-1.noarch.rpm
+    sudo yum localinstall --setopt=install_weak_deps=False epoptes-client-*.noarch.rpm
 
 Fedora controls which services are automatically enabled by system-preset
 files. For epoptes-client.service, this isn't a problem; it will be enabled
@@ -157,3 +157,10 @@ be available, CentOS also needs the [EPEL
 repository](https://docs.fedoraproject.org/en-US/epel/):
 
     sudo yum install -y epel-release
+
+### 2023-06-14
+
+Download Sangoma Linux, install it in VirtualBox and test epoptes-client.rpm.
+It appears that the console-focused epoptes-client functions (not the GUI ones)
+run fine even on distributions that ship with very old software! Sangoma Linux
+is based on CentOS 7, uses Python 2.7.5 and the 3.10 Linux kenrel.
