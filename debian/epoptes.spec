@@ -1,6 +1,7 @@
+%define build_timestamp %(date +"%%Y%%m%%d")
 Name:          epoptes
 Version:       main
-Release:       1
+Release:       %{build_timestamp}%{?dist}
 Summary:       Computer lab management tool
 Summary(el_GR.UTF-8): Λογισμικό διαχείρισης εργαστηρίου υπολογιστών
 License:       GPLv3
