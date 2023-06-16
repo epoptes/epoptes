@@ -174,3 +174,13 @@ and new rpm-based distributions.
 
 Modify epoptes.spec to use the current date as the release number during GSoC.
 This will be restored before the PR is merged upstream.
+
+### 2023-06-16
+
+Download openSUSE Leap, install it in VirtualBox and test building, installing
+and running epoptes-client.rpm. A lot of tools such as `rpmbuild` were missing,
+as [openSUSE Build Service](https://openbuildservice.org) is endorsed instead.
+So the "building" part didn't go well, but the "installing" and "running" parts
+were fine. To avoid rpm signature checking, the necessary command was:
+
+    zypper install --no-recommends --allow-unsigned-rpm epoptes-client-*.rpm
