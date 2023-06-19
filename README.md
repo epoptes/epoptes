@@ -184,3 +184,12 @@ So the "building" part didn't go well, but the "installing" and "running" parts
 were fine. To avoid rpm signature checking, the necessary command was:
 
     zypper install --no-recommends --allow-unsigned-rpm epoptes-client-*.rpm
+
+### 2023-06-19
+
+Research how to declare firewall exceptions and create epoptes-firewalld.xml.
+Relevant links:
+
+- https://firewalld.org/documentation/howto/add-a-service.html
+- http://git.gluster.org/cgit/glusterfs.git/commit/?id=7f327d3b4f9222995d2ee78862e48ca44c28411c
+- https://stackoverflow.com/questions/72399466/using-newly-added-firewall-service-in-rpm-spec-script-fails
