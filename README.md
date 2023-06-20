@@ -193,3 +193,7 @@ Relevant links:
 - https://firewalld.org/documentation/howto/add-a-service.html
 - http://git.gluster.org/cgit/glusterfs.git/commit/?id=7f327d3b4f9222995d2ee78862e48ca44c28411c
 - https://stackoverflow.com/questions/72399466/using-newly-added-firewall-service-in-rpm-spec-script-fails
+
+### 2023-06-20
+
+Update epoptes.postinst and epoptes.spec for firewalld support.

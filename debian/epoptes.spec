@@ -95,13 +95,20 @@ Contains the client daemon and some utilities for getting screenshots etc.
 
 install -pD -m755 %{_builddir}/%{name}-%{version}/debian/%{name}.postinst %{buildroot}%{_datadir}/%{name}/%{name}.postinst
 install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+mkdir -p %{buildroot}%{_sysconfdir}/firewalld/services/
+install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}-firewalld.xml %{buildroot}%{_sysconfdir}/firewalld/services/
 sed 's/twistd3/twistd-3/' -i %{buildroot}%{_unitdir}/%{name}.service
 install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}-client.service  %{buildroot}%{_unitdir}/%{name}-client.service
 rm -f %{buildroot}/%{_docdir}/%{name}/README.md
 
 %post
 %systemd_post %{name}.service
-/usr/share/epoptes/epoptes.postinst configure
+if [ "$1" == 1 ]
+then
+    # First time install, see
+    # https://docs.fedoraproject.org/en-US/packaging-guidelines/Scriptlets/#_syntax
+    /usr/share/epoptes/epoptes.postinst configure
+fi
 
 %preun
 %systemd_preun %{name}.service
@@ -119,6 +126,7 @@ rm -f %{buildroot}/%{_docdir}/%{name}/README.md
 %{_mandir}/man1/%{name}.1.*
 %{python3_sitelib}/*
 %{_unitdir}/%{name}.service
+%{_sysconfdir}/firewalld/services/*
 
 %post client
 %systemd_post %{name}-client.service

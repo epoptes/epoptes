@@ -59,6 +59,13 @@ Please ensure that you transfer /etc/epoptes/server.crt
 to your clients by issuing `epoptes-client -c` from your
 regular workstations or from your LTSP chroots.' >&2
     fi
+    # Support firewalld, mainly on Fedora
+    if command -v firewall-cmd >/dev/null; then
+        defzone=$(firewall-cmd --get-default-zone)
+        firewall-cmd --reload --quiet
+        firewall-cmd --permanent --zone="$defzone" --add-service=epoptes-firewalld
+        firewall-cmd --reload --quiet
+    fi
 }
 
 case "$1" in
