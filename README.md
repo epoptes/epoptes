@@ -197,3 +197,13 @@ Relevant links:
 ### 2023-06-20
 
 Update epoptes.postinst and epoptes.spec for firewalld support.
+
+### 2023-06-21
+
+- Test Fedora epoptes server with Raspberry Pi OS epoptes-client. Using the
+  Xorg session to avoid Wayland issues for now.
+- Network benchmark didn't work; added port 5001 for iperf in
+  epoptes-firewalld.xml.
+- Controlling the client screen was blocked by the firewall due to the random
+  port selection of the `find_unused_port` function. It will need to be updated
+  to try sequential ports.
