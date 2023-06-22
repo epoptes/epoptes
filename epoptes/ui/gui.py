@@ -265,20 +265,24 @@ class EpoptesGui(object):
         return self.daemon.command(handle, command)
 
     @staticmethod
-    def find_unused_port():
-        """Find an unused port."""
-        sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sck.bind(('', 0))
-        sck.listen(1)
-        port = sck.getsockname()[1]
-        sck.close()
-        return port
+    def find_unused_port(start, step=1):
+        """Find an unused port; sequentially, for firewall compatibility"""
+        port = start
+        while port > 0 and port < 65535:
+            sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                sck.bind(('', port))
+                sck.close()
+                return port
+            except:
+                port += step
+        raise RuntimeError('Cannot find_unused_port(%d, %d)' % (start, step))
 
     def reverse_connection(self, cmd, *args):
         """Helper function for on_imi_broadcasts_*_activate."""
         # Open vncviewer in listen mode
         if self.vncviewer is None or self.vncviewer.poll() is not None:
-            self.vncviewer_port = self.find_unused_port()
+            self.vncviewer_port = self.find_unused_port(5500)
             if os.path.isfile('/usr/share/applications/realvnc-vncviewer.desktop'):
                 viewer = 'realvnc-vnc-viewer'
             elif os.path.isfile('/usr/bin/ssvncviewer'):
@@ -343,7 +347,7 @@ class EpoptesGui(object):
                 self.vncserver_port = 5900
                 self.vncserver = subprocess.Popen(['./vnc-wayland', pwd])
             else:
-                self.vncserver_port = self.find_unused_port()
+                self.vncserver_port = self.find_unused_port(5900)
                 self.vncserver = subprocess.Popen(
                     ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
                     '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
@@ -407,7 +411,7 @@ class EpoptesGui(object):
             inst = client[C_INSTANCE]
             if inst.type == 'offline':
                 continue
-            port = self.find_unused_port()
+            port = self.find_unused_port(5499, -1)
             user = '--'
             if e_m == EM_SESSION and client[C_SESSION_HANDLE]:
                 user = inst.users[client[C_SESSION_HANDLE]]['uname']

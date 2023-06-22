@@ -207,3 +207,8 @@ Update epoptes.postinst and epoptes.spec for firewalld support.
 - Controlling the client screen was blocked by the firewall due to the random
   port selection of the `find_unused_port` function. It will need to be updated
   to try sequential ports.
+
+### 2023-06-22
+
+Update the `find_unused_port` function to search for free ports sequentially,
+for better firewall compatibility.
