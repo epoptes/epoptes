@@ -212,3 +212,8 @@ Update epoptes.postinst and epoptes.spec for firewalld support.
 
 Update the `find_unused_port` function to search for free ports sequentially,
 for better firewall compatibility.
+
+### 2023-06-23
+
+Install Manjaro Linux in VirtualBox. Ready about the [pacman package
+manager](https://wiki.archlinux.org/title/pacman).
