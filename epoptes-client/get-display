@@ -63,7 +63,7 @@ for p in $(pgrep -x 'ldm|lightdm-greeter|dbus-daemon|dconf-service|pulseaudio' |
 do
     # The first DISPLAY= is only there to prevent a possible syntax error
     export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
-        egrep '^DISPLAY=|^XAUTHORITY=')
+        grep -E '^DISPLAY=|^XAUTHORITY=')
     exit_if_found
 done
 
@@ -71,7 +71,7 @@ done
 for p in $(pgrep '' | sort -rn); do
     # The first DISPLAY= is only there to prevent a possible syntax error
     export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
-        egrep '^DISPLAY=|^XAUTHORITY=')
+        grep -E '^DISPLAY=|^XAUTHORITY=')
     exit_if_found
 done
 

@@ -217,3 +217,11 @@ for better firewall compatibility.
 
 Install Manjaro Linux in VirtualBox. Ready about the [pacman package
 manager](https://wiki.archlinux.org/title/pacman).
+
+### 2023-06-26
+
+- Install epoptes-client in Manjaro by following [these
+  instructions](https://github.com/epoptes/epoptes/issues/141#issuecomment-930264557).
+  The only required change was to replace `python3.10` with `python3.11`.
+- Replace `egrep` with `grep -E` to avoid warning `egrep: warning: egrep is
+  obsolescent; using grep -E`.
