@@ -51,7 +51,7 @@ ensure_display() {
     local vars
 
     test "$UID" -eq 0 || return 0
-    if timeout 1 xwininfo -root -size >/dev/null 2>&1; then
+    if timeout 1 xprop -root EPOPTES_CLIENT >/dev/null 2>&1; then
         return 0
     elif vars=$(./get-display); then
         export $vars

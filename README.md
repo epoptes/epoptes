@@ -225,3 +225,9 @@ manager](https://wiki.archlinux.org/title/pacman).
   The only required change was to replace `python3.10` with `python3.11`.
 - Replace `egrep` with `grep -E` to avoid warning `egrep: warning: egrep is
   obsolescent; using grep -E`.
+
+### 2023-06-27
+
+In Manjaro, functions that relied on `get-display` such as screen broadcasting
+were broken due to a missing xwininfo dependency. Instead of adding the
+dependency in the PKGBUILD file, replace it with xprop which is preinstalled.

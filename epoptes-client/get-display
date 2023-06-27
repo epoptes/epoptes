@@ -22,7 +22,7 @@ exit_if_found() {
     test -n "$DISPLAY" || return
     export DISPLAY XAUTHORITY
     test -n "$XAUTHORITY" || unset XAUTHORITY
-    if timeout 1 xwininfo -root -size >/dev/null 2>&1; then
+    if timeout 1 xprop -root EPOPTES_CLIENT >/dev/null 2>&1; then
         echo "DISPLAY=$DISPLAY"
         test -n "$XAUTHORITY" && echo "XAUTHORITY=$XAUTHORITY"
         exit 0

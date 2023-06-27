@@ -28,7 +28,6 @@ Recommends:    tigervnc
 Recommends:    x11vnc
 Recommends:    xset
 Recommends:    xterm
-Recommends:    xwininfo
 BuildArch:     noarch
 
 %description
@@ -63,7 +62,6 @@ Requires:      socat
 Recommends:    tigervnc
 Recommends:    x11vnc
 Recommends:    xset
-Recommends:    xwininfo
 BuildArch:     noarch
 
 %description client
