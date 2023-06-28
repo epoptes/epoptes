@@ -284,9 +284,10 @@ lock_screen() {
     unlock_screen
     # TODO: remove compatibility fallback after a few versions
     if [ -f "./lock_screen.py" ]; then
-        pid=$(background -p ./lock_screen.py "$2")
+        pid=$(background -p exec ./lock_screen.py "$2")
     else
-        pid=$(background -p ./lock-screen "$2")
+        # exec is needed to return the correct pid when /bin/sh -> bash
+        pid=$(background -p exec ./lock-screen "$2")
     fi
     xprop_set EPOPTES_LOCK_SCREEN_PID "$pid"
 }
@@ -345,7 +346,8 @@ start_benchmark() {
 # $2 = seconds to run.
 stop_start_benchmark() {
     test -n "$benchmark_pid" && stop_benchmark "$benchmark_pid"
-    iperf -c "$1" --full-duplex ${1:+-t "$2"}
+    # exec is needed to return the correct pid when /bin/sh -> bash
+    exec iperf -c "$1" --full-duplex ${1:+-t "$2"}
 }
 
 # Manually stop a previously running benchmark.

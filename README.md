@@ -228,6 +228,14 @@ manager](https://wiki.archlinux.org/title/pacman).
 
 ### 2023-06-27
 
-In Manjaro, functions that relied on `get-display` such as screen broadcasting
+On Manjaro, functions that relied on `get-display` such as screen broadcasting
 were broken due to a missing xwininfo dependency. Instead of adding the
 dependency in the PKGBUILD file, replace it with xprop which is preinstalled.
+
+### 2023-06-28
+
+Screen locking on Manjaro worked fine, but unlocking didn't. After a lot of
+debugging, this was pinpointed in the `client-functions > background`
+function, which returned the wrong pid when /bin/sh was a symlink to bash.
+Prefixing the call to `./lock-screen` with `exec` returned the correct pid.
+This was also added in `start_stop_benchmark`, to properly kill `iperf`.
