@@ -239,3 +239,13 @@ debugging, this was pinpointed in the `client-functions > background`
 function, which returned the wrong pid when /bin/sh was a symlink to bash.
 Prefixing the call to `./lock-screen` with `exec` returned the correct pid.
 This was also added in `start_stop_benchmark`, to properly kill `iperf`.
+
+### 2023-06-29
+
+Test epoptes (server) on Manjaro. The service had to be activated manually, but
+other than that, everything worked fine! So leaving the maintenance of the
+[PKGBUILD file](https://aur.archlinux.org/pkgbase/epoptes-client) to the hands
+of the AUR community seems to be a proper approach.
+
+Additionally, install ArchLinux in VirtualBox and test epoptes there. Things
+were pretty much the same as on Manjaro.
