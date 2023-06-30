@@ -249,3 +249,9 @@ of the AUR community seems to be a proper approach.
 
 Additionally, install ArchLinux in VirtualBox and test epoptes there. Things
 were pretty much the same as on Manjaro.
+
+### 2023-06-30
+
+Install Ubuntu Mantic 23.10 daily build in VirtualBox for both the GNOME and
+KDE environments. It's best to test in bleeding-edge versions, as support for
+Wayland is still work in progress, especially for KDE.
