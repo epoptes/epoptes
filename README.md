@@ -255,3 +255,21 @@ were pretty much the same as on Manjaro.
 Install Ubuntu Mantic 23.10 daily build in VirtualBox for both the GNOME and
 KDE environments. It's best to test in bleeding-edge versions, as support for
 Wayland is still work in progress, especially for KDE.
+
+### 2023-07-03
+
+Create special .deb build for testing on .deb-based distributions. Test on
+mantic-kde/Xorg. Everything appears to work except for the following warning
+when broadcasting the teacher screen:
+
+    /usr/bin/xdg-screensaver: 859: dcop: not found
+
+I was able to reproduce that warning by running the following commands:
+
+    sudo -i
+    # export KDE_SESSION_VERSION=5
+    xdg-screensaver reset
+
+While if I uncomment the second command, the warning goes away. It looks like
+when xdg-screensaver runs as root, the KDE_SESSION_VERSION variable isn't
+available so it wrongly assumes it's KDE version 3.
