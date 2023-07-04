@@ -273,3 +273,33 @@ I was able to reproduce that warning by running the following commands:
 While if I uncomment the second command, the warning goes away. It looks like
 when xdg-screensaver runs as root, the KDE_SESSION_VERSION variable isn't
 available so it wrongly assumes it's KDE version 3.
+
+### 2023-07-04
+
+Test on mantic-kde/Wayland. The following issues were discovered:
+
+- As anticipated, the thumbshots functionality is broken. Fortunately the
+  `spectacle -bno filename.png` command makes it possible to get a screenshot
+  in half a second without involving or notifying the user; perhaps we can use
+  it to get e.g. one thumbshot per minute.
+- Screen locking covers the screen, but doesn't prevent Alt+F4 or Alt+Tab to
+  switch to another application. This is expected as keyboard grabbing isn't
+  permitted on Wayland.
+- Finally, assisting or monitoring the user isn't possible and it looks like
+  there's no workaround available yet.
+
+I installed the KDE screen sharing utility with `apt install krfb`. I ran it from a terminal and it asked me:
+
+> Remote control requested. Konsole requested accesss to remotely control:
+>
+> - Screens
+> - Input devices
+
+To avoid seeing `Konsole` there, I ran it again from `Alt+F2` and it correctly
+mentioned `krfb`. I OK'ed the dialog and I configured unsupervised access with
+a certain password. Then I tried to connect there using `xvnc4viewer`,
+`realvnc-viewer`, and `tigervnc-viewer`. In all these cases I only saw a black
+screen. I was able to send remote keyboard and mouse events, but in no cases
+was I able to see the mantic-kde/Wayland screen. So if it's not possible using
+the integrated KDE tools, I doubt any external application will be able to do
+it.
