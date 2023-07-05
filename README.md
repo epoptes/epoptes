@@ -34,7 +34,7 @@ includes x11vnc, the tool that Epoptes is currently using. On Wayland/GNOME,
 gnome-remote-desktop should be utilized instead, but in an automated manner. A
 `vnc-wayland` shell script was developed that uses the
 [grdctl](https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/blob/master/man/grdctl.txt)
-gnome- remote-desktop control utility to facilitate screen broadcasting from
+gnome-remote-desktop control utility to facilitate screen broadcasting from
 the Epoptes gui.py interface. The appropriate gui.py modifications were also
 submitted as part of the pull request. The end result is that the screen
 broadcasting button now functions the same way under Wayland/GNOME as it does
@@ -303,3 +303,14 @@ screen. I was able to send remote keyboard and mouse events, but in no cases
 was I able to see the mantic-kde/Wayland screen. So if it's not possible using
 the integrated KDE tools, I doubt any external application will be able to do
 it.
+
+### 2023-07-05
+
+Test on mantic-gnome/Wayland. The following issues were discovered:
+
+- The thumbshots functionality is broken with no workaround available.
+- Screen locking covers the screen, but doesn't prevent Alt+F4 or Alt+Tab to
+  switch to another application. This is expected as keyboard grabbing isn't
+  permitted on Wayland.
+- Finally, assisting or monitoring the user doesn't work even with the
+  `vnc-wayland` script. Will investigate more.
