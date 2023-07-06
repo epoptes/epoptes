@@ -314,3 +314,25 @@ Test on mantic-gnome/Wayland. The following issues were discovered:
   permitted on Wayland.
 - Finally, assisting or monitoring the user doesn't work even with the
   `vnc-wayland` script. Will investigate more.
+
+### 2023-07-06
+
+In the preliminary work period of GSoC, a
+[vnc-wayland](https://github.com/eltoukos/epoptes/blob/3ab9c8c33a85884f0889a65c856bce218bc42067/data/vnc-wayland)
+shell script was developed, that invoked `grdctl` to configure screen sharing
+using the internal GNOME VNC implementation. Unfortunately, upstream GNOME
+[marked the VNC implementation as
+"legacy"](https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/commit/55ce55afa1ddb502d4c8e13ae813f348d5f76402),
+and [Ubuntu ended up completely removing
+it](https://bugs.launchpad.net/ubuntu/+source/gnome-remote-desktop/+bug/1987159)
+at build time. [This askubuntu
+question](https://askubuntu.com/questions/1469028/gnome-screen-sharing-vnc-23-04)
+nicely summarizes what has transpired.
+
+This means that we must accept that Epoptes, [like
+Veyon](https://github.com/veyon/veyon/issues/860#issuecomment-1511024726), will
+not support screen sharing in Wayland sessions. The only way to do that on
+GNOME currently would be to use the RDP backend, but the client-side RDP tools
+aren't suitable for "screen broadcasting" automation.
+
+Droping the vnc-wayland script.
