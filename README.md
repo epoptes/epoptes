@@ -336,3 +336,8 @@ GNOME currently would be to use the RDP backend, but the client-side RDP tools
 aren't suitable for "screen broadcasting" automation.
 
 Droping the vnc-wayland script.
+
+### 2023-07-07
+
+When users try to broadcast their screen on Wayland, notify them it's not yet
+supported.

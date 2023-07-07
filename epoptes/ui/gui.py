@@ -329,9 +329,9 @@ class EpoptesGui(object):
         """Helper function for on_imi_broadcasts_broadcast_screen*_activate."""
         if self.vncserver is None:
             # wayland, x11, tty
-            xst=os.getenv('XDG_SESSION_TYPE', '')
-            # ubuntu:GNOME
-            xcd=os.getenv('XDG_CURRENT_DESKTOP', '')
+            if os.getenv('XDG_SESSION_TYPE', '') == 'wayland':
+                self.warning_dialog("Screen broadcasting isn't supported on Wayland")
+                return
             # https://tigervnc.org/doc/vncpasswd.html
             # ...only the first eight characters are significant
             pwd = ''.join(random.sample(
@@ -343,16 +343,12 @@ class EpoptesGui(object):
                 pwdcrypted = file.read()
             # Octal-escaped crypted password, needed by VNC clients
             self.vncserver_pwd = ''.join('\\%o' % c for c in pwdcrypted)
-            if xst == 'wayland':
-                self.vncserver_port = 5900
-                self.vncserver = subprocess.Popen(['./vnc-wayland', pwd])
-            else:
-                self.vncserver_port = self.find_unused_port(5900)
-                self.vncserver = subprocess.Popen(
-                    ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
-                    '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
-                    '-rfbport', str(self.vncserver_port), '-shared', '-threads',
-                    '-viewonly'])
+            self.vncserver_port = self.find_unused_port(5900)
+            self.vncserver = subprocess.Popen(
+                ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
+                '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
+                '-rfbport', str(self.vncserver_port), '-shared', '-threads',
+                '-viewonly'])
         # Running `xdg-screensaver reset` as root doesn't reset the D.E.
         # screensaver, so send the reset command to both epoptes processes
         self.exec_on_selected_clients(
