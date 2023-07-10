@@ -341,3 +341,14 @@ Droping the vnc-wayland script.
 
 When users try to broadcast their screen on Wayland, notify them it's not yet
 supported.
+
+### 2023-07-10
+
+Test epoptes on Ubuntu while enabling the ufw firewall as follows:
+
+    ufw enable
+    ufw allow 789/tcp comment "Epoptes daemon"
+    ufw allow 5001/tcp comment "Epoptes network benchmark using iperf"
+    ufw allow 5490-5510/tcp comment "Epoptes reverse VNC and terminal sharing"
+    ufw allow 5900-5920/tcp comment "Epoptes VNC-based screen broadcasting"
+    ufw status verbose
