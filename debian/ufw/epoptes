@@ -1,0 +1,4 @@
+[epoptes]
+title=epoptes
+description=Computer lab management tool
+ports=789,5001,5490:5510,5900:5920/tcp

@@ -352,3 +352,12 @@ Test epoptes on Ubuntu while enabling the ufw firewall as follows:
     ufw allow 5490-5510/tcp comment "Epoptes reverse VNC and terminal sharing"
     ufw allow 5900-5920/tcp comment "Epoptes VNC-based screen broadcasting"
     ufw status verbose
+
+### 2023-07-11
+
+Create and package appropriate ufw profiles so that it's possible to whitelist
+epoptes by doing the following:
+
+    ufw enable
+    ufw enable epoptes
+    ufw status verbose
