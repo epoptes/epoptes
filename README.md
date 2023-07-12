@@ -361,3 +361,7 @@ epoptes by doing the following:
     ufw enable
     ufw enable epoptes
     ufw status verbose
+
+### 2023-07-12
+
+Test epoptes with ufw enabled. It worked fine!
