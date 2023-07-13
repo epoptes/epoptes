@@ -365,3 +365,7 @@ epoptes by doing the following:
 ### 2023-07-12
 
 Test epoptes with ufw enabled. It worked fine!
+
+### 2023-07-13
+
+Research systemd socket activation.
