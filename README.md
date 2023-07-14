@@ -369,3 +369,13 @@ Test epoptes with ufw enabled. It worked fine!
 ### 2023-07-13
 
 Research systemd socket activation.
+
+### 2023-07-14
+
+Quoting from the [twisted manual](https://docs.twistedmatrix.com/en/latest/core/howto/systemd.html#limitations-and-known-issues):
+
+> Twisted does not support listening for SSL connections on sockets inherited
+> from systemd.
+
+This means that it's currently impossible to implement this GSoC task and that
+it will have to be replaced with another task.
