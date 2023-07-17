@@ -379,3 +379,14 @@ Quoting from the [twisted manual](https://docs.twistedmatrix.com/en/latest/core/
 
 This means that it's currently impossible to implement this GSoC task and that
 it will have to be replaced with another task.
+
+### 2023-07-17
+
+After discussing the Wayland and socket activation blocker issues with the
+mentors, it was decided to replace them with some of the alternative tasks that
+are described in the [Epoptes GSoC
+page](https://epoptes.org/documentation/gsoc/).
+
+The first task to be evaluated is [Reimplement epoptes-client in python instead
+of shell](https://epoptes.org/documentation/gsoc/#epoptes-client-in-python) but
+it's a very big one, it might not fit within the rest of this GSoC project.
