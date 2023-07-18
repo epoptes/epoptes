@@ -390,3 +390,7 @@ page](https://epoptes.org/documentation/gsoc/).
 The first task to be evaluated is [Reimplement epoptes-client in python instead
 of shell](https://epoptes.org/documentation/gsoc/#epoptes-client-in-python) but
 it's a very big one, it might not fit within the rest of this GSoC project.
+
+### 2023-07-18
+
+Implement Client.fetch_certificate().
