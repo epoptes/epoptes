@@ -394,3 +394,7 @@ it's a very big one, it might not fit within the rest of this GSoC project.
 ### 2023-07-18
 
 Implement Client.fetch_certificate().
+
+### 2023-07-19
+
+Support command line parameters.

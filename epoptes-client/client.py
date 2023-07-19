@@ -17,6 +17,12 @@ def die(msg, code=1):
     sys.exit(code)
 
 
+def require_root():
+    """Exit if not root."""
+    if os.getuid() != 0:
+        die("Root access is required")
+
+
 class Client():
     """Epoptes client class."""
 
@@ -36,9 +42,20 @@ class Client():
 
 
 def main():
+    """Usage: epoptes-client [--version]."""
+    if len(sys.argv) > 1:
+        if sys.argv[1] in ("--version", "-version"):
+            version = 0.1
+            print(f"epoptes-client {version}")
+            sys.exit(0)
+        elif sys.argv[1] in ("-c"):
+            client = Client()
+            client.fetch_certificate()
+            sys.exit(0)
     client = Client()
-    client.fetch_certificate()
+    client.connect()
+    input("Press [Enter] to finish")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
