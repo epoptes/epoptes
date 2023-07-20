@@ -398,3 +398,7 @@ Implement Client.fetch_certificate().
 ### 2023-07-19
 
 Support command line parameters.
+
+### 2023-07-20
+
+Implement Client.connect().
