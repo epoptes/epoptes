@@ -6,6 +6,7 @@
 Epoptes client class.
 """
 
+import glob
 import os
 import socket
 import ssl
@@ -24,7 +25,6 @@ def require_root():
     if os.getuid() != 0:
         die("Root access is required")
 
-
 def run(cmd, shell=False):
     """Run a command and return its output as text."""
     if type(cmd).__name__ == "str":
@@ -33,7 +33,6 @@ def run(cmd, shell=False):
         cmd = ["sh", "-c"] + cmd
     return subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0].decode().rstrip("\n")
 
-
 class Client():
     """Epoptes client class."""
 
@@ -41,6 +40,31 @@ class Client():
         self.server = "server"
         self.port = 789
         self.ssock = None
+        self.uid = os.getuid()
+        if os.path.isdir("/run/ltsp/client"):
+            self.type = "fat"
+        elif os.getenv("$LTSP_CLIENT"):
+            self.type = "thin"
+        else:
+            self.type = "standalone"
+        self.version = "23.06"
+        pwd_ent = run(f"getent passwd {self.uid}").split(":")
+        self.user = pwd_ent[0]
+        self.name = pwd_ent[4].split(",")[0]
+        self.home = pwd_ent[5]
+        self.memberof = run(["sh", "-c", "groups | tr ' ' ','"])
+        self.hostname = socket.gethostname()
+        self.mac = "00:00:00:00:00:00"
+        for fname in glob.glob("/sys/class/net/*/device/net/*/address"):
+            with open(fname) as file:
+                self.mac = file.readline().strip()
+                break
+        self.mac = "00:00:00:00:00:00"
+        self.ip = "192.168.67.123"
+        self.cpu = run(["awk", "-F: ", "/^model name/ { print $2; exit }", "/proc/cpuinfo"])
+        self.ram = run(["awk", "/^MemTotal:/ { print int($2/1024) }", "/proc/meminfo"])
+        self.vga = run(["sh", "-c", r"""lspci -nn -m 2>/dev/null | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' '"""])
+        self.os = run("uname -o")
 
     def fetch_certificate(self):
         """Save server certificate to /etc/epoptes-new/server.crt"""
@@ -57,6 +81,26 @@ class Client():
         """Echo the message."""
         print("*", msg)
         self.ssock.sendall(msg + b"\n")
+
+    def info(self):
+        """Send client information."""
+        self.echo(bytes(f"""uid={self.uid}
+type={self.type}
+version={self.version}
+user={self.user}
+name={self.name}
+home={self.home}
+memberof={self.memberof}
+hostname={self.hostname}
+mac={self.mac}
+ip={self.ip}
+cpu={self.cpu}
+ram={self.ram}
+vga={self.vga}
+os={self.os}""", encoding="utf-8"))
+
+    def ping(self):
+        """Ping."""
 
     def connect(self):
         """Connect and do the main loop."""
@@ -86,7 +130,6 @@ class Client():
                     data = ssock.recv(1024)
                 print("End of data, closing socket")
                 ssock.close()
-
 
 def main():
     """Usage: epoptes-client [--version]."""

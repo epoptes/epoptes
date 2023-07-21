@@ -402,3 +402,7 @@ Support command line parameters.
 ### 2023-07-20
 
 Implement Client.connect().
+
+### 2023-07-21
+
+Implement Client.info().
