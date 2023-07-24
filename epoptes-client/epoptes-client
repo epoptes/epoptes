@@ -97,14 +97,16 @@ basic_info() {
 }
 
 fetch_certificate() {
+    local contents
+
     test "$UID" -eq 0 || die "Need to be root to fetch the certificate"
     mkdir -p /etc/epoptes
-    openssl s_client -connect $SERVER:$PORT </dev/null |
-        sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d' \
-            >/etc/epoptes/server.crt
-    if [ -s /etc/epoptes/server.crt ]; then
+    # First fetch, then store, to avoid zeroing the output file
+    if contents=$(openssl s_client -connect $SERVER:$PORT </dev/null |
+        sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d') &&
+        [ -n "$contents" ]; then
+        echo "$contents" >/etc/epoptes/server.crt
         echo "Successfully fetched certificate from $SERVER:$PORT"
-        exit 0
     else
         die "Failed to fetch certificate from $SERVER:$PORT"
     fi

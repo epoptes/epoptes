@@ -406,3 +406,9 @@ Implement Client.connect().
 ### 2023-07-21
 
 Implement Client.info().
+
+### 2023-07-24
+
+Follow mentor advice to resolve existing upstream epoptes issues reported on
+github, in place of the aforementioned blocked tasks. Resolve "server.crt is
+blank" (#194).
