@@ -145,25 +145,23 @@ wait_for_dns() {
     done
 }
 
+# Set WoL to the desired state for all currently available Ethernet adapters
 apply_wol() {
-    local def_iface _ip
+    local tarwol fpath iface
 
-    if [ "$UID" -eq 0 ] && [ -n "$WOL" ] && [ -x /sbin/ethtool ] &&
-        [ "$EPOPTES_CLIENT_APPLIED_WOL" != True ]; then
-        export EPOPTES_CLIENT_APPLIED_WOL=True
-        # Copied from client-functions, these map from server_ip to def_iface
-        read -r def_iface _ip <<EOF
-$(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
-EOF
-        test "${def_iface:-lo}" != "lo" || read -r def_iface _ip <<EOF
-$(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
-EOF
-        if [ "${def_iface:-lo}" != "lo" ]; then
-            # Only set WOL if def_iface is both != '' and != 'lo'.
-            echo "Setting WOL=$WOL for $def_iface"
-            ethtool -s "$def_iface" wol "$WOL"
-        fi
-    fi
+    test "$UID" -eq 0 || return 0
+    # Set target WOL to "g" if WOL is unset
+    tarwol=${WOL-g}
+    # Return if WOL="ignore" or WOL=""
+    test "${tarwol:-ignore}" != "ignore" || return 0
+    test -x /sbin/ethtool || return 0
+    # Only handle devices with a physical MAC address
+    for fpath in /sys/class/net/*/device/net/*/address; do
+        test -f "$fpath" || continue
+        iface=${fpath%/address}
+        iface=${iface##*/}
+        ethtool -s "$iface" wol "$tarwol"
+    done
 }
 
 # Main.

@@ -412,3 +412,7 @@ Implement Client.info().
 Follow mentor advice to resolve existing upstream epoptes issues reported on
 github, in place of the aforementioned blocked tasks. Resolve "server.crt is
 blank" (#194).
+
+### 2023-07-25
+
+Apply WOL to all available Ethernet interfaces (#186).
