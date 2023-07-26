@@ -416,3 +416,7 @@ blank" (#194).
 ### 2023-07-25
 
 Apply WOL to all available Ethernet interfaces (#186).
+
+### 2023-07-26
+
+Don't apply WOL again if it was already applied in previous invocations.
