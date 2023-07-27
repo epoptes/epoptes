@@ -420,3 +420,12 @@ Apply WOL to all available Ethernet interfaces (#186).
 ### 2023-07-26
 
 Don't apply WOL again if it was already applied in previous invocations.
+
+### 2023-07-27
+
+Investigate issue #30, [https://github.com/epoptes/epoptes/issues/30](Alias not
+saved when clicking "ok"). Rather than adding numerous `config.save_settings()`
+calls throughout the code, it's probably better to research how to handle
+SIGTERM on twisted. A quick test, running `pkill epoptes`, verifies that
+`save_settings` isn't called when the user logs off and epoptes gets a TERM
+signal.
