@@ -167,6 +167,8 @@ class EpoptesGui(object):
         mitem.set_active(True)
         self.get('cmi_show_real_names').set_active(self.show_real_names)
         self.mainwin.set_sensitive(False)
+        # Also called on SIGTERM, e.g. on user logout
+        reactor.on_stop = self.save_settings
 
     def save_settings(self):
         """Helper function for on_imi_file_quit_activate."""
@@ -186,7 +188,6 @@ class EpoptesGui(object):
 
     def on_imi_file_quit_activate(self, _widget):
         """Handle imi_file_quit.activate and wnd_main.destroy events."""
-        self.save_settings()
         if self.vncserver is not None:
             self.vncserver.kill()
         if self.vncviewer is not None:
@@ -748,7 +749,6 @@ class EpoptesGui(object):
         # noinspection PyUnresolvedReferences
         if not reactor.running:
             return
-        self.save_settings()
         msg = _("Lost connection with the epoptes service.")
         msg += "\n\n" + \
                _("Make sure the service is running and then restart epoptes.")

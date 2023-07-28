@@ -429,3 +429,7 @@ calls throughout the code, it's probably better to research how to handle
 SIGTERM on twisted. A quick test, running `pkill epoptes`, verifies that
 `save_settings` isn't called when the user logs off and epoptes gets a TERM
 signal.
+
+### 2023-07-28
+
+Call save_settings on SIGTERM (#30).
