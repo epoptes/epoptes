@@ -433,3 +433,8 @@ signal.
 ### 2023-07-28
 
 Call save_settings on SIGTERM (#30).
+
+### 2023-07-31
+
+- Install Raspberry Pi OS Bullseye 64bit on rpi4 in order to be able to test.
+- Add processor information for rpi4 (#200).

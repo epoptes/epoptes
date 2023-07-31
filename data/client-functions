@@ -151,7 +151,7 @@ EOF
             MAC=${MAC%% *}
             test -n "$MAC" || die "Empty MAC"
         fi
-        CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
+        CPU=$(awk -F': ' '/^(model name|Model)/ { print $2; exit }' /proc/cpuinfo)
         # Avoid the name "GROUPS" as it's an internal bash variable, see
         # https://github.com/ltsp/ltsp/issues/389#issuecomment-1144856545
         MEMBEROF=$(groups | tr ' ' ',')
