@@ -156,7 +156,12 @@ EOF
         # https://github.com/ltsp/ltsp/issues/389#issuecomment-1144856545
         MEMBEROF=$(groups | tr ' ' ',')
         RAM=$(awk '/^MemTotal:/ { print int($2/1024) }' /proc/meminfo)
-        VGA=$(lspci -nn -m 2>/dev/null | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
+        VGA=$(
+            DRIVER=
+            PCI_ID=
+            . "$(readlink -f /sys/class/graphics/fb0)/../../uevent" 2>/dev/null
+            echo "$DRIVER${PCI_ID:+" [$PCI_ID]"}"
+        )
         OS=$(uname -o)
 
         export VERSION USER NAME HOME MEMBEROF HOSTNAME IP MAC CPU RAM VGA OS

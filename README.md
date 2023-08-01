@@ -438,3 +438,7 @@ Call save_settings on SIGTERM (#30).
 
 - Install Raspberry Pi OS Bullseye 64bit on rpi4 in order to be able to test.
 - Add processor information for rpi4 (#200).
+
+### 2023-08-01
+
+Better GPU information (#201).
