@@ -446,3 +446,7 @@ Better GPU information (#201).
 ### 2023-08-02
 
 Fix GPU information on rpi4.
+
+### 2023-08-03
+
+- Research ltsp.conf based global groups (#38).
