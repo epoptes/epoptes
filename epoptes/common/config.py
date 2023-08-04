@@ -9,6 +9,7 @@ import configparser
 import glob
 import json
 import os
+import re
 import shlex
 
 from epoptes.common.constants import G_INSTANCE
@@ -96,6 +97,49 @@ def read_shell_file(filename):
     except (IOError, OSError) as exc:
         LOG.e(exc)
         return {}
+
+
+def read_ltsp_groups(filename):
+    """Parse group information from a global /etc/ltsp/ltsp.conf file.
+    """
+    data = read_plain_file(filename)
+    if not data:
+        return [], []
+    group = None
+    mac = None
+    hostname = None
+    for line in data:
+        # line is already stripped, no need to remove surrounding space
+        s = re.search(r"^#\s*EPOPTES_GROUP\s*=\s*(.*)$", line)
+        if s:
+            group = s.groups()[0]
+            print(group)
+            if group == "None":
+                group = None
+            mac = None
+            continue
+        s = re.search(r"^\[([0-9a-fA-F:]{17})\]", line)
+        if s:
+            mac = s.groups()[0]
+            print(mac)
+            continue
+        s = re.search(r"^\[(.*)\]", line)
+        if s:
+            no_mac_section = s.groups()[0]
+            print("Invalidating mac, found no_mac_section =", no_mac_section)
+            mac = None
+            continue
+        s = re.search(r"^\s*HOSTNAME\s*=\s*(.*)$", line)
+        if not s or not group or not mac:
+            continue
+        # We have a hostname under a matching group and mac; process it
+        hostname = s.groups()[0]
+        print(group, mac, hostname)
+        # TODO: process mac here
+        # Invalidate mac in order to process only the first HOSTNAME under it
+        mac = None
+
+    return data
 
 
 def read_groups(filename):
@@ -202,3 +246,5 @@ if not settings.has_option('GUI', 'grabkbdptr'):
     settings.set('GUI', 'grabkbdptr', 'False')
 
 history = read_plain_file(expand_filename('history'))
+
+read_ltsp_groups("/etc/ltsp/ltsp.conf")
