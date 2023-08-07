@@ -99,12 +99,14 @@ def read_shell_file(filename):
         return {}
 
 
-def read_ltsp_groups(filename):
+def read_groups(filename):
     """Parse group information from a global /etc/ltsp/ltsp.conf file.
     """
-    data = read_plain_file(filename)
+    data = read_plain_file("/etc/ltsp/ltsp.conf")
     if not data:
         return [], []
+    # Dict of dicts, e.g. groups["group"]["mac"] = "hostname"
+    groups = {}
     group = None
     mac = None
     hostname = None
@@ -113,20 +115,19 @@ def read_ltsp_groups(filename):
         s = re.search(r"^#\s*EPOPTES_GROUP\s*=\s*(.*)$", line)
         if s:
             group = s.groups()[0]
-            print(group)
+            # HOSTNAMEs are ignored after EPOPTES_GROUP=None
             if group == "None":
                 group = None
             mac = None
             continue
         s = re.search(r"^\[([0-9a-fA-F:]{17})\]", line)
         if s:
-            mac = s.groups()[0]
-            print(mac)
+            if group:
+                mac = s.groups()[0]
             continue
         s = re.search(r"^\[(.*)\]", line)
         if s:
-            no_mac_section = s.groups()[0]
-            print("Invalidating mac, found no_mac_section =", no_mac_section)
+            # Invalidating mac, found no_mac_section
             mac = None
             continue
         s = re.search(r"^\s*HOSTNAME\s*=\s*(.*)$", line)
@@ -134,15 +135,31 @@ def read_ltsp_groups(filename):
             continue
         # We have a hostname under a matching group and mac; process it
         hostname = s.groups()[0]
-        print(group, mac, hostname)
-        # TODO: process mac here
+        if group not in groups:
+            groups[group] = {}
+        groups[group][mac] = hostname
         # Invalidate mac in order to process only the first HOSTNAME under it
         mac = None
 
-    return data
+    clients_struct = {}
+    for group in groups:
+        for mac in groups[group]:
+            alias = groups[group][mac]
+            new = structs.Client('offline', mac, '', alias)
+            clients_struct[group + mac] = new
+
+    groups_struct = []
+    for group in groups:
+        members = {}
+        for mac in groups[group]:
+            members[clients_struct[group + mac]] = {}
+
+        groups_struct.append(structs.Group(group, members))
+
+    return clients_struct.values(), groups_struct
 
 
-def read_groups(filename):
+def read_groups_json(filename):
     """Parse a JSON file and create the appropriate group and client objects.
     Return a 2-tuple with a client instances list and a group instances list.
     """
@@ -246,5 +263,3 @@ if not settings.has_option('GUI', 'grabkbdptr'):
     settings.set('GUI', 'grabkbdptr', 'False')
 
 history = read_plain_file(expand_filename('history'))
-
-read_ltsp_groups("/etc/ltsp/ltsp.conf")

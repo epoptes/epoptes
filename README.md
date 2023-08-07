@@ -454,3 +454,7 @@ Research ltsp.conf based global groups (#38).
 ### 2023-08-04
 
 First version of config.read_ltsp_groups (#38).
+
+### 2023-08-07
+
+Update config.read_ltsp_groups (#38).
