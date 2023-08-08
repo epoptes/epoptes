@@ -99,10 +99,10 @@ def read_shell_file(filename):
         return {}
 
 
-def read_groups(filename):
+def read_groups_ltsp(filename):
     """Parse group information from a global /etc/ltsp/ltsp.conf file.
     """
-    data = read_plain_file("/etc/ltsp/ltsp.conf")
+    data = read_plain_file(filename)
     if not data:
         return [], []
     # Dict of dicts, e.g. groups["group"]["mac"] = "hostname"

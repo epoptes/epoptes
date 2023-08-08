@@ -119,23 +119,29 @@ class EpoptesGui(object):
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
         self.on_scl_icon_size_value_changed(None)
-        # Support a global groups.json, writable only by the "administrator"
-        self.groups_file = '/etc/epoptes/groups.json'
-        if os.access(self.groups_file, os.R_OK):
-            # Don't use global groups for the "administrator"
-            self.global_groups = not os.access(self.groups_file, os.W_OK)
+        # If ltsp.conf contains EPOPTES_GROUPS, prefer it
+        self.groups_file = '/etc/ltsp/ltsp.conf'
+        _saved_clients, groups = config.read_groups_ltsp(self.groups_file)
+        if groups:
+            self.global_groups = True
         else:
-            self.groups_file = config.expand_filename('groups.json')
-            self.global_groups = False
-        try:
-            _saved_clients, groups = config.read_groups(self.groups_file)
-        except ValueError as exc:
-            self.warning_dialog(
-                _('Failed to read the groups file:') + '\n'
-                + self.groups_file + '\n'
-                + _('You may need to restore your groups from a backup!')
-                + '\n\n' + str(exc))
-            _saved_clients, groups = [], []
+            # Support a global groups.json, writable only by the "administrator"
+            self.groups_file = '/etc/epoptes/groups.json'
+            if os.access(self.groups_file, os.R_OK):
+                # Don't use global groups for the "administrator"
+                self.global_groups = not os.access(self.groups_file, os.W_OK)
+            else:
+                self.groups_file = config.expand_filename('groups.json')
+                self.global_groups = False
+            try:
+                _saved_clients, groups = config.read_groups_json(self.groups_file)
+            except ValueError as exc:
+                self.warning_dialog(
+                    _('Failed to read the groups file:') + '\n'
+                    + self.groups_file + '\n'
+                    + _('You may need to restore your groups from a backup!')
+                    + '\n\n' + str(exc))
+                _saved_clients, groups = [], []
         # In global groups mode, groups that start with X- are hidden
         self.x_groups = {}
         if self.global_groups:
