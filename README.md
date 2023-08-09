@@ -462,3 +462,13 @@ Update config.read_ltsp_groups (#38).
 ### 2023-08-08
 
 Support ltsp.conf based global groups (#38).
+
+### 2023-08-09
+
+Research FTBS after build (#202). As stated in
+https://wiki.debian.org/qa.debian.org/FTBFS/SourceAfterBuild, the following
+commands can be used to reproduce the issue:
+
+    git archive --format=tar.gz -o ../epoptes_23.06.orig.tar.gz HEAD
+    dpkg-buildpackage -b
+    dpkg-buildpackage -S
