@@ -472,3 +472,35 @@ commands can be used to reproduce the issue:
     git archive --format=tar.gz -o ../epoptes_23.06.orig.tar.gz HEAD
     dpkg-buildpackage -b
     dpkg-buildpackage -S
+
+### 2023-08-10
+
+Document FTBS after build (#202).
+
+The problem is that `dpkg-buildpackage -b` calls `setup.py build`. This imports
+the /usr/lib/python3/dist-packages/DistUtilsExtra/command/build_i18n.py class,
+which calls `intltool-update -p -g epoptes`, which regenerates po/epoptes.pot.
+Even when there was no change in the source code, epoptes.pot gets modified as
+the following line contains the current date:
+
+    "POT-Creation-Date: 2023-08-14 10:27+0300\n"
+
+Finally, the `dpkg-buildpackage -S` command complains because the source tree
+is modified:
+
+    dpkg-source: error: aborting due to unexpected upstream changes
+
+Some possible workarounds or solutions could be:
+
+- If po/epoptes.pot is updated at the last commit before the release, then its
+  date will match the SOURCE_DATE_EPOCH variable, resulting in the source code
+  not getting modified on builds.
+- On the other hand,
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=792687#61 claims that there
+  is no point in making a source tarball (.tar.gz) reproducible.
+- There's also the option of manually patching the date after the
+  intltool-update call, so that epoptes.pot isn't modified.
+
+It might be wise to postpone this issue until the [Migrate from distutils to
+setuptools (#193)](https://github.com/epoptes/epoptes/issues/193) issue is
+resolved, as it'll possibly resolve this one as well.
