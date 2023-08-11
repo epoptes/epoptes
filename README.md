@@ -504,3 +504,11 @@ Some possible workarounds or solutions could be:
 It might be wise to postpone this issue until the [Migrate from distutils to
 setuptools (#193)](https://github.com/epoptes/epoptes/issues/193) issue is
 resolved, as it'll possibly resolve this one as well.
+
+### 2023-08-11
+
+Add client-details, implement cpu().
+
+The goal is to prepare shell functions that can later on be embedded in the
+data/client-functions file, and used to implement a [client details
+view](https://epoptes.org/documentation/gsoc/#client-details-view).

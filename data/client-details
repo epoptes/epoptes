@@ -1,0 +1,35 @@
+# /bin/sh -n
+# This file is part of Epoptes, https://epoptes.org
+# Copyright (C) 2023 the Epoptes team, see AUTHORS
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Implements some functions for health checking.
+# To be merged in client-functions later on.
+
+# Normalize load average as a percent number, where 100% means all CPUs are
+# working fully, and >100% meaning they're overloaded.
+avg2percent() {
+    local avg integral decimal
+
+    test -n "$_NUM_CPUS" || _NUM_CPUS=$(grep -c ^processor /proc/cpuinfo)
+    # We want <number or zero>.<two decimal digits>
+    avg=$(LANG=C printf "%.2f" "$1") || die "Wrong number: $1"
+    integral=${avg%.*}
+    decimal=${avg#*.}
+    if [ "$integral" != 0 ]; then
+        avg="$integral$decimal"
+    else
+        avg=$((1$decimal - 100))
+    fi
+    echo "$((avg / _NUM_CPUS))"
+}
+
+cpu() {
+    local _avg1 avg5 _avg15 _rest
+
+    # man proc
+    read -r _avg1 avg5 _avg15 _rest </proc/loadavg
+    echo "$(avg2percent "$avg5")"
+}
+
+cpu
