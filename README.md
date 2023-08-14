@@ -512,3 +512,7 @@ Add client-details, implement cpu().
 The goal is to prepare shell functions that can later on be embedded in the
 data/client-functions file, and used to implement a [client details
 view](https://epoptes.org/documentation/gsoc/#client-details-view).
+
+### 2023-08-14
+
+Implement printc for colored output.

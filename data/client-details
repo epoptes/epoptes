@@ -32,4 +32,48 @@ cpu() {
     echo "$(avg2percent "$avg5")"
 }
 
+# Custom printf that defaults to newline, supports `-n` to skip it,
+# and logger-like `-pPRIORITY` for journald-style Colors.
+printc() {
+    local fmt c
+
+    fmt="\n"
+    c=""
+    # Log levels: https://man7.org/linux/man-pages/man3/syslog.3.html
+    # Colors: https://www.freedesktop.org/software/systemd/man/journalctl.html
+    # https://github.com/systemd/systemd/blob/main/src/basic/terminal-util.h
+    # for i in $(seq 0 7); do printc -$i $i; done
+    # for i in $(seq 0 7); do logger -p$i $i; done; journalctl -fb -n8
+    while [ -n "$1" ]; do
+        case "$1" in
+        -n) fmt="" ;;
+        -p0 | -pemerg) c="0;1;31" ;;         # system is unusable
+        -p1 | -palert) c="0;1;31" ;;         # action must be taken immediately
+        -p2 | -pcrit) c="0;1;31" ;;          # critical conditions
+        -p3 | -perr) c="0;1;31" ;;           # error conditions
+        -p4 | -pwarning) c="0;1;38;5;185" ;; # warning conditions
+        -p5 | -pnotice) c="0;1" ;;           # normal but significant condition
+        -p6 | -pinfo) c="" ;;                # informational message
+        -p7 | -pdebug) c="0;38;5;245" ;;     # debug-level message
+        -p)
+            # Replace `-p priority` with `-ppriority` and continue
+            c=$2
+            shift 2
+            set -- "-p${c}" "$@"
+            continue
+            ;;
+        *) break ;;
+        esac
+        shift
+    done
+    if [ -n "$c" ]; then
+        fmt="\033[${c}m${1}\033[0m${fmt}"
+    else
+        fmt="${1}${fmt}"
+    fi
+    test $# -gt 1 && shift
+    # shellcheck disable=SC2059
+    printf "$fmt" "$@"
+}
+
 cpu
