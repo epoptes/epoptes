@@ -516,3 +516,7 @@ view](https://epoptes.org/documentation/gsoc/#client-details-view).
 ### 2023-08-14
 
 Implement printc for colored output.
+
+### 2023-08-15
+
+Implement print_num for automatic coloring.

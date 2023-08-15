@@ -29,7 +29,7 @@ cpu() {
 
     # man proc
     read -r _avg1 avg5 _avg15 _rest </proc/loadavg
-    echo "$(avg2percent "$avg5")"
+    print_num "$(avg2percent "$avg5")"
 }
 
 # Custom printf that defaults to newline, supports `-n` to skip it,
@@ -74,6 +74,22 @@ printc() {
     test $# -gt 1 && shift
     # shellcheck disable=SC2059
     printf "$fmt" "$@"
+}
+
+print_num() {
+    local num lo hi prio
+
+    num=$1
+    lo=${2:-90}
+    hi=${3:-95}
+    if [ "$num" -lt "$lo" ]; then
+        prio=info
+    elif [ "$num" -lt "$hi" ]; then
+        prio=warning
+    else
+        prio=err
+    fi
+    printc -n -p"$prio" "%5s" "$num"
 }
 
 cpu
