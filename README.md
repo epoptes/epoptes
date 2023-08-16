@@ -520,3 +520,7 @@ Implement printc for colored output.
 ### 2023-08-15
 
 Implement print_num for automatic coloring.
+
+### 2023-08-16
+
+Add disk usage detection function.

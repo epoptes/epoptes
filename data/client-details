@@ -32,6 +32,23 @@ cpu() {
     print_num "$(avg2percent "$avg5")"
 }
 
+disk() {
+    local max _filesystem _size _used _avail use mounted
+
+    max=0
+    while read -r _filesystem _size _used _avail use mounted; do
+        case "$mounted" in
+        / | /home | /srv)
+            use=${use%\%}
+            test "$use" -gt "$max" && max=$use
+            ;;
+        esac
+    done <<EOF
+$(df -h)
+EOF
+    print_num "$max"
+}
+
 # Custom printf that defaults to newline, supports `-n` to skip it,
 # and logger-like `-pPRIORITY` for journald-style Colors.
 printc() {
@@ -92,4 +109,11 @@ print_num() {
     printc -n -p"$prio" "%5s" "$num"
 }
 
-cpu
+main() {
+    cat <<EOF
+cpu:  $(cpu)
+disk: $(disk)
+EOF
+}
+
+main "$@"
