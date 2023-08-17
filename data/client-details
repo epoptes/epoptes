@@ -49,6 +49,39 @@ EOF
     print_num "$max"
 }
 
+mem() {
+    local memtotal memavail swaptotal swapfree
+
+    memtotal=
+    memavail=
+    swaptotal=
+    swapfree=
+    while read -r line; do
+        set -o noglob
+        # shellcheck disable=SC2086
+        set -- $line
+        set +o noglob
+        case "$1" in
+        Mem:)
+            memtotal=$2
+            memavail=$7
+            ;;
+        Swap:)
+            swaptotal=$2
+            swapfree=$4
+            ;;
+        esac
+    done <<EOF
+$(LANG=C free)
+EOF
+    print_num "$((100 - 100 * memavail / memtotal))"
+    if [ "$swaptotal" = "" ] || [ "$swaptotal" = 0 ]; then
+        print_num -1
+    else
+        print_num "$((100 - 100 * swapfree / swaptotal))" 10 50
+    fi
+}
+
 # Custom printf that defaults to newline, supports `-n` to skip it,
 # and logger-like `-pPRIORITY` for journald-style Colors.
 printc() {
@@ -111,8 +144,8 @@ print_num() {
 
 main() {
     cat <<EOF
-cpu:  $(cpu)
-disk: $(disk)
+  CPU  RAM  SWP  DSK
+$(cpu)$(mem)$(disk)
 EOF
 }
 

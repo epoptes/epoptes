@@ -524,3 +524,7 @@ Implement print_num for automatic coloring.
 ### 2023-08-16
 
 Add disk usage detection function.
+
+### 2023-08-17
+
+Implement RAM and swap usage function.
