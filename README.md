@@ -528,3 +528,7 @@ Add disk usage detection function.
 ### 2023-08-17
 
 Implement RAM and swap usage function.
+
+### 2023-08-18
+
+Implement uptime_ and journal functions.

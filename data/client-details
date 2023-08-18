@@ -49,6 +49,21 @@ EOF
     print_num "$max"
 }
 
+journal() {
+    local lcount prio
+
+    # In cloned installations, two journal subdirectories may exist
+    # In RHEL etc, /run might be used instead of /var
+    for prio in err warning; do
+        lcount=$(journalctl -qp $prio -n 10 -S -1h --file /[vr][au][rn]/log/journal/"$(cat /etc/machine-id)"/system.journal | wc -l)
+        test "$lcount" -gt 0 && break
+    done
+    if [ "$lcount" -eq 0 ]; then
+        prio=info
+    fi
+    printc -n -p"$prio" "%5s" "$lcount"
+}
+
 mem() {
     local memtotal memavail swaptotal swapfree
 
@@ -142,10 +157,19 @@ print_num() {
     printc -n -p"$prio" "%5s" "$num"
 }
 
+uptime_() {
+    local up
+
+    read -r up </proc/uptime
+    up=${up%%.*}
+    up=$(((up + 43200) / 86400))
+    print_num "$up" 70 200
+}
+
 main() {
     cat <<EOF
-  CPU  RAM  SWP  DSK
-$(cpu)$(mem)$(disk)
+   UP  CPU  RAM  SWP  DSK  JRN
+$(uptime_)$(cpu)$(mem)$(disk)$(journal)
 EOF
 }
 
