@@ -97,14 +97,16 @@ basic_info() {
 }
 
 fetch_certificate() {
+    local contents
+
     test "$UID" -eq 0 || die "Need to be root to fetch the certificate"
     mkdir -p /etc/epoptes
-    openssl s_client -connect $SERVER:$PORT </dev/null |
-        sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d' \
-            >/etc/epoptes/server.crt
-    if [ -s /etc/epoptes/server.crt ]; then
+    # First fetch, then store, to avoid zeroing the output file
+    if contents=$(openssl s_client -connect $SERVER:$PORT </dev/null |
+        sed '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/!d') &&
+        [ -n "$contents" ]; then
+        echo "$contents" >/etc/epoptes/server.crt
         echo "Successfully fetched certificate from $SERVER:$PORT"
-        exit 0
     else
         die "Failed to fetch certificate from $SERVER:$PORT"
     fi
@@ -143,25 +145,30 @@ wait_for_dns() {
     done
 }
 
+# Set WoL to the desired state for all currently available Ethernet adapters
 apply_wol() {
-    local def_iface _ip
+    local tarwol fpath iface curwol
 
-    if [ "$UID" -eq 0 ] && [ -n "$WOL" ] && [ -x /sbin/ethtool ] &&
-        [ "$EPOPTES_CLIENT_APPLIED_WOL" != True ]; then
-        export EPOPTES_CLIENT_APPLIED_WOL=True
-        # Copied from client-functions, these map from server_ip to def_iface
-        read -r def_iface _ip <<EOF
-$(ip route get "$server_ip" | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
-EOF
-        test "${def_iface:-lo}" != "lo" || read -r def_iface _ip <<EOF
-$(ip route get 192.168.67.0 | sed -n 's/.*dev *\([^ ]*\).*src *\([^ ]*\).*/\1 \2/p')
-EOF
-        if [ "${def_iface:-lo}" != "lo" ]; then
-            # Only set WOL if def_iface is both != '' and != 'lo'.
-            echo "Setting WOL=$WOL for $def_iface"
-            ethtool -s "$def_iface" wol "$WOL"
+    test "$UID" -eq 0 || return 0
+    # Set target WOL to "g" if WOL is unset
+    tarwol=${WOL-g}
+    # Return if WOL="ignore" or WOL=""
+    test "${tarwol:-ignore}" != "ignore" || return 0
+    test -x /sbin/ethtool || return 0
+    # Only handle devices with a physical MAC address
+    for fpath in /sys/class/net/*/device/net/*/address; do
+        test -f "$fpath" || continue
+        iface=${fpath%/address}
+        iface=${iface##*/}
+        # Avoid setting it again if it's already set
+        curwol=$(ethtool "$iface" | awk '$1 == "Wake-on:" { print $2 }')
+        test "$curwol" != "$tarwol" || continue
+        if ethtool -s "$iface" wol "$tarwol"; then
+            echo "Set WOL=$tarwol for $iface"
+        else
+            echo "Failed to set WOL=$tarwol for $iface"
         fi
-    fi
+    done
 }
 
 # Main.
@@ -191,16 +198,22 @@ esac
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # When launched as a service, LANG might not be set.
-if [ -z "$LANG" ] && [ -r /etc/default/locale ]; then
-    . /etc/default/locale
-    export LANG
-fi
+for conf in /etc/default/locale /etc/locale.conf; do
+    if [ -z "$LANG" ] && [ -f "$conf" ]; then
+        . "$conf"
+        export LANG
+    fi
+done
 
 basic_info
-# The configuration file overrides the default values
-if [ -f /etc/default/epoptes-client ]; then
-    . /etc/default/epoptes-client
-fi
+# The configuration files override the default values
+for conf in /etc/default/epoptes-client \
+    /etc/epoptes/common/*.conf \
+    /etc/epoptes/client/*.conf; do
+    if [ -f "$conf" ]; then
+        . "$conf" || true
+    fi
+done
 # And the command line parameters override the configuration file
 export "SERVER=${1:-$SERVER}"
 export "PORT=${2:-$PORT}"

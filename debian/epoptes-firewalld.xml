@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Epoptes</short>
+  <description>Epoptes is an open source computer lab management and monitoring tool.</description>
+  <!-- Epoptes daemon -->
+  <port protocol="tcp" port="789"/>
+  <!-- Network benchmark using an iperf server -->
+  <port protocol="tcp" port="5001"/>
+  <!-- 5490-5499 terminal sharing, 5500-5510 reverse VNC -->
+  <port protocol="tcp" port="5490-5510"/>
+  <!-- Normal, forward VNC -->
+  <port protocol="tcp" port="5900-5920"/>
+</service>

@@ -119,23 +119,29 @@ class EpoptesGui(object):
             self.default_group_ref.get_path())
         self.get('adj_icon_size').set_value(self.ts_width)
         self.on_scl_icon_size_value_changed(None)
-        # Support a global groups.json, writable only by the "administrator"
-        self.groups_file = '/etc/epoptes/groups.json'
-        if os.access(self.groups_file, os.R_OK):
-            # Don't use global groups for the "administrator"
-            self.global_groups = not os.access(self.groups_file, os.W_OK)
+        # If ltsp.conf contains EPOPTES_GROUPS, prefer it
+        self.groups_file = '/etc/ltsp/ltsp.conf'
+        _saved_clients, groups = config.read_groups_ltsp(self.groups_file)
+        if groups:
+            self.global_groups = True
         else:
-            self.groups_file = config.expand_filename('groups.json')
-            self.global_groups = False
-        try:
-            _saved_clients, groups = config.read_groups(self.groups_file)
-        except ValueError as exc:
-            self.warning_dialog(
-                _('Failed to read the groups file:') + '\n'
-                + self.groups_file + '\n'
-                + _('You may need to restore your groups from a backup!')
-                + '\n\n' + str(exc))
-            _saved_clients, groups = [], []
+            # Support a global groups.json, writable only by the "administrator"
+            self.groups_file = '/etc/epoptes/groups.json'
+            if os.access(self.groups_file, os.R_OK):
+                # Don't use global groups for the "administrator"
+                self.global_groups = not os.access(self.groups_file, os.W_OK)
+            else:
+                self.groups_file = config.expand_filename('groups.json')
+                self.global_groups = False
+            try:
+                _saved_clients, groups = config.read_groups_json(self.groups_file)
+            except ValueError as exc:
+                self.warning_dialog(
+                    _('Failed to read the groups file:') + '\n'
+                    + self.groups_file + '\n'
+                    + _('You may need to restore your groups from a backup!')
+                    + '\n\n' + str(exc))
+                _saved_clients, groups = [], []
         # In global groups mode, groups that start with X- are hidden
         self.x_groups = {}
         if self.global_groups:
@@ -167,6 +173,8 @@ class EpoptesGui(object):
         mitem.set_active(True)
         self.get('cmi_show_real_names').set_active(self.show_real_names)
         self.mainwin.set_sensitive(False)
+        # Also called on SIGTERM, e.g. on user logout
+        reactor.on_stop = self.save_settings
 
     def save_settings(self):
         """Helper function for on_imi_file_quit_activate."""
@@ -186,7 +194,6 @@ class EpoptesGui(object):
 
     def on_imi_file_quit_activate(self, _widget):
         """Handle imi_file_quit.activate and wnd_main.destroy events."""
-        self.save_settings()
         if self.vncserver is not None:
             self.vncserver.kill()
         if self.vncviewer is not None:
@@ -265,20 +272,24 @@ class EpoptesGui(object):
         return self.daemon.command(handle, command)
 
     @staticmethod
-    def find_unused_port():
-        """Find an unused port."""
-        sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sck.bind(('', 0))
-        sck.listen(1)
-        port = sck.getsockname()[1]
-        sck.close()
-        return port
+    def find_unused_port(start, step=1):
+        """Find an unused port; sequentially, for firewall compatibility"""
+        port = start
+        while port > 0 and port < 65535:
+            sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                sck.bind(('', port))
+                sck.close()
+                return port
+            except:
+                port += step
+        raise RuntimeError('Cannot find_unused_port(%d, %d)' % (start, step))
 
     def reverse_connection(self, cmd, *args):
         """Helper function for on_imi_broadcasts_*_activate."""
         # Open vncviewer in listen mode
         if self.vncviewer is None or self.vncviewer.poll() is not None:
-            self.vncviewer_port = self.find_unused_port()
+            self.vncviewer_port = self.find_unused_port(5500)
             if os.path.isfile('/usr/share/applications/realvnc-vncviewer.desktop'):
                 viewer = 'realvnc-vnc-viewer'
             elif os.path.isfile('/usr/bin/ssvncviewer'):
@@ -324,14 +335,22 @@ class EpoptesGui(object):
     def broadcast_screen(self, fullscreen=''):
         """Helper function for on_imi_broadcasts_broadcast_screen*_activate."""
         if self.vncserver is None:
-            pwdfile = config.expand_filename('vncpasswd')
+            # wayland, x11, tty
+            if os.getenv('XDG_SESSION_TYPE', '') == 'wayland':
+                self.warning_dialog("Screen broadcasting isn't supported on Wayland")
+                return
+            # https://tigervnc.org/doc/vncpasswd.html
+            # ...only the first eight characters are significant
             pwd = ''.join(random.sample(
                 string.ascii_letters + string.digits, 8))
+            pwdfile = config.expand_filename('vncpasswd')
+            # DES-encrypted: https://github.com/trinitronx/vncpasswd.py
             subprocess.call(['x11vnc', '-storepasswd', pwd, pwdfile])
             with open(pwdfile, 'rb') as file:
-                pwd = file.read()
-            self.vncserver_port = self.find_unused_port()
-            self.vncserver_pwd = ''.join('\\%o' % c for c in pwd)
+                pwdcrypted = file.read()
+            # Octal-escaped crypted password, needed by VNC clients
+            self.vncserver_pwd = ''.join('\\%o' % c for c in pwdcrypted)
+            self.vncserver_port = self.find_unused_port(5900)
             self.vncserver = subprocess.Popen(
                 ['x11vnc', '-24to32', '-clip', 'xinerama0', '-forever',
                 '-nolookup', '-nopw', '-noshm', '-quiet', '-rfbauth', pwdfile,
@@ -395,7 +414,7 @@ class EpoptesGui(object):
             inst = client[C_INSTANCE]
             if inst.type == 'offline':
                 continue
-            port = self.find_unused_port()
+            port = self.find_unused_port(5499, -1)
             user = '--'
             if e_m == EM_SESSION and client[C_SESSION_HANDLE]:
                 user = inst.users[client[C_SESSION_HANDLE]]['uname']
@@ -736,7 +755,6 @@ class EpoptesGui(object):
         # noinspection PyUnresolvedReferences
         if not reactor.running:
             return
-        self.save_settings()
         msg = _("Lost connection with the epoptes service.")
         msg += "\n\n" + \
                _("Make sure the service is running and then restart epoptes.")

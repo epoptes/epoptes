@@ -22,7 +22,7 @@ exit_if_found() {
     test -n "$DISPLAY" || return
     export DISPLAY XAUTHORITY
     test -n "$XAUTHORITY" || unset XAUTHORITY
-    if timeout 1 xwininfo -root -size >/dev/null 2>&1; then
+    if timeout 1 xprop -root EPOPTES_CLIENT >/dev/null 2>&1; then
         echo "DISPLAY=$DISPLAY"
         test -n "$XAUTHORITY" && echo "XAUTHORITY=$XAUTHORITY"
         exit 0
@@ -63,7 +63,7 @@ for p in $(pgrep -x 'ldm|lightdm-greeter|dbus-daemon|dconf-service|pulseaudio' |
 do
     # The first DISPLAY= is only there to prevent a possible syntax error
     export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
-        egrep '^DISPLAY=|^XAUTHORITY=')
+        grep -E '^DISPLAY=|^XAUTHORITY=')
     exit_if_found
 done
 
@@ -71,7 +71,7 @@ done
 for p in $(pgrep '' | sort -rn); do
     # The first DISPLAY= is only there to prevent a possible syntax error
     export DISPLAY="$DISPLAY" $(tr '\0' '\n' 2>/dev/null < /proc/$p/environ |
-        egrep '^DISPLAY=|^XAUTHORITY=')
+        grep -E '^DISPLAY=|^XAUTHORITY=')
     exit_if_found
 done
 

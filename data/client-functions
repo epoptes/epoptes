@@ -51,7 +51,7 @@ ensure_display() {
     local vars
 
     test "$UID" -eq 0 || return 0
-    if timeout 1 xwininfo -root -size >/dev/null 2>&1; then
+    if timeout 1 xprop -root EPOPTES_CLIENT >/dev/null 2>&1; then
         return 0
     elif vars=$(./get-display); then
         export $vars
@@ -151,12 +151,19 @@ EOF
             MAC=${MAC%% *}
             test -n "$MAC" || die "Empty MAC"
         fi
-        CPU=$(awk -F': ' '/^model name/ { print $2; exit }' /proc/cpuinfo)
+        CPU=$(awk -F': ' '/^(model name|Model)/ { print $2; exit }' /proc/cpuinfo)
         # Avoid the name "GROUPS" as it's an internal bash variable, see
         # https://github.com/ltsp/ltsp/issues/389#issuecomment-1144856545
         MEMBEROF=$(groups | tr ' ' ',')
         RAM=$(awk '/^MemTotal:/ { print int($2/1024) }' /proc/meminfo)
-        VGA=$(lspci -nn -m 2>/dev/null | sed -n -e '/"VGA/s/[^"]* "[^"]*" "[^"]*" "\([^"]*\)" .*/\1/p' | tr '\n' ' ')
+        # Use grep to avoid syntax errors like e.g. this on rpi4:
+        # MODALIAS=of:NgpuT(null)Cbrcm,bcm2711-vc5
+        VGA=$(
+            DRIVER=
+            PCI_ID=
+            eval "$(grep -shE '^(DRIVER|PCI_ID)=' /sys/class/graphics/fb?/../../uevent  /sys/class/drm/card?/../../uevent || true)"
+            echo "$DRIVER${PCI_ID:+" [$PCI_ID]"}"
+        )
         OS=$(uname -o)
 
         export VERSION USER NAME HOME MEMBEROF HOSTNAME IP MAC CPU RAM VGA OS
@@ -284,9 +291,10 @@ lock_screen() {
     unlock_screen
     # TODO: remove compatibility fallback after a few versions
     if [ -f "./lock_screen.py" ]; then
-        pid=$(background -p ./lock_screen.py "$2")
+        pid=$(background -p exec ./lock_screen.py "$2")
     else
-        pid=$(background -p ./lock-screen "$2")
+        # exec is needed to return the correct pid when /bin/sh -> bash
+        pid=$(background -p exec ./lock-screen "$2")
     fi
     xprop_set EPOPTES_LOCK_SCREEN_PID "$pid"
 }
@@ -345,7 +353,8 @@ start_benchmark() {
 # $2 = seconds to run.
 stop_start_benchmark() {
     test -n "$benchmark_pid" && stop_benchmark "$benchmark_pid"
-    iperf -c "$1" --full-duplex ${1:+-t "$2"}
+    # exec is needed to return the correct pid when /bin/sh -> bash
+    exec iperf -c "$1" --full-duplex ${1:+-t "$2"}
 }
 
 # Manually stop a previously running benchmark.
