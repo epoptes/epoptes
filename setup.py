@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2021 the Epoptes team, see AUTHORS.
+# Copyright 2010-2023 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 This setup script needs python-distutils-extra, an extension to the standard
@@ -16,12 +16,17 @@ import DistUtilsExtra.auto
 
 def changelog_version(changelog="debian/changelog"):
     """Parse the version from debian/changelog."""
-    version = "dev"
-    if posixpath.exists(changelog):
-        head = open(changelog).readline()
-        match = re.compile(r".*\((.*)\).*").match(head)
-        if match:
-            version = match.group(1)
+    version = "1.0.dev0"
+    if not posixpath.exists(changelog):
+        return version
+    with open(changelog, encoding="utf-8") as file:
+        head = file.readline()
+    match = re.compile(r".*\((.*)\).*").match(head)
+    if not match:
+        return version
+    version = match.group(1)
+    # Mangle the version until LP #2032185 is resolved
+    version = version.replace("+", "~").replace("~", "+", 1).replace("~", "-")
     return version
 
 

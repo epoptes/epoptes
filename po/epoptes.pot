@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-04 18:35+0200\n"
+"POT-Creation-Date: 2023-08-21 12:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Epoptes computer lab administration tool"
 msgstr ""
 
-#: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
+#: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:443
 msgid "The screen is locked by a system administrator."
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Console (screen)"
 msgstr ""
 
-#: ../epoptes-client/remote_assistance.ui.h:3 ../epoptes/ui/gtk/epoptes.ui.h:51
+#: ../epoptes-client/remote_assistance.ui.h:3 ../epoptes/ui/gtk/epoptes.ui.h:52
 msgid "Remote support"
 msgstr ""
 
@@ -96,45 +96,45 @@ msgstr ""
 msgid "Usage: {} width height"
 msgstr ""
 
-#: ../epoptes/common/config.py:191
+#: ../epoptes/common/config.py:259
 msgid "Message from administrator"
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:73 ../epoptes/ui/gtk/benchmark.ui.h:1
-#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1095
+#: ../epoptes/ui/benchmark.py:72 ../epoptes/ui/gtk/benchmark.ui.h:1
+#: ../epoptes/ui/gtk/send_message.ui.h:7 ../epoptes/ui/gui.py:1143
 msgid "Warning"
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:80 ../epoptes/ui/gtk/send_message.ui.h:8
+#: ../epoptes/ui/benchmark.py:79 ../epoptes/ui/gtk/send_message.ui.h:8
 msgid "Error"
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:96
+#: ../epoptes/ui/benchmark.py:95
 msgid "There are no selected clients to run the benchmark on."
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:112
+#: ../epoptes/ui/benchmark.py:111
 msgid ""
 "All of the selected clients are either offline, or do not have epoptes-"
 "client running as root."
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:117
+#: ../epoptes/ui/benchmark.py:116
 msgid ""
 "The following clients will be excluded from the benchmark because they are "
 "either offline, or do not have epoptes-client running as root."
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
+#: ../epoptes/ui/benchmark.py:142 ../epoptes/ui/benchmark.py:151
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:155
+#: ../epoptes/ui/benchmark.py:154
 msgid "Some clients didn't respond in time!"
 msgstr ""
 
-#: ../epoptes/ui/benchmark.py:156
+#: ../epoptes/ui/benchmark.py:155
 #, python-format
 msgid "Waiting for %d more seconds..."
 msgstr ""
@@ -395,124 +395,124 @@ msgstr ""
 msgid "Execute"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:29
-msgid "Execute a command on the selected clients"
+#: ../epoptes/ui/gtk/epoptes.ui.h:29 ../epoptes/ui/gtk/exec_command.ui.h:1
+msgid "Execute command"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:30
-msgid "_Send message"
+msgid "Execute a command on the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:31
-msgid "Send a message to the selected clients"
+msgid "_Send message"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:32
-msgid "Open terminal"
+msgid "Send a message to the selected clients"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:33
-msgid "User, locally"
+msgid "Open terminal"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:34
-msgid "Root, locally"
+msgid "User, locally"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:35
-msgid "Root, remotely"
+msgid "Root, locally"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:36
-msgid "Restrictions"
+msgid "Root, remotely"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:37
-msgid "Lock screen"
+msgid "Restrictions"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:38
-msgid "Unlock screen"
+msgid "Lock screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:39
-msgid "Block Internet"
+msgid "Unlock screen"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:40
-msgid "Unblock Internet"
+msgid "Block Internet"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:41
-msgid "Mute sound"
+msgid "Unblock Internet"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:42
-msgid "Unmute sound"
+msgid "Mute sound"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:43
-msgid "Add to group"
+msgid "Unmute sound"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:44
-msgid "Remove from group"
+msgid "Add to group"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:45
-msgid "Network Benchmark"
+msgid "Remove from group"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:46
-msgid "_Help"
+msgid "Network Benchmark"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:47
-msgid "Report a bug"
+msgid "_Help"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:48
-msgid "Ask a question"
+msgid "Report a bug"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:49
-msgid "Translate this application"
+msgid "Ask a question"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:50
+msgid "Translate this application"
+msgstr ""
+
+#: ../epoptes/ui/gtk/epoptes.ui.h:51
 msgid "Live chat (IRC)"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:52
+#: ../epoptes/ui/gtk/epoptes.ui.h:53
 msgid "Boot selected clients (Wake On LAN)"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:53
+#: ../epoptes/ui/gtk/epoptes.ui.h:54
 msgid "Log out users connected on selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:54
+#: ../epoptes/ui/gtk/epoptes.ui.h:55
 msgid "Reboot the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:55
+#: ../epoptes/ui/gtk/epoptes.ui.h:56
 msgid "Shutdown the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:56
+#: ../epoptes/ui/gtk/epoptes.ui.h:57
 msgid "Broadcast your screen to the selected clients"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:57
+#: ../epoptes/ui/gtk/epoptes.ui.h:58
 msgid "Broadcast screen"
 msgstr ""
 
-#: ../epoptes/ui/gtk/epoptes.ui.h:58
+#: ../epoptes/ui/gtk/epoptes.ui.h:59
 msgid "Stop all broadcasts on every client"
-msgstr ""
-
-#: ../epoptes/ui/gtk/epoptes.ui.h:59 ../epoptes/ui/gtk/exec_command.ui.h:1
-msgid "Execute command"
 msgstr ""
 
 #: ../epoptes/ui/gtk/epoptes.ui.h:60 ../epoptes/ui/gtk/send_message.ui.h:1
@@ -567,76 +567,76 @@ msgstr ""
 msgid "Use Pango markup"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:105
+#: ../epoptes/ui/gui.py:111
 msgid "Detected clients"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:128
+#: ../epoptes/ui/gui.py:140
 msgid "Failed to read the groups file:"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:130
+#: ../epoptes/ui/gui.py:142
 msgid "You may need to restore your groups from a backup!"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:237
+#: ../epoptes/ui/gui.py:250
 msgid "Are you sure you want to log off all the users?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:243
+#: ../epoptes/ui/gui.py:256
 msgid "Are you sure you want to reboot all the computers?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:249
+#: ../epoptes/ui/gui.py:262
 msgid "Are you sure you want to shutdown all the computers?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:430
+#: ../epoptes/ui/gui.py:473
 #, python-format
 msgid ""
 "Are you sure you want to remove the selected client(s) from group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:561
+#: ../epoptes/ui/gui.py:600
 msgid "New group"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:578
+#: ../epoptes/ui/gui.py:617
 #, python-format
 msgid "Are you sure you want to remove group \"%s\"?"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:623
+#: ../epoptes/ui/gui.py:662
 #, python-format
 msgid "%d clients selected"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:720
+#: ../epoptes/ui/gui.py:758
 msgid "Lost connection with the epoptes service."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:722
+#: ../epoptes/ui/gui.py:760
 msgid "Make sure the service is running and then restart epoptes."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:725
+#: ../epoptes/ui/gui.py:763
 msgid "Service connection error"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:753
+#: ../epoptes/ui/gui.py:791
 msgid "Shut down:"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:761
+#: ../epoptes/ui/gui.py:799
 msgid "Disconnected:"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:762
+#: ../epoptes/ui/gui.py:800
 #, python-format
 msgid "%(user)s from %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:876
+#: ../epoptes/ui/gui.py:923
 #, python-format
 msgid ""
 "A connection attempt was made by a client with version %s, which is "
@@ -645,16 +645,16 @@ msgid ""
 "You need to update your clients to the latest epoptes-client version."
 msgstr ""
 
-#: ../epoptes/ui/gui.py:906
+#: ../epoptes/ui/gui.py:953
 msgid "Connected:"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:907
+#: ../epoptes/ui/gui.py:954
 #, python-format
 msgid "%(user)s on %(host)s"
 msgstr ""
 
-#: ../epoptes/ui/gui.py:1086
+#: ../epoptes/ui/gui.py:1134
 msgid "Confirm action"
 msgstr ""
 

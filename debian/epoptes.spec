@@ -1,12 +1,16 @@
+# Use gzip compression to support older distributions
+# https://stackoverflow.com/questions/9292243
+%define _source_payload w9.gzdio
+%define _binary_payload w9.gzdio
 %define build_timestamp %(date +"%%Y%%m%%d")
 Name:          epoptes
-Version:       main
-Release:       %{build_timestamp}%{?dist}
+Version:       23.08
+Release:       1%{?dist}
 Summary:       Computer lab management tool
 Summary(el_GR.UTF-8): Λογισμικό διαχείρισης εργαστηρίου υπολογιστών
 License:       GPLv3
 Group:         Networking/Remote access
-Source:        https://github.com/eltoukos/epoptes/archive/refs/heads/main.tar.gz
+Source:        https://github.com/epoptes/epoptes/archive/refs/tags/v%{version}.tar.gz
 Url:           https://epoptes.org
 BugURL:        https://github.com/epoptes/epoptes/issues
 BuildRequires: desktop-file-utils
@@ -96,6 +100,9 @@ install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}.service %{build
 mkdir -p %{buildroot}%{_sysconfdir}/firewalld/services/
 install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}-firewalld.xml %{buildroot}%{_sysconfdir}/firewalld/services/
 sed 's/twistd3/twistd-3/' -i %{buildroot}%{_unitdir}/%{name}.service
+sed "s/\(__version__\).*/\1 = '%{version}-%{release}'/" -i %{buildroot}%{python3_sitelib}/epoptes/__init__.py
+sed "s/\(VERSION=\).*/\1'%{version}-%{release}'/" -i %{buildroot}%{_sbindir}/epoptes-client
+sed '/^#!\/bin\/sh/d' -i %{buildroot}%{_datadir}/%{name}/client-functions
 install -pD -m644 %{_builddir}/%{name}-%{version}/debian/%{name}-client.service  %{buildroot}%{_unitdir}/%{name}-client.service
 rm -f %{buildroot}/%{_docdir}/%{name}/README.md
 
@@ -143,5 +150,15 @@ fi
 %{_unitdir}/%{name}-client.service
 
 %changelog
-* Sat Jun 10 2023 Myrto Georgopoulou <myrto.georgopoulou@gmail.com> 23.01-1
-- Initial build
+* Mon Aug 21 2023 Alkis Georgopoulos <alkisg@gmail.com> 23.08-1
+- Merge GSoC 2023 Epoptes Improvements (#204)
+- Better GPU information (#201)
+- Add processor information for rpi4 (#200)
+- Avoid zeroing server.crt certificate (#194)
+- Drop /etc/default/epoptes* scripts (#187)
+- Apply WoL to all interfaces (#186)
+- Support ltsp.conf based global groups (#38)
+- Save settings on SIGTERM (#30)
+- Firewall friendly port ranges (#11)
+- Automatic firewall configuration
+- Support more distributions

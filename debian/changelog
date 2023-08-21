@@ -1,3 +1,22 @@
+epoptes (23.08-1) unstable; urgency=medium
+
+  [ Myrto Georgopoulou ]
+  * Better GPU information (#201)
+  * Add processor information for rpi4 (#200)
+  * Avoid zeroing server.crt certificate (#194)
+  * Drop /etc/default/epoptes* scripts (#187)
+  * Apply WoL to all interfaces (#186)
+  * Support ltsp.conf based global groups (#38)
+  * Save settings on SIGTERM (#30)
+  * Firewall friendly port ranges (#11)
+  * Automatic firewall configuration
+  * Support more distributions
+
+  [ Alkis Georgopoulos ]
+  * Merge GSoC 2023 Epoptes Improvements (#204)
+
+ -- Alkis Georgopoulos <alkisg@gmail.com>  Mon, 21 Aug 2023 12:01:18 +0300
+
 epoptes (23.01-1) unstable; urgency=medium
 
   [ Alkis Georgopoulos ]
