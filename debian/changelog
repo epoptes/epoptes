@@ -1,3 +1,13 @@
+epoptes (23.08-2) unstable; urgency=medium
+
+  * debian/rules: Remove cruft leftover from the build process.
+    (Closes: #1044403)
+  * debian/control: Add Dependency on python3-setuptools or
+    python3-distutils. (Closes: #1081025)
+  * debian/control: Update Standards-Version to 4.7.0.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 09 Sep 2024 16:22:00 -0700
+
 epoptes (23.08-1) unstable; urgency=medium
 
   [ Myrto Georgopoulou ]
