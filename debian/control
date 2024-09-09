@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 10),
  dh-python,
  python3-distutils-extra,
  python3:any,
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Rules-Requires-Root: no
 Vcs-Git: https://github.com/epoptes/epoptes
 Vcs-Browser: https://github.com/epoptes/epoptes
