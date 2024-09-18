@@ -113,7 +113,7 @@ msgstr "Erro"
 
 #: ../epoptes/ui/benchmark.py:96
 msgid "There are no selected clients to run the benchmark on."
-msgstr ""
+msgstr "Non hai clientes seleccionados para executar a proba."
 
 #: ../epoptes/ui/benchmark.py:112
 msgid ""
@@ -132,11 +132,11 @@ msgstr ""
 #: ../epoptes/ui/benchmark.py:143 ../epoptes/ui/benchmark.py:152
 #, python-format
 msgid "Benchmark finishing in %d seconds..."
-msgstr ""
+msgstr "Proba finalizada en %d segundos..."
 
 #: ../epoptes/ui/benchmark.py:155
 msgid "Some clients didn't respond in time!"
-msgstr ""
+msgstr "Algúns clientes non responderon en tempo!"
 
 #: ../epoptes/ui/benchmark.py:156
 #, python-format
@@ -174,10 +174,11 @@ msgstr ""
 "  Pablo https://launchpad.net/~navarreando\n"
 "  Soy Lor https://launchpad.net/~soylor\n"
 "  Xosé https://launchpad.net/~ubuntu-galizaweb"
+"  B4sicallyF0x https://github.com/b4sicallyf0x"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:2
 msgid "Network benchmark"
-msgstr ""
+msgstr "Proba de rede"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:3
 msgid "Start"
@@ -191,7 +192,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:6
 msgid "Run the benchmark for"
-msgstr ""
+msgstr "Executar a proba por"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:7
 msgid "seconds"
@@ -199,7 +200,7 @@ msgstr "segundos"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:8
 msgid "Network benchmark results"
-msgstr ""
+msgstr "Resultados da proba de red"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:9 ../epoptes/ui/gtk/epoptes.ui.h:4
 msgid "Computer"
@@ -223,7 +224,7 @@ msgstr ""
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:13
 msgid "Overall bandwidth statistics"
-msgstr ""
+msgstr "Estadísticas xerais de ancho de banda"
 
 #: ../epoptes/ui/gtk/benchmark.ui.h:14
 msgid "The average server download bandwidth per client"
