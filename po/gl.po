@@ -23,7 +23,7 @@ msgstr "Ferramenta de administración de aulas de informática Epoptes"
 
 #: ../epoptes-client/lock_screen.py:92 ../epoptes/ui/gui.py:400
 msgid "The screen is locked by a system administrator."
-msgstr "A pantalla está bloqeuada por un administrador do sistema."
+msgstr "A pantalla está bloqueada por un administrador do sistema."
 
 #: ../epoptes-client/message.py:53
 msgid "Usage: {} text [title] [markup] [icon_name]"
