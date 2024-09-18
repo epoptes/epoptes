@@ -159,7 +159,7 @@ msgstr "Propiedades de %s"
 
 #: ../epoptes/ui/gtk/about.ui.h:1
 msgid "Copyright © 2010+ The Epoptes Team"
-msgstr ""
+msgstr "Copyright © 2010+ O equipo Epoptes"
 
 #: ../epoptes/ui/gtk/about.ui.h:2
 msgid "A computer lab management and monitoring tool."
