@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2010-2023 the Epoptes team, see AUTHORS.
+# Copyright 2010-2025 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Epoptes GUI class.
 """
-from distutils.version import LooseVersion
 import os
 import pipes
 import random
+import re
 import socket
 import string
 import subprocess
@@ -875,6 +875,21 @@ class EpoptesGui(object):
             return itr, self.gstore[itr][G_INSTANCE]
         return None
 
+
+    def version_to_table(self, v):
+        """Convert a package version into a table for the compatibility check.
+        We only care about major upgrades, not details like the "~" semantic.
+        For example, "3:6.04~git20190206.bf6db5b4+dfsg1-3ubuntu3" becomes
+        [3, 6, 4, 20190206, 6, 5, 4, 1, 3, 3].
+        See python3-debian > debian_support.py and
+        https://packaging.python.org/en/latest/specifications/version-specifiers/
+        """
+        # Add an epoch if it doesn't exist
+        if not ":" in v:
+            v = "0:" + v
+        return [int(s) for s in re.findall(r"\d+", v)]
+
+
     def add_client(self, handle, reply, already=False):
         """Callback after running `info` on a client."""
         # already is True if the client was started before epoptes
@@ -914,7 +929,7 @@ class EpoptesGui(object):
             return False
 
         # Compatibility check
-        if LooseVersion(version) < LooseVersion(COMPATIBILITY_VERSION):
+        if self.version_to_table(version) < self.version_to_table(COMPATIBILITY_VERSION):
             self.daemon_command(
                 handle, "die 'Incompatible Epoptes server version!'")
             if not self.displayed_compatibility_warning:
