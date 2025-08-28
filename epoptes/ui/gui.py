@@ -6,7 +6,7 @@
 Epoptes GUI class.
 """
 import os
-import pipes
+import shlex
 import random
 import re
 import socket
@@ -1092,7 +1092,7 @@ class EpoptesGui(object):
         # ${GUI_PY} must be unquoted, don't pass it as list
         if isinstance(command, list) and len(command) > 0:
             command = '%s %s' % (command[0], ' '.join(
-                [pipes.quote(str(x)) for x in command[1:]]))
+                [shlex.quote(str(x)) for x in command[1:]]))
 
         if (clients != [] or handles != []) and warning != '':
             if not self.confirmation_dialog(warning):
