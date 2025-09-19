@@ -410,11 +410,13 @@ class EpoptesGui(object):
         # If there is no client selected, send the command to all
         if not clients:
             clients = self.cstore
+        port = 5500
         for client in clients:
             inst = client[C_INSTANCE]
             if inst.type == 'offline':
                 continue
-            port = self.find_unused_port(5499, -1)
+            # The previous port might not be in use yet, avoid it
+            port = self.find_unused_port(port - 1, -1)
             user = '--'
             if e_m == EM_SESSION and client[C_SESSION_HANDLE]:
                 user = inst.users[client[C_SESSION_HANDLE]]['uname']
