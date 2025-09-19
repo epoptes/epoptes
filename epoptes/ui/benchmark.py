@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This file is part of Epoptes, https://epoptes.org
-# Copyright 2016-2023 the Epoptes team, see AUTHORS.
+# Copyright 2016-2025 the Epoptes team, see AUTHORS.
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Network benchmark.
@@ -169,7 +169,10 @@ class Benchmark:
                 continue
             _timestamp, src_ip, sport, dst_ip, _dport, _id, _interval, _tbytes, bbps = values
             bbps = int(bbps)
-            if sport == '5001':
+            if sport == '0':
+                # Newer iperf versions also return the sum
+                continue
+            elif sport == '5001':
                 client_ip = dst_ip
             else:
                 client_ip = src_ip
